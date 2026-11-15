@@ -1,0 +1,320 @@
+{
+  "@context": "https://schema.org",
+  "schema_version": "opencareq-kg-v1.0",
+  "nodes": [
+    {
+      "id": "framework:opencareq_v0_2",
+      "type": "Framework",
+      "label": "OpenCareQ v0.2.0 Clean-Room Healthcare Quantum Stack"
+    },
+    {
+      "id": "icb:NHS-MSE-28PCN",
+      "type": "NHS_ICB_Topology",
+      "label": "NHS Mid and South Essex ICB (28 PCNs, 1,272,246 pop)",
+      "ods_code": "E54000054"
+    },
+    {
+      "id": "icb:NHS-NCL-20PCN",
+      "type": "NHS_ICB_Topology",
+      "label": "NHS North Central London ICB (LTC LCS) (20 PCNs, 1,650,000 pop)",
+      "ods_code": "E54000028"
+    },
+    {
+      "id": "icb:NHS-BSOL-36PCN",
+      "type": "NHS_ICB_Topology",
+      "label": "NHS Birmingham and Solihull ICB (36 PCNs, 1,510,000 pop)",
+      "ods_code": "E54000055"
+    },
+    {
+      "id": "icb:NHS-DEVON-31PCN",
+      "type": "NHS_ICB_Topology",
+      "label": "NHS Devon ICB (31 PCNs, 1,260,000 pop)",
+      "ods_code": "E54000037"
+    },
+    {
+      "id": "icb:NHS-NORFOLK-20PCN",
+      "type": "NHS_ICB_Topology",
+      "label": "NHS Norfolk and Waveney ICB (20 PCNs, 1,090,000 pop)",
+      "ods_code": "E54000022"
+    },
+    {
+      "id": "pmid:25989229",
+      "type": "PBPK_Evidence",
+      "label": "Keemink et al. 2015 Hepatocyte Ritonavir Depot (Kp,uu=1.4)"
+    },
+    {
+      "id": "pmid:38393578",
+      "type": "PBPK_Evidence",
+      "label": "Rohr et al. 2024 Human Ritonavir 14-Day CYP3A Washout"
+    },
+    {
+      "id": "pmid:20118304",
+      "type": "PBPK_Evidence",
+      "label": "Quinney et al. 2010 Clarithromycin MBI PBPK"
+    },
+    {
+      "id": "dsl:qchoice_qcomb",
+      "type": "DSL_Primitive",
+      "label": "Gate-Free QChoice / QSequence / QComb Primitives"
+    },
+    {
+      "id": "wm:rk4_hepatocyte_depot",
+      "type": "World_Model",
+      "label": "9-State RK4 Intracellular Hepatocyte Depot + CYP3A4 MBI"
+    },
+    {
+      "id": "wm:8q_non_markovian_comb",
+      "type": "World_Model",
+      "label": "8-Qubit Organ-Depot Quantum Comb (+46.71 pp vs Markov)"
+    },
+    {
+      "id": "wm:3q_neighbourhood_hqmm",
+      "type": "World_Model",
+      "label": "3-Qubit Non-Commuting Neighbourhood HQMM (||[U_W,U_G]||=2.6925)"
+    },
+    {
+      "id": "swarm:pcn_swarmworld_vm",
+      "type": "SwarmWorld",
+      "label": "16-Register Agent-Free Stigmergic PCNSwarmWorld (FORK_PROTOCOL)"
+    },
+    {
+      "id": "compiler:gate_g4_highs",
+      "type": "Compiler_Target",
+      "label": "Gate G4 SciPy HiGHS MILP Exact Floor (7.85-117.75 ms)"
+    },
+    {
+      "id": "compiler:guppy_hugr_5579b",
+      "type": "Compiler_Target",
+      "label": "Quantinuum Guppy 1.0 -> HUGR Binary (5,579 B, a9759e26)"
+    },
+    {
+      "id": "compiler:nvidia_cudaq",
+      "type": "Compiler_Target",
+      "label": "NVIDIA CUDA-Q (@cudaq.kernel) Trajectory Target"
+    },
+    {
+      "id": "receipt:samskrift_47716b2a",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed Samskrift Benchmark Receipt (47716b2a)"
+    },
+    {
+      "id": "paper:samskrift_10pp",
+      "type": "Publication",
+      "label": "10-Page Samskrift Article (92da37dc)"
+    },
+    {
+      "id": "bench:anti_goodhart_policy",
+      "type": "Policy_Benchmark",
+      "label": "5-ICB Privilege-Separated Anti-Goodhart Policy Benchmark"
+    },
+    {
+      "id": "hazard:H-OCQ-01",
+      "type": "DCB0129_Hazard",
+      "label": "Statutory NHS DCB0129 Open Hazard H-OCQ-01",
+      "status": "OPEN"
+    },
+    {
+      "id": "hazard:H-OCQ-02",
+      "type": "DCB0129_Hazard",
+      "label": "Statutory NHS DCB0129 Open Hazard H-OCQ-02",
+      "status": "OPEN"
+    },
+    {
+      "id": "hazard:H-OCQ-03",
+      "type": "DCB0129_Hazard",
+      "label": "Statutory NHS DCB0129 Open Hazard H-OCQ-03",
+      "status": "OPEN"
+    },
+    {
+      "id": "hazard:H-OCQ-04",
+      "type": "DCB0129_Hazard",
+      "label": "Statutory NHS DCB0129 Open Hazard H-OCQ-04",
+      "status": "OPEN"
+    },
+    {
+      "id": "hazard:H-OCQ-05",
+      "type": "DCB0129_Hazard",
+      "label": "Statutory NHS DCB0129 Open Hazard H-OCQ-05",
+      "status": "OPEN"
+    },
+    {
+      "id": "hazard:H-OCQ-06",
+      "type": "DCB0129_Hazard",
+      "label": "Statutory NHS DCB0129 Open Hazard H-OCQ-06",
+      "status": "OPEN"
+    }
+  ],
+  "triples": [
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "ingests_ogl_topology",
+      "target": "icb:NHS-MSE-28PCN"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "ingests_ogl_topology",
+      "target": "icb:NHS-NCL-20PCN"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "ingests_ogl_topology",
+      "target": "icb:NHS-BSOL-36PCN"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "ingests_ogl_topology",
+      "target": "icb:NHS-DEVON-31PCN"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "ingests_ogl_topology",
+      "target": "icb:NHS-NORFOLK-20PCN"
+    },
+    {
+      "source": "pmid:25989229",
+      "relation": "parameterizes",
+      "target": "wm:rk4_hepatocyte_depot"
+    },
+    {
+      "source": "pmid:38393578",
+      "relation": "validates_washout",
+      "target": "wm:rk4_hepatocyte_depot"
+    },
+    {
+      "source": "pmid:20118304",
+      "relation": "parameterizes",
+      "target": "wm:rk4_hepatocyte_depot"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "exposes_dsl",
+      "target": "dsl:qchoice_qcomb"
+    },
+    {
+      "source": "dsl:qchoice_qcomb",
+      "relation": "lowers_to",
+      "target": "wm:8q_non_markovian_comb"
+    },
+    {
+      "source": "wm:rk4_hepatocyte_depot",
+      "relation": "couples_bath_into",
+      "target": "wm:8q_non_markovian_comb"
+    },
+    {
+      "source": "dsl:qchoice_qcomb",
+      "relation": "models_order_effects",
+      "target": "wm:3q_neighbourhood_hqmm"
+    },
+    {
+      "source": "wm:8q_non_markovian_comb",
+      "relation": "dyna_consequence_oracle",
+      "target": "swarm:pcn_swarmworld_vm"
+    },
+    {
+      "source": "wm:3q_neighbourhood_hqmm",
+      "relation": "co_production_prior",
+      "target": "swarm:pcn_swarmworld_vm"
+    },
+    {
+      "source": "icb:NHS-MSE-28PCN",
+      "relation": "evaluated_in",
+      "target": "swarm:pcn_swarmworld_vm"
+    },
+    {
+      "source": "icb:NHS-NCL-20PCN",
+      "relation": "evaluated_in",
+      "target": "swarm:pcn_swarmworld_vm"
+    },
+    {
+      "source": "icb:NHS-BSOL-36PCN",
+      "relation": "evaluated_in",
+      "target": "swarm:pcn_swarmworld_vm"
+    },
+    {
+      "source": "icb:NHS-DEVON-31PCN",
+      "relation": "evaluated_in",
+      "target": "swarm:pcn_swarmworld_vm"
+    },
+    {
+      "source": "icb:NHS-NORFOLK-20PCN",
+      "relation": "evaluated_in",
+      "target": "swarm:pcn_swarmworld_vm"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "routes_via",
+      "target": "compiler:gate_g4_highs"
+    },
+    {
+      "source": "wm:8q_non_markovian_comb",
+      "relation": "compiles_to",
+      "target": "compiler:guppy_hugr_5579b"
+    },
+    {
+      "source": "wm:8q_non_markovian_comb",
+      "relation": "compiles_to",
+      "target": "compiler:nvidia_cudaq"
+    },
+    {
+      "source": "compiler:gate_g4_highs",
+      "relation": "sealed_in",
+      "target": "receipt:samskrift_47716b2a"
+    },
+    {
+      "source": "compiler:guppy_hugr_5579b",
+      "relation": "sealed_in",
+      "target": "receipt:samskrift_47716b2a"
+    },
+    {
+      "source": "swarm:pcn_swarmworld_vm",
+      "relation": "sealed_in",
+      "target": "receipt:samskrift_47716b2a"
+    },
+    {
+      "source": "receipt:samskrift_47716b2a",
+      "relation": "typeset_in",
+      "target": "paper:samskrift_10pp"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "benchmarks_policies_via",
+      "target": "bench:anti_goodhart_policy"
+    },
+    {
+      "source": "compiler:gate_g4_highs",
+      "relation": "classical_ceiling_for",
+      "target": "bench:anti_goodhart_policy"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "tracks_open_hazard",
+      "target": "hazard:H-OCQ-01"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "tracks_open_hazard",
+      "target": "hazard:H-OCQ-02"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "tracks_open_hazard",
+      "target": "hazard:H-OCQ-03"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "tracks_open_hazard",
+      "target": "hazard:H-OCQ-04"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "tracks_open_hazard",
+      "target": "hazard:H-OCQ-05"
+    },
+    {
+      "source": "framework:opencareq_v0_2",
+      "relation": "tracks_open_hazard",
+      "target": "hazard:H-OCQ-06"
+    }
+  ],
+  "kg_sha256": "f807ab892d2f495c2927720854effd8cc33b0c784b1a93cadcbdf5030c964b1b"
+}
