@@ -1,0 +1,793 @@
+{
+  "framework": "OpenCareQ v0.1.0",
+  "vignette_gate_audit": {
+    "emergency_hypoxia": {
+      "routing_mode": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+      "safety_action": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+      "logical_qubits": 0,
+      "runtime_ms": 0.0
+    },
+    "herbal_uncharacterized": {
+      "routing_mode": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+      "safety_action": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+      "logical_qubits": 0,
+      "runtime_ms": 0.001
+    },
+    "polypharmacy_depot_smr": {
+      "routing_mode": "HOLD_COHERENT_SUPERPOSITION",
+      "conformal_set": [
+        "welfare_and_warm_home_first",
+        "transport_bridged_community_hub"
+      ],
+      "selected_policy": "transport->day10_depot_hold_smr->rehab",
+      "rejected_policies": [
+        "rehab->day7_naive_post_washout_restart"
+      ],
+      "candidate_evaluations": [
+        {
+          "candidate": "welfare->day10_depot_hold_smr->rehab",
+          "stage_order": [
+            "W",
+            "P",
+            "G"
+          ],
+          "restart_day": 10,
+          "peak_post_restart_aucr": 1.553,
+          "day7_aucr": 4.437,
+          "day10_aucr": 1.553,
+          "safe_under_dcb0129": true,
+          "comb_peak_adverse_prob": 0.045,
+          "markov_reset_peak_adverse_prob": 0.0,
+          "p_sustained_12w_adherence": 0.9186,
+          "composite_utility": 0.8894
+        },
+        {
+          "candidate": "transport->day10_depot_hold_smr->rehab",
+          "stage_order": [
+            "W",
+            "M",
+            "P",
+            "G"
+          ],
+          "restart_day": 10,
+          "peak_post_restart_aucr": 1.553,
+          "day7_aucr": 4.437,
+          "day10_aucr": 1.553,
+          "safe_under_dcb0129": true,
+          "comb_peak_adverse_prob": 0.045,
+          "markov_reset_peak_adverse_prob": 0.0,
+          "p_sustained_12w_adherence": 0.9598,
+          "composite_utility": 0.9306
+        },
+        {
+          "candidate": "smr->welfare->day10_depot_hold->rehab",
+          "stage_order": [
+            "P",
+            "W",
+            "G"
+          ],
+          "restart_day": 10,
+          "peak_post_restart_aucr": 1.553,
+          "day7_aucr": 4.437,
+          "day10_aucr": 1.553,
+          "safe_under_dcb0129": true,
+          "comb_peak_adverse_prob": 0.045,
+          "markov_reset_peak_adverse_prob": 0.0,
+          "p_sustained_12w_adherence": 0.8751,
+          "composite_utility": 0.8459
+        },
+        {
+          "candidate": "rehab->day7_naive_post_washout_restart",
+          "stage_order": [
+            "G",
+            "P",
+            "W"
+          ],
+          "restart_day": 7,
+          "peak_post_restart_aucr": 4.437,
+          "day7_aucr": 4.437,
+          "day10_aucr": 1.553,
+          "safe_under_dcb0129": false,
+          "comb_peak_adverse_prob": 0.4671,
+          "markov_reset_peak_adverse_prob": 0.0,
+          "p_sustained_12w_adherence": 0.3325,
+          "composite_utility": 0.0289
+        }
+      ],
+      "non_markovian_summary": {
+        "system_qubits": 4,
+        "bath_memory_qubits": 3,
+        "peak_markovian_underestimation_pp": 46.71,
+        "visit_underestimation_pp": [
+          0.0,
+          20.17,
+          43.35,
+          46.71
+        ],
+        "peak_system_bath_mutual_info_bits": 2.1408,
+        "final_organ_tvd": 0.4671,
+        "non_markovianity_witness": 0.4671,
+        "dense_liouvillian_mib": 1.0,
+        "clinical_interpretation": "Memoryless single-visit resets erase persistent intracellular drug-depot and covalent enzyme inactivation memory, underestimating adverse risk by up to +46.71 pp."
+      },
+      "gate_g4_justification": {
+        "dispatched_solver": "CLASSICAL_EXACT_CPTP_AND_RK4_FLOOR",
+        "classical_runtime_ms": 224.936,
+        "pilot_comb_qubits": 8,
+        "dense_liouvillian_mib": 1.0,
+        "crossover_19q_tib": 4.0,
+        "logical_qubits_at_pilot": 0,
+        "reason": "8-qubit pilot Comb (1.0 MiB) solved exactly on CPU in 224.94 ms (`0L` required today); portable Guppy 1.0 -> HUGR & CUDA-Q kernels emitted for the 19-qubit (4.0 TiB) multi-organ bath crossover (`42L`)."
+      }
+    }
+  },
+  "pbpk_14day_washout": {
+    "days": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "ritonavir_full_depot_aucr": [
+      11.716,
+      12.022,
+      12.005,
+      11.983,
+      11.342,
+      7.629,
+      4.437,
+      2.73,
+      1.938,
+      1.553,
+      1.349,
+      1.231,
+      1.159,
+      1.111
+    ],
+    "ritonavir_no_depot_mbi_only_aucr": [
+      11.91,
+      11.971,
+      11.916,
+      11.888,
+      10.576,
+      4.58,
+      2.234,
+      1.601,
+      1.345,
+      1.217,
+      1.144,
+      1.1,
+      1.07,
+      1.05
+    ],
+    "ritonavir_markov_plasma_only_aucr": [
+      1.379,
+      1.379,
+      1.379,
+      1.379,
+      1.378,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "clarithromycin_full_depot_aucr": [
+      12.867,
+      12.877,
+      12.871,
+      12.866,
+      12.649,
+      10.905,
+      7.613,
+      4.516,
+      2.795,
+      1.979,
+      1.577,
+      1.364,
+      1.241,
+      1.165
+    ],
+    "ritonavir_plasma_ng_ml": [
+      111.502,
+      322.968,
+      326.285,
+      324.834,
+      323.752,
+      25.091,
+      0.069,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "ritonavir_active_cyp3a4": [
+      0.0805,
+      0.0305,
+      0.0304,
+      0.0311,
+      0.0317,
+      0.0696,
+      0.1754,
+      0.3192,
+      0.4715,
+      0.6043,
+      0.7082,
+      0.7858,
+      0.8427,
+      0.8844
+    ],
+    "comb_naive_adverse_probs": [
+      0.0,
+      0.20165691650335138,
+      0.43351262661999096,
+      0.46707273884747735
+    ],
+    "comb_markov_reset_probs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "comb_day10_hold_probs": [
+      0.0,
+      0.006604358058105124,
+      0.019058065802202543,
+      0.044987856386288605
+    ],
+    "comb_mutual_info_bits": [
+      0.0,
+      1.1361098696350085,
+      2.0771138631196178,
+      2.1407691239921918
+    ]
+  },
+  "neighbourhood_hqmm": {
+    "orders": [
+      {
+        "stages": [
+          "W",
+          "M",
+          "P",
+          "G"
+        ],
+        "p_sustained_12w_adherence": 0.9453,
+        "p_full_stabilization_111": 0.9412,
+        "commutator_W_G": 2.6925,
+        "commutator_P_G": 0.6225,
+        "label": "W -> M -> P -> G"
+      },
+      {
+        "stages": [
+          "W",
+          "P",
+          "G"
+        ],
+        "p_sustained_12w_adherence": 0.9136,
+        "p_full_stabilization_111": 0.9109,
+        "commutator_W_G": 2.6925,
+        "commutator_P_G": 0.6225,
+        "label": "W -> P -> G"
+      },
+      {
+        "stages": [
+          "P",
+          "W",
+          "G"
+        ],
+        "p_sustained_12w_adherence": 0.8703,
+        "p_full_stabilization_111": 0.8432,
+        "commutator_W_G": 2.6925,
+        "commutator_P_G": 0.6225,
+        "label": "P -> W -> G"
+      },
+      {
+        "stages": [
+          "G",
+          "P",
+          "W"
+        ],
+        "p_sustained_12w_adherence": 0.3573,
+        "p_full_stabilization_111": 0.0824,
+        "commutator_W_G": 2.6925,
+        "commutator_P_G": 0.6225,
+        "label": "G -> P -> W"
+      }
+    ],
+    "rosenbaum_gamma_star_n120": 4.0
+  },
+  "nhs_5icb_swarmworld": {
+    "total_icbs": 5,
+    "total_pcns": 135,
+    "total_practices": 716,
+    "total_registered_pop": 6782246,
+    "icb_results": [
+      {
+        "icb_key": "NHS-MSE-28PCN",
+        "ods_code": "E54000054",
+        "title": "NHS Mid and South Essex ICB",
+        "n_pcns": 28,
+        "n_practices": 143,
+        "total_pop": 1272246,
+        "fork_shock_resilience": 0.8205,
+        "zero_shot_from_mse_resilience": 0.8205,
+        "fork_turnover_retention": 1.0,
+        "solo_turnover_retention": 0.7505,
+        "validated_inventions": 65,
+        "unique_lineages": 13,
+        "portfolio_coverage": 0.7049,
+        "shielded_lockout_trips": 0,
+        "memoryless_unshielded_lockout_trips": 0,
+        "shock_breakdown": [
+          {
+            "shock_id": "S1_WINTER_COPD_CLARITHROMYCIN",
+            "resilience": 0.8308
+          },
+          {
+            "shock_id": "S2_PAXLOVID_DEPOT_WAVE",
+            "resilience": 0.7722
+          },
+          {
+            "shock_id": "S3_HEATWAVE_CARDIORENAL_AKI",
+            "resilience": 0.7933
+          },
+          {
+            "shock_id": "S4_CORE20_FUEL_DEBT_SURGE",
+            "resilience": 0.8847
+          },
+          {
+            "shock_id": "S5_48H_HOME_FIRST_DISCHARGE",
+            "resilience": 0.8201
+          },
+          {
+            "shock_id": "S6_ARRS_PHARMACIST_SICKNESS",
+            "resilience": 0.8051
+          },
+          {
+            "shock_id": "S7_RURAL_MINIBUS_OUTAGE",
+            "resilience": 0.7973
+          },
+          {
+            "shock_id": "S8_MULTI_BOROUGH_SYNDEMIC",
+            "resilience": 0.8606
+          }
+        ]
+      },
+      {
+        "icb_key": "NHS-NCL-20PCN",
+        "ods_code": "E54000028",
+        "title": "NHS North Central London ICB (LTC LCS)",
+        "n_pcns": 20,
+        "n_practices": 182,
+        "total_pop": 1650000,
+        "fork_shock_resilience": 0.7663,
+        "zero_shot_from_mse_resilience": 0.882,
+        "fork_turnover_retention": 1.0,
+        "solo_turnover_retention": 0.902,
+        "validated_inventions": 60,
+        "unique_lineages": 10,
+        "portfolio_coverage": 0.647,
+        "shielded_lockout_trips": 0,
+        "memoryless_unshielded_lockout_trips": 0,
+        "shock_breakdown": [
+          {
+            "shock_id": "S1_WINTER_COPD_CLARITHROMYCIN",
+            "resilience": 0.7745
+          },
+          {
+            "shock_id": "S2_PAXLOVID_DEPOT_WAVE",
+            "resilience": 0.7281
+          },
+          {
+            "shock_id": "S3_HEATWAVE_CARDIORENAL_AKI",
+            "resilience": 0.7446
+          },
+          {
+            "shock_id": "S4_CORE20_FUEL_DEBT_SURGE",
+            "resilience": 0.817
+          },
+          {
+            "shock_id": "S5_48H_HOME_FIRST_DISCHARGE",
+            "resilience": 0.766
+          },
+          {
+            "shock_id": "S6_ARRS_PHARMACIST_SICKNESS",
+            "resilience": 0.754
+          },
+          {
+            "shock_id": "S7_RURAL_MINIBUS_OUTAGE",
+            "resilience": 0.7478
+          },
+          {
+            "shock_id": "S8_MULTI_BOROUGH_SYNDEMIC",
+            "resilience": 0.7985
+          }
+        ]
+      },
+      {
+        "icb_key": "NHS-BSOL-36PCN",
+        "ods_code": "E54000055",
+        "title": "NHS Birmingham and Solihull ICB",
+        "n_pcns": 36,
+        "n_practices": 174,
+        "total_pop": 1510000,
+        "fork_shock_resilience": 0.8559,
+        "zero_shot_from_mse_resilience": 0.9022,
+        "fork_turnover_retention": 1.0,
+        "solo_turnover_retention": 0.7861,
+        "validated_inventions": 67,
+        "unique_lineages": 19,
+        "portfolio_coverage": 0.7466,
+        "shielded_lockout_trips": 0,
+        "memoryless_unshielded_lockout_trips": 0,
+        "shock_breakdown": [
+          {
+            "shock_id": "S1_WINTER_COPD_CLARITHROMYCIN",
+            "resilience": 0.865
+          },
+          {
+            "shock_id": "S2_PAXLOVID_DEPOT_WAVE",
+            "resilience": 0.822
+          },
+          {
+            "shock_id": "S3_HEATWAVE_CARDIORENAL_AKI",
+            "resilience": 0.8372
+          },
+          {
+            "shock_id": "S4_CORE20_FUEL_DEBT_SURGE",
+            "resilience": 0.8957
+          },
+          {
+            "shock_id": "S5_48H_HOME_FIRST_DISCHARGE",
+            "resilience": 0.8571
+          },
+          {
+            "shock_id": "S6_ARRS_PHARMACIST_SICKNESS",
+            "resilience": 0.846
+          },
+          {
+            "shock_id": "S7_RURAL_MINIBUS_OUTAGE",
+            "resilience": 0.8402
+          },
+          {
+            "shock_id": "S8_MULTI_BOROUGH_SYNDEMIC",
+            "resilience": 0.8841
+          }
+        ]
+      },
+      {
+        "icb_key": "NHS-DEVON-31PCN",
+        "ods_code": "E54000037",
+        "title": "NHS Devon ICB",
+        "n_pcns": 31,
+        "n_practices": 115,
+        "total_pop": 1260000,
+        "fork_shock_resilience": 0.8799,
+        "zero_shot_from_mse_resilience": 0.8401,
+        "fork_turnover_retention": 1.0,
+        "solo_turnover_retention": 0.6445,
+        "validated_inventions": 55,
+        "unique_lineages": 15,
+        "portfolio_coverage": 0.7758,
+        "shielded_lockout_trips": 0,
+        "memoryless_unshielded_lockout_trips": 0,
+        "shock_breakdown": [
+          {
+            "shock_id": "S1_WINTER_COPD_CLARITHROMYCIN",
+            "resilience": 0.89
+          },
+          {
+            "shock_id": "S2_PAXLOVID_DEPOT_WAVE",
+            "resilience": 0.8324
+          },
+          {
+            "shock_id": "S3_HEATWAVE_CARDIORENAL_AKI",
+            "resilience": 0.853
+          },
+          {
+            "shock_id": "S4_CORE20_FUEL_DEBT_SURGE",
+            "resilience": 0.9432
+          },
+          {
+            "shock_id": "S5_48H_HOME_FIRST_DISCHARGE",
+            "resilience": 0.8794
+          },
+          {
+            "shock_id": "S6_ARRS_PHARMACIST_SICKNESS",
+            "resilience": 0.8646
+          },
+          {
+            "shock_id": "S7_RURAL_MINIBUS_OUTAGE",
+            "resilience": 0.8569
+          },
+          {
+            "shock_id": "S8_MULTI_BOROUGH_SYNDEMIC",
+            "resilience": 0.9196
+          }
+        ]
+      },
+      {
+        "icb_key": "NHS-NORFOLK-20PCN",
+        "ods_code": "E54000022",
+        "title": "NHS Norfolk and Waveney ICB",
+        "n_pcns": 20,
+        "n_practices": 102,
+        "total_pop": 1090000,
+        "fork_shock_resilience": 0.9156,
+        "zero_shot_from_mse_resilience": 0.8893,
+        "fork_turnover_retention": 1.0,
+        "solo_turnover_retention": 0.6453,
+        "validated_inventions": 37,
+        "unique_lineages": 8,
+        "portfolio_coverage": 0.8196,
+        "shielded_lockout_trips": 0,
+        "memoryless_unshielded_lockout_trips": 0,
+        "shock_breakdown": [
+          {
+            "shock_id": "S1_WINTER_COPD_CLARITHROMYCIN",
+            "resilience": 0.9248
+          },
+          {
+            "shock_id": "S2_PAXLOVID_DEPOT_WAVE",
+            "resilience": 0.8714
+          },
+          {
+            "shock_id": "S3_HEATWAVE_CARDIORENAL_AKI",
+            "resilience": 0.8903
+          },
+          {
+            "shock_id": "S4_CORE20_FUEL_DEBT_SURGE",
+            "resilience": 0.9752
+          },
+          {
+            "shock_id": "S5_48H_HOME_FIRST_DISCHARGE",
+            "resilience": 0.9149
+          },
+          {
+            "shock_id": "S6_ARRS_PHARMACIST_SICKNESS",
+            "resilience": 0.9011
+          },
+          {
+            "shock_id": "S7_RURAL_MINIBUS_OUTAGE",
+            "resilience": 0.894
+          },
+          {
+            "shock_id": "S8_MULTI_BOROUGH_SYNDEMIC",
+            "resilience": 0.9528
+          }
+        ]
+      }
+    ]
+  },
+  "gate_g4_scaling": {
+    "hubo_sweep": [
+      {
+        "n_vars": 6,
+        "sparse_ms": 9.951,
+        "sparse_lp_frac": 0.0,
+        "sparse_alpha3": 0.1667,
+        "sparse_regime": "CLASSICAL_HIGHS_MILP_EXACT",
+        "frustrated_ms": 11.18,
+        "frustrated_lp_frac": 0.3333,
+        "frustrated_alpha3": 1.3333,
+        "frustrated_regime": "QUANTUM_LP_WS_TRIAD_QAOA"
+      },
+      {
+        "n_vars": 8,
+        "sparse_ms": 8.952,
+        "sparse_lp_frac": 0.0,
+        "sparse_alpha3": 0.125,
+        "sparse_regime": "CLASSICAL_HIGHS_MILP_EXACT",
+        "frustrated_ms": 34.931,
+        "frustrated_lp_frac": 0.3333,
+        "frustrated_alpha3": 2.0,
+        "frustrated_regime": "QUANTUM_LP_WS_TRIAD_QAOA"
+      },
+      {
+        "n_vars": 10,
+        "sparse_ms": 8.248,
+        "sparse_lp_frac": 0.0,
+        "sparse_alpha3": 0.1,
+        "sparse_regime": "CLASSICAL_HIGHS_MILP_EXACT",
+        "frustrated_ms": 30.553,
+        "frustrated_lp_frac": 0.3333,
+        "frustrated_alpha3": 2.4,
+        "frustrated_regime": "QUANTUM_LP_WS_TRIAD_QAOA"
+      },
+      {
+        "n_vars": 12,
+        "sparse_ms": 8.634,
+        "sparse_lp_frac": 0.0,
+        "sparse_alpha3": 0.0833,
+        "sparse_regime": "CLASSICAL_HIGHS_MILP_EXACT",
+        "frustrated_ms": 60.364,
+        "frustrated_lp_frac": 0.3333,
+        "frustrated_alpha3": 2.6667,
+        "frustrated_regime": "QUANTUM_LP_WS_TRIAD_QAOA"
+      },
+      {
+        "n_vars": 14,
+        "sparse_ms": 7.847,
+        "sparse_lp_frac": 0.0,
+        "sparse_alpha3": 0.0714,
+        "sparse_regime": "CLASSICAL_HIGHS_MILP_EXACT",
+        "frustrated_ms": 78.878,
+        "frustrated_lp_frac": 0.3333,
+        "frustrated_alpha3": 2.8571,
+        "frustrated_regime": "QUANTUM_LP_WS_TRIAD_QAOA"
+      },
+      {
+        "n_vars": 16,
+        "sparse_ms": 8.08,
+        "sparse_lp_frac": 0.0,
+        "sparse_alpha3": 0.0625,
+        "sparse_regime": "CLASSICAL_HIGHS_MILP_EXACT",
+        "frustrated_ms": 117.751,
+        "frustrated_lp_frac": 0.3333,
+        "frustrated_alpha3": 3.0,
+        "frustrated_regime": "QUANTUM_LP_WS_TRIAD_QAOA"
+      }
+    ],
+    "liouvillian_ladder": [
+      {
+        "total_comb_qubits": 6,
+        "organ_qubits": 4,
+        "bath_qubits": 1,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 0.062,
+        "dense_liouvillian_tib": 0.0,
+        "exceeds_1tib_classical_wall": false
+      },
+      {
+        "total_comb_qubits": 7,
+        "organ_qubits": 4,
+        "bath_qubits": 2,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 0.25,
+        "dense_liouvillian_tib": 0.0,
+        "exceeds_1tib_classical_wall": false
+      },
+      {
+        "total_comb_qubits": 8,
+        "organ_qubits": 4,
+        "bath_qubits": 3,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 1.0,
+        "dense_liouvillian_tib": 1e-06,
+        "exceeds_1tib_classical_wall": false
+      },
+      {
+        "total_comb_qubits": 9,
+        "organ_qubits": 4,
+        "bath_qubits": 4,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 4.0,
+        "dense_liouvillian_tib": 4e-06,
+        "exceeds_1tib_classical_wall": false
+      },
+      {
+        "total_comb_qubits": 10,
+        "organ_qubits": 4,
+        "bath_qubits": 5,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 16.0,
+        "dense_liouvillian_tib": 1.5e-05,
+        "exceeds_1tib_classical_wall": false
+      },
+      {
+        "total_comb_qubits": 11,
+        "organ_qubits": 4,
+        "bath_qubits": 6,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 64.0,
+        "dense_liouvillian_tib": 6.1e-05,
+        "exceeds_1tib_classical_wall": false
+      },
+      {
+        "total_comb_qubits": 12,
+        "organ_qubits": 4,
+        "bath_qubits": 7,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 256.0,
+        "dense_liouvillian_tib": 0.000244,
+        "exceeds_1tib_classical_wall": false
+      },
+      {
+        "total_comb_qubits": 13,
+        "organ_qubits": 4,
+        "bath_qubits": 8,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 1024.0,
+        "dense_liouvillian_tib": 0.000977,
+        "exceeds_1tib_classical_wall": false
+      },
+      {
+        "total_comb_qubits": 14,
+        "organ_qubits": 4,
+        "bath_qubits": 9,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 4096.0,
+        "dense_liouvillian_tib": 0.003906,
+        "exceeds_1tib_classical_wall": false
+      },
+      {
+        "total_comb_qubits": 15,
+        "organ_qubits": 4,
+        "bath_qubits": 10,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 16384.0,
+        "dense_liouvillian_tib": 0.015625,
+        "exceeds_1tib_classical_wall": false
+      },
+      {
+        "total_comb_qubits": 16,
+        "organ_qubits": 4,
+        "bath_qubits": 11,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 65536.0,
+        "dense_liouvillian_tib": 0.0625,
+        "exceeds_1tib_classical_wall": false
+      },
+      {
+        "total_comb_qubits": 17,
+        "organ_qubits": 4,
+        "bath_qubits": 12,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 262144.0,
+        "dense_liouvillian_tib": 0.25,
+        "exceeds_1tib_classical_wall": false
+      },
+      {
+        "total_comb_qubits": 18,
+        "organ_qubits": 4,
+        "bath_qubits": 13,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 1048576.0,
+        "dense_liouvillian_tib": 1.0,
+        "exceeds_1tib_classical_wall": true
+      },
+      {
+        "total_comb_qubits": 19,
+        "organ_qubits": 4,
+        "bath_qubits": 14,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 4194304.0,
+        "dense_liouvillian_tib": 4.0,
+        "exceeds_1tib_classical_wall": true
+      },
+      {
+        "total_comb_qubits": 20,
+        "organ_qubits": 4,
+        "bath_qubits": 15,
+        "asps_ancilla_qubits": 1,
+        "dense_liouvillian_mib": 16777216.0,
+        "dense_liouvillian_tib": 16.0,
+        "exceeds_1tib_classical_wall": true
+      }
+    ]
+  },
+  "compiler_targets": {
+    "guppy_lines": 62,
+    "hugr_binary_bytes": 5579,
+    "hugr_sha256": "a9759e26ff69d59a4a602fc393dcf23e1358b3a035363133638f6f96a1f49625",
+    "cudaq_lines": 33
+  },
+  "receipt_sha256": "47716b2a1b4c446fd53b8f15e0f13eb18e154e232a5730564b7f7bf1d1e72540"
+}
