@@ -22,19 +22,19 @@
     {
       "id": "icb:NHS-BSOL-36PCN",
       "type": "NHS_ICB_Topology",
-      "label": "NHS Birmingham and Solihull ICB (36 PCNs, 1,510,000 pop)",
+      "label": "NHS Birmingham and Solihull ICB (35 PCNs, 1,608,369 pop)",
       "ods_code": "E54000055"
     },
     {
       "id": "icb:NHS-DEVON-31PCN",
       "type": "NHS_ICB_Topology",
-      "label": "NHS Devon ICB (31 PCNs, 1,260,000 pop)",
+      "label": "NHS Devon ICB (31 PCNs, 1,313,779 pop)",
       "ods_code": "E54000037"
     },
     {
       "id": "icb:NHS-NORFOLK-20PCN",
       "type": "NHS_ICB_Topology",
-      "label": "NHS Norfolk and Waveney ICB (20 PCNs, 1,090,000 pop)",
+      "label": "NHS Norfolk and Waveney ICB (20 PCNs, 1,100,134 pop)",
       "ods_code": "E54000022"
     },
     {
@@ -46,6 +46,21 @@
       "id": "ogl:ncl_pcn_twin_2026",
       "type": "OGL_Empirical_Snapshot",
       "label": "Empirical NHS North Central London ICB (E54000028: 32 PCNs, 171 practices, 1,810,301 pop)"
+    },
+    {
+      "id": "ogl:bsol_pcn_twin_2026",
+      "type": "OGL_Empirical_Snapshot",
+      "label": "Empirical NHS Birmingham & Solihull ICB (E54000055: 35 PCNs, 171 practices, 1,608,369 pop)"
+    },
+    {
+      "id": "ogl:devon_pcn_twin_2026",
+      "type": "OGL_Empirical_Snapshot",
+      "label": "Empirical NHS Devon ICB (E54000037: 31 PCNs, 118 practices, 1,313,779 pop)"
+    },
+    {
+      "id": "ogl:norfolk_pcn_twin_2026",
+      "type": "OGL_Empirical_Snapshot",
+      "label": "Empirical NHS Norfolk & Waveney ICB (E54000022: 20 PCNs, 104 practices, 1,100,134 pop)"
     },
     {
       "id": "pmid:25989229",
@@ -155,7 +170,7 @@
     {
       "id": "bench:anti_goodhart_policy",
       "type": "Policy_Benchmark",
-      "label": "5-ICB (144-PCN) Privilege-Separated Anti-Goodhart Policy Benchmark"
+      "label": "5-ICB (143-PCN) Empirical Privilege-Separated Anti-Goodhart Policy Benchmark"
     },
     {
       "id": "hazard:H-OCQ-01",
@@ -229,6 +244,21 @@
       "source": "ogl:ncl_pcn_twin_2026",
       "relation": "grounds_empirical_pcns",
       "target": "icb:NHS-NCL-20PCN"
+    },
+    {
+      "source": "ogl:bsol_pcn_twin_2026",
+      "relation": "grounds_empirical_pcns",
+      "target": "icb:NHS-BSOL-36PCN"
+    },
+    {
+      "source": "ogl:devon_pcn_twin_2026",
+      "relation": "grounds_empirical_pcns",
+      "target": "icb:NHS-DEVON-31PCN"
+    },
+    {
+      "source": "ogl:norfolk_pcn_twin_2026",
+      "relation": "grounds_empirical_pcns",
+      "target": "icb:NHS-NORFOLK-20PCN"
     },
     {
       "source": "pmid:25989229",
@@ -396,6 +426,21 @@
       "target": "receipt:v0_3_falsification"
     },
     {
+      "source": "ogl:bsol_pcn_twin_2026",
+      "relation": "sealed_in",
+      "target": "receipt:v0_3_falsification"
+    },
+    {
+      "source": "ogl:devon_pcn_twin_2026",
+      "relation": "sealed_in",
+      "target": "receipt:v0_3_falsification"
+    },
+    {
+      "source": "ogl:norfolk_pcn_twin_2026",
+      "relation": "sealed_in",
+      "target": "receipt:v0_3_falsification"
+    },
+    {
       "source": "receipt:samskrift_benchmark",
       "relation": "typeset_in",
       "target": "paper:samskrift_v0_3"
@@ -446,5 +491,5 @@
       "target": "hazard:H-OCQ-06"
     }
   ],
-  "kg_sha256": "21b932fdc9093607a5464967735d8650f5885ad18a5205ac1d916d8bcc2d7bb5"
+  "kg_sha256": "be5ba4115e7c3fea9150572f70fc6e93c75f36903c00eaded67ef9136920c494"
 }
