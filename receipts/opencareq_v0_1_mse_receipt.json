@@ -1,0 +1,314 @@
+{
+  "pathway": {
+    "cohort_id": "synth-ncl-ltc-polypharmacy-001",
+    "routing_mode": "HOLD_COHERENT_SUPERPOSITION",
+    "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+    "allowed_to_rollout": true,
+    "conformal_prediction_set": [
+      "welfare_and_warm_home_first",
+      "transport_bridged_community_hub"
+    ],
+    "pathway_probabilities": {
+      "pharmacist_smr_deprescribing": 0.2525708100306693,
+      "supervised_green_rehab": 0.10589933249143063,
+      "transport_bridged_community_hub": 0.2900956160923688,
+      "welfare_and_warm_home_first": 0.3514342413855313
+    },
+    "provider": "offline-deterministic-ukcore-v0.1",
+    "air_gapped_safe": true
+  },
+  "world_model_rollout": {
+    "cohort_id": "synth-ncl-ltc-polypharmacy-001",
+    "allowed_to_rollout": true,
+    "safety_action": "SELECTED_SAFE_COUNTERFACTUAL",
+    "selected_policy": "welfare->day10_depot_hold_smr->rehab",
+    "rejected_policies": [
+      "rehab->day7_naive_post_washout_restart"
+    ],
+    "candidate_evaluations": [
+      {
+        "candidate": "welfare->day10_depot_hold_smr->rehab",
+        "stage_order": [
+          "W",
+          "P",
+          "G"
+        ],
+        "restart_day": 10,
+        "peak_post_restart_aucr": 1.553,
+        "day7_aucr": 4.437,
+        "day10_aucr": 1.553,
+        "safe_under_dcb0129": true,
+        "comb_peak_adverse_prob": 0.045,
+        "markov_reset_peak_adverse_prob": 0.0,
+        "p_sustained_12w_adherence": 0.9186,
+        "composite_utility": 0.8894
+      },
+      {
+        "candidate": "rehab->day7_naive_post_washout_restart",
+        "stage_order": [
+          "G",
+          "P",
+          "W"
+        ],
+        "restart_day": 7,
+        "peak_post_restart_aucr": 4.437,
+        "day7_aucr": 4.437,
+        "day10_aucr": 1.553,
+        "safe_under_dcb0129": false,
+        "comb_peak_adverse_prob": 0.4671,
+        "markov_reset_peak_adverse_prob": 0.0,
+        "p_sustained_12w_adherence": 0.3325,
+        "composite_utility": 0.0289
+      }
+    ],
+    "non_markovian_summary": {
+      "system_qubits": 4,
+      "bath_memory_qubits": 3,
+      "peak_markovian_underestimation_pp": 46.71,
+      "visit_underestimation_pp": [
+        0.0,
+        20.17,
+        43.35,
+        46.71
+      ],
+      "peak_system_bath_mutual_info_bits": 2.1408,
+      "final_organ_tvd": 0.4671,
+      "non_markovianity_witness": 0.4671,
+      "dense_liouvillian_mib": 1.0,
+      "clinical_interpretation": "Memoryless single-visit resets erase persistent intracellular drug-depot and covalent enzyme inactivation memory, underestimating adverse risk by up to +46.71 pp."
+    },
+    "gate_g4_justification": {
+      "dispatched_solver": "CLASSICAL_EXACT_CPTP_AND_RK4_FLOOR",
+      "classical_runtime_ms": 220.956,
+      "pilot_comb_qubits": 8,
+      "dense_liouvillian_mib": 1.0,
+      "crossover_19q_tib": 4.0,
+      "logical_qubits_at_pilot": 0,
+      "reason": "8-qubit pilot Comb (1.0 MiB) solved exactly on CPU in 220.96 ms (`0L` required today); portable Guppy 1.0 -> HUGR & CUDA-Q kernels emitted for the 19-qubit (4.0 TiB) multi-organ bath crossover (`42L`)."
+    }
+  },
+  "swarmworld_repertoire": {
+    "icb_key": "NHS-MSE-28PCN",
+    "icb_title": "NHS Mid and South Essex ICB",
+    "n_pcns": 28,
+    "macroturns": 240,
+    "fork_stewardship_enabled": true,
+    "runtime_agent_actions": 0,
+    "validated_inventions_count": 62,
+    "unique_lineage_hashes": 19,
+    "portfolio_coverage_score": 0.6734,
+    "agent_free_shock_resilience": 0.7825,
+    "turnover_retention_ratio": 0.9711,
+    "safety_lockout_trips": 0,
+    "shock_breakdown": [
+      {
+        "shock_id": "S1_WINTER_COPD_CLARITHROMYCIN",
+        "resilience": 0.7928
+      },
+      {
+        "shock_id": "S2_PAXLOVID_DEPOT_WAVE",
+        "resilience": 0.735
+      },
+      {
+        "shock_id": "S3_HEATWAVE_CARDIORENAL_AKI",
+        "resilience": 0.7558
+      },
+      {
+        "shock_id": "S4_CORE20_FUEL_DEBT_SURGE",
+        "resilience": 0.8453
+      },
+      {
+        "shock_id": "S5_48H_HOME_FIRST_DISCHARGE",
+        "resilience": 0.7823
+      },
+      {
+        "shock_id": "S6_ARRS_PHARMACIST_SICKNESS",
+        "resilience": 0.7675
+      },
+      {
+        "shock_id": "S7_RURAL_MINIBUS_OUTAGE",
+        "resilience": 0.7598
+      },
+      {
+        "shock_id": "S8_MULTI_BOROUGH_SYNDEMIC",
+        "resilience": 0.8218
+      }
+    ],
+    "sample_controller": {
+      "sha256": "78ce498e4840f40db448d42853e066515006a67c6a82add6a195c9e8531d00de",
+      "parent_sha": "78ce498e4840f40db448d42853e066515006a67c6a82add6a195c9e8531d00de",
+      "regimen_policy": "welfare->day10_depot_hold_smr->rehab",
+      "n_instructions": 18,
+      "steward_count": 10,
+      "validated_gate_pass": true
+    }
+  },
+  "hubo_gate_g4": {
+    "dispatched_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+    "highs_runtime_ms": 16.052,
+    "alpha_3_density": 1.3333,
+    "lp_fractionality": 0.3333,
+    "explanation": "Frustrated 3-body hyperedge density >= 1.0 and McCormick LP fractionality >= 0.20 warrant LP-Warm-Started Triad QAOA benchmarking alongside HiGHS."
+  },
+  "compiled_targets": {
+    "guppy_source_lines": 62,
+    "compiled_hugr_bytes": 5579,
+    "cudaq_source_lines": 33
+  },
+  "audit_receipt": {
+    "resourceType": "AuditEvent",
+    "type": {
+      "system": "http://dicom.nema.org/resources/ontology/DCM",
+      "code": "110100",
+      "display": "Application Activity"
+    },
+    "recorded": "2026-11-15T15:26:50.365943+00:00",
+    "outcome": "0",
+    "governance": {
+      "framework": "OpenCareQ v0.1.0 (Apache-2.0)",
+      "nhs_safety_standard": "DCB0129 / DCB0160 Non-SaMD Shadow Mode",
+      "phi_present": false,
+      "physical_qpu_shots": 0,
+      "runtime_agent_actions": 0,
+      "open_hazards": [
+        "H-OCQ-01",
+        "H-OCQ-02",
+        "H-OCQ-03",
+        "H-OCQ-04",
+        "H-OCQ-05",
+        "H-OCQ-06"
+      ],
+      "payload_sha256": "93b7caf22df1e33a8b17f253ed43f9b312fb1e6f342271771d7b8d298a271688",
+      "pqc_signature_scheme": "SHA-256-canonical (install `opencareq[pqc]` for ML-DSA-65)",
+      "pqc_signature_length_bytes": 0
+    },
+    "artifacts": [
+      {
+        "cohort_id": "synth-ncl-ltc-polypharmacy-001",
+        "allowed_to_rollout": true,
+        "safety_action": "SELECTED_SAFE_COUNTERFACTUAL",
+        "selected_policy": "welfare->day10_depot_hold_smr->rehab",
+        "rejected_policies": [
+          "rehab->day7_naive_post_washout_restart"
+        ],
+        "candidate_evaluations": [
+          {
+            "candidate": "welfare->day10_depot_hold_smr->rehab",
+            "stage_order": [
+              "W",
+              "P",
+              "G"
+            ],
+            "restart_day": 10,
+            "peak_post_restart_aucr": 1.553,
+            "day7_aucr": 4.437,
+            "day10_aucr": 1.553,
+            "safe_under_dcb0129": true,
+            "comb_peak_adverse_prob": 0.045,
+            "markov_reset_peak_adverse_prob": 0.0,
+            "p_sustained_12w_adherence": 0.9186,
+            "composite_utility": 0.8894
+          },
+          {
+            "candidate": "rehab->day7_naive_post_washout_restart",
+            "stage_order": [
+              "G",
+              "P",
+              "W"
+            ],
+            "restart_day": 7,
+            "peak_post_restart_aucr": 4.437,
+            "day7_aucr": 4.437,
+            "day10_aucr": 1.553,
+            "safe_under_dcb0129": false,
+            "comb_peak_adverse_prob": 0.4671,
+            "markov_reset_peak_adverse_prob": 0.0,
+            "p_sustained_12w_adherence": 0.3325,
+            "composite_utility": 0.0289
+          }
+        ],
+        "non_markovian_summary": {
+          "system_qubits": 4,
+          "bath_memory_qubits": 3,
+          "peak_markovian_underestimation_pp": 46.71,
+          "visit_underestimation_pp": [
+            0.0,
+            20.17,
+            43.35,
+            46.71
+          ],
+          "peak_system_bath_mutual_info_bits": 2.1408,
+          "final_organ_tvd": 0.4671,
+          "non_markovianity_witness": 0.4671,
+          "dense_liouvillian_mib": 1.0,
+          "clinical_interpretation": "Memoryless single-visit resets erase persistent intracellular drug-depot and covalent enzyme inactivation memory, underestimating adverse risk by up to +46.71 pp."
+        },
+        "gate_g4_justification": {
+          "dispatched_solver": "CLASSICAL_EXACT_CPTP_AND_RK4_FLOOR",
+          "classical_runtime_ms": 220.956,
+          "pilot_comb_qubits": 8,
+          "dense_liouvillian_mib": 1.0,
+          "crossover_19q_tib": 4.0,
+          "logical_qubits_at_pilot": 0,
+          "reason": "8-qubit pilot Comb (1.0 MiB) solved exactly on CPU in 220.96 ms (`0L` required today); portable Guppy 1.0 -> HUGR & CUDA-Q kernels emitted for the 19-qubit (4.0 TiB) multi-organ bath crossover (`42L`)."
+        }
+      },
+      {
+        "icb_key": "NHS-MSE-28PCN",
+        "icb_title": "NHS Mid and South Essex ICB",
+        "n_pcns": 28,
+        "macroturns": 240,
+        "fork_stewardship_enabled": true,
+        "runtime_agent_actions": 0,
+        "validated_inventions_count": 62,
+        "unique_lineage_hashes": 19,
+        "portfolio_coverage_score": 0.6734,
+        "agent_free_shock_resilience": 0.7825,
+        "turnover_retention_ratio": 0.9711,
+        "safety_lockout_trips": 0,
+        "shock_breakdown": [
+          {
+            "shock_id": "S1_WINTER_COPD_CLARITHROMYCIN",
+            "resilience": 0.7928
+          },
+          {
+            "shock_id": "S2_PAXLOVID_DEPOT_WAVE",
+            "resilience": 0.735
+          },
+          {
+            "shock_id": "S3_HEATWAVE_CARDIORENAL_AKI",
+            "resilience": 0.7558
+          },
+          {
+            "shock_id": "S4_CORE20_FUEL_DEBT_SURGE",
+            "resilience": 0.8453
+          },
+          {
+            "shock_id": "S5_48H_HOME_FIRST_DISCHARGE",
+            "resilience": 0.7823
+          },
+          {
+            "shock_id": "S6_ARRS_PHARMACIST_SICKNESS",
+            "resilience": 0.7675
+          },
+          {
+            "shock_id": "S7_RURAL_MINIBUS_OUTAGE",
+            "resilience": 0.7598
+          },
+          {
+            "shock_id": "S8_MULTI_BOROUGH_SYNDEMIC",
+            "resilience": 0.8218
+          }
+        ],
+        "sample_controller": {
+          "sha256": "78ce498e4840f40db448d42853e066515006a67c6a82add6a195c9e8531d00de",
+          "parent_sha": "78ce498e4840f40db448d42853e066515006a67c6a82add6a195c9e8531d00de",
+          "regimen_policy": "welfare->day10_depot_hold_smr->rehab",
+          "n_instructions": 18,
+          "steward_count": 10,
+          "validated_gate_pass": true
+        }
+      }
+    ]
+  }
+}

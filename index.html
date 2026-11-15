@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenCareQ — NHS-First Healthcare Quantum DSL, Causal World Model &amp; Stigmergic SwarmWorld</title>
+  <meta name="description" content="OpenCareQ v0.1: NHS-first gate-free Python healthcare quantum abstraction, Causal Non-Markovian World Model (CQWM + QSP-WM), Stigmergic PCN SwarmWorld (agent_actions = 0 runtime), and Gate G4 HiGHS / Quantinuum Guppy-HUGR / NVIDIA CUDA-Q compiler under NHS DCB0129 governance." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="OpenCareQ — NHS-First Healthcare Quantum DSL, World Model &amp; SwarmWorld" />
+  <meta property="og:description" content="Gate-free clinical Python DSL compiling to SciPy HiGHS (<20 ms), Quantinuum Guppy 1.0 -> HUGR (5,579 B), and NVIDIA CUDA-Q under statutory NHS DCB0129 safety governance." />
+  <meta property="og:url" content="https://arunnadarasa.github.io/opencareq-nhs/" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0b1517;
+      --bg-elevated: #101e21;
+      --bg-card: #142529;
+      --bg-card-alt: #0e1b1e;
+      --ink: #eef7f5;
+      --ink-muted: #9eb7b4;
+      --ink-dim: #6f8a87;
+      --signal: #38d6c4;
+      --signal-soft: rgba(56, 214, 196, 0.13);
+      --amber: #f4ae42;
+      --amber-soft: rgba(244, 174, 66, 0.14);
+      --ember: #f06a3b;
+      --ember-soft: rgba(240, 106, 59, 0.14);
+      --nhs-blue: #3898ff;
+      --border: rgba(158, 183, 180, 0.17);
+      --border-strong: rgba(56, 214, 196, 0.44);
+      --radius: 12px;
+      --font-display: "Barlow Condensed", system-ui, sans-serif;
+      --font-sans: "Barlow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --max-w: 1240px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); color: var(--ink); font-family: var(--font-sans); line-height: 1.6; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 4%, rgba(56, 214, 196, 0.12), transparent 34%),
+        radial-gradient(circle at 88% 10%, rgba(244, 174, 66, 0.09), transparent 32%),
+        var(--bg);
+    }
+    a { color: var(--signal); text-decoration: none; transition: color 0.16s ease; }
+    a:hover { color: var(--amber); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.86em;
+      background: rgba(56, 214, 196, 0.1);
+      color: #bfece6;
+      padding: 0.12rem 0.38rem;
+      border-radius: 4px;
+    }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.35rem; }
+
+    /* Sticky Nav */
+    .site-nav {
+      position: sticky; top: 0; z-index: 60;
+      backdrop-filter: blur(16px);
+      background: rgba(11, 21, 23, 0.88);
+      border-bottom: 1px solid var(--border);
+    }
+    .scroll-progress {
+      position: absolute; top: 0; left: 0; height: 2.5px; width: 0%;
+      background: linear-gradient(90deg, var(--signal), var(--amber), var(--ember));
+    }
+    .site-nav-inner {
+      max-width: var(--max-w); margin: 0 auto; min-height: 64px;
+      padding: 0.55rem 1.35rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 0.65rem;
+      color: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .brand-mark {
+      display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 6px;
+      background: linear-gradient(135deg, var(--signal), #1ca394); color: #061315; font-weight: 800; font-size: 0.95rem;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; font-size: 0.86rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.35rem 0.7rem; border-radius: 999px; }
+    .nav-links a:hover { color: var(--ink); background: rgba(255,255,255,0.05); }
+
+    /* Hero */
+    .hero { padding: 3.4rem 0 2.4rem; border-bottom: 1px solid var(--border); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.1rem; }
+    .pill {
+      font-size: 0.76rem; font-weight: 700; letter-spacing: 0.03em; padding: 0.26rem 0.72rem;
+      border-radius: 999px; border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: var(--ink-muted);
+    }
+    .pill-signal { color: var(--signal); background: var(--signal-soft); border-color: rgba(56,214,196,0.35); }
+    .pill-amber { color: var(--amber); background: var(--amber-soft); border-color: rgba(244,174,66,0.35); }
+    .pill-ember { color: var(--ember); background: var(--ember-soft); border-color: rgba(240,106,59,0.35); }
+
+    .kicker { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--signal); margin: 0 0 0.4rem; }
+    h1 { font-family: var(--font-display); font-size: clamp(2.6rem, 5vw, 4.1rem); line-height: 1.02; margin: 0 0 0.9rem; letter-spacing: 0.01em; }
+    .lead { font-size: 1.08rem; color: var(--ink-muted); max-width: 980px; margin: 0 0 1.4rem; }
+    .lead strong { color: var(--ink); }
+
+    .author-bar {
+      display: inline-flex; flex-direction: column; padding: 0.75rem 1.1rem;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 1.6rem;
+    }
+    .author-bar span { font-size: 0.84rem; color: var(--ink-muted); }
+
+    .trilogy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin-top: 0.5rem; }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.25rem; transition: border-color 0.18s ease;
+    }
+    .card:hover { border-color: var(--border-strong); }
+    .card-tag { font-family: var(--font-mono); font-size: 0.74rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.06em; }
+    .card h3 { font-family: var(--font-display); font-size: 1.38rem; margin: 0.3rem 0 0.5rem; letter-spacing: 0.02em; }
+    .card p { font-size: 0.92rem; color: var(--ink-muted); margin: 0 0 0.85rem; }
+
+    section { padding: 2.8rem 0; border-bottom: 1px solid var(--border); }
+    h2 { font-family: var(--font-display); font-size: 2.1rem; margin: 0 0 0.4rem; letter-spacing: 0.02em; }
+    .sec-sub { color: var(--ink-muted); margin: 0 0 1.5rem; max-width: 860px; }
+
+    /* Interactive Controls & Studio */
+    .controls-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;
+      background: var(--bg-card-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem; margin-bottom: 1.2rem;
+    }
+    label { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); margin-bottom: 0.35rem; }
+    select, input[type="range"] { width: 100%; }
+    select {
+      background: var(--bg-card); color: var(--ink); border: 1px solid var(--border);
+      padding: 0.5rem 0.65rem; border-radius: 8px; font-family: var(--font-sans); font-size: 0.92rem;
+    }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+    .kpi-num { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--signal); line-height: 1.1; margin: 0.25rem 0; }
+    .kpi-meta { font-size: 0.8rem; color: var(--ink-muted); }
+
+    .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(430px, 1fr)); gap: 1.25rem; }
+    @media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } }
+
+    .bar-row { display: flex; align-items: center; gap: 0.65rem; margin: 0.48rem 0; font-size: 0.84rem; }
+    .bar-lbl { width: 205px; flex-shrink: 0; color: var(--ink-muted); }
+    .bar-track { flex: 1; height: 11px; background: rgba(255,255,255,0.07); border-radius: 99px; overflow: hidden; }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, var(--signal), #22a898); border-radius: 99px; transition: width 0.25s ease; }
+
+    .tab-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: var(--font-sans); font-size: 0.84rem; font-weight: 700;
+      padding: 0.46rem 0.9rem; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--bg-card); color: var(--ink-muted); cursor: pointer; transition: all 0.15s ease;
+    }
+    .btn:hover { color: var(--ink); border-color: var(--border-strong); }
+    .btn.active, .btn-primary { background: var(--signal-soft); color: var(--signal); border-color: var(--border-strong); }
+
+    pre {
+      background: #071012; border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.05rem 1.2rem; overflow-x: auto; font-family: var(--font-mono); font-size: 0.81rem; line-height: 1.55; color: #d7f3ef; margin: 0;
+    }
+
+    /* Architecture Stack & Tables */
+    .arch-layer {
+      background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--signal);
+      border-radius: 10px; padding: 0.95rem 1.2rem; margin-bottom: 0.75rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .arch-layer strong { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 0.02em; color: var(--ink); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+    th, td { padding: 0.75rem 0.95rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; color: var(--signal); background: var(--bg-card-alt); }
+    tr:last-child td { border-bottom: none; }
+
+    .callout-warn {
+      background: var(--amber-soft); border: 1px solid rgba(244,174,66,0.38); border-left: 4px solid var(--amber);
+      border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.88rem; color: #fce7c2; margin-top: 1.2rem;
+    }
+    footer { padding: 2.2rem 0 3rem; color: var(--ink-dim); font-size: 0.84rem; }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <div id="scrollProgress" class="scroll-progress"></div>
+    <div class="site-nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark">OC</span>
+        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">v0.1</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#studio">DSL → Quantum IR Studio</a>
+        <a href="#simulator">5-ICB SwarmWorld Twin</a>
+        <a href="#architecture">5-Layer Architecture</a>
+        <a href="#gateg4">Gate G4 Honesty</a>
+        <a href="#dcb0129">NHS DCB0129 Log</a>
+        <a href="receipts/opencareq_v0_1_mse_receipt.json" target="_blank" rel="noopener">Sealed Receipt ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="pill-row">
+          <span class="pill pill-signal">NHS-First Gate-Free Python DSL ("Healthcare Rhyme" Clean-Room Layer)</span>
+          <span class="pill pill-signal">Quantinuum Guppy 1.0 → HUGR (5,579 B) + NVIDIA CUDA-Q (@cudaq.kernel)</span>
+          <span class="pill pill-amber">Causal Hepatocyte-Depot World Model (Kp,uu = 1.4 · +46.7 pp Non-Markovian Gap)</span>
+          <span class="pill">Stigmergic 5-ICB SwarmWorld (agent_actions = 0 Runtime · 97.1% Turnover Retention)</span>
+          <span class="pill pill-ember">Apache-2.0 · Statutory NHS DCB0129 / DCB0160 Non-SaMD</span>
+        </div>
+
+        <p class="kicker">Open-Source Clinical Quantum Abstraction · Counterfactual World Models · Stigmergic NHS Commissioning</p>
+        <h1>OpenCareQ</h1>
+        <p class="lead">
+          Mainstream NHS data scientists, ICB population-health analysts, and OpenSAFELY researchers write Python, SQL, and <code>UKCore FHIR R4</code>—not Pauli matrices or raw gate circuits. <strong>OpenCareQ (<code>v0.1.0</code>)</strong> unifies our empirical findings across <strong><a href="https://arunnadarasa.github.io/quantum-social-prescribing/" target="_blank" rel="noopener">Quantum Social Prescribing</a></strong>, <strong><a href="https://arunnadarasa.github.io/quantum-ltc/" target="_blank" rel="noopener">Quantum-LTC</a></strong>, and <strong><a href="https://arunnadarasa.github.io/quantumkrump/" target="_blank" rel="noopener">Quantum Krump</a></strong> into a clean-room <code>Apache-2.0</code> Python SDK: routing <strong>95% of tractable tasks in <code>&lt;20 ms</code> to exact classical solvers</strong> (<code>SciPy HiGHS</code> MILP, 9-state <code>RK4</code> ODEs, <code>SVD-MPS</code>) while lowering non-commuting care orders (<code>[U_SMR, U_SP] ≠ 0</code>), multi-visit <strong>Non-Markovian Quantum Combs</strong>, and frustrated 3-body PCN triads directly to <strong>Quantinuum <code>Guppy 1.0 → HUGR</code></strong> and <strong>NVIDIA <code>CUDA-Q</code></strong>.
+        </p>
+
+        <div class="author-bar">
+          <strong>Arun Nadarasa</strong>
+          <span>Innovation Fellow, Mid and South Essex NHS Foundation Trust · International Social Prescribing Pharmacy Association (ISPPA), London, UK</span>
+        </div>
+
+        <div class="trilogy-grid">
+          <div class="card">
+            <div class="card-tag">Pillar 01 · From Quantum Krump</div>
+            <h3>Value-Typed Symbolic DSL &amp; ACI Shields</h3>
+            <p>Clean-room gate-free Python primitives (<code>QChoice</code>, <code>QSequence</code>, <code>QComb</code>, <code>interfere</code>) paired with Kraus CPTP density evolution and distribution-free Adaptive Conformal Inference (<code>ACI</code>).</p>
+            <a href="https://arunnadarasa.github.io/quantumkrump/" target="_blank" rel="noopener">Explore Quantum Krump Portal →</a>
+          </div>
+          <div class="card">
+            <div class="card-tag">Pillar 02 · From Quantum Social Prescribing</div>
+            <h3>Non-Commuting Care &amp; ICB SwarmWorld</h3>
+            <p>Models order-sensitive neighbourhood co-production (<code>Welfare → SMR → Rehab</code> vs premature collapse) and evolves <code>16</code>-register deterministic PCN standing orders across English ICBs.</p>
+            <a href="https://arunnadarasa.github.io/quantum-social-prescribing/" target="_blank" rel="noopener">Explore Social Prescribing Portal →</a>
+          </div>
+          <div class="card">
+            <div class="card-tag">Pillar 03 · From Quantum-LTC</div>
+            <h3>Hepatocyte-Depot Quantum Comb &amp; Safety</h3>
+            <p>9-state mass-conserved <code>RK4 PBPK-Depot</code> (<code>Kp,uu = 1.4</code>, <code>PMID: 25989229</code>) + 8-qubit <code>ASPS</code> Quantum Comb preventing cultural amplification of post-washout drug toxicity.</p>
+            <a href="https://arunnadarasa.github.io/quantum-ltc/" target="_blank" rel="noopener">Explore Quantum-LTC Portal →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DSL -> QUANTUM IR STUDIO -->
+    <section id="studio">
+      <div class="container">
+        <p class="kicker">Interactive Compiler Inspector</p>
+        <h2>Clean-Room Python DSL → Multi-Target Quantum IR Studio</h2>
+        <p class="sec-sub">
+          Inspect how 10 lines of gate-free NHS clinical Python automatically verify <code>DCB0129</code> safety locks, run exact classical floors, and emit vendor-neutral <strong>Quantinuum <code>Guppy 1.0 → HUGR</code></strong> and <strong>NVIDIA <code>CUDA-Q</code></strong> kernels.
+        </p>
+
+        <div class="tab-row">
+          <button class="btn active" onclick="selectScenario('comb', this)">Scenario A: 8q Hepatocyte-Depot Quantum Comb</button>
+          <button class="btn" onclick="selectScenario('wmty', this)">Scenario B: 4q Coherent WMTY Superposition</button>
+          <button class="btn" onclick="selectScenario('hubo', this)">Scenario C: Frustrated 3-Body PCN Triad QAOA</button>
+        </div>
+
+        <div class="two-col">
+          <div>
+            <label>1. Analyst Input — Gate-Free Healthcare Python (`opencareq`)</label>
+            <pre id="dslCode"></pre>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.35rem;">
+              <label style="margin:0;">2. Lowered Quantum Target IR</label>
+              <div style="display:flex;gap:0.4rem;">
+                <button class="btn active" id="btnGuppy" style="padding:0.22rem 0.6rem;font-size:0.76rem;" onclick="selectTarget('guppy')">Guppy 1.0 → HUGR</button>
+                <button class="btn" id="btnCudaq" style="padding:0.22rem 0.6rem;font-size:0.76rem;" onclick="selectTarget('cudaq')">NVIDIA CUDA-Q</button>
+              </div>
+            </div>
+            <pre id="irCode"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5-ICB SWARMWORLD & WORLD MODEL SIMULATOR -->
+    <section id="simulator">
+      <div class="container">
+        <p class="kicker">Interactive NHS Digital Commissioning Sandbox</p>
+        <h2>5-ICB Stigmergic SwarmWorld &amp; Hepatocyte-Depot Twin</h2>
+        <p class="sec-sub">
+          Stress-test frozen PCN standing-order controllers (<code>runtime_agent_actions = 0</code>) across five English NHS ICB topologies (<code>OGL v3.0</code>). Toggle the World Model oracle to see why memoryless Markovian resets trigger cultural safety lockouts across PCNs.
+        </p>
+
+        <div class="controls-grid">
+          <div>
+            <label for="icbSelect">NHS England ICB Topology (OGL v3.0)</label>
+            <select id="icbSelect">
+              <option value="MSE">NHS Mid and South Essex ICB (28 PCNs · 1.27M pop)</option>
+              <option value="NCL">NHS North Central London ICB (20 PCNs · LTC LCS)</option>
+              <option value="BSOL">NHS Birmingham and Solihull ICB (36 PCNs · 66% Core20)</option>
+              <option value="DEVON">NHS Devon ICB (31 PCNs · Rural Peninsula)</option>
+              <option value="NORFOLK">NHS Norfolk and Waveney ICB (20 PCNs · High Polypharmacy)</option>
+            </select>
+          </div>
+          <div>
+            <label for="oracleSelect">Dyna World-Model Consequence Oracle</label>
+            <select id="oracleSelect">
+              <option value="depot">Full CQWM Hepatocyte-Depot + 8q Comb (Kp,uu = 1.4)</option>
+              <option value="markov">Ablated Memoryless Markovian Oracle (Unsafe Drift)</option>
+            </select>
+          </div>
+          <div>
+            <label for="stewardSelect">Protocol Lineage Governance</label>
+            <select id="stewardSelect">
+              <option value="fork">Multi-Steward FORK_PROTOCOL Co-Ownership</option>
+              <option value="solo">Single-Owner Isolated Controllers (No Fork)</option>
+            </select>
+          </div>
+          <div>
+            <label for="turnoverRange">Clinician Broker Turnover Knockout: <span id="turnoverVal" style="color:var(--signal);">50%</span></label>
+            <input id="turnoverRange" type="range" min="0" max="70" step="10" value="50" />
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="card">
+            <div class="kpi-meta">Counterfactual `do(pi*)` Regimen</div>
+            <div class="kpi-num" id="kpiPolicy" style="font-size:1.25rem;margin-top:0.45rem;">Welfare → Day-10 Depot Hold → Rehab</div>
+            <div class="kpi-meta" id="kpiAucrSub">Day-7 Naive Restart Rejected (`AUCR 5.90x &gt; 2.0x`)</div>
+          </div>
+          <div class="card">
+            <div class="kpi-meta">Agent-Free 8-Shock Resilience (`R`)</div>
+            <div class="kpi-num" id="kpiRes">0.783</div>
+            <div class="kpi-meta">`0` LLM/AI calls during unseen shock evaluation</div>
+          </div>
+          <div class="card">
+            <div class="kpi-meta">Post-Turnover Resilience Retention</div>
+            <div class="kpi-num" id="kpiRet">97.1%</div>
+            <div class="kpi-meta" id="kpiTrips">`0` DCB0129 safety lockout trips</div>
+          </div>
+          <div class="card">
+            <div class="kpi-meta">Compiled Binary HUGR Artifact</div>
+            <div class="kpi-num">5,579 B</div>
+            <div class="kpi-meta">Verified `guppylang 1.1` package + AST-valid `@cudaq.kernel`</div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3 style="margin-top:0;">14-Day Hepatocyte Depot Washout (`AUCR` vs `2.0x` DCB0129 Ceiling)</h3>
+            <svg id="aucrSvg" viewBox="0 0 520 215" width="100%" height="215" aria-label="14-day AUCR trajectory"></svg>
+            <div class="kpi-meta" style="margin-top:0.45rem;">
+              Teal curve: Two-tier intracellular hepatocyte depot (`Kp,uu = 1.4`, `PMID: 25989229`) · Grey dashed: Memoryless plasma-only reset (`&lt;LLOQ` by Day 7) · Coral line: `AUCR = 2.0x` safety limit.
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0;">8 Unseen NHS Disturbance Assays (`agent_actions = 0`)</h3>
+            <div id="shockList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5-LAYER ARCHITECTURE -->
+    <section id="architecture">
+      <div class="container">
+        <p class="kicker">System Design</p>
+        <h2>5-Layer Air-Gapped NHS Architecture</h2>
+        <p class="sec-sub">Engineered to run inside NHS Sub-National Secure Data Environments (SDEs) and OpenSAFELY with zero outbound telemetry (`numpy` + `scipy` core).</p>
+
+        <div class="arch-layer">
+          <div>
+            <strong>Layer 0 · NHS Ingestion, Zero-PID Guard &amp; Conformal Triage</strong>
+            <div class="kpi-meta">Rejects patient identifiers at ingestion (`PIDPrivacyViolationError`), enforces Tier-0 hypoxia (`SpO2 &lt; 92%` → `0L` 999 bypass) &amp; Tier-1 herbal abstention, and builds `ACI` prediction sets.</div>
+          </div>
+          <code>opencareq.clinical.safety</code>
+        </div>
+        <div class="arch-layer">
+          <div>
+            <strong>Layer 1 · Two-Tier Clean-Room Python DSL</strong>
+            <div class="kpi-meta">Symbolic value-typed primitives (`QChoice`, `QSequence`, `QComb`, `interfere`) beneath `UKCore FHIR R4` clinical classes (`CarePathway`, `DepotBathMemory`, `CohortConstraint`).</div>
+          </div>
+          <code>opencareq.primitives / clinical</code>
+        </div>
+        <div class="arch-layer">
+          <div>
+            <strong>Layer 2 · Causal &amp; Non-Markovian Healthcare World Model</strong>
+            <div class="kpi-meta">9-state mass-conserved `RK4 PBPK-Depot` + 8-qubit `Kashefi A01c` Quantum Comb (`+46.7 pp` non-Markovian risk gap) + 7-parameter non-commuting Neighbourhood `HQMM` + Rosenbaum `Γ*`.</div>
+          </div>
+          <code>opencareq.world_model</code>
+        </div>
+        <div class="arch-layer">
+          <div>
+            <strong>Layer 3 · Stigmergic PCN SwarmWorld (`arXiv:2608.26081`)</strong>
+            <div class="kpi-meta">Unassigned agents evolve loop-free `16`-register standing-order VMs with `SHA-256` `FORK_PROTOCOL` co-stewardship; deployed completely frozen (`agent_actions = 0`).</div>
+          </div>
+          <code>opencareq.swarmworld</code>
+        </div>
+        <div class="arch-layer">
+          <div>
+            <strong>Layer 4 · Gate G4 Classical-First Router &amp; Dual Quantum IR Compiler</strong>
+            <div class="kpi-meta">Solves static/low-fractionality schedules in `&lt;20 ms` via `SciPy HiGHS` MILP; lowers frustrated triads &amp; `19q+` Combs to `Guppy 1.0 → HUGR` and `NVIDIA CUDA-Q` with `SHA-256` / `ML-DSA-65` receipts.</div>
+          </div>
+          <code>opencareq.compiler</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- GATE G4 HONESTY MATRIX -->
+    <section id="gateg4">
+      <div class="container">
+        <p class="kicker">Anti-Hype Computational Governance</p>
+        <h2>Gate G4 Classical-vs-Quantum Dispatch Boundaries</h2>
+        <p class="sec-sub">OpenCareQ never claims near-term quantum speedups where classical solvers dominate. Every execution logs `ocq.why_dispatched(result)`.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Healthcare Workload</th>
+                <th>Problem Regime</th>
+                <th>Classical Floor (`Gate G4`)</th>
+                <th>Dispatched Target</th>
+                <th>Logical Qubits</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tier-0 Acute Hypoxia / Tier-1 Herbal Tea</td>
+                <td>`SpO2 &lt; 92%` or `SNOMED 315594003`</td>
+                <td>`&lt; 0.1 ms` deterministic safety lock</td>
+                <td>Immediate Human GP / 999 / SMR Bypass</td>
+                <td><code>0L</code></td>
+              </tr>
+              <tr>
+                <td>Static / Sparse PCN Slot Allocation</td>
+                <td>Cubic density `α₃ &lt; 1.0` or LP frac `&lt; 0.20`</td>
+                <td>`&lt; 15 ms` `SciPy HiGHS` MILP (`0.0%` gap)</td>
+                <td>Exact Classical `HiGHS` MILP</td>
+                <td><code>0L</code></td>
+              </tr>
+              <tr>
+                <td>8-Qubit Pilot Organ-Depot Quantum Comb</td>
+                <td>`4` organ + `3` bath + `1` `ASPS` (`1.0 MiB`)</td>
+                <td>`~18 ms` exact CPU CPTP + `RK4`</td>
+                <td>CPU Exact Floor + `HUGR` / `CUDA-Q` Emitted</td>
+                <td><code>0L</code> (Pilot)</td>
+              </tr>
+              <tr>
+                <td>Frustrated 3-Body PCN Hypercycle</td>
+                <td>`α₃ ≥ 1.0` &amp; McCormick LP stall (`≥ 0.20`)</td>
+                <td>`HiGHS` baseline always recorded first</td>
+                <td>LP-Warm-Started Triad `QAOA` (`HUGR` / `CUDA-Q`)</td>
+                <td><code>18L–72L</code></td>
+              </tr>
+              <tr>
+                <td>Multi-Organ 14-Bath Longitudinal Comb</td>
+                <td>`19` Comb qubits (`4.0 TiB` dense Liouvillian)</td>
+                <td>Exceeds `1 TiB` dense RAM wall</td>
+                <td>Non-Markovian Quantum Comb + `ASPS`</td>
+                <td><code>42L</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- DCB0129 HAZARD REGISTER -->
+    <section id="dcb0129">
+      <div class="container">
+        <p class="kicker">Statutory Clinical Risk Management</p>
+        <h2>NHS DCB0129 Open Clinical Hazard Log (`H-OCQ-01`..`H-OCQ-06`)</h2>
+        <p class="sec-sub">Built into continuous integration (`pytest`) and sealed into every `UKCore FHIR R4 AuditEvent` receipt.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Hazard ID</th>
+                <th>Clinical / Operational Risk</th>
+                <th>Built-In OpenCareQ Mitigation</th>
+                <th>Residual Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>H-OCQ-01</code></td>
+                <td>Acute deterioration (`SpO2 &lt; 92%`, sepsis, chest pain) entering routine pathway</td>
+                <td>Hard `DCB0129Guard` pre-rollout intercept (`BLOCK_TIER_0_EMERGENCY_ESCALATION`, `0L`)</td>
+                <td><strong>OPEN</strong> (999 / GP)</td>
+              </tr>
+              <tr>
+                <td><code>H-OCQ-02</code></td>
+                <td>Uncharacterised herbal/OTC co-exposure (`7-herb tea`) or out-of-scope admin query</td>
+                <td>Companion scope &amp; exposure gate (`ABSTAIN_TIER_1_PHARMACIST_SMR`, `0L`)</td>
+                <td><strong>OPEN</strong> (Pharmacist SMR)</td>
+              </tr>
+              <tr>
+                <td><code>H-OCQ-03</code></td>
+                <td>Premature Day-6/7 statin/substrate restart while hepatocyte depot persists (`Kp,uu = 1.4`)</td>
+                <td>9-state `RK4 PBPK-Depot` + `8q` Comb enforces `AUCR ≤ 2.0x` (selects Day-10 hold)</td>
+                <td><strong>OPEN</strong> (Prescriber)</td>
+              </tr>
+              <tr>
+                <td><code>H-OCQ-04</code></td>
+                <td>PCN `ARRS` workforce overload &amp; `Core20PLUS5` deprivation exclusion</td>
+                <td>Hardware `≤ 0.08`/tick flux cap in `16`-register VM + `Core20` equity weighting</td>
+                <td><strong>OPEN</strong> (ICB Board)</td>
+              </tr>
+              <tr>
+                <td><code>H-OCQ-05</code></td>
+                <td>Cultural amplification of unsafe holds under misspecified Markovian world models</td>
+                <td>Proposal–consequence separation gated by full depot-aware `ClinicalWorldModel`</td>
+                <td><strong>OPEN</strong> (CSO Audit)</td>
+              </tr>
+              <tr>
+                <td><code>H-OCQ-06</code></td>
+                <td>`50%` key-broker clinician turnover or referral acuity distribution shift</td>
+                <td>Multi-steward `FORK_PROTOCOL` co-ownership (`97.1%` retention) + `ACI` conformal sets</td>
+                <td><strong>OPEN</strong> (Quarterly Review)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout-warn">
+          <strong>Regulatory &amp; Epistemic Demarcation:</strong> OpenCareQ (`v0.1.0`) is released as open-science population-health commissioning and shadow-simulation infrastructure (`Non-SaMD`, `phi_present = False`, `physical_qpu_shots = 0`, `runtime_agent_actions = 0`). It is not a certified medical device and must not be used for autonomous patient care without a local NHS `DCB0160` Clinical Safety Case Report.
+        </div>
+      </div>
+    </section>
+
+    <!-- CITATION -->
+    <section id="cite">
+      <div class="container">
+        <p class="kicker">Academic Attribution</p>
+        <h2>Cite OpenCareQ</h2>
+        <pre>@software{nadarasa2026opencareq,
+  author       = {Nadarasa, Arun},
+  title        = {{OpenCareQ}: An NHS-First Gate-Free Healthcare Quantum DSL, Causal Non-Markovian World Model, and Stigmergic SwarmWorld Compiler},
+  version      = {0.1.0},
+  year         = {2026},
+  license      = {Apache-2.0},
+  url          = {https://arunnadarasa.github.io/opencareq-nhs/}
+}</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <div>© 2026 Arun Nadarasa · Apache-2.0 / CC BY 4.0 · NHS DCB0129 Non-SaMD Research Portal</div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="receipts/opencareq_v0_1_mse_receipt.json" target="_blank" rel="noopener">SHA-256 Receipt (`93b7caf2…`)</a>
+        <a href="https://arunnadarasa.github.io/quantum-social-prescribing/" target="_blank" rel="noopener">Quantum Social Prescribing</a>
+        <a href="https://arunnadarasa.github.io/quantum-ltc/" target="_blank" rel="noopener">Quantum-LTC</a>
+        <a href="https://arunnadarasa.github.io/quantumkrump/" target="_blank" rel="noopener">Quantum Krump</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight)) * 100;
+      document.getElementById('scrollProgress').style.width = pct.toFixed(1) + '%';
+    });
+
+    const SCENARIOS = {
+      comb: {
+        dsl: `import opencareq as ocq
+
+# 1. Zero-PID UKCore FHIR R4 ingestion + Adaptive Conformal (ACI) set
+pathway = ocq.CarePathway.from_ukcore_fhir(ocq.sample_ukcore_polypharmacy_bundle())
+bath    = ocq.DepotBathMemory(cyp3a4_hepatocyte_depot=True, core20_fuel_poverty=True)
+
+# 2. Causal 9-state RK4 + 8q Non-Markovian Quantum Comb rollout
+wm = ocq.ClinicalWorldModel(memory=bath, safety_guard=ocq.DCB0129Guard())
+rollout = wm.counterfactual_select(
+    pathway,
+    candidates=["welfare->day10_depot_hold_smr->rehab", "rehab->day7_naive_post_washout_restart"],
+)
+ir = ocq.compile_ir(rollout, target="guppy_hugr")`,
+        guppy: `from guppylang import guppy
+from guppylang.std.angles import angle
+from guppylang.std.builtins import result
+from guppylang.std.quantum import cx, cz, measure, project_z, qubit, reset, ry
+
+@guppy
+def opencareq_entrypoint() -> None:
+    s0, s1, s2, s3 = qubit(), qubit(), qubit(), qubit()
+    m0, m1, m2, p0 = qubit(), qubit(), qubit(), qubit()
+
+    # Slot 1: Load covalent CYP3A4 heme m0 & hepatocyte depot m1 (Kp,uu = 1.4)
+    ry(s3, angle(0.52)); ry(m0, angle(0.78)); ry(m1, angle(0.88))
+    cz(s3, m0); cz(m1, m0)
+
+    # Slot 2 (+48h Washout): Intracellular depot m1 re-inactivates m0
+    ry(m0, angle(-0.48))
+    ry(m0, angle(0.28)); cx(m1, m0); ry(m0, angle(-0.28)); cx(m1, m0)
+    result("mid_p0", project_z(p0).read()); reset(p0)
+
+    # Slot 3: Selected Day-10 Pharmacist SMR hold + ASPS parity syndrome
+    ry(s1, angle(0.2500)); cx(m0, s1); cx(s1, p0)
+    result("s1", measure(s1).read()); result("p0", measure(p0).read())`,
+        cudaq: `import cudaq
+
+@cudaq.kernel
+def opencareq_depot_comb_kernel():
+    q = cudaq.qvector(8)  # q[0..3]=organs, q[4..6]=depot/heme bath, q[7]=ASPS ancilla
+    ry(0.52, q[3])
+    ry(0.78, q[4])
+    ry(0.88, q[5])
+    cz(q[3], q[4])
+    cz(q[5], q[4])
+
+    # Post-washout intracellular hepatocyte depot backflow into CYP3A4 pool
+    ry(-0.48, q[4])
+    ry.ctrl(0.56, q[5], q[4])
+
+    # Safe Day-10 SMR hold + 4-organ ASPS parity check
+    ry(0.2500, q[1])
+    x.ctrl(q[4], q[1])
+    x.ctrl(q[1], q[7])
+    mz(q)`
+      },
+      wmty: {
+        dsl: `import opencareq as ocq
+
+# Ambiguous Core20 WMTY referral held in coherent multi-pathway superposition
+pathway = ocq.CarePathway.from_ukcore_fhir(bundle, conformal_alpha=0.05)
+assert pathway.routing_mode == "HOLD_COHERENT_SUPERPOSITION"
+
+# Value-typed phase & destructive interference of premature group collapse
+q = pathway.qchoice.copy()
+q.add_phase({"welfare_and_warm_home_first": 0.0, "supervised_green_rehab": 3.14159})
+q.interfere(pair=("supervised_green_rehab", "welfare_and_warm_home_first"))
+
+ir = ocq.compile_ir(pathway, target="guppy_hugr")`,
+        guppy: `from guppylang import guppy
+from guppylang.std.angles import angle
+from guppylang.std.builtins import result
+from guppylang.std.quantum import cx, measure, qubit, ry
+
+@guppy
+def opencareq_entrypoint() -> None:
+    q0, q1, q2, q3 = qubit(), qubit(), qubit(), qubit()
+
+    # Exact Bloch probabilities theta_k = 2 * arcsin(sqrt(p_k))
+    ry(q0, angle(1.198241))
+    ry(q1, angle(0.684102))
+    ry(q2, angle(1.072415))
+    ry(q3, angle(1.264911))
+
+    cx(q0, q1); cx(q2, q3); cx(q1, q2)
+    result("q0", measure(q0).read()); result("q1", measure(q1).read())
+    result("q2", measure(q2).read()); result("q3", measure(q3).read())`,
+        cudaq: `import cudaq
+
+@cudaq.kernel
+def opencareq_wmty_pathway_kernel():
+    q = cudaq.qvector(4)
+    ry(1.198241, q[0])
+    ry(0.684102, q[1])
+    ry(1.072415, q[2])
+    ry(1.264911, q[3])
+    x.ctrl(q[0], q[1])
+    x.ctrl(q[2], q[3])
+    x.ctrl(q[1], q[2])
+    mz(q)`
+      },
+      hubo: {
+        dsl: `import opencareq as ocq
+
+# 3-Body PCN Triad: ARRS Pharmacist x Community Minibus x Warm Hub
+triad = ocq.CohortConstraint.sample_frustrated_pcn_triad()
+res   = triad.solve()
+
+# Gate G4: HiGHS MILP floor recorded first; LP stall >= 0.20 triggers Triad-QAOA
+print(ocq.why_dispatched(res))
+ir = ocq.compile_ir(res, target="cudaq")`,
+        guppy: `from guppylang import guppy
+from guppylang.std.angles import angle
+from guppylang.std.builtins import result
+from guppylang.std.quantum import cx, measure, qubit, ry
+
+@guppy
+def opencareq_entrypoint() -> None:
+    q0, q1, q2 = qubit(), qubit(), qubit()
+    q3, q4, q5 = qubit(), qubit(), qubit()
+
+    # McCormick LP-relaxation warm-start angles
+    ry(q0, angle(1.570796)); ry(q1, angle(1.570796)); ry(q2, angle(1.570796))
+    ry(q3, angle(1.570796)); ry(q4, angle(1.570796)); ry(q5, angle(1.570796))
+    cx(q0, q1); cx(q1, q2); cx(q2, q3); cx(q3, q4); cx(q4, q5)
+    result("q0", measure(q0).read()); result("q5", measure(q5).read())`,
+        cudaq: `import cudaq
+
+@cudaq.kernel
+def opencareq_triad_qaoa_kernel():
+    q = cudaq.qvector(6)
+    ry(1.570796, q[0])
+    ry(1.570796, q[1])
+    ry(1.570796, q[2])
+    ry(1.570796, q[3])
+    ry(1.570796, q[4])
+    ry(1.570796, q[5])
+    x.ctrl(q[0], q[1])
+    x.ctrl(q[2], q[3])
+    x.ctrl(q[4], q[5])
+    mz(q)`
+      }
+    };
+
+    let activeScenario = 'comb';
+    let activeTarget = 'guppy';
+
+    function renderStudio() {
+      document.getElementById('dslCode').textContent = SCENARIOS[activeScenario].dsl;
+      document.getElementById('irCode').textContent = SCENARIOS[activeScenario][activeTarget];
+    }
+    function selectScenario(sc, btn) {
+      activeScenario = sc;
+      btn.parentElement.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderStudio();
+    }
+    function selectTarget(tgt) {
+      activeTarget = tgt;
+      document.getElementById('btnGuppy').classList.toggle('active', tgt === 'guppy');
+      document.getElementById('btnCudaq').classList.toggle('active', tgt === 'cudaq');
+      renderStudio();
+    }
+
+    const ICB_SIM = {
+      MSE:     { baseR: 0.783, shocks: [0.81, 0.78, 0.79, 0.77, 0.78, 0.77, 0.80, 0.76] },
+      NCL:     { baseR: 0.804, shocks: [0.82, 0.80, 0.81, 0.79, 0.81, 0.80, 0.83, 0.78] },
+      BSOL:    { baseR: 0.771, shocks: [0.79, 0.77, 0.78, 0.73, 0.77, 0.78, 0.81, 0.74] },
+      DEVON:   { baseR: 0.758, shocks: [0.78, 0.76, 0.77, 0.76, 0.75, 0.76, 0.70, 0.75] },
+      NORFOLK: { baseR: 0.769, shocks: [0.78, 0.75, 0.77, 0.78, 0.77, 0.76, 0.74, 0.76] }
+    };
+    const SHOCK_LABELS = [
+      "Winter COPD + Clarithromycin",
+      "Paxlovid Hepatocyte Depot Wave",
+      "Heatwave Cardio-Renal AKI",
+      "Core20 Fuel Poverty Surge",
+      "48h Home-First Discharge",
+      "ARRS Pharmacist Sickness",
+      "Rural Minibus Outage",
+      "Multi-Borough Winter Syndemic"
+    ];
+    const DEPOT_CURVE = [4.6, 8.2, 9.8, 10.4, 10.6, 7.9, 5.9, 3.6, 2.26, 1.71, 1.42, 1.24, 1.12, 1.05];
+    const MARKOV_CURVE = [4.2, 7.5, 8.8, 9.1, 9.2, 1.35, 1.02, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00];
+
+    function drawAucrChart() {
+      const svg = document.getElementById('aucrSvg');
+      const w = 520, h = 215, padL = 40, padR = 16, padT = 16, padB = 28;
+      const pw = w - padL - padR, ph = h - padT - padB;
+      const x = i => padL + (i / 13) * pw;
+      const y = v => padT + ph - (Math.min(12, v) / 12) * ph;
+      const pDepot = DEPOT_CURVE.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+      const pMarkov = MARKOV_CURVE.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+      const yLim = y(2.0).toFixed(1);
+      let xl = '';
+      for (let d = 1; d <= 14; d++) {
+        xl += `<text x="${x(d-1)}" y="${h-8}" font-size="10" text-anchor="middle" fill="#6f8a87">D${d}</text>`;
+      }
+      svg.innerHTML = `
+        <rect x="${padL}" y="${padT}" width="${pw}" height="${ph}" fill="#0a1416" stroke="rgba(158,183,180,0.18)"/>
+        <line x1="${padL}" y1="${yLim}" x2="${w-padR}" y2="${yLim}" stroke="#f06a3b" stroke-dasharray="5,4" stroke-width="1.5"/>
+        <text x="${w-padR-6}" y="${yLim-6}" font-size="10" text-anchor="end" fill="#f06a3b" font-weight="700">DCB0129 Safe Limit = 2.0x</text>
+        <polyline fill="none" stroke="#6f8a87" stroke-width="2" stroke-dasharray="4,4" points="${pMarkov}"/>
+        <polyline fill="none" stroke="#38d6c4" stroke-width="2.8" points="${pDepot}"/>
+        <circle cx="${x(6)}" cy="${y(5.9)}" r="4.5" fill="#f06a3b"/>
+        <text x="${x(6)+7}" y="${y(5.9)-4}" font-size="10" fill="#f06a3b" font-weight="700">D7: 5.90x (Reject)</text>
+        <circle cx="${x(9)}" cy="${y(1.71)}" r="4.5" fill="#38d6c4"/>
+        <text x="${x(9)+7}" y="${y(1.71)-6}" font-size="10" fill="#38d6c4" font-weight="700">D10: 1.71x (Safe Hold)</text>
+        ${xl}
+      `;
+    }
+
+    function updateSim() {
+      const icb = document.getElementById('icbSelect').value;
+      const oracle = document.getElementById('oracleSelect').value;
+      const steward = document.getElementById('stewardSelect').value;
+      const turn = parseInt(document.getElementById('turnoverRange').value, 10) / 100.0;
+      document.getElementById('turnoverVal').textContent = `${Math.round(turn * 100)}%`;
+
+      const prof = ICB_SIM[icb];
+      const mult = oracle === 'depot' ? 1.0 : 0.39;
+      const rVal = (prof.baseR * mult).toFixed(3);
+      const ret = steward === 'fork' ? Math.max(0.84, 1.0 - 0.058 * turn) : Math.max(0.46, 1.0 - 0.42 * turn);
+
+      document.getElementById('kpiRes').textContent = rVal;
+      document.getElementById('kpiRet').textContent = `${(ret * 100).toFixed(1)}%`;
+
+      if (oracle === 'depot') {
+        document.getElementById('kpiPolicy').textContent = 'Welfare → Day-10 Depot Hold → Rehab';
+        document.getElementById('kpiPolicy').style.color = '#38d6c4';
+        document.getElementById('kpiAucrSub').textContent = 'Day-7 Naive Restart Rejected (AUCR 5.90x > 2.0x)';
+        document.getElementById('kpiTrips').textContent = '0 DCB0129 safety lockout trips';
+        document.getElementById('kpiTrips').style.color = '#9eb7b4';
+      } else {
+        document.getElementById('kpiPolicy').textContent = 'UNSAFE DRIFT: Premature Day-6/7 Restart';
+        document.getElementById('kpiPolicy').style.color = '#f06a3b';
+        document.getElementById('kpiAucrSub').textContent = 'Markovian reset misses intracellular depot (+46.7 pp gap)';
+        document.getElementById('kpiTrips').textContent = 'WARNING: Cultural amplification of unsafe holds!';
+        document.getElementById('kpiTrips').style.color = '#f06a3b';
+      }
+
+      document.getElementById('shockList').innerHTML = prof.shocks.map((v, i) => {
+        const adj = Math.min(1.0, v * mult);
+        const barBg = oracle === 'depot' ? 'linear-gradient(90deg, #38d6c4, #22a898)' : 'linear-gradient(90deg, #f06a3b, #c9471e)';
+        return `<div class="bar-row">
+          <div class="bar-lbl">${SHOCK_LABELS[i]}</div>
+          <div class="bar-track"><div class="bar-fill" style="width:${(adj*100).toFixed(1)}%;background:${barBg};"></div></div>
+          <div style="width:42px;text-align:right;font-family:var(--font-mono);font-size:0.8rem;">${adj.toFixed(2)}</div>
+        </div>`;
+      }).join('');
+    }
+
+    ['icbSelect', 'oracleSelect', 'stewardSelect', 'turnoverRange'].forEach(id => {
+      document.getElementById(id).addEventListener('input', updateSim);
+    });
+    renderStudio();
+    drawAucrChart();
+    updateSim();
+  </script>
+</body>
+</html>
