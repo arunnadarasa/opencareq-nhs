@@ -11,6 +11,12 @@
   <meta property="og:description" content="Gate-free clinical Python DSL compiling to SciPy HiGHS (<20 ms), Quantinuum Guppy 1.0 -> HUGR (5,579 B), and NVIDIA CUDA-Q under statutory NHS DCB0129 safety governance." />
   <meta property="og:url" content="https://arunnadarasa.github.io/opencareq-nhs/" />
 
+  <!-- Google Scholar / Highwire Press Academic Citation Meta Tags -->
+  <meta name="citation_title" content="OpenCareQ: A Clean-Room Healthcare Quantum Programming Language, Non-Markovian Causal World Model, and Agent-Free Stigmergic SwarmWorld for NHS Neighbourhood Commissioning" />
+  <meta name="citation_author" content="Nadarasa, Arun" />
+  <meta name="citation_publication_date" content="2026/11/15" />
+  <meta name="citation_pdf_url" content="https://arunnadarasa.github.io/opencareq-nhs/OpenCareQ_Paper.pdf" />
+
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -18,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+  <script src="assets/vendor/pdf.min.js" defer></script>
 
   <style>
     :root {
@@ -183,89 +190,278 @@
       border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.88rem; color: #fce7c2; margin-top: 1.2rem;
     }
 
-    /* Interactive Samskrift Article Preview Viewer */
-    .viewer-shell {
-      background: var(--bg-card-alt); border: 1px solid var(--border-strong); border-radius: 14px;
-      overflow: hidden; box-shadow: 0 22px 52px rgba(0, 0, 0, 0.48);
-    }
-    .viewer-shell:fullscreen {
-      display: flex; flex-direction: column; border-radius: 0; border: none; height: 100vh; background: #071012;
-    }
-    .viewer-toolbar {
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.7rem;
-      padding: 0.8rem 1.05rem; background: #0b1619; border-bottom: 1px solid var(--border);
-    }
-    .viewer-group { display: flex; align-items: center; gap: 0.42rem; flex-wrap: wrap; }
+    /* ── Quantum Krump Style Publication Cards & Live PDF.js Preview Panel ── */
     .btn-sm {
-      display: inline-flex; align-items: center; gap: 0.32rem;
-      font-family: var(--font-sans); font-size: 0.79rem; font-weight: 700;
-      padding: 0.36rem 0.72rem; border-radius: 7px; border: 1px solid var(--border);
-      background: var(--bg-card); color: var(--ink-muted); cursor: pointer; transition: all 0.14s ease;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700;
+      padding: 0.36rem 0.76rem; border-radius: 7px; border: 1px solid var(--border);
+      background: var(--bg-card); color: var(--ink); cursor: pointer; transition: all 0.14s ease;
     }
-    .btn-sm:hover:not(:disabled) { color: var(--ink); border-color: var(--border-strong); }
-    .btn-sm.active { background: var(--signal-soft); color: var(--signal); border-color: var(--border-strong); }
-    .btn-sm:disabled { opacity: 0.42; cursor: not-allowed; }
-    .page-indicator {
-      font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink);
-      padding: 0.28rem 0.65rem; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid var(--border);
+    .btn-sm:hover { color: var(--ink); border-color: var(--signal); }
+    .btn-sm.btn-primary { background: var(--signal); border-color: var(--signal); color: #061517; }
+    .btn-sm.btn-primary:hover { filter: brightness(1.07); color: #061517; }
+    .btn-ghost { background: transparent; color: var(--ink-muted); }
+
+    .papers-grid {
+      margin-top: 1.4rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.1rem;
     }
-    .viewer-body {
-      display: grid; grid-template-columns: 270px 1fr; min-height: 760px; max-height: 84vh;
+    @media (max-width: 980px) {
+      .papers-grid { grid-template-columns: 1fr; }
     }
-    .viewer-shell:fullscreen .viewer-body { flex: 1; max-height: none; min-height: 0; }
-    @media (max-width: 900px) {
-      .viewer-body { grid-template-columns: 1fr; max-height: none; }
-      .viewer-sidebar { max-height: 210px; border-right: none !important; border-bottom: 1px solid var(--border); }
+    .paper-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.1rem;
     }
-    .viewer-sidebar {
-      background: #0a1416; border-right: 1px solid var(--border); overflow-y: auto; padding: 0.7rem;
+    .paper-card.featured {
+      border-color: var(--border-strong);
+      box-shadow: 0 12px 32px -18px rgba(56, 214, 196, 0.45);
     }
-    .sidebar-hdr {
-      font-family: var(--font-mono); font-size: 0.71rem; text-transform: uppercase; letter-spacing: 0.06em;
-      color: var(--ink-dim); padding: 0.25rem 0.45rem 0.55rem;
+    .paper-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      margin: 0.65rem 0 0.35rem;
+      letter-spacing: 0.02em;
     }
-    .chapter-btn {
-      width: 100%; text-align: left; background: transparent; border: 1px solid transparent;
-      border-radius: 8px; padding: 0.52rem 0.6rem; margin-bottom: 0.3rem; cursor: pointer;
-      display: flex; align-items: flex-start; gap: 0.55rem; color: var(--ink-muted); font-family: var(--font-sans);
+    .paper-card p {
+      margin: 0.4rem 0 0;
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+    }
+    .paper-meta-list {
+      margin: 0.7rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.83rem;
+      color: var(--ink-muted);
+    }
+    .paper-meta-list li { margin-bottom: 0.25rem; }
+
+    .reader-panel {
+      margin-top: 1.25rem;
+      background: #0c181b;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 18px 46px -16px rgba(0, 0, 0, 0.65);
+      scroll-margin-top: 78px;
+      display: flex;
+      flex-direction: column;
+    }
+    .reader-panel.fullscreen {
+      position: fixed;
+      inset: 0.85rem;
+      margin-top: 0;
+      z-index: 150;
+      border-radius: var(--radius);
+      box-shadow: 0 0 0 100vmax rgba(4, 10, 12, 0.86), 0 28px 80px rgba(0, 0, 0, 0.85);
+    }
+    .reader-doc-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.55rem;
+      padding: 0.7rem 1rem;
+      background: #122327;
+      border-bottom: 1px solid var(--border);
+    }
+    .reader-doc-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .reader-doc-btn {
+      padding: 0.36rem 0.75rem;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      background: rgba(11, 21, 23, 0.75);
+      color: var(--ink-muted);
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
       transition: all 0.14s ease;
     }
-    .chapter-btn:hover { background: rgba(255,255,255,0.04); color: var(--ink); }
-    .chapter-btn.active { background: var(--signal-soft); border-color: rgba(56,214,196,0.36); color: var(--ink); }
-    .chapter-pg {
-      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--signal);
-      background: rgba(56,214,196,0.12); border-radius: 5px; padding: 0.12rem 0.42rem; flex-shrink: 0;
+    .reader-doc-btn:hover {
+      color: var(--ink);
+      border-color: var(--signal);
     }
-    .chapter-title { font-size: 0.81rem; font-weight: 600; line-height: 1.3; }
-    .chapter-sub { display: block; font-size: 0.72rem; color: var(--ink-dim); font-weight: 400; margin-top: 0.12rem; }
-    .viewer-stage {
-      background: radial-gradient(circle at 50% 20%, #15262a, #081113);
-      overflow: auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-      padding: 1.25rem; position: relative;
+    .reader-doc-btn.active {
+      background: var(--signal);
+      border-color: var(--signal);
+      color: #061517;
     }
-    .page-spread {
-      display: flex; justify-content: center; align-items: flex-start; gap: 1.1rem; width: 100%;
+    .reader-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.55rem 0.9rem;
+      padding: 0.58rem 1rem;
+      background: #0e1c1f;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
     }
-    .page-sheet {
-      background: #ffffff; border-radius: 6px; overflow: hidden;
-      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.62); transition: width 0.18s ease;
+    .reader-controls-group {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.38rem;
+    }
+    .reader-icon-btn {
+      padding: 0.28rem 0.58rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.14s ease, background 0.14s ease;
+    }
+    .reader-icon-btn:hover {
+      border-color: var(--signal);
+      background: #1a3035;
+      color: var(--ink);
+    }
+    .reader-page-input {
+      width: 3.1rem;
+      padding: 0.24rem 0.35rem;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      background: #071012;
+      color: var(--amber);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .reader-bookmarks {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.48rem 1rem;
+      background: rgba(9, 18, 20, 0.9);
+      border-bottom: 1px solid var(--border);
+    }
+    .bookmark-chip {
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(158, 183, 180, 0.2);
+      background: rgba(20, 37, 41, 0.7);
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+    .bookmark-chip:hover,
+    .bookmark-chip.active {
+      border-color: var(--amber);
+      color: var(--amber);
+      background: rgba(244, 174, 66, 0.13);
+    }
+    .reader-viewport {
+      height: 760px;
+      overflow-y: auto;
+      overflow-x: auto;
+      background: #070e10;
+      padding: 1.25rem 0.85rem;
+      position: relative;
+      transition: height 0.2s ease;
+    }
+    .reader-panel.tall .reader-viewport { height: 1120px; }
+    .reader-panel.fullscreen .reader-viewport { flex: 1; height: auto; }
+    .reader-panel.collapsed .reader-toolbar,
+    .reader-panel.collapsed .reader-bookmarks,
+    .reader-panel.collapsed .reader-viewport { display: none; }
+    @media (max-width: 680px) {
+      .reader-viewport { height: 540px; padding: 0.75rem 0.4rem; }
+    }
+    .reader-canvas-stream {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.15rem;
+      min-height: 100%;
+    }
+    .pdf-page-slot {
+      background: #ffffff;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pdf-page-slot canvas { display: block; border-radius: 4px; }
+    .pdf-page-badge {
+      position: absolute;
+      bottom: 0.45rem;
+      right: 0.55rem;
+      background: rgba(11, 21, 23, 0.76);
+      color: #eef7f5;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      padding: 0.12rem 0.42rem;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+    .pdf-loading-msg {
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(4, 10, 12, 0.86);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+    }
+    .modal-backdrop.open { display: flex; }
+    .lightbox-dialog {
+      max-width: min(1040px, 100%);
+      max-height: 92vh;
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7);
+    }
+    .lightbox-dialog img {
       max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 6px;
     }
-    .page-sheet img { display: block; width: 100%; height: auto; user-select: none; }
-    .embed-frame { width: 100%; height: 760px; border: none; background: #ffffff; border-radius: 6px; }
-    .viewer-shell:fullscreen .embed-frame { height: 100%; }
-    .fig-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(390px, 1fr)); gap: 1.1rem; width: 100%;
-    }
-    @media (max-width: 560px) { .fig-grid { grid-template-columns: 1fr; } }
-    .fig-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
-      display: flex; flex-direction: column;
-    }
-    .fig-card-img { background: #ffffff; padding: 0.5rem; cursor: zoom-in; }
-    .fig-card-img img { display: block; width: 100%; height: auto; border-radius: 4px; }
-    .fig-card-body { padding: 0.9rem 1rem; font-size: 0.85rem; color: var(--ink-muted); }
-    .fig-card-body strong { color: var(--ink); display: block; font-size: 0.94rem; margin-bottom: 0.25rem; }
 
     footer { padding: 2.2rem 0 3rem; color: var(--ink-dim); font-size: 0.84rem; }
   </style>
@@ -280,14 +476,13 @@
         <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">v0.1</small></span>
       </a>
       <nav class="nav-links" aria-label="Sections">
-        <a href="#article-viewer" style="color:var(--signal);">Article Preview</a>
+        <a href="#papers" style="color:var(--signal);">Paper Preview</a>
         <a href="#studio">DSL → Quantum IR Studio</a>
         <a href="#simulator">5-ICB SwarmWorld Twin</a>
         <a href="#architecture">5-Layer Architecture</a>
         <a href="#gateg4">Gate G4 Honesty</a>
         <a href="#dcb0129">NHS DCB0129 Log</a>
-        <a href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">Samskrift Cloud ↗</a>
-        <a href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">PDF ↗</a>
+        <a class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf" style="color:#061517;padding:0.32rem 0.72rem;border-radius:7px;">⬇ PDF</a>
       </nav>
     </div>
   </header>
@@ -316,10 +511,10 @@
         </div>
 
         <div class="tab-row" style="margin-bottom:1.5rem;">
-          <a class="btn btn-primary" href="#article-viewer">Preview 10-Page Article Inline ↓</a>
-          <a class="btn" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">Open on Samskrift Cloud ↗</a>
-          <a class="btn" href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">Download Paper PDF (10 pp.) ↗</a>
-          <a class="btn" href="receipts/opencareq_samskrift_benchmark_receipt.json" target="_blank" rel="noopener">Sealed Receipt (<code>47716b2a</code>) ↗</a>
+          <button type="button" class="btn-sm btn-primary" data-open-doc="opencareq">📖 Read in Preview Panel ↓</button>
+          <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ PDF (10 pp.)</a>
+          <a class="btn-sm" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">↗ Samskrift Cloud</a>
+          <a class="btn-sm btn-ghost" href="receipts/opencareq_samskrift_benchmark_receipt.json" target="_blank" rel="noopener">✓ Receipt JSON (<code>47716b2a</code>)</a>
         </div>
 
         <div class="trilogy-grid">
@@ -345,48 +540,113 @@
       </div>
     </section>
 
-    <!-- INTERACTIVE SAMSKRIFT ARTICLE PREVIEW VIEWER -->
-    <section id="article-viewer">
+    <!-- Section 01: Open-Access Publication & Live Inline PDF.js Preview Panel (Matching Quantum Krump) -->
+    <section id="papers">
       <div class="container">
-        <p class="kicker">Samskrift Research Manuscript · 10 Pages · 4 Multi-Panel 300-DPI Figures · 38 Live-Verified Citations</p>
-        <h2>Interactive Samskrift Article Preview Viewer</h2>
+        <p class="kicker">01 · Open-Access Publication Suite</p>
+        <h2>Samskrift Research Paper &amp; Live Continuous PDF Preview</h2>
         <p class="sec-sub">
-          Read the compiled 10-page <strong>OpenCareQ (<code>v0.1.0</code>)</strong> manuscript inline with retina page spreads, chapter navigation, native selectable PDF stream, live Samskrift Cloud embed, or 300-DPI figure inspection. Use keyboard <code>←</code> / <code>→</code> keys to turn pages.
+          Read the compiled <strong>10-page OpenCareQ (<code>v0.1.0</code>)</strong> manuscript directly inline via our continuous-scroll HiDPI <code>PDF.js</code> canvas stream, jump across sections, expand to tall or fullscreen mode, or inspect the four 300-DPI benchmark plates.
         </p>
 
-        <div id="viewerShell" class="viewer-shell">
-          <div class="viewer-toolbar">
-            <div class="viewer-group" role="tablist" aria-label="Article viewer modes">
-              <button id="modeSpread" class="btn-sm active" onclick="setViewerMode('spread')">Page Reader</button>
-              <button id="modeFigures" class="btn-sm" onclick="setViewerMode('figures')">300-DPI Figures (4)</button>
-              <button id="modePdf" class="btn-sm" onclick="setViewerMode('pdf')">Native PDF Stream</button>
-              <button id="modeCloud" class="btn-sm" onclick="setViewerMode('cloud')">Samskrift Cloud Live</button>
+        <div class="papers-grid">
+          <!-- Card 1: OpenCareQ Samskrift Research Paper -->
+          <article class="paper-card featured">
+            <div>
+              <span class="pill pill-signal">Samskrift Research Article · 10 Pages · 38 Verified Citations</span>
+              <h3>OpenCareQ: Clean-Room Healthcare Quantum DSL, Causal World Model &amp; SwarmWorld</h3>
+              <p>
+                Complete reference uniting gate-free value-typed quantum primitives (<code>QChoice</code>, <code>QSequence</code>, <code>QComb</code>) + <code>UKCore FHIR R4</code> guards, the 9-state <code>RK4</code> hepatocyte-depot + 8-qubit Quantum Comb world model (<code>+46.71 pp</code> Markovian gap), agent-free 5-ICB <code>PCNSwarmWorld</code> (<code>135</code> PCNs, <code>6.78M</code> pop.), and live <code>Quantinuum Guppy 1.0 → HUGR</code> (<code>5,579 B</code>) + <code>CUDA-Q</code> compilation.
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>Author:</strong> Arun Nadarasa (Mid &amp; South Essex NHS FT · ISPPA)</li>
+                <li><strong>Audit:</strong> SHA-256 receipt <code>47716b2a1b4c446f…</code> · <code>0</code> QPU / runtime LLM / PID claims</li>
+                <li><strong>Governance:</strong> Statutory NHS <code>DCB0129</code> / <code>DCB0160</code> Non-SaMD (<code>H-OCQ-01..06</code> OPEN)</li>
+              </ul>
             </div>
-
-            <div id="spreadControls" class="viewer-group">
-              <button id="btnPrevPg" class="btn-sm" onclick="stepPage(-1)" title="Previous page (Left arrow)">← Prev</button>
-              <span id="pageIndicator" class="page-indicator">Page 1 of 10</span>
-              <button id="btnNextPg" class="btn-sm" onclick="stepPage(1)" title="Next page (Right arrow)">Next →</button>
-              <button id="btnDualSpread" class="btn-sm" onclick="toggleDualSpread()" title="Toggle 2-page book spread">2-Page Spread</button>
-              <button id="btnZoomCycle" class="btn-sm" onclick="cycleZoom()" title="Cycle page zoom">Zoom: 100%</button>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="opencareq">📖 Read in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Download (10 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">↗ Samskrift Cloud</a>
             </div>
+          </article>
 
-            <div class="viewer-group">
-              <button class="btn-sm" onclick="toggleViewerFullscreen()">Fullscreen ⛶</button>
-              <a class="btn-sm" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">Samskrift ↗</a>
-              <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">Download PDF ↓</a>
+          <!-- Card 2: 300-DPI Multi-Panel Benchmark Figures & Sealed Receipts -->
+          <article class="paper-card featured">
+            <div>
+              <span class="pill pill-amber">4 Multi-Panel 300-DPI Figures · Live HUGR &amp; Provenance</span>
+              <h3>High-Resolution Manuscript Figure Plates &amp; Trilogy Provenance</h3>
+              <p>
+                Every figure and table reproduces deterministically from SHA-256-sealed simulation receipts: five-layer <code>DCB0129Guard</code> triage (<code>0.001 ms</code>), 14-day hepatocyte phospholipid washout (<code>Day-7 AUCR = 4.437×</code> vs <code>Day-10 = 1.553×</code>), 5-ICB <code>FORK_PROTOCOL</code> turnover retention (<code>100.0%</code>), and <code>Gate G4</code> <code>HiGHS</code> MILP vs <code>1–4 TiB</code> Comb crossover.
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>Figure 1 (p.2):</strong> 5-Layer Clean-Room Stack &amp; Pre-Rollout Safety Gate</li>
+                <li><strong>Figure 2 (p.5) &amp; Figure 3 (p.6):</strong> 9-State Depot + 8q Comb &amp; 5-ICB SwarmWorld</li>
+                <li><strong>Figure 4 (p.7):</strong> <code>Gate G4</code> McCormick Gap &amp; <code>18–19q</code> Multi-Organ Comb Wall</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm" onclick="openFigLightbox(0)">🖼 Fig 1 (Zoom)</button>
+              <button type="button" class="btn-sm" onclick="openFigLightbox(1)">🖼 Fig 2 (Zoom)</button>
+              <button type="button" class="btn-sm" onclick="openFigLightbox(2)">🖼 Fig 3 (Zoom)</button>
+              <button type="button" class="btn-sm" onclick="openFigLightbox(3)">🖼 Fig 4 (Zoom)</button>
+              <a class="btn-sm btn-ghost" href="receipts/opencareq_samskrift_benchmark_receipt.json" target="_blank" rel="noopener">✓ Benchmark JSON</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Live Inline & Expandable Paper Preview Panel (Exact Quantum Krump UX) -->
+        <div id="paper-preview-panel" class="reader-panel" role="region" aria-label="Interactive Paper Preview Panel">
+          <!-- Top Document Switcher Bar -->
+          <div class="reader-doc-tabs">
+            <div class="reader-doc-pills" role="tablist" aria-label="Choose paper to read">
+              <button type="button" class="reader-doc-btn active" data-reader-doc="opencareq" id="tab-doc-opencareq">📘 OpenCareQ Samskrift Paper (10 pp.)</button>
+              <a class="reader-doc-btn" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">☁ Samskrift Cloud View ↗</a>
+              <a class="reader-doc-btn" href="https://arunnadarasa.github.io/quantum-social-prescribing/" target="_blank" rel="noopener">🌿 Social Prescribing Portal ↗</a>
+              <a class="reader-doc-btn" href="https://arunnadarasa.github.io/quantum-ltc/" target="_blank" rel="noopener">🫀 Quantum-LTC Portal ↗</a>
+              <a class="reader-doc-btn" href="https://arunnadarasa.github.io/quantumkrump/" target="_blank" rel="noopener">⚡ Quantum Krump Portal ↗</a>
+            </div>
+            <div class="reader-controls-group">
+              <button id="reader-tall-btn" type="button" class="reader-icon-btn" title="Toggle taller reading viewport">↕ Tall</button>
+              <button id="reader-fullscreen-btn" type="button" class="reader-icon-btn" title="Expand preview panel to fullscreen">⛶ Fullscreen</button>
+              <button id="reader-collapse-btn" type="button" class="reader-icon-btn" title="Collapse or show preview panel">▾ Hide</button>
             </div>
           </div>
 
-          <div id="viewerBody" class="viewer-body">
-            <aside id="viewerSidebar" class="viewer-sidebar" aria-label="Manuscript page index">
-              <div class="sidebar-hdr">Manuscript Sections (10 pp.)</div>
-              <div id="chapterList"></div>
-            </aside>
-
-            <div id="viewerStage" class="viewer-stage">
-              <!-- Populated dynamically by viewer JS -->
+          <!-- Page Navigation, Zoom & Download Toolbar -->
+          <div class="reader-toolbar">
+            <div class="reader-controls-group">
+              <button id="reader-prev-page" type="button" class="reader-icon-btn" aria-label="Previous page">◀ Prev</button>
+              <span style="color:var(--ink-muted)">
+                Page
+                <input id="reader-page-input" type="number" min="1" max="10" value="1" class="reader-page-input" aria-label="Page number" />
+                of <strong id="reader-page-count" style="color:var(--ink)">10</strong>
+              </span>
+              <button id="reader-next-page" type="button" class="reader-icon-btn" aria-label="Next page">Next ▶</button>
             </div>
+
+            <div class="reader-controls-group">
+              <button id="reader-zoom-out" type="button" class="reader-icon-btn" aria-label="Zoom out">−</button>
+              <button id="reader-zoom-fit" type="button" class="reader-icon-btn">Fit Width</button>
+              <span id="reader-zoom-label" style="min-width:42px;text-align:center;color:var(--signal)">100%</span>
+              <button id="reader-zoom-in" type="button" class="reader-icon-btn" aria-label="Zoom in">+</button>
+            </div>
+
+            <div class="reader-controls-group">
+              <a id="reader-newtab-link" class="reader-icon-btn" href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">↗ Open Tab</a>
+              <a id="reader-download-link" class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Download PDF</a>
+            </div>
+          </div>
+
+          <!-- Quick Section Jump Bookmarks -->
+          <div id="reader-bookmarks" class="reader-bookmarks" aria-label="Quick section jump bookmarks"></div>
+
+          <!-- Continuous Scroll PDF.js Canvas Stream (with native iframe fallback) -->
+          <div id="reader-viewport" class="reader-viewport">
+            <div id="reader-canvas-stream" class="reader-canvas-stream">
+              <div class="pdf-loading-msg">Loading typeset paper preview…</div>
+            </div>
+            <iframe id="reader-fallback-iframe" title="Paper PDF Fallback Reader" style="display:none;width:100%;height:100%;border:none;border-radius:6px" src="about:blank"></iframe>
           </div>
         </div>
       </div>
@@ -710,13 +970,29 @@
     <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
       <div>© 2026 Arun Nadarasa · Apache-2.0 / CC BY 4.0 · NHS DCB0129 Non-SaMD Research Portal</div>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="receipts/opencareq_v0_1_mse_receipt.json" target="_blank" rel="noopener">SHA-256 Receipt (`93b7caf2…`)</a>
+        <a href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">Samskrift Paper PDF</a>
+        <a href="receipts/opencareq_samskrift_benchmark_receipt.json" target="_blank" rel="noopener">SHA-256 Receipt (`47716b2a…`)</a>
         <a href="https://arunnadarasa.github.io/quantum-social-prescribing/" target="_blank" rel="noopener">Quantum Social Prescribing</a>
         <a href="https://arunnadarasa.github.io/quantum-ltc/" target="_blank" rel="noopener">Quantum-LTC</a>
         <a href="https://arunnadarasa.github.io/quantumkrump/" target="_blank" rel="noopener">Quantum Krump</a>
       </div>
     </div>
   </footer>
+
+  <!-- Figure Zoom Lightbox (Matching Quantum Krump) -->
+  <div id="img-lightbox" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Figure Zoom Lightbox">
+    <div class="lightbox-dialog">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+        <span id="lightbox-kicker" class="kicker" style="margin:0;">High-Resolution 300-DPI Benchmark Figure</span>
+        <div style="display:flex;gap:0.45rem;align-items:center;">
+          <button id="lightbox-jump-btn" type="button" class="btn-sm btn-primary">📖 Read Page in Paper</button>
+          <button id="lightbox-close" type="button" class="btn-sm btn-ghost">✕ Close</button>
+        </div>
+      </div>
+      <img id="lightbox-img" src="" alt="" />
+      <p id="lightbox-caption" style="margin:0;font-size:0.86rem;color:var(--ink-muted);"></p>
+    </div>
+  </div>
 
   <script>
     window.addEventListener('scroll', () => {
@@ -982,174 +1258,68 @@ def opencareq_triad_qaoa_kernel():
       document.getElementById(id).addEventListener('input', updateSim);
     });
 
-    // === Interactive Samskrift Article Preview Viewer ===
-    const PAPER_CHAPTERS = [
-      { pg: 1, title: "Title, Abstract & DCB0129 Demarcation", sub: "Clean-room provenance & §1 Introduction" },
-      { pg: 2, title: "Fig 1 · Five-Layer OpenCareQ Stack", sub: "Pre-rollout gate & §2.1 QChoice / QComb" },
-      { pg: 3, title: "§2.2 UKCore FHIR R4 & Listing 1", sub: "Zero-PID guard, ACI & §3.1 9-State RK4" },
-      { pg: 4, title: "Table 1 · Triage, Comb & §3.2 HQMM", sub: "+46.71 pp gap, ||[U_W,U_G]||_F = 2.6925" },
-      { pg: 5, title: "Fig 2 · World Model & Table 2 (5 ICBs)", sub: "14d washout, 135 PCNs / 6.78M pop." },
-      { pg: 6, title: "Fig 3 · SwarmWorld & §5 Gate G4", sub: "FORK 100% retention & McCormick MILP" },
-      { pg: 7, title: "Table 3, Fig 4 · Memory Wall & §6", sub: "5,579-B Guppy HUGR & 1–4 TiB crossover" },
-      { pg: 8, title: "Table 4 · Statutory DCB0129 Hazards", sub: "H-OCQ-01..06 OPEN & References [1–13]" },
-      { pg: 9, title: "Live-Verified References [14–28]", sub: "Guppy 1.0, NHS DCB0129/0160, Lancet" },
-      { pg: 10, title: "Live-Verified References [29–38]", sub: "ChEMBL_37, QUOPS, NIST FIPS 204" }
-    ];
+    // === Quantum Krump Style Continuous-Scroll PDF.js Canvas Stream & Figure Lightbox ===
+    const PAPER_DOCS = {
+      opencareq: {
+        file: "OpenCareQ_Paper.pdf",
+        filename: "OpenCareQ_Paper.pdf",
+        bookmarks: [
+          { label: "p.1 Title & Abstract", page: 1 },
+          { label: "p.2 5-Layer Stack & Fig 1", page: 2 },
+          { label: "p.3 Clean-Room DSL & Listing 1", page: 3 },
+          { label: "p.4 Table 1, Comb & HQMM", page: 4 },
+          { label: "p.5 Fig 2 & 5-ICB Table 2", page: 5 },
+          { label: "p.6 SwarmWorld Fig 3 & Gate G4", page: 6 },
+          { label: "p.7 Table 3, Fig 4 & §6", page: 7 },
+          { label: "p.8 DCB0129 Hazards & Refs", page: 8 },
+          { label: "Refs & End", page: -1 }
+        ]
+      }
+    };
 
     const PAPER_FIGURES = [
       {
-        num: "Figure 1",
+        num: "Figure 1 (Page 2)",
         pg: 2,
         src: "paper/figures/figure1_opencareq_architecture_and_dsl.png",
-        title: "Clean-Room Five-Layer OpenCareQ Architecture & Pre-Rollout Safety Gate",
-        desc: "Tier-0 hypoxia (SpO₂ = 89%) and Tier-1 7-herb tea + SNOMED 315594003 intercepted in 0.001 ms (0L); Day-7 naive restart rejected (AUCR = 4.437×); transport-bridged Day-10 hold achieves 0.9306 safe utility."
+        caption: "Figure 1 (p.2) — Clean-Room Five-Layer OpenCareQ Architecture & Pre-Rollout Safety Gate (Tier-0 hypoxia & Tier-1 7-herb tea intercepted in 0.001 ms at 0L; Day-7 naive restart rejected at AUCR = 4.437×; transport-bridged Day-10 hold achieves 0.9306 safe utility)."
       },
       {
-        num: "Figure 2",
+        num: "Figure 2 (Page 5)",
         pg: 5,
         src: "paper/figures/figure2_pbpk_depot_comb_and_hqmm.png",
-        title: "Multi-Scale Causal World Model (9-State RK4 + 8q Comb + 3q HQMM)",
-        desc: "14-day hepatocyte phospholipid depot washout (Day-7 AUCR = 4.437× despite 0.069 ng/mL plasma vs Day-10 1.553×), +46.71 pp Non-Markovian Comb gap (I(S:B) = 2.1408 bits), and non-commuting HQMM staging."
+        caption: "Figure 2 (p.5) — Multi-Scale Causal World Model: 14-day 9-state RK4 hepatocyte phospholipid depot washout (Day-7 AUCR = 4.437× despite 0.069 ng/mL plasma vs Day-10 = 1.553×), 8-qubit Non-Markovian Comb (+46.71 pp gap, I(S:B) = 2.1408 bits), and 3q HQMM."
       },
       {
-        num: "Figure 3",
+        num: "Figure 3 (Page 6)",
         pg: 6,
         src: "paper/figures/figure3_nhs_5icb_swarmworld_benchmark.png",
-        title: "Agent-Free Stigmergic PCNSwarmWorld Across Five NHS England ICBs",
-        desc: "135 PCNs / 716 GP practices / 6.78M population (runtime_agent_actions = 0): 84.01%–90.22% zero-shot transfer from MSE, 100.0% retention under 50% turnover (+9.80 to +35.55 pp lift), and 0 DCB0129 trips."
+        caption: "Figure 3 (p.6) — Agent-Free Stigmergic PCNSwarmWorld Across Five NHS England ICBs (135 PCNs, 716 GP practices, 6.78M population; runtime_agent_actions = 0; 84.01%–90.22% zero-shot transfer; 100.0% retention under 50% turnover; 0 DCB0129 trips)."
       },
       {
-        num: "Figure 4",
+        num: "Figure 4 (Page 7)",
         pg: 7,
         src: "paper/figures/figure4_gate_g4_crossover_and_hugr_compilation.png",
-        title: "Gate G4 Complexity Separation & Multi-Organ Quantum Comb Memory Wall",
-        desc: "Exact SciPy HiGHS MILP floor (7.85–117.75 ms across N ≤ 16, zero fake NISQ speedup claimed), live 5,579-byte Quantinuum Guppy 1.0 → HUGR binary, and 1.0–4.0 TiB dense Liouvillian wall at 18–19 qubits (42L)."
+        caption: "Figure 4 (p.7) — Gate G4 Complexity Separation (SciPy HiGHS MILP 7.85–117.75 ms across N ≤ 16; 0 fake NISQ speedup claimed), live 5,579-byte Quantinuum Guppy 1.0 → HUGR binary, and 1.0–4.0 TiB multi-organ Comb memory wall at 18–19q (42L)."
       }
     ];
 
-    const SAMSKRIFT_CLOUD_URL = "https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72";
-    const ZOOM_LEVELS = [100, 125, 150];
-    let viewerMode = 'spread';
-    let curPage = 1;
-    let dualSpread = false;
-    let zoomIdx = 0;
+    let goToPaperPageGlobal = null;
+    let activeLightboxPage = 2;
 
-    function renderChapterSidebar() {
-      const list = document.getElementById('chapterList');
-      list.innerHTML = PAPER_CHAPTERS.map(ch => {
-        const isAct = viewerMode !== 'figures' && (ch.pg === curPage || (dualSpread && ch.pg === curPage + 1));
-        return `<button class="chapter-btn ${isAct ? 'active' : ''}" onclick="jumpToPage(${ch.pg})">
-          <span class="chapter-pg">p.${ch.pg}</span>
-          <span>
-            <span class="chapter-title">${ch.title}</span>
-            <span class="chapter-sub">${ch.sub}</span>
-          </span>
-        </button>`;
-      }).join('');
+    function openFigLightbox(idx) {
+      const f = PAPER_FIGURES[idx] || PAPER_FIGURES[0];
+      const modal = document.getElementById('img-lightbox');
+      document.getElementById('lightbox-kicker').textContent = `300-DPI Benchmark Plate · ${f.num}`;
+      const img = document.getElementById('lightbox-img');
+      img.src = f.src;
+      img.alt = f.caption;
+      document.getElementById('lightbox-caption').textContent = f.caption;
+      activeLightboxPage = f.pg;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
 
-    function renderViewer() {
-      const stage = document.getElementById('viewerStage');
-      const spreadCtrls = document.getElementById('spreadControls');
-      const sidebar = document.getElementById('viewerSidebar');
-      const body = document.getElementById('viewerBody');
-
-      ['Spread', 'Figures', 'Pdf', 'Cloud'].forEach(m => {
-        document.getElementById('mode' + m).classList.toggle('active', viewerMode === m.toLowerCase());
-      });
-
-      const showSidebar = (viewerMode === 'spread' || viewerMode === 'pdf');
-      sidebar.style.display = showSidebar ? '' : 'none';
-      body.style.gridTemplateColumns = showSidebar ? '' : '1fr';
-      spreadCtrls.style.display = (viewerMode === 'spread') ? 'flex' : 'none';
-
-      renderChapterSidebar();
-
-      if (viewerMode === 'spread') {
-        const zoomPct = ZOOM_LEVELS[zoomIdx];
-        const baseW = dualSpread ? 465 : 740;
-        const sheetW = Math.round((baseW * zoomPct) / 100);
-        const pages = [curPage];
-        if (dualSpread && curPage + 1 <= 10) pages.push(curPage + 1);
-
-        document.getElementById('pageIndicator').textContent =
-          pages.length === 2 ? `Pages ${pages[0]}–${pages[1]} of 10` : `Page ${curPage} of 10`;
-        document.getElementById('btnPrevPg').disabled = curPage <= 1;
-        document.getElementById('btnNextPg').disabled = (dualSpread ? curPage + 1 : curPage) >= 10;
-        document.getElementById('btnDualSpread').classList.toggle('active', dualSpread);
-        document.getElementById('btnZoomCycle').textContent = `Zoom: ${zoomPct}%`;
-
-        stage.innerHTML = `<div class="page-spread">
-          ${pages.map(p => `
-            <div class="page-sheet" style="width:${sheetW}px;">
-              <img src="paper/page_${p}.webp" width="1737" height="2456" alt="OpenCareQ Samskrift Article — Page ${p} of 10" loading="eager" />
-            </div>
-          `).join('')}
-        </div>`;
-        // Preload next page quietly
-        if (curPage < 10) { const pre = new Image(); pre.src = `paper/page_${curPage + 1}.webp`; }
-      } else if (viewerMode === 'figures') {
-        stage.innerHTML = `<div class="fig-grid">
-          ${PAPER_FIGURES.map(f => `
-            <div class="fig-card">
-              <a class="fig-card-img" href="${f.src}" target="_blank" rel="noopener" title="Open full 300-DPI PNG in new tab">
-                <img src="${f.src}" alt="${f.num}: ${f.title}" loading="lazy" />
-              </a>
-              <div class="fig-card-body">
-                <strong>${f.num} (Page ${f.pg}) · ${f.title}</strong>
-                <p style="margin:0 0 0.65rem;">${f.desc}</p>
-                <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-                  <button class="btn-sm active" onclick="jumpToPage(${f.pg})">Read in Context (p.${f.pg}) →</button>
-                  <a class="btn-sm" href="${f.src}" target="_blank" rel="noopener">Full 300-DPI PNG ↗</a>
-                </div>
-              </div>
-            </div>
-          `).join('')}
-        </div>`;
-      } else if (viewerMode === 'pdf') {
-        stage.innerHTML = `
-          <object class="embed-frame" data="OpenCareQ_Paper.pdf#page=${curPage}&view=FitH" type="application/pdf">
-            <iframe class="embed-frame" src="OpenCareQ_Paper.pdf#page=${curPage}&view=FitH" title="OpenCareQ Paper PDF"></iframe>
-          </object>`;
-      } else if (viewerMode === 'cloud') {
-        stage.innerHTML = `
-          <iframe class="embed-frame" src="${SAMSKRIFT_CLOUD_URL}" title="OpenCareQ Live Samskrift Cloud Manuscript" loading="lazy" referrerpolicy="no-referrer"></iframe>`;
-      }
-    }
-
-    function setViewerMode(mode) {
-      viewerMode = mode;
-      renderViewer();
-    }
-    function jumpToPage(pg) {
-      curPage = Math.max(1, Math.min(10, pg));
-      if (viewerMode !== 'spread' && viewerMode !== 'pdf') viewerMode = 'spread';
-      renderViewer();
-      document.getElementById('viewerStage').scrollTop = 0;
-    }
-    function stepPage(delta) {
-      const step = dualSpread ? delta * 2 : delta;
-      curPage = Math.max(1, Math.min(10, curPage + step));
-      renderViewer();
-      document.getElementById('viewerStage').scrollTop = 0;
-    }
-    function toggleDualSpread() {
-      dualSpread = !dualSpread;
-      if (dualSpread && curPage === 10) curPage = 9;
-      renderViewer();
-    }
-    function cycleZoom() {
-      zoomIdx = (zoomIdx + 1) % ZOOM_LEVELS.length;
-      renderViewer();
-    }
-    function toggleViewerFullscreen() {
-      const shell = document.getElementById('viewerShell');
-      if (!document.fullscreenElement) {
-        if (shell.requestFullscreen) shell.requestFullscreen();
-      } else if (document.exitFullscreen) {
-        document.exitFullscreen();
-      }
-    }
     function copyBibtex() {
       const txt = document.getElementById('bibtexBlock').textContent;
       navigator.clipboard.writeText(txt).then(() => {
@@ -1159,17 +1329,416 @@ def opencareq_triad_qaoa_kernel():
       });
     }
 
-    document.addEventListener('keydown', e => {
-      if (viewerMode !== 'spread') return;
-      if (['INPUT', 'SELECT', 'TEXTAREA'].includes((e.target && e.target.tagName) || '')) return;
-      const rect = document.getElementById('viewerShell').getBoundingClientRect();
-      const inView = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
-      if (!inView && !document.fullscreenElement) return;
-      if (e.key === 'ArrowRight') { stepPage(1); }
-      else if (e.key === 'ArrowLeft') { stepPage(-1); }
-    });
+    function initPreprintAndModals() {
+      const PDFJS_CDN = "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174";
+      if (window.pdfjsLib) {
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc = "assets/vendor/pdf.worker.min.js";
+      }
 
-    renderViewer();
+      const panelEl = document.getElementById("paper-preview-panel");
+      const docTabBtns = document.querySelectorAll("[data-reader-doc]");
+      const tallBtn = document.getElementById("reader-tall-btn");
+      const fsBtn = document.getElementById("reader-fullscreen-btn");
+      const collapseBtn = document.getElementById("reader-collapse-btn");
+
+      const prevPageBtn = document.getElementById("reader-prev-page");
+      const nextPageBtn = document.getElementById("reader-next-page");
+      const pageInput = document.getElementById("reader-page-input");
+      const pageCountEl = document.getElementById("reader-page-count");
+      const zoomOutBtn = document.getElementById("reader-zoom-out");
+      const zoomFitBtn = document.getElementById("reader-zoom-fit");
+      const zoomInBtn = document.getElementById("reader-zoom-in");
+      const zoomLabel = document.getElementById("reader-zoom-label");
+      const newTabLink = document.getElementById("reader-newtab-link");
+      const dlLink = document.getElementById("reader-download-link");
+      const bookmarksEl = document.getElementById("reader-bookmarks");
+      const viewportEl = document.getElementById("reader-viewport");
+      const streamEl = document.getElementById("reader-canvas-stream");
+      const fallbackIframe = document.getElementById("reader-fallback-iframe");
+
+      const imgModal = document.getElementById("img-lightbox");
+      const imgClose = document.getElementById("lightbox-close");
+      const imgJump = document.getElementById("lightbox-jump-btn");
+
+      let activeDoc = "opencareq";
+      let zoomFactor = 1.0;
+      let currentPdfDoc = null;
+      let currentNumPages = 10;
+      let currentPage = 1;
+      let activeBookmarks = [];
+      let pageObserver = null;
+      let loadSeq = 0;
+      const pdfCache = new Map();
+
+      function closeLightbox() {
+        if (!imgModal || !imgModal.classList.contains("open")) return;
+        imgModal.classList.remove("open");
+        if (!panelEl?.classList.contains("fullscreen")) {
+          document.body.style.overflow = "";
+        }
+      }
+      imgClose?.addEventListener("click", closeLightbox);
+      imgModal?.addEventListener("click", e => {
+        if (e.target === imgModal) closeLightbox();
+      });
+      imgJump?.addEventListener("click", () => {
+        closeLightbox();
+        ensurePanelVisible();
+        goToPage(activeLightboxPage, true);
+        panelEl?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      function getDocSpec() {
+        return PAPER_DOCS[activeDoc] || PAPER_DOCS.opencareq;
+      }
+
+      function ensurePanelVisible() {
+        if (!panelEl) return;
+        if (panelEl.classList.contains("collapsed")) {
+          panelEl.classList.remove("collapsed");
+          if (collapseBtn) collapseBtn.textContent = "▾ Hide";
+        }
+      }
+
+      function updateBookmarkHighlight(page) {
+        if (!bookmarksEl || !activeBookmarks.length) return;
+        let activeIdx = 0;
+        for (let i = 0; i < activeBookmarks.length; i++) {
+          if (activeBookmarks[i].resolvedPage <= page) activeIdx = i;
+        }
+        bookmarksEl.querySelectorAll(".bookmark-chip").forEach((chip, idx) => {
+          chip.classList.toggle("active", idx === activeIdx);
+        });
+      }
+
+      function renderBookmarkChips(rawBookmarks, numPages) {
+        if (!bookmarksEl) return;
+        bookmarksEl.innerHTML = "";
+        activeBookmarks = (rawBookmarks || []).map(bm => ({
+          label: bm.label,
+          resolvedPage: bm.page === -1 ? numPages : Math.max(1, Math.min(numPages, bm.page))
+        }));
+        const labelSpan = document.createElement("span");
+        labelSpan.style.cssText = "font-family:var(--font-mono);font-size:0.68rem;color:var(--ink-dim);margin-right:0.25rem";
+        labelSpan.textContent = "Sections:";
+        bookmarksEl.appendChild(labelSpan);
+
+        activeBookmarks.forEach(bm => {
+          const chip = document.createElement("button");
+          chip.type = "button";
+          chip.className = "bookmark-chip";
+          chip.textContent = bm.label;
+          chip.addEventListener("click", () => goToPage(bm.resolvedPage, true));
+          bookmarksEl.appendChild(chip);
+        });
+        updateBookmarkHighlight(currentPage);
+      }
+
+      function goToPage(targetPage, smooth = true) {
+        if (!viewportEl) return;
+        const clamped = Math.max(1, Math.min(currentNumPages, targetPage));
+        currentPage = clamped;
+        if (pageInput) pageInput.value = String(clamped);
+        updateBookmarkHighlight(clamped);
+
+        const slot = streamEl?.querySelector(`.pdf-page-slot[data-page-num="${clamped}"]`);
+        if (slot) {
+          viewportEl.scrollTo({
+            top: Math.max(0, slot.offsetTop - 14),
+            behavior: smooth ? "smooth" : "auto"
+          });
+        } else if (fallbackIframe && fallbackIframe.style.display !== "none") {
+          const spec = getDocSpec();
+          fallbackIframe.src = `${spec.file}#page=${clamped}&view=FitH`;
+        }
+      }
+      goToPaperPageGlobal = goToPage;
+
+      async function renderSinglePageSlot(pdfDoc, pageNum, slot, scale, seq) {
+        if (!slot || slot.dataset.rendered === "1" || seq !== loadSeq) return;
+        slot.dataset.rendered = "1";
+        try {
+          const page = await pdfDoc.getPage(pageNum);
+          if (seq !== loadSeq) return;
+          const dpr = Math.min(2, window.devicePixelRatio || 1);
+          const cssVp = page.getViewport({ scale });
+          const hiVp = page.getViewport({ scale: scale * dpr });
+
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.floor(hiVp.width);
+          canvas.height = Math.floor(hiVp.height);
+          canvas.style.width = `${Math.floor(cssVp.width)}px`;
+          canvas.style.height = `${Math.floor(cssVp.height)}px`;
+
+          slot.style.width = `${Math.floor(cssVp.width)}px`;
+          slot.style.height = `${Math.floor(cssVp.height)}px`;
+
+          const badge = slot.querySelector(".pdf-page-badge");
+          slot.innerHTML = "";
+          slot.appendChild(canvas);
+          if (badge) slot.appendChild(badge);
+
+          const ctx = canvas.getContext("2d", { alpha: false });
+          await page.render({ canvasContext: ctx, viewport: hiVp }).promise;
+        } catch {
+          slot.dataset.rendered = "";
+        }
+      }
+
+      async function buildPdfSlots(pdfDoc, preservePage, seq) {
+        if (!streamEl || !viewportEl || seq !== loadSeq) return;
+        if (pageObserver) {
+          pageObserver.disconnect();
+          pageObserver = null;
+        }
+
+        const page1 = await pdfDoc.getPage(1);
+        if (seq !== loadSeq) return;
+        const baseVp = page1.getViewport({ scale: 1 });
+        const availW = Math.max(280, (viewportEl.clientWidth || panelEl?.clientWidth || 860) - 36);
+        const fitScale = Math.max(0.42, Math.min(1.38, availW / baseVp.width));
+        const scale = fitScale * zoomFactor;
+
+        const slotW = Math.floor(baseVp.width * scale);
+        const slotH = Math.floor(baseVp.height * scale);
+
+        if (zoomLabel) zoomLabel.textContent = `${Math.round(zoomFactor * 100)}%`;
+
+        streamEl.innerHTML = "";
+        streamEl.style.display = "flex";
+        if (fallbackIframe) fallbackIframe.style.display = "none";
+
+        const frag = document.createDocumentFragment();
+        const slots = [];
+        for (let p = 1; p <= pdfDoc.numPages; p++) {
+          const slot = document.createElement("div");
+          slot.className = "pdf-page-slot";
+          slot.dataset.pageNum = String(p);
+          slot.style.width = `${slotW}px`;
+          slot.style.height = `${slotH}px`;
+
+          const placeholder = document.createElement("span");
+          placeholder.style.cssText = "font-family:var(--font-mono);font-size:0.75rem;color:#688082";
+          placeholder.textContent = `Rendering page ${p}…`;
+          slot.appendChild(placeholder);
+
+          const badge = document.createElement("span");
+          badge.className = "pdf-page-badge";
+          badge.textContent = `${p} / ${pdfDoc.numPages}`;
+          slot.appendChild(badge);
+
+          frag.appendChild(slot);
+          slots.push(slot);
+        }
+        streamEl.appendChild(frag);
+
+        pageObserver = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              if (!entry.isIntersecting) return;
+              const pNum = parseInt(entry.target.dataset.pageNum, 10);
+              renderSinglePageSlot(pdfDoc, pNum, entry.target, scale, seq);
+            });
+          },
+          { root: viewportEl, rootMargin: "900px 0px" }
+        );
+        slots.forEach(s => pageObserver.observe(s));
+
+        const startP = Math.max(1, Math.min(pdfDoc.numPages, preservePage || 1));
+        goToPage(startP, false);
+        renderSinglePageSlot(pdfDoc, startP, slots[startP - 1], scale, seq);
+        if (startP < pdfDoc.numPages) {
+          renderSinglePageSlot(pdfDoc, startP + 1, slots[startP], scale, seq);
+        }
+      }
+
+      async function loadCurrentDoc(startPage = 1) {
+        if (!panelEl || !streamEl) return;
+        const seq = ++loadSeq;
+        const spec = getDocSpec();
+
+        docTabBtns.forEach(b => {
+          b.classList.toggle("active", b.dataset.readerDoc === activeDoc);
+        });
+        if (newTabLink) newTabLink.href = spec.file;
+        if (dlLink) {
+          dlLink.href = spec.file;
+          dlLink.setAttribute("download", spec.filename);
+        }
+
+        if (!window.pdfjsLib) {
+          streamEl.style.display = "none";
+          if (fallbackIframe) {
+            fallbackIframe.style.display = "block";
+            fallbackIframe.src = `${spec.file}#page=${startPage}&view=FitH`;
+          }
+          renderBookmarkChips(spec.bookmarks, currentNumPages);
+          return;
+        }
+
+        streamEl.innerHTML = `<div class="pdf-loading-msg">Loading typeset PDF (${spec.filename})…</div>`;
+
+        try {
+          let pdfDoc = pdfCache.get(spec.file);
+          if (!pdfDoc) {
+            const task = window.pdfjsLib.getDocument({
+              url: spec.file,
+              cMapUrl: `${PDFJS_CDN}/cmaps/`,
+              cMapPacked: true,
+              standardFontDataUrl: `${PDFJS_CDN}/standard_fonts/`
+            });
+            pdfDoc = await task.promise;
+            pdfCache.set(spec.file, pdfDoc);
+          }
+          if (seq !== loadSeq) return;
+
+          currentPdfDoc = pdfDoc;
+          currentNumPages = pdfDoc.numPages;
+          currentPage = Math.max(1, Math.min(currentNumPages, startPage));
+
+          if (pageCountEl) pageCountEl.textContent = String(currentNumPages);
+          if (pageInput) {
+            pageInput.max = String(currentNumPages);
+            pageInput.value = String(currentPage);
+          }
+
+          renderBookmarkChips(spec.bookmarks, currentNumPages);
+          await buildPdfSlots(pdfDoc, currentPage, seq);
+        } catch {
+          if (seq !== loadSeq) return;
+          streamEl.style.display = "none";
+          if (fallbackIframe) {
+            fallbackIframe.style.display = "block";
+            fallbackIframe.src = `${spec.file}#view=FitH`;
+          }
+        }
+      }
+
+      let scrollTick = false;
+      viewportEl?.addEventListener(
+        "scroll",
+        () => {
+          if (scrollTick) return;
+          scrollTick = true;
+          requestAnimationFrame(() => {
+            scrollTick = false;
+            if (!streamEl || streamEl.style.display === "none") return;
+            const probeY = viewportEl.scrollTop + viewportEl.clientHeight * 0.3;
+            const slots = streamEl.querySelectorAll(".pdf-page-slot");
+            let bestPage = currentPage;
+            for (const slot of slots) {
+              if (slot.offsetTop <= probeY) {
+                bestPage = parseInt(slot.dataset.pageNum, 10) || 1;
+              } else {
+                break;
+              }
+            }
+            if (bestPage !== currentPage) {
+              currentPage = bestPage;
+              if (pageInput && document.activeElement !== pageInput) {
+                pageInput.value = String(bestPage);
+              }
+              updateBookmarkHighlight(bestPage);
+            }
+          });
+        },
+        { passive: true }
+      );
+
+      prevPageBtn?.addEventListener("click", () => goToPage(currentPage - 1, true));
+      nextPageBtn?.addEventListener("click", () => goToPage(currentPage + 1, true));
+      pageInput?.addEventListener("change", () => {
+        goToPage(parseInt(pageInput.value, 10) || 1, true);
+      });
+      pageInput?.addEventListener("keydown", e => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          goToPage(parseInt(pageInput.value, 10) || 1, true);
+          pageInput.blur();
+        }
+      });
+
+      zoomInBtn?.addEventListener("click", () => {
+        zoomFactor = Math.min(2.2, +(zoomFactor + 0.2).toFixed(2));
+        if (currentPdfDoc) buildPdfSlots(currentPdfDoc, currentPage, ++loadSeq);
+      });
+      zoomOutBtn?.addEventListener("click", () => {
+        zoomFactor = Math.max(0.6, +(zoomFactor - 0.2).toFixed(2));
+        if (currentPdfDoc) buildPdfSlots(currentPdfDoc, currentPage, ++loadSeq);
+      });
+      zoomFitBtn?.addEventListener("click", () => {
+        zoomFactor = 1.0;
+        if (currentPdfDoc) buildPdfSlots(currentPdfDoc, currentPage, ++loadSeq);
+      });
+
+      tallBtn?.addEventListener("click", () => {
+        if (!panelEl) return;
+        ensurePanelVisible();
+        const isTall = panelEl.classList.toggle("tall");
+        tallBtn.textContent = isTall ? "↕ Standard" : "↕ Tall";
+      });
+
+      function setFullscreen(enable) {
+        if (!panelEl) return;
+        ensurePanelVisible();
+        panelEl.classList.toggle("fullscreen", enable);
+        if (fsBtn) fsBtn.textContent = enable ? "✕ Exit Fullscreen" : "⛶ Fullscreen";
+        document.body.style.overflow = enable ? "hidden" : "";
+        if (currentPdfDoc) {
+          requestAnimationFrame(() => buildPdfSlots(currentPdfDoc, currentPage, ++loadSeq));
+        }
+      }
+
+      fsBtn?.addEventListener("click", () => {
+        setFullscreen(!panelEl?.classList.contains("fullscreen"));
+      });
+
+      collapseBtn?.addEventListener("click", () => {
+        if (!panelEl) return;
+        if (panelEl.classList.contains("fullscreen")) setFullscreen(false);
+        const collapsed = panelEl.classList.toggle("collapsed");
+        collapseBtn.textContent = collapsed ? "▸ Show Preview" : "▾ Hide";
+      });
+
+      window.addEventListener("keydown", e => {
+        if (e.key === "Escape") {
+          if (panelEl?.classList.contains("fullscreen")) setFullscreen(false);
+          closeLightbox();
+        }
+      });
+
+      docTabBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          ensurePanelVisible();
+          activeDoc = btn.dataset.readerDoc || "opencareq";
+          loadCurrentDoc(1);
+        });
+      });
+
+      document.querySelectorAll("[data-open-doc]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          ensurePanelVisible();
+          const docKey = btn.dataset.openDoc || "opencareq";
+          const targetP = parseInt(btn.dataset.openPage || "1", 10) || 1;
+          if (docKey !== activeDoc || !currentPdfDoc) {
+            activeDoc = docKey;
+            loadCurrentDoc(targetP);
+          } else {
+            goToPage(targetP, true);
+          }
+          panelEl?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      loadCurrentDoc(1);
+    }
+
+    if (document.readyState === "loading") {
+      window.addEventListener("DOMContentLoaded", initPreprintAndModals);
+    } else {
+      window.addEventListener("load", initPreprintAndModals);
+    }
+
     renderStudio();
     drawAucrChart();
     updateSim();
