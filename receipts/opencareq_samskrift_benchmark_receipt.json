@@ -1,11 +1,11 @@
 {
-  "framework": "OpenCareQ v0.1.0",
+  "framework": "OpenCareQ v0.3.0",
   "vignette_gate_audit": {
     "emergency_hypoxia": {
       "routing_mode": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
       "safety_action": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
       "logical_qubits": 0,
-      "runtime_ms": 0.0
+      "runtime_ms": 0.001
     },
     "herbal_uncharacterized": {
       "routing_mode": "ABSTAIN_TIER_1_PHARMACIST_SMR",
@@ -112,12 +112,12 @@
       },
       "gate_g4_justification": {
         "dispatched_solver": "CLASSICAL_EXACT_CPTP_AND_RK4_FLOOR",
-        "classical_runtime_ms": 224.936,
+        "classical_runtime_ms": 198.872,
         "pilot_comb_qubits": 8,
         "dense_liouvillian_mib": 1.0,
         "crossover_19q_tib": 4.0,
         "logical_qubits_at_pilot": 0,
-        "reason": "8-qubit pilot Comb (1.0 MiB) solved exactly on CPU in 224.94 ms (`0L` required today); portable Guppy 1.0 -> HUGR & CUDA-Q kernels emitted for the 19-qubit (4.0 TiB) multi-organ bath crossover (`42L`)."
+        "reason": "8-qubit pilot Comb (1.0 MiB) solved exactly on CPU in 198.87 ms (`0L` required today); portable Guppy 1.0 -> HUGR & CUDA-Q kernels emitted for the 19-qubit (4.0 TiB) multi-organ bath crossover (`42L`)."
       }
     }
   },
@@ -315,58 +315,59 @@
   },
   "nhs_5icb_swarmworld": {
     "total_icbs": 5,
-    "total_pcns": 135,
-    "total_practices": 716,
-    "total_registered_pop": 6782246,
+    "total_pcns": 144,
+    "total_practices": 698,
+    "total_registered_pop": 6888440,
     "icb_results": [
       {
         "icb_key": "NHS-MSE-28PCN",
-        "ods_code": "E54000054",
+        "ods_code": "E54000026",
         "title": "NHS Mid and South Essex ICB",
-        "n_pcns": 28,
-        "n_practices": 143,
-        "total_pop": 1272246,
-        "fork_shock_resilience": 0.8205,
-        "zero_shot_from_mse_resilience": 0.8205,
-        "fork_turnover_retention": 1.0,
-        "solo_turnover_retention": 0.7505,
-        "validated_inventions": 65,
+        "data_source": "EMPIRICAL_UK_OGL_V3_FINGERTIPS_ORD_NHSBSA",
+        "n_pcns": 25,
+        "n_practices": 136,
+        "total_pop": 1218139,
+        "fork_shock_resilience": 0.7585,
+        "zero_shot_from_mse_resilience": 0.7585,
+        "fork_turnover_retention": 0.7812,
+        "solo_turnover_retention": 0.7118,
+        "validated_inventions": 38,
         "unique_lineages": 13,
-        "portfolio_coverage": 0.7049,
+        "portfolio_coverage": 0.6674,
         "shielded_lockout_trips": 0,
         "memoryless_unshielded_lockout_trips": 0,
         "shock_breakdown": [
           {
             "shock_id": "S1_WINTER_COPD_CLARITHROMYCIN",
-            "resilience": 0.8308
+            "resilience": 0.7673
           },
           {
             "shock_id": "S2_PAXLOVID_DEPOT_WAVE",
-            "resilience": 0.7722
+            "resilience": 0.7185
           },
           {
             "shock_id": "S3_HEATWAVE_CARDIORENAL_AKI",
-            "resilience": 0.7933
+            "resilience": 0.7363
           },
           {
             "shock_id": "S4_CORE20_FUEL_DEBT_SURGE",
-            "resilience": 0.8847
+            "resilience": 0.8102
           },
           {
             "shock_id": "S5_48H_HOME_FIRST_DISCHARGE",
-            "resilience": 0.8201
+            "resilience": 0.7586
           },
           {
             "shock_id": "S6_ARRS_PHARMACIST_SICKNESS",
-            "resilience": 0.8051
+            "resilience": 0.7463
           },
           {
             "shock_id": "S7_RURAL_MINIBUS_OUTAGE",
-            "resilience": 0.7973
+            "resilience": 0.7397
           },
           {
             "shock_id": "S8_MULTI_BOROUGH_SYNDEMIC",
-            "resilience": 0.8606
+            "resilience": 0.7915
           }
         ]
       },
@@ -374,50 +375,51 @@
         "icb_key": "NHS-NCL-20PCN",
         "ods_code": "E54000028",
         "title": "NHS North Central London ICB (LTC LCS)",
-        "n_pcns": 20,
-        "n_practices": 182,
-        "total_pop": 1650000,
-        "fork_shock_resilience": 0.7663,
-        "zero_shot_from_mse_resilience": 0.882,
-        "fork_turnover_retention": 1.0,
-        "solo_turnover_retention": 0.902,
-        "validated_inventions": 60,
-        "unique_lineages": 10,
-        "portfolio_coverage": 0.647,
+        "data_source": "EMPIRICAL_UK_OGL_V3_FINGERTIPS_ORD_NHSBSA",
+        "n_pcns": 32,
+        "n_practices": 171,
+        "total_pop": 1810301,
+        "fork_shock_resilience": 0.4296,
+        "zero_shot_from_mse_resilience": 0.8168,
+        "fork_turnover_retention": 0.9133,
+        "solo_turnover_retention": 0.8853,
+        "validated_inventions": 51,
+        "unique_lineages": 12,
+        "portfolio_coverage": 0.3917,
         "shielded_lockout_trips": 0,
         "memoryless_unshielded_lockout_trips": 0,
         "shock_breakdown": [
           {
             "shock_id": "S1_WINTER_COPD_CLARITHROMYCIN",
-            "resilience": 0.7745
+            "resilience": 0.4339
           },
           {
             "shock_id": "S2_PAXLOVID_DEPOT_WAVE",
-            "resilience": 0.7281
+            "resilience": 0.4104
           },
           {
             "shock_id": "S3_HEATWAVE_CARDIORENAL_AKI",
-            "resilience": 0.7446
+            "resilience": 0.4187
           },
           {
             "shock_id": "S4_CORE20_FUEL_DEBT_SURGE",
-            "resilience": 0.817
+            "resilience": 0.4549
           },
           {
             "shock_id": "S5_48H_HOME_FIRST_DISCHARGE",
-            "resilience": 0.766
+            "resilience": 0.4295
           },
           {
             "shock_id": "S6_ARRS_PHARMACIST_SICKNESS",
-            "resilience": 0.754
+            "resilience": 0.4235
           },
           {
             "shock_id": "S7_RURAL_MINIBUS_OUTAGE",
-            "resilience": 0.7478
+            "resilience": 0.4203
           },
           {
             "shock_id": "S8_MULTI_BOROUGH_SYNDEMIC",
-            "resilience": 0.7985
+            "resilience": 0.4458
           }
         ]
       },
@@ -425,11 +427,12 @@
         "icb_key": "NHS-BSOL-36PCN",
         "ods_code": "E54000055",
         "title": "NHS Birmingham and Solihull ICB",
+        "data_source": "PARAMETRIC_SYNTHETIC_FALLBACK",
         "n_pcns": 36,
         "n_practices": 174,
         "total_pop": 1510000,
         "fork_shock_resilience": 0.8559,
-        "zero_shot_from_mse_resilience": 0.9022,
+        "zero_shot_from_mse_resilience": 0.8534,
         "fork_turnover_retention": 1.0,
         "solo_turnover_retention": 0.7861,
         "validated_inventions": 67,
@@ -476,11 +479,12 @@
         "icb_key": "NHS-DEVON-31PCN",
         "ods_code": "E54000037",
         "title": "NHS Devon ICB",
+        "data_source": "PARAMETRIC_SYNTHETIC_FALLBACK",
         "n_pcns": 31,
         "n_practices": 115,
         "total_pop": 1260000,
         "fork_shock_resilience": 0.8799,
-        "zero_shot_from_mse_resilience": 0.8401,
+        "zero_shot_from_mse_resilience": 0.7729,
         "fork_turnover_retention": 1.0,
         "solo_turnover_retention": 0.6445,
         "validated_inventions": 55,
@@ -527,11 +531,12 @@
         "icb_key": "NHS-NORFOLK-20PCN",
         "ods_code": "E54000022",
         "title": "NHS Norfolk and Waveney ICB",
+        "data_source": "PARAMETRIC_SYNTHETIC_FALLBACK",
         "n_pcns": 20,
         "n_practices": 102,
         "total_pop": 1090000,
         "fork_shock_resilience": 0.9156,
-        "zero_shot_from_mse_resilience": 0.8893,
+        "zero_shot_from_mse_resilience": 0.8526,
         "fork_turnover_retention": 1.0,
         "solo_turnover_retention": 0.6453,
         "validated_inventions": 37,
@@ -580,66 +585,66 @@
     "hubo_sweep": [
       {
         "n_vars": 6,
-        "sparse_ms": 9.951,
+        "sparse_ms": 14.613,
         "sparse_lp_frac": 0.0,
         "sparse_alpha3": 0.1667,
         "sparse_regime": "CLASSICAL_HIGHS_MILP_EXACT",
-        "frustrated_ms": 11.18,
+        "frustrated_ms": 9.512,
         "frustrated_lp_frac": 0.3333,
         "frustrated_alpha3": 1.3333,
         "frustrated_regime": "QUANTUM_LP_WS_TRIAD_QAOA"
       },
       {
         "n_vars": 8,
-        "sparse_ms": 8.952,
+        "sparse_ms": 7.563,
         "sparse_lp_frac": 0.0,
         "sparse_alpha3": 0.125,
         "sparse_regime": "CLASSICAL_HIGHS_MILP_EXACT",
-        "frustrated_ms": 34.931,
+        "frustrated_ms": 30.131,
         "frustrated_lp_frac": 0.3333,
         "frustrated_alpha3": 2.0,
         "frustrated_regime": "QUANTUM_LP_WS_TRIAD_QAOA"
       },
       {
         "n_vars": 10,
-        "sparse_ms": 8.248,
+        "sparse_ms": 6.948,
         "sparse_lp_frac": 0.0,
         "sparse_alpha3": 0.1,
         "sparse_regime": "CLASSICAL_HIGHS_MILP_EXACT",
-        "frustrated_ms": 30.553,
+        "frustrated_ms": 26.092,
         "frustrated_lp_frac": 0.3333,
         "frustrated_alpha3": 2.4,
         "frustrated_regime": "QUANTUM_LP_WS_TRIAD_QAOA"
       },
       {
         "n_vars": 12,
-        "sparse_ms": 8.634,
+        "sparse_ms": 6.94,
         "sparse_lp_frac": 0.0,
         "sparse_alpha3": 0.0833,
         "sparse_regime": "CLASSICAL_HIGHS_MILP_EXACT",
-        "frustrated_ms": 60.364,
+        "frustrated_ms": 52.434,
         "frustrated_lp_frac": 0.3333,
         "frustrated_alpha3": 2.6667,
         "frustrated_regime": "QUANTUM_LP_WS_TRIAD_QAOA"
       },
       {
         "n_vars": 14,
-        "sparse_ms": 7.847,
+        "sparse_ms": 7.377,
         "sparse_lp_frac": 0.0,
         "sparse_alpha3": 0.0714,
         "sparse_regime": "CLASSICAL_HIGHS_MILP_EXACT",
-        "frustrated_ms": 78.878,
+        "frustrated_ms": 72.39,
         "frustrated_lp_frac": 0.3333,
         "frustrated_alpha3": 2.8571,
         "frustrated_regime": "QUANTUM_LP_WS_TRIAD_QAOA"
       },
       {
         "n_vars": 16,
-        "sparse_ms": 8.08,
+        "sparse_ms": 7.22,
         "sparse_lp_frac": 0.0,
         "sparse_alpha3": 0.0625,
         "sparse_regime": "CLASSICAL_HIGHS_MILP_EXACT",
-        "frustrated_ms": 117.751,
+        "frustrated_ms": 104.837,
         "frustrated_lp_frac": 0.3333,
         "frustrated_alpha3": 3.0,
         "frustrated_regime": "QUANTUM_LP_WS_TRIAD_QAOA"
@@ -789,5 +794,31 @@
     "hugr_sha256": "a9759e26ff69d59a4a602fc393dcf23e1358b3a035363133638f6f96a1f49625",
     "cudaq_lines": 33
   },
-  "receipt_sha256": "47716b2a1b4c446fd53b8f15e0f13eb18e154e232a5730564b7f7bf1d1e72540"
+  "classical_floor_baseline": "SciPy HiGHS MILP (0.00% MIP gap) + Process-Tensor MPO (PT-MPO) + 9-State RK4 PBPK + Exact 8q CPTP Comb",
+  "epistemic_demarcation": {
+    "physical_hardware_shots": 0,
+    "wet_lab_experiments_performed": 0,
+    "phi_present": false,
+    "runtime_agent_actions": 0,
+    "autonomous_clinical_decisions": 0,
+    "closed_hazards_claimed": 0,
+    "open_clinical_hazards": [
+      "H-OCQ-01",
+      "H-OCQ-02",
+      "H-OCQ-03",
+      "H-OCQ-04",
+      "H-OCQ-05",
+      "H-OCQ-06"
+    ]
+  },
+  "ml_dsa_65_envelope": {
+    "algorithm": "NIST-FIPS-204-ML-DSA-65",
+    "signed_digest_sha256": "4f0ace5e8ccf0544cae60ac958d0f84f92b53c4c5a5d75cb4347bdf4a80f61e3",
+    "public_key_sha256": "dbd7139794ac80df89f1f933d945a27e62d85eeff8ff313e6cb1aec82a340638",
+    "signature_bytes": 3309,
+    "signature_sha256": "45c9ffed9a4457aa28745d0c3e480989206c65779e1fd457452c22d8da5f9c5a",
+    "public_key_b64": "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",
+    "signature_b64": "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"
+  },
+  "receipt_sha256": "657151288c1bef41b45da73dd6eaf941c5618f1d0367486045c083bd9f0d6db6"
 }
