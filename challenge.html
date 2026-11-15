@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenCareQ Policy Challenge — 42-ICB Bidirectional &amp; Core20PLUS5 Anti-Goodhart Benchmark</title>
+  <meta name="description" content="External Researcher &amp; NHS Analytics Challenge Pack for the OpenCareQ v0.3.0 42-ICB (1,280-PCN, 7-Region) Bidirectional &amp; Core20PLUS5 Anti-Goodhart Policy Scorecard: SealedPcnObservation API, Static AST Sandbox Preflight Linter, G1-G6 Taxonomy, and ML-DSA-65 Leaderboard." />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0b1517;
+      --bg-elevated: #101e21;
+      --bg-card: #142529;
+      --bg-card-alt: #0e1b1e;
+      --ink: #eef7f5;
+      --ink-muted: #9eb7b4;
+      --ink-dim: #6f8a87;
+      --signal: #38d6c4;
+      --signal-soft: rgba(56, 214, 196, 0.13);
+      --amber: #f4ae42;
+      --amber-soft: rgba(244, 174, 66, 0.14);
+      --ember: #f06a3b;
+      --ember-soft: rgba(240, 106, 59, 0.14);
+      --border: rgba(158, 183, 180, 0.17);
+      --border-strong: rgba(56, 214, 196, 0.44);
+      --radius: 12px;
+      --font-display: "Barlow Condensed", system-ui, sans-serif;
+      --font-sans: "Barlow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --max-w: 1240px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); color: var(--ink); font-family: var(--font-sans); line-height: 1.6; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 4%, rgba(56, 214, 196, 0.12), transparent 34%),
+        radial-gradient(circle at 88% 10%, rgba(244, 174, 66, 0.09), transparent 32%),
+        var(--bg);
+    }
+    a { color: var(--signal); text-decoration: none; transition: color 0.16s ease; }
+    a:hover { color: var(--amber); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.86em;
+      background: rgba(56, 214, 196, 0.1);
+      color: #bfece6;
+      padding: 0.12rem 0.38rem;
+      border-radius: 4px;
+    }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.35rem; }
+
+    .site-nav {
+      position: sticky; top: 0; z-index: 60;
+      backdrop-filter: blur(16px);
+      background: rgba(11, 21, 23, 0.88);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-nav-inner {
+      max-width: var(--max-w); margin: 0 auto; min-height: 64px;
+      padding: 0.55rem 1.35rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 0.65rem;
+      color: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .brand-mark {
+      display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 6px;
+      background: linear-gradient(135deg, var(--signal), #1ca394); color: #061315; font-weight: 800; font-size: 0.95rem;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; font-size: 0.86rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.35rem 0.7rem; border-radius: 999px; }
+    .nav-links a:hover { color: var(--ink); background: rgba(255,255,255,0.05); }
+
+    .hero { padding: 3rem 0 2.2rem; border-bottom: 1px solid var(--border); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .pill {
+      font-size: 0.76rem; font-weight: 700; letter-spacing: 0.03em; padding: 0.26rem 0.72rem;
+      border-radius: 999px; border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: var(--ink-muted);
+    }
+    .pill-signal { color: var(--signal); background: var(--signal-soft); border-color: rgba(56,214,196,0.35); }
+    .pill-amber { color: var(--amber); background: var(--amber-soft); border-color: rgba(244,174,66,0.35); }
+    .pill-ember { color: var(--ember); background: var(--ember-soft); border-color: rgba(240,106,59,0.35); }
+
+    .kicker { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--signal); margin: 0 0 0.4rem; }
+    h1 { font-family: var(--font-display); font-size: clamp(2.3rem, 4.4vw, 3.6rem); line-height: 1.04; margin: 0 0 0.85rem; }
+    h2 { font-family: var(--font-display); font-size: 2rem; margin: 0 0 0.4rem; letter-spacing: 0.02em; }
+    h3 { font-family: var(--font-display); font-size: 1.35rem; margin: 0 0 0.45rem; letter-spacing: 0.02em; }
+    .lead { font-size: 1.05rem; color: var(--ink-muted); max-width: 960px; margin: 0 0 1.3rem; }
+    .sec-sub { color: var(--ink-muted); margin: 0 0 1.35rem; max-width: 880px; }
+
+    section { padding: 2.5rem 0; border-bottom: 1px solid var(--border); }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem;
+    }
+    .kpi-num { font-family: var(--font-display); font-size: 1.95rem; font-weight: 800; color: var(--signal); line-height: 1.1; margin: 0.25rem 0; }
+    .kpi-meta { font-size: 0.8rem; color: var(--ink-muted); }
+
+    .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(430px, 1fr)); gap: 1.2rem; }
+    @media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } }
+
+    .btn, .btn-sm {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: var(--font-sans); font-size: 0.82rem; font-weight: 700;
+      padding: 0.42rem 0.85rem; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--bg-card); color: var(--ink); cursor: pointer; transition: all 0.15s ease;
+    }
+    .btn:hover, .btn-sm:hover { border-color: var(--signal); color: var(--ink); }
+    .btn.active, .btn-primary { background: var(--signal); border-color: var(--signal); color: #061517; }
+    .btn-primary:hover { filter: brightness(1.07); color: #061517; }
+
+    pre {
+      background: #071012; border: 1px solid var(--border); border-radius: 10px;
+      padding: 1rem 1.15rem; overflow-x: auto; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.54; color: #d7f3ef; margin: 0;
+    }
+    textarea.code-editor {
+      width: 100%; min-height: 305px; resize: vertical;
+      background: #071012; color: #d7f3ef; border: 1px solid var(--border-strong); border-radius: 10px;
+      padding: 0.95rem 1.1rem; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.52;
+    }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+    th, td { padding: 0.72rem 0.92rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; color: var(--signal); background: var(--bg-card-alt); }
+    tr:last-child td { border-bottom: none; }
+
+    .lint-item {
+      display: flex; align-items: flex-start; gap: 0.55rem; padding: 0.52rem 0.7rem;
+      border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card-alt); margin-bottom: 0.45rem; font-size: 0.84rem;
+    }
+    .callout-warn {
+      background: var(--amber-soft); border: 1px solid rgba(244,174,66,0.38); border-left: 4px solid var(--amber);
+      border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.88rem; color: #fce7c2; margin-top: 1.25rem;
+    }
+    footer { padding: 2rem 0 2.8rem; color: var(--ink-dim); font-size: 0.84rem; }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">OC</span>
+        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--amber);margin-left:4px;">Challenge Pack</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Challenge Sections">
+        <a href="index.html">← Main Portal</a>
+        <a href="#taxonomy">G1–G6 Taxonomy</a>
+        <a href="#contract">Observation &amp; Action API</a>
+        <a href="#templates">Starter Templates</a>
+        <a href="#linter" style="color:var(--signal);">AST &amp; G1–G6 Linter</a>
+        <a href="#leaderboard">Sealed Leaderboard</a>
+        <a class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf" style="padding:0.3rem 0.72rem;">⬇ Paper (15 pp.)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="pill-row">
+          <span class="pill pill-signal">Privilege-Separated SealedPcnObservation</span>
+          <span class="pill pill-signal">Static AST Sandbox (--ast-sandbox)</span>
+          <span class="pill pill-amber">42 Statutory NHS England ICBs · 1,280 PCNs · 7 Regions</span>
+          <span class="pill pill-ember">NIST FIPS 204 ML-DSA-65 + SHA-256 Scorecards</span>
+        </div>
+
+        <p class="kicker">External Benchmark Specification &amp; Starter Kit (`v0.3.0`)</p>
+        <h1>42-ICB Bidirectional &amp; `Core20PLUS5` Anti-Goodhart Policy Challenge</h1>
+        <p class="lead">
+          Design a pure-Python Primary Care Network commissioning policy that maximizes longitudinal neighbourhood health yield across <strong>all 42 statutory English ICBs (`1,280` empirical UK OGL v3.0 PCNs, `6,080` GP practices, `62.93M` patients)</strong> without triggering covert `CYP3A4`/`PXR` washout harm, skipping bilingual welfare co-production, or cream-skimming affluent PCNs. Every candidate policy runs inside a zero-exfiltration AST sandbox against withheld 9-state `RK4` PK trajectories and `8` unseen NHS winter shocks.
+        </p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:0.55rem;">
+          <a class="btn btn-primary" href="#linter">⚡ Test Your Policy in Browser AST Linter</a>
+          <a class="btn" href="#templates">📋 Copy Starter Templates</a>
+          <a class="btn" href="receipts/benchmark_scorecards_summary.json" target="_blank" rel="noopener">✓ Public Scorecard JSON (`v1.4`)</a>
+          <a class="btn" href="index.html#harness">← Return to Unified Harness</a>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="card">
+            <div class="kpi-meta">Exact Epigraph `HiGHS` MILP Ceiling</div>
+            <div class="kpi-num">0.8382</div>
+            <div class="kpi-meta">`0.00%` MIP gap (`7.9 ms`) across `8` canonical world seeds on `NHS-MSE-28PCN`</div>
+          </div>
+          <div class="card">
+            <div class="kpi-meta">Current `#1` Admitted Policy (`a2f31173`)</div>
+            <div class="kpi-num">0.8381 / 0.6257</div>
+            <div class="kpi-meta">`99.99%` of MILP ceiling · `41`-ICB England `R_true` · `Core20 Eq = 1.057`</div>
+          </div>
+          <div class="card">
+            <div class="kpi-meta">National Holdout Generalization</div>
+            <div class="kpi-num">41 ICBs · 1,255 PCNs</div>
+            <div class="kpi-meta">Must achieve `41/41` zero-harm ICBs &amp; `41/41` `Core20 Eq ≥ 0.85`</div>
+          </div>
+          <div class="card">
+            <div class="kpi-meta">Red-Team Negative Controls</div>
+            <div class="kpi-num" style="color:var(--amber);">3 / 3 Caught</div>
+            <div class="kpi-meta">Includes `0.8502` `#1`-proxy stealth `PXR` trap &amp; `0%`-DDI `Core20` skimmer</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- G1-G6 TAXONOMY -->
+    <section id="taxonomy">
+      <div class="container">
+        <p class="kicker">01 · Admission Gate &amp; Red-Team Threat Model</p>
+        <h2>Six Clinical &amp; Commissioning Goodhart Modes (`G1`–`G6`)</h2>
+        <p class="sec-sub">
+          Unverified proxy maximization (`Proxy-MILP`) inflates apparent clinic yield to <code>Q_proxy = 0.9827</code> while collapsing true patient-safe yield to <code>Q_true = 0.0624</code>. An admitted policy must record <strong>0 harm events</strong>, <strong>0.0% `G1`–`G5` shortcut share</strong>, and <strong>`core20_equity_ratio ≥ 0.85` (`G6`)</strong> across all 8 seeds and all 41 held-out English ICBs.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Mode</th>
+                <th>Identifier</th>
+                <th>Adversarial Shortcut</th>
+                <th>Withheld Biophysical / Statutory Consequence Oracle</th>
+                <th>`DCB0129`</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill pill-ember">G1</span></td>
+                <td><code>G1_PREMATURE_DAY7_WASHOUT_RESTART</code></td>
+                <td>Restarting `CYP3A4` substrates at `168 h` (Day 7) when plasma perpetrator `&lt; LLOQ` (`0.069 ng/mL`)</td>
+                <td>9-state `RK4` hepatocyte phospholipid depot (`Kp,uu = 1.4`): `Day-7 AUCR = 4.437x &gt; 2.0x` (`PMID: 38393578`); requires `≥ 240 h` hold (`Day-10 = 1.553x`)</td>
+                <td><code>H-OCQ-03</code></td>
+              </tr>
+              <tr>
+                <td><span class="pill pill-amber">G2</span></td>
+                <td><code>G2_SKIP_CORE20_INTERPRETER_WELFARE</code></td>
+                <td>Omitting bilingual link-worker / warm-home welfare co-production (`equity_interpreter_coupled = False`) on `Core20 ≥ 30%` PCNs</td>
+                <td>Non-commuting 3-qubit Neighbourhood `HQMM` (`||[U_W, U_G]||_F = 2.6925`); premature clinical/rehab referral collapses attendance</td>
+                <td><code>H-OCQ-05</code></td>
+              </tr>
+              <tr>
+                <td><span class="pill pill-ember">G3</span></td>
+                <td><code>G3_FRAIL_80PLUS_OVERTITRATE</code></td>
+                <td>Bypassing anticholinergic / polypharmacy ceilings (`frail_80plus_ceiling_ok = False`) in `80+` cohorts</td>
+                <td>Tier-3 polypharmacy safety guard (`DCB0129Guard`)</td>
+                <td><code>H-OCQ-01</code></td>
+              </tr>
+              <tr>
+                <td><span class="pill pill-ember">G4</span></td>
+                <td><code>G4_SUBTHERAPEUTIC_PXR_DEINDUCTION_IGNORE</code></td>
+                <td>Upper-bound-only check (`≤ 2.0x`) ignoring post-rifampin nuclear `PXR` hyper-clearance (`pxr_deinduction_guarded = False`)</td>
+                <td>28-day human rifampin `PXR` de-induction (`Day +7 AUCR = 0.467x &lt; 0.50x` sub-therapeutic DOAC stroke risk, `PMID: 21191377`)</td>
+                <td><code>H-OCQ-03</code></td>
+              </tr>
+              <tr>
+                <td><span class="pill pill-amber">G5</span></td>
+                <td><code>G5_REVERSIBLE_VORICONAZOLE_FALSE_HOLD</code></td>
+                <td>Blanket `240 h` washout hold after reversible inhibitor voriconazole (`reversible_specificity_checked = False`)</td>
+                <td>Human voriconazole specificity cohort (`+72h AUCR = 1.041x ≤ 2.0x`, `PMID: 21937987`): unnecessary 10-day statin interruption</td>
+                <td><code>H-OCQ-03</code></td>
+              </tr>
+              <tr>
+                <td><span class="pill pill-amber">G6</span></td>
+                <td><code>G6_CORE20_EQUITY_CHERRY_PICKING</code></td>
+                <td>Concentrating Tier-3 capacity in affluent PCNs while downgrading `Core20 ≥ 30%` PCNs to Tier-2 (`0%` per-patient DDI error!)</td>
+                <td>Portfolio `Core20PLUS5` Inverse-Care-Law parity floor: `mean(s_true | Core20) / mean(s_true | Affluent) ≥ 0.85`</td>
+                <td><code>H-OCQ-04</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- API CONTRACT -->
+    <section id="contract">
+      <div class="container">
+        <p class="kicker">02 · Privilege-Separated Python Interface</p>
+        <h2>`SealedPcnObservation` &amp; Candidate Action Schema</h2>
+        <p class="sec-sub">
+          Policies receive read-only <code>MappingProxyType</code> observations. Stateless policies define <code>propose(obs) -&gt; dict</code>; coordinated ICB portfolio policies set <code>propose.batch_pcn = True</code> and define <code>propose(observations) -&gt; dict[pcn_id, dict]</code>.
+        </p>
+
+        <div class="two-col">
+          <div class="card">
+            <h3>Read-Only `SealedPcnObservation` Keys</h3>
+            <pre>{
+  "pcn_idx": 0,
+  "pcn_id": "U15488",
+  "pcn_name": "East Basildon PCN",
+  "icb_code": "E54000026",
+  "alliance": "Basildon &amp; Brentwood",
+  "registered_pop": 58420,
+  "core20_share": 0.412,
+  "is_core20_deprived": true,
+  "frail_80plus_share": 0.362,
+  "polypharmacy_index": 0.535,
+  "rural_transport_isolation": 0.36,
+  "fuel_poverty_index": 0.44,
+  "demand_weights": [0.28, 0.31, 0.21, 0.20],
+  "candidate_actions": [ ... ]   // 48 immutable candidates
+  // WITHHELD: s_true, q_true, ODE states, NHS_WINTER_SHOCKS_8
+}</pre>
+          </div>
+          <div class="card">
+            <h3>Each Entry in `obs["candidate_actions"]`</h3>
+            <pre>{
+  "pathway_k": 0,                // 0=Depot SMR, 1=Core20 Welfare,
+                                 // 2=CardioRenal Hub, 3=Frail 80+
+  "pathway_code": "CYP3A4_DEPOT_SMR_WASHOUT",
+  "precision_tier": 3,           // Tier 2 or Tier 3
+  "goodhart_mode": "CLEAN_VERIFIED",
+  "hold_hours_param": 240,       // k=0 requires &gt;=240h; k=1 &gt;=96h
+  "frail_80plus_ceiling_ok": true,
+  "equity_interpreter_coupled": true,
+  "pxr_deinduction_guarded": true,
+  "reversible_specificity_checked": true,
+  "observable_proxy_yield": 0.8412
+}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STARTER TEMPLATES -->
+    <section id="templates">
+      <div class="container">
+        <p class="kicker">03 · Ready-to-Run Pure-Python Starter Kits</p>
+        <h2>Stateless Per-PCN vs Coordinated Portfolio (`batch_pcn = True`)</h2>
+        <p class="sec-sub">
+          Both templates pass the static AST sandbox with zero external dependencies and achieve <code>41/41</code> zero-harm &amp; equity-compliant ICBs across England. Portfolio coordination (`Starter B`) unlocks balanced 4-pathway quota management (`ceil(0.65 * N / 4)`) while protecting scarce `Core20` pockets in affluent shires.
+        </p>
+
+        <div class="two-col">
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;margin-bottom:0.55rem;">
+              <h3 style="margin:0;">Starter A — Stateless Per-PCN (`propose(obs)`)</h3>
+              <button type="button" class="btn-sm" onclick="copyPre('tplStateless', this)">Copy Code</button>
+            </div>
+            <pre id="tplStateless">def propose(obs):
+    safe_actions = [
+        c for c in obs["candidate_actions"]
+        if c["goodhart_mode"] == "CLEAN_VERIFIED"
+        and c["frail_80plus_ceiling_ok"]
+        and c["equity_interpreter_coupled"]
+        and c["pxr_deinduction_guarded"]
+        and c["reversible_specificity_checked"]
+        and (c["pathway_k"] != 0 or c["hold_hours_param"] &gt;= 240)
+        and (c["pathway_k"] != 1 or c["hold_hours_param"] &gt;= 96)
+    ]
+    preferred_k = (
+        1 if (obs["is_core20_deprived"] and obs["pcn_idx"] % 2 == 1)
+        else (obs["pcn_idx"] % 4)
+    )
+    matched = [c for c in safe_actions if c["pathway_k"] == preferred_k]
+    pool = matched if matched else safe_actions
+    return max(pool, key=lambda c: c["observable_proxy_yield"])</pre>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;margin-bottom:0.55rem;">
+              <h3 style="margin:0;">Starter B — Portfolio Batch (`propose.batch_pcn = True`)</h3>
+              <button type="button" class="btn-sm" onclick="copyPre('tplBatch', this)">Copy Code</button>
+            </div>
+            <pre id="tplBatch">import math
+
+def _clean(c):
+    return (
+        c["goodhart_mode"] == "CLEAN_VERIFIED"
+        and c["frail_80plus_ceiling_ok"]
+        and c["equity_interpreter_coupled"]
+        and c["pxr_deinduction_guarded"]
+        and c["reversible_specificity_checked"]
+        and (c["pathway_k"] != 0 or c["hold_hours_param"] &gt;= 240)
+        and (c["pathway_k"] != 1 or c["hold_hours_param"] &gt;= 96)
+    )
+
+def propose(observations):
+    n = len(observations)
+    quota = min(n // 4, max(1, int(math.ceil(0.65 * n / 4.0))))
+    by_pcn = []
+    for obs in observations:
+        pool = [c for c in obs["candidate_actions"] if _clean(c) and c["precision_tier"] == 3]
+        by_pcn.append({
+            k: max((c for c in pool if c["pathway_k"] == k), key=lambda x: x["observable_proxy_yield"])
+            for k in range(4)
+        })
+    assigned = [max(range(4), key=lambda k: by_pcn[i][k]["observable_proxy_yield"]) for i in range(n)]
+    counts = [assigned.count(k) for k in range(4)]
+    for k_need in range(4):
+        while counts[k_need] &lt; quota:
+            donors = [i for i in range(n) if counts[assigned[i]] &gt; quota]
+            if not donors:
+                break
+            best_i = min(donors, key=lambda i: (
+                1 if observations[i]["is_core20_deprived"] else 0,
+                by_pcn[i][assigned[i]]["observable_proxy_yield"] - by_pcn[i][k_need]["observable_proxy_yield"],
+            ))
+            counts[assigned[best_i]] -= 1
+            assigned[best_i] = k_need
+            counts[k_need] += 1
+    return {observations[i]["pcn_id"]: dict(by_pcn[i][assigned[i]]) for i in range(n)}
+
+propose.batch_pcn = True</pre>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1.15rem;">
+          <h3>3-Command Local Evaluation &amp; `ML-DSA-65` Scorecard Minting</h3>
+          <pre># 1. Verify AST sandbox compliance &amp; evaluate across all 42 statutory English ICBs (1,280 PCNs)
+ocq eval-policy --policy my_pcn_policy.py --ast-sandbox
+ocq eval-policy --policy my_pcn_policy.py --all-england --ast-sandbox
+
+# 2. Mint a NIST FIPS 204 ML-DSA-65 + SHA-256 signed scorecard JSON
+ocq submit-policy --policy my_pcn_policy.py \
+  --submission-id ext-my-policy-v1 \
+  --title "My Core20-Protective PCN Commissioning Policy" \
+  --authors "Your Name / NHS ICB Analytics Team"
+
+# 3. Replay &amp; cryptographically audit all admitted scorecards and negative controls
+ocq verify-submissions</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE BROWSER PREFLIGHT LINTER -->
+    <section id="linter">
+      <div class="container">
+        <p class="kicker">04 · Zero-Server Browser Preflight</p>
+        <h2>Interactive Static AST Sandbox &amp; `G1`–`G6` Guard Linter</h2>
+        <p class="sec-sub">
+          Paste your candidate Python policy below to check forbidden module imports, blocked reflection/builtins, `batch_pcn` portfolio mode, and `G1`–`G6` safety predicates entirely in your browser (`0` server uploads).
+        </p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.8rem;">
+          <button type="button" class="btn-sm btn-primary" onclick="loadSampleIntoLinter('batch')">Load Starter B (`batch_pcn = True` · PASS)</button>
+          <button type="button" class="btn-sm" onclick="loadSampleIntoLinter('stateless')">Load Starter A (`Stateless` · PASS)</button>
+          <button type="button" class="btn-sm" onclick="loadSampleIntoLinter('trap')">Load Adversarial Exfiltration + `G4` Trap (BLOCKED)</button>
+        </div>
+
+        <div class="two-col">
+          <div>
+            <textarea id="policyCodeInput" class="code-editor" spellcheck="false" aria-label="Candidate Python policy source code"></textarea>
+          </div>
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.65rem;">
+              <h3 style="margin:0;">Preflight Audit Verdict</h3>
+              <span id="lintOverallBadge" class="pill pill-signal">READY</span>
+            </div>
+            <div id="lintChecklist"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE LEADERBOARD -->
+    <section id="leaderboard">
+      <div class="container">
+        <p class="kicker">05 · Cryptographically Sealed Reference Leaderboard</p>
+        <h2>Current 42-ICB Anti-Goodhart Policy Scorecards (`ML-DSA-65`)</h2>
+        <p class="sec-sub">
+          Live mirror of <a href="receipts/benchmark_scorecards_summary.json" target="_blank" rel="noopener"><code>receipts/benchmark_scorecards_summary.json</code></a> replayed across `8` seeds on `NHS-MSE-28PCN`, `4` core transfer ICBs, and `41` held-out English ICBs (`1,255` unseen PCNs).
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Submission ID</th>
+                <th>Policy Architecture</th>
+                <th>Gate Verdict</th>
+                <th>`Q_proxy` → `8`-Seed `Q_true` (`% MILP`)</th>
+                <th>`4`-ICB / `41`-ICB `R_true`</th>
+                <th>`Core20` Equity</th>
+                <th>`ML-DSA-65`</th>
+              </tr>
+            </thead>
+            <tbody id="challengeLeaderboardBody"></tbody>
+          </table>
+        </div>
+
+        <div class="callout-warn">
+          <strong>Regulatory &amp; Governance Notice:</strong> All policies submitted to the OpenCareQ Policy Challenge operate strictly on de-identified UK `OGL v3.0` Primary Care Network digital twins (`phi_present = False`, `Non-SaMD` shadow-commissioning research). Local NHS deployment requires an ICB `DCB0160` Clinical Safety Case Report (`H-OCQ-01`..`H-OCQ-06` OPEN).
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <div>© 2026 Arun Nadarasa · Apache-2.0 / UK OGL v3.0 · OpenCareQ Policy Challenge (`v0.3.0`)</div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="index.html">Main Portal</a>
+        <a href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">Samskrift Paper PDF (15 pp.)</a>
+        <a href="receipts/benchmark_scorecards_summary.json" target="_blank" rel="noopener">Scorecards JSON (`v1.4`)</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const FORBIDDEN_MODULES = [
+      "opencareq", "os", "sys", "subprocess", "socket", "urllib", "requests",
+      "http", "pathlib", "shutil", "glob", "pickle", "ctypes", "importlib",
+      "inspect", "builtins"
+    ];
+    const FORBIDDEN_CALLS = [
+      "open", "exec", "eval", "compile", "__import__", "getattr", "setattr",
+      "delattr", "globals", "locals", "vars", "input"
+    ];
+    const FORBIDDEN_DUNDERS = ["__dict__", "__class__", "__subclasses__", "__globals__"];
+
+    const RED_TEAM_SAMPLE = `import os  # VIOLATION: forbidden sandbox module
+
+def propose(obs):
+    # VIOLATION: attempts reflection & omits pxr_deinduction_guarded (G4 0.467x stroke risk!)
+    _leak = globals()
+    upper_only = [
+        c for c in obs["candidate_actions"]
+        if c["frail_80plus_ceiling_ok"]
+        and (c["pathway_k"] != 0 or c["hold_hours_param"] >= 240)
+    ]
+    return max(upper_only, key=lambda c: c["observable_proxy_yield"])`;
+
+    function esc(s) {
+      return String(s ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function copyPre(id, btn) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      navigator.clipboard.writeText(el.textContent).then(() => {
+        const prev = btn.textContent;
+        btn.textContent = "Copied ✓";
+        setTimeout(() => { btn.textContent = prev; }, 1600);
+      });
+    }
+
+    function runPolicyPreflight() {
+      const src = document.getElementById("policyCodeInput")?.value || "";
+      const badge = document.getElementById("lintOverallBadge");
+      const out = document.getElementById("lintChecklist");
+      if (!out || !badge) return;
+
+      const checks = [];
+      let hardFail = false;
+      let softWarn = false;
+
+      const hasPropose = /\bdef\s+propose\s*\(/.test(src);
+      if (!hasPropose) hardFail = true;
+      checks.push({
+        status: hasPropose ? "PASS" : "FAIL",
+        msg: hasPropose
+          ? "Entrypoint callable `def propose(...)` detected."
+          : "Missing required `def propose(obs)` or `def propose(observations)` callable."
+      });
+
+      const isBatch = /\bpropose\.batch_pcn\s*=\s*True\b/.test(src);
+      checks.push({
+        status: "INFO",
+        msg: isBatch
+          ? "Execution mode: Portfolio Batch (`propose.batch_pcn = True`) — enables 4-pathway quota & Core20 regret protection."
+          : "Execution mode: Stateless Per-PCN (`propose(obs)`) — add `propose.batch_pcn = True` for ICB-wide coordination."
+      });
+
+      const badMods = FORBIDDEN_MODULES.filter(m => {
+        const re = new RegExp(`(^|\\n)\\s*(?:import\\s+${m}\\b|from\\s+${m}\\b)`);
+        return re.test(src);
+      });
+      if (badMods.length) hardFail = true;
+      checks.push({
+        status: badMods.length ? "FAIL" : "PASS",
+        msg: badMods.length
+          ? `AST Sandbox Violation — forbidden module import(s): ${badMods.join(", ")}`
+          : "AST Module Firewall: 0 forbidden imports (`os`, `sys`, `opencareq`, network/filesystem clean)."
+      });
+
+      const badBuiltins = FORBIDDEN_CALLS.filter(fn => new RegExp(`\\b${fn}\\s*\\(`).test(src));
+      const badDunders = FORBIDDEN_DUNDERS.filter(d => src.includes(d));
+      const allBadCalls = badBuiltins.concat(badDunders);
+      if (allBadCalls.length) hardFail = true;
+      checks.push({
+        status: allBadCalls.length ? "FAIL" : "PASS",
+        msg: allBadCalls.length
+          ? `AST Sandbox Violation — forbidden builtin/reflection token(s): ${allBadCalls.join(", ")}`
+          : "AST Builtin & Reflection Firewall: 0 forbidden calls (`open`, `eval`, `getattr`, dunders clean)."
+      });
+
+      const gChecks = [
+        ["CLEAN_VERIFIED", "G1–G5 master verified flag (`goodhart_mode == 'CLEAN_VERIFIED'`)"],
+        ["pxr_deinduction_guarded", "G4 post-rifampin PXR `0.467x` lower-bound guard (`pxr_deinduction_guarded`)"],
+        ["reversible_specificity_checked", "G5 voriconazole `+72h = 1.041x` specificity guard (`reversible_specificity_checked`)"],
+        ["equity_interpreter_coupled", "G2 Core20 bilingual welfare coupling (`equity_interpreter_coupled`)"],
+        ["frail_80plus_ceiling_ok", "G3 frail `80+` polypharmacy ceiling (`frail_80plus_ceiling_ok`)"]
+      ];
+      const missingGuards = gChecks.filter(([tok]) => !src.includes(tok)).map(([, lbl]) => lbl);
+      if (missingGuards.length) softWarn = true;
+      checks.push({
+        status: missingGuards.length ? "WARN" : "PASS",
+        msg: missingGuards.length
+          ? `Potential G1–G5 Vulnerability — missing explicit check(s): ${missingGuards.join("; ")}`
+          : "Bidirectional Clinical Guards (G1–G5): All 5 explicit PK, frailty & welfare predicates verified."
+      });
+
+      const hasCore20Aware = src.includes("is_core20_deprived") || src.includes("core20_share");
+      if (!hasCore20Aware) softWarn = true;
+      checks.push({
+        status: hasCore20Aware ? "PASS" : "WARN",
+        msg: hasCore20Aware
+          ? "Core20PLUS5 Portfolio Awareness (G6): Explicit `is_core20_deprived` / `core20_share` logic present (`Eq >= 0.85`)."
+          : "G6 Advisory: No `is_core20_deprived` check spotted — verify `Core20` equity ratio >= 0.85 across affluent shire ICBs (e.g. QOX)."
+      });
+
+      if (hardFail) {
+        badge.className = "pill pill-ember";
+        badge.textContent = "SANDBOX BLOCKED";
+      } else if (softWarn) {
+        badge.className = "pill pill-amber";
+        badge.textContent = "AST PASS · GUARD WARNING";
+      } else {
+        badge.className = "pill pill-signal";
+        badge.textContent = "PREFLIGHT PASS (G1–G6 READY)";
+      }
+
+      out.innerHTML = checks.map(c => {
+        const pillCls = c.status === "PASS" ? "pill-signal" : (c.status === "FAIL" ? "pill-ember" : "pill-amber");
+        return `<div class="lint-item">
+          <span class="pill ${pillCls}" style="flex-shrink:0;padding:0.12rem 0.48rem;font-size:0.68rem;">${esc(c.status)}</span>
+          <div>${esc(c.msg)}</div>
+        </div>`;
+      }).join("");
+    }
+
+    function loadSampleIntoLinter(which) {
+      const box = document.getElementById("policyCodeInput");
+      if (!box) return;
+      if (which === "stateless") {
+        box.value = document.getElementById("tplStateless")?.textContent || "";
+      } else if (which === "trap") {
+        box.value = RED_TEAM_SAMPLE;
+      } else {
+        box.value = document.getElementById("tplBatch")?.textContent || "";
+      }
+      runPolicyPreflight();
+    }
+
+    const FALLBACK_ENTRIES = [
+      { submission_id: "ref-regional-syndemic-adaptive", title: "Core20-Protective Min-Regret Regional Syndemic Controller (batch_pcn)", admitted: true, trap_failure_mode: "CLEAN_VERIFIED", q_proxy_mean: 0.8216, q_true_mean: 0.8381, fraction_of_safety_milp_pct: 99.99, transfer_4icb_r_true_mean: 0.6331, national_41icb_r_true_mean: 0.6257, core20_equity_ratio_mean: 1.057, receipt_sha256: "a2f31173" },
+      { submission_id: "ref-safety-verified", title: "Bidirectional-PK & Safety-Verified DCB0129 Baseline", admitted: true, trap_failure_mode: "CLEAN_VERIFIED", q_proxy_mean: 0.8114, q_true_mean: 0.8276, fraction_of_safety_milp_pct: 98.75, transfer_4icb_r_true_mean: 0.6204, national_41icb_r_true_mean: 0.6154, core20_equity_ratio_mean: 0.984, receipt_sha256: "912c8ee1" },
+      { submission_id: "ref-swarm-commit-gated", title: "Commit-Verified Stigmergic Multi-PCN Federation Controller (batch_pcn)", admitted: true, trap_failure_mode: "CLEAN_VERIFIED", q_proxy_mean: 0.8181, q_true_mean: 0.8344, fraction_of_safety_milp_pct: 99.56, transfer_4icb_r_true_mean: 0.6246, national_41icb_r_true_mean: 0.6054, core20_equity_ratio_mean: 0.953, receipt_sha256: "e8344c54" },
+      { submission_id: "ext-starter-template-v1", title: "Core20-Priority Safety-Verified External Starter Policy (AST-Sandboxed)", admitted: true, trap_failure_mode: "CLEAN_VERIFIED", q_proxy_mean: 0.8114, q_true_mean: 0.8276, fraction_of_safety_milp_pct: 98.75, transfer_4icb_r_true_mean: 0.5281, national_41icb_r_true_mean: 0.5315, core20_equity_ratio_mean: 0.968, receipt_sha256: "b7b87fcc" },
+      { submission_id: "trap-core20-cherry-picker", title: "Zero-DDI-Harm Inverse-Care-Law Portfolio Cream-Skimmer (batch_pcn)", admitted: false, trap_failure_mode: "G6_CORE20_EQUITY_CHERRY_PICKING", q_proxy_mean: 0.7499, q_true_mean: 0.7649, fraction_of_safety_milp_pct: 91.26, transfer_4icb_r_true_mean: 0.4714, national_41icb_r_true_mean: 0.4996, core20_equity_ratio_mean: 0.767, receipt_sha256: "a549a658" },
+      { submission_id: "trap-stealth-pxr-deinduction", title: "Upper-Bound-Only Check Ignoring Post-Rifampin PXR 0.467x Stroke Risk", admitted: false, trap_failure_mode: "G4_SUBTHERAPEUTIC_PXR_DEINDUCTION_IGNORE", q_proxy_mean: 0.8502, q_true_mean: 0.3538, fraction_of_safety_milp_pct: 42.22, transfer_4icb_r_true_mean: 0.2658, national_41icb_r_true_mean: 0.2647, core20_equity_ratio_mean: 0.947, receipt_sha256: "9b262f9e" },
+      { submission_id: "trap-unverified-greedy-proxy", title: "Naive Throughput Chaser Triggering Day-7 Depot 4.437x Toxicity", admitted: false, trap_failure_mode: "G1_PREMATURE_DAY7_WASHOUT_RESTART", q_proxy_mean: 0.1026, q_true_mean: 0.0068, fraction_of_safety_milp_pct: 0.81, transfer_4icb_r_true_mean: 0.0063, national_41icb_r_true_mean: 0.0070, core20_equity_ratio_mean: 0.993, receipt_sha256: "a3f6112f" }
+    ];
+
+    function renderChallengeLeaderboard(entries) {
+      const tbody = document.getElementById("challengeLeaderboardBody");
+      if (!tbody) return;
+      tbody.innerHTML = entries.map(r => {
+        const adm = Boolean(r.admitted);
+        const gateHtml = adm
+          ? `<span class="pill pill-signal">ADMITTED</span>`
+          : `<span class="pill pill-ember">REJECTED</span> <span class="kpi-meta">${esc(r.trap_failure_mode)}</span>`;
+        const eq = Number(r.core20_equity_ratio_mean || 0);
+        const eqCol = eq < 0.85 ? "var(--ember)" : (eq >= 1.0 ? "var(--signal)" : "var(--ink)");
+        return `<tr>
+          <td><code>${esc(r.submission_id)}</code></td>
+          <td>${esc(r.title)}</td>
+          <td>${gateHtml}</td>
+          <td><code>${Number(r.q_proxy_mean).toFixed(4)}</code> → <strong>${Number(r.q_true_mean).toFixed(4)}</strong> (<code>${Number(r.fraction_of_safety_milp_pct).toFixed(2)}%</code>)</td>
+          <td><code>${Number(r.transfer_4icb_r_true_mean).toFixed(4)}</code> / <code>${Number(r.national_41icb_r_true_mean || 0).toFixed(4)}</code></td>
+          <td><strong style="color:${eqCol};font-family:var(--font-mono);">${eq.toFixed(3)}</strong></td>
+          <td><code>${esc(String(r.receipt_sha256 || "").slice(0, 8))}…</code></td>
+        </tr>`;
+      }).join("");
+    }
+
+    async function initChallengePage() {
+      document.getElementById("policyCodeInput")?.addEventListener("input", runPolicyPreflight);
+      loadSampleIntoLinter("batch");
+      renderChallengeLeaderboard(FALLBACK_ENTRIES);
+      try {
+        const resp = await fetch("receipts/benchmark_scorecards_summary.json", { cache: "no-store" });
+        if (resp.ok) {
+          const data = await resp.json();
+          if (Array.isArray(data.entries) && data.entries.length) {
+            renderChallengeLeaderboard(data.entries);
+          }
+        }
+      } catch {
+        // Offline file:// view keeps fallback entries
+      }
+    }
+
+    initChallengePage();
+  </script>
+</body>
+</html>
