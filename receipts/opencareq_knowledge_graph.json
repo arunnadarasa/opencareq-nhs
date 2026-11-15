@@ -63,6 +63,11 @@
       "label": "Empirical NHS Norfolk & Waveney ICB (E54000022: 20 PCNs, 104 practices, 1,100,134 pop)"
     },
     {
+      "id": "ogl:england_42icb_atlas_2026",
+      "type": "OGL_National_Atlas",
+      "label": "Empirical England-Wide 42-ICB PCN Atlas (7 NHS Regions, 1,280 PCNs, 6,080 GP, 62,925,110 pop)"
+    },
+    {
       "id": "pmid:25989229",
       "type": "PBPK_Evidence",
       "label": "Keemink et al. 2015 Hepatocyte Ritonavir Depot (Kp,uu=1.4)"
@@ -161,6 +166,11 @@
       "id": "receipt:v0_3_falsification",
       "type": "Benchmark_Receipt",
       "label": "Sealed OpenCareQ v0.3 4-Track Falsification Receipt (ML-DSA-65)"
+    },
+    {
+      "id": "receipt:england_42icb_atlas",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed England 42-ICB (1,280-PCN) National Atlas Receipt (ML-DSA-65)"
     },
     {
       "id": "paper:samskrift_v0_3",
@@ -441,6 +451,26 @@
       "target": "receipt:v0_3_falsification"
     },
     {
+      "source": "framework:opencareq_v0_3",
+      "relation": "ingests_national_atlas",
+      "target": "ogl:england_42icb_atlas_2026"
+    },
+    {
+      "source": "ogl:england_42icb_atlas_2026",
+      "relation": "evaluated_in",
+      "target": "swarm:pcn_swarmworld_vm"
+    },
+    {
+      "source": "ogl:england_42icb_atlas_2026",
+      "relation": "sealed_in",
+      "target": "receipt:england_42icb_atlas"
+    },
+    {
+      "source": "receipt:england_42icb_atlas",
+      "relation": "typeset_in",
+      "target": "paper:samskrift_v0_3"
+    },
+    {
       "source": "receipt:samskrift_benchmark",
       "relation": "typeset_in",
       "target": "paper:samskrift_v0_3"
@@ -491,5 +521,5 @@
       "target": "hazard:H-OCQ-06"
     }
   ],
-  "kg_sha256": "be5ba4115e7c3fea9150572f70fc6e93c75f36903c00eaded67ef9136920c494"
+  "kg_sha256": "771f5566468fa0acfa31d601593f9df317c912a689c3e0fbf999c57ef39ae45c"
 }
