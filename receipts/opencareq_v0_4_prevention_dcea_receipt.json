@@ -1,0 +1,480 @@
+{
+  "schema_version": "opencareq-v0.4-prevention-dcea-receipt-v1.0",
+  "phi_present": false,
+  "zero_clinical_parameters_fitted": true,
+  "physical_qpu_shots": 0,
+  "billable_hqc": 0.0,
+  "runtime_agent_actions": 0,
+  "coupled_ckm_pgx_falsification": {
+    "zero_clinical_parameters_fitted": true,
+    "n_validation_endpoints": 12,
+    "aggregate_gmfe": 1.0701,
+    "within_bioequivalence_1p25fold_pct": 91.7,
+    "within_2fold_pct": 100.0,
+    "pubmed_verified_sources": [
+      {
+        "pmid": "24964176",
+        "doi": "10.1002/jcph.352",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24964176/",
+        "role": "Syndrome 1 held-out human rivaroxaban CKD x erythromycin CYP3A4/P-gp synergy trial (Moore et al. 2014)"
+      },
+      {
+        "pmid": "34619108",
+        "doi": "10.1016/S2213-8587(21)00242-4",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34619108/",
+        "role": "Syndrome 2 held-out DAPA-CKD Week-2 acute eGFR dip (-3.97) & chronic slope (+1.92/yr) trial (Heerspink et al. 2021)"
+      },
+      {
+        "pmid": "23299844",
+        "doi": "10.1136/bmj.e8525",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/23299844/",
+        "role": "Syndrome 2 held-out Triple-Whammy (RAASi + diuretic + NSAID) acute kidney injury cohort (Lapi et al. 2013)"
+      },
+      {
+        "pmid": "17473846",
+        "doi": "10.1038/sj.clpt.6100220",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/17473846/",
+        "role": "Syndrome 3 held-out human SLCO1B1 c.521T>C atorvastatin & rosuvastatin PK cohort (Pasanen et al. 2007, N=32)"
+      },
+      {
+        "pmid": "19106084",
+        "doi": "10.1056/NEJMoa0809171",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19106084/",
+        "role": "Syndrome 4 held-out CYP2C19 LOF clopidogrel active-thiol (-32.4%) PK/PD cohort (Mega et al. 2009)"
+      },
+      {
+        "pmid": "34708996",
+        "doi": "10.1056/NEJMoa2111749",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34708996/",
+        "role": "Syndrome 4 held-out CHANCE-2 CYP2C19 LOF genotype-guided stroke prevention RCT (Wang et al. 2021, N=6,412)"
+      }
+    ],
+    "syndrome1_doac_ckd_ddi_moore2014": [
+      {
+        "arm_label": "Normal Renal + Erythromycin",
+        "crcl_ml_min": 100.0,
+        "observed_aucr": 1.39,
+        "predicted_aucr": 1.4612,
+        "naive_additive_aucr": 1.4612,
+        "fold_error": 1.0512,
+        "within_2fold": true,
+        "clinical_gate": "SAFE_STANDARD_DOAC"
+      },
+      {
+        "arm_label": "Mild CKD (CrCl 50-79) + Erythromycin",
+        "crcl_ml_min": 65.0,
+        "observed_aucr": 1.76,
+        "predicted_aucr": 1.7734,
+        "naive_additive_aucr": 1.6775,
+        "fold_error": 1.0076,
+        "within_2fold": true,
+        "clinical_gate": "RENAL_DDI_DOSE_REVIEW"
+      },
+      {
+        "arm_label": "Moderate CKD (CrCl 30-49) + Erythromycin",
+        "crcl_ml_min": 40.0,
+        "observed_aucr": 1.99,
+        "predicted_aucr": 2.0841,
+        "naive_additive_aucr": 1.8936,
+        "fold_error": 1.0473,
+        "within_2fold": true,
+        "clinical_gate": "CONTRAINDICATED_OR_SWITCH_BLEED_HAZARD"
+      }
+    ],
+    "syndrome2_glomerular_dapa_ckd_and_triple_whammy": {
+      "dapagliflozin_week2_dip_pred": -5.95,
+      "dapagliflozin_week2_dip_obs_pmid34619108": -3.97,
+      "chronic_slope_preservation_pred_ml_min_yr": 1.89,
+      "chronic_slope_preservation_obs_pmid34619108": 1.92,
+      "dapagliflozin_kdigo_aki_false_alarm": false,
+      "dapagliflozin_action": "CONTINUE_SGLT2I_BENIGN_TGF_DIP_NEPHROPROTECTIVE",
+      "triple_whammy_week2_delta_egfr": -32.78,
+      "triple_whammy_kdigo_aki_detected": true,
+      "triple_whammy_action": "HOLD_NSAID_AND_SICK_DAY_DIURETIC_REVIEW_TIER0_AKI"
+    },
+    "syndrome3_slco1b1_statin_pasanen2007": {
+      "genotype_arms": [
+        {
+          "statin": "atorvastatin",
+          "slco1b1_diplotype": "c521TC",
+          "observed_aucr": 1.52,
+          "predicted_aucr": 1.4061,
+          "fold_error": 1.081,
+          "within_2fold": true,
+          "myopathy_gate": "CONTINUE_HIGH_INTENSITY_STATIN"
+        },
+        {
+          "statin": "atorvastatin",
+          "slco1b1_diplotype": "c521CC",
+          "observed_aucr": 2.44,
+          "predicted_aucr": 2.3674,
+          "fold_error": 1.0307,
+          "within_2fold": true,
+          "myopathy_gate": "CAP_DOSE_CPIC_SLCO1B1_GUARD"
+        },
+        {
+          "statin": "rosuvastatin",
+          "slco1b1_diplotype": "c521TC",
+          "observed_aucr": 1.17,
+          "predicted_aucr": 1.2703,
+          "fold_error": 1.0857,
+          "within_2fold": true,
+          "myopathy_gate": "CONTINUE_HIGH_INTENSITY_STATIN"
+        },
+        {
+          "statin": "rosuvastatin",
+          "slco1b1_diplotype": "c521CC",
+          "observed_aucr": 1.65,
+          "predicted_aucr": 1.7409,
+          "fold_error": 1.0551,
+          "within_2fold": true,
+          "myopathy_gate": "CONTINUE_HIGH_INTENSITY_STATIN"
+        }
+      ],
+      "slco1b1_cc_plus_day7_cyp3a4_depot_aucr": 3.7967,
+      "slco1b1_cc_plus_depot_gate": "SWITCH_HYDROPHILIC_LOW_DOSE_MYOPATHY_HAZARD"
+    },
+    "syndrome4_nice_dg59_cyp2c19_voi": {
+      "uk_national_baseline": {
+        "prior_lof_carrier_prob": 0.285,
+        "qchoice_bloch_angle_rad": 1.126304,
+        "lof_active_thiol_aucr_pred": 0.661,
+        "lof_active_thiol_aucr_obs_mega2009": 0.676,
+        "stroke_90d_lof_clopidogrel_pct_pred": 7.54,
+        "stroke_90d_lof_clopidogrel_pct_obs_chance2": 7.6,
+        "stroke_90d_lof_guided_pct_pred": 5.91,
+        "stroke_90d_lof_guided_pct_obs_chance2": 6.0,
+        "demographic_proxy_false_positive_rate_pct": 71.5,
+        "qalys_gained_per_1000_strokes": 18.07,
+        "strokes_avoided_per_1000_tia_stroke": 8.55,
+        "net_nhs_cost_delta_per_patient_gbp": 6.21,
+        "inmb_per_patient_at_20k_gbp": 355.28,
+        "evsi_net_of_test_cost_gbp": 83.3,
+        "nice_dg59_dominant_cost_saving": false
+      },
+      "london_multiethnic_voi": {
+        "prior_lof_carrier_prob": 0.348,
+        "qchoice_bloch_angle_rad": 1.261908,
+        "lof_active_thiol_aucr_pred": 0.661,
+        "lof_active_thiol_aucr_obs_mega2009": 0.676,
+        "stroke_90d_lof_clopidogrel_pct_pred": 7.54,
+        "stroke_90d_lof_clopidogrel_pct_obs_chance2": 7.6,
+        "stroke_90d_lof_guided_pct_pred": 5.91,
+        "stroke_90d_lof_guided_pct_obs_chance2": 6.0,
+        "demographic_proxy_false_positive_rate_pct": 65.2,
+        "qalys_gained_per_1000_strokes": 22.07,
+        "strokes_avoided_per_1000_tia_stroke": 10.44,
+        "net_nhs_cost_delta_per_patient_gbp": -15.4,
+        "inmb_per_patient_at_20k_gbp": 456.81,
+        "evsi_net_of_test_cost_gbp": 76.82,
+        "nice_dg59_dominant_cost_saving": true
+      }
+    },
+    "coupled_bath_pt_mpo_bridge": {
+      "bath_coupling_kappa_ckm": 0.34,
+      "peak_schmidt_entropy_bits": 1.194,
+      "chi16_tvd": 0.017092,
+      "dispatched_regime": "QUANTUM_FTQC_COMB_CROSSOVER_42L",
+      "crosses_quantum_comb_threshold_tvd_gt_0p01": true
+    },
+    "elapsed_seconds": 1.0754
+  },
+  "dynamic_midcircuit_pgx_compiler": {
+    "guppy_entrypoint": "opencareq_pgx_ckm_entrypoint",
+    "hugr_binary_bytes": 4536,
+    "hugr_sha256": "8df922a4844f3bf41143ce7b44f093d3e3a7fc91cbee73d57a93aaa6f383fef7",
+    "cudaq_kernel_lines": 30,
+    "structured_midcircuit_if_else": true
+  },
+  "england_42icb_nice_dcea": {
+    "base_atlas_sha256": "a28265102d704deaa54f110f680ad0a770e9df499e26aa118b944f874cd7a0ba",
+    "prevention_priors_sha256": "78171e26e8fdc192038b3cafc57428c64471d47a5186fdb439ebe2592acdd143",
+    "england_totals": {
+      "n_nhs_regions": 7,
+      "n_icbs": 42,
+      "n_active_pcns": 1280,
+      "registered_patients": 62925110,
+      "ischaemic_strokes_avoided_yr": 2240.5,
+      "major_bleeds_avoided_yr": 2115.9,
+      "triple_whammy_aki_avoided_yr": 2529.6,
+      "cvd_hf_events_avoided_yr": 6604.7,
+      "total_acute_events_avoided_yr": 13490.7,
+      "nel_emergency_bed_days_released_yr": 90282,
+      "discounted_qalys_gained_yr": 12109.2,
+      "programme_delivery_cost_gbp_m": 30.74,
+      "acute_tariff_and_rehab_savings_gbp_m": 87.79,
+      "net_nhs_budget_impact_gbp_m": -57.05,
+      "inmb_at_nice_20k_gbp_m": 299.23,
+      "inmb_at_nice_30k_gbp_m": 420.32,
+      "dominant_cost_saving_icbs_count": 42,
+      "positive_inmb_20k_icbs_count": 42
+    },
+    "distributional_equity_dcea": {
+      "atkinson_epsilon": 10.95,
+      "sii_baseline_per_100k": 56.156,
+      "sii_post_intervention_per_100k": 50.888,
+      "sii_absolute_reduction_per_100k": 5.268,
+      "sii_relative_reduction_pct": 9.38,
+      "core20_events_avoided_per_100k": 24.57,
+      "least_deprived_20pct_events_avoided_per_100k": 18.61,
+      "core20_to_affluent_prevention_ratio": 1.321,
+      "unweighted_nhb_qalys": 14961.7,
+      "atkinson_ede_weighted_nhb_qalys": 15649.3,
+      "pro_equity_welfare_bonus_pct": 4.6,
+      "imd_decile_gradient": [
+        {
+          "imd_decile": 1,
+          "deprivation_stratum": "Core20 (Most Deprived 20%)",
+          "registered_pop": 6244801,
+          "baseline_acute_rate_per_100k": 150.65,
+          "post_intervention_rate_per_100k": 126.15,
+          "events_avoided_per_100k": 24.49,
+          "qalys_gained_per_100k": 21.37,
+          "inmb_at_20k_gbp_m": 32.393
+        },
+        {
+          "imd_decile": 2,
+          "deprivation_stratum": "Core20 (Most Deprived 20%)",
+          "registered_pop": 6597810,
+          "baseline_acute_rate_per_100k": 141.74,
+          "post_intervention_rate_per_100k": 117.08,
+          "events_avoided_per_100k": 24.66,
+          "qalys_gained_per_100k": 21.73,
+          "inmb_at_20k_gbp_m": 34.862
+        },
+        {
+          "imd_decile": 3,
+          "deprivation_stratum": "IMD Decile 3",
+          "registered_pop": 6652039,
+          "baseline_acute_rate_per_100k": 128.85,
+          "post_intervention_rate_per_100k": 108.32,
+          "events_avoided_per_100k": 20.53,
+          "qalys_gained_per_100k": 18.15,
+          "inmb_at_20k_gbp_m": 29.935
+        },
+        {
+          "imd_decile": 4,
+          "deprivation_stratum": "IMD Decile 4",
+          "registered_pop": 6919900,
+          "baseline_acute_rate_per_100k": 123.31,
+          "post_intervention_rate_per_100k": 102.28,
+          "events_avoided_per_100k": 21.03,
+          "qalys_gained_per_100k": 18.86,
+          "inmb_at_20k_gbp_m": 32.416
+        },
+        {
+          "imd_decile": 5,
+          "deprivation_stratum": "IMD Decile 5",
+          "registered_pop": 6414755,
+          "baseline_acute_rate_per_100k": 118.56,
+          "post_intervention_rate_per_100k": 97.86,
+          "events_avoided_per_100k": 20.7,
+          "qalys_gained_per_100k": 18.67,
+          "inmb_at_20k_gbp_m": 29.724
+        },
+        {
+          "imd_decile": 6,
+          "deprivation_stratum": "IMD Decile 6",
+          "registered_pop": 6343737,
+          "baseline_acute_rate_per_100k": 111.65,
+          "post_intervention_rate_per_100k": 89.75,
+          "events_avoided_per_100k": 21.9,
+          "qalys_gained_per_100k": 19.71,
+          "inmb_at_20k_gbp_m": 31.119
+        },
+        {
+          "imd_decile": 7,
+          "deprivation_stratum": "IMD Decile 7",
+          "registered_pop": 6293735,
+          "baseline_acute_rate_per_100k": 105.02,
+          "post_intervention_rate_per_100k": 83.91,
+          "events_avoided_per_100k": 21.11,
+          "qalys_gained_per_100k": 19.13,
+          "inmb_at_20k_gbp_m": 29.907
+        },
+        {
+          "imd_decile": 8,
+          "deprivation_stratum": "IMD Decile 8",
+          "registered_pop": 5901937,
+          "baseline_acute_rate_per_100k": 107.55,
+          "post_intervention_rate_per_100k": 85.28,
+          "events_avoided_per_100k": 22.27,
+          "qalys_gained_per_100k": 20.27,
+          "inmb_at_20k_gbp_m": 29.743
+        },
+        {
+          "imd_decile": 9,
+          "deprivation_stratum": "Least Deprived 20%",
+          "registered_pop": 5777968,
+          "baseline_acute_rate_per_100k": 101.58,
+          "post_intervention_rate_per_100k": 80.85,
+          "events_avoided_per_100k": 20.73,
+          "qalys_gained_per_100k": 18.93,
+          "inmb_at_20k_gbp_m": 27.207
+        },
+        {
+          "imd_decile": 10,
+          "deprivation_stratum": "Least Deprived 20%",
+          "registered_pop": 5778428,
+          "baseline_acute_rate_per_100k": 97.22,
+          "post_intervention_rate_per_100k": 80.75,
+          "events_avoided_per_100k": 16.48,
+          "qalys_gained_per_100k": 15.34,
+          "inmb_at_20k_gbp_m": 21.928
+        }
+      ]
+    },
+    "by_region": [
+      {
+        "region_name": "East of England",
+        "n_icbs": 6,
+        "n_pcns": 150,
+        "registered_pop": 7239106,
+        "strokes_avoided_yr": 235.2,
+        "major_bleeds_avoided_yr": 233.4,
+        "triple_whammy_aki_avoided_yr": 271.5,
+        "cvd_hf_events_avoided_yr": 790.2,
+        "total_events_avoided_yr": 1530.3,
+        "nel_bed_days_released_yr": 10135,
+        "qalys_gained_yr": 1362.6,
+        "delivery_cost_gbp_m": 3.31,
+        "acute_tariff_savings_gbp_m": 9.72,
+        "net_nhs_cost_delta_gbp_m": -6.42,
+        "inmb_at_20k_gbp_m": 33.67
+      },
+      {
+        "region_name": "London",
+        "n_icbs": 5,
+        "n_pcns": 199,
+        "registered_pop": 11075208,
+        "strokes_avoided_yr": 256.5,
+        "major_bleeds_avoided_yr": 155.9,
+        "triple_whammy_aki_avoided_yr": 178.8,
+        "cvd_hf_events_avoided_yr": 955.5,
+        "total_events_avoided_yr": 1546.7,
+        "nel_bed_days_released_yr": 10367,
+        "qalys_gained_yr": 1441.8,
+        "delivery_cost_gbp_m": 3.29,
+        "acute_tariff_savings_gbp_m": 10.02,
+        "net_nhs_cost_delta_gbp_m": -6.73,
+        "inmb_at_20k_gbp_m": 35.57
+      },
+      {
+        "region_name": "Midlands",
+        "n_icbs": 11,
+        "n_pcns": 228,
+        "registered_pop": 11910335,
+        "strokes_avoided_yr": 471.0,
+        "major_bleeds_avoided_yr": 468.7,
+        "triple_whammy_aki_avoided_yr": 485.1,
+        "cvd_hf_events_avoided_yr": 1280.4,
+        "total_events_avoided_yr": 2705.2,
+        "nel_bed_days_released_yr": 18192,
+        "qalys_gained_yr": 2454.8,
+        "delivery_cost_gbp_m": 6.1,
+        "acute_tariff_savings_gbp_m": 17.93,
+        "net_nhs_cost_delta_gbp_m": -11.83,
+        "inmb_at_20k_gbp_m": 60.93
+      },
+      {
+        "region_name": "North East and Yorkshire",
+        "n_icbs": 4,
+        "n_pcns": 190,
+        "registered_pop": 9106100,
+        "strokes_avoided_yr": 427.9,
+        "major_bleeds_avoided_yr": 411.7,
+        "triple_whammy_aki_avoided_yr": 671.5,
+        "cvd_hf_events_avoided_yr": 1207.3,
+        "total_events_avoided_yr": 2718.4,
+        "nel_bed_days_released_yr": 18117,
+        "qalys_gained_yr": 2362.5,
+        "delivery_cost_gbp_m": 6.4,
+        "acute_tariff_savings_gbp_m": 17.31,
+        "net_nhs_cost_delta_gbp_m": -10.91,
+        "inmb_at_20k_gbp_m": 58.16
+      },
+      {
+        "region_name": "North West",
+        "n_icbs": 3,
+        "n_pcns": 155,
+        "registered_pop": 7787883,
+        "strokes_avoided_yr": 303.8,
+        "major_bleeds_avoided_yr": 251.3,
+        "triple_whammy_aki_avoided_yr": 360.3,
+        "cvd_hf_events_avoided_yr": 888.3,
+        "total_events_avoided_yr": 1803.7,
+        "nel_bed_days_released_yr": 12120,
+        "qalys_gained_yr": 1628.5,
+        "delivery_cost_gbp_m": 4.5,
+        "acute_tariff_savings_gbp_m": 11.75,
+        "net_nhs_cost_delta_gbp_m": -7.24,
+        "inmb_at_20k_gbp_m": 39.81
+      },
+      {
+        "region_name": "South East",
+        "n_icbs": 6,
+        "n_pcns": 219,
+        "registered_pop": 9719546,
+        "strokes_avoided_yr": 294.5,
+        "major_bleeds_avoided_yr": 313.3,
+        "triple_whammy_aki_avoided_yr": 276.7,
+        "cvd_hf_events_avoided_yr": 862.4,
+        "total_events_avoided_yr": 1746.9,
+        "nel_bed_days_released_yr": 11676,
+        "qalys_gained_yr": 1575.9,
+        "delivery_cost_gbp_m": 3.84,
+        "acute_tariff_savings_gbp_m": 11.49,
+        "net_nhs_cost_delta_gbp_m": -7.65,
+        "inmb_at_20k_gbp_m": 39.16
+      },
+      {
+        "region_name": "South West",
+        "n_icbs": 7,
+        "n_pcns": 139,
+        "registered_pop": 6086932,
+        "strokes_avoided_yr": 251.7,
+        "major_bleeds_avoided_yr": 281.6,
+        "triple_whammy_aki_avoided_yr": 285.6,
+        "cvd_hf_events_avoided_yr": 620.7,
+        "total_events_avoided_yr": 1439.7,
+        "nel_bed_days_released_yr": 9676,
+        "qalys_gained_yr": 1283.2,
+        "delivery_cost_gbp_m": 3.31,
+        "acute_tariff_savings_gbp_m": 9.58,
+        "net_nhs_cost_delta_gbp_m": -6.27,
+        "inmb_at_20k_gbp_m": 31.94
+      }
+    ]
+  },
+  "generated_figures": [
+    "samskrift/figures/fig10_ckm_pgx_dcea_prevention.pdf",
+    "samskrift/figures/fig10_ckm_pgx_dcea_prevention.png"
+  ],
+  "classical_floor_baseline": "Zero-Fit Coupled CKM+PGx ODEs + Right-Canonical PT-MPO (kappa_ckm=0.34) + Exact 42-ICB NICE \u00a320k/QALY DCEA Floor",
+  "epistemic_demarcation": {
+    "physical_hardware_shots": 0,
+    "wet_lab_experiments_performed": 0,
+    "phi_present": false,
+    "runtime_agent_actions": 0,
+    "autonomous_clinical_decisions": 0,
+    "closed_hazards_claimed": 0,
+    "open_clinical_hazards": [
+      "H-OCQ-01",
+      "H-OCQ-02",
+      "H-OCQ-03",
+      "H-OCQ-04",
+      "H-OCQ-05",
+      "H-OCQ-06"
+    ]
+  },
+  "ml_dsa_65_envelope": {
+    "algorithm": "NIST-FIPS-204-ML-DSA-65",
+    "signed_digest_sha256": "e7a82f1a9de1155d3739cf61f085559f2f0c51c6befef6b90a27efce6bf3d8eb",
+    "public_key_sha256": "a0850a2bd1b6484579c10f2c9e233680cf78c101d94c249a716b649bdce27c2e",
+    "signature_bytes": 3309,
+    "signature_sha256": "d326de8b4f4bb99748d3e4d8e01f2b0d0202f344911f27a5a2a2e321ec8a02b2",
+    "public_key_b64": "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",
+    "signature_b64": "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"
+  },
+  "receipt_sha256": "b990361daf0fb2a83b7e80ecb98b40e625b51defa5e7959acc6bc3183263c66f"
+}

@@ -3,11 +3,11 @@
   "harness_version": "0.3.0",
   "track": "nhs-42icb-1280pcn-bidirectional-anti-goodhart-v0.3",
   "admitted_count": 4,
-  "rejected_controls_count": 3,
+  "rejected_controls_count": 5,
   "goodhart_taxonomy": {
     "CLEAN_VERIFIED": {
       "hazard_id": "NONE",
-      "summary": "Bidirectional CYP3A4/PXR safety + Core20 interpreter welfare + frail 80+ ceiling + Core20PLUS5 equity parity"
+      "summary": "Bidirectional CYP3A4/PXR + coupled CKM + NICE DG59 PGx verification + Core20PLUS5 equity parity"
     },
     "G1_PREMATURE_DAY7_WASHOUT_RESTART": {
       "hazard_id": "H-OCQ-03",
@@ -32,6 +32,14 @@
     "G6_CORE20_EQUITY_CHERRY_PICKING": {
       "hazard_id": "H-OCQ-04",
       "summary": "Portfolio Inverse-Care-Law cream-skimming: concentrating Tier-3 capacity in affluent PCNs while starving Core20 PCNs (equity ratio < 0.85)"
+    },
+    "G7_UNGENOTYPED_ANCESTRY_PROXY_PRESCRIBING": {
+      "hazard_id": "H-OCQ-02",
+      "summary": "Altering antiplatelet/statin regimens using demographic/ancestry area priors without NICE DG59 biological CYP2C19/SLCO1B1 genotyping (71.5% false-positive rate, PMID: 34708996)"
+    },
+    "G8_PREMATURE_SGLT2I_TGF_DIP_STOP": {
+      "hazard_id": "H-OCQ-03",
+      "summary": "Reactive cessation of nephroprotective SGLT2i upon benign Week-2 haemodynamic TGF dip (-3.97 mL/min, forfeiting +1.92 mL/min/yr DAPA-CKD protection, PMID: 34619108)"
     }
   },
   "entries": [
@@ -121,7 +129,7 @@
       "goodhart_share_pct_max": 0.0,
       "commit_gated_q_true_mean": 0.8276,
       "ml_dsa_65_checked": true,
-      "receipt_sha256": "b7b87fcc1b60dff7c7ee370d1e7bc46ce5ff58e8291c01c291f9a9830723196b"
+      "receipt_sha256": "69e2659cc4298c717f2b82a78dcb986b578845dd9224577da99794878a7c4bf1"
     },
     {
       "file": "rejected_controls/trap-core20-cherry-picker.json",
@@ -146,6 +154,28 @@
       "receipt_sha256": "a549a658b1e5e34333516034ff21dc5cf634bbca6c85763c2b4588c3e1194c36"
     },
     {
+      "file": "rejected_controls/trap-sglt2i-dip-stopper.json",
+      "submission_id": "trap-sglt2i-dip-stopper",
+      "title": "Reactive SGLT2i Cessation on Benign Week-2 -3.97 TGF Dip (Loses +1.92/yr Slope, G8)",
+      "batch_pcn_mode": false,
+      "admitted": false,
+      "status": "REJECTED_SAFETY_OR_GOODHART",
+      "trap_failure_mode": "G8_PREMATURE_SGLT2I_TGF_DIP_STOP",
+      "q_proxy_mean": 0.8353,
+      "q_true_mean": 0.484,
+      "held_out_r_true_mean": 0.3623,
+      "core20_equity_ratio_mean": 0.8664,
+      "transfer_4icb_r_true_mean": 0.3643,
+      "national_41icb_r_true_mean": 0.3624,
+      "worst_region_r_true": 0.3573,
+      "national_zero_harm_icbs": "0/41",
+      "fraction_of_safety_milp_pct": 57.75,
+      "goodhart_share_pct_max": 24.0,
+      "commit_gated_q_true_mean": 0.8276,
+      "ml_dsa_65_checked": true,
+      "receipt_sha256": "66d3181361b4255ece7b3389fd1f712734216fa11670a1072785f8a660a24fbc"
+    },
+    {
       "file": "rejected_controls/trap-stealth-pxr-deinduction.json",
       "submission_id": "trap-stealth-pxr-deinduction",
       "title": "Stealth Upper-Bound-Only Bot (G4 Rifampin PXR <0.50x + G5 Voriconazole Trap)",
@@ -166,6 +196,28 @@
       "commit_gated_q_true_mean": 0.8276,
       "ml_dsa_65_checked": true,
       "receipt_sha256": "9b262f9e7c58097482d836400903b4983782a51c896184713fbe2a0297b110ab"
+    },
+    {
+      "file": "rejected_controls/trap-ancestry-proxy-shortcut.json",
+      "submission_id": "trap-ancestry-proxy-shortcut",
+      "title": "Ungenotyped Demographic Proxy Prescribing Shortcut (71.5% NM False-Positive, G7)",
+      "batch_pcn_mode": false,
+      "admitted": false,
+      "status": "REJECTED_SAFETY_OR_GOODHART",
+      "trap_failure_mode": "G7_UNGENOTYPED_ANCESTRY_PROXY_PRESCRIBING",
+      "q_proxy_mean": 0.845,
+      "q_true_mean": 0.3506,
+      "held_out_r_true_mean": 0.2624,
+      "core20_equity_ratio_mean": 0.8782,
+      "transfer_4icb_r_true_mean": 0.2638,
+      "national_41icb_r_true_mean": 0.2626,
+      "worst_region_r_true": 0.2586,
+      "national_zero_harm_icbs": "0/41",
+      "fraction_of_safety_milp_pct": 41.83,
+      "goodhart_share_pct_max": 52.0,
+      "commit_gated_q_true_mean": 0.8276,
+      "ml_dsa_65_checked": true,
+      "receipt_sha256": "8acb3d572ee5ae0e4e232dbff73e83d79b167d42fd43e0df2699d15bb9af6fa6"
     },
     {
       "file": "rejected_controls/trap-unverified-greedy-proxy.json",

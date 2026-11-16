@@ -108,6 +108,36 @@
       "label": "Cohort 4: Reitman et al. 2011 Rifampin 28-Day PXR De-Induction Washout (N=29)"
     },
     {
+      "id": "pmid:24964176",
+      "type": "Clinical_PK_Trial",
+      "label": "Syndrome 1: Moore et al. 2014 Rivaroxaban CKD x Erythromycin Synergy"
+    },
+    {
+      "id": "pmid:34619108",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Syndrome 2: Heerspink et al. 2021 DAPA-CKD Acute Dip (-3.97) & Slope (+1.92/yr)"
+    },
+    {
+      "id": "pmid:23299844",
+      "type": "Pharmacoepi_Cohort",
+      "label": "Syndrome 2: Lapi et al. 2013 BMJ Triple-Whammy AKI Cohort (RR=1.82)"
+    },
+    {
+      "id": "pmid:17473846",
+      "type": "PGx_Clinical_Trial",
+      "label": "Syndrome 3: Pasanen et al. 2007 SLCO1B1 c.521T>C Statin PK (N=32)"
+    },
+    {
+      "id": "pmid:34708996",
+      "type": "PGx_RCT",
+      "label": "Syndrome 4: Wang et al. 2021 CHANCE-2 CYP2C19 LOF Stroke RCT (N=6,412) / NICE DG59"
+    },
+    {
+      "id": "pmid:28237196",
+      "type": "HTA_Methodology",
+      "label": "Cookson et al. 2017 Distributional Cost-Effectiveness Analysis (Atkinson eps=10.95)"
+    },
+    {
       "id": "dsl:qchoice_qcomb",
       "type": "DSL_Primitive",
       "label": "Gate-Free QChoice / QSequence / QComb Primitives"
@@ -116,6 +146,16 @@
       "id": "wm:rk4_hepatocyte_depot",
       "type": "World_Model",
       "label": "9-State RK4 Intracellular Hepatocyte Depot + CYP3A4 MBI + PXR"
+    },
+    {
+      "id": "wm:ckm_pgx_prevention",
+      "type": "World_Model",
+      "label": "v0.4 Coupled Hepato-Renal CKM + Two-Stage NICE DG59 PGx World Model (GMFE=1.0701)"
+    },
+    {
+      "id": "dcea:england_42icb_nice_20k",
+      "type": "Health_Economics",
+      "label": "v0.4 42-ICB NICE \u00a320k/QALY DCEA & IMD Decile 1-10 SII Prevention Atlas"
     },
     {
       "id": "wm:8q_non_markovian_comb",
@@ -153,6 +193,11 @@
       "label": "Quantinuum Guppy 1.0 -> HUGR Binary (5,579 B, a9759e26)"
     },
     {
+      "id": "compiler:dynamic_pgx_hugr_4536b",
+      "type": "Compiler_Target",
+      "label": "Dynamic Mid-Circuit NICE DG59 PGx-CKM Guppy 1.0 -> HUGR Binary (4,536 B, 8df922a4)"
+    },
+    {
       "id": "compiler:nvidia_cudaq",
       "type": "Compiler_Target",
       "label": "NVIDIA CUDA-Q (@cudaq.kernel) Trajectory Target"
@@ -173,14 +218,19 @@
       "label": "Sealed England 42-ICB (1,280-PCN) National Atlas Receipt (ML-DSA-65)"
     },
     {
+      "id": "receipt:v0_4_prevention_dcea",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v0.4 Coupled CKM+PGx & 42-ICB NICE DCEA Receipt (ML-DSA-65)"
+    },
+    {
       "id": "paper:samskrift_v0_3",
       "type": "Publication",
-      "label": "OpenCareQ v0.3.0 Samskrift Research Monograph"
+      "label": "OpenCareQ v0.4.0 Samskrift Research Monograph"
     },
     {
       "id": "bench:anti_goodhart_policy",
       "type": "Policy_Benchmark",
-      "label": "42-ICB (1,280-PCN) Bidirectional & Core20PLUS5 Anti-Goodhart Policy Benchmark (G1-G6)"
+      "label": "42-ICB (1,280-PCN) Bidirectional, PGx/CKM & Core20PLUS5 Anti-Goodhart Benchmark (G1-G8)"
     },
     {
       "id": "hazard:H-OCQ-01",
@@ -506,6 +556,91 @@
       "target": "bench:anti_goodhart_policy"
     },
     {
+      "source": "pmid:24964176",
+      "relation": "falsification_syndrome_1",
+      "target": "wm:ckm_pgx_prevention"
+    },
+    {
+      "source": "pmid:34619108",
+      "relation": "falsification_syndrome_2_tgf_dip",
+      "target": "wm:ckm_pgx_prevention"
+    },
+    {
+      "source": "pmid:23299844",
+      "relation": "falsification_syndrome_2_triple_whammy",
+      "target": "wm:ckm_pgx_prevention"
+    },
+    {
+      "source": "pmid:17473846",
+      "relation": "falsification_syndrome_3_slco1b1",
+      "target": "wm:ckm_pgx_prevention"
+    },
+    {
+      "source": "pmid:34708996",
+      "relation": "falsification_syndrome_4_cyp2c19",
+      "target": "wm:ckm_pgx_prevention"
+    },
+    {
+      "source": "dsl:qchoice_qcomb",
+      "relation": "encodes_pretest_pgx_voi",
+      "target": "wm:ckm_pgx_prevention"
+    },
+    {
+      "source": "wm:ckm_pgx_prevention",
+      "relation": "challenged_by_classical_mpo",
+      "target": "compiler:pt_mpo_adversary"
+    },
+    {
+      "source": "wm:ckm_pgx_prevention",
+      "relation": "compiles_midcircuit_if_else_to",
+      "target": "compiler:dynamic_pgx_hugr_4536b"
+    },
+    {
+      "source": "wm:ckm_pgx_prevention",
+      "relation": "parameterizes_prevention_yield_in",
+      "target": "dcea:england_42icb_nice_20k"
+    },
+    {
+      "source": "ogl:england_42icb_atlas_2026",
+      "relation": "grounds_1280_pcns_in",
+      "target": "dcea:england_42icb_nice_20k"
+    },
+    {
+      "source": "pmid:28237196",
+      "relation": "grounds_atkinson_dcea_in",
+      "target": "dcea:england_42icb_nice_20k"
+    },
+    {
+      "source": "wm:ckm_pgx_prevention",
+      "relation": "sealed_in",
+      "target": "receipt:v0_4_prevention_dcea"
+    },
+    {
+      "source": "compiler:dynamic_pgx_hugr_4536b",
+      "relation": "sealed_in",
+      "target": "receipt:v0_4_prevention_dcea"
+    },
+    {
+      "source": "dcea:england_42icb_nice_20k",
+      "relation": "sealed_in",
+      "target": "receipt:v0_4_prevention_dcea"
+    },
+    {
+      "source": "receipt:v0_4_prevention_dcea",
+      "relation": "typeset_in",
+      "target": "paper:samskrift_v0_3"
+    },
+    {
+      "source": "pmid:34708996",
+      "relation": "grounds_g7_pgx_trap_in",
+      "target": "bench:anti_goodhart_policy"
+    },
+    {
+      "source": "pmid:34619108",
+      "relation": "grounds_g8_sglt2i_trap_in",
+      "target": "bench:anti_goodhart_policy"
+    },
+    {
       "source": "framework:opencareq_v0_3",
       "relation": "tracks_open_hazard",
       "target": "hazard:H-OCQ-01"
@@ -536,5 +671,5 @@
       "target": "hazard:H-OCQ-06"
     }
   ],
-  "kg_sha256": "e242cb2a9c39c2f7e03d1a3d1d9266c06953a6ba90043947885efc68ac5c7798"
+  "kg_sha256": "40cddba686603ac43d676a115ae8cb8147ea2535198fd7d891adc73494525997"
 }
