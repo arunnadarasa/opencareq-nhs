@@ -243,6 +243,16 @@
       "label": "Haiqu SDK 1.6.0+ & AgenticOS Dual-Topology Target (25-75q Cubic HUBO + 8-24q OBP/Packed Comb)"
     },
     {
+      "id": "arxiv:2611.18440v1",
+      "type": "Quantum_Method_Study",
+      "label": "Bultrini 2026 Tessa Whole-Chip Zero-SWAP Encoder & Prop. 1 Super-Pixel Demarcation (Moth Quantum)"
+    },
+    {
+      "id": "compiler:tessa_superpixel_v0_8",
+      "type": "Compiler_Target",
+      "label": "v0.8 Clean-Room Tessa 1,280-PCN Encoder, Prop. 1 <10ms 0L Floor & Moth Quantum Cloud Suite"
+    },
+    {
       "id": "receipt:samskrift_benchmark",
       "type": "Benchmark_Receipt",
       "label": "Sealed Samskrift v0.3 Benchmark Receipt (ML-DSA-65)"
@@ -278,6 +288,11 @@
       "label": "Sealed OpenCareQ v0.7 Haiqu SDK 1.6+ & AgenticOS Dual-Topology Readiness Receipt (ML-DSA-65)"
     },
     {
+      "id": "receipt:v0_8_moth_tessa_cloud",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v0.8 Live Moth Quantum Cloud (7 Jobs, 11 Credits) & Tessa 1,280-PCN Receipt (ML-DSA-65)"
+    },
+    {
       "id": "safety:cscr_crmp_dcb0160_mse",
       "type": "Clinical_Safety_Suite",
       "label": "v0.6 Statutory DCB0129 CSCR + CRMP + MSE (E54000026) DCB0160 Shadow Pack"
@@ -285,7 +300,12 @@
     {
       "id": "paper:samskrift_v0_3",
       "type": "Publication",
-      "label": "OpenCareQ v0.7.0 Samskrift Research Monograph"
+      "label": "OpenCareQ v0.7.0 Samskrift Research Monograph (Paper I, 21 pp.)"
+    },
+    {
+      "id": "paper:samskrift_moth_companion",
+      "type": "Publication",
+      "label": "OpenCareQ Companion Paper II: Moth Quantum & Tessa 1,280-PCN NHS Cloud Study"
     },
     {
       "id": "bench:anti_goodhart_policy",
@@ -807,6 +827,46 @@
       "target": "paper:samskrift_v0_3"
     },
     {
+      "source": "arxiv:2611.18440v1",
+      "relation": "mathematical_foundation_for",
+      "target": "compiler:tessa_superpixel_v0_8"
+    },
+    {
+      "source": "arxiv:2611.18440v1",
+      "relation": "abcc8_error_boundary_informs",
+      "target": "hazard:H-OCQ-02"
+    },
+    {
+      "source": "framework:opencareq_v0_3",
+      "relation": "encodes_1280_pcns_via",
+      "target": "compiler:tessa_superpixel_v0_8"
+    },
+    {
+      "source": "ogl:england_42icb_atlas_2026",
+      "relation": "grounds_1280_and_441_pcn_vectors_in",
+      "target": "compiler:tessa_superpixel_v0_8"
+    },
+    {
+      "source": "ogl:norfolk_pcn_twin_2026",
+      "relation": "grounds_20pcn_quantum_graph_in",
+      "target": "compiler:tessa_superpixel_v0_8"
+    },
+    {
+      "source": "compiler:pt_mpo_adversary",
+      "relation": "cross_validates_otoc_echo_in",
+      "target": "compiler:tessa_superpixel_v0_8"
+    },
+    {
+      "source": "compiler:tessa_superpixel_v0_8",
+      "relation": "sealed_in",
+      "target": "receipt:v0_8_moth_tessa_cloud"
+    },
+    {
+      "source": "receipt:v0_8_moth_tessa_cloud",
+      "relation": "typeset_in",
+      "target": "paper:samskrift_moth_companion"
+    },
+    {
       "source": "safety:cscr_crmp_dcb0160_mse",
       "relation": "governs_bowtie_open_hazard",
       "target": "hazard:H-OCQ-01"
@@ -877,5 +937,5 @@
       "target": "hazard:H-OCQ-07"
     }
   ],
-  "kg_sha256": "4ddc36f4e3fbe21e8a2cbe511360a9360d6fe9fcf6b9768d6d9a0bb518cc46e6"
+  "kg_sha256": "bb8da3292a5c5a302802fcc02267fbd26417677984435ebc8a607c6e6082facf"
 }

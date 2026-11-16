@@ -68,9 +68,23 @@
       display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 6px;
       background: linear-gradient(135deg, var(--signal), #1ca394); color: #061315; font-weight: 800;
     }
-    .nav-links { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; font-size: 0.86rem; font-weight: 600; }
-    .nav-links a { color: var(--ink-muted); padding: 0.34rem 0.7rem; border-radius: 999px; }
+    .nav-links { display: flex; align-items: center; gap: 0.3rem; flex-wrap: wrap; font-size: 0.83rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.32rem 0.62rem; border-radius: 999px; white-space: nowrap; }
     .nav-links a:hover { color: var(--ink); background: rgba(255,255,255,0.05); }
+    .nav-links a.btn-primary {
+      background: var(--signal);
+      color: #061517;
+      border: 1px solid var(--signal);
+      border-radius: 8px;
+      font-weight: 800;
+      padding: 0.34rem 0.78rem;
+      box-shadow: 0 2px 10px rgba(56, 214, 196, 0.24);
+    }
+    .nav-links a.btn-primary:hover {
+      background: #4fe2d1;
+      color: #061517;
+      filter: brightness(1.04);
+    }
 
     section { padding: 2.5rem 0; border-bottom: 1px solid var(--border); }
     .kicker { font-family: var(--font-mono); font-size: 0.79rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--signal); margin: 0 0 0.4rem; }
@@ -136,12 +150,12 @@
         <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">v0.6 Safety Pack</small></span>
       </a>
       <nav class="nav-links" aria-label="Safety Navigation">
-        <a href="index.html">← Main NHS Portal</a>
-        <a href="#mentor-attribution" style="color:var(--signal);">Mentor &amp; CSC-QT Credits</a>
-        <a href="#cscqt-browser">36-Indicator CSC-QT Review</a>
-        <a href="#three-docs" style="color:var(--amber);">3-Document Safety Pack (CSCR / CRMP / DCB0160)</a>
-        <a href="#bowtie-log">Bow-Tie Hazard Log</a>
-        <a class="btn btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf" style="padding:0.32rem 0.72rem;">⬇ Paper PDF</a>
+        <a href="index.html">← Portal</a>
+        <a href="#mentor-attribution" style="color:var(--signal);">Mentor &amp; Credits</a>
+        <a href="#cscqt-browser">36-Indicator CSC-QT</a>
+        <a href="#three-docs" style="color:var(--amber);">3-Doc Pack (CSCR / CRMP / 0160)</a>
+        <a href="#bowtie-log">Bow-Tie Log</a>
+        <a class="btn btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Paper PDF</a>
       </nav>
     </div>
   </header>
@@ -156,15 +170,15 @@
           <span class="pill pill-ember">All 7 Hazards (H-OCQ-01..07) OPEN · ML-DSA-65 Receipt 2887c3c9</span>
         </div>
 
-        <p class="kicker">Document-Complete NHS Clinical Risk Governance · Zero `.py`/`.tex` Source Exposure (`phi_present = False`)</p>
-        <h1>NHS `DCB0129` &amp; `DCB0160` Clinical Safety Case Suite (`CSC-QT` Audited)</h1>
+        <p class="kicker">Document-Complete NHS Clinical Risk Governance · Zero .py / .tex Source Exposure (phi_present = False)</p>
+        <h1>NHS DCB0129 &amp; DCB0160 Clinical Safety Case Suite (CSC-QT Audited)</h1>
         <p class="lead">
-          To enable Clinical Safety Officers (`CSO`s), NHS ICB procurement/assurance teams, and peer reviewers to judge clinical safety quality <strong>from the statutory safety documents alone</strong>, <code>OpenCareQ v0.6.0</code> publishes its complete 3-document safety suite—<strong>Clinical Safety Case Report (<code>CSCR</code>)</strong>, <strong>Clinical Risk Management Plan (<code>CRMP</code>)</strong>, and <strong>Cause-Separated Bow-Tie Hazard Log + Mid &amp; South Essex (<code>E54000026</code>) <code>DCB0160</code> Handover Pack</strong>—structured and evaluated across all 36 indicators of <a href="https://csc-qt.curistica.com/" target="_blank" rel="noopener"><strong>The Clinical Safety Case Quality Tool (<code>CSC-QT</code>)</strong></a>.
+          To enable Clinical Safety Officers (<code>CSO</code>s), NHS ICB procurement/assurance teams, and peer reviewers to judge clinical safety quality <strong>from the statutory safety documents alone</strong>, <code>OpenCareQ v0.8.0</code> publishes its complete 3-document safety suite—<strong>Clinical Safety Case Report (<code>CSCR</code>)</strong>, <strong>Clinical Risk Management Plan (<code>CRMP</code>)</strong>, and <strong>Cause-Separated Bow-Tie Hazard Log + Mid &amp; South Essex (<code>E54000026</code>) <code>DCB0160</code> Handover Pack</strong>—structured and evaluated across all 36 indicators of <a href="https://csc-qt.curistica.com/" target="_blank" rel="noopener"><strong>The Clinical Safety Case Quality Tool (<code>CSC-QT</code>)</strong></a>.
         </p>
 
         <div class="tribute-box">
           <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--signal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.3rem;">
-            Mentorship Tribute, Academic Citation &amp; Open-Access Attribution (`CC BY 4.0`)
+            Mentorship Tribute, Academic Citation &amp; Open-Access Attribution (CC BY 4.0)
           </div>
           <p style="margin:0 0 0.6rem;font-size:0.95rem;">
             <strong>Mentorship Acknowledgement:</strong> The author (Arun Nadarasa, Mid &amp; South Essex NHS Foundation Trust) gratefully acknowledges mentorship and clinical safety guidance from <strong>Dr Keith Grimes</strong> (Founder &amp; CEO, <a href="https://www.curistica.com/" target="_blank" rel="noopener">Curistica Ltd</a>; Fellow of the Faculty of Pharmaceutical Medicine &amp; British Computer Society), co-creator with <strong>Dr Youssof Oskrochi</strong> (Honorary Lecturer, University College London &amp; Head of Safety &amp; Data Protection, Curistica Ltd) of <a href="https://csc-qt.curistica.com/" target="_blank" rel="noopener"><strong>The Clinical Safety Case Quality Tool (<code>CSC-QT</code>)</strong></a>.
@@ -174,36 +188,36 @@
             <strong>Licence &amp; Funder:</strong> Published open access under <a href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="noopener">Creative Commons Attribution 4.0 International (<code>CC BY 4.0</code>)</a>; funded through the <strong>RADIANT-CERSI Regulator Journey Support Projects</strong> programme (MRC, Innovate UK, Office for Life Sciences, and MHRA; led by Brunel University of London).
           </p>
           <div style="font-size:0.83rem;color:#fce7c2;background:rgba(244,174,66,0.12);border:1px solid rgba(244,174,66,0.35);padding:0.55rem 0.8rem;border-radius:8px;">
-            <strong>Explicit Statutory CSO Non-Sign-Off &amp; Instrument Demarcation Notice (`CSC-QT 1.1` &amp; `CC BY 4.0`):</strong> <code>OpenCareQ</code> is an independent open-science research safety case (not a certified medical device). Crediting mentorship by Dr Keith Grimes and applying <code>CSC-QT</code> does <strong>not</strong> constitute formal Clinical Safety Officer (<code>CSO</code>) sign-off, audit certification, or commercial endorsement by Dr Keith Grimes, Dr Youssof Oskrochi, Curistica Ltd, or UCL. Automated graph checks in <code>ocq safety-case</code> (<code>OpenCareQ-CSCLint</code>) are an <code>OpenCareQ</code> software aid and <strong>not</strong> a modified version of the published <code>CSC-QT</code>.
+            <strong>Explicit Statutory CSO Non-Sign-Off &amp; Instrument Demarcation Notice (CSC-QT 1.1 &amp; CC BY 4.0):</strong> <code>OpenCareQ</code> is an independent open-science research safety case (not a certified medical device). Crediting mentorship by Dr Keith Grimes and applying <code>CSC-QT</code> does <strong>not</strong> constitute formal Clinical Safety Officer (<code>CSO</code>) sign-off, audit certification, or commercial endorsement by Dr Keith Grimes, Dr Youssof Oskrochi, Curistica Ltd, or UCL. Automated graph checks in <code>ocq safety-case</code> (<code>OpenCareQ-CSCLint</code>) are an <code>OpenCareQ</code> software aid and <strong>not</strong> a modified version of the published <code>CSC-QT</code>.
           </div>
         </div>
 
         <div class="kpi-grid">
           <div class="card">
-            <div class="kpi-meta">Unmodified `CSC-QT` Protocol</div>
+            <div class="kpi-meta">Unmodified CSC-QT Protocol</div>
             <div class="kpi-num">36 Indicators · 5 Domains</div>
-            <div class="kpi-meta">Domain profile only — zero summed `%` or pass-mark (`CC BY 4.0`)</div>
+            <div class="kpi-meta">Domain profile only — zero summed % or pass-mark (CC BY 4.0)</div>
           </div>
           <div class="card">
-            <div class="kpi-meta">Longitudinal Diagnostic (`v0.5 -> v0.6`)</div>
+            <div class="kpi-meta">Longitudinal Diagnostic (v0.5 → v0.6+)</div>
             <div class="kpi-num">20 Gaps Remediated</div>
-            <div class="kpi-meta">`15/35` `v0.5` `DCB0129` baseline → `35/35` (`DCB0129`) &amp; `36/36` (`MSE DCB0160`)</div>
+            <div class="kpi-meta"><code>15/35</code> v0.5 DCB0129 baseline → <code>35/35</code> (DCB0129) &amp; <code>36/36</code> (MSE DCB0160)</div>
           </div>
           <div class="card">
-            <div class="kpi-meta">NHS `5×5` Risk Matrix Posture</div>
+            <div class="kpi-meta">NHS 5×5 Risk Matrix Posture</div>
             <div class="kpi-num">3 → 0 Unacceptable</div>
-            <div class="kpi-meta">`2` Undesirable (`Score=8`, justified) · `3` Tolerable · `2` Acceptable (`7` OPEN)</div>
+            <div class="kpi-meta">2 Undesirable (Score=8, justified) · 3 Tolerable · 2 Acceptable (7 OPEN)</div>
           </div>
           <div class="card">
             <div class="kpi-meta">Anti-Polish Cryptographic Evidence</div>
             <div class="kpi-num" style="color:var(--amber);">24K → 16C → 7H</div>
-            <div class="kpi-meta">Every `Design` control resolves to `ML-DSA-65` receipt (`2887c3c9…`)</div>
+            <div class="kpi-meta">Every Design control resolves to <code>ML-DSA-65</code> receipt (<code>2887c3c9…</code>)</div>
           </div>
         </div>
 
         <div style="display:flex;gap:0.55rem;flex-wrap:wrap;">
           <a class="btn btn-primary" href="paper/figures/fig12_csc_qt_safety_case_audit.png" target="_blank" rel="noopener">🖼 View 300-DPI Figure 12 Plate</a>
-          <a class="btn" href="receipts/opencareq_v0_6_csc_qt_safety_receipt.json" target="_blank" rel="noopener">✓ Sealed v0.6 Receipt (`2887c3c9…`)</a>
+          <a class="btn" href="receipts/opencareq_v0_6_csc_qt_safety_receipt.json" target="_blank" rel="noopener">✓ Sealed v0.6 Receipt (2887c3c9…)</a>
           <a class="btn" href="receipts/opencareq_public_csc_qt_summary.json" target="_blank" rel="noopener">↗ Public Safety Summary JSON</a>
           <a class="btn" href="https://csc-qt.curistica.com/" target="_blank" rel="noopener">↗ Official CSC-QT Portal (Curistica)</a>
         </div>
@@ -216,7 +230,7 @@
         <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:0.8rem;">
           <div>
             <p class="kicker">Interactive 5-Domain Qualitative Profile · Zero Summed Score</p>
-            <h2 style="margin-bottom:0.2rem;">36-Indicator `CSC-QT` Self-Assessment Browser (`v0.5.0` Diagnostic vs `v0.6.0`)</h2>
+            <h2 style="margin-bottom:0.2rem;">36-Indicator CSC-QT Self-Assessment Browser (v0.5.0 Diagnostic vs v0.6.0+)</h2>
           </div>
           <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center;">
             <label for="profileSelect" style="font-size:0.78rem;font-weight:700;color:var(--ink-muted);text-transform:uppercase;">Select Review Stage &amp; Standard:</label>
@@ -229,11 +243,11 @@
         </div>
 
         <div class="tab-row" id="domainTabs">
-          <button type="button" class="btn active" onclick="selectCscDomain(1, this)">1. Scope &amp; Context (`8`)</button>
-          <button type="button" class="btn" onclick="selectCscDomain(2, this)">2. Hazard ID &amp; Structure (`6`)</button>
-          <button type="button" class="btn" onclick="selectCscDomain(3, this)">3. Risk Assessment (`6`)</button>
-          <button type="button" class="btn" onclick="selectCscDomain(4, this)">4. Controls &amp; Evidence (`8`)</button>
-          <button type="button" class="btn" onclick="selectCscDomain(5, this)">5. Safety Argument (`8`)</button>
+          <button type="button" class="btn active" onclick="selectCscDomain(1, this)">1. Scope &amp; Context (8)</button>
+          <button type="button" class="btn" onclick="selectCscDomain(2, this)">2. Hazard ID &amp; Structure (6)</button>
+          <button type="button" class="btn" onclick="selectCscDomain(3, this)">3. Risk Assessment (6)</button>
+          <button type="button" class="btn" onclick="selectCscDomain(4, this)">4. Controls &amp; Evidence (8)</button>
+          <button type="button" class="btn" onclick="selectCscDomain(5, this)">5. Safety Argument (8)</button>
         </div>
 
         <div class="card" style="margin-bottom:0.9rem;border-color:var(--border-strong);background:var(--bg-card-alt);">
@@ -265,55 +279,55 @@
     <!-- 3-DOCUMENT STATUTORY CLINICAL SAFETY SUITE -->
     <section id="three-docs">
       <div class="container">
-        <p class="kicker">CSC-QT Step 1 Document Assembly (`CSCR` + `CRMP` + `DCB0160 Local Handover`)</p>
+        <p class="kicker">CSC-QT Step 1 Document Assembly (CSCR + CRMP + DCB0160 Local Handover)</p>
         <h2>Inspect All Three Statutory Safety Documents In-Browser</h2>
         <p class="lead" style="font-size:0.96rem;">
           Per <code>CSC-QT</code> Step 1, missing documents are recorded as findings. Select each tab below to inspect the complete <code>DCB0129</code> Clinical Safety Case Report, Clinical Risk Management Plan, Safety Assumptions Log, and <strong>NHS Mid and South Essex (<code>E54000026</code>) <code>DCB0160</code> Transferred-Control Acceptance Pack</strong>.
         </p>
 
         <div class="tab-row" id="docSwitchTabs">
-          <button type="button" class="btn active" onclick="switchSafetyDoc('doc-cscr', this)">📘 Doc 1: Clinical Safety Case Report (`CSCR`)</button>
-          <button type="button" class="btn" onclick="switchSafetyDoc('doc-crmp', this)">⚙️ Doc 2: Clinical Risk Management Plan (`CRMP` &amp; Triggers)</button>
-          <button type="button" class="btn" onclick="switchSafetyDoc('doc-dcb0160', this)">🏥 Doc 3: Mid &amp; South Essex (`E54000026`) `DCB0160` Pack (`4.5`)</button>
-          <button type="button" class="btn" onclick="switchSafetyDoc('doc-assumptions', this)">📌 Assumptions Log (`A-OCQ-01`..`08`) &amp; Version History</button>
+          <button type="button" class="btn active" onclick="switchSafetyDoc('doc-cscr', this)">📘 Doc 1: Clinical Safety Case Report (CSCR)</button>
+          <button type="button" class="btn" onclick="switchSafetyDoc('doc-crmp', this)">⚙️ Doc 2: Clinical Risk Management Plan (CRMP &amp; Triggers)</button>
+          <button type="button" class="btn" onclick="switchSafetyDoc('doc-dcb0160', this)">🏥 Doc 3: Mid &amp; South Essex (E54000026) DCB0160 Pack (4.5)</button>
+          <button type="button" class="btn" onclick="switchSafetyDoc('doc-assumptions', this)">📌 Assumptions Log (A-OCQ-01..08) &amp; Version History</button>
         </div>
 
         <div id="doc-cscr" class="doc-pane active card">
-          <h3 style="margin-top:0;">Clinical Safety Case Report (`CSCR`) — `OpenCareQ v0.6.0` (`NHS DCB0129`)</h3>
+          <h3 style="margin-top:0;">Clinical Safety Case Report (CSCR) — OpenCareQ v0.8.0 (NHS DCB0129)</h3>
           <p style="color:var(--ink-muted);font-size:0.92rem;">
-            <strong>1. System &amp; Clinical Scope (`1.3–1.6`):</strong> <code>OpenCareQ v0.6.0</code> is a clean-room <code>Apache-2.0</code> Python SDK, CLI, Marimo Workbench, and static audit portal for aggregate NHS ICB/PCN capacity stress-testing (42 English ICBs, <code>1,280</code> PCNs, <code>62.93M</code> registered patients, <code>phi_present = False</code>), counterfactual coupled <code>CYP3A4</code>/<code>PXR</code> &amp; <code>CKM+PGx</code> prevention modelling, and 1–10 year <code>KDIGO ESKD</code> / <code>NICE £20,000/QALY DCEA</code>. <strong>Explicit Exclusions:</strong> Direct point-of-care autonomous patient diagnosis or automated EHR prescription signing; acute physiological emergency triage (<code>SpO2 &lt; 92%</code>, <code>NEWS2 ≥ 5</code>); paediatric, pregnancy, or <code>Child-Pugh B/C</code> hepatic failure dosing; and raw patient-identifiable data outside an IG-approved NHS SDE.
+            <strong>1. System &amp; Clinical Scope (1.3–1.6):</strong> <code>OpenCareQ v0.8.0</code> is a clean-room <code>Apache-2.0</code> Python SDK, CLI, Marimo Workbench, and static audit portal for aggregate NHS ICB/PCN capacity stress-testing (42 English ICBs, <code>1,280</code> PCNs, <code>62.93M</code> registered patients, <code>phi_present = False</code>), counterfactual coupled <code>CYP3A4</code>/<code>PXR</code> &amp; <code>CKM+PGx</code> prevention modelling, and 1–10 year <code>KDIGO ESKD</code> / <code>NICE £20,000/QALY DCEA</code>. <strong>Explicit Exclusions:</strong> Direct point-of-care autonomous patient diagnosis or automated EHR prescription signing; acute physiological emergency triage (<code>SpO2 &lt; 92%</code>, <code>NEWS2 ≥ 5</code>); paediatric, pregnancy, or <code>Child-Pugh B/C</code> hepatic failure dosing; and raw patient-identifiable data outside an IG-approved NHS SDE.
           </p>
           <p style="color:var(--ink-muted);font-size:0.92rem;">
-            <strong>2. Structured Elicitation (`2.1–2.2`):</strong> Hazards were identified via 5-Layer Clinical Pathway <code>FMEA</code>, Relational Bow-Tie Barrier Mapping (strictly separating <code>16</code> contributing causes from <code>7</code> clinical hazards, resolving <code>v0.5.0</code> conflations in <code>H-OCQ-02</code> and <code>H-OCQ-04</code>), and <code>5</code> <code>ML-DSA-65</code> adversarial negative-control policy traps (<code>G1</code>–<code>G8</code>), integrating Clinical Pharmacy, Urgent Primary Care, Social Prescribing <code>WMTY</code>, ICB Health Economics, and Safety/Quantum Engineering viewpoints.
+            <strong>2. Structured Elicitation (2.1–2.2):</strong> Hazards were identified via 5-Layer Clinical Pathway <code>FMEA</code>, Relational Bow-Tie Barrier Mapping (strictly separating <code>16</code> contributing causes from <code>7</code> clinical hazards, resolving <code>v0.5.0</code> conflations in <code>H-OCQ-02</code> and <code>H-OCQ-04</code>), and <code>5</code> <code>ML-DSA-65</code> adversarial negative-control policy traps (<code>G1</code>–<code>G8</code>), integrating Clinical Pharmacy, Urgent Primary Care, Social Prescribing <code>WMTY</code>, ICB Health Economics, and Safety/Quantum Engineering viewpoints.
           </p>
           <p style="color:var(--ink-muted);font-size:0.92rem;">
-            <strong>3. Safety Conclusion &amp; `Undesirable` (`Score = 8`) Risk/Benefit Justification (`5.1–5.4`):</strong> Layered controls eliminate all <code>3</code> initial <code>Unacceptable</code> (<code>15–16</code>) scores, leaving <code>0 Unacceptable</code>, <strong><code>2 Undesirable</code> (<code>Score = 8</code>: <code>H-OCQ-02</code>, <code>H-OCQ-03</code>)</strong>, <code>3 Tolerable</code> (<code>4–6</code>), and <code>2 Acceptable</code> (<code>3</code>). Both residual <code>Undesirable</code> (<code>4×2 = 8</code>) ratings reflect invariant <code>Major</code> (<code>4</code>) clinical harm severity (stroke, major bleed, <code>AKI</code>/<code>ESKD</code>) where final biological <code>NICE DG59</code> genotyping (<code>TC-OCQ-02</code>) and BNF/SmPC/KDIGO verification (<code>TC-OCQ-03</code>) reside with human NHS clinicians. Against status-quo non-deployment—which leaves <strong><code>13,490.7</code> preventable acute hospitalizations/yr</strong> (<code>+£299.23M/yr INMB</code>, <code>b990361d</code>) and <strong><code>18,741.7</code> 10-year <code>ESKD</code> dialysis patient-years</strong> (<code>+£2,827.23M INMB</code>, <code>91.5% DCEA</code> acceptability, <code>51ae0545</code>) unaddressed—shadow commissioning deployment is <strong>acceptably safe within its Non-SaMD boundary</strong>, pending local CSO <code>DCB0160</code> sign-off.
+            <strong>3. Safety Conclusion &amp; Undesirable (Score = 8) Risk/Benefit Justification (5.1–5.4):</strong> Layered controls eliminate all <code>3</code> initial <code>Unacceptable</code> (<code>15–16</code>) scores, leaving <code>0 Unacceptable</code>, <strong><code>2 Undesirable</code> (<code>Score = 8</code>: <code>H-OCQ-02</code>, <code>H-OCQ-03</code>)</strong>, <code>3 Tolerable</code> (<code>4–6</code>), and <code>2 Acceptable</code> (<code>3</code>). Both residual <code>Undesirable</code> (<code>4×2 = 8</code>) ratings reflect invariant <code>Major</code> (<code>4</code>) clinical harm severity (stroke, major bleed, <code>AKI</code>/<code>ESKD</code>) where final biological <code>NICE DG59</code> genotyping (<code>TC-OCQ-02</code>) and BNF/SmPC/KDIGO verification (<code>TC-OCQ-03</code>) reside with human NHS clinicians. Against status-quo non-deployment—which leaves <strong><code>13,490.7</code> preventable acute hospitalizations/yr</strong> (<code>+£299.23M/yr INMB</code>, <code>b990361d</code>) and <strong><code>18,741.7</code> 10-year <code>ESKD</code> dialysis patient-years</strong> (<code>+£2,827.23M INMB</code>, <code>91.5% DCEA</code> acceptability, <code>51ae0545</code>) unaddressed—shadow commissioning deployment is <strong>acceptably safe within its Non-SaMD boundary</strong>, pending local CSO <code>DCB0160</code> sign-off.
           </p>
         </div>
 
         <div id="doc-crmp" class="doc-pane card">
-          <h3 style="margin-top:0;">Clinical Risk Management Plan (`CRMP`), NHS `5×5` Matrix &amp; Decommissioning (`1.7, 1.8, 3.3, 5.6`)</h3>
+          <h3 style="margin-top:0;">Clinical Risk Management Plan (CRMP), NHS 5×5 Matrix &amp; Decommissioning (1.7, 1.8, 3.3, 5.6)</h3>
           <ul style="color:var(--ink-muted);font-size:0.91rem;padding-left:1.2rem;">
-            <li><strong>NHS `5×5` Risk Matrix (`3.3`):</strong> Severity <code>1 Negligible .. 5 Catastrophic</code> × Likelihood <code>1 Very Low (&lt;0.1% code lock) .. 5 Very High (&gt;25%)</code> → <code>Acceptable (1–3)</code>, <code>Tolerable (4–6)</code>, <code>Undesirable (8–12; requires §5.3 risk/benefit justification + DCB0160 SOP)</code>, <code>Unacceptable (15–25; release blocked)</code>.</li>
-            <li><strong>Automated CI Release Gates (`4.6–4.8`):</strong> Every build executes <code>ocq safety-case</code>, <code>ocq sync-claims</code>, <code>ocq repro --tier tier0-offline</code> (<code>13/13</code> lanes), <code>ocq check --online</code>, and <code>pytest</code>.</li>
-            <li><strong>Mandatory Review Triggers (`RT-01`..`RT-06`, `5.6`):</strong> (1) <code>NICE DG59</code> / <code>NG203</code> / <code>PMG36</code> or <code>MHRA</code> Drug Safety alerts; (2) any proposal to ingest NHS SDE pseudonymised patient feeds or connect to live EHRs (<code>UKCA SaMD</code> gate); (3) rolling 90-day <code>ACI</code> coverage <code>&lt; 85%</code> or PK/CKM validation fold-error <code>&gt; 2.0x</code>; (4) <code>Gate G4</code> threshold or <code>HUGR</code> compiler changes; (5) <code>≥ 30%</code> PCN broker turnover; (6) 12-monthly scheduled review.</li>
-            <li><strong>Safe Decommissioning Protocol (`H-OCQ-07`, `1.8`):</strong> 30-day CSO step-down notice (<code>TC-OCQ-07</code>), offline static HTML/PDF/<code>ML-DSA-65</code> 8-year audit archive export, <code>FORK_PROTOCOL</code> co-steward summary, and confirmation of standalone PCN BNF/KDIGO &amp; <code>Core20</code> checklist continuity.</li>
+            <li><strong>NHS 5×5 Risk Matrix (3.3):</strong> Severity <code>1 Negligible .. 5 Catastrophic</code> × Likelihood <code>1 Very Low (&lt;0.1% code lock) .. 5 Very High (&gt;25%)</code> → <code>Acceptable (1–3)</code>, <code>Tolerable (4–6)</code>, <code>Undesirable (8–12; requires §5.3 risk/benefit justification + DCB0160 SOP)</code>, <code>Unacceptable (15–25; release blocked)</code>.</li>
+            <li><strong>Automated CI Release Gates (4.6–4.8):</strong> Every build executes <code>ocq safety-case</code>, <code>ocq sync-claims</code>, <code>ocq repro --tier tier0-offline</code> (<code>15/15</code> lanes), <code>ocq check --online</code>, and <code>pytest</code>.</li>
+            <li><strong>Mandatory Review Triggers (RT-01..RT-06, 5.6):</strong> (1) <code>NICE DG59</code> / <code>NG203</code> / <code>PMG36</code> or <code>MHRA</code> Drug Safety alerts; (2) any proposal to ingest NHS SDE pseudonymised patient feeds or connect to live EHRs (<code>UKCA SaMD</code> gate); (3) rolling 90-day <code>ACI</code> coverage <code>&lt; 85%</code> or PK/CKM validation fold-error <code>&gt; 2.0x</code>; (4) <code>Gate G4</code> threshold or <code>HUGR</code> compiler changes; (5) <code>≥ 30%</code> PCN broker turnover; (6) 12-monthly scheduled review.</li>
+            <li><strong>Safe Decommissioning Protocol (H-OCQ-07, 1.8):</strong> 30-day CSO step-down notice (<code>TC-OCQ-07</code>), offline static HTML/PDF/<code>ML-DSA-65</code> 8-year audit archive export, <code>FORK_PROTOCOL</code> co-steward summary, and confirmation of standalone PCN BNF/KDIGO &amp; <code>Core20</code> checklist continuity.</li>
           </ul>
         </div>
 
         <div id="doc-dcb0160" class="doc-pane card">
-          <h3 style="margin-top:0;">Reference `NHS DCB0160` Local Shadow Pack — NHS Mid and South Essex (`E54000026` · `Indicators 1.4 &amp; 4.5`)</h3>
+          <h3 style="margin-top:0;">Reference NHS DCB0160 Local Shadow Pack — NHS Mid and South Essex (E54000026 · Indicators 1.4 &amp; 4.5)</h3>
           <p style="color:var(--ink-muted);font-size:0.9rem;">
-            <strong>Local Context (`1.4`):</strong> <code>25</code> active PCNs, <code>136</code> GP practices, <code>1,218,139</code> registered patients across Basildon, Southend, Broomfield, Chelmsford, Castle Point, Rochford, Maldon &amp; Braintree (<code>Core20</code> hotspot: <code>U15488 East Basildon PCN</code>; projected MSE shadow benefit: <code>263.6</code> acute hospitalizations avoided/yr, <code>1,748</code> hospital bed-days/yr, <code>+£5.82M/yr INMB</code>). Every transferred control below is explicitly assessed and mapped to a local MSE SOP &amp; monitoring cadence (<code>Indicator 4.5</code>):
+            <strong>Local Context (1.4):</strong> <code>25</code> active PCNs, <code>136</code> GP practices, <code>1,218,139</code> registered patients across Basildon, Southend, Broomfield, Chelmsford, Castle Point, Rochford, Maldon &amp; Braintree (<code>Core20</code> hotspot: <code>U15488 East Basildon PCN</code>; projected MSE shadow benefit: <code>263.6</code> acute hospitalizations avoided/yr, <code>1,748</code> hospital bed-days/yr, <code>+£5.82M/yr INMB</code>). Every transferred control below is explicitly assessed and mapped to a local MSE SOP &amp; monitoring cadence (Indicator 4.5):
           </p>
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
                   <th>Transfer ID</th>
-                  <th>Hazard (`Causes`)</th>
+                  <th>Hazard (Causes)</th>
                   <th>Local MSE Owner</th>
-                  <th>Local MSE Acceptance &amp; SOP (`CSC-QT 4.5`)</th>
+                  <th>Local MSE Acceptance &amp; SOP (CSC-QT 4.5)</th>
                   <th>Monitoring Cadence</th>
                 </tr>
               </thead>
@@ -323,7 +337,7 @@
         </div>
 
         <div id="doc-assumptions" class="doc-pane card">
-          <h3 style="margin-top:0;">Explicit Safety Assumptions Log (`A-OCQ-01`..`A-OCQ-08`; `CSC-QT 3.2 &amp; 4.6`) &amp; Version Control (`1.2`)</h3>
+          <h3 style="margin-top:0;">Explicit Safety Assumptions Log (A-OCQ-01..A-OCQ-08; CSC-QT 3.2 &amp; 4.6) &amp; Version Control (1.2)</h3>
           <div class="table-wrap" style="margin-bottom:1rem;">
             <table>
               <thead>
@@ -344,10 +358,10 @@
     <!-- RELATIONAL BOW-TIE HAZARD LOG -->
     <section id="bowtie-log">
       <div class="container">
-        <p class="kicker">CSC-QT Domains 2, 3 &amp; 4 (`Indicators 2.3–2.5, 3.1–3.6, 4.1–4.8`)</p>
-        <h2>Cause-Separated Bow-Tie Hazard Log (`H-OCQ-01`..`H-OCQ-07` OPEN)</h2>
+        <p class="kicker">CSC-QT Domains 2, 3 &amp; 4 (Indicators 2.3–2.5, 3.1–3.6, 4.1–4.8)</p>
+        <h2>Cause-Separated Bow-Tie Hazard Log (H-OCQ-01..H-OCQ-07 OPEN)</h2>
         <p class="lead" style="font-size:0.95rem;">
-          Every hazard below separates <strong>Contributing Causes (`C-OCQ-*`)</strong> from the <strong>Hazardous Clinical Situation &amp; Harm</strong>, applies the NHS <code>5×5</code> Risk Matrix with written delta justifications, and binds <code>≥ 3</code> multi-type controls (<code>Design</code> / <code>Process</code> / <code>Training</code>) to verifiable <code>ML-DSA-65</code> receipts.
+          Every hazard below separates <strong>Contributing Causes (<code>C-OCQ-*</code>)</strong> from the <strong>Hazardous Clinical Situation &amp; Harm</strong>, applies the NHS <code>5×5</code> Risk Matrix with written delta justifications, and binds <code>≥ 3</code> multi-type controls (<code>Design</code> / <code>Process</code> / <code>Training</code>) to verifiable <code>ML-DSA-65</code> receipts.
         </p>
 
         <div class="table-wrap">
@@ -355,10 +369,10 @@
             <thead>
               <tr>
                 <th>Hazard ID &amp; Scope</th>
-                <th>Hazardous Clinical Situation &amp; Harm (`2.3`)</th>
-                <th>Distinct Contributing Causes (`2.4`)</th>
-                <th>NHS `5×5` Init → Res (`3.1–3.5`)</th>
-                <th>Cause-Bound Controls (`4.1–4.3`) &amp; Verifiable Evidence (`4.6–4.8`)</th>
+                <th>Hazardous Clinical Situation &amp; Harm (2.3)</th>
+                <th>Distinct Contributing Causes (2.4)</th>
+                <th>NHS 5×5 Init → Res (3.1–3.5)</th>
+                <th>Cause-Bound Controls (4.1–4.3) &amp; Verifiable Evidence (4.6–4.8)</th>
               </tr>
             </thead>
             <tbody id="bowtieTableBody"></tbody>
@@ -366,7 +380,7 @@
         </div>
 
         <div class="callout-warn">
-          <strong>Statutory Open-Hazard Posture:</strong> All 7 hazards (<code>H-OCQ-01</code>..<code>H-OCQ-07</code>) remain <strong><code>OPEN</code></strong>. <code>OpenCareQ v0.6.0</code> is not a certified medical device and never replaces clinical judgement; operational NHS deployment requires local CSO <code>DCB0160</code> review and sign-off.
+          <strong>Statutory Open-Hazard Posture:</strong> All 7 hazards (<code>H-OCQ-01</code>..<code>H-OCQ-07</code>) remain <strong><code>OPEN</code></strong>. <code>OpenCareQ v0.8.0</code> is not a certified medical device and never replaces clinical judgement; operational NHS deployment requires local CSO <code>DCB0160</code> review and sign-off.
         </div>
       </div>
     </section>
@@ -374,12 +388,12 @@
 
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <div>© 2026 Arun Nadarasa · OpenCareQ `v0.6.0` (`Apache-2.0`) · CSC-QT © Curistica Ltd (`CC BY 4.0`, Oskrochi &amp; Grimes 2026)</div>
+      <div>© 2026 Arun Nadarasa · OpenCareQ v0.8.0 (Apache-2.0) · CSC-QT © Curistica Ltd (CC BY 4.0, Oskrochi &amp; Grimes 2026)</div>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="index.html">Main NHS Portal</a>
         <a href="challenge.html">Policy Challenge</a>
         <a href="https://csc-qt.curistica.com/" target="_blank" rel="noopener">CSC-QT Official Site</a>
-        <a href="receipts/opencareq_v0_6_csc_qt_safety_receipt.json" target="_blank" rel="noopener">Receipt (`2887c3c9…`)</a>
+        <a href="receipts/opencareq_v0_6_csc_qt_safety_receipt.json" target="_blank" rel="noopener">Receipt (2887c3c9…)</a>
       </div>
     </div>
   </footer>

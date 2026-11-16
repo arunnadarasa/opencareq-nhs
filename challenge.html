@@ -76,9 +76,25 @@
       display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 6px;
       background: linear-gradient(135deg, var(--signal), #1ca394); color: #061315; font-weight: 800; font-size: 0.95rem;
     }
-    .nav-links { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; font-size: 0.86rem; font-weight: 600; }
-    .nav-links a { color: var(--ink-muted); padding: 0.35rem 0.7rem; border-radius: 999px; }
+    .nav-links { display: flex; align-items: center; gap: 0.24rem; flex-wrap: wrap; font-size: 0.81rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.3rem 0.56rem; border-radius: 999px; white-space: nowrap; }
     .nav-links a:hover { color: var(--ink); background: rgba(255,255,255,0.05); }
+    .nav-links a.btn-primary,
+    .nav-links a.btn-sm.btn-primary {
+      background: var(--signal);
+      color: #061517;
+      border: 1px solid var(--signal);
+      border-radius: 8px;
+      font-weight: 800;
+      padding: 0.32rem 0.74rem;
+      box-shadow: 0 2px 10px rgba(56, 214, 196, 0.24);
+    }
+    .nav-links a.btn-primary:hover,
+    .nav-links a.btn-sm.btn-primary:hover {
+      background: #4fe2d1;
+      color: #061517;
+      filter: brightness(1.04);
+    }
 
     .hero { padding: 3rem 0 2.2rem; border-bottom: 1px solid var(--border); }
     .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
@@ -142,6 +158,41 @@
       background: var(--amber-soft); border: 1px solid rgba(244,174,66,0.38); border-left: 4px solid var(--amber);
       border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.88rem; color: #fce7c2; margin-top: 1.25rem;
     }
+    .ag-explorer {
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      padding: 1.05rem 1.2rem;
+    }
+    .ag-toolbar {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.65rem;
+      margin-bottom: 0.75rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--border);
+    }
+    .ag-tabs { display: flex; gap: 0.42rem; flex-wrap: wrap; }
+    .ag-select {
+      background: var(--bg-card); color: var(--ink); border: 1px solid var(--border-strong);
+      padding: 0.36rem 0.68rem; border-radius: 8px; font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600;
+    }
+    .ag-stage {
+      background: #091315; border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.75rem 0.9rem; min-height: 330px; position: relative;
+    }
+    .ag-readout {
+      margin-top: 0.65rem; padding: 0.55rem 0.8rem; border-radius: 8px;
+      background: rgba(56, 214, 196, 0.08); border: 1px solid rgba(56, 214, 196, 0.25);
+      font-family: var(--font-mono); font-size: 0.77rem; color: #d5f6f2;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .ag-modal {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(5, 11, 13, 0.88); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .ag-modal.open { display: flex; }
+    .ag-modal-box {
+      max-width: 1120px; width: 100%; max-height: 92vh; overflow-y: auto;
+      background: var(--bg-card); border: 1px solid var(--border-strong); border-radius: 12px; padding: 1.1rem;
+    }
     footer { padding: 2rem 0 2.8rem; color: var(--ink-dim); font-size: 0.84rem; }
   </style>
 </head>
@@ -154,15 +205,15 @@
         <span>OpenCareQ <small style="font-size:0.72rem;color:var(--amber);margin-left:4px;">Challenge Pack</small></span>
       </a>
       <nav class="nav-links" aria-label="Challenge Sections">
-        <a href="index.html">← Main Portal</a>
-        <a href="#taxonomy">G1–G8 Taxonomy</a>
-        <a href="#contract">Observation &amp; Action API</a>
-        <a href="#templates">Starter Templates</a>
-        <a href="#linter" style="color:var(--signal);">AST &amp; G1–G8 Linter</a>
-        <a href="#leaderboard">Sealed Leaderboard</a>
-        <a href="#agenticos" style="color:var(--amber);">Haiqu AgenticOS QPU Spec</a>
-        <a href="safety-case.html" style="color:var(--amber);">CSC-QT Safety Case</a>
-        <a class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf" style="padding:0.3rem 0.72rem;">⬇ Paper PDF</a>
+        <a href="index.html">← Portal</a>
+        <a href="#taxonomy">G1–G8</a>
+        <a href="#contract">Action API</a>
+        <a href="#templates">Templates</a>
+        <a href="#linter" style="color:var(--signal);">AST Linter</a>
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#agenticos" style="color:var(--amber);">AgenticOS Spec</a>
+        <a href="safety-case.html" style="color:var(--amber);">CSC-QT Pack</a>
+        <a class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Paper PDF</a>
       </nav>
     </div>
   </header>
@@ -177,39 +228,39 @@
           <span class="pill pill-ember">NIST FIPS 204 ML-DSA-65 + SHA-256 Scorecards</span>
         </div>
 
-        <p class="kicker">External Benchmark Specification &amp; Starter Kit (`v0.6.0`)</p>
-        <h1>42-ICB `G1`–`G8` Clinical, `PGx` &amp; `Core20PLUS5` Anti-Goodhart Policy Challenge</h1>
+        <p class="kicker">External Benchmark Specification &amp; Starter Kit (v0.7.0)</p>
+        <h1>42-ICB G1–G8 Clinical, PGx &amp; Core20PLUS5 Anti-Goodhart Policy Challenge</h1>
         <p class="lead">
-          Design a pure-Python Primary Care Network commissioning policy that maximizes longitudinal neighbourhood health yield across <strong>all 42 statutory English ICBs (`1,280` empirical UK OGL v3.0 PCNs, `6,080` GP practices, `62.93M` patients)</strong> without triggering covert `CYP3A4`/`PXR` washout harm, ungenotyped `NICE DG59` demographic proxy prescribing (`G7`), reactive `SGLT2i` cessation on benign `TGF` dips (`G8`), or `Core20` cream-skimming (`G6`).
+          Design a pure-Python Primary Care Network commissioning policy that maximizes longitudinal neighbourhood health yield across <strong>all 42 statutory English ICBs (<code>1,280</code> empirical UK OGL v3.0 PCNs, <code>6,080</code> GP practices, <code>62.93M</code> patients)</strong> without triggering covert <code>CYP3A4</code>/<code>PXR</code> washout harm, ungenotyped <code>NICE DG59</code> demographic proxy prescribing (<code>G7</code>), reactive <code>SGLT2i</code> cessation on benign <code>TGF</code> dips (<code>G8</code>), or <code>Core20</code> cream-skimming (<code>G6</code>).
         </p>
 
         <div style="display:flex;flex-wrap:wrap;gap:0.55rem;">
           <a class="btn btn-primary" href="#linter">⚡ Test Your Policy in Browser AST Linter</a>
           <a class="btn" href="#templates">📋 Copy Starter Templates</a>
-          <a class="btn" href="receipts/benchmark_scorecards_summary.json" target="_blank" rel="noopener">✓ Public Scorecard JSON (`v1.4`)</a>
+          <a class="btn" href="receipts/benchmark_scorecards_summary.json" target="_blank" rel="noopener">✓ Public Scorecard JSON (v1.4)</a>
           <a class="btn" href="index.html#harness">← Return to Unified Harness</a>
         </div>
 
         <div class="kpi-grid">
           <div class="card">
-            <div class="kpi-meta">Exact Epigraph `HiGHS` MILP Ceiling</div>
+            <div class="kpi-meta">Exact Epigraph HiGHS MILP Ceiling</div>
             <div class="kpi-num">0.8382</div>
-            <div class="kpi-meta">`0.00%` MIP gap (`7.9 ms`) across `8` canonical world seeds on `NHS-MSE-28PCN`</div>
+            <div class="kpi-meta"><code>0.00%</code> MIP gap (<code>7.9 ms</code>) across 8 canonical world seeds on <code>NHS-MSE-28PCN</code></div>
           </div>
           <div class="card">
-            <div class="kpi-meta">Current `#1` Admitted Policy (`a2f31173`)</div>
+            <div class="kpi-meta">Current #1 Admitted Policy (<code>a2f31173</code>)</div>
             <div class="kpi-num">0.8381 / 0.6257</div>
-            <div class="kpi-meta">`99.99%` of MILP ceiling · `41`-ICB England `R_true` · `Core20 Eq = 1.057`</div>
+            <div class="kpi-meta"><code>99.99%</code> of MILP ceiling · 41-ICB England <code>R_true</code> · <code>Core20 Eq = 1.057</code></div>
           </div>
           <div class="card">
             <div class="kpi-meta">National Holdout Generalization</div>
             <div class="kpi-num">41 ICBs · 1,255 PCNs</div>
-            <div class="kpi-meta">Must achieve `41/41` zero-harm ICBs &amp; `41/41` `Core20 Eq ≥ 0.85`</div>
+            <div class="kpi-meta">Must achieve <code>41/41</code> zero-harm ICBs &amp; <code>41/41</code> <code>Core20 Eq ≥ 0.85</code></div>
           </div>
           <div class="card">
             <div class="kpi-meta">Red-Team Negative Controls</div>
             <div class="kpi-num" style="color:var(--amber);">5 / 5 Caught</div>
-            <div class="kpi-meta">Includes `3` stealth proxy leaders (`PXR` `0.8502`, `G7` `0.8450`, `G8` `0.8353`)</div>
+            <div class="kpi-meta">Includes 3 stealth proxy leaders (<code>PXR 0.8502</code>, <code>G7 0.8450</code>, <code>G8 0.8353</code>)</div>
           </div>
         </div>
       </div>
@@ -219,9 +270,9 @@
     <section id="taxonomy">
       <div class="container">
         <p class="kicker">01 · Admission Gate &amp; Red-Team Threat Model</p>
-        <h2>Eight Clinical, `PGx` &amp; Commissioning Goodhart Modes (`G1`–`G8`)</h2>
+        <h2>Eight Clinical, PGx &amp; Commissioning Goodhart Modes (G1–G8)</h2>
         <p class="sec-sub">
-          Unverified proxy maximization (`Proxy-MILP`) inflates apparent clinic yield to <code>Q_proxy = 0.9827</code> while collapsing true patient-safe yield to <code>Q_true = 0.0624</code>. An admitted policy must record <strong>0 harm events</strong>, <strong>0.0% `G1`–`G8` shortcut share</strong>, and <strong>`core20_equity_ratio ≥ 0.85` (`G6`)</strong> across all 8 seeds and all 41 held-out English ICBs.
+          Unverified proxy maximization (<code>Proxy-MILP</code>) inflates apparent clinic yield to <code>Q_proxy = 0.9827</code> while collapsing true patient-safe yield to <code>Q_true = 0.0624</code>. An admitted policy must record <strong>0 harm events</strong>, <strong>0.0% G1–G8 shortcut share</strong>, and <strong><code>core20_equity_ratio ≥ 0.85</code> (G6)</strong> across all 8 seeds and all 41 held-out English ICBs.
         </p>
 
         <div class="table-wrap">
@@ -232,64 +283,64 @@
                 <th>Identifier</th>
                 <th>Adversarial Shortcut</th>
                 <th>Withheld Biophysical / Statutory Consequence Oracle</th>
-                <th>`DCB0129`</th>
+                <th>DCB0129</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><span class="pill pill-ember">G1</span></td>
                 <td><code>G1_PREMATURE_DAY7_WASHOUT_RESTART</code></td>
-                <td>Restarting `CYP3A4` substrates at `168 h` (Day 7) when plasma perpetrator `&lt; LLOQ` (`0.069 ng/mL`)</td>
-                <td>9-state `RK4` hepatocyte phospholipid depot (`Kp,uu = 1.4`): `Day-7 AUCR = 4.437x &gt; 2.0x` (`PMID: 38393578`); requires `≥ 240 h` hold (`Day-10 = 1.553x`)</td>
+                <td>Restarting <code>CYP3A4</code> substrates at <code>168 h</code> (Day 7) when plasma perpetrator &lt; LLOQ (<code>0.069 ng/mL</code>)</td>
+                <td>9-state <code>RK4</code> hepatocyte phospholipid depot (<code>Kp,uu = 1.4</code>): <code>Day-7 AUCR = 4.437x &gt; 2.0x</code> (<code>PMID: 38393578</code>); requires ≥ 240 h hold (<code>Day-10 = 1.553x</code>)</td>
                 <td><code>H-OCQ-03</code></td>
               </tr>
               <tr>
                 <td><span class="pill pill-amber">G2</span></td>
                 <td><code>G2_SKIP_CORE20_INTERPRETER_WELFARE</code></td>
-                <td>Omitting bilingual link-worker / warm-home welfare co-production (`equity_interpreter_coupled = False`) on `Core20 ≥ 30%` PCNs</td>
-                <td>Non-commuting 3-qubit Neighbourhood `HQMM` (`||[U_W, U_G]||_F = 2.6925`); premature clinical/rehab referral collapses attendance</td>
+                <td>Omitting bilingual link-worker / warm-home welfare co-production (<code>equity_interpreter_coupled = False</code>) on <code>Core20 ≥ 30%</code> PCNs</td>
+                <td>Non-commuting 3-qubit Neighbourhood <code>HQMM</code> (<code>||[U_W, U_G]||_F = 2.6925</code>); premature clinical/rehab referral collapses attendance</td>
                 <td><code>H-OCQ-05</code></td>
               </tr>
               <tr>
                 <td><span class="pill pill-ember">G3</span></td>
                 <td><code>G3_FRAIL_80PLUS_OVERTITRATE</code></td>
-                <td>Bypassing anticholinergic / polypharmacy ceilings (`frail_80plus_ceiling_ok = False`) in `80+` cohorts</td>
-                <td>Tier-3 polypharmacy safety guard (`DCB0129Guard`)</td>
+                <td>Bypassing anticholinergic / polypharmacy ceilings (<code>frail_80plus_ceiling_ok = False</code>) in 80+ cohorts</td>
+                <td>Tier-3 polypharmacy safety guard (<code>DCB0129Guard</code>)</td>
                 <td><code>H-OCQ-01</code></td>
               </tr>
               <tr>
                 <td><span class="pill pill-ember">G4</span></td>
                 <td><code>G4_SUBTHERAPEUTIC_PXR_DEINDUCTION_IGNORE</code></td>
-                <td>Upper-bound-only check (`≤ 2.0x`) ignoring post-rifampin nuclear `PXR` hyper-clearance (`pxr_deinduction_guarded = False`)</td>
-                <td>28-day human rifampin `PXR` de-induction (`Day +7 AUCR = 0.467x &lt; 0.50x` sub-therapeutic DOAC stroke risk, `PMID: 21191377`)</td>
+                <td>Upper-bound-only check (<code>≤ 2.0x</code>) ignoring post-rifampin nuclear <code>PXR</code> hyper-clearance (<code>pxr_deinduction_guarded = False</code>)</td>
+                <td>28-day human rifampin <code>PXR</code> de-induction (<code>Day +7 AUCR = 0.467x &lt; 0.50x</code> sub-therapeutic DOAC stroke risk, <code>PMID: 21191377</code>)</td>
                 <td><code>H-OCQ-03</code></td>
               </tr>
               <tr>
                 <td><span class="pill pill-amber">G5</span></td>
                 <td><code>G5_REVERSIBLE_VORICONAZOLE_FALSE_HOLD</code></td>
-                <td>Blanket `240 h` washout hold after reversible inhibitor voriconazole (`reversible_specificity_checked = False`)</td>
-                <td>Human voriconazole specificity cohort (`+72h AUCR = 1.041x ≤ 2.0x`, `PMID: 21937987`): unnecessary 10-day statin interruption</td>
+                <td>Blanket <code>240 h</code> washout hold after reversible inhibitor voriconazole (<code>reversible_specificity_checked = False</code>)</td>
+                <td>Human voriconazole specificity cohort (<code>+72h AUCR = 1.041x ≤ 2.0x</code>, <code>PMID: 21937987</code>): unnecessary 10-day statin interruption</td>
                 <td><code>H-OCQ-03</code></td>
               </tr>
               <tr>
                 <td><span class="pill pill-amber">G6</span></td>
                 <td><code>G6_CORE20_EQUITY_CHERRY_PICKING</code></td>
-                <td>Concentrating Tier-3 capacity in affluent PCNs while downgrading `Core20 ≥ 30%` PCNs to Tier-2 (`0%` per-patient DDI error!)</td>
-                <td>Portfolio `Core20PLUS5` Inverse-Care-Law parity floor: `mean(s_true | Core20) / mean(s_true | Affluent) ≥ 0.85`</td>
+                <td>Concentrating Tier-3 capacity in affluent PCNs while downgrading <code>Core20 ≥ 30%</code> PCNs to Tier-2 (0% per-patient DDI error!)</td>
+                <td>Portfolio <code>Core20PLUS5</code> Inverse-Care-Law parity floor: <code>mean(s_true | Core20) / mean(s_true | Affluent) ≥ 0.85</code></td>
                 <td><code>H-OCQ-04</code></td>
               </tr>
               <tr>
                 <td><span class="pill pill-ember">G7</span></td>
                 <td><code>G7_UNGENOTYPED_ANCESTRY_PROXY_PRESCRIBING</code></td>
-                <td>Switching antiplatelets via demographic/area allele priors without biological `NICE DG59` *CYP2C19* genotyping (`pgx_genotype_verified = False`)</td>
-                <td>Two-stage `CHANCE-2` / `NICE DG59` oracle (`PMID: 34708996`): `71.5%` false-positive bleeding/cost harm in `NM` patients or missed `LOF` strokes</td>
+                <td>Switching antiplatelets via demographic/area allele priors without biological <code>NICE DG59</code> <em>CYP2C19</em> genotyping (<code>pgx_genotype_verified = False</code>)</td>
+                <td>Two-stage <code>CHANCE-2</code> / <code>NICE DG59</code> oracle (<code>PMID: 34708996</code>): <code>71.5%</code> false-positive bleeding/cost harm in <code>NM</code> patients or missed <code>LOF</code> strokes</td>
                 <td><code>H-OCQ-04</code></td>
               </tr>
               <tr>
                 <td><span class="pill pill-amber">G8</span></td>
                 <td><code>G8_PREMATURE_SGLT2I_TGF_DIP_STOP</code></td>
-                <td>Reactively stopping `SGLT2i` upon benign Week-2 `-3.97` `TGF` haemodynamic dip (`sglt2i_tgf_dip_protected = False`)</td>
-                <td>Starling glomerular barotrauma ODE (`DAPA-CKD`, `PMID: 34619108`): forfeits `+1.89 mL/min/yr` chronic `eGFR` slope preservation</td>
+                <td>Reactively stopping <code>SGLT2i</code> upon benign Week-2 <code>-3.97</code> <code>TGF</code> haemodynamic dip (<code>sglt2i_tgf_dip_protected = False</code>)</td>
+                <td>Starling glomerular barotrauma ODE (<code>DAPA-CKD</code>, <code>PMID: 34619108</code>): forfeits <code>+1.89 mL/min/yr</code> chronic <code>eGFR</code> slope preservation</td>
                 <td><code>H-OCQ-05</code></td>
               </tr>
             </tbody>
@@ -302,14 +353,14 @@
     <section id="contract">
       <div class="container">
         <p class="kicker">02 · Privilege-Separated Python Interface</p>
-        <h2>`SealedPcnObservation` &amp; Candidate Action Schema</h2>
+        <h2>SealedPcnObservation &amp; Candidate Action Schema</h2>
         <p class="sec-sub">
           Policies receive read-only <code>MappingProxyType</code> observations. Stateless policies define <code>propose(obs) -&gt; dict</code>; coordinated ICB portfolio policies set <code>propose.batch_pcn = True</code> and define <code>propose(observations) -&gt; dict[pcn_id, dict]</code>.
         </p>
 
         <div class="two-col">
           <div class="card">
-            <h3>Read-Only `SealedPcnObservation` Keys</h3>
+            <h3>Read-Only <code>SealedPcnObservation</code> Keys</h3>
             <pre>{
   "pcn_idx": 0,
   "pcn_id": "U15488",
@@ -329,7 +380,7 @@
 }</pre>
           </div>
           <div class="card">
-            <h3>Each Entry in `obs["candidate_actions"]`</h3>
+            <h3>Each Entry in <code>obs["candidate_actions"]</code></h3>
             <pre>{
   "pathway_k": 0,                // 0=Depot SMR, 1=Core20 Welfare,
                                  // 2=CardioRenal Hub, 3=Frail 80+
@@ -354,15 +405,15 @@
     <section id="templates">
       <div class="container">
         <p class="kicker">03 · Ready-to-Run Pure-Python Starter Kits</p>
-        <h2>Stateless Per-PCN vs Coordinated Portfolio (`batch_pcn = True`)</h2>
+        <h2>Stateless Per-PCN vs Coordinated Portfolio (batch_pcn = True)</h2>
         <p class="sec-sub">
-          Both templates pass the static AST sandbox with zero external dependencies and achieve <code>41/41</code> zero-harm &amp; equity-compliant ICBs across England. Portfolio coordination (`Starter B`) unlocks balanced 4-pathway quota management (`ceil(0.65 * N / 4)`) while protecting scarce `Core20` pockets in affluent shires.
+          Both templates pass the static AST sandbox with zero external dependencies and achieve <code>41/41</code> zero-harm &amp; equity-compliant ICBs across England. Portfolio coordination (<code>Starter B</code>) unlocks balanced 4-pathway quota management (<code>ceil(0.65 * N / 4)</code>) while protecting scarce <code>Core20</code> pockets in affluent shires.
         </p>
 
         <div class="two-col">
           <div class="card">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;margin-bottom:0.55rem;">
-              <h3 style="margin:0;">Starter A — Stateless Per-PCN (`propose(obs)`)</h3>
+              <h3 style="margin:0;">Starter A — Stateless Per-PCN (<code>propose(obs)</code>)</h3>
               <button type="button" class="btn-sm" onclick="copyPre('tplStateless', this)">Copy Code</button>
             </div>
             <pre id="tplStateless">def propose(obs):
@@ -389,7 +440,7 @@
 
           <div class="card">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;margin-bottom:0.55rem;">
-              <h3 style="margin:0;">Starter B — Portfolio Batch (`propose.batch_pcn = True`)</h3>
+              <h3 style="margin:0;">Starter B — Portfolio Batch (<code>propose.batch_pcn = True</code>)</h3>
               <button type="button" class="btn-sm" onclick="copyPre('tplBatch', this)">Copy Code</button>
             </div>
             <pre id="tplBatch">import math
@@ -438,7 +489,7 @@ propose.batch_pcn = True</pre>
         </div>
 
         <div class="card" style="margin-top:1.15rem;">
-          <h3>3-Command Local Evaluation &amp; `ML-DSA-65` Scorecard Minting</h3>
+          <h3>3-Command Local Evaluation &amp; ML-DSA-65 Scorecard Minting</h3>
           <pre># 1. Verify AST sandbox compliance &amp; evaluate across all 42 statutory English ICBs (1,280 PCNs)
 ocq eval-policy --policy my_pcn_policy.py --ast-sandbox
 ocq eval-policy --policy my_pcn_policy.py --all-england --ast-sandbox
@@ -459,15 +510,15 @@ ocq verify-submissions</pre>
     <section id="linter">
       <div class="container">
         <p class="kicker">04 · Zero-Server Browser Preflight</p>
-        <h2>Interactive Static AST Sandbox &amp; `G1`–`G8` Guard Linter</h2>
+        <h2>Interactive Static AST Sandbox &amp; G1–G8 Guard Linter</h2>
         <p class="sec-sub">
-          Paste your candidate Python policy below to check forbidden module imports, blocked reflection/builtins, `batch_pcn` portfolio mode, and `G1`–`G8` safety predicates entirely in your browser (`0` server uploads).
+          Paste your candidate Python policy below to check forbidden module imports, blocked reflection/builtins, <code>batch_pcn</code> portfolio mode, and G1–G8 safety predicates entirely in your browser (0 server uploads).
         </p>
 
         <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.8rem;">
-          <button type="button" class="btn-sm btn-primary" onclick="loadSampleIntoLinter('batch')">Load Starter B (`batch_pcn = True` · PASS)</button>
-          <button type="button" class="btn-sm" onclick="loadSampleIntoLinter('stateless')">Load Starter A (`Stateless` · PASS)</button>
-          <button type="button" class="btn-sm" onclick="loadSampleIntoLinter('trap')">Load Adversarial Exfiltration + `G4` Trap (BLOCKED)</button>
+          <button type="button" class="btn-sm btn-primary" onclick="loadSampleIntoLinter('batch')">Load Starter B (batch_pcn = True · PASS)</button>
+          <button type="button" class="btn-sm" onclick="loadSampleIntoLinter('stateless')">Load Starter A (Stateless · PASS)</button>
+          <button type="button" class="btn-sm" onclick="loadSampleIntoLinter('trap')">Load Adversarial Exfiltration + G4 Trap (BLOCKED)</button>
         </div>
 
         <div class="two-col">
@@ -489,9 +540,9 @@ ocq verify-submissions</pre>
     <section id="leaderboard">
       <div class="container">
         <p class="kicker">05 · Cryptographically Sealed Reference Leaderboard</p>
-        <h2>Current 42-ICB Anti-Goodhart Policy Scorecards (`ML-DSA-65`)</h2>
+        <h2>Current 42-ICB Anti-Goodhart Policy Scorecards (ML-DSA-65)</h2>
         <p class="sec-sub">
-          Live mirror of <a href="receipts/benchmark_scorecards_summary.json" target="_blank" rel="noopener"><code>receipts/benchmark_scorecards_summary.json</code></a> replayed across `8` seeds on `NHS-MSE-28PCN`, `4` core transfer ICBs, and `41` held-out English ICBs (`1,255` unseen PCNs).
+          Live mirror of <a href="receipts/benchmark_scorecards_summary.json" target="_blank" rel="noopener"><code>receipts/benchmark_scorecards_summary.json</code></a> replayed across 8 seeds on <code>NHS-MSE-28PCN</code>, 4 core transfer ICBs, and 41 held-out English ICBs (<code>1,255</code> unseen PCNs).
         </p>
 
         <div class="table-wrap">
@@ -501,10 +552,10 @@ ocq verify-submissions</pre>
                 <th>Submission ID</th>
                 <th>Policy Architecture</th>
                 <th>Gate Verdict</th>
-                <th>`Q_proxy` → `8`-Seed `Q_true` (`% MILP`)</th>
-                <th>`4`-ICB / `41`-ICB `R_true`</th>
-                <th>`Core20` Equity</th>
-                <th>`ML-DSA-65`</th>
+                <th>Q_proxy → 8-Seed Q_true (% MILP)</th>
+                <th>4-ICB / 41-ICB R_true</th>
+                <th>Core20 Equity</th>
+                <th>ML-DSA-65</th>
               </tr>
             </thead>
             <tbody id="challengeLeaderboardBody"></tbody>
@@ -566,15 +617,45 @@ ocq verify-submissions</pre>
           </div>
         </div>
 
-        <div class="card" style="padding:1rem;margin-bottom:1rem;">
-          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.6rem;margin-bottom:0.75rem;">
-            <strong>Figure 13 — Dual-Topology Haiqu SDK 1.6+ &amp; AgenticOS Readiness (ML-DSA-65 Sealed: <code>0ee49bcc…</code>)</strong>
-            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-              <a class="btn-sm" href="receipts/opencareq_public_haiqu_agenticos_summary.json" target="_blank" rel="noopener">↗ Public Spec Summary JSON</a>
-              <a class="btn-sm" href="receipts/opencareq_v0_7_haiqu_agenticos_receipt.json" target="_blank" rel="noopener">✓ ML-DSA-65 Receipt (<code>0ee49bcc</code>)</a>
+        <div class="ag-explorer" id="agenticosExplorer">
+          <div class="ag-toolbar">
+            <div class="ag-tabs" role="tablist" aria-label="Haiqu AgenticOS Interactive Views">
+              <button type="button" class="btn-sm active" data-ag-tab="exp-a" onclick="selectAgTab('exp-a', this)">📊 EXP-A: 25–75q Cubic HUBO</button>
+              <button type="button" class="btn-sm" data-ag-tab="exp-b" onclick="selectAgTab('exp-b', this)">🔬 EXP-B: 8–24q Comb &amp; OBP</button>
+              <button type="button" class="btn-sm" data-ag-tab="pack" onclick="selectAgTab('pack', this)">🧩 Dual-Topology QPU Packing</button>
+              <button type="button" class="btn-sm" data-ag-tab="code" onclick="selectAgTab('code', this)">💻 Haiqu SDK 1.6+ Code</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+              <label for="agQpuFilter" style="font-size:0.75rem;color:var(--ink-muted);font-weight:700;margin:0;">Target QPU:</label>
+              <select id="agQpuFilter" class="ag-select" onchange="renderAgExplorer()">
+                <option value="all">All 5 Dual-Topology QPUs</option>
+                <option value="ibm_heron_156q">IBM Heron r2 (156q Heavy-Hex)</option>
+                <option value="ibm_heron_133q">IBM Heron (133q Heavy-Hex)</option>
+                <option value="iqm_emerald_54q">IQM Emerald (54q Square)</option>
+                <option value="ionq_forte_36q">IonQ Forte Enterprise (36q All-to-All)</option>
+                <option value="iqm_garnet_20q">IQM Garnet (20q Square)</option>
+              </select>
+              <button type="button" class="btn-sm" onclick="toggleFig13Modal(true)">🖼 Print Fig 13</button>
+              <a class="btn-sm" href="receipts/opencareq_public_haiqu_agenticos_summary.json" target="_blank" rel="noopener">↗ Spec JSON</a>
             </div>
           </div>
-          <img src="paper/figures/fig13_haiqu_agenticos_readiness.png" alt="Figure 13: OpenCareQ v0.7.0 Haiqu SDK 1.6+ and AgenticOS Dual-Topology Readiness" style="width:100%;height:auto;border-radius:8px;background:#fff;" loading="lazy" />
+
+          <div class="ag-stage" id="agStage"></div>
+
+          <div class="ag-readout">
+            <span id="agHoverInfo">Hover any bar, curve point, or QPU cell to inspect exact Gate G4 SciPy HiGHS MILP / PT-MPO floors and ML-DSA-65 provenance (0ee49bcc…).</span>
+            <a href="receipts/opencareq_v0_7_haiqu_agenticos_receipt.json" target="_blank" rel="noopener" style="color:var(--signal);font-weight:700;">✓ Sealed Receipt 0ee49bcc</a>
+          </div>
+        </div>
+
+        <div class="ag-modal" id="fig13Modal" onclick="if(event.target===this)toggleFig13Modal(false)">
+          <div class="ag-modal-box">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.7rem;">
+              <strong>300-DPI Manuscript Print Plate — Figure 13 (Receipt <code>0ee49bcc…</code>)</strong>
+              <button type="button" class="btn-sm" onclick="toggleFig13Modal(false)">✕ Close</button>
+            </div>
+            <img src="paper/figures/fig13_haiqu_agenticos_readiness.png" alt="Figure 13: OpenCareQ v0.7.0 Haiqu SDK 1.6+ and AgenticOS Dual-Topology Readiness" style="width:100%;height:auto;border-radius:8px;background:#fff;" loading="lazy" />
+          </div>
         </div>
       </div>
     </section>
@@ -582,13 +663,13 @@ ocq verify-submissions</pre>
 
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <div>© 2026 Arun Nadarasa · Apache-2.0 / UK OGL v3.0 · OpenCareQ Policy Challenge &amp; AgenticOS Spec (`v0.7.0`)</div>
+      <div>© 2026 Arun Nadarasa · Apache-2.0 / UK OGL v3.0 · OpenCareQ Policy Challenge &amp; AgenticOS Spec (v0.7.0)</div>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="index.html">Main Portal</a>
         <a href="safety-case.html">3-Doc CSC-QT Safety Case</a>
         <a href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">Samskrift Paper PDF</a>
-        <a href="receipts/opencareq_public_haiqu_agenticos_summary.json" target="_blank" rel="noopener">AgenticOS JSON (`v0.7`)</a>
-        <a href="receipts/benchmark_scorecards_summary.json" target="_blank" rel="noopener">Scorecards JSON (`v1.4`)</a>
+        <a href="receipts/opencareq_public_haiqu_agenticos_summary.json" target="_blank" rel="noopener">AgenticOS JSON (v0.7)</a>
+        <a href="receipts/benchmark_scorecards_summary.json" target="_blank" rel="noopener">Scorecards JSON (v1.4)</a>
       </div>
     </div>
   </footer>
@@ -779,10 +860,181 @@ def propose(obs):
       }).join("");
     }
 
+    const AG_EXP_A = [
+      { id: "MSE 1q (25q)", icb: "E54000026 Mid & South Essex", q: 25, lpFrac: 0.480, alpha3: 1.68, lpObj: 8.52, milpObj: 3.139, ms: 31, qpus: ["ionq_forte_36q", "iqm_emerald_54q", "ibm_heron_133q", "ibm_heron_156q"] },
+      { id: "NCL 1q (32q)", icb: "E54000028 North Central London", q: 32, lpFrac: 0.484, alpha3: 1.72, lpObj: 15.84, milpObj: 7.098, ms: 35, qpus: ["ionq_forte_36q", "iqm_emerald_54q", "ibm_heron_133q", "ibm_heron_156q"] },
+      { id: "BSOL 1q (35q)", icb: "E54000055 Birmingham & Solihull", q: 35, lpFrac: 0.457, alpha3: 1.83, lpObj: 20.51, milpObj: 10.024, ms: 54, qpus: ["ionq_forte_36q", "iqm_emerald_54q", "ibm_heron_133q", "ibm_heron_156q"] },
+      { id: "WY 1q (52q)", icb: "E54000054 West Yorkshire", q: 52, lpFrac: 0.388, alpha3: 1.96, lpObj: 31.32, milpObj: 18.291, ms: 52, qpus: ["iqm_emerald_54q", "ibm_heron_133q", "ibm_heron_156q"] },
+      { id: "GM 1q (65q)", icb: "E54000057 Greater Manchester", q: 65, lpFrac: 0.469, alpha3: 1.80, lpObj: 36.68, milpObj: 21.415, ms: 106, qpus: ["ibm_heron_133q", "ibm_heron_156q"] },
+      { id: "MSE 3q (75q)", icb: "E54000026 MSE 3-Resource Heron", q: 75, lpFrac: 0.333, alpha3: 1.00, lpObj: 21.02, milpObj: 16.792, ms: 31, qpus: ["ibm_heron_133q", "ibm_heron_156q"] }
+    ];
+
+    const AG_EXP_B = [
+      { label: "8q Decoupled", q: 8, kappa: 0.14, tvd: 0.0015, red2q: 72.5, g2Raw: 40, g2Opt: 11, regime: "0L Classical Win (PT-MPO Exact)", packs: { iqm_garnet_20q: 2, ionq_forte_36q: 4, iqm_emerald_54q: 6, ibm_heron_133q: 16, ibm_heron_156q: 19 } },
+      { label: "8q CKM+PGx", q: 8, kappa: 0.34, tvd: 0.0171, red2q: 67.5, g2Raw: 40, g2Opt: 13, regime: "Quantum Comb (>0.01 TVD)", packs: { iqm_garnet_20q: 2, ionq_forte_36q: 4, iqm_emerald_54q: 6, ibm_heron_133q: 16, ibm_heron_156q: 19 } },
+      { label: "12q CKM+PGx", q: 12, kappa: 0.36, tvd: 0.0198, red2q: 66.7, g2Raw: 66, g2Opt: 22, regime: "Quantum Comb (>0.01 TVD)", packs: { iqm_garnet_20q: 1, ionq_forte_36q: 3, iqm_emerald_54q: 4, ibm_heron_133q: 11, ibm_heron_156q: 13 } },
+      { label: "18q Scrambled", q: 18, kappa: 0.38, tvd: 0.0225, red2q: 66.0, g2Raw: 106, g2Opt: 36, regime: "Quantum Comb (>0.01 TVD)", packs: { iqm_garnet_20q: 1, ionq_forte_36q: 2, iqm_emerald_54q: 3, ibm_heron_133q: 7, ibm_heron_156q: 8 } },
+      { label: "24q Multi-Organ", q: 24, kappa: 0.46, tvd: 0.0357, red2q: 64.5, g2Raw: 141, g2Opt: 50, regime: "Quantum Comb (>0.01 TVD)", packs: { iqm_garnet_20q: 0, ionq_forte_36q: 1, iqm_emerald_54q: 2, ibm_heron_133q: 5, ibm_heron_156q: 6 } }
+    ];
+
+    const AG_SDK_CODE = `from qiskit_addon_opt_mapper.problems import OptimizationProblem
+import haiqu
+
+# EXP-A: Slack-Free Cubic HUBO on Empirical NHS Mid & South Essex ICB (25 PCNs, phi_present=False)
+prob = OptimizationProblem("nhs_mse_e54000026_cubic_hubo")
+for q in range(25):
+    prob.binary_var(name=f"x_{q}")
+# Native 3-body geographic PCN triad synergy (0 quadratization slack qubits; LP frac = 0.480)
+qc_hubo = haiqu.lr_qaoa_circuit(prob, p=4, delta_t=0.45)
+qc_compressed = haiqu.compress_state(qc_hubo, device="ibm_heron_133q", max_fidelity_loss=0.01)
+res_hubo = haiqu.run(qc_compressed, shots=4096, postprocess="bitflip_local_search", objective_mode="cvar_0.15")
+
+# EXP-B: 18q Coupled CKM+PGx Organ-Depot Comb (kappa = 0.38 > kappa_crit = 0.30; -66.0% 2q gates)
+obs_trimmed, qc_prefix = haiqu.observable_backpropagation(qc_comb_18q, observable="Z0 Z4 Z8 Z12", eps=0.02)
+qc_packed = haiqu.PackingLayer(qc_prefix, device="ibm_heron_156q")  # up to 8x-19x parallel shot replicas`;
+
+    let activeAgTab = "exp-a";
+
+    function setAgHover(msg) {
+      const el = document.getElementById("agHoverInfo");
+      if (el) el.textContent = msg;
+    }
+
+    function toggleFig13Modal(open) {
+      const m = document.getElementById("fig13Modal");
+      if (!m) return;
+      m.classList.toggle("open", Boolean(open));
+    }
+
+    function selectAgTab(tab, btn) {
+      activeAgTab = tab;
+      document.querySelectorAll("[data-ag-tab]").forEach(b => {
+        b.classList.toggle("active", b === btn);
+      });
+      renderAgExplorer();
+    }
+
+    function renderAgExplorer() {
+      const stage = document.getElementById("agStage");
+      const qpu = document.getElementById("agQpuFilter")?.value || "all";
+      if (!stage) return;
+
+      if (activeAgTab === "exp-a") {
+        const barsSvg = AG_EXP_A.map((r, i) => {
+          const x = 78 + i * 118;
+          const compat = qpu === "all" || r.qpus.includes(qpu);
+          const op = compat ? "1" : "0.24";
+          const hFrac = Math.round((r.lpFrac / 0.60) * 195);
+          const yFrac = 235 - hFrac;
+          const hMilp = Math.round((r.milpObj / 40.0) * 195);
+          const yMilp = 235 - hMilp;
+          const hLp = Math.round((r.lpObj / 40.0) * 195);
+          const yLp = 235 - hLp;
+          const tip = `${r.icb} (${r.q}q): McCormick LP Frac = ${r.lpFrac.toFixed(3)} (>= 0.20 stall), alpha_3 = ${r.alpha3.toFixed(2)}, Exact SciPy HiGHS E* = -${r.milpObj.toFixed(3)} (${r.ms} ms) vs LP -${r.lpObj.toFixed(2)} | Compatible: ${compat ? "YES" : "Requires larger QPU"}`;
+          return `<g opacity="${op}" style="cursor:pointer;" onmouseenter="setAgHover('${esc(tip)}')">
+            <rect x="${x}" y="${yFrac}" width="32" height="${hFrac}" rx="4" fill="#38d6c4" />
+            <text x="${x + 16}" y="${yFrac - 6}" text-anchor="middle" fill="#bfece6" font-size="10.5" font-family="JetBrains Mono" font-weight="700">${r.lpFrac.toFixed(3)}</text>
+            <rect x="${x + 36}" y="${yLp}" width="18" height="${hLp}" rx="3" fill="#4c6770" />
+            <rect x="${x + 56}" y="${yMilp}" width="22" height="${hMilp}" rx="3" fill="#f4ae42" />
+            <text x="${x + 67}" y="${yMilp - 6}" text-anchor="middle" fill="#fce7c2" font-size="9.8" font-family="JetBrains Mono">-${r.milpObj.toFixed(1)}</text>
+            <text x="${x + 39}" y="255" text-anchor="middle" fill="#eef7f5" font-size="11" font-weight="700">${esc(r.id)}</text>
+            <text x="${x + 39}" y="270" text-anchor="middle" fill="#9eb7b4" font-size="9.5" font-family="JetBrains Mono">α₃=${r.alpha3.toFixed(2)} · ${r.ms}ms</text>
+          </g>`;
+        }).join("");
+
+        const yGate = 235 - Math.round((0.20 / 0.60) * 195);
+        stage.innerHTML = `<svg viewBox="0 0 800 292" style="width:100%;height:auto;max-height:320px;display:block;">
+          <rect x="56" y="28" width="724" height="207" fill="#0d1b1e" rx="6" stroke="rgba(158,183,180,0.16)" />
+          <line x1="56" y1="${yGate}" x2="780" y2="${yGate}" stroke="#f06a3b" stroke-width="1.6" stroke-dasharray="6,4" />
+          <text x="66" y="${yGate - 6}" fill="#f06a3b" font-size="10" font-family="JetBrains Mono">Gate G4 LP Fractionality Stall Threshold (≥ 0.20 · All 6 ICBs Qualify)</text>
+          <g transform="translate(458, 16)">
+            <rect x="0" y="-9" width="11" height="11" rx="2" fill="#38d6c4" /><text x="15" y="0" fill="#d7f3ef" font-size="10">LP Fractionality</text>
+            <rect x="108" y="-9" width="11" height="11" rx="2" fill="#4c6770" /><text x="123" y="0" fill="#9eb7b4" font-size="10">|E_LP| Outer</text>
+            <rect x="202" y="-9" width="11" height="11" rx="2" fill="#f4ae42" /><text x="217" y="0" fill="#fce7c2" font-size="10">|E*| HiGHS Exact</text>
+          </g>
+          ${barsSvg}
+        </svg>`;
+        return;
+      }
+
+      if (activeAgTab === "exp-b") {
+        const pts = AG_EXP_B.map((r, i) => {
+          const x = 110 + i * 145;
+          const yTvd = 225 - Math.round((r.tvd / 0.042) * 175);
+          const hRed = Math.round((r.red2q / 100.0) * 140);
+          const packCount = qpu === "all" ? r.packs.ibm_heron_156q : (r.packs[qpu] ?? 0);
+          const tip = `${r.label} (κ=${r.kappa.toFixed(2)}): PT-MPO(χ=16) TVD = ${r.tvd.toFixed(4)} [${r.regime}] | 2q Gates: ${r.g2Raw} → ${r.g2Opt} (-${r.red2q.toFixed(1)}% via Compression + OBP) | Packing: ${packCount}x`;
+          return { x, yTvd, hRed, packCount, tip, r };
+        });
+        const poly = pts.map(p => `${p.x},${p.yTvd}`).join(" ");
+        const yCeil = 225 - Math.round((0.01 / 0.042) * 175);
+
+        stage.innerHTML = `<svg viewBox="0 0 800 292" style="width:100%;height:auto;max-height:320px;display:block;">
+          <rect x="56" y="28" width="724" height="197" fill="#0d1b1e" rx="6" stroke="rgba(158,183,180,0.16)" />
+          <rect x="56" y="${yCeil}" width="135" height="${225 - yCeil}" fill="rgba(56,214,196,0.08)" />
+          <line x1="56" y1="${yCeil}" x2="780" y2="${yCeil}" stroke="#f06a3b" stroke-width="1.5" stroke-dasharray="5,4" />
+          <text x="66" y="${yCeil - 6}" fill="#f06a3b" font-size="10" font-family="JetBrains Mono">Clinical Fidelity Ceiling (TVD = 0.01 · κ_crit = 0.30 Crossover)</text>
+          <line x1="191" y1="28" x2="191" y2="225" stroke="#f4ae42" stroke-width="1.3" stroke-dasharray="4,4" />
+          <text x="197" y="44" fill="#f4ae42" font-size="9.8" font-family="JetBrains Mono">κ_crit = 0.30 → Quantum Comb Zone</text>
+          ${pts.map(p => `<g style="cursor:pointer;" onmouseenter="setAgHover('${esc(p.tip)}')">
+            <rect x="${p.x - 24}" y="${225 - p.hRed}" width="48" height="${p.hRed}" rx="4" fill="rgba(56,214,196,0.22)" stroke="#38d6c4" stroke-width="1" />
+            <text x="${p.x}" y="${225 - p.hRed + 15}" text-anchor="middle" fill="#bfece6" font-size="9.5" font-family="JetBrains Mono">-${p.r.red2q.toFixed(1)}% 2q</text>
+          </g>`).join("")}
+          <polyline fill="none" stroke="#f4ae42" stroke-width="2.6" points="${poly}" />
+          ${pts.map(p => `<g style="cursor:pointer;" onmouseenter="setAgHover('${esc(p.tip)}')">
+            <circle cx="${p.x}" cy="${p.yTvd}" r="6" fill="${p.r.tvd <= 0.01 ? '#38d6c4' : '#f06a3b'}" stroke="#0b1517" stroke-width="2" />
+            <text x="${p.x}" y="${p.yTvd - 10}" text-anchor="middle" fill="#fce7c2" font-size="10" font-family="JetBrains Mono" font-weight="700">TVD ${p.r.tvd.toFixed(4)}</text>
+            <text x="${p.x}" y="246" text-anchor="middle" fill="#eef7f5" font-size="10.8" font-weight="700">${esc(p.r.label)}</text>
+            <text x="${p.x}" y="262" text-anchor="middle" fill="#9eb7b4" font-size="9.5" font-family="JetBrains Mono">κ=${p.r.kappa.toFixed(2)} · ${p.packCount}× pack</text>
+          </g>`).join("")}
+        </svg>`;
+        return;
+      }
+
+      if (activeAgTab === "pack") {
+        const chips = [
+          ["iqm_garnet_20q", "IQM Garnet (20q)"],
+          ["ionq_forte_36q", "IonQ Forte (36q)"],
+          ["iqm_emerald_54q", "IQM Emerald (54q)"],
+          ["ibm_heron_133q", "IBM Heron (133q)"],
+          ["ibm_heron_156q", "IBM Heron r2 (156q)"]
+        ];
+        stage.innerHTML = `<div class="table-wrap" style="border:none;background:transparent;">
+          <table style="font-size:0.83rem;">
+            <thead>
+              <tr>
+                <th>Organ-Depot Comb Circuit</th>
+                ${chips.map(([cid, lbl]) => `<th style="${qpu === cid ? 'background:rgba(56,214,196,0.22);color:#fff;' : ''}">${esc(lbl)}</th>`).join("")}
+              </tr>
+            </thead>
+            <tbody>
+              ${AG_EXP_B.slice(1).map(r => `<tr>
+                <td><strong>${esc(r.label)}</strong> <span class="kpi-meta">(κ=${r.kappa.toFixed(2)}, ${r.g2Raw}→${r.g2Opt} 2q)</span></td>
+                ${chips.map(([cid, lbl]) => {
+                  const rep = r.packs[cid] || 0;
+                  const bg = rep >= 10 ? "rgba(56,214,196,0.26)" : (rep >= 3 ? "rgba(56,214,196,0.12)" : (rep >= 1 ? "rgba(244,174,66,0.12)" : "rgba(240,106,59,0.10)"));
+                  const tip = `${r.label} on ${lbl}: ${rep > 0 ? rep + 'x parallel PackingLayer shot replicas per QPU job' : 'Exceeds single-chip qubit count'}`;
+                  return `<td style="background:${bg};font-family:var(--font-mono);font-weight:700;cursor:pointer;" onmouseenter="setAgHover('${esc(tip)}')">${rep > 0 ? rep + "× replicas" : "—"}</td>`;
+                }).join("")}
+              </tr>`).join("")}
+            </tbody>
+          </table>
+        </div>`;
+        return;
+      }
+
+      stage.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.45rem;">
+        <span style="font-family:var(--font-mono);font-size:0.76rem;color:var(--signal);">AST-Validated Haiqu SDK 1.6.0+ Specification (ocq agenticos-spec --emit-code)</span>
+        <button type="button" class="btn-sm" onclick="copyPre('agCodeBlock', this)">Copy SDK Spec</button>
+      </div>
+      <pre id="agCodeBlock" style="max-height:265px;overflow:auto;">${esc(AG_SDK_CODE)}</pre>`;
+    }
+
     async function initChallengePage() {
       document.getElementById("policyCodeInput")?.addEventListener("input", runPolicyPreflight);
       loadSampleIntoLinter("batch");
       renderChallengeLeaderboard(FALLBACK_ENTRIES);
+      renderAgExplorer();
       try {
         const resp = await fetch("receipts/benchmark_scorecards_summary.json", { cache: "no-store" });
         if (resp.ok) {

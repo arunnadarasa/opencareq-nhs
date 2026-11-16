@@ -94,9 +94,25 @@
       display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 6px;
       background: linear-gradient(135deg, var(--signal), #1ca394); color: #061315; font-weight: 800; font-size: 0.95rem;
     }
-    .nav-links { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; font-size: 0.86rem; font-weight: 600; }
-    .nav-links a { color: var(--ink-muted); padding: 0.35rem 0.7rem; border-radius: 999px; }
+    .nav-links { display: flex; align-items: center; gap: 0.2rem; flex-wrap: wrap; font-size: 0.8rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.28rem 0.52rem; border-radius: 999px; white-space: nowrap; }
     .nav-links a:hover { color: var(--ink); background: rgba(255,255,255,0.05); }
+    .nav-links a.btn-primary,
+    .nav-links a.btn-sm.btn-primary {
+      background: var(--signal);
+      color: #061517;
+      border: 1px solid var(--signal);
+      border-radius: 8px;
+      font-weight: 800;
+      padding: 0.3rem 0.7rem;
+      box-shadow: 0 2px 10px rgba(56, 214, 196, 0.24);
+    }
+    .nav-links a.btn-primary:hover,
+    .nav-links a.btn-sm.btn-primary:hover {
+      background: #4fe2d1;
+      color: #061517;
+      filter: brightness(1.04);
+    }
 
     /* Hero */
     .hero { padding: 3.4rem 0 2.4rem; border-bottom: 1px solid var(--border); }
@@ -473,20 +489,19 @@
     <div class="site-nav-inner">
       <a href="#top" class="brand">
         <span class="brand-mark">OC</span>
-        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">v0.7</small></span>
+        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">v0.8</small></span>
       </a>
       <nav class="nav-links" aria-label="Sections">
-        <a href="#papers" style="color:var(--signal);">Paper Preview</a>
-        <a href="#studio">DSL → Quantum IR Studio</a>
-        <a href="#simulator">5-ICB SwarmWorld Twin</a>
-        <a href="#atlas42" style="color:var(--amber);">42-ICB National Atlas</a>
-        <a href="#dcea" style="color:var(--signal);">NICE DCEA &amp; 10-Yr PSA</a>
-        <a href="#harness">Unified Harness</a>
-        <a href="challenge.html#agenticos" style="color:var(--amber);">AgenticOS QPU Spec ↗</a>
-        <a href="challenge.html" style="color:var(--signal);">Policy Challenge</a>
-        <a href="#dcb0129" style="color:var(--amber);">CSC-QT Safety Case</a>
-        <a href="safety-case.html" style="color:var(--signal);">3-Doc Safety Pack ↗</a>
-        <a class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf" style="color:#061517;padding:0.32rem 0.72rem;border-radius:7px;">⬇ PDF</a>
+        <a href="#papers" style="color:var(--signal);">Papers I &amp; II</a>
+        <a href="#studio">DSL → IR</a>
+        <a href="#simulator">5-ICB Twin</a>
+        <a href="#atlas42" style="color:var(--amber);">42-ICB Atlas</a>
+        <a href="#dcea" style="color:var(--signal);">NICE DCEA &amp; PSA</a>
+        <a href="#harness">Harness</a>
+        <a href="challenge.html#agenticos" style="color:var(--amber);">AgenticOS Spec ↗</a>
+        <a href="challenge.html" style="color:var(--signal);">Challenge</a>
+        <a href="safety-case.html" style="color:var(--amber);">CSC-QT Pack ↗</a>
+        <a class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Paper PDF</a>
       </nav>
     </div>
   </header>
@@ -516,10 +531,11 @@
         </div>
 
         <div class="tab-row" style="margin-bottom:1.5rem;">
-          <button type="button" class="btn-sm btn-primary" data-open-doc="opencareq">📖 Read in Preview Panel ↓</button>
-          <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ PDF (21 pp.)</a>
+          <button type="button" class="btn-sm btn-primary" data-open-doc="opencareq">📖 Paper I Monograph (21 pp.) ↓</button>
+          <button type="button" class="btn-sm" data-open-doc="moth_companion" style="border-color:var(--border-strong);color:var(--signal);">🦋 Paper II: Moth Quantum × Tessa Study (11 pp.) ↓</button>
+          <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Paper I PDF</a>
+          <a class="btn-sm" href="OpenCareQ_Moth_Paper.pdf" download="OpenCareQ_Moth_Paper.pdf">⬇ Paper II PDF</a>
           <a class="btn-sm" href="safety-case.html" style="border-color:var(--border-strong);color:var(--signal);">🛡 3-Doc CSC-QT Safety Case</a>
-          <a class="btn-sm" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">↗ Samskrift Cloud</a>
           <a class="btn-sm btn-ghost" href="receipts/opencareq_samskrift_benchmark_receipt.json" target="_blank" rel="noopener">✓ Receipt (<code>50a5e601</code>)</a>
           <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_3_falsification_receipt.json" target="_blank" rel="noopener">✓ v0.3 (<code>b2c71cf4</code>)</a>
           <a class="btn-sm btn-ghost" href="receipts/opencareq_england_42icb_atlas_receipt.json" target="_blank" rel="noopener">✓ 42-ICB (<code>314a6f5b</code>)</a>
@@ -527,6 +543,7 @@
           <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_5_psa_eskd_horizon_receipt.json" target="_blank" rel="noopener">✓ v0.5 PSA (<code>51ae0545</code>)</a>
           <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_6_csc_qt_safety_receipt.json" target="_blank" rel="noopener">✓ v0.6 CSC-QT (<code>2887c3c9</code>)</a>
           <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_7_haiqu_agenticos_receipt.json" target="_blank" rel="noopener">✓ v0.7 AgenticOS (<code>0ee49bcc</code>)</a>
+          <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_8_moth_tessa_cloud_receipt.json" target="_blank" rel="noopener">✓ v0.8 Moth Cloud (<code>c01cb163</code>)</a>
           <a class="btn-sm" href="challenge.html#agenticos" style="border-color:rgba(244,174,66,0.45);color:var(--amber);">⚡ Haiqu AgenticOS Spec</a>
         </div>
 
@@ -563,57 +580,62 @@
         </p>
 
         <div class="papers-grid">
-          <!-- Card 1: OpenCareQ Samskrift Research Paper -->
+          <!-- Card 1: OpenCareQ Paper I Monograph -->
           <article class="paper-card featured">
             <div>
-              <span class="pill pill-signal">Samskrift Research Article · 20 Pages · 57 Verified Citations</span>
-              <h3>OpenCareQ (`v0.6.0`): Healthcare Quantum DSL, CKM+PGx, 10-Yr ESKD PSA &amp; CSC-QT Safety Suite</h3>
+              <span class="pill pill-signal">Paper I · Primary Samskrift Monograph · 21 Pages · 58 Verified Citations</span>
+              <h3>OpenCareQ (v0.7.0): Healthcare Quantum DSL, CKM+PGx, 10-Yr ESKD PSA, CSC-QT &amp; AgenticOS</h3>
               <p>
-                Complete reference uniting gate-free value-typed quantum primitives + <code>UKCore FHIR R4</code> guards, zero-fit 4-cohort PK (<code>GMFE = 1.2423</code>) &amp; coupled <code>CKM + PGx</code> clinical falsification (<code>GMFE = 1.0701</code>), dynamic <code>NICE DG59</code> <code>HUGR</code> (<code>4,536 B</code>), <strong>42-ICB NICE <code>DCEA</code></strong> (<code>+£299.23M/yr</code> <code>INMB</code>), <strong>10-year <code>KDIGO ESKD</code></strong> (<code>18,741.7</code> pt-yrs avoided, <code>91.5%</code> <code>DCEA</code> acceptability), and <strong><code>CSC-QT</code> 36-indicator <code>DCB0129</code>/<code>DCB0160</code> safety architecture</strong> (<code>Oskrochi &amp; Grimes 2026</code>, <code>35/35</code> &amp; <code>36/36</code> MSE <code>Present</code>, <code>7</code> <code>OPEN</code> hazards).
+                Primary reference uniting gate-free value-typed quantum primitives + <code>UKCore FHIR R4</code> guards, zero-fit 4-cohort PK (<code>GMFE = 1.2423</code>) &amp; coupled <code>CKM + PGx</code> clinical falsification (<code>GMFE = 1.0701</code>), dynamic <code>NICE DG59</code> <code>HUGR</code> (<code>4,536 B</code>), <strong>42-ICB NICE <code>DCEA</code></strong> (<code>+£299.23M/yr</code> <code>INMB</code>), <strong>10-year <code>KDIGO ESKD</code></strong> (<code>18,741.7</code> pt-yrs avoided, <code>91.5%</code> <code>DCEA</code> acceptability), <strong><code>CSC-QT</code> 36-indicator <code>DCB0129</code>/<code>DCB0160</code> safety architecture</strong>, and Dual-Topology <strong>Haiqu AgenticOS</strong> readiness (<code>0ee49bcc…</code>).
               </p>
               <ul class="paper-meta-list">
                 <li><strong>Author:</strong> Arun Nadarasa (Mid &amp; South Essex NHS FT · ISPPA)</li>
-                <li><strong>Audit:</strong> <code>ML-DSA-65</code> receipts <code>50a5e601…</code>, <code>b2c71cf4…</code>, <code>314a6f5b…</code>, <code>b990361d…</code>, <code>51ae0545…</code>, <code>2887c3c9…</code> &amp; <code>a2f31173…</code></li>
+                <li><strong>Audit:</strong> <code>ML-DSA-65</code> receipts <code>50a5e601…</code>, <code>b2c71cf4…</code>, <code>314a6f5b…</code>, <code>b990361d…</code>, <code>51ae0545…</code>, <code>2887c3c9…</code> &amp; <code>0ee49bcc…</code></li>
                 <li><strong>Governance:</strong> Statutory NHS <code>DCB0129</code> / <code>DCB0160</code> Non-SaMD (<code>H-OCQ-01..07</code> OPEN · <a href="safety-case.html">Read 3-Doc Pack</a>)</li>
               </ul>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="opencareq">📖 Read in Panel</button>
-              <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Download (20 pp.)</a>
-              <a class="btn-sm" href="safety-case.html">🛡 3-Doc Safety Pack</a>
+              <button type="button" class="btn-sm btn-primary" data-open-doc="opencareq">📖 Read Paper I in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Download Paper I (21 pp.)</a>
               <a class="btn-sm" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">↗ Samskrift Cloud</a>
             </div>
           </article>
 
-          <!-- Card 2: 300-DPI Multi-Panel Benchmark Figures & Sealed Receipts -->
-          <article class="paper-card featured">
+          <!-- Card 2: Companion Paper II (Moth Quantum x Tessa 1,280-PCN Cloud Study) -->
+          <article class="paper-card featured" style="border-color:rgba(56,214,196,0.38);">
             <div>
-              <span class="pill pill-amber">12 Multi-Panel 300-DPI Figures · National 42-ICB Atlas, CKM+PGx, 10-Yr PSA &amp; CSC-QT</span>
-              <h3>High-Resolution Manuscript Figure Plates &amp; `v0.6.0` National Provenance</h3>
+              <span class="pill pill-amber">Paper II · Companion Moth Quantum Study · 11 Pages · 7 Live Cloud Jobs</span>
+              <h3>Whole-Chip Zero-SWAP Tessa Encoding, Quantum Blur &amp; QuantumGraph Across 1,280 NHS PCNs</h3>
               <p>
-                Every figure and table reproduces deterministically from <code>ML-DSA-65</code>-sealed simulation receipts: five-layer <code>DCB0129Guard</code> triage (<code>0.001 ms</code>), 14-day hepatocyte phospholipid washout (<code>Day-7 AUCR = 4.437×</code> vs <code>Day-10 = 1.553×</code>), all 42 statutory English ICB PCN twins, coupled <code>CKM + PGx</code> zero-fit parity (<code>GMFE = 1.0701</code>), 10-yr <code>KDIGO ESKD</code> / 1,000-draw <code>PSA</code> (<code>18,741.7</code> pt-yrs, <code>91.5%</code> <code>DCEA</code>), and <code>CSC-QT</code> 5-domain safety-case audit &amp; NHS <code>5×5</code> risk migration (<code>2887c3c9…</code>).
+                Dedicated companion article bridging <strong>Moth Quantum</strong>'s hardware-native data encoding (Bultrini's <code>Tessa</code> / <code>iqpixl</code>, <code>arXiv:2611.18440v1</code>) and interference primitives (Wootton's <code>Quantum Blur</code>, <code>QuantumGraph</code>, <code>Quantum Echo</code>) with NHS England's <code>1,280</code>-PCN <code>OGL v3.0</code> atlas: zero-SWAP <code>120q</code> <code>ibm_phoenix</code> (<code>C_pair = 1,584</code>) &amp; live <code>156q</code> <code>fake_fez</code> <code>qpixl-v1</code> <code>DRR</code> (<code>r = 0.92543</code>), <code>&lt;4.2 ms</code> Prop. 1 <code>0L</code> demarcation, Hadamard <code>1 - K_a</code> cliff detection, live <code>20</code>-PCN Norfolk <code>graph-v1</code> tomography, and <code>ABCC8</code>/<code>SUR1</code> genomic error boundaries under <code>CSC-QT</code>.
               </p>
               <ul class="paper-meta-list">
-                <li><strong>Figs 1–4 (pp. 2–7):</strong> 5-Layer Stack, 8q Comb (`2.1408` bits), 143-PCN SwarmWorld &amp; `Gate G4`</li>
-                <li><strong>Figs 5–9 (pp. 8–12):</strong> `PT-MPO`, 4-Cohort PK (`N = 69`), 5-ICB OGL, Noisy `ASPS` &amp; 42-ICB Atlas</li>
-                <li><strong>Figs 10–12 (pp. 14–17):</strong> Coupled `CKM+PGx`, 10-Yr `KDIGO PSA` &amp; `CSC-QT` 5-Domain Bow-Tie Audit</li>
+                <li><strong>Live Cloud Suite:</strong> <code>7</code> zero-PID jobs on <code>api.mothquantum.com/v1</code> (<code>bf0c784d</code>, <code>cd6f3704</code>, <code>ec8ec97e</code>, <code>4189d08a</code>, <code>eea5dec7</code>, <code>2a9406e7</code>, <code>5f5c2cb4</code>)</li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> receipt <code>c01cb163…</code> (<code>phi_present = False</code>)</li>
               </ul>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
-              <button type="button" class="btn-sm" onclick="openFigLightbox(0)">🖼 Fig 1</button>
-              <button type="button" class="btn-sm" onclick="openFigLightbox(1)">🖼 Fig 2</button>
-              <button type="button" class="btn-sm" onclick="openFigLightbox(2)">🖼 Fig 3</button>
-              <button type="button" class="btn-sm" onclick="openFigLightbox(3)">🖼 Fig 4</button>
-              <button type="button" class="btn-sm" onclick="openFigLightbox(4)">🖼 Fig 5</button>
-              <button type="button" class="btn-sm" onclick="openFigLightbox(5)">🖼 Fig 6</button>
-              <button type="button" class="btn-sm" onclick="openFigLightbox(6)">🖼 Fig 7</button>
-              <button type="button" class="btn-sm" onclick="openFigLightbox(7)">🖼 Fig 8</button>
-              <button type="button" class="btn-sm" onclick="openFigLightbox(8)">🖼 Fig 9 (42-ICB)</button>
-              <button type="button" class="btn-sm" onclick="openFigLightbox(9)">🖼 Fig 10 (CKM+PGx)</button>
-              <button type="button" class="btn-sm" onclick="openFigLightbox(10)">🖼 Fig 11 (10-Yr PSA)</button>
-              <button type="button" class="btn-sm btn-primary" onclick="openFigLightbox(11)">🖼 Fig 12 (CSC-QT Safety)</button>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="moth_companion">🦋 Read Paper II in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_Moth_Paper.pdf" download="OpenCareQ_Moth_Paper.pdf">⬇ Download Paper II (11 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/4d44b785-c5cf-426e-8a0e-bee02e39cd88/af059791-d96c-46c3-a2a8-d01c79a5d08b" target="_blank" rel="noopener">↗ Paper II Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_moth_tessa_summary.json" target="_blank" rel="noopener">✓ Cloud JSON</a>
             </div>
           </article>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.85rem;">
+          <button type="button" class="btn-sm" onclick="openFigLightbox(0)">🖼 Fig 1</button>
+          <button type="button" class="btn-sm" onclick="openFigLightbox(1)">🖼 Fig 2</button>
+          <button type="button" class="btn-sm" onclick="openFigLightbox(2)">🖼 Fig 3</button>
+          <button type="button" class="btn-sm" onclick="openFigLightbox(3)">🖼 Fig 4</button>
+          <button type="button" class="btn-sm" onclick="openFigLightbox(4)">🖼 Fig 5</button>
+          <button type="button" class="btn-sm" onclick="openFigLightbox(5)">🖼 Fig 6</button>
+          <button type="button" class="btn-sm" onclick="openFigLightbox(6)">🖼 Fig 7</button>
+          <button type="button" class="btn-sm" onclick="openFigLightbox(7)">🖼 Fig 8</button>
+          <button type="button" class="btn-sm" onclick="openFigLightbox(8)">🖼 Fig 9 (42-ICB)</button>
+          <button type="button" class="btn-sm" onclick="openFigLightbox(9)">🖼 Fig 10 (CKM+PGx)</button>
+          <button type="button" class="btn-sm" onclick="openFigLightbox(10)">🖼 Fig 11 (10-Yr PSA)</button>
+          <button type="button" class="btn-sm" onclick="openFigLightbox(11)">🖼 Fig 12 (CSC-QT Safety)</button>
         </div>
 
         <!-- Live Inline & Expandable Paper Preview Panel (Exact Quantum Krump UX) -->
@@ -621,11 +643,10 @@
           <!-- Top Document Switcher Bar -->
           <div class="reader-doc-tabs">
             <div class="reader-doc-pills" role="tablist" aria-label="Choose paper to read">
-              <button type="button" class="reader-doc-btn active" data-reader-doc="opencareq" id="tab-doc-opencareq">📘 OpenCareQ v0.6.0 Samskrift Paper (20 pp.)</button>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">☁ Samskrift Cloud View ↗</a>
-              <a class="reader-doc-btn" href="https://arunnadarasa.github.io/quantum-social-prescribing/" target="_blank" rel="noopener">🌿 Social Prescribing Portal ↗</a>
-              <a class="reader-doc-btn" href="https://arunnadarasa.github.io/quantum-ltc/" target="_blank" rel="noopener">🫀 Quantum-LTC Portal ↗</a>
-              <a class="reader-doc-btn" href="https://arunnadarasa.github.io/quantumkrump/" target="_blank" rel="noopener">⚡ Quantum Krump Portal ↗</a>
+              <button type="button" class="reader-doc-btn active" data-reader-doc="opencareq" id="tab-doc-opencareq">📘 Paper I: OpenCareQ Monograph (21 pp.)</button>
+              <button type="button" class="reader-doc-btn" data-reader-doc="moth_companion" id="tab-doc-moth">🦋 Paper II: Moth Quantum &amp; Tessa 1,280-PCN Study (11 pp.)</button>
+              <a class="reader-doc-btn" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">☁ Paper I Cloud ↗</a>
+              <a class="reader-doc-btn" href="https://samskrift.com/view/4d44b785-c5cf-426e-8a0e-bee02e39cd88/af059791-d96c-46c3-a2a8-d01c79a5d08b" target="_blank" rel="noopener">☁ Paper II Cloud ↗</a>
             </div>
             <div class="reader-controls-group">
               <button id="reader-tall-btn" type="button" class="reader-icon-btn" title="Toggle taller reading viewport">↕ Tall</button>
@@ -697,9 +718,10 @@
           <div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.35rem;">
               <label style="margin:0;">2. Lowered Quantum Target IR</label>
-              <div style="display:flex;gap:0.4rem;">
+              <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
                 <button class="btn active" id="btnGuppy" style="padding:0.22rem 0.6rem;font-size:0.76rem;" onclick="selectTarget('guppy')">Guppy 1.0 → HUGR</button>
                 <button class="btn" id="btnCudaq" style="padding:0.22rem 0.6rem;font-size:0.76rem;" onclick="selectTarget('cudaq')">NVIDIA CUDA-Q</button>
+                <button class="btn" id="btnHaiqu" style="padding:0.22rem 0.6rem;font-size:0.76rem;" onclick="selectTarget('haiqu')">Haiqu SDK 1.6+</button>
               </div>
             </div>
             <pre id="irCode"></pre>
@@ -1552,7 +1574,15 @@ def opencareq_depot_comb_kernel():
     ry(0.2500, q[1])
     x.ctrl(q[4], q[1])
     x.ctrl(q[1], q[7])
-    mz(q)`
+    mz(q)`,
+        haiqu: `import haiqu
+
+# 8-Qubit Hepatocyte-Depot Comb: State Compression + Heisenberg OBP + Chip Packing
+qc_compressed = haiqu.compress_state(qc_depot_comb_8q, device="ibm_heron_156q", max_fidelity_loss=0.01)
+obs_trimmed, qc_prefix = haiqu.observable_backpropagation(
+    qc_compressed, observable="Z1 Z7", eps=0.02
+)
+qc_packed = haiqu.PackingLayer(qc_prefix, device="ibm_heron_156q")  # 19x parallel shot replicas`
       },
       pgx: {
         dsl: `import opencareq as ocq
@@ -1612,7 +1642,15 @@ def opencareq_dynamic_pgx_ckm_kernel():
     ry(0.340000, q[1])
     x.ctrl(q[3], q[1])
     x.ctrl(q[0], q[5])
-    x.ctrl(q[1], q[5])`
+    x.ctrl(q[1], q[5])`,
+        haiqu: `import haiqu
+
+# Coupled CKM + NICE DG59 PGx Comb (kappa = 0.34 > kappa_crit = 0.30; -67.5% 2q gates)
+qc_compressed = haiqu.compress_state(qc_ckm_pgx_comb, device="ibm_heron_133q", max_fidelity_loss=0.01)
+obs_trimmed, qc_prefix = haiqu.observable_backpropagation(
+    qc_compressed, observable="Z0 Z1 Z5", eps=0.02
+)
+res = haiqu.run(haiqu.PackingLayer(qc_prefix, device="ibm_heron_133q"), shots=4096)`
       },
       wmty: {
         dsl: `import opencareq as ocq
@@ -1657,7 +1695,13 @@ def opencareq_wmty_pathway_kernel():
     x.ctrl(q[0], q[1])
     x.ctrl(q[2], q[3])
     x.ctrl(q[1], q[2])
-    mz(q)`
+    mz(q)`,
+        haiqu: `import haiqu
+
+# 4-Qubit Coherent WMTY Superposition: Parallel Packing Across 156q Heavy-Hex
+qc_compressed = haiqu.compress_state(qc_wmty_4q, device="ibm_heron_156q", max_fidelity_loss=0.005)
+qc_packed = haiqu.PackingLayer(qc_compressed, device="ibm_heron_156q")
+res = haiqu.run(qc_packed, shots=2048)`
       },
       hubo: {
         dsl: `import opencareq as ocq
@@ -1698,7 +1742,17 @@ def opencareq_triad_qaoa_kernel():
     x.ctrl(q[0], q[1])
     x.ctrl(q[2], q[3])
     x.ctrl(q[4], q[5])
-    mz(q)`
+    mz(q)`,
+        haiqu: `from qiskit_addon_opt_mapper.problems import OptimizationProblem
+import haiqu
+
+# Native 3-Body NHS ICB Cubic HUBO (0 Slack Qubits; LP Frac = 0.480 on 25q MSE E54000026)
+prob = OptimizationProblem("nhs_mse_25pcn_cubic_hubo")
+for i in range(25):
+    prob.binary_var(name=f"x_{i}")
+qc_hubo = haiqu.lr_qaoa_circuit(prob, p=4, delta_t=0.45)
+qc_comp = haiqu.compress_state(qc_hubo, device="ibm_heron_133q", max_fidelity_loss=0.01)
+res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objective_mode="cvar_0.15")`
       }
     };
 
@@ -1719,6 +1773,7 @@ def opencareq_triad_qaoa_kernel():
       activeTarget = tgt;
       document.getElementById('btnGuppy').classList.toggle('active', tgt === 'guppy');
       document.getElementById('btnCudaq').classList.toggle('active', tgt === 'cudaq');
+      document.getElementById('btnHaiqu')?.classList.toggle('active', tgt === 'haiqu');
       renderStudio();
     }
 
@@ -1837,7 +1892,25 @@ def opencareq_triad_qaoa_kernel():
           { label: "p.16 G1–G8 Table 8 & CSC-QT", page: 16 },
           { label: "p.17 CSC-QT Fig 12 & Mentor Ack", page: 17 },
           { label: "p.18 Bow-Tie Hazard Table 9", page: 18 },
+          { label: "p.19 Haiqu AgenticOS Fig 13", page: 19 },
           { label: "Refs & End", page: -1 }
+        ]
+      },
+      moth_companion: {
+        file: "OpenCareQ_Moth_Paper.pdf",
+        filename: "OpenCareQ_Moth_Paper.pdf",
+        bookmarks: [
+          { label: "p.1 Title, Abstract & Zero-PID Notice", page: 1 },
+          { label: "p.2 §1 Intro & NHS Bottlenecks", page: 2 },
+          { label: "p.3 §2 Tessa Layouts & Table 1", page: 3 },
+          { label: "p.4 Fig 1 (Live fake_fez qpixl-v1 DRR)", page: 4 },
+          { label: "p.5 §3 Hadamard K_a Table 2 & Blur", page: 5 },
+          { label: "p.6 Fig 2 (1,280-PCN Quantum Blur)", page: 6 },
+          { label: "p.7 Fig 3 (20-PCN Norfolk Graph & OTOC)", page: 7 },
+          { label: "p.8 Table 3 (7 Live Jobs) & §5 Safety", page: 8 },
+          { label: "p.9 Fig 4 (ABCC8/SUR1 & CSC-QT)", page: 9 },
+          { label: "p.10 App. A Proofs & 7-Region Table 5", page: 10 },
+          { label: "p.11 Norfolk Alliances Table 6 & Refs", page: 11 }
         ]
       }
     };
