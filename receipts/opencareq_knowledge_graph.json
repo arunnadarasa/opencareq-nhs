@@ -158,6 +158,16 @@
       "label": "Fenwick, Claxton & Sculpher 2001 Multi-Strategy CEAC & EVPI"
     },
     {
+      "id": "doi:10.1136/bmjinnov-2026-001660",
+      "type": "Clinical_Safety_Instrument",
+      "label": "Oskrochi & Grimes 2026 BMJ Innovations Clinical Safety Case Quality Tool (CSC-QT, CC BY 4.0)"
+    },
+    {
+      "id": "pmid:41172285",
+      "type": "Clinical_Safety_Study",
+      "label": "Oskrochi, Roy-Highley, Grimes & Shah 2025 JMIR National NHS DCB0129/DCB0160 Compliance Study"
+    },
+    {
       "id": "dsl:qchoice_qcomb",
       "type": "DSL_Primitive",
       "label": "Gate-Free QChoice / QSequence / QComb Primitives"
@@ -253,9 +263,19 @@
       "label": "Sealed OpenCareQ v0.5 10-Yr KDIGO ESKD Horizon & 1,000-Draw PSA/EVPPI Receipt (ML-DSA-65)"
     },
     {
+      "id": "receipt:v0_6_csc_qt_safety",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v0.6 CSC-QT 36-Indicator DCB0129/DCB0160 Bow-Tie Safety Receipt (ML-DSA-65)"
+    },
+    {
+      "id": "safety:cscr_crmp_dcb0160_mse",
+      "type": "Clinical_Safety_Suite",
+      "label": "v0.6 Statutory DCB0129 CSCR + CRMP + MSE (E54000026) DCB0160 Shadow Pack"
+    },
+    {
       "id": "paper:samskrift_v0_3",
       "type": "Publication",
-      "label": "OpenCareQ v0.5.0 Samskrift Research Monograph"
+      "label": "OpenCareQ v0.6.0 Samskrift Research Monograph"
     },
     {
       "id": "bench:anti_goodhart_policy",
@@ -265,37 +285,43 @@
     {
       "id": "hazard:H-OCQ-01",
       "type": "DCB0129_Hazard",
-      "label": "Statutory NHS DCB0129 Open Hazard H-OCQ-01",
+      "label": "Statutory NHS DCB0129/DCB0160 Open Hazard H-OCQ-01",
       "status": "OPEN"
     },
     {
       "id": "hazard:H-OCQ-02",
       "type": "DCB0129_Hazard",
-      "label": "Statutory NHS DCB0129 Open Hazard H-OCQ-02",
+      "label": "Statutory NHS DCB0129/DCB0160 Open Hazard H-OCQ-02",
       "status": "OPEN"
     },
     {
       "id": "hazard:H-OCQ-03",
       "type": "DCB0129_Hazard",
-      "label": "Statutory NHS DCB0129 Open Hazard H-OCQ-03",
+      "label": "Statutory NHS DCB0129/DCB0160 Open Hazard H-OCQ-03",
       "status": "OPEN"
     },
     {
       "id": "hazard:H-OCQ-04",
       "type": "DCB0129_Hazard",
-      "label": "Statutory NHS DCB0129 Open Hazard H-OCQ-04",
+      "label": "Statutory NHS DCB0129/DCB0160 Open Hazard H-OCQ-04",
       "status": "OPEN"
     },
     {
       "id": "hazard:H-OCQ-05",
       "type": "DCB0129_Hazard",
-      "label": "Statutory NHS DCB0129 Open Hazard H-OCQ-05",
+      "label": "Statutory NHS DCB0129/DCB0160 Open Hazard H-OCQ-05",
       "status": "OPEN"
     },
     {
       "id": "hazard:H-OCQ-06",
       "type": "DCB0129_Hazard",
-      "label": "Statutory NHS DCB0129 Open Hazard H-OCQ-06",
+      "label": "Statutory NHS DCB0129/DCB0160 Open Hazard H-OCQ-06",
+      "status": "OPEN"
+    },
+    {
+      "id": "hazard:H-OCQ-07",
+      "type": "DCB0129_Hazard",
+      "label": "Statutory NHS DCB0129/DCB0160 Open Hazard H-OCQ-07",
       "status": "OPEN"
     }
   ],
@@ -706,6 +732,71 @@
       "target": "bench:anti_goodhart_policy"
     },
     {
+      "source": "doi:10.1136/bmjinnov-2026-001660",
+      "relation": "structures_36_indicator_review_of",
+      "target": "safety:cscr_crmp_dcb0160_mse"
+    },
+    {
+      "source": "pmid:41172285",
+      "relation": "motivates_national_dcb_assurance_in",
+      "target": "safety:cscr_crmp_dcb0160_mse"
+    },
+    {
+      "source": "ogl:mse_pcn_twin_2026",
+      "relation": "grounds_local_dcb0160_exemplar_in",
+      "target": "safety:cscr_crmp_dcb0160_mse"
+    },
+    {
+      "source": "dcea:multiyear_eskd_psa_v0_5",
+      "relation": "supplies_domain5_risk_benefit_context_to",
+      "target": "safety:cscr_crmp_dcb0160_mse"
+    },
+    {
+      "source": "safety:cscr_crmp_dcb0160_mse",
+      "relation": "sealed_in",
+      "target": "receipt:v0_6_csc_qt_safety"
+    },
+    {
+      "source": "receipt:v0_6_csc_qt_safety",
+      "relation": "typeset_in",
+      "target": "paper:samskrift_v0_3"
+    },
+    {
+      "source": "safety:cscr_crmp_dcb0160_mse",
+      "relation": "governs_bowtie_open_hazard",
+      "target": "hazard:H-OCQ-01"
+    },
+    {
+      "source": "safety:cscr_crmp_dcb0160_mse",
+      "relation": "governs_bowtie_open_hazard",
+      "target": "hazard:H-OCQ-02"
+    },
+    {
+      "source": "safety:cscr_crmp_dcb0160_mse",
+      "relation": "governs_bowtie_open_hazard",
+      "target": "hazard:H-OCQ-03"
+    },
+    {
+      "source": "safety:cscr_crmp_dcb0160_mse",
+      "relation": "governs_bowtie_open_hazard",
+      "target": "hazard:H-OCQ-04"
+    },
+    {
+      "source": "safety:cscr_crmp_dcb0160_mse",
+      "relation": "governs_bowtie_open_hazard",
+      "target": "hazard:H-OCQ-05"
+    },
+    {
+      "source": "safety:cscr_crmp_dcb0160_mse",
+      "relation": "governs_bowtie_open_hazard",
+      "target": "hazard:H-OCQ-06"
+    },
+    {
+      "source": "safety:cscr_crmp_dcb0160_mse",
+      "relation": "governs_bowtie_open_hazard",
+      "target": "hazard:H-OCQ-07"
+    },
+    {
       "source": "framework:opencareq_v0_3",
       "relation": "tracks_open_hazard",
       "target": "hazard:H-OCQ-01"
@@ -734,7 +825,12 @@
       "source": "framework:opencareq_v0_3",
       "relation": "tracks_open_hazard",
       "target": "hazard:H-OCQ-06"
+    },
+    {
+      "source": "framework:opencareq_v0_3",
+      "relation": "tracks_open_hazard",
+      "target": "hazard:H-OCQ-07"
     }
   ],
-  "kg_sha256": "9472198928a23a5acf95fed4f07c6158d8ddd40e0db950ef2e59a11624a332a1"
+  "kg_sha256": "c33fa50f9bfc16e6f69ac93cb515520965868e050551ad6c88c07bc7ba53486f"
 }

@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OpenCareQ — NHS-First Healthcare Quantum DSL, Coupled CKM+PGx Prevention, 10-Yr KDIGO ESKD &amp; 42-ICB NICE DCEA + PSA</title>
-  <meta name="description" content="OpenCareQ v0.5.0: NHS-first gate-free Python healthcare quantum abstraction, zero-fit coupled CKM + multi-ethnic PGx prevention World Model (GMFE = 1.0701, 12/12 in 2-fold), 42-ICB NICE £20,000/QALY DCEA (+£299.23M/yr INMB, -9.38% SII), 10-year KDIGO ESKD dialysis avoidance (18,741.7 pt-yrs, +£2,827.23M INMB) with 1,000-draw PSA (91.5% DCEA acceptability, EVPI = £5.54M), Stigmergic PCN SwarmWorld (1,280 PCNs, 62.93M pop), and dynamic mid-circuit Quantinuum Guppy-HUGR / NVIDIA CUDA-Q compiler under NHS DCB0129 governance." />
+  <title>OpenCareQ — NHS-First Healthcare Quantum DSL, CKM+PGx Prevention, 10-Yr ESKD PSA &amp; CSC-QT Safety Suite</title>
+  <meta name="description" content="OpenCareQ v0.6.0: NHS-first gate-free Python healthcare quantum abstraction, zero-fit coupled CKM + PGx prevention World Model (GMFE = 1.0701), 42-ICB NICE £20,000/QALY DCEA (+£299.23M/yr INMB), 10-yr KDIGO ESKD PSA (18,741.7 pt-yrs, 91.5% DCEA acceptability), CSC-QT 36-Indicator DCB0129/DCB0160 Safety Case Suite (Oskrochi &amp; Grimes 2026, CC BY 4.0), and dynamic Quantinuum Guppy-HUGR / NVIDIA CUDA-Q compiler." />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="OpenCareQ — NHS-First Healthcare Quantum DSL, CKM+PGx Prevention, 10-Yr ESKD &amp; NICE DCEA + PSA" />
-  <meta property="og:description" content="Gate-free clinical Python DSL compiling to SciPy HiGHS (<20 ms), dynamic mid-circuit PGx Quantinuum Guppy 1.0 -> HUGR (4,536 B / 5,579 B), and NVIDIA CUDA-Q with +£299.23M/yr 1-yr &amp; +£2,827.23M 10-yr 42-ICB NICE DCEA (91.5% PSA acceptability) under NHS DCB0129." />
+  <meta property="og:title" content="OpenCareQ — NHS-First Healthcare Quantum DSL, 10-Yr ESKD PSA &amp; CSC-QT Safety Case" />
+  <meta property="og:description" content="Gate-free clinical Python DSL compiling to SciPy HiGHS (<20 ms), dynamic mid-circuit PGx Quantinuum Guppy 1.0 -> HUGR (4,536 B / 5,579 B), 42-ICB NICE DCEA &amp; 10-Yr ESKD PSA, and CSC-QT 36-indicator DCB0129/DCB0160 clinical safety suite." />
   <meta property="og:url" content="https://arunnadarasa.github.io/opencareq-nhs/" />
 
   <!-- Google Scholar / Highwire Press Academic Citation Meta Tags -->
-  <meta name="citation_title" content="OpenCareQ: A Clean-Room Healthcare Quantum Programming Language, Non-Markovian Causal World Model, Coupled CKM+PGx Prevention Engine, 10-Yr KDIGO ESKD PSA, and Agent-Free Stigmergic SwarmWorld for NHS Neighbourhood Commissioning" />
+  <meta name="citation_title" content="OpenCareQ: A Clean-Room Healthcare Quantum Programming Language, Non-Markovian Causal World Model, Coupled CKM+PGx Prevention Engine, 10-Yr KDIGO ESKD PSA, CSC-QT Safety Case Architecture, and Agent-Free Stigmergic SwarmWorld for NHS Neighbourhood Commissioning" />
   <meta name="citation_author" content="Nadarasa, Arun" />
   <meta name="citation_publication_date" content="2026/11/16" />
   <meta name="citation_pdf_url" content="https://arunnadarasa.github.io/opencareq-nhs/OpenCareQ_Paper.pdf" />
@@ -473,7 +473,7 @@
     <div class="site-nav-inner">
       <a href="#top" class="brand">
         <span class="brand-mark">OC</span>
-        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">v0.5</small></span>
+        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">v0.6</small></span>
       </a>
       <nav class="nav-links" aria-label="Sections">
         <a href="#papers" style="color:var(--signal);">Paper Preview</a>
@@ -483,9 +483,8 @@
         <a href="#dcea" style="color:var(--signal);">NICE DCEA &amp; 10-Yr PSA</a>
         <a href="#harness">Unified Harness</a>
         <a href="challenge.html" style="color:var(--signal);">Policy Challenge</a>
-        <a href="#architecture">5-Layer Architecture</a>
-        <a href="#gateg4">Gate G4 Honesty</a>
-        <a href="#dcb0129">NHS DCB0129 Log</a>
+        <a href="#dcb0129" style="color:var(--amber);">CSC-QT Safety Case</a>
+        <a href="safety-case.html" style="color:var(--signal);">3-Doc Safety Pack ↗</a>
         <a class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf" style="color:#061517;padding:0.32rem 0.72rem;border-radius:7px;">⬇ PDF</a>
       </nav>
     </div>
@@ -500,29 +499,32 @@
           <span class="pill pill-signal">Dynamic Mid-Circuit PGx Guppy 1.0 → HUGR (4,536 B / 5,579 B) + PT-MPO (κ_crit = 0.30)</span>
           <span class="pill pill-amber">Zero-Fit Human PK &amp; Coupled CKM+PGx (GMFE = 1.2423 &amp; 1.0701 · 28/28 in 2-Fold)</span>
           <span class="pill">42-ICB NICE DCEA &amp; 10-Yr ESKD (+£299.23M/yr · 18,741.7 Dialysis Pt-Yrs · 91.5% PSA)</span>
-          <span class="pill pill-ember">Apache-2.0 · ML-DSA-65 Sealed · NHS DCB0129 Non-SaMD</span>
+          <span class="pill pill-ember">CSC-QT 36-Indicator DCB0129/DCB0160 Safety Suite · ML-DSA-65 Sealed</span>
         </div>
 
-        <p class="kicker">Open-Source Clinical Quantum Abstraction · Coupled CKM+PGx · 10-Yr KDIGO ESKD &amp; 1,000-Draw PSA (`v0.5.0`)</p>
+        <p class="kicker">Open-Source Clinical Quantum Abstraction · Coupled CKM+PGx · 10-Yr ESKD PSA · CSC-QT Safety Case (`v0.6.0`)</p>
         <h1>OpenCareQ</h1>
         <p class="lead">
-          Mainstream NHS data scientists, ICB population-health analysts, and OpenSAFELY researchers write Python, SQL, and <code>UKCore FHIR R4</code>—not Pauli matrices or raw gate circuits. <strong>OpenCareQ (<code>v0.5.0</code>)</strong> unifies our empirical findings across <strong><a href="https://arunnadarasa.github.io/quantum-social-prescribing/" target="_blank" rel="noopener">Quantum Social Prescribing</a></strong>, <strong><a href="https://arunnadarasa.github.io/quantum-ltc/" target="_blank" rel="noopener">Quantum-LTC</a></strong>, and <strong><a href="https://arunnadarasa.github.io/quantumkrump/" target="_blank" rel="noopener">Quantum Krump</a></strong> into a clean-room <code>Apache-2.0</code> Python SDK: routing <strong>95% of tractable static or compressible longitudinal tasks in <code>&lt;20 ms</code> to exact classical solvers</strong> (<code>SciPy HiGHS</code> MILP, 9-state <code>RK4</code> &amp; Starling glomerular ODEs, 10-year <code>KDIGO</code> cohort progression &amp; 1,000-draw <code>PSA</code>/<code>SAVI EVPPI</code>, right-canonical Process-Tensor <code>PT-MPO</code>) while lowering coupled multi-organ <strong>Non-Markovian Quantum Combs</strong> (<code>κ ≥ 0.30</code>), two-stage <strong><code>NICE DG59</code> <em>CYP2C19</em> mid-circuit feedforward</strong>, non-commuting care orders (<code>[U_SMR, U_SP] ≠ 0</code>), and frustrated 3-body PCN triads directly to <strong>Quantinuum <code>Guppy 1.0 → HUGR</code></strong> and <strong>NVIDIA <code>CUDA-Q</code></strong>.
+          Mainstream NHS data scientists, ICB population-health analysts, and OpenSAFELY researchers write Python, SQL, and <code>UKCore FHIR R4</code>—not Pauli matrices or raw gate circuits. <strong>OpenCareQ (<code>v0.6.0</code>)</strong> unifies our empirical findings across <strong><a href="https://arunnadarasa.github.io/quantum-social-prescribing/" target="_blank" rel="noopener">Quantum Social Prescribing</a></strong>, <strong><a href="https://arunnadarasa.github.io/quantum-ltc/" target="_blank" rel="noopener">Quantum-LTC</a></strong>, and <strong><a href="https://arunnadarasa.github.io/quantumkrump/" target="_blank" rel="noopener">Quantum Krump</a></strong> into a clean-room <code>Apache-2.0</code> Python SDK: routing <strong>95% of tractable static or compressible longitudinal tasks in <code>&lt;20 ms</code> to exact classical solvers</strong> (<code>SciPy HiGHS</code> MILP, 9-state <code>RK4</code> &amp; Starling glomerular ODEs, 10-year <code>KDIGO</code> cohort progression &amp; 1,000-draw <code>PSA</code>/<code>SAVI EVPPI</code>, right-canonical Process-Tensor <code>PT-MPO</code>) while lowering coupled multi-organ <strong>Non-Markovian Quantum Combs</strong> (<code>κ ≥ 0.30</code>) and two-stage <strong><code>NICE DG59</code> <em>CYP2C19</em> mid-circuit feedforward</strong> to <strong>Quantinuum <code>Guppy 1.0 → HUGR</code></strong> and <strong>NVIDIA <code>CUDA-Q</code></strong>, governed by a 3-document <code>NHS DCB0129</code>/<code>DCB0160</code> safety suite structured via <a href="https://csc-qt.curistica.com/" target="_blank" rel="noopener"><strong><code>CSC-QT</code></strong></a>.
         </p>
 
         <div class="author-bar">
           <strong>Arun Nadarasa</strong>
           <span>Innovation Fellow, Mid and South Essex NHS Foundation Trust · International Social Prescribing Pharmacy Association (ISPPA), London, UK</span>
+          <span style="margin-top:0.18rem;color:var(--signal);">Clinical Safety Mentorship Acknowledgement: <strong>Dr Keith Grimes</strong> (Founder &amp; CEO, Curistica Ltd; FFPM, FBCS — co-creator with Dr Youssof Oskrochi of <a href="https://csc-qt.curistica.com/" target="_blank" rel="noopener">CSC-QT</a>, <code>CC BY 4.0</code>; see <a href="safety-case.html">CSO Non-Sign-Off Boundary</a>)</span>
         </div>
 
         <div class="tab-row" style="margin-bottom:1.5rem;">
           <button type="button" class="btn-sm btn-primary" data-open-doc="opencareq">📖 Read in Preview Panel ↓</button>
-          <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ PDF (19 pp.)</a>
+          <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ PDF (20 pp.)</a>
+          <a class="btn-sm" href="safety-case.html" style="border-color:var(--border-strong);color:var(--signal);">🛡 3-Doc CSC-QT Safety Case</a>
           <a class="btn-sm" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">↗ Samskrift Cloud</a>
           <a class="btn-sm btn-ghost" href="receipts/opencareq_samskrift_benchmark_receipt.json" target="_blank" rel="noopener">✓ Receipt (<code>50a5e601</code>)</a>
-          <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_3_falsification_receipt.json" target="_blank" rel="noopener">✓ v0.3 Falsification (<code>b2c71cf4</code>)</a>
-          <a class="btn-sm btn-ghost" href="receipts/opencareq_england_42icb_atlas_receipt.json" target="_blank" rel="noopener">✓ 42-ICB Atlas (<code>314a6f5b</code>)</a>
-          <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_4_prevention_dcea_receipt.json" target="_blank" rel="noopener">✓ v0.4 CKM+PGx &amp; DCEA (<code>b990361d</code>)</a>
-          <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_5_psa_eskd_horizon_receipt.json" target="_blank" rel="noopener">✓ v0.5 10-Yr ESKD &amp; PSA (<code>51ae0545</code>)</a>
+          <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_3_falsification_receipt.json" target="_blank" rel="noopener">✓ v0.3 (<code>b2c71cf4</code>)</a>
+          <a class="btn-sm btn-ghost" href="receipts/opencareq_england_42icb_atlas_receipt.json" target="_blank" rel="noopener">✓ 42-ICB (<code>314a6f5b</code>)</a>
+          <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_4_prevention_dcea_receipt.json" target="_blank" rel="noopener">✓ v0.4 DCEA (<code>b990361d</code>)</a>
+          <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_5_psa_eskd_horizon_receipt.json" target="_blank" rel="noopener">✓ v0.5 PSA (<code>51ae0545</code>)</a>
+          <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_6_csc_qt_safety_receipt.json" target="_blank" rel="noopener">✓ v0.6 CSC-QT (<code>2887c3c9</code>)</a>
         </div>
 
         <div class="trilogy-grid">
@@ -554,27 +556,28 @@
         <p class="kicker">01 · Open-Access Publication Suite</p>
         <h2>Samskrift Research Paper &amp; Live Continuous PDF Preview</h2>
         <p class="sec-sub">
-          Read the compiled <strong>19-page OpenCareQ (<code>v0.5.0</code>)</strong> manuscript directly inline via our continuous-scroll HiDPI <code>PDF.js</code> canvas stream, jump across all eight sections, the 42-ICB NICE <code>£20,000/QALY</code> <code>DCEA</code> &amp; 10-year <code>KDIGO ESKD</code> / <code>1,000</code>-draw <code>PSA</code> summaries (Tables 6–7), and the expanded <code>G1</code>–<code>G8</code> Anti-Goodhart Policy Scorecard (Table 8), or inspect all eleven 300-DPI benchmark, falsification, national atlas, prevention &amp; <code>PSA</code> plates.
+          Read the compiled <strong>20-page OpenCareQ (<code>v0.6.0</code>)</strong> manuscript directly inline via our continuous-scroll HiDPI <code>PDF.js</code> canvas stream, jump across all eight sections, the 42-ICB NICE <code>£20,000/QALY</code> <code>DCEA</code> &amp; 10-year <code>KDIGO ESKD</code> / <code>1,000</code>-draw <code>PSA</code> summaries (Tables 6–7), the <code>G1</code>–<code>G8</code> Policy Scorecard (Table 8), and the <strong><code>CSC-QT</code> Bow-Tie <code>DCB0129</code>/<code>DCB0160</code> Hazard Log (Table 9)</strong>, or inspect all twelve 300-DPI benchmark plates.
         </p>
 
         <div class="papers-grid">
           <!-- Card 1: OpenCareQ Samskrift Research Paper -->
           <article class="paper-card featured">
             <div>
-              <span class="pill pill-signal">Samskrift Research Article · 19 Pages · 55 Verified Citations</span>
-              <h3>OpenCareQ (`v0.5.0`): Healthcare Quantum DSL, Coupled CKM+PGx, 10-Yr ESKD &amp; NICE DCEA + PSA</h3>
+              <span class="pill pill-signal">Samskrift Research Article · 20 Pages · 57 Verified Citations</span>
+              <h3>OpenCareQ (`v0.6.0`): Healthcare Quantum DSL, CKM+PGx, 10-Yr ESKD PSA &amp; CSC-QT Safety Suite</h3>
               <p>
-                Complete reference uniting gate-free value-typed quantum primitives (<code>QChoice</code>, <code>QSequence</code>, <code>QComb</code>) + <code>UKCore FHIR R4</code> guards, zero-fit 4-cohort human PK (<code>N = 69</code>, <code>GMFE = 1.2423</code>) &amp; coupled <code>CKM + PGx</code> clinical falsification (<code>GMFE = 1.0701</code>, <code>12/12</code> in 2-fold), dynamic mid-circuit <code>NICE DG59</code> <em>CYP2C19</em> <code>HUGR</code> (<code>4,536 B</code>), <strong>42-ICB NICE <code>£20,000/QALY</code> <code>DCEA</code></strong> (<code>+£299.23M/yr</code> <code>INMB</code>, <code>-9.38%</code> <code>SII</code>), <strong>10-year <code>KDIGO</code> <code>ESKD</code> dialysis avoidance</strong> (<code>18,741.7</code> pt-yrs avoided, <code>+£2,827.23M</code> <code>INMB</code>, <code>91.5%</code> <code>DCEA</code> acceptability, <code>EVPI = £5.54M</code>), and <code>G1</code>–<code>G8</code> Policy Scorecard (<code>5/5</code> traps caught).
+                Complete reference uniting gate-free value-typed quantum primitives + <code>UKCore FHIR R4</code> guards, zero-fit 4-cohort PK (<code>GMFE = 1.2423</code>) &amp; coupled <code>CKM + PGx</code> clinical falsification (<code>GMFE = 1.0701</code>), dynamic <code>NICE DG59</code> <code>HUGR</code> (<code>4,536 B</code>), <strong>42-ICB NICE <code>DCEA</code></strong> (<code>+£299.23M/yr</code> <code>INMB</code>), <strong>10-year <code>KDIGO ESKD</code></strong> (<code>18,741.7</code> pt-yrs avoided, <code>91.5%</code> <code>DCEA</code> acceptability), and <strong><code>CSC-QT</code> 36-indicator <code>DCB0129</code>/<code>DCB0160</code> safety architecture</strong> (<code>Oskrochi &amp; Grimes 2026</code>, <code>35/35</code> &amp; <code>36/36</code> MSE <code>Present</code>, <code>7</code> <code>OPEN</code> hazards).
               </p>
               <ul class="paper-meta-list">
                 <li><strong>Author:</strong> Arun Nadarasa (Mid &amp; South Essex NHS FT · ISPPA)</li>
-                <li><strong>Audit:</strong> <code>ML-DSA-65</code> receipts <code>50a5e601…</code>, <code>b2c71cf4…</code>, <code>314a6f5b…</code>, <code>b990361d…</code>, <code>51ae0545…</code> &amp; <code>a2f31173…</code> · <code>0</code> QPU / runtime LLM / PID claims</li>
-                <li><strong>Governance:</strong> Statutory NHS <code>DCB0129</code> / <code>DCB0160</code> Non-SaMD (<code>H-OCQ-01..06</code> OPEN)</li>
+                <li><strong>Audit:</strong> <code>ML-DSA-65</code> receipts <code>50a5e601…</code>, <code>b2c71cf4…</code>, <code>314a6f5b…</code>, <code>b990361d…</code>, <code>51ae0545…</code>, <code>2887c3c9…</code> &amp; <code>a2f31173…</code></li>
+                <li><strong>Governance:</strong> Statutory NHS <code>DCB0129</code> / <code>DCB0160</code> Non-SaMD (<code>H-OCQ-01..07</code> OPEN · <a href="safety-case.html">Read 3-Doc Pack</a>)</li>
               </ul>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
               <button type="button" class="btn-sm btn-primary" data-open-doc="opencareq">📖 Read in Panel</button>
-              <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Download (19 pp.)</a>
+              <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Download (20 pp.)</a>
+              <a class="btn-sm" href="safety-case.html">🛡 3-Doc Safety Pack</a>
               <a class="btn-sm" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">↗ Samskrift Cloud</a>
             </div>
           </article>
@@ -582,15 +585,15 @@
           <!-- Card 2: 300-DPI Multi-Panel Benchmark Figures & Sealed Receipts -->
           <article class="paper-card featured">
             <div>
-              <span class="pill pill-amber">11 Multi-Panel 300-DPI Figures · National 42-ICB Atlas, CKM+PGx, 10-Yr ESKD &amp; PSA</span>
-              <h3>High-Resolution Manuscript Figure Plates &amp; `v0.5.0` National Provenance</h3>
+              <span class="pill pill-amber">12 Multi-Panel 300-DPI Figures · National 42-ICB Atlas, CKM+PGx, 10-Yr PSA &amp; CSC-QT</span>
+              <h3>High-Resolution Manuscript Figure Plates &amp; `v0.6.0` National Provenance</h3>
               <p>
-                Every figure and table reproduces deterministically from <code>ML-DSA-65</code>-sealed simulation receipts: five-layer <code>DCB0129Guard</code> triage (<code>0.001 ms</code>), 14-day hepatocyte phospholipid washout (<code>Day-7 AUCR = 4.437×</code> vs <code>Day-10 = 1.553×</code>), all 42 statutory English ICB PCN twins (<code>19/41</code> target ICBs improved up to <code>+39.90 pp</code>), coupled <code>CKM + PGx</code> zero-fit parity (<code>GMFE = 1.0701</code>), and 1-yr to 10-yr <code>KDIGO ESKD</code> / 1,000-draw <code>PSA</code> (<code>18,741.7</code> dialysis pt-yrs avoided, <code>100.0%</code> SE quadrant dominance, <code>91.5%</code> <code>DCEA</code> acceptability, <code>#1 EVPPI = £4.17M</code>).
+                Every figure and table reproduces deterministically from <code>ML-DSA-65</code>-sealed simulation receipts: five-layer <code>DCB0129Guard</code> triage (<code>0.001 ms</code>), 14-day hepatocyte phospholipid washout (<code>Day-7 AUCR = 4.437×</code> vs <code>Day-10 = 1.553×</code>), all 42 statutory English ICB PCN twins, coupled <code>CKM + PGx</code> zero-fit parity (<code>GMFE = 1.0701</code>), 10-yr <code>KDIGO ESKD</code> / 1,000-draw <code>PSA</code> (<code>18,741.7</code> pt-yrs, <code>91.5%</code> <code>DCEA</code>), and <code>CSC-QT</code> 5-domain safety-case audit &amp; NHS <code>5×5</code> risk migration (<code>2887c3c9…</code>).
               </p>
               <ul class="paper-meta-list">
                 <li><strong>Figs 1–4 (pp. 2–7):</strong> 5-Layer Stack, 8q Comb (`2.1408` bits), 143-PCN SwarmWorld &amp; `Gate G4`</li>
                 <li><strong>Figs 5–9 (pp. 8–12):</strong> `PT-MPO`, 4-Cohort PK (`N = 69`), 5-ICB OGL, Noisy `ASPS` &amp; 42-ICB Atlas</li>
-                <li><strong>Figs 10–11 (pp. 14–15):</strong> Coupled `CKM+PGx` (`GMFE = 1.0701`), 10-Yr `KDIGO ESKD` &amp; 1,000-Draw `PSA`/`EVPPI`</li>
+                <li><strong>Figs 10–12 (pp. 14–17):</strong> Coupled `CKM+PGx`, 10-Yr `KDIGO PSA` &amp; `CSC-QT` 5-Domain Bow-Tie Audit</li>
               </ul>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
@@ -602,9 +605,10 @@
               <button type="button" class="btn-sm" onclick="openFigLightbox(5)">🖼 Fig 6</button>
               <button type="button" class="btn-sm" onclick="openFigLightbox(6)">🖼 Fig 7</button>
               <button type="button" class="btn-sm" onclick="openFigLightbox(7)">🖼 Fig 8</button>
-              <button type="button" class="btn-sm" onclick="openFigLightbox(8)">🖼 Fig 9 (42-ICB Atlas)</button>
-              <button type="button" class="btn-sm" onclick="openFigLightbox(9)">🖼 Fig 10 (CKM+PGx+DCEA)</button>
-              <button type="button" class="btn-sm btn-primary" onclick="openFigLightbox(10)">🖼 Fig 11 (10-Yr ESKD + PSA)</button>
+              <button type="button" class="btn-sm" onclick="openFigLightbox(8)">🖼 Fig 9 (42-ICB)</button>
+              <button type="button" class="btn-sm" onclick="openFigLightbox(9)">🖼 Fig 10 (CKM+PGx)</button>
+              <button type="button" class="btn-sm" onclick="openFigLightbox(10)">🖼 Fig 11 (10-Yr PSA)</button>
+              <button type="button" class="btn-sm btn-primary" onclick="openFigLightbox(11)">🖼 Fig 12 (CSC-QT Safety)</button>
             </div>
           </article>
         </div>
@@ -614,7 +618,7 @@
           <!-- Top Document Switcher Bar -->
           <div class="reader-doc-tabs">
             <div class="reader-doc-pills" role="tablist" aria-label="Choose paper to read">
-              <button type="button" class="reader-doc-btn active" data-reader-doc="opencareq" id="tab-doc-opencareq">📘 OpenCareQ v0.5.0 Samskrift Paper (19 pp.)</button>
+              <button type="button" class="reader-doc-btn active" data-reader-doc="opencareq" id="tab-doc-opencareq">📘 OpenCareQ v0.6.0 Samskrift Paper (20 pp.)</button>
               <a class="reader-doc-btn" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">☁ Samskrift Cloud View ↗</a>
               <a class="reader-doc-btn" href="https://arunnadarasa.github.io/quantum-social-prescribing/" target="_blank" rel="noopener">🌿 Social Prescribing Portal ↗</a>
               <a class="reader-doc-btn" href="https://arunnadarasa.github.io/quantum-ltc/" target="_blank" rel="noopener">🫀 Quantum-LTC Portal ↗</a>
@@ -633,8 +637,8 @@
               <button id="reader-prev-page" type="button" class="reader-icon-btn" aria-label="Previous page">◀ Prev</button>
               <span style="color:var(--ink-muted)">
                 Page
-                <input id="reader-page-input" type="number" min="1" max="19" value="1" class="reader-page-input" aria-label="Page number" />
-                of <strong id="reader-page-count" style="color:var(--ink)">19</strong>
+                <input id="reader-page-input" type="number" min="1" max="20" value="1" class="reader-page-input" aria-label="Page number" />
+                of <strong id="reader-page-count" style="color:var(--ink)">20</strong>
               </span>
               <button id="reader-next-page" type="button" class="reader-icon-btn" aria-label="Next page">Next ▶</button>
             </div>
@@ -1025,22 +1029,22 @@
     <!-- UNIFIED 3-PROJECT HARNESS & ANTI-GOODHART BENCHMARK -->
     <section id="harness">
       <div class="container">
-        <p class="kicker">Unified Engineering, Governance &amp; Scientific Falsification Harness (`ocq v0.5`)</p>
+        <p class="kicker">Unified Engineering, Governance &amp; Scientific Falsification Harness (`ocq v0.6`)</p>
         <h2>3-Tier Verification Harness &amp; 42-ICB `G1`–`G8` Anti-Goodhart Policy Scorecard</h2>
         <p class="sec-sub">
-          Synthesizing the orthogonal verification engines of <strong>Quantum Social Prescribing</strong> (<code>Gate G4</code> pre-execution blocker, zero-drift claim linker, <code>&lt;50 ms</code> TeX preflight &amp; static-Pages firewall), <strong>Quantum Krump</strong> (<code>fcntl.flock</code> uncontended CPU lock, clean-room <code>Apache-2.0</code> hygiene &amp; Knowledge Graph DAG), and <strong>Quantum-LTC</strong> (<code>12</code> offline reproducibility lanes, NIST FIPS 204 <code>ML-DSA-65</code> post-quantum signatures &amp; privilege-separated <strong>8-Mode Clinical, <code>PGx</code> &amp; <code>Core20PLUS5</code> Anti-Goodhart Policy Scorecard</strong> evaluated across <code>NHS-MSE-28PCN</code> + <code>41</code> held-out English ICBs / <code>1,255</code> unseen PCNs / <code>7</code> NHS Regions).
+          Synthesizing the orthogonal verification engines of <strong>Quantum Social Prescribing</strong> (<code>Gate G4</code> pre-execution blocker, zero-drift claim linker, <code>&lt;50 ms</code> TeX preflight &amp; static-Pages firewall), <strong>Quantum Krump</strong> (<code>fcntl.flock</code> uncontended CPU lock, clean-room <code>Apache-2.0</code> hygiene &amp; Knowledge Graph DAG), <strong>Quantum-LTC</strong> (<code>13</code> offline reproducibility lanes, NIST FIPS 204 <code>ML-DSA-65</code> post-quantum signatures &amp; privilege-separated <strong>8-Mode Clinical, <code>PGx</code> &amp; <code>Core20PLUS5</code> Anti-Goodhart Policy Scorecard</strong>), and <strong><code>OpenCareQ-CSCLint</code></strong> (Bow-Tie safety-case DAG informed by <a href="https://csc-qt.curistica.com/" target="_blank" rel="noopener"><code>CSC-QT</code></a>).
         </p>
 
         <div class="kpi-grid">
           <div class="card">
             <div class="kpi-meta">Post-Quantum Sealed Receipts</div>
             <div class="kpi-num" id="harnessReceiptsKpi">NIST ML-DSA-65</div>
-            <div class="kpi-meta">`3,309`-byte lattice signature + `SHA-256` (`50a5e601`, `b2c71cf4`, `314a6f5b`, `b990361d`, `51ae0545`, `a2f31173`)</div>
+            <div class="kpi-meta">`3,309`-byte lattice signature + `SHA-256` (`50a5e601`, `b2c71cf4`, `314a6f5b`, `b990361d`, `51ae0545`, `2887c3c9`, `a2f31173`)</div>
           </div>
           <div class="card">
             <div class="kpi-meta">Claim &amp; Manuscript Parity</div>
-            <div class="kpi-num" id="harnessClaimsKpi">80 / 80 PASS</div>
-            <div class="kpi-meta">`&lt;50 ms` TeX/Bib/PNG/19-page PDF preflight · `12 / 12` repro lanes · `GMFE 1.0701`</div>
+            <div class="kpi-num" id="harnessClaimsKpi">90 / 90 PASS</div>
+            <div class="kpi-meta">`&lt;50 ms` TeX/Bib/PNG/20-page PDF preflight · `13 / 13` repro lanes · `GMFE 1.0701`</div>
           </div>
           <div class="card">
             <div class="kpi-meta">Top Admitted National Policy (`a2f31173`)</div>
@@ -1182,6 +1186,8 @@
           <a href="receipts/england_42icb_public_dcea_summary.json" target="_blank" rel="noopener"><code>england_42icb_public_dcea_summary.json</code></a> ·
           <a href="receipts/opencareq_v0_5_psa_eskd_horizon_receipt.json" target="_blank" rel="noopener"><code>opencareq_v0_5_psa_eskd_horizon_receipt.json</code></a> ·
           <a href="receipts/england_42icb_public_psa_horizon_summary.json" target="_blank" rel="noopener"><code>england_42icb_public_psa_horizon_summary.json</code></a> ·
+          <a href="receipts/opencareq_v0_6_csc_qt_safety_receipt.json" target="_blank" rel="noopener"><code>opencareq_v0_6_csc_qt_safety_receipt.json</code></a> ·
+          <a href="receipts/opencareq_public_csc_qt_summary.json" target="_blank" rel="noopener"><code>opencareq_public_csc_qt_summary.json</code></a> ·
           <a href="receipts/benchmark_scorecards_summary.json" target="_blank" rel="noopener"><code>benchmark_scorecards_summary.json</code></a> ·
           <a href="receipts/opencareq_knowledge_graph.json" target="_blank" rel="noopener"><code>opencareq_knowledge_graph.json</code></a>
         </div>
@@ -1300,66 +1306,116 @@
       </div>
     </section>
 
-    <!-- DCB0129 HAZARD REGISTER -->
+    <!-- DCB0129 / DCB0160 BOW-TIE SAFETY CASE & CSC-QT 36-INDICATOR PROFILE -->
     <section id="dcb0129">
       <div class="container">
-        <p class="kicker">Statutory Clinical Risk Management</p>
-        <h2>NHS DCB0129 Open Clinical Hazard Log (`H-OCQ-01`..`H-OCQ-06`)</h2>
-        <p class="sec-sub">Built into continuous integration (`pytest`) and sealed into every `UKCore FHIR R4 AuditEvent` receipt.</p>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:0.9rem;margin-bottom:0.5rem;">
+          <div>
+            <p class="kicker">Statutory Clinical Risk Management · CSC-QT 36-Indicator Audit (`2887c3c9`)</p>
+            <h2 style="margin-bottom:0.25rem;">`CSC-QT`-Structured Bow-Tie `NHS DCB0129` / `DCB0160` Safety Case (`H-OCQ-01`..`H-OCQ-07` OPEN)</h2>
+          </div>
+          <div style="display:flex;gap:0.45rem;flex-wrap:wrap;">
+            <a class="btn-sm btn-primary" href="safety-case.html">🛡 Open Full 3-Document Safety Pack (`CSCR` / `CRMP` / `DCB0160`) →</a>
+            <button type="button" class="btn-sm" onclick="openFigLightbox(11)">🖼 Fig 12 (CSC-QT Audit)</button>
+            <a class="btn-sm" href="https://csc-qt.curistica.com/" target="_blank" rel="noopener">↗ Official CSC-QT Site</a>
+          </div>
+        </div>
+        <p class="sec-sub">
+          Evaluated and restructured across all <strong>36 indicators and 5 domains</strong> of <a href="https://csc-qt.curistica.com/" target="_blank" rel="noopener"><strong>The Clinical Safety Case Quality Tool (<code>CSC-QT</code>)</strong></a> (Oskrochi &amp; Grimes, <em>BMJ Innovations</em> 2026; <a href="https://doi.org/10.1136/bmjinnov-2026-001660" target="_blank" rel="noopener"><code>doi:10.1136/bmjinnov-2026-001660</code></a>; <code>CC BY 4.0</code>; funded by <strong>RADIANT-CERSI</strong>; companion national study <a href="https://pubmed.ncbi.nlm.nih.gov/41172285/" target="_blank" rel="noopener"><code>PMID: 41172285</code></a>). Preserving <code>CSC-QT</code>'s <strong>Non-Scoring Invariant</strong> (domain profiles + qualitative notes only; zero summed percentage score), our <code>v0.6.0</code> suite resolves all <code>20</code> diagnostic <code>v0.5.0</code> documentation gaps across a standalone <code>CSCR</code>, <code>CRMP</code>, and <strong>NHS Mid and South Essex (<code>E54000026</code>) <code>DCB0160</code> Shadow Pack</strong> (<code>35/35 DCB0129</code> &amp; <code>36/36 DCB0160 Present</code>).
+        </p>
+
+        <div class="card" style="margin-bottom:1.1rem;border-color:var(--border-strong);background:var(--bg-card-alt);">
+          <div style="font-family:var(--font-mono);font-size:0.74rem;color:var(--signal);text-transform:uppercase;margin-bottom:0.28rem;">
+            Mentorship Tribute &amp; Explicit Statutory CSO Non-Sign-Off Boundary (`CSC-QT Indicator 1.1`)
+          </div>
+          <div style="font-size:0.9rem;color:var(--ink-muted);">
+            The author gratefully acknowledges mentorship and clinical safety guidance from <strong>Dr Keith Grimes</strong> (Founder &amp; CEO, <a href="https://www.curistica.com/" target="_blank" rel="noopener">Curistica Ltd</a>; FFPM, FBCS), co-creator with <strong>Dr Youssof Oskrochi</strong> (University College London &amp; Head of Safety &amp; Data Protection, Curistica Ltd) of <code>CSC-QT</code> (<code>CC BY 4.0</code>). <strong>Explicit Boundary:</strong> <code>OpenCareQ</code> is an independent open-science research safety case; crediting mentorship by Dr Keith Grimes and applying <code>CSC-QT</code> does <strong>not</strong> constitute formal Clinical Safety Officer (<code>CSO</code>) sign-off, audit certification, or commercial endorsement by Dr Keith Grimes, Dr Youssof Oskrochi, Curistica Ltd, or UCL. Automated graph checks in <code>ocq safety-case</code> (<code>OpenCareQ-CSCLint</code>) are an <code>OpenCareQ</code> software aid and not a modified <code>CSC-QT</code> instrument.
+          </div>
+        </div>
 
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
                 <th>Hazard ID</th>
-                <th>Clinical / Operational Risk</th>
-                <th>Built-In OpenCareQ Mitigation</th>
-                <th>Residual Status</th>
+                <th>Hazardous Situation &amp; Harm (`2.3`)</th>
+                <th>Distinct Causes (`2.4`)</th>
+                <th>NHS `5×5` Init → Res</th>
+                <th>Cause-Bound Controls &amp; `ML-DSA-65` Evidence (`4.1–4.8`)</th>
+                <th>`DCB0160` MSE SOP (`4.4/4.5`)</th>
+                <th>State</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><code>H-OCQ-01</code></td>
-                <td>Acute deterioration (`SpO2 &lt; 92%`, sepsis, chest pain) entering routine pathway</td>
-                <td>Hard `DCB0129Guard` pre-rollout intercept (`BLOCK_TIER_0_EMERGENCY_ESCALATION`, `0L`)</td>
-                <td><strong>OPEN</strong> (999 / GP)</td>
+                <td>Unstable patient (`SpO2 &lt; 92%`, `NEWS2 ≥ 5`, acute `AKI`) enters routine flow → delayed resuscitation / death</td>
+                <td><code>C-01a</code> hypoxia; <code>C-01b</code> `≥25%` `eGFR` drop</td>
+                <td><code>15 → 5</code> (<code>Tolerable</code>)</td>
+                <td><code>K-01a,b</code> (`Design`): `0.001 ms` `DCB0129Guard` (`0L`) + Starling `AKI` flag (<code>50a5e601</code>, <code>b990361d</code>)</td>
+                <td><code>TC-01</code> · <code>MSE-ICB-SOP-URG-01</code></td>
+                <td><strong>OPEN</strong></td>
               </tr>
               <tr>
                 <td><code>H-OCQ-02</code></td>
-                <td>Uncharacterised herbal/OTC co-exposure (`7-herb tea`) or out-of-scope admin query</td>
-                <td>Companion scope &amp; exposure gate (`ABSTAIN_TIER_1_PHARMACIST_SMR`, `0L`)</td>
-                <td><strong>OPEN</strong> (Pharmacist SMR)</td>
+                <td>Therapy selection under herbals or ungenotyped *CYP2C19*/*SLCO1B1* → secondary stroke, major bleed, myopathy</td>
+                <td><code>C-02a</code> herbals; <code>C-02b</code> `G7` proxy; <code>C-02c</code> scope</td>
+                <td><code>16 → 8</code> (<code>Undesirable</code>)</td>
+                <td><code>K-02a..c</code> (`Design`): `SNOMED` abstain + `G7` block + `4,536 B` `DG59 VOI` (<code>b990361d</code>, <code>a2f31173</code>)</td>
+                <td><code>TC-02</code> · <code>MSE-FT-SOP-PGX-DG59</code></td>
+                <td><strong>OPEN</strong></td>
               </tr>
               <tr>
                 <td><code>H-OCQ-03</code></td>
-                <td>Premature Day-6/7 statin/substrate restart while hepatocyte depot persists (`Kp,uu = 1.4`)</td>
-                <td>9-state `RK4 PBPK-Depot` + `8q` Comb enforces `AUCR ≤ 2.0x` (selects Day-10 hold)</td>
-                <td><strong>OPEN</strong> (Prescriber)</td>
+                <td>Washout/`CKM` misjudges hepatocyte depot (`4.437x`), `PXR` (`0.467x`), or benign `SGLT2i` `TGF` dip → toxicity/stroke/`ESKD`</td>
+                <td><code>C-03a</code> `G1`; <code>C-03b</code> `G4`; <code>C-03c</code> `G8` dip</td>
+                <td><code>16 → 8</code> (<code>Undesirable</code>)</td>
+                <td><code>K-03a..c</code> (`Design`): `RK4` (`GMFE 1.2423`) + `CKM` (`1.0701`) + `commit-gate` (<code>b2c71cf4</code>, <code>51ae0545</code>)</td>
+                <td><code>TC-03</code> · <code>MSE-ICS-MEDOPT-CKM</code></td>
+                <td><strong>OPEN</strong></td>
               </tr>
               <tr>
                 <td><code>H-OCQ-04</code></td>
-                <td>PCN `ARRS` workforce overload &amp; `Core20PLUS5` deprivation exclusion</td>
-                <td>Hardware `≤ 0.08`/tick flux cap in `16`-register VM + `Core20` equity weighting</td>
-                <td><strong>OPEN</strong> (ICB Board)</td>
+                <td>Corrupted or cream-skimmed PCN schedules disadvantaging `Core20` cohorts → widened deprivation morbidity</td>
+                <td><code>C-04a</code> LLM drift; <code>C-04b</code> noise; <code>C-04c</code> `G6`</td>
+                <td><code>12 → 3</code> (<code>Acceptable</code>)</td>
+                <td><code>K-04a..c</code> (`Design`): Frozen 16-op VM (`0` AI) + `Gate G4` (`p2 &lt; 0.02`) + `G6 ≥ 0.85` (<code>a2f31173</code>)</td>
+                <td><code>TC-04</code> · <code>MSE-ICB-EQ-CORE20-04</code></td>
+                <td><strong>OPEN</strong></td>
               </tr>
               <tr>
                 <td><code>H-OCQ-05</code></td>
-                <td>Cultural amplification of unsafe holds under misspecified Markovian world models</td>
-                <td>Proposal–consequence separation gated by full depot-aware `ClinicalWorldModel`</td>
-                <td><strong>OPEN</strong> (CSO Audit)</td>
+                <td>Premature single-pathway collapse before `Core20` welfare/interpreter screen → DNA &amp; cold-home deterioration</td>
+                <td><code>C-05a</code> `G2` order; <code>C-05b</code> seasonal shift</td>
+                <td><code>12 → 6</code> (<code>Tolerable</code>)</td>
+                <td><code>K-05a,b</code> (`Design`): Offline `ACI` `|C_0.90| ≥ 2` superposition + `HQMM G2` guard (<code>50a5e601</code>)</td>
+                <td><code>TC-05</code> · <code>MSE-PCN-SPLW-WMTY-02</code></td>
+                <td><strong>OPEN</strong></td>
               </tr>
               <tr>
                 <td><code>H-OCQ-06</code></td>
-                <td>`50%` key-broker clinician turnover or referral acuity distribution shift</td>
-                <td>Multi-steward `FORK_PROTOCOL` co-ownership (`97.1%` retention) + `ACI` conformal sets</td>
-                <td><strong>OPEN</strong> (Quarterly Review)</td>
+                <td>Inadvertent `PID` ingestion or source/key leak to public portal → UK GDPR / Caldicott breach</td>
+                <td><code>C-06a</code> raw `FHIR`; <code>C-06b</code> release leak</td>
+                <td><code>12 → 4</code> (<code>Tolerable</code>)</td>
+                <td><code>K-06a,b</code> (`Design`): Recursive `assert_zero_pid` + `ocq check` Pages firewall &amp; `ML-DSA-65`</td>
+                <td><code>TC-06</code> · <code>MSE-IG-DPIA-SHADOW</code></td>
+                <td><strong>OPEN</strong></td>
+              </tr>
+              <tr>
+                <td><code>H-OCQ-07</code></td>
+                <td>Abrupt retirement, rollback, or `≥50%` broker turnover without handover (`1.8`) → rebound washout/equity error</td>
+                <td><code>C-07a</code> retirement / broker loss</td>
+                <td><code>9 → 3</code> (<code>Acceptable</code>)</td>
+                <td><code>K-07a,b</code> (`Design`): `FORK_PROTOCOL` (`94.72%` retention, <code>314a6f5b</code>) + static HTML/JSON archive</td>
+                <td><code>TC-07</code> · <code>MSE-CSO-DECOM-07</code></td>
+                <td><strong>OPEN</strong></td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="callout-warn">
-          <strong>Regulatory &amp; Epistemic Demarcation:</strong> OpenCareQ (`v0.5.0`) is released as open-science population-health commissioning, `NICE £20,000/QALY` `DCEA` + 10-year `KDIGO ESKD` / `PSA`, and shadow-simulation infrastructure (`Non-SaMD`, `phi_present = False`, `physical_qpu_shots = 0`, `billable_hqc = 0.0`, `runtime_agent_actions = 0`). Neighbourhood `CPIC`/UKB allele priors inform `NICE DG59` test-kit Value of Information only and never substitute for individual biological genotyping (`G7`). Not a certified medical device; local deployment requires an NHS `DCB0160` Clinical Safety Case Report.
+          <strong>Regulatory &amp; Epistemic Demarcation:</strong> OpenCareQ (`v0.6.0`) is released as open-science population-health commissioning, `NICE £20,000/QALY` `DCEA` + 10-year `KDIGO ESKD` / `PSA`, and shadow-simulation infrastructure (`Non-SaMD`, `phi_present = False`, `physical_qpu_shots = 0`, `billable_hqc = 0.0`, `runtime_agent_actions = 0`). Neighbourhood `CPIC`/UKB allele priors inform `NICE DG59` test-kit Value of Information only and never substitute for individual biological genotyping (`G7`). Not a certified medical device and never replaces clinical judgement; local deployment requires an NHS `DCB0160` Clinical Safety Case Report (<a href="safety-case.html">inspect full 3-document safety suite</a>).
         </div>
       </div>
     </section>
@@ -1376,18 +1432,18 @@
         </div>
         <pre id="bibtexBlock">@article{nadarasa2026opencareq_samskrift,
   author       = {Nadarasa, Arun},
-  title        = {{OpenCareQ}: A Clean-Room Healthcare Quantum Programming Language, Non-Markovian Causal World Model, Coupled {CKM+PGx} Prevention Engine, 10-Yr {KDIGO ESKD PSA}, and Agent-Free Stigmergic {SwarmWorld} for {NHS} Neighbourhood Commissioning},
+  title        = {{OpenCareQ}: A Clean-Room Healthcare Quantum Programming Language, Non-Markovian Causal World Model, Coupled {CKM+PGx} Prevention Engine, 10-Yr {KDIGO ESKD PSA}, {CSC-QT} Safety Case Architecture, and Agent-Free Stigmergic {SwarmWorld} for {NHS} Neighbourhood Commissioning},
   journal      = {Samskrift Research Articles},
   year         = {2026},
-  pages        = {1--19},
+  pages        = {1--20},
   url          = {https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72},
-  note         = {Public NHS Portal \& PDF: https://arunnadarasa.github.io/opencareq-nhs/OpenCareQ_Paper.pdf; ML-DSA-65 Receipts: 50a5e601, b2c71cf4, 314a6f5b, b990361d, 51ae0545, a2f31173}
+  note         = {Public NHS Portal \& PDF: https://arunnadarasa.github.io/opencareq-nhs/OpenCareQ_Paper.pdf; ML-DSA-65 Receipts: 50a5e601, b2c71cf4, 314a6f5b, b990361d, 51ae0545, 2887c3c9, a2f31173}
 }
 
 @software{nadarasa2026opencareq,
   author       = {Nadarasa, Arun},
-  title        = {{OpenCareQ}: An NHS-First Gate-Free Healthcare Quantum DSL, Coupled {CKM+PGx} Prevention World Model, 10-Yr {KDIGO ESKD PSA}, and 42-ICB {NICE DCEA} Compiler},
-  version      = {0.5.0},
+  title        = {{OpenCareQ}: An NHS-First Gate-Free Healthcare Quantum DSL, Coupled {CKM+PGx} Prevention World Model, 10-Yr {KDIGO ESKD PSA}, {CSC-QT} Safety Suite, and 42-ICB {NICE DCEA} Compiler},
+  version      = {0.6.0},
   year         = {2026},
   license      = {Apache-2.0},
   url          = {https://arunnadarasa.github.io/opencareq-nhs/}
@@ -1398,14 +1454,16 @@
 
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <div>© 2026 Arun Nadarasa · Apache-2.0 / CC BY 4.0 · UK OGL v3.0 · NHS DCB0129 Non-SaMD Research Portal (`v0.5.0`)</div>
+      <div>© 2026 Arun Nadarasa · Apache-2.0 / CC BY 4.0 · UK OGL v3.0 · NHS DCB0129 Non-SaMD Research Portal (`v0.6.0`)</div>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">Samskrift Paper PDF (19 pp.)</a>
+        <a href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">Samskrift Paper PDF (20 pp.)</a>
+        <a href="safety-case.html">3-Doc CSC-QT Safety Case</a>
         <a href="receipts/opencareq_samskrift_benchmark_receipt.json" target="_blank" rel="noopener">Receipt (`50a5e601…`)</a>
-        <a href="receipts/opencareq_v0_3_falsification_receipt.json" target="_blank" rel="noopener">v0.3 Falsification (`b2c71cf4…`)</a>
-        <a href="receipts/opencareq_england_42icb_atlas_receipt.json" target="_blank" rel="noopener">42-ICB Atlas (`314a6f5b…`)</a>
+        <a href="receipts/opencareq_v0_3_falsification_receipt.json" target="_blank" rel="noopener">v0.3 (`b2c71cf4…`)</a>
+        <a href="receipts/opencareq_england_42icb_atlas_receipt.json" target="_blank" rel="noopener">42-ICB (`314a6f5b…`)</a>
         <a href="receipts/opencareq_v0_4_prevention_dcea_receipt.json" target="_blank" rel="noopener">v0.4 DCEA (`b990361d…`)</a>
-        <a href="receipts/opencareq_v0_5_psa_eskd_horizon_receipt.json" target="_blank" rel="noopener">v0.5 10-Yr PSA (`51ae0545…`)</a>
+        <a href="receipts/opencareq_v0_5_psa_eskd_horizon_receipt.json" target="_blank" rel="noopener">v0.5 PSA (`51ae0545…`)</a>
+        <a href="receipts/opencareq_v0_6_csc_qt_safety_receipt.json" target="_blank" rel="noopener">v0.6 CSC-QT (`2887c3c9…`)</a>
         <a href="https://arunnadarasa.github.io/quantum-social-prescribing/" target="_blank" rel="noopener">Quantum Social Prescribing</a>
         <a href="https://arunnadarasa.github.io/quantum-ltc/" target="_blank" rel="noopener">Quantum-LTC</a>
         <a href="https://arunnadarasa.github.io/quantumkrump/" target="_blank" rel="noopener">Quantum Krump</a>
@@ -1773,7 +1831,9 @@ def opencareq_triad_qaoa_kernel():
           { label: "p.13 NICE DCEA Table 6 & 10-Yr PSA", page: 13 },
           { label: "p.14 Fig 10 & 10-Yr ESKD Table 7", page: 14 },
           { label: "p.15 10-Yr ESKD & PSA Fig 11", page: 15 },
-          { label: "p.16 G1–G8 Table 8 & DCB0129", page: 16 },
+          { label: "p.16 G1–G8 Table 8 & CSC-QT", page: 16 },
+          { label: "p.17 CSC-QT Fig 12 & Mentor Ack", page: 17 },
+          { label: "p.18 Bow-Tie Hazard Table 9", page: 18 },
           { label: "Refs & End", page: -1 }
         ]
       }
@@ -1845,6 +1905,12 @@ def opencareq_triad_qaoa_kernel():
         pg: 15,
         src: "paper/figures/fig11_psa_ceac_evppi_eskd_horizon.png",
         caption: "Figure 11 (p.15) — Track 7 Multi-Year KDIGO (G3a → G5 → ESKD-RRT) Dialysis Avoidance Horizon (3.5%/yr NICE PMG36 discounting: 18,741.7 dialysis patient-years avoided, 2,923,699 HD chair-sessions released, -£929.33M net cash, +£2,827.23M INMB) & 1,000-Draw PSA (100.0% SE quadrant dominance, CEAC 76.9% → 91.5% DCEA acceptability at £20k/QALY, EVPI = £5.54M, #1 SAVI EVPPI = £4.17M on Core20 link-worker uplift; receipt 51ae0545…)."
+      },
+      {
+        num: "Figure 12 (Page 17)",
+        pg: 17,
+        src: "paper/figures/fig12_csc_qt_safety_case_audit.png",
+        caption: "Figure 12 (p.17) — Track 8 CSC-QT 5-Domain Clinical Safety Case Audit, NHS 5×5 Risk Migration & Bow-Tie Verification (Oskrochi & Grimes 2026, CC BY 4.0; receipt 2887c3c9…): non-scoring domain presence profile (v0.5.0 15/35 baseline vs v0.6.0 35/35 DCB0129 & 36/36 MSE E54000026 DCB0160), NHS 5×5 initial-to-residual migration (3 → 0 Unacceptable across 7 OPEN hazards), 24 cause-bound controls across 16 causes (CSC-QT 4.3), and ML-DSA-65 cryptographic evidence + MSE SOP handover."
       }
     ];
 
@@ -1907,7 +1973,7 @@ def opencareq_triad_qaoa_kernel():
       let activeDoc = "opencareq";
       let zoomFactor = 1.0;
       let currentPdfDoc = null;
-      let currentNumPages = 19;
+      let currentNumPages = 20;
       let currentPage = 1;
       let activeBookmarks = [];
       let pageObserver = null;
