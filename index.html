@@ -94,8 +94,8 @@
       display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 6px;
       background: linear-gradient(135deg, var(--signal), #1ca394); color: #061315; font-weight: 800; font-size: 0.95rem;
     }
-    .nav-links { display: flex; align-items: center; gap: 0.2rem; flex-wrap: wrap; font-size: 0.8rem; font-weight: 600; }
-    .nav-links a { color: var(--ink-muted); padding: 0.28rem 0.52rem; border-radius: 999px; white-space: nowrap; }
+    .nav-links { display: flex; align-items: center; gap: 0.16rem; flex-wrap: wrap; font-size: 0.78rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.25rem 0.46rem; border-radius: 999px; white-space: nowrap; }
     .nav-links a:hover { color: var(--ink); background: rgba(255,255,255,0.05); }
     .nav-links a.btn-primary,
     .nav-links a.btn-sm.btn-primary {
@@ -221,7 +221,7 @@
     .papers-grid {
       margin-top: 1.4rem;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 1.1rem;
     }
     @media (max-width: 980px) {
@@ -489,18 +489,18 @@
     <div class="site-nav-inner">
       <a href="#top" class="brand">
         <span class="brand-mark">OC</span>
-        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">v0.8</small></span>
+        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">v0.9</small></span>
       </a>
       <nav class="nav-links" aria-label="Sections">
-        <a href="#papers" style="color:var(--signal);">Papers I &amp; II</a>
+        <a href="#papers" style="color:var(--signal);">Papers I–III</a>
         <a href="#studio">DSL → IR</a>
-        <a href="#simulator">5-ICB Twin</a>
-        <a href="#atlas42" style="color:var(--amber);">42-ICB Atlas</a>
-        <a href="#dcea" style="color:var(--signal);">NICE DCEA &amp; PSA</a>
+        <a href="#simulator">5-ICB</a>
+        <a href="#atlas42" style="color:var(--amber);">42-ICB</a>
+        <a href="#dcea" style="color:var(--signal);">DCEA &amp; PSA</a>
+        <a href="trial-protocol.html" style="color:var(--amber);">Trial Protocol ↗</a>
         <a href="#harness">Harness</a>
-        <a href="challenge.html#agenticos" style="color:var(--amber);">AgenticOS Spec ↗</a>
-        <a href="challenge.html" style="color:var(--signal);">Challenge</a>
-        <a href="safety-case.html" style="color:var(--amber);">CSC-QT Pack ↗</a>
+        <a href="challenge.html" style="color:var(--signal);">Challenge ↗</a>
+        <a href="safety-case.html" style="color:var(--amber);">CSC-QT ↗</a>
         <a class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Paper PDF</a>
       </nav>
     </div>
@@ -515,13 +515,14 @@
           <span class="pill pill-signal">Dynamic Mid-Circuit PGx Guppy 1.0 → HUGR (4,536 B / 5,579 B) + PT-MPO (κ_crit = 0.30)</span>
           <span class="pill pill-amber">Zero-Fit Human PK &amp; Coupled CKM+PGx (GMFE = 1.2423 &amp; 1.0701 · 28/28 in 2-Fold)</span>
           <span class="pill">42-ICB NICE DCEA &amp; 10-Yr ESKD (+£299.23M/yr · 18,741.7 Dialysis Pt-Yrs · 91.5% PSA)</span>
+          <span class="pill pill-signal">EVSI-Optimal 25-PCN Stepped-Wedge RCT + OpenSAFELY SDE (ENBS +£2.449M · 98.97% Power · 39504cf3)</span>
           <span class="pill pill-ember">CSC-QT 36-Indicator DCB0129/DCB0160 Safety Suite · ML-DSA-65 Sealed</span>
         </div>
 
-        <p class="kicker">Open-Source Clinical Quantum Abstraction · Coupled CKM+PGx · 10-Yr ESKD PSA · CSC-QT &amp; Haiqu AgenticOS Spec (`v0.7.0`)</p>
+        <p class="kicker">Open-Source Clinical Quantum Abstraction · Coupled CKM+PGx · 10-Yr ESKD PSA · Moth Tessa Cloud &amp; EVSI NHS Stepped-Wedge Trial (`v0.9.0`)</p>
         <h1>OpenCareQ</h1>
         <p class="lead">
-          Mainstream NHS data scientists, ICB population-health analysts, and OpenSAFELY researchers write Python, SQL, and <code>UKCore FHIR R4</code>—not Pauli matrices or raw gate circuits. <strong>OpenCareQ (<code>v0.7.0</code>)</strong> unifies our empirical findings across <strong><a href="https://arunnadarasa.github.io/quantum-social-prescribing/" target="_blank" rel="noopener">Quantum Social Prescribing</a></strong>, <strong><a href="https://arunnadarasa.github.io/quantum-ltc/" target="_blank" rel="noopener">Quantum-LTC</a></strong>, and <strong><a href="https://arunnadarasa.github.io/quantumkrump/" target="_blank" rel="noopener">Quantum Krump</a></strong> into a clean-room <code>Apache-2.0</code> Python SDK: routing <strong>95% of tractable static or compressible longitudinal tasks in <code>&lt;20 ms</code> to exact classical solvers</strong> (<code>SciPy HiGHS</code> MILP, 9-state <code>RK4</code> &amp; Starling glomerular ODEs, 10-year <code>KDIGO</code> cohort progression &amp; 1,000-draw <code>PSA</code>/<code>SAVI EVPPI</code>, right-canonical Process-Tensor <code>PT-MPO</code>) while lowering coupled multi-organ <strong>Non-Markovian Quantum Combs</strong> (<code>κ ≥ 0.30</code>), two-stage <strong><code>NICE DG59</code> <em>CYP2C19</em> mid-circuit feedforward</strong>, and frustrated 25–75q real-ICB cubic <code>HUBO</code>s to <strong>Quantinuum <code>Guppy 1.0 → HUGR</code></strong>, <strong>NVIDIA <code>CUDA-Q</code></strong>, and <strong><a href="challenge.html#agenticos">Haiqu SDK 1.6+ / AgenticOS</a></strong>, governed by a 3-document <code>NHS DCB0129</code>/<code>DCB0160</code> safety suite structured via <a href="https://csc-qt.curistica.com/" target="_blank" rel="noopener"><strong><code>CSC-QT</code></strong></a>.
+          Mainstream NHS data scientists, ICB population-health analysts, and OpenSAFELY researchers write Python, SQL, and <code>UKCore FHIR R4</code>—not Pauli matrices or raw gate circuits. <strong>OpenCareQ (<code>v0.9.0</code>)</strong> unifies our empirical findings across <strong><a href="https://arunnadarasa.github.io/quantum-social-prescribing/" target="_blank" rel="noopener">Quantum Social Prescribing</a></strong>, <strong><a href="https://arunnadarasa.github.io/quantum-ltc/" target="_blank" rel="noopener">Quantum-LTC</a></strong>, and <strong><a href="https://arunnadarasa.github.io/quantumkrump/" target="_blank" rel="noopener">Quantum Krump</a></strong> into a clean-room <code>Apache-2.0</code> Python SDK: routing <strong>95% of tractable static or compressible longitudinal tasks in <code>&lt;20 ms</code> to exact classical solvers</strong> (<code>SciPy HiGHS</code> MILP, 9-state <code>RK4</code> &amp; Starling glomerular ODEs, 10-year <code>KDIGO</code> cohort progression &amp; 1,000-draw <code>PSA</code>/<code>SAVI EVPPI</code>, right-canonical Process-Tensor <code>PT-MPO</code>) while lowering coupled multi-organ <strong>Non-Markovian Quantum Combs</strong> (<code>κ ≥ 0.30</code>), two-stage <strong><code>NICE DG59</code> <em>CYP2C19</em> mid-circuit feedforward</strong>, hardware-native <strong><code>Moth Quantum × Tessa</code> 1,280-PCN encodings</strong>, and frustrated 25–75q real-ICB cubic <code>HUBO</code>s to <strong>Quantinuum <code>Guppy 1.0 → HUGR</code></strong>, <strong>NVIDIA <code>CUDA-Q</code></strong>, and <strong><a href="challenge.html#agenticos">Haiqu SDK 1.6+ / AgenticOS</a></strong>—now paired with a pre-registered <strong><a href="trial-protocol.html">EVSI-Optimal 25-PCN Stepped-Wedge Trial &amp; Zero-PID OpenSAFELY SDE Target-Trial Protocol</a></strong> (<code>ENBS = +£2.449M</code>, <code>RORI = 2.43×</code>) under <a href="https://csc-qt.curistica.com/" target="_blank" rel="noopener"><strong><code>CSC-QT</code></strong></a> <code>NHS DCB0129</code>/<code>DCB0160</code> governance.
         </p>
 
         <div class="author-bar">
@@ -532,9 +533,12 @@
 
         <div class="tab-row" style="margin-bottom:1.5rem;">
           <button type="button" class="btn-sm btn-primary" data-open-doc="opencareq">📖 Paper I Monograph (21 pp.) ↓</button>
-          <button type="button" class="btn-sm" data-open-doc="moth_companion" style="border-color:var(--border-strong);color:var(--signal);">🦋 Paper II: Moth Quantum × Tessa Study (12 pp.) ↓</button>
+          <button type="button" class="btn-sm" data-open-doc="moth_companion" style="border-color:var(--border-strong);color:var(--signal);">🦋 Paper II: Moth × Tessa Study (12 pp.) ↓</button>
+          <button type="button" class="btn-sm" data-open-doc="trial_protocol" style="border-color:rgba(244,174,66,0.5);color:var(--amber);">🧪 Protocol III: NHS Stepped-Wedge &amp; OpenSAFELY (11 pp.) ↓</button>
+          <a class="btn-sm" href="trial-protocol.html" style="border-color:var(--border-strong);color:var(--signal);">🧭 Interactive NHS Trial Sim ↗</a>
           <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Paper I PDF</a>
           <a class="btn-sm" href="OpenCareQ_Moth_Paper.pdf" download="OpenCareQ_Moth_Paper.pdf">⬇ Paper II PDF</a>
+          <a class="btn-sm" href="OpenCareQ_Trial_Protocol.pdf" download="OpenCareQ_Trial_Protocol.pdf">⬇ Protocol III PDF</a>
           <a class="btn-sm" href="safety-case.html" style="border-color:var(--border-strong);color:var(--signal);">🛡 3-Doc CSC-QT Safety Case</a>
           <a class="btn-sm btn-ghost" href="receipts/opencareq_samskrift_benchmark_receipt.json" target="_blank" rel="noopener">✓ Receipt (<code>50a5e601</code>)</a>
           <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_3_falsification_receipt.json" target="_blank" rel="noopener">✓ v0.3 (<code>b2c71cf4</code>)</a>
@@ -544,6 +548,7 @@
           <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_6_csc_qt_safety_receipt.json" target="_blank" rel="noopener">✓ v0.6 CSC-QT (<code>2887c3c9</code>)</a>
           <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_7_haiqu_agenticos_receipt.json" target="_blank" rel="noopener">✓ v0.7 AgenticOS (<code>0ee49bcc</code>)</a>
           <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_8_moth_tessa_cloud_receipt.json" target="_blank" rel="noopener">✓ v0.8 Moth Cloud (<code>c01cb163</code>)</a>
+          <a class="btn-sm btn-ghost" href="receipts/opencareq_v0_9_evsi_trial_protocol_receipt.json" target="_blank" rel="noopener">✓ v0.9 Trial (<code>39504cf3</code>)</a>
           <a class="btn-sm" href="challenge.html#agenticos" style="border-color:rgba(244,174,66,0.45);color:var(--amber);">⚡ Haiqu AgenticOS Spec</a>
         </div>
 
@@ -574,9 +579,9 @@
     <section id="papers">
       <div class="container">
         <p class="kicker">01 · Open-Access Publication Suite</p>
-        <h2>Samskrift Research Paper &amp; Live Continuous PDF Preview</h2>
+        <h2>Three-Paper Samskrift Suite &amp; Live Continuous PDF Preview</h2>
         <p class="sec-sub">
-          Read the compiled <strong>20-page OpenCareQ (<code>v0.6.0</code>)</strong> manuscript directly inline via our continuous-scroll HiDPI <code>PDF.js</code> canvas stream, jump across all eight sections, the 42-ICB NICE <code>£20,000/QALY</code> <code>DCEA</code> &amp; 10-year <code>KDIGO ESKD</code> / <code>1,000</code>-draw <code>PSA</code> summaries (Tables 6–7), the <code>G1</code>–<code>G8</code> Policy Scorecard (Table 8), and the <strong><code>CSC-QT</code> Bow-Tie <code>DCB0129</code>/<code>DCB0160</code> Hazard Log (Table 9)</strong>, or inspect all twelve 300-DPI benchmark plates.
+          Read all three compiled OpenCareQ manuscripts directly inline via our continuous-scroll HiDPI <code>PDF.js</code> canvas stream: <strong>Paper I (<code>21 pp.</code>)</strong> primary monograph, <strong>Paper II (<code>12 pp.</code>)</strong> Moth Quantum × Tessa <code>1,280</code>-PCN live cloud study, and <strong>Protocol III (<code>11 pp.</code>)</strong> pre-registered <code>SPIRIT-AI</code> + <code>CONSORT-SW</code> 25-PCN NHS stepped-wedge &amp; zero-PID <code>OpenSAFELY</code> target-trial protocol (<code>ENBS = +£2.449M</code>, <code>39504cf3…</code>).
         </p>
 
         <div class="papers-grid">
@@ -621,6 +626,27 @@
               <a class="btn-sm" href="receipts/opencareq_public_moth_tessa_summary.json" target="_blank" rel="noopener">✓ Cloud JSON</a>
             </div>
           </article>
+
+          <!-- Card 3: Protocol III (EVSI-Optimal 25-PCN NHS Stepped-Wedge & OpenSAFELY SDE Protocol) -->
+          <article class="paper-card featured" style="border-color:rgba(244,174,66,0.45);">
+            <div>
+              <span class="pill pill-amber">Protocol III · SPIRIT-AI + CONSORT-SW + OpenSAFELY SDE · 11 Pages</span>
+              <h3>OPENCAREQ-SW-MSE (v0.9.0): EVSI-Optimal 25-PCN Stepped-Wedge RCT &amp; Target-Trial Protocol</h3>
+              <p>
+                Pre-registered two-stage causal evaluation resolving the <code>£4.174M</code> (<code>£5.111M</code> joint) <code>#1 SAVI EVPPI</code> uncertainty in <code>Core20</code> social-prescribing persistence: <strong>Stage 0</strong> executes a zero-PID <strong><code>Hernán–Robins CCW + Stabilized IPCW</code></strong> target-trial emulation inside <code>OpenSAFELY</code> (<code>HR = 0.7995 [0.7261, 0.8803]</code> vs immortal-time biased <code>0.5925</code>, gated by <code>NCO</code>); <strong>Stage 1</strong> runs an 18-month, 5-wave stratified <code>HiGHS</code> MILP stepped-wedge trial across all <strong><code>25</code> PCNs of NHS Mid and South Essex ICB</strong> (<code>max |z| = 0.2162</code>, <code>98.97%</code> power, <code>EVSI = £3.459M</code>, <code>ENBS = +£2.449M</code>, <code>RORI = 2.43×</code>; <code>45</code>-PCN dual-ICB peak <code>+£2.575M</code>).
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>Interactive Explorer:</strong> <a href="trial-protocol.html">Live EVSI/ENBS/ICC Simulator, 25-PCN Matrix &amp; Copyable ehrQL ↗</a></li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> receipt <code>39504cf3…</code> · <code>HRA/REC</code> &amp; <code>DCB0160 CSO</code> required pre-enrolment</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="trial_protocol">🧪 Read Protocol III in Panel</button>
+              <a class="btn-sm" href="trial-protocol.html" style="border-color:var(--border-strong);color:var(--signal);">🧭 Interactive Trial Sim ↗</a>
+              <a class="btn-sm" href="OpenCareQ_Trial_Protocol.pdf" download="OpenCareQ_Trial_Protocol.pdf">⬇ Download Protocol III (11 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/bac7d337-2bf5-43e1-8896-52476d5f13c1/65185ba8-0f60-4799-ab6f-d143f6d065fa" target="_blank" rel="noopener">↗ Protocol III Samskrift</a>
+            </div>
+          </article>
         </div>
 
         <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.85rem;">
@@ -643,10 +669,12 @@
           <!-- Top Document Switcher Bar -->
           <div class="reader-doc-tabs">
             <div class="reader-doc-pills" role="tablist" aria-label="Choose paper to read">
-              <button type="button" class="reader-doc-btn active" data-reader-doc="opencareq" id="tab-doc-opencareq">📘 Paper I: OpenCareQ Monograph (21 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="moth_companion" id="tab-doc-moth">🦋 Paper II: Moth Quantum &amp; Tessa 1,280-PCN Study (12 pp.)</button>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">☁ Paper I Cloud ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/4d44b785-c5cf-426e-8a0e-bee02e39cd88/af059791-d96c-46c3-a2a8-d01c79a5d08b" target="_blank" rel="noopener">☁ Paper II Cloud ↗</a>
+              <button type="button" class="reader-doc-btn active" data-reader-doc="opencareq" id="tab-doc-opencareq">📘 Paper I: Monograph (21 pp.)</button>
+              <button type="button" class="reader-doc-btn" data-reader-doc="moth_companion" id="tab-doc-moth">🦋 Paper II: Moth × Tessa Study (12 pp.)</button>
+              <button type="button" class="reader-doc-btn" data-reader-doc="trial_protocol" id="tab-doc-protocol">🧪 Protocol III: NHS Stepped-Wedge &amp; OpenSAFELY (11 pp.)</button>
+              <a class="reader-doc-btn" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">☁ Paper I ↗</a>
+              <a class="reader-doc-btn" href="https://samskrift.com/view/4d44b785-c5cf-426e-8a0e-bee02e39cd88/af059791-d96c-46c3-a2a8-d01c79a5d08b" target="_blank" rel="noopener">☁ Paper II ↗</a>
+              <a class="reader-doc-btn" href="https://samskrift.com/view/bac7d337-2bf5-43e1-8896-52476d5f13c1/65185ba8-0f60-4799-ab6f-d143f6d065fa" target="_blank" rel="noopener">☁ Protocol III ↗</a>
             </div>
             <div class="reader-controls-group">
               <button id="reader-tall-btn" type="button" class="reader-icon-btn" title="Toggle taller reading viewport">↕ Tall</button>
@@ -1475,10 +1503,20 @@
   note         = {Public NHS Portal \& PDF: https://arunnadarasa.github.io/opencareq-nhs/OpenCareQ_Moth_Paper.pdf; ML-DSA-65 Receipt: c01cb163}
 }
 
+@article{nadarasa2026opencareq_trial_protocol,
+  author       = {Nadarasa, Arun},
+  title        = {{OPENCAREQ-SW-MSE}: Value-of-Information-Optimal Stepped-Wedge Cluster-Randomised Trial and Zero-{PID} {OpenSAFELY} Target-Trial Emulation Protocol for Integrated Cardio-Renal-Metabolic, Pharmacogenomic, and {Core20} Social-Prescribing Prevention Across 25 {NHS} Primary Care Networks},
+  journal      = {Samskrift Research Articles (OpenCareQ Protocol III)},
+  year         = {2026},
+  pages        = {1--11},
+  url          = {https://samskrift.com/view/bac7d337-2bf5-43e1-8896-52476d5f13c1/65185ba8-0f60-4799-ab6f-d143f6d065fa},
+  note         = {Interactive NHS Trial Explorer: https://arunnadarasa.github.io/opencareq-nhs/trial-protocol.html; ML-DSA-65 Receipt: 39504cf3}
+}
+
 @software{nadarasa2026opencareq,
   author       = {Nadarasa, Arun},
-  title        = {{OpenCareQ}: An NHS-First Gate-Free Healthcare Quantum DSL, Coupled {CKM+PGx} Prevention World Model, 10-Yr {KDIGO ESKD PSA}, {CSC-QT} Safety Suite, and 42-ICB {NICE DCEA} Compiler},
-  version      = {0.8.0},
+  title        = {{OpenCareQ}: An NHS-First Gate-Free Healthcare Quantum DSL, Coupled {CKM+PGx} Prevention World Model, 10-Yr {KDIGO ESKD PSA}, {EVSI} Stepped-Wedge Trial Designer, {CSC-QT} Safety Suite, and 42-ICB {NICE DCEA} Compiler},
+  version      = {0.9.0},
   year         = {2026},
   license      = {Apache-2.0},
   url          = {https://arunnadarasa.github.io/opencareq-nhs/}
@@ -1489,12 +1527,16 @@
 
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <div>© 2026 Arun Nadarasa · Apache-2.0 / CC BY 4.0 · UK OGL v3.0 · NHS DCB0129 Non-SaMD Research Portal (`v0.8.0`)</div>
+      <div>© 2026 Arun Nadarasa · Apache-2.0 / CC BY 4.0 · UK OGL v3.0 · NHS DCB0129 Non-SaMD Research Portal (`v0.9.0`)</div>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">Paper I PDF (21 pp.)</a>
         <a href="OpenCareQ_Moth_Paper.pdf" target="_blank" rel="noopener">Paper II: Moth × Tessa PDF (12 pp.)</a>
+        <a href="OpenCareQ_Trial_Protocol.pdf" target="_blank" rel="noopener">Protocol III: NHS Trial PDF (11 pp.)</a>
+        <a href="trial-protocol.html">Interactive NHS Trial Explorer</a>
         <a href="safety-case.html">3-Doc CSC-QT Safety Case</a>
         <a href="receipts/opencareq_samskrift_benchmark_receipt.json" target="_blank" rel="noopener">Receipt (`50a5e601…`)</a>
+        <a href="receipts/opencareq_v0_8_moth_tessa_cloud_receipt.json" target="_blank" rel="noopener">v0.8 Moth (`c01cb163…`)</a>
+        <a href="receipts/opencareq_v0_9_evsi_trial_protocol_receipt.json" target="_blank" rel="noopener">v0.9 Trial (`39504cf3…`)</a>
         <a href="receipts/opencareq_v0_3_falsification_receipt.json" target="_blank" rel="noopener">v0.3 (`b2c71cf4…`)</a>
         <a href="receipts/opencareq_england_42icb_atlas_receipt.json" target="_blank" rel="noopener">42-ICB (`314a6f5b…`)</a>
         <a href="receipts/opencareq_v0_4_prevention_dcea_receipt.json" target="_blank" rel="noopener">v0.4 DCEA (`b990361d…`)</a>
@@ -1923,6 +1965,23 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
           { label: "p.10 App. A.1 Super-Pixel & Area-Law", page: 10 },
           { label: "p.11 App. A.2 Tables 5–6 & Refs [1]–[6]", page: 11 },
           { label: "p.12 References [7]–[20] & End", page: 12 }
+        ]
+      },
+      trial_protocol: {
+        file: "OpenCareQ_Trial_Protocol.pdf",
+        filename: "OpenCareQ_Trial_Protocol.pdf",
+        bookmarks: [
+          { label: "p.1 SPIRIT-AI Summary & CSO Notice", page: 1 },
+          { label: "p.2 §1 VoI Rationale & §2 Stage-0 OpenSAFELY", page: 2 },
+          { label: "p.3 Fig 3 (CCW vs Immortal-Time & NCO)", page: 3 },
+          { label: "p.4 Listing 1 (ehrQL) & §3 MSE 25-PCN MILP", page: 4 },
+          { label: "p.5 Fig 1 (25-PCN Wave Allocation)", page: 5 },
+          { label: "p.6 Table 1 (All 25 MSE PCNs)", page: 6 },
+          { label: "p.7 §4 Power & Strong EVSI/ENBS", page: 7 },
+          { label: "p.8 Table 2 (ICC Sweep), Fig 2 & §5 Governance", page: 8 },
+          { label: "p.9 Fig 4 (SPIRIT-AI / DMEC) & Table 3", page: 9 },
+          { label: "p.10 §6 Bayesian Updating, PPIE & Refs [1]–[6]", page: 10 },
+          { label: "p.11 References [7]–[28] & End", page: 11 }
         ]
       }
     };

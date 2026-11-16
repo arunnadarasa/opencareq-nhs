@@ -1,0 +1,1039 @@
+{
+  "schema_version": "opencareq-public-trial-protocol-summary-v0.9",
+  "phi_present": false,
+  "source_receipt_sha256": "39504cf3375637e1b644da618b679379644ff8124aa2c036fd2c7309eb28fa2a",
+  "pqc_signature_scheme": "NIST-FIPS-204-ML-DSA-65",
+  "trial_id": "OPENCAREQ-SW-MSE-v0.9",
+  "pubmed_verified_sources": [
+    {
+      "pmid": "16829207",
+      "doi": "10.1016/j.cct.2006.05.007",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16829207/",
+      "role": "Hussey & Hughes (2007) linear-mixed-model variance & design effect for stepped-wedge cluster RCTs"
+    },
+    {
+      "pmid": "30413417",
+      "doi": "10.1136/bmj.k1614",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30413417/",
+      "role": "Hemming et al. (2018) BMJ CONSORT 2010 extension for stepped-wedge cluster randomised trials"
+    },
+    {
+      "pmid": "25805850",
+      "doi": "10.1177/0272989X15575286",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25805850/",
+      "role": "Strong, Oakley, Brennan & Breeze (2015) fast nonparametric regression EVSI & ENBS from PSA samples"
+    },
+    {
+      "pmid": "26994063",
+      "doi": "10.1093/aje/kwv254",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26994063/",
+      "role": "Hernan & Robins (2016) target-trial emulation & clone-censor-weight immortal-time bias elimination"
+    },
+    {
+      "pmid": "32640463",
+      "doi": "10.1038/s41586-020-2521-4",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32640463/",
+      "role": "Williamson, Smeeth, Goldacre et al. (2020) Nature OpenSAFELY privacy-preserving NHS EHR platform"
+    },
+    {
+      "pmid": "32908284",
+      "doi": "10.1038/s41591-020-1037-7",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32908284/",
+      "role": "Cruz Rivera, Liu et al. (2020) Nature Medicine SPIRIT-AI clinical trial protocol guidelines"
+    }
+  ],
+  "spirit_ai_checklist_items": [
+    {
+      "item_id": "SPIRIT-AI 1(i)\u2013(ii)",
+      "section": "Title & Structured Summary",
+      "opencareq_specification": "Explicitly identifies `OpenCareQ v0.9.0` as a Non-SaMD clinician-facing population-commissioning and `SMR` shadow decision-support workbench (`runtime_agent_actions = 0`) evaluated in a 25-PCN stepped-wedge cluster RCT (`OPENCAREQ-SW-MSE`, `E54000026`)."
+    },
+    {
+      "item_id": "SPIRIT-AI 6a(i)\u2013(ii)",
+      "section": "Background & Intended Use",
+      "opencareq_specification": "Anchored on `#1 SAVI EVPPI = \u00a34.174M` (`75.3%` of `\u00a35.54M` national EVPI): tests whether adding `Core20` bilingual link-worker + warm-home co-production (`S3`) to `CKM + NICE DG59` pharmacist `SMR` (`S2`) reduces 90-day high-risk prescribing/discontinuation and unplanned hospitalisation."
+    },
+    {
+      "item_id": "SPIRIT-AI 9",
+      "section": "Study Setting & Workflow Integration",
+      "opencareq_specification": "All `25` statutory PCNs (`136` GP practices, `1,218,139` registered patients) across 5 Place Alliances of NHS Mid and South Essex ICB (`E54000026`), preceded by Stage-0 `OpenSAFELY` / East of England NHS `SDE` target-trial emulation (`phi_present = False`)."
+    },
+    {
+      "item_id": "SPIRIT-AI 10(i)\u2013(ii)",
+      "section": "Cluster & Participant Eligibility",
+      "opencareq_specification": "Cluster level: active statutory MSE PCNs (`N = 25`). Patient SMR cohort: adults (`>=18` yrs, `CrCl >= 15 mL/min`, non-cirrhotic `A-OCQ-04`) due `CKM`/`DOAC`/`SGLT2i`/statin/antiplatelet review; acute instability (`SpO2 < 92%`, `NEWS2 >= 5`, `H-OCQ-01`) strictly excluded upstream."
+    },
+    {
+      "item_id": "SPIRIT-AI 11a(i)",
+      "section": "Intervention Version & Frozen Lock",
+      "opencareq_specification": "Frozen `OpenCareQ v0.9.0` (`ML-DSA-65` cryptographic receipt lock, 16-opcode `PCNSwarmWorld` VM with `0` runtime LLM/autonomous actions, deterministic `DCB0129Guard` commit gate)."
+    },
+    {
+      "item_id": "SPIRIT-AI 11a(ii)\u2013(iii)",
+      "section": "Input Data Acquisition & Missingness",
+      "opencareq_specification": "Ingests aggregate `OGL v3.0` PCN syndemic registers (`phi_present = False`) for slot commissioning and structured `UKCore FHIR R4` / `SNOMED CT` codes inside NHS `SDE`s; missing genotypes or herbal exposures trigger mandatory `ABSTAIN` (`K-OCQ-02a..b`) until laboratory `NICE DG59` confirmation."
+    },
+    {
+      "item_id": "SPIRIT-AI 11a(iv)",
+      "section": "Human\u2013System Interaction & Override",
+      "opencareq_specification": "GPhC clinical pharmacists, GMC GPs, and `DAPB4066` social-prescribing link workers retain 100% prescribing and referral authority (`TC-OCQ-02..05`), with one-click documented clinical override."
+    },
+    {
+      "item_id": "SPIRIT-AI 11a(v)\u2013(vi)",
+      "section": "Output Format & User Training",
+      "opencareq_specification": "Outputs deterministic `Day-10` washout hold flags (`AUCR 1.553x` vs `4.437x`), `SGLT2i TGF` vs `AKI` discrimination, `DG59 VOI` prompts, and `ACI` conformal pathway sets (`|C_0.90| >= 2`); standardized 2-hour CSO-approved pharmacist & link-worker onboarding before each PCN's crossover quarter."
+    },
+    {
+      "item_id": "SPIRIT-AI 22 & CSC-QT 5.6",
+      "section": "Error Analysis, Harms & CSO Stopping Rules",
+      "opencareq_specification": "Continuous monitoring of all `7` `OPEN` `DCB0129`/`DCB0160` hazards (`H-OCQ-01..07`); independent DMEC + CSO halts/rolls back (`TC-OCQ-07`) if rolling 90-day `ACI` coverage drops `< 85%` (`RT-03`), `Core20` slot parity falls `< 0.85` (`G6`), or any serious safety incident occurs."
+    }
+  ],
+  "summary_metrics": {
+    "mse_n_pcns": 25,
+    "mse_n_gp_practices": 136,
+    "mse_registered_patients": 1218139,
+    "n_crossover_sequences": 5,
+    "trial_duration_months": 18,
+    "milp_max_abs_z": 0.2162,
+    "milp_imbalance_reduction_pct": 75.08,
+    "nominal_icc_0015_power_pct": 98.97,
+    "nominal_icc_0015_mdes_80_rrr_pct": 14.42,
+    "psa_evpi_20k_gbp_m": 5.544,
+    "core20_single_evppi_20k_gbp_m": 4.174,
+    "joint_core20_evppi_20k_gbp_m": 5.111,
+    "mse_25pcn_effective_evsi_gbp_m": 3.459,
+    "mse_25pcn_trial_cost_gbp_m": 1.01,
+    "mse_25pcn_enbs_gbp_m": 2.449,
+    "mse_25pcn_rori_x": 2.43,
+    "optimal_enbs_cluster_size_pcns": 45,
+    "optimal_enbs_20k_gbp_m": 2.575,
+    "oversized_143pcn_enbs_gbp_m": 0.621,
+    "ground_truth_causal_hr": 0.78,
+    "immortal_time_biased_hr": 0.5925,
+    "confounded_landmark_hr": 1.2415,
+    "ccw_recovered_hr": 0.7995,
+    "ccw_ci95_low": 0.7261,
+    "ccw_ci95_high": 0.8803,
+    "nco_clean_hr": 0.9539,
+    "nco_tainted_hr": 0.7765
+  },
+  "sequences": [
+    {
+      "sequence_index": 1,
+      "crossover_quarter": "Q1",
+      "n_pcns": 5,
+      "pcn_ods_codes": [
+        "U18990",
+        "U99739",
+        "U15488",
+        "U79723",
+        "U28765"
+      ],
+      "pcn_names": [
+        "Maldon and Witham PCN",
+        "Chelmsford City Health PCN",
+        "East Basildon PCN",
+        "Brentwood PCN",
+        "ASOP PCN"
+      ],
+      "alliances_represented": [
+        "Basildon & Brentwood",
+        "Mid Essex",
+        "Thurrock"
+      ],
+      "total_registered_patients": 248519,
+      "n_high_deprivation_or_coastal": 2,
+      "mean_imd_2025": 19.92,
+      "mean_frail_80plus_share": 0.2074,
+      "mean_winter_mbi_surge": 1.522,
+      "max_abs_standardized_z": 0.1374
+    },
+    {
+      "sequence_index": 2,
+      "crossover_quarter": "Q2",
+      "n_pcns": 5,
+      "pcn_ods_codes": [
+        "U80679",
+        "U30335",
+        "U49929",
+        "U17794",
+        "U98530"
+      ],
+      "pcn_names": [
+        "Braintree PCN Ltd",
+        "Rayleigh and District PCN",
+        "Rochford PCN",
+        "Southend Victoria PCN",
+        "Stanford-Le-Hope PCN"
+      ],
+      "alliances_represented": [
+        "Castle Point & Rochford",
+        "Mid Essex",
+        "Southend",
+        "Thurrock"
+      ],
+      "total_registered_patients": 239802,
+      "n_high_deprivation_or_coastal": 1,
+      "mean_imd_2025": 18.27,
+      "mean_frail_80plus_share": 0.2208,
+      "mean_winter_mbi_surge": 1.507,
+      "max_abs_standardized_z": 0.1959
+    },
+    {
+      "sequence_index": 3,
+      "crossover_quarter": "Q3",
+      "n_pcns": 5,
+      "pcn_ods_codes": [
+        "U48176",
+        "U55146",
+        "U91979",
+        "U84454",
+        "U68127"
+      ],
+      "pcn_names": [
+        "Chelmer PCN",
+        "Central Basildon PCN",
+        "Billericay PCN",
+        "Canvey PCN",
+        "Grays PCN"
+      ],
+      "alliances_represented": [
+        "Basildon & Brentwood",
+        "Castle Point & Rochford",
+        "Mid Essex",
+        "Thurrock"
+      ],
+      "total_registered_patients": 232626,
+      "n_high_deprivation_or_coastal": 2,
+      "mean_imd_2025": 19.04,
+      "mean_frail_80plus_share": 0.2034,
+      "mean_winter_mbi_surge": 1.523,
+      "max_abs_standardized_z": 0.2162
+    },
+    {
+      "sequence_index": 4,
+      "crossover_quarter": "Q4",
+      "n_pcns": 5,
+      "pcn_ods_codes": [
+        "U09727",
+        "U12553",
+        "U72156",
+        "U92558",
+        "U02453"
+      ],
+      "pcn_names": [
+        "Dengie and South Woodham Ferrers PCN",
+        "Aegros Health PCN",
+        "West Basildon PCN",
+        "Wickford PCN",
+        "Southend West Central PCN"
+      ],
+      "alliances_represented": [
+        "Basildon & Brentwood",
+        "Mid Essex",
+        "Southend"
+      ],
+      "total_registered_patients": 242528,
+      "n_high_deprivation_or_coastal": 2,
+      "mean_imd_2025": 19.03,
+      "mean_frail_80plus_share": 0.2098,
+      "mean_winter_mbi_surge": 1.451,
+      "max_abs_standardized_z": 0.1669
+    },
+    {
+      "sequence_index": 5,
+      "crossover_quarter": "Q5",
+      "n_pcns": 5,
+      "pcn_ods_codes": [
+        "U84465",
+        "U87998",
+        "U27924",
+        "U04545",
+        "U06243"
+      ],
+      "pcn_names": [
+        "Colne Valley PCN",
+        "Chelmsford West PCN",
+        "Benfleet PCN",
+        "Southend East PCN",
+        "Tilbury and Chadwell PCN"
+      ],
+      "alliances_represented": [
+        "Castle Point & Rochford",
+        "Mid Essex",
+        "Southend",
+        "Thurrock"
+      ],
+      "total_registered_patients": 254664,
+      "n_high_deprivation_or_coastal": 2,
+      "mean_imd_2025": 18.88,
+      "mean_frail_80plus_share": 0.2213,
+      "mean_winter_mbi_surge": 1.447,
+      "max_abs_standardized_z": 0.2067
+    }
+  ],
+  "pcn_schedule": [
+    {
+      "pcn_ods_code": "U15488",
+      "pcn_name": "East Basildon PCN",
+      "alliance": "Basildon & Brentwood",
+      "n_practices": 4,
+      "registered_list_size": 27102,
+      "imd_2025_score": 34.55,
+      "is_core20_deprived": true,
+      "is_high_deprivation_or_coastal": true,
+      "frail_80plus_share": 0.1626,
+      "winter_mbi_surge_ratio": 1.717,
+      "assigned_sequence": 1,
+      "crossover_quarter": "Q1",
+      "six_quarter_status": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U28765",
+      "pcn_name": "ASOP PCN",
+      "alliance": "Thurrock",
+      "n_practices": 5,
+      "registered_list_size": 34688,
+      "imd_2025_score": 24.36,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": true,
+      "frail_80plus_share": 0.1111,
+      "winter_mbi_surge_ratio": 1.367,
+      "assigned_sequence": 1,
+      "crossover_quarter": "Q1",
+      "six_quarter_status": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U18990",
+      "pcn_name": "Maldon and Witham PCN",
+      "alliance": "Mid Essex",
+      "n_practices": 6,
+      "registered_list_size": 59919,
+      "imd_2025_score": 16.42,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2365,
+      "winter_mbi_surge_ratio": 1.626,
+      "assigned_sequence": 1,
+      "crossover_quarter": "Q1",
+      "six_quarter_status": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U99739",
+      "pcn_name": "Chelmsford City Health PCN",
+      "alliance": "Mid Essex",
+      "n_practices": 4,
+      "registered_list_size": 45370,
+      "imd_2025_score": 12.96,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2735,
+      "winter_mbi_surge_ratio": 1.633,
+      "assigned_sequence": 1,
+      "crossover_quarter": "Q1",
+      "six_quarter_status": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U79723",
+      "pcn_name": "Brentwood PCN",
+      "alliance": "Basildon & Brentwood",
+      "n_practices": 8,
+      "registered_list_size": 81440,
+      "imd_2025_score": 11.32,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2533,
+      "winter_mbi_surge_ratio": 1.268,
+      "assigned_sequence": 1,
+      "crossover_quarter": "Q1",
+      "six_quarter_status": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U17794",
+      "pcn_name": "Southend Victoria PCN",
+      "alliance": "Southend",
+      "n_practices": 9,
+      "registered_list_size": 65968,
+      "imd_2025_score": 32.93,
+      "is_core20_deprived": true,
+      "is_high_deprivation_or_coastal": true,
+      "frail_80plus_share": 0.1752,
+      "winter_mbi_surge_ratio": 1.349,
+      "assigned_sequence": 2,
+      "crossover_quarter": "Q2",
+      "six_quarter_status": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U80679",
+      "pcn_name": "Braintree PCN Ltd",
+      "alliance": "Mid Essex",
+      "n_practices": 3,
+      "registered_list_size": 41872,
+      "imd_2025_score": 17.63,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2404,
+      "winter_mbi_surge_ratio": 1.584,
+      "assigned_sequence": 2,
+      "crossover_quarter": "Q2",
+      "six_quarter_status": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U49929",
+      "pcn_name": "Rochford PCN",
+      "alliance": "Castle Point & Rochford",
+      "n_practices": 4,
+      "registered_list_size": 41698,
+      "imd_2025_score": 16.65,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2247,
+      "winter_mbi_surge_ratio": 1.471,
+      "assigned_sequence": 2,
+      "crossover_quarter": "Q2",
+      "six_quarter_status": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U98530",
+      "pcn_name": "Stanford-Le-Hope PCN",
+      "alliance": "Thurrock",
+      "n_practices": 6,
+      "registered_list_size": 33041,
+      "imd_2025_score": 15.28,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.1968,
+      "winter_mbi_surge_ratio": 1.281,
+      "assigned_sequence": 2,
+      "crossover_quarter": "Q2",
+      "six_quarter_status": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U30335",
+      "pcn_name": "Rayleigh and District PCN",
+      "alliance": "Castle Point & Rochford",
+      "n_practices": 6,
+      "registered_list_size": 57223,
+      "imd_2025_score": 8.88,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2671,
+      "winter_mbi_surge_ratio": 1.85,
+      "assigned_sequence": 2,
+      "crossover_quarter": "Q2",
+      "six_quarter_status": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U55146",
+      "pcn_name": "Central Basildon PCN",
+      "alliance": "Basildon & Brentwood",
+      "n_practices": 9,
+      "registered_list_size": 52952,
+      "imd_2025_score": 31.07,
+      "is_core20_deprived": true,
+      "is_high_deprivation_or_coastal": true,
+      "frail_80plus_share": 0.1572,
+      "winter_mbi_surge_ratio": 1.361,
+      "assigned_sequence": 3,
+      "crossover_quarter": "Q3",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U84454",
+      "pcn_name": "Canvey PCN",
+      "alliance": "Castle Point & Rochford",
+      "n_practices": 6,
+      "registered_list_size": 41536,
+      "imd_2025_score": 25.79,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": true,
+      "frail_80plus_share": 0.2277,
+      "winter_mbi_surge_ratio": 1.471,
+      "assigned_sequence": 3,
+      "crossover_quarter": "Q3",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U68127",
+      "pcn_name": "Grays PCN",
+      "alliance": "Thurrock",
+      "n_practices": 7,
+      "registered_list_size": 50952,
+      "imd_2025_score": 16.68,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.1675,
+      "winter_mbi_surge_ratio": 1.496,
+      "assigned_sequence": 3,
+      "crossover_quarter": "Q3",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U48176",
+      "pcn_name": "Chelmer PCN",
+      "alliance": "Mid Essex",
+      "n_practices": 4,
+      "registered_list_size": 45551,
+      "imd_2025_score": 13.04,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2092,
+      "winter_mbi_surge_ratio": 1.974,
+      "assigned_sequence": 3,
+      "crossover_quarter": "Q3",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U91979",
+      "pcn_name": "Billericay PCN",
+      "alliance": "Basildon & Brentwood",
+      "n_practices": 5,
+      "registered_list_size": 41635,
+      "imd_2025_score": 8.66,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2553,
+      "winter_mbi_surge_ratio": 1.311,
+      "assigned_sequence": 3,
+      "crossover_quarter": "Q3",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U02453",
+      "pcn_name": "Southend West Central PCN",
+      "alliance": "Southend",
+      "n_practices": 5,
+      "registered_list_size": 35245,
+      "imd_2025_score": 27.67,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": true,
+      "frail_80plus_share": 0.1996,
+      "winter_mbi_surge_ratio": 1.254,
+      "assigned_sequence": 4,
+      "crossover_quarter": "Q4",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U72156",
+      "pcn_name": "West Basildon PCN",
+      "alliance": "Basildon & Brentwood",
+      "n_practices": 5,
+      "registered_list_size": 53364,
+      "imd_2025_score": 25.83,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": true,
+      "frail_80plus_share": 0.1721,
+      "winter_mbi_surge_ratio": 1.504,
+      "assigned_sequence": 4,
+      "crossover_quarter": "Q4",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U09727",
+      "pcn_name": "Dengie and South Woodham Ferrers PCN",
+      "alliance": "Mid Essex",
+      "n_practices": 6,
+      "registered_list_size": 51079,
+      "imd_2025_score": 15.72,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2108,
+      "winter_mbi_surge_ratio": 1.421,
+      "assigned_sequence": 4,
+      "crossover_quarter": "Q4",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U92558",
+      "pcn_name": "Wickford PCN",
+      "alliance": "Basildon & Brentwood",
+      "n_practices": 3,
+      "registered_list_size": 39402,
+      "imd_2025_score": 13.19,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2438,
+      "winter_mbi_surge_ratio": 1.987,
+      "assigned_sequence": 4,
+      "crossover_quarter": "Q4",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U12553",
+      "pcn_name": "Aegros Health PCN",
+      "alliance": "Mid Essex",
+      "n_practices": 4,
+      "registered_list_size": 63438,
+      "imd_2025_score": 12.73,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2226,
+      "winter_mbi_surge_ratio": 1.087,
+      "assigned_sequence": 4,
+      "crossover_quarter": "Q4",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U06243",
+      "pcn_name": "Tilbury and Chadwell PCN",
+      "alliance": "Thurrock",
+      "n_practices": 8,
+      "registered_list_size": 71897,
+      "imd_2025_score": 26.36,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": true,
+      "frail_80plus_share": 0.1392,
+      "winter_mbi_surge_ratio": 1.492,
+      "assigned_sequence": 5,
+      "crossover_quarter": "Q5",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U04545",
+      "pcn_name": "Southend East PCN",
+      "alliance": "Southend",
+      "n_practices": 4,
+      "registered_list_size": 36741,
+      "imd_2025_score": 25.3,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": true,
+      "frail_80plus_share": 0.2175,
+      "winter_mbi_surge_ratio": 1.021,
+      "assigned_sequence": 5,
+      "crossover_quarter": "Q5",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U87998",
+      "pcn_name": "Chelmsford West PCN",
+      "alliance": "Mid Essex",
+      "n_practices": 2,
+      "registered_list_size": 40540,
+      "imd_2025_score": 15.74,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2336,
+      "winter_mbi_surge_ratio": 1.553,
+      "assigned_sequence": 5,
+      "crossover_quarter": "Q5",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U84465",
+      "pcn_name": "Colne Valley PCN",
+      "alliance": "Mid Essex",
+      "n_practices": 6,
+      "registered_list_size": 57530,
+      "imd_2025_score": 15.54,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.2412,
+      "winter_mbi_surge_ratio": 1.71,
+      "assigned_sequence": 5,
+      "crossover_quarter": "Q5",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "pcn_ods_code": "U27924",
+      "pcn_name": "Benfleet PCN",
+      "alliance": "Castle Point & Rochford",
+      "n_practices": 7,
+      "registered_list_size": 47956,
+      "imd_2025_score": 11.43,
+      "is_core20_deprived": false,
+      "is_high_deprivation_or_coastal": false,
+      "frail_80plus_share": 0.275,
+      "winter_mbi_surge_ratio": 1.459,
+      "assigned_sequence": 5,
+      "crossover_quarter": "Q5",
+      "six_quarter_status": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "power_by_icc": [
+    {
+      "icc": 0.005,
+      "se_risk_difference": 0.00706,
+      "design_effect_vs_indiv_rct": 3.047,
+      "statistical_power_pct": 99.31,
+      "mdes_80pct_relative_risk_reduction_pct": 13.93,
+      "mdes_90pct_relative_risk_reduction_pct": 16.12
+    },
+    {
+      "icc": 0.01,
+      "se_risk_difference": 0.00723,
+      "design_effect_vs_indiv_rct": 3.199,
+      "statistical_power_pct": 99.08,
+      "mdes_80pct_relative_risk_reduction_pct": 14.27,
+      "mdes_90pct_relative_risk_reduction_pct": 16.51
+    },
+    {
+      "icc": 0.015,
+      "se_risk_difference": 0.00731,
+      "design_effect_vs_indiv_rct": 3.265,
+      "statistical_power_pct": 98.97,
+      "mdes_80pct_relative_risk_reduction_pct": 14.42,
+      "mdes_90pct_relative_risk_reduction_pct": 16.68
+    },
+    {
+      "icc": 0.02,
+      "se_risk_difference": 0.00735,
+      "design_effect_vs_indiv_rct": 3.302,
+      "statistical_power_pct": 98.9,
+      "mdes_80pct_relative_risk_reduction_pct": 14.5,
+      "mdes_90pct_relative_risk_reduction_pct": 16.78
+    },
+    {
+      "icc": 0.03,
+      "se_risk_difference": 0.0074,
+      "design_effect_vs_indiv_rct": 3.344,
+      "statistical_power_pct": 98.82,
+      "mdes_80pct_relative_risk_reduction_pct": 14.59,
+      "mdes_90pct_relative_risk_reduction_pct": 16.88
+    },
+    {
+      "icc": 0.05,
+      "se_risk_difference": 0.00744,
+      "design_effect_vs_indiv_rct": 3.382,
+      "statistical_power_pct": 98.75,
+      "mdes_80pct_relative_risk_reduction_pct": 14.67,
+      "mdes_90pct_relative_risk_reduction_pct": 16.98
+    }
+  ],
+  "evsi_enbs_curve": [
+    {
+      "n_pcns": 5,
+      "design_label": "Single Place-Alliance Pilot (5 PCNs)",
+      "raw_evsi_20k_gbp_m": 1.381,
+      "effective_evsi_20k_gbp_m": 1.381,
+      "share_of_joint_evppi_pct": 27.0,
+      "nihr_trial_cost_gbp_m": 0.49,
+      "enbs_20k_gbp_m": 0.891,
+      "return_on_research_investment_x": 1.82,
+      "stepped_wedge_power_pct": 47.73
+    },
+    {
+      "n_pcns": 10,
+      "design_label": "10-PCN Multi-Cluster Design",
+      "raw_evsi_20k_gbp_m": 2.188,
+      "effective_evsi_20k_gbp_m": 2.188,
+      "share_of_joint_evppi_pct": 42.8,
+      "nihr_trial_cost_gbp_m": 0.62,
+      "enbs_20k_gbp_m": 1.568,
+      "return_on_research_investment_x": 2.53,
+      "stepped_wedge_power_pct": 76.76
+    },
+    {
+      "n_pcns": 15,
+      "design_label": "15-PCN Multi-Cluster Design",
+      "raw_evsi_20k_gbp_m": 2.764,
+      "effective_evsi_20k_gbp_m": 2.764,
+      "share_of_joint_evppi_pct": 54.1,
+      "nihr_trial_cost_gbp_m": 0.75,
+      "enbs_20k_gbp_m": 2.014,
+      "return_on_research_investment_x": 2.69,
+      "stepped_wedge_power_pct": 90.92
+    },
+    {
+      "n_pcns": 20,
+      "design_label": "20-PCN Multi-Cluster Design",
+      "raw_evsi_20k_gbp_m": 3.161,
+      "effective_evsi_20k_gbp_m": 3.161,
+      "share_of_joint_evppi_pct": 61.9,
+      "nihr_trial_cost_gbp_m": 0.88,
+      "enbs_20k_gbp_m": 2.281,
+      "return_on_research_investment_x": 2.59,
+      "stepped_wedge_power_pct": 96.75
+    },
+    {
+      "n_pcns": 25,
+      "design_label": "MSE Full Single-ICB Stepped-Wedge (25 PCNs, E54000026)",
+      "raw_evsi_20k_gbp_m": 3.459,
+      "effective_evsi_20k_gbp_m": 3.459,
+      "share_of_joint_evppi_pct": 67.7,
+      "nihr_trial_cost_gbp_m": 1.01,
+      "enbs_20k_gbp_m": 2.449,
+      "return_on_research_investment_x": 2.43,
+      "stepped_wedge_power_pct": 98.91
+    },
+    {
+      "n_pcns": 32,
+      "design_label": "NCL Single-ICB Stepped-Wedge (32 PCNs, E54000028)",
+      "raw_evsi_20k_gbp_m": 3.758,
+      "effective_evsi_20k_gbp_m": 3.753,
+      "share_of_joint_evppi_pct": 73.4,
+      "nihr_trial_cost_gbp_m": 1.192,
+      "enbs_20k_gbp_m": 2.561,
+      "return_on_research_investment_x": 2.15,
+      "stepped_wedge_power_pct": 99.65
+    },
+    {
+      "n_pcns": 45,
+      "design_label": "East of England Dual-ICB (MSE + Norfolk, 45 PCNs)",
+      "raw_evsi_20k_gbp_m": 4.123,
+      "effective_evsi_20k_gbp_m": 4.105,
+      "share_of_joint_evppi_pct": 80.3,
+      "nihr_trial_cost_gbp_m": 1.53,
+      "enbs_20k_gbp_m": 2.575,
+      "return_on_research_investment_x": 1.68,
+      "stepped_wedge_power_pct": 99.99
+    },
+    {
+      "n_pcns": 57,
+      "design_label": "MSE + NCL Dual-ICB Consortium (57 PCNs)",
+      "raw_evsi_20k_gbp_m": 4.332,
+      "effective_evsi_20k_gbp_m": 4.302,
+      "share_of_joint_evppi_pct": 84.2,
+      "nihr_trial_cost_gbp_m": 1.842,
+      "enbs_20k_gbp_m": 2.46,
+      "return_on_research_investment_x": 1.34,
+      "stepped_wedge_power_pct": 100.0
+    },
+    {
+      "n_pcns": 85,
+      "design_label": "85-PCN Multi-Cluster Design",
+      "raw_evsi_20k_gbp_m": 4.603,
+      "effective_evsi_20k_gbp_m": 4.544,
+      "share_of_joint_evppi_pct": 88.9,
+      "nihr_trial_cost_gbp_m": 2.57,
+      "enbs_20k_gbp_m": 1.974,
+      "return_on_research_investment_x": 0.77,
+      "stepped_wedge_power_pct": 100.0
+    },
+    {
+      "n_pcns": 115,
+      "design_label": "115-PCN Multi-Cluster Design",
+      "raw_evsi_20k_gbp_m": 4.743,
+      "effective_evsi_20k_gbp_m": 4.653,
+      "share_of_joint_evppi_pct": 91.0,
+      "nihr_trial_cost_gbp_m": 3.35,
+      "enbs_20k_gbp_m": 1.303,
+      "return_on_research_investment_x": 0.39,
+      "stepped_wedge_power_pct": 100.0
+    },
+    {
+      "n_pcns": 143,
+      "design_label": "All 5 Benchmark ICBs National Trial (143 PCNs)",
+      "raw_evsi_20k_gbp_m": 4.82,
+      "effective_evsi_20k_gbp_m": 4.699,
+      "share_of_joint_evppi_pct": 91.9,
+      "nihr_trial_cost_gbp_m": 4.078,
+      "enbs_20k_gbp_m": 0.621,
+      "return_on_research_investment_x": 0.15,
+      "stepped_wedge_power_pct": 100.0
+    }
+  ],
+  "stage0_estimators": [
+    {
+      "estimator_id": "naive_ever_referred_immortal_time",
+      "label": "Naive Ever-Referred vs Never-Referred (Immortal-Time Biased)",
+      "estimated_hr": 0.5925,
+      "ci95_low": 0.5485,
+      "ci95_high": 0.6401,
+      "abs_log_hr_bias": 0.2749,
+      "covers_ground_truth": false
+    },
+    {
+      "estimator_id": "unadjusted_landmark_confounded",
+      "label": "Unadjusted 28d Landmark (Confounded by Core20 & Frailty)",
+      "estimated_hr": 1.2415,
+      "ci95_low": 1.1404,
+      "ci95_high": 1.3516,
+      "abs_log_hr_bias": 0.4648,
+      "covers_ground_truth": false
+    },
+    {
+      "estimator_id": "hernan_robins_ccw_ipcw",
+      "label": "Hernan-Robins Clone-Censor-Weight (CCW + Stabilized IPCW)",
+      "estimated_hr": 0.7995,
+      "ci95_low": 0.7261,
+      "ci95_high": 0.8803,
+      "abs_log_hr_bias": 0.0247,
+      "covers_ground_truth": true
+    }
+  ],
+  "negative_control_outcome_gate": {
+    "nco_endpoint": "Accidental Extremity Fracture / Routine Cataract Referral (True HR = 1.000)",
+    "max_permitted_abs_log_hr": 0.08,
+    "clean_cohort_nco_hr": 0.9539,
+    "clean_cohort_gate_passed": true,
+    "unmeasured_healthy_adherer_nco_hr": 0.7765,
+    "unmeasured_healthy_adherer_gate_blocked": true
+  },
+  "opensafely_ehrql_source": "\"\"\"\nOpenCareQ v0.9.0 \u2014 Zero-PID OpenSAFELY ehrQL Target-Trial Emulation Specification\n(`OPENCAREQ-TTE-STAGE0`; executes strictly inside NHS SDE; cell suppression >= 10, rounded to 5).\n\"\"\"\n\nfrom ehrql import codelist_from_csv, create_dataset, days, minimum_of\nfrom ehrql.tables.tpp import (\n    addresses,\n    apcs,\n    clinical_events,\n    medications,\n    patients,\n    practice_registrations,\n)\n\ndataset = create_dataset()\ndataset.configure_dummy_data(population_size=12000)\n\n# Statutory SNOMED CT & NHSBSA dm+d codelists (version-locked under OpenCodelists)\nsmr_codes = codelist_from_csv(\"codelists/nhse-structured-medication-review-snomed.csv\", column=\"code\")\nsp_referral_codes = codelist_from_csv(\"codelists/nhse-dapb4066-social-prescribing-referral.csv\", column=\"code\")\nckd_g3_g4_codes = codelist_from_csv(\"codelists/ukrr-ckd-stage-3-4-snomed.csv\", column=\"code\")\ncyp3a4_doac_dmd = codelist_from_csv(\"codelists/opencareq-cyp3a4-doac-sglt2i-dmd.csv\", column=\"code\")\nacute_instability_excl = codelist_from_csv(\"codelists/opencareq-dcb0129-h01-acute-excl.csv\", column=\"code\")\nnco_fracture_codes = codelist_from_csv(\"codelists/opencareq-nco-extremity-fracture.csv\", column=\"code\")\n\n# Time-zero `t_0`: first eligible Clinical Pharmacist SMR in study window (Hernan & Robins 2016)\nfirst_smr = (\n    clinical_events.where(clinical_events.snomedct_code.is_in(smr_codes))\n    .where(clinical_events.date.is_on_or_between(\"2025-04-01\", \"2026-03-31\"))\n    .sort_by(clinical_events.date)\n    .first_for_patient()\n)\nindex_date = first_smr.date\n\nhas_active_ckm_rx = medications.where(\n    medications.dmd_code.is_in(cyp3a4_doac_dmd)\n    & medications.date.is_on_or_between(index_date - days(90), index_date)\n).exists_for_patient()\n\nhas_h01_acute_exclusion = clinical_events.where(\n    clinical_events.snomedct_code.is_in(acute_instability_excl)\n    & clinical_events.date.is_on_or_between(index_date - days(7), index_date)\n).exists_for_patient()\n\nage_at_index = patients.age_on(index_date)\nregistered_1yr = practice_registrations.for_patient_on(index_date).exists_for_patient()\n\ndataset.define_population(\n    first_smr.exists_for_patient()\n    & (age_at_index >= 18)\n    & registered_1yr\n    & has_active_ckm_rx\n    & (~has_h01_acute_exclusion)\n)\n\n# Exposure for Clone-Censor-Weight (`28`-day grace window post `index_date`)\nsp_ref_event = (\n    clinical_events.where(clinical_events.snomedct_code.is_in(sp_referral_codes))\n    .where(clinical_events.date.is_on_or_between(index_date, index_date + days(180)))\n    .sort_by(clinical_events.date)\n    .first_for_patient()\n)\ndataset.sp_referral_days_from_index = (sp_ref_event.date - index_date).days\ndataset.initiated_within_28d_grace = sp_ref_event.date.is_on_or_between(index_date, index_date + days(28))\n\n# Baseline Core20 IMD Quintile & Frailty Confounders (for Stabilized IPTW x IPCW)\ndataset.imd_quintile = addresses.for_patient_on(index_date).imd_quintile\ndataset.age_band = age_at_index\ndataset.has_ckd_g3_g4 = clinical_events.where(\n    clinical_events.snomedct_code.is_in(ckd_g3_g4_codes) & (clinical_events.date <= index_date)\n).exists_for_patient()\n\n# Primary 365-day Composite Unplanned Admission Endpoint & Negative-Control Outcome (`NCO`)\nfirst_unplanned_adm = (\n    apcs.where(apcs.admission_method.is_in([\"21\", \"22\", \"23\", \"24\", \"25\", \"2A\", \"2B\", \"2C\", \"2D\"]))\n    .where(apcs.admission_date.is_on_or_between(index_date + days(1), index_date + days(365)))\n    .sort_by(apcs.admission_date)\n    .first_for_patient()\n)\ndataset.primary_event_days = minimum_of((first_unplanned_adm.admission_date - index_date).days, 365)\ndataset.primary_event_indicator = first_unplanned_adm.exists_for_patient()\n\nnco_event = (\n    clinical_events.where(clinical_events.snomedct_code.is_in(nco_fracture_codes))\n    .where(clinical_events.date.is_on_or_between(index_date + days(1), index_date + days(365)))\n    .sort_by(clinical_events.date)\n    .first_for_patient()\n)\ndataset.nco_fracture_indicator = nco_event.exists_for_patient()\n"
+}

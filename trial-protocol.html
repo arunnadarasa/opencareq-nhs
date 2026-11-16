@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OPENCAREQ-SW-MSE (v0.9.0) — EVSI Stepped-Wedge NHS PCN Trial &amp; OpenSAFELY SDE Protocol</title>
+  <meta name="description" content="Pre-registered SPIRIT-AI, CONSORT-SW, and NHS DCB0160 Two-Stage Causal Trial Protocol (OPENCAREQ-SW-MSE): EVSI/ENBS-optimal 25-PCN Mid and South Essex Stepped-Wedge Cluster RCT and Zero-PID OpenSAFELY ehrQL Target-Trial Emulation." />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0b1517;
+      --bg-elevated: #101e21;
+      --bg-card: #142529;
+      --bg-card-alt: #0e1b1e;
+      --ink: #eef7f5;
+      --ink-muted: #9eb7b4;
+      --ink-dim: #6f8a87;
+      --signal: #38d6c4;
+      --signal-soft: rgba(56, 214, 196, 0.13);
+      --amber: #f4ae42;
+      --amber-soft: rgba(244, 174, 66, 0.14);
+      --ember: #f06a3b;
+      --ember-soft: rgba(240, 106, 59, 0.14);
+      --border: rgba(158, 183, 180, 0.18);
+      --border-strong: rgba(56, 214, 196, 0.45);
+      --radius: 12px;
+      --font-display: "Barlow Condensed", system-ui, sans-serif;
+      --font-sans: "Barlow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --max-w: 1260px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); color: var(--ink); font-family: var(--font-sans); line-height: 1.6; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 4%, rgba(56, 214, 196, 0.12), transparent 34%),
+        radial-gradient(circle at 88% 10%, rgba(244, 174, 66, 0.09), transparent 32%),
+        var(--bg);
+    }
+    a { color: var(--signal); text-decoration: none; }
+    a:hover { color: var(--amber); }
+    code {
+      font-family: var(--font-mono); font-size: 0.85em;
+      background: rgba(56, 214, 196, 0.1); color: #bfece6;
+      padding: 0.12rem 0.36rem; border-radius: 4px;
+    }
+    pre {
+      margin: 0; padding: 1rem 1.15rem; border-radius: 10px;
+      background: #081113; border: 1px solid var(--border);
+      font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.55;
+      color: #d9f3ef; overflow-x: auto; max-height: 390px;
+    }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.35rem; }
+    .site-nav {
+      position: sticky; top: 0; z-index: 60; backdrop-filter: blur(16px);
+      background: rgba(11, 21, 23, 0.92); border-bottom: 1px solid var(--border);
+    }
+    .site-nav-inner {
+      max-width: var(--max-w); margin: 0 auto; min-height: 60px; padding: 0.45rem 1.35rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; flex-wrap: nowrap;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 0.55rem; color: var(--ink); white-space: nowrap;
+      font-family: var(--font-display); font-weight: 800; font-size: 1.22rem; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .brand-mark {
+      display: inline-grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 6px;
+      background: linear-gradient(135deg, var(--signal), #1ca394); color: #061315; font-weight: 800;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0.22rem; flex-wrap: nowrap; font-size: 0.8rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.3rem 0.54rem; border-radius: 999px; white-space: nowrap; }
+    .nav-links a:hover { color: var(--ink); background: rgba(255,255,255,0.05); }
+    .nav-links a.btn-primary {
+      background: var(--signal); color: #061517; border: 1px solid var(--signal);
+      border-radius: 8px; font-weight: 800; padding: 0.34rem 0.74rem;
+      box-shadow: 0 2px 10px rgba(56, 214, 196, 0.24);
+    }
+    .nav-links a.btn-primary:hover { background: #4fe2d1; color: #061517; }
+    @media (max-width: 1020px) {
+      .site-nav-inner { flex-wrap: wrap; }
+      .nav-links { flex-wrap: wrap; }
+    }
+
+    section { padding: 2.3rem 0; border-bottom: 1px solid var(--border); }
+    .kicker { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--signal); margin: 0 0 0.35rem; }
+    h1 { font-family: var(--font-display); font-size: clamp(2.1rem, 4.1vw, 3.25rem); line-height: 1.04; margin: 0 0 0.75rem; }
+    h2 { font-family: var(--font-display); font-size: 1.95rem; margin: 0 0 0.4rem; }
+    h3 { font-family: var(--font-display); font-size: 1.3rem; margin: 0.2rem 0 0.45rem; }
+    .lead { font-size: 1.02rem; color: var(--ink-muted); max-width: 980px; margin: 0 0 1.2rem; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.95rem; }
+    .pill {
+      font-size: 0.74rem; font-weight: 700; padding: 0.22rem 0.65rem; border-radius: 999px;
+      border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: var(--ink-muted);
+    }
+    .pill-signal { color: var(--signal); background: var(--signal-soft); border-color: rgba(56,214,196,0.35); }
+    .pill-amber { color: var(--amber); background: var(--amber-soft); border-color: rgba(244,174,66,0.35); }
+    .pill-ember { color: var(--ember); background: var(--ember-soft); border-color: rgba(240,106,59,0.35); }
+
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.15rem; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.9rem; margin: 1rem 0; }
+    .kpi-num { font-family: var(--font-display); font-size: 1.95rem; font-weight: 800; color: var(--signal); line-height: 1.08; margin: 0.2rem 0; }
+    .kpi-meta { font-size: 0.8rem; color: var(--ink-muted); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer;
+      font-family: var(--font-sans); font-size: 0.82rem; font-weight: 700;
+      padding: 0.42rem 0.82rem; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--bg-elevated); color: var(--ink-muted);
+      transition: all 0.15s ease;
+    }
+    .btn:hover { color: var(--ink); border-color: var(--border-strong); }
+    .btn.active, .btn-teal {
+      background: var(--signal); color: #061517; border-color: var(--signal); font-weight: 800;
+    }
+    .btn-teal:hover { background: #4fe2d1; color: #061517; }
+
+    .sim-grid { display: grid; grid-template-columns: 330px 1fr; gap: 1.1rem; align-items: start; }
+    @media (max-width: 940px) { .sim-grid { grid-template-columns: 1fr; } }
+
+    .ctrl-group { margin-bottom: 0.9rem; }
+    .ctrl-lbl { display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 600; color: var(--ink); margin-bottom: 0.28rem; }
+    input[type="range"] { width: 100%; accent-color: var(--signal); cursor: pointer; }
+
+    .sw-grid-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card-alt); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th, td { padding: 0.5rem 0.65rem; border-bottom: 1px solid rgba(158, 183, 180, 0.12); text-align: left; }
+    th { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--ink-muted); background: rgba(255,255,255,0.03); }
+    tr.pcn-row { cursor: pointer; transition: background 0.12s ease; }
+    tr.pcn-row:hover, tr.pcn-row.selected { background: rgba(56, 214, 196, 0.1); }
+    .q-cell {
+      text-align: center; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+      border-radius: 4px; padding: 0.2rem 0.35rem;
+    }
+    .q-s2 { background: rgba(158, 183, 180, 0.12); color: var(--ink-muted); }
+    .q-s3 { background: rgba(56, 214, 196, 0.22); color: var(--signal); border: 1px solid rgba(56, 214, 196, 0.4); }
+    .q-s3-hi { background: rgba(244, 174, 66, 0.22); color: var(--amber); border: 1px solid rgba(244, 174, 66, 0.45); }
+
+    .callout-warn {
+      background: var(--amber-soft); border: 1px solid rgba(244,174,66,0.38); border-left: 4px solid var(--amber);
+      border-radius: 10px; padding: 0.9rem 1.15rem; font-size: 0.85rem; color: #fce7c2; margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">OC</span>
+        <span>OPENCAREQ <span style="color:var(--signal);font-size:0.86rem;">TRIAL v0.9</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Trial Protocol Navigation">
+        <a href="index.html">← Main Portal</a>
+        <a href="#evsi-simulator">EVSI &amp; Power Simulator</a>
+        <a href="#mse-rollout">25-PCN MSE Schedule</a>
+        <a href="#stage0-opensafely">Stage-0 OpenSAFELY</a>
+        <a href="#spirit-dmec">SPIRIT-AI &amp; Stopping Rules</a>
+        <a href="safety-case.html">CSC-QT Pack</a>
+        <a class="btn-primary" href="OpenCareQ_Trial_Protocol.pdf" download="OpenCareQ_Trial_Protocol.pdf">⬇ Protocol PDF</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <div class="pill-row">
+          <span class="pill pill-signal">Pre-Registered SPIRIT-AI + CONSORT-SW Protocol (v0.9.0)</span>
+          <span class="pill pill-amber">#1 SAVI EVPPI Target: £4.174M Core20 Retention (75.3% of EVPI)</span>
+          <span class="pill">NHS Mid &amp; South Essex ICB (E54000026 · 25 PCNs · 136 GP · 1.22M Pop)</span>
+          <span class="pill">NIST FIPS 204 ML-DSA-65 Receipt: 39504cf3</span>
+        </div>
+
+        <h1>OPENCAREQ-SW-MSE: EVSI-Optimal Stepped-Wedge PCN Trial &amp; Zero-PID OpenSAFELY Target-Trial Protocol</h1>
+        <p class="lead">
+          Resolves the single largest commissioning uncertainty in <code>OpenCareQ</code>—whether pairing ring-fenced <strong>Core20 bilingual social-prescribing link workers &amp; warm-home co-production (Strategy S3)</strong> with <strong>CKM + NICE DG59 clinical pharmacist SMR (Strategy S2)</strong> causally sustains 90-day safe prescribing persistence and prevents acute hospitalisations—without immortal-time bias, confounding by indication, or patient-identifiable data export (<code>phi_present = False</code>).
+        </p>
+
+        <div style="display:flex;gap:0.55rem;flex-wrap:wrap;margin-bottom:1.1rem;">
+          <a class="btn btn-teal" href="OpenCareQ_Trial_Protocol.pdf" download="OpenCareQ_Trial_Protocol.pdf">⬇ Download Protocol III PDF (11 pp.)</a>
+          <a class="btn" href="index.html#paper-preview-panel">📖 Read Inline in 3-Paper Viewer</a>
+          <a class="btn" href="receipts/opencareq_public_trial_protocol_summary.json" target="_blank" rel="noopener">✓ Sealed v0.9 JSON (39504cf3…)</a>
+          <a class="btn" href="#stage0-opensafely">⚡ Inspect OpenSAFELY ehrQL</a>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="card">
+            <div class="kpi-meta">Stage-1A MSE (25 PCNs) Net Benefit</div>
+            <div class="kpi-num">+£2.449M ENBS</div>
+            <div class="kpi-meta">EVSI = £3.459M vs TC = £1.010M · <strong>2.43x RORI</strong></div>
+          </div>
+          <div class="card">
+            <div class="kpi-meta">EoE Regional Optimum (MSE 25 + Norfolk 20)</div>
+            <div class="kpi-num" style="color:var(--amber);">J* = 45 PCNs</div>
+            <div class="kpi-meta">Global peak ENBS = <strong>+£2.575M</strong> (80.3% of Joint EVPPI)</div>
+          </div>
+          <div class="card">
+            <div class="kpi-meta">Hussey–Hughes (2007) 25-PCN Power</div>
+            <div class="kpi-num">98.97%</div>
+            <div class="kpi-meta">At ICC = 0.015 (80% MD-RRR = 14.42% · HiGHS |z| ≤ 0.216)</div>
+          </div>
+          <div class="card">
+            <div class="kpi-meta">Stage-0 Clone–Censor–Weight Recovery</div>
+            <div class="kpi-num">HR 0.7995</div>
+            <div class="kpi-meta">95% CI [0.726, 0.880] on true 0.780 · NCO Gate = 0.954 (PASS)</div>
+          </div>
+        </div>
+
+        <div class="callout-warn">
+          <strong>Pre-Registration &amp; Statutory NHS Governance Boundary:</strong> <code>OPENCAREQ-SW-MSE</code> is a pre-registered Non-SaMD research protocol (not a certified medical device; zero autonomous prescribing; <code>runtime_agent_actions = 0</code>). Prospective enrolment requires NHS HRA / REC ethical approval, OpenSAFELY / East of England SDE IG approval, and local <code>NHS DCB0160</code> sign-off by an appointed Clinical Safety Officer. Mentorship acknowledgement to <strong>Dr Keith Grimes</strong> (co-creator with Dr Youssof Oskrochi of <a href="https://csc-qt.curistica.com/" target="_blank" rel="noopener">CSC-QT</a>, <code>CC BY 4.0</code>) does not constitute statutory CSO sign-off; all seven hazards (<code>H-OCQ-01..07</code>) remain <strong>OPEN</strong>.
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE EVSI / ENBS & HUSSEY-HUGHES POWER SIMULATOR -->
+    <section id="evsi-simulator">
+      <div class="container">
+        <p class="kicker">01 · Interactive Value-of-Information &amp; Power Engine</p>
+        <h2>Strong et al. (2015) EVSI / ENBS &amp; Hussey–Hughes (2007) Stepped-Wedge Explorer</h2>
+        <p class="lead">
+          Adjust the intra-cluster correlation (<code>ρ_ICC</code>), NIHR per-PCN site cost, or quarterly SMR review volume to test how sample-size economics and stepped-wedge power respond in real time.
+        </p>
+
+        <div class="sim-grid">
+          <div class="card">
+            <h3>Trial Assumptions</h3>
+            <div class="ctrl-group">
+              <div class="ctrl-lbl"><span>Intra-Cluster Correlation (ρ_ICC)</span><code id="iccVal">0.015</code></div>
+              <input id="iccRange" type="range" min="5" max="50" step="1" value="15" />
+            </div>
+            <div class="ctrl-group">
+              <div class="ctrl-lbl"><span>NIHR Per-PCN Trial Cost</span><code id="costVal">£26k / PCN</code></div>
+              <input id="costRange" type="range" min="16" max="55" step="1" value="26" />
+            </div>
+            <div class="ctrl-group">
+              <div class="ctrl-lbl"><span>Eligible CKM SMRs / PCN / Quarter</span><code id="mVal">180 pts</code></div>
+              <input id="mRange" type="range" min="80" max="260" step="10" value="180" />
+            </div>
+
+            <div style="border-top:1px solid var(--border);padding-top:0.8rem;margin-top:0.6rem;display:grid;gap:0.55rem;">
+              <div>
+                <div class="kpi-meta">MSE 25-PCN Stepped-Wedge Power (22% RRR)</div>
+                <div id="liveMsePower" style="font-family:var(--font-display);font-size:1.65rem;font-weight:800;color:var(--signal);">98.97%</div>
+                <div id="liveMseMdes" class="kpi-meta">80%-Power Min Detectable RRR: 14.42%</div>
+              </div>
+              <div>
+                <div class="kpi-meta">MSE 25-PCN ENBS &amp; Research Return</div>
+                <div id="liveMseEnbs" style="font-family:var(--font-display);font-size:1.65rem;font-weight:800;color:var(--amber);">+£2.449M (2.43x RORI)</div>
+                <div id="liveOptJ" class="kpi-meta">Global ENBS Peak: J* = 45 PCNs (+£2.575M)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:1rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem;">
+              <div style="font-family:var(--font-mono);font-size:0.76rem;color:var(--ink-muted);">
+                10-YR NICE 3.5% DISCOUNTED VALUE (£M) ACROSS CLUSTER SAMPLE SIZE J = 5..143 PCNS
+              </div>
+              <div id="evsiHoverBar" style="font-family:var(--font-mono);font-size:0.75rem;color:var(--signal);">
+                Hover any cluster marker on the chart for exact EVSI / TC / ENBS telemetry
+              </div>
+            </div>
+            <svg id="evsiSvg" viewBox="0 0 760 320" style="width:100%;height:auto;max-height:335px;display:block;background:#0a1416;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="Interactive EVSI, Trial Cost, and ENBS Curve"></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 25-PCN MID AND SOUTH ESSEX STEPPED-WEDGE MATRIX -->
+    <section id="mse-rollout">
+      <div class="container">
+        <p class="kicker">02 · Stratified SciPy HiGHS MILP Allocation (-75.1% Covariate Imbalance)</p>
+        <h2>25-PCN NHS Mid and South Essex Stepped-Wedge Schedule (Q0 → Q5)</h2>
+        <p class="lead">
+          Every quarterly crossover wave (<code>Q1</code>–<code>Q5</code>) onboards exactly 5 PCNs balanced across IMD 2025 quintiles, Place Alliances, list size, 80+ frailty, and January winter macrolide surge. Filter by statutory Place Alliance or click any PCN row to inspect local parameters.
+        </p>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.6rem;margin-bottom:0.85rem;">
+          <div id="allianceFilterBar" style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+            <button type="button" class="btn active" data-al="ALL">All 25 MSE PCNs</button>
+            <button type="button" class="btn" data-al="HOTSPOT">★ Core20 / Coastal (9)</button>
+            <button type="button" class="btn" data-al="Mid Essex">Mid Essex (8)</button>
+            <button type="button" class="btn" data-al="Basildon & Brentwood">Basildon &amp; Brentwood (6)</button>
+            <button type="button" class="btn" data-al="Castle Point & Rochford">Castle Point &amp; Rochford (4)</button>
+            <button type="button" class="btn" data-al="Southend">Southend (3)</button>
+            <button type="button" class="btn" data-al="Thurrock">Thurrock (4)</button>
+          </div>
+          <div id="selectedPcnBanner" style="font-family:var(--font-mono);font-size:0.76rem;color:var(--amber);">
+            Showing all 25 statutory PCNs (136 GP practices · 1,218,139 registered patients)
+          </div>
+        </div>
+
+        <div class="sw-grid-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Wave</th>
+                <th>ODS</th>
+                <th>Primary Care Network</th>
+                <th>Place Alliance</th>
+                <th>GP</th>
+                <th>Reg. Pop</th>
+                <th>IMD 2025</th>
+                <th>Q0</th>
+                <th>Q1</th>
+                <th>Q2</th>
+                <th>Q3</th>
+                <th>Q4</th>
+                <th>Q5</th>
+              </tr>
+            </thead>
+            <tbody id="swTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE-0 OPENSAFELY TARGET-TRIAL EMULATION & EHRQL -->
+    <section id="stage0-opensafely">
+      <div class="container">
+        <p class="kicker">03 · Stage-0 Pre-Trial Observational Gate (PMID: 26994063 &amp; 32640463)</p>
+        <h2>Hernán–Robins Clone–Censor–Weight (CCW) &amp; Zero-PID OpenSAFELY ehrQL</h2>
+        <p class="lead">
+          Before prospective trial launch, Stage 0 executes inside OpenSAFELY / East of England NHS SDE to eliminate opposite-sign observational biases and verify Negative-Control Outcome (<code>NCO</code>) neutrality.
+        </p>
+
+        <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:1.1rem;align-items:start;">
+          <div class="card">
+            <h3>Observational Bias Falsification (True Causal HR = 0.780)</h3>
+            <svg viewBox="0 0 500 245" style="width:100%;height:auto;background:#0a1416;border-radius:8px;border:1px solid var(--border);margin-bottom:0.75rem;" role="img" aria-label="Target Trial CCW Forest Plot">
+              <line x1="218" y1="20" x2="218" y2="205" stroke="#38d6c4" stroke-width="2" stroke-dasharray="5,4" />
+              <text x="223" y="32" fill="#38d6c4" font-size="10" font-family="JetBrains Mono">True HR = 0.78</text>
+              <line x1="295" y1="20" x2="295" y2="205" stroke="#6f8a87" stroke-width="1.3" stroke-dasharray="2,3" />
+              <text x="299" y="32" fill="#9eb7b4" font-size="10" font-family="JetBrains Mono">Null 1.00</text>
+
+              <!-- 1. Immortal time -->
+              <text x="14" y="68" fill="#eef7f5" font-size="11" font-weight="700">1. Naive Ever-Referred</text>
+              <text x="14" y="82" fill="#9eb7b4" font-size="9.5">(Immortal-Time Biased)</text>
+              <line x1="137" y1="72" x2="169" y2="72" stroke="#f4ae42" stroke-width="3" />
+              <circle cx="152" cy="72" r="5.5" fill="#f4ae42" />
+              <text x="152" y="57" text-anchor="middle" fill="#f4ae42" font-size="10" font-family="JetBrains Mono">0.593 [0.55, 0.64] REJECT</text>
+
+              <!-- 2. Confounded landmark -->
+              <text x="14" y="128" fill="#eef7f5" font-size="11" font-weight="700">2. Unadjusted 28d</text>
+              <text x="14" y="142" fill="#9eb7b4" font-size="9.5">(Core20/Frailty Confounded)</text>
+              <line x1="344" y1="132" x2="418" y2="132" stroke="#f06a3b" stroke-width="3" />
+              <circle cx="380" cy="132" r="5.5" fill="#f06a3b" />
+              <text x="380" y="117" text-anchor="middle" fill="#f06a3b" font-size="10" font-family="JetBrains Mono">1.242 [1.14, 1.35] REJECT</text>
+
+              <!-- 3. CCW -->
+              <text x="14" y="186" fill="#eef7f5" font-size="11" font-weight="700">3. Hernán–Robins CCW</text>
+              <text x="14" y="200" fill="#38d6c4" font-size="9.5">(Stabilized IPTW × IPCW)</text>
+              <line x1="199" y1="190" x2="253" y2="190" stroke="#38d6c4" stroke-width="3.2" />
+              <circle cx="225" cy="190" r="6" fill="#38d6c4" />
+              <text x="235" y="175" text-anchor="middle" fill="#38d6c4" font-size="10" font-weight="700" font-family="JetBrains Mono">0.800 [0.73, 0.88] COVERS TRUTH</text>
+
+              <line x1="115" y1="212" x2="465" y2="212" stroke="rgba(158,183,180,0.3)" />
+              <text x="120" y="228" fill="#6f8a87" font-size="9.5" font-family="JetBrains Mono">0.50</text>
+              <text x="218" y="228" text-anchor="middle" fill="#6f8a87" font-size="9.5" font-family="JetBrains Mono">0.78</text>
+              <text x="295" y="228" text-anchor="middle" fill="#6f8a87" font-size="9.5" font-family="JetBrains Mono">1.00</text>
+              <text x="400" y="228" text-anchor="middle" fill="#6f8a87" font-size="9.5" font-family="JetBrains Mono">1.30</text>
+            </svg>
+            <div style="font-size:0.83rem;color:var(--ink-muted);">
+              <strong>Automated NCO Gate (Accidental Limb Fracture):</strong> Clean cohort achieves <code>HR_NCO = 0.9539</code> (within <code>[0.923, 1.083]</code> → <strong style="color:var(--signal);">PASS</strong>), whereas injected healthy-adherer bias yields <code>HR_NCO = 0.7765</code> (<strong style="color:var(--ember);">BLOCKED</strong> before corrupting PSA priors).
+            </div>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.55rem;">
+              <h3 style="margin:0;">AST-Verified Zero-PID OpenSAFELY ehrQL</h3>
+              <button id="copyEhrqlBtn" type="button" class="btn">Copy ehrQL Spec</button>
+            </div>
+            <pre id="ehrqlCode">from ehrql import codelist_from_csv, create_dataset, days, minimum_of
+from ehrql.tables.tpp import (
+    addresses, apcs, clinical_events, medications, patients, practice_registrations
+)
+
+dataset = create_dataset()
+dataset.configure_dummy_data(population_size=12000)
+
+smr_codes = codelist_from_csv("codelists/nhse-structured-medication-review-snomed.csv", column="code")
+sp_referral_codes = codelist_from_csv("codelists/nhse-dapb4066-social-prescribing-referral.csv", column="code")
+cyp3a4_doac_dmd = codelist_from_csv("codelists/opencareq-cyp3a4-doac-sglt2i-dmd.csv", column="code")
+acute_instability_excl = codelist_from_csv("codelists/opencareq-dcb0129-h01-acute-excl.csv", column="code")
+nco_fracture_codes = codelist_from_csv("codelists/opencareq-nco-extremity-fracture.csv", column="code")
+
+first_smr = (
+    clinical_events.where(clinical_events.snomedct_code.is_in(smr_codes))
+    .where(clinical_events.date.is_on_or_between("2025-04-01", "2026-03-31"))
+    .sort_by(clinical_events.date).first_for_patient()
+)
+index_date = first_smr.date
+dataset.define_population(
+    first_smr.exists_for_patient()
+    &amp; (patients.age_on(index_date) &gt;= 18)
+    &amp; practice_registrations.for_patient_on(index_date).exists_for_patient()
+    &amp; medications.where(medications.dmd_code.is_in(cyp3a4_doac_dmd)
+        &amp; medications.date.is_on_or_between(index_date - days(90), index_date)).exists_for_patient()
+    &amp; (~clinical_events.where(clinical_events.snomedct_code.is_in(acute_instability_excl)
+        &amp; clinical_events.date.is_on_or_between(index_date - days(7), index_date)).exists_for_patient())
+)
+sp_ref = clinical_events.where(clinical_events.snomedct_code.is_in(sp_referral_codes)).where(
+    clinical_events.date.is_on_or_between(index_date, index_date + days(180))
+).sort_by(clinical_events.date).first_for_patient()
+dataset.initiated_within_28d_grace = sp_ref.date.is_on_or_between(index_date, index_date + days(28))
+dataset.imd_quintile = addresses.for_patient_on(index_date).imd_quintile</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPIRIT-AI & DMEC STOPPING RULES -->
+    <section id="spirit-dmec">
+      <div class="container">
+        <p class="kicker">04 · SPIRIT-AI (PMID: 32908284) &amp; CSC-QT DCB0160 Safety Governance</p>
+        <h2>Independent DMEC &amp; Appointed CSO Trial Stopping Triggers</h2>
+        <div class="sw-grid-wrap" style="margin-top:0.8rem;">
+          <table>
+            <thead>
+              <tr>
+                <th>Trigger / Item</th>
+                <th>Hazard &amp; Standard Link</th>
+                <th>Operational Threshold &amp; Mandatory CSO / DMEC Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>SPIRIT-AI 11a(i)</code></td>
+                <td>Frozen Lock (<code>K-OCQ-04a</code>)</td>
+                <td>Cryptographically pinned <code>OpenCareQ v0.9.0</code> standing-order VM (<code>0</code> runtime LLM calls; <code>ML-DSA-65</code> receipt <code>39504cf3</code>).</td>
+              </tr>
+              <tr>
+                <td><code>SPIRIT-AI 11a(iv)</code></td>
+                <td>Human Control (<code>H-OCQ-02</code>)</td>
+                <td>GPhC pharmacists &amp; GMC GPs retain 100% prescribing sign-off; mandatory biological <code>NICE DG59</code> genotyping prior to antiplatelet switch (<code>G7</code>).</td>
+              </tr>
+              <tr>
+                <td><code>STOP-01</code></td>
+                <td>Clinical Harm (<code>H-OCQ-01..03</code>)</td>
+                <td>Any serious adverse drug event attributable to shadow decision flag → <strong>immediate 24-hour trial pause &amp; CSO root-cause audit</strong>.</td>
+              </tr>
+              <tr>
+                <td><code>STOP-02</code></td>
+                <td>Core20 Parity (<code>H-OCQ-04</code> / <code>G6</code>)</td>
+                <td>Quarterly <code>Core20</code>-to-affluent SMR/link-worker slot ratio <code>&lt; 0.85</code> in any active wave → <strong>mandatory slot rebalance within 14 days</strong>.</td>
+              </tr>
+              <tr>
+                <td><code>STOP-03</code></td>
+                <td>Conformal Drift (<code>H-OCQ-05</code>)</td>
+                <td>Rolling 90-day empirical <code>ACI</code> pathway coverage <code>&lt; 85%</code> (nominal 90%) → <strong>recalibrate conformal α_t or revert to manual checklist</strong>.</td>
+              </tr>
+              <tr>
+                <td><code>STOP-04..06</code></td>
+                <td>IG &amp; Handover (<code>H-OCQ-06, 07</code>)</td>
+                <td>Zero unsuppressed SDE cells (<code>&lt; 10</code> blocked); <code>≥ 30%</code> workforce turnover triggers <code>FORK_PROTOCOL</code> handover &amp; 30-day BNF/KDIGO step-down SOP.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="padding:1.8rem 0;color:var(--ink-muted);font-size:0.82rem;">
+    <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;">
+      <div>© 2026 Arun Nadarasa · Apache-2.0 / CC BY 4.0 · UK OGL v3.0 · Pre-Registered Non-SaMD Research Protocol (v0.9.0)</div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="index.html">Main Portal</a>
+        <a href="OpenCareQ_Trial_Protocol.pdf" target="_blank" rel="noopener">Protocol III PDF</a>
+        <a href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">Paper I PDF</a>
+        <a href="OpenCareQ_Moth_Paper.pdf" target="_blank" rel="noopener">Paper II PDF</a>
+        <a href="safety-case.html">3-Doc CSC-QT Safety Case</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const MSE_PCN_SCHEDULE = [
+      { w: 1, ods: "U15488", name: "East Basildon PCN", al: "Basildon & Brentwood", gp: 4, pop: 27102, imd: 34.55, hi: true, fr: "16.3%", mbi: "1.717x" },
+      { w: 1, ods: "U28765", name: "ASOP PCN", al: "Thurrock", gp: 5, pop: 34688, imd: 24.36, hi: true, fr: "11.1%", mbi: "1.367x" },
+      { w: 1, ods: "U18990", name: "Maldon and Witham PCN", al: "Mid Essex", gp: 6, pop: 59919, imd: 16.42, hi: false, fr: "24.9%", mbi: "1.500x" },
+      { w: 1, ods: "U99739", name: "Chelmsford City Health PCN", al: "Mid Essex", gp: 5, pop: 45370, imd: 12.96, hi: false, fr: "23.1%", mbi: "1.630x" },
+      { w: 1, ods: "U79723", name: "Brentwood PCN", al: "Basildon & Brentwood", gp: 8, pop: 81440, imd: 11.32, hi: false, fr: "28.3%", mbi: "1.396x" },
+      { w: 2, ods: "U17794", name: "Southend Victoria PCN", al: "Southend", gp: 9, pop: 65968, imd: 32.93, hi: true, fr: "17.8%", mbi: "1.515x" },
+      { w: 2, ods: "U80679", name: "Braintree PCN Ltd", al: "Mid Essex", gp: 5, pop: 41872, imd: 17.63, hi: false, fr: "21.2%", mbi: "1.471x" },
+      { w: 2, ods: "U49929", name: "Rochford PCN", al: "Castle Point & Rochford", gp: 5, pop: 41698, imd: 16.65, hi: false, fr: "25.7%", mbi: "1.556x" },
+      { w: 2, ods: "U98530", name: "Stanford-Le-Hope PCN", al: "Thurrock", gp: 5, pop: 33041, imd: 15.28, hi: false, fr: "18.6%", mbi: "1.531x" },
+      { w: 2, ods: "U30335", name: "Rayleigh and District PCN", al: "Castle Point & Rochford", gp: 5, pop: 57223, imd: 8.88, hi: false, fr: "27.1%", mbi: "1.462x" },
+      { w: 3, ods: "U55146", name: "Central Basildon PCN", al: "Basildon & Brentwood", gp: 6, pop: 52952, imd: 31.07, hi: true, fr: "16.7%", mbi: "1.547x" },
+      { w: 3, ods: "U84454", name: "Canvey PCN", al: "Castle Point & Rochford", gp: 6, pop: 41536, imd: 25.79, hi: true, fr: "22.0%", mbi: "1.634x" },
+      { w: 3, ods: "U68127", name: "Grays PCN", al: "Thurrock", gp: 8, pop: 50952, imd: 16.68, hi: false, fr: "13.3%", mbi: "1.541x" },
+      { w: 3, ods: "U48176", name: "Chelmer PCN", al: "Mid Essex", gp: 5, pop: 45551, imd: 13.04, hi: false, fr: "23.1%", mbi: "1.473x" },
+      { w: 3, ods: "U91979", name: "Billericay PCN", al: "Basildon & Brentwood", gp: 5, pop: 41635, imd: 8.66, hi: false, fr: "26.6%", mbi: "1.422x" },
+      { w: 4, ods: "U02453", name: "Southend West Central PCN", al: "Southend", gp: 5, pop: 35245, imd: 27.67, hi: true, fr: "21.9%", mbi: "1.579x" },
+      { w: 4, ods: "U72156", name: "West Basildon PCN", al: "Basildon & Brentwood", gp: 5, pop: 53364, imd: 25.83, hi: true, fr: "15.5%", mbi: "1.488x" },
+      { w: 4, ods: "U09727", name: "Dengie & South Woodham Ferrers PCN", al: "Mid Essex", gp: 6, pop: 51079, imd: 15.72, hi: false, fr: "21.1%", mbi: "1.421x" },
+      { w: 4, ods: "U92558", name: "Wickford PCN", al: "Basildon & Brentwood", gp: 4, pop: 39402, imd: 13.19, hi: false, fr: "24.1%", mbi: "1.680x" },
+      { w: 4, ods: "U12553", name: "Aegros Health PCN", al: "Mid Essex", gp: 4, pop: 63438, imd: 12.73, hi: false, fr: "22.3%", mbi: "1.087x" },
+      { w: 5, ods: "U06243", name: "Tilbury and Chadwell PCN", al: "Thurrock", gp: 9, pop: 71897, imd: 26.36, hi: true, fr: "13.4%", mbi: "1.491x" },
+      { w: 5, ods: "U04545", name: "Southend East PCN", al: "Southend", gp: 4, pop: 36741, imd: 25.30, hi: true, fr: "23.5%", mbi: "1.455x" },
+      { w: 5, ods: "U87998", name: "Chelmsford West PCN", al: "Mid Essex", gp: 4, pop: 40540, imd: 15.74, hi: false, fr: "22.4%", mbi: "1.448x" },
+      { w: 5, ods: "U84465", name: "Colne Valley PCN", al: "Mid Essex", gp: 7, pop: 57530, imd: 15.54, hi: false, fr: "25.1%", mbi: "1.423x" },
+      { w: 5, ods: "U27924", name: "Benfleet PCN", al: "Castle Point & Rochford", gp: 5, pop: 47956, imd: 11.43, hi: false, fr: "26.3%", mbi: "1.419x" }
+    ];
+
+    const BASE_EVSI_CURVE = [
+      { j: 5, evsi: 1.381, label: "1-Alliance Pilot (5 PCNs)" },
+      { j: 10, evsi: 2.188, label: "2-Alliance Design (10 PCNs)" },
+      { j: 15, evsi: 2.764, label: "3-Alliance Sub-ICB (15 PCNs)" },
+      { j: 20, evsi: 3.161, label: "Norfolk Scale (20 PCNs)" },
+      { j: 25, evsi: 3.459, label: "Stage-1A MSE Single-ICB (25 PCNs)" },
+      { j: 32, evsi: 3.753, label: "NCL Single-ICB (32 PCNs)" },
+      { j: 45, evsi: 4.105, label: "Stage-1B EoE Dual-ICB (MSE 25 + Norfolk 20)" },
+      { j: 57, evsi: 4.302, label: "MSE + NCL Consortium (57 PCNs)" },
+      { j: 85, evsi: 4.544, label: "Regional 3-ICB (85 PCNs)" },
+      { j: 115, evsi: 4.653, label: "4-ICB Trial (115 PCNs)" },
+      { j: 143, evsi: 4.699, label: "5-ICB Oversized Trial (143 PCNs)" }
+    ];
+
+    function normCdf(x) {
+      const t = 1 / (1 + 0.2316419 * Math.abs(x));
+      const d = 0.3989423 * Math.exp(-x * x / 2);
+      const p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))));
+      return x > 0 ? 1 - p : p;
+    }
+
+    function husseyHughesSe(nClusters, mPerQ, icc) {
+      const S = 5, T = 6;
+      const cps = nClusters / S;
+      let U = 0, W = 0, V = 0;
+      for (let j = 0; j < T; j++) {
+        const c = cps * j;
+        U += c;
+        W += c * c;
+      }
+      for (let s = 1; s <= S; s++) {
+        const r = S + 1 - s;
+        V += cps * r * r;
+      }
+      const p0 = 0.142, p1 = 0.142 * 0.78;
+      const pbar = 0.5 * (p0 + p1);
+      const sige2 = pbar * (1 - pbar);
+      const tau2 = sige2 * icc / (1 - icc);
+      const sigc2 = sige2 / mPerQ;
+      const denom = (nClusters * U - W) * sigc2 + (U * U + nClusters * T * U - T * W - nClusters * V) * tau2;
+      const varEq = (nClusters * sigc2 * (sigc2 + T * tau2)) / denom;
+      const alphaCl = (mPerQ * icc) / (1 + (mPerQ - 1) * icc);
+      const cvFactor = 1 + (0.2895 * 0.2895) * (1 - alphaCl * (1 - alphaCl));
+      return Math.sqrt(varEq * cvFactor);
+    }
+
+    function renderEvsiSimulator() {
+      const icc = parseInt(document.getElementById("iccRange").value, 10) / 1000.0;
+      const costPerPcnK = parseInt(document.getElementById("costRange").value, 10);
+      const mPts = parseInt(document.getElementById("mRange").value, 10);
+
+      document.getElementById("iccVal").textContent = icc.toFixed(3);
+      document.getElementById("costVal").textContent = `£${costPerPcnK}k / PCN`;
+      document.getElementById("mVal").textContent = `${mPts} pts`;
+
+      const se25 = husseyHughesSe(25, mPts, icc);
+      const seNom = husseyHughesSe(25, 180, 0.015);
+      const deltaAbs = 0.142 * 0.22;
+      const pwr25 = 100 * (normCdf(deltaAbs / se25 - 1.95996) + normCdf(-deltaAbs / se25 - 1.95996));
+      const mdes80 = Math.min(99.0, 100 * ((1.95996 + 0.84162) * se25) / 0.142);
+
+      const precRatio = seNom / se25;
+      const fixedM = 0.36;
+      const perPcnM = costPerPcnK / 1000.0;
+
+      const pts = BASE_EVSI_CURVE.map(r => {
+        const adjEvsi = Math.min(5.05, r.evsi * Math.pow(precRatio, 0.22));
+        const tc = fixedM + perPcnM * r.j;
+        const enbs = adjEvsi - tc;
+        return { ...r, evsiAdj: adjEvsi, tc, enbs, rori: enbs / tc };
+      });
+
+      const mseRow = pts.find(p => p.j === 25);
+      const bestRow = pts.reduce((a, b) => (b.enbs > a.enbs ? b : a), pts[0]);
+
+      document.getElementById("liveMsePower").textContent = `${pwr25.toFixed(2)}%`;
+      document.getElementById("liveMseMdes").textContent = `80%-Power Min Detectable RRR: ${mdes80.toFixed(2)}%`;
+      document.getElementById("liveMseEnbs").textContent = `${mseRow.enbs >= 0 ? "+" : ""}£${mseRow.enbs.toFixed(3)}M (${mseRow.rori.toFixed(2)}x RORI)`;
+      document.getElementById("liveOptJ").textContent = `Global ENBS Peak: J* = ${bestRow.j} PCNs (${bestRow.enbs >= 0 ? "+" : ""}£${bestRow.enbs.toFixed(3)}M)`;
+
+      const svg = document.getElementById("evsiSvg");
+      const W = 760, H = 320, padL = 54, padR = 24, padT = 24, padB = 38;
+      const pw = W - padL - padR, ph = H - padT - padB;
+      const xOf = j => padL + (j / 150) * pw;
+      const yOf = v => padT + ph - ((v + 0.8) / 6.6) * ph;
+
+      const yZero = yOf(0).toFixed(1);
+      const yEvppi = yOf(5.111).toFixed(1);
+
+      const polyEvsi = pts.map(p => `${xOf(p.j).toFixed(1)},${yOf(p.evsiAdj).toFixed(1)}`).join(" ");
+      const polyTc = pts.map(p => `${xOf(p.j).toFixed(1)},${yOf(p.tc).toFixed(1)}`).join(" ");
+      const polyEnbs = pts.map(p => `${xOf(p.j).toFixed(1)},${yOf(p.enbs).toFixed(1)}`).join(" ");
+
+      let gridHtml = "";
+      for (const yv of [0, 1, 2, 3, 4, 5]) {
+        const yy = yOf(yv).toFixed(1);
+        gridHtml += `<line x1="${padL}" y1="${yy}" x2="${W - padR}" y2="${yy}" stroke="rgba(158,183,180,0.12)" />`;
+        gridHtml += `<text x="${padL - 8}" y="${Number(yy) + 4}" text-anchor="end" fill="#6f8a87" font-size="10" font-family="JetBrains Mono">£${yv}M</text>`;
+      }
+      for (const xv of [5, 25, 45, 57, 85, 115, 143]) {
+        const xx = xOf(xv).toFixed(1);
+        gridHtml += `<text x="${xx}" y="${H - 12}" text-anchor="middle" fill="#9eb7b4" font-size="10" font-family="JetBrains Mono">${xv}</text>`;
+      }
+
+      const dotsHtml = pts.map((p, idx) => `
+        <circle cx="${xOf(p.j).toFixed(1)}" cy="${yOf(p.enbs).toFixed(1)}" r="${p.j === 25 || p.j === bestRow.j ? 6.2 : 4.4}"
+          fill="${p.j === bestRow.j ? "#f4ae42" : "#38d6c4"}" stroke="#061517" stroke-width="1.5"
+          style="cursor:pointer;" data-idx="${idx}" />
+      `).join("");
+
+      svg.innerHTML = `
+        ${gridHtml}
+        <line x1="${padL}" y1="${yZero}" x2="${W - padR}" y2="${yZero}" stroke="rgba(255,255,255,0.28)" stroke-dasharray="3,3" />
+        <line x1="${padL}" y1="${yEvppi}" x2="${W - padR}" y2="${yEvppi}" stroke="#f4ae42" stroke-width="1.5" stroke-dasharray="5,4" />
+        <text x="${W - padR - 6}" y="${Number(yEvppi) - 6}" text-anchor="end" fill="#f4ae42" font-size="10" font-family="JetBrains Mono">Joint Core20 EVPPI = £5.111M</text>
+
+        <line x1="${xOf(25).toFixed(1)}" y1="${padT}" x2="${xOf(25).toFixed(1)}" y2="${H - padB}" stroke="rgba(56,214,196,0.45)" stroke-dasharray="4,4" />
+        <text x="${xOf(25) + 5}" y="${padT + 13}" fill="#38d6c4" font-size="10" font-family="JetBrains Mono">MSE 25 PCNs</text>
+
+        <polyline fill="none" stroke="#4ea8de" stroke-width="2.4" points="${polyEvsi}" />
+        <polyline fill="none" stroke="#f06a3b" stroke-width="2" stroke-dasharray="6,4" points="${polyTc}" />
+        <polyline fill="none" stroke="#38d6c4" stroke-width="3" points="${polyEnbs}" />
+        ${dotsHtml}
+
+        <rect x="${padL + 10}" y="${padT + 8}" width="225" height="54" rx="6" fill="rgba(11,21,23,0.88)" stroke="rgba(158,183,180,0.22)" />
+        <text x="${padL + 20}" y="${padT + 24}" fill="#4ea8de" font-size="10" font-weight="700">— Effective Population EVSI(J)</text>
+        <text x="${padL + 20}" y="${padT + 39}" fill="#38d6c4" font-size="10" font-weight="700">— Net Benefit ENBS(J) = EVSI - TC</text>
+        <text x="${padL + 20}" y="${padT + 54}" fill="#f06a3b" font-size="10" font-weight="700">-- NIHR Pragmatic Trial Cost TC(J)</text>
+      `;
+
+      svg.querySelectorAll("circle[data-idx]").forEach(el => {
+        el.addEventListener("mouseenter", () => {
+          const p = pts[parseInt(el.getAttribute("data-idx"), 10)];
+          document.getElementById("evsiHoverBar").textContent =
+            `${p.label}: EVSI = £${p.evsiAdj.toFixed(3)}M | TC = £${p.tc.toFixed(3)}M | ENBS = ${p.enbs >= 0 ? "+" : ""}£${p.enbs.toFixed(3)}M (${p.rori.toFixed(2)}x RORI)`;
+        });
+      });
+    }
+
+    let activeAlliance = "ALL";
+    function renderSwTable() {
+      const tbody = document.getElementById("swTableBody");
+      const filtered = MSE_PCN_SCHEDULE.filter(r => {
+        if (activeAlliance === "ALL") return true;
+        if (activeAlliance === "HOTSPOT") return r.hi;
+        return r.al === activeAlliance;
+      });
+
+      tbody.innerHTML = filtered.map(r => {
+        let qCells = "";
+        for (let q = 0; q <= 5; q++) {
+          const isS3 = q >= r.w;
+          const cls = isS3 ? (r.hi ? "q-s3-hi" : "q-s3") : "q-s2";
+          const txt = isS3 ? (r.hi ? "S3★" : "S3") : "S2";
+          qCells += `<td><div class="q-cell ${cls}">${txt}</div></td>`;
+        }
+        return `<tr class="pcn-row" data-ods="${r.ods}">
+          <td><code>Q${r.w}</code></td>
+          <td><code>${r.ods}</code></td>
+          <td><strong>${r.hi ? "★ " : ""}${r.name}</strong></td>
+          <td>${r.al}</td>
+          <td>${r.gp}</td>
+          <td>${r.pop.toLocaleString()}</td>
+          <td><code>${r.imd.toFixed(2)}</code></td>
+          ${qCells}
+        </tr>`;
+      }).join("");
+
+      tbody.querySelectorAll("tr.pcn-row").forEach(tr => {
+        tr.addEventListener("click", () => {
+          tbody.querySelectorAll("tr.pcn-row").forEach(x => x.classList.remove("selected"));
+          tr.classList.add("selected");
+          const r = MSE_PCN_SCHEDULE.find(x => x.ods === tr.getAttribute("data-ods"));
+          if (r) {
+            document.getElementById("selectedPcnBanner").textContent =
+              `${r.name} (${r.ods}, ${r.al}): Crosses S2 → S3 in Q${r.w} · ${r.gp} GP practices · ${r.pop.toLocaleString()} pts · IMD ${r.imd} · 80+ Frailty ${r.fr} · Winter MBI ${r.mbi}`;
+          }
+        });
+      });
+    }
+
+    document.querySelectorAll("#allianceFilterBar .btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#allianceFilterBar .btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeAlliance = btn.getAttribute("data-al") || "ALL";
+        renderSwTable();
+      });
+    });
+
+    ["iccRange", "costRange", "mRange"].forEach(id => {
+      document.getElementById(id).addEventListener("input", renderEvsiSimulator);
+    });
+
+    document.getElementById("copyEhrqlBtn").addEventListener("click", () => {
+      const code = document.getElementById("ehrqlCode").textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const b = document.getElementById("copyEhrqlBtn");
+        b.textContent = "✓ Copied Zero-PID ehrQL!";
+        setTimeout(() => { b.textContent = "Copy ehrQL Spec"; }, 1800);
+      });
+    });
+
+    renderEvsiSimulator();
+    renderSwTable();
+  </script>
+</body>
+</html>
