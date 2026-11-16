@@ -160,8 +160,9 @@
         <a href="#templates">Starter Templates</a>
         <a href="#linter" style="color:var(--signal);">AST &amp; G1–G8 Linter</a>
         <a href="#leaderboard">Sealed Leaderboard</a>
+        <a href="#agenticos" style="color:var(--amber);">Haiqu AgenticOS QPU Spec</a>
         <a href="safety-case.html" style="color:var(--amber);">CSC-QT Safety Case</a>
-        <a class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf" style="padding:0.3rem 0.72rem;">⬇ Paper (20 pp.)</a>
+        <a class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf" style="padding:0.3rem 0.72rem;">⬇ Paper PDF</a>
       </nav>
     </div>
   </header>
@@ -511,7 +512,69 @@ ocq verify-submissions</pre>
         </div>
 
         <div class="callout-warn">
-          <strong>Regulatory &amp; Governance Notice:</strong> All policies submitted to the OpenCareQ Policy Challenge operate strictly on de-identified UK `OGL v3.0` Primary Care Network digital twins (`phi_present = False`, `Non-SaMD` shadow-commissioning research). Local NHS deployment requires an ICB `DCB0160` Clinical Safety Case Report (`H-OCQ-01`..`H-OCQ-06` OPEN).
+          <strong>Regulatory &amp; Governance Notice:</strong> All policies submitted to the OpenCareQ Policy Challenge operate strictly on de-identified UK <code>OGL v3.0</code> Primary Care Network digital twins (<code>phi_present = False</code>, <code>Non-SaMD</code> shadow-commissioning research). Local NHS deployment requires an ICB <code>DCB0160</code> Clinical Safety Case Report (<code>H-OCQ-01</code>..<code>H-OCQ-07</code> OPEN).
+        </div>
+      </div>
+    </section>
+
+    <section id="agenticos">
+      <div class="container">
+        <p class="kicker">Track 9 · Haiqu SDK 1.6.0+ &amp; AgenticOS Dual-Topology Hardware Readiness (Receipt 0ee49bcc…)</p>
+        <h2>FRAME → BUILD → VERIFY → RUN: Classical-Floor-Calibrated QPU Experiment Specification</h2>
+        <p class="sec-sub">
+          Strictly scoped to <strong>two verifiable hardware experiments</strong> under UK Open Government Licence (<code>OGL v3.0</code>) aggregate Primary Care Network digital twins (<code>phi_present = False</code>, zero patient data, <code>NHS DCB0129</code> Non-SaMD governance). Below our measured classical boundaries (<code>N ≤ 16</code> PCNs; cross-organ bath coupling <code>κ &lt; 0.30</code>), exact <code>SciPy HiGHS</code> MILP (<code>0.00%</code> MIP gap in <code>&lt;20 ms</code>) and right-canonical <code>PT-MPO</code> (<code>χ = 16</code>, <code>TVD = 2.7×10⁻⁵</code>) strictly win—zero unsubstantiated NISQ advantage is claimed.
+        </p>
+
+        <div class="kpi-grid" style="margin-bottom:1.3rem;">
+          <div class="card">
+            <div class="kpi-meta">Strict Experiment Scope</div>
+            <div class="kpi-num">2 Experiments</div>
+            <div class="kpi-meta">EXP-A (25–75q Cubic HUBO) &amp; EXP-B (8–24q Organ-Depot Comb)</div>
+          </div>
+          <div class="card">
+            <div class="kpi-meta">MSE 25-PCN Cubic HUBO</div>
+            <div class="kpi-num">0.480 LP Frac.</div>
+            <div class="kpi-meta"><code>E54000026</code> · <code>α₃ = 1.68</code> · 0 slack qubits · <code>HiGHS E* = -3.139</code></div>
+          </div>
+          <div class="card">
+            <div class="kpi-meta">18q Comb OBP + Compression</div>
+            <div class="kpi-num">-66.0% 2q Gates</div>
+            <div class="kpi-meta"><code>106 → 36</code> two-qubit gates at <code>κ = 0.38</code> (<code>PT-MPO TVD = 0.0225 &gt; 0.01</code>)</div>
+          </div>
+          <div class="card">
+            <div class="kpi-meta">Dual-Topology PackingLayer</div>
+            <div class="kpi-num">Up to 19×</div>
+            <div class="kpi-meta">Parallel shot replicas across <code>IQM 20q/54q</code>, <code>IonQ 36q</code> &amp; <code>IBM Heron 133q/156q</code></div>
+          </div>
+        </div>
+
+        <div class="two-col" style="margin-bottom:1.3rem;">
+          <div class="card">
+            <span class="pill pill-signal" style="margin-bottom:0.55rem;display:inline-block;">Experiment A · Native Cubic ICB HUBO (25q–65q + 75q MSE Heron)</span>
+            <h3>Slack-Free <code>OptimizationProblem</code> + LR-QAOA + Compression + Bitflip/CVaR</h3>
+            <p style="font-size:0.88rem;color:var(--ink-muted);">
+              Co-scheduling clinical pharmacists, <code>NICE DG59</code> <em>CYP2C19</em> genotyping, and <code>Core20</code> outreach across real NHS England ICB adjacency triangles without slack-qubit quadratization:
+              <code>E54000026</code> Mid &amp; South Essex (<code>25q</code>, LP frac <code>0.480</code>, <code>HiGHS -3.139</code>; plus <code>75q</code> 3-resource Heron scale-up), <code>E54000028</code> NCL (<code>32q</code>, <code>0.484</code>), <code>E54000055</code> BSOL (<code>35q</code>, <code>0.457</code>), <code>E54000054</code> West Yorkshire (<code>52q</code>, <code>0.388</code>), and <code>E54000057</code> Greater Manchester (<code>65q</code>, <code>0.469</code>, <code>HiGHS -21.415</code>).
+            </p>
+          </div>
+          <div class="card">
+            <span class="pill pill-amber" style="margin-bottom:0.55rem;display:inline-block;">Experiment B · Non-Markovian Organ-Depot Combs (8q–24q)</span>
+            <h3>State Compression + Heisenberg OBP + Parallel Circuit Packing</h3>
+            <p style="font-size:0.88rem;color:var(--ink-muted);">
+              Benchmarks decoupled classical negative controls (<code>8q</code> at <code>κ = 0.14</code>, <code>PT-MPO TVD = 0.0015 ≤ 0.01</code> → <code>0L</code> classical win) against strongly coupled hepatocyte-depot + cardio-renal <code>CKM + PGx</code> combs (<code>8q–24q</code> across <code>κ = 0.34–0.46</code>, <code>TVD = 0.0171–0.0357 &gt; 0.01</code>) with <code>GF(2)</code> 4-organ <code>ASPS</code> parity filtering, <code>haiqu.observable_backpropagation</code> (<code>ε ≤ 0.02</code>), and <code>PackingLayer</code> chip tiling.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:1rem;margin-bottom:1rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.6rem;margin-bottom:0.75rem;">
+            <strong>Figure 13 — Dual-Topology Haiqu SDK 1.6+ &amp; AgenticOS Readiness (ML-DSA-65 Sealed: <code>0ee49bcc…</code>)</strong>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+              <a class="btn-sm" href="receipts/opencareq_public_haiqu_agenticos_summary.json" target="_blank" rel="noopener">↗ Public Spec Summary JSON</a>
+              <a class="btn-sm" href="receipts/opencareq_v0_7_haiqu_agenticos_receipt.json" target="_blank" rel="noopener">✓ ML-DSA-65 Receipt (<code>0ee49bcc</code>)</a>
+            </div>
+          </div>
+          <img src="paper/figures/fig13_haiqu_agenticos_readiness.png" alt="Figure 13: OpenCareQ v0.7.0 Haiqu SDK 1.6+ and AgenticOS Dual-Topology Readiness" style="width:100%;height:auto;border-radius:8px;background:#fff;" loading="lazy" />
         </div>
       </div>
     </section>
@@ -519,11 +582,12 @@ ocq verify-submissions</pre>
 
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <div>© 2026 Arun Nadarasa · Apache-2.0 / UK OGL v3.0 · OpenCareQ Policy Challenge (`v0.6.0`)</div>
+      <div>© 2026 Arun Nadarasa · Apache-2.0 / UK OGL v3.0 · OpenCareQ Policy Challenge &amp; AgenticOS Spec (`v0.7.0`)</div>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="index.html">Main Portal</a>
         <a href="safety-case.html">3-Doc CSC-QT Safety Case</a>
-        <a href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">Samskrift Paper PDF (20 pp.)</a>
+        <a href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">Samskrift Paper PDF</a>
+        <a href="receipts/opencareq_public_haiqu_agenticos_summary.json" target="_blank" rel="noopener">AgenticOS JSON (`v0.7`)</a>
         <a href="receipts/benchmark_scorecards_summary.json" target="_blank" rel="noopener">Scorecards JSON (`v1.4`)</a>
       </div>
     </div>

@@ -1,0 +1,535 @@
+{
+  "schema_version": "opencareq-v0.7-haiqu-agenticos-receipt-v1.0",
+  "release": "v0.7.0",
+  "phi_present": false,
+  "patient_identifiable_records": 0,
+  "physical_qpu_shots": 0,
+  "billable_hqc": 0.0,
+  "runtime_agent_actions": 0,
+  "open_clinical_hazards": [
+    "H-OCQ-01",
+    "H-OCQ-02",
+    "H-OCQ-03",
+    "H-OCQ-04",
+    "H-OCQ-05",
+    "H-OCQ-06",
+    "H-OCQ-07"
+  ],
+  "closed_hazards_claimed": 0,
+  "domain": "compiler_hubo",
+  "classical_baselines": [
+    "scipy_highs_milp",
+    "lp_relaxation",
+    "svd_mps_sweep",
+    "pt_mpo_temporal_svd"
+  ],
+  "summary_metrics": {
+    "strict_experiment_count": 2,
+    "n_dual_topology_qpu_targets": 5,
+    "n_exp_a_icb_cohorts": 6,
+    "mse_25q_lp_fractionality": 0.48,
+    "mse_25q_highs_e_star": -3.139461,
+    "mse_25q_highs_ms": 31.074,
+    "gm_65q_lp_fractionality": 0.4692,
+    "gm_65q_highs_e_star": -21.415419,
+    "mse_75q_heron_e_star": -16.836962,
+    "comb_18q_pt_mpo_tvd": 0.022522,
+    "comb_18q_two_qubit_reduction_pct": 66.04,
+    "comb_8q_heron_156q_pack_replicas": 19,
+    "comb_18q_heron_156q_pack_replicas": 8
+  },
+  "agenticos_bundle": {
+    "schema_version": "opencareq-haiqu-agenticos-v0.7",
+    "phi_present": false,
+    "patient_identifiable_records": 0,
+    "access_governance_track": "Non-Commercial NHS / Academic-Aligned Open Research (UK OGL v3.0, Apache-2.0)",
+    "agenticos_workflow_phases": [
+      "FRAME",
+      "BUILD",
+      "VERIFY",
+      "RUN"
+    ],
+    "strict_experiment_count": 2,
+    "dual_topology_qpu_targets": [
+      {
+        "device_id": "iqm_garnet_20q",
+        "provider": "IQM",
+        "modality": "superconducting",
+        "topology": "2D square-lattice resonator",
+        "n_qubits": 20
+      },
+      {
+        "device_id": "ionq_forte_36q",
+        "provider": "IonQ",
+        "modality": "trapped_ion",
+        "topology": "all-to-all linear ion chain",
+        "n_qubits": 36
+      },
+      {
+        "device_id": "iqm_emerald_54q",
+        "provider": "IQM",
+        "modality": "superconducting",
+        "topology": "2D crystal square lattice",
+        "n_qubits": 54
+      },
+      {
+        "device_id": "ibm_heron_133q",
+        "provider": "IBM Quantum",
+        "modality": "superconducting",
+        "topology": "heavy-hex tunable coupler (Heron r1)",
+        "n_qubits": 133
+      },
+      {
+        "device_id": "ibm_heron_156q",
+        "provider": "IBM Quantum",
+        "modality": "superconducting",
+        "topology": "heavy-hex tunable coupler (Heron r2)",
+        "n_qubits": 156
+      }
+    ],
+    "experiment_a_native_cubic_hubo": [
+      {
+        "icb_ods_code": "E54000026",
+        "icb_nhs_code": "QH8",
+        "icb_title": "NHS Mid and South Essex ICB",
+        "region_name": "East of England",
+        "mode": "pcn_1q",
+        "n_pcns": 25,
+        "registered_population": 1218139,
+        "n_qubits": 25,
+        "n_quadratic_edges": 40,
+        "n_cubic_hyperedges": 42,
+        "alpha_3_density": 1.68,
+        "mccormick_lp_fractionality": 0.48,
+        "lp_objective": -8.555452,
+        "highs_milp_exact_objective": -3.139461,
+        "highs_runtime_ms": 31.074,
+        "gate_g4_dispatched_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+        "compatible_qpu_devices": [
+          "ionq_forte_36q",
+          "iqm_emerald_54q",
+          "ibm_heron_133q",
+          "ibm_heron_156q"
+        ],
+        "packing_replicas_by_qpu": {
+          "iqm_garnet_20q": 0,
+          "ionq_forte_36q": 1,
+          "iqm_emerald_54q": 2,
+          "ibm_heron_133q": 5,
+          "ibm_heron_156q": 6
+        },
+        "emitted_haiqu_lines": 62
+      },
+      {
+        "icb_ods_code": "E54000028",
+        "icb_nhs_code": "QMJ",
+        "icb_title": "NHS North Central London ICB (LTC LCS)",
+        "region_name": "London",
+        "mode": "pcn_1q",
+        "n_pcns": 32,
+        "registered_population": 1810301,
+        "n_qubits": 32,
+        "n_quadratic_edges": 70,
+        "n_cubic_hyperedges": 55,
+        "alpha_3_density": 1.7188,
+        "mccormick_lp_fractionality": 0.4844,
+        "lp_objective": -15.853607,
+        "highs_milp_exact_objective": -7.118608,
+        "highs_runtime_ms": 34.988,
+        "gate_g4_dispatched_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+        "compatible_qpu_devices": [
+          "ionq_forte_36q",
+          "iqm_emerald_54q",
+          "ibm_heron_133q",
+          "ibm_heron_156q"
+        ],
+        "packing_replicas_by_qpu": {
+          "iqm_garnet_20q": 0,
+          "ionq_forte_36q": 1,
+          "iqm_emerald_54q": 1,
+          "ibm_heron_133q": 4,
+          "ibm_heron_156q": 4
+        },
+        "emitted_haiqu_lines": 62
+      },
+      {
+        "icb_ods_code": "E54000055",
+        "icb_nhs_code": "QHL",
+        "icb_title": "NHS Birmingham and Solihull ICB",
+        "region_name": "Midlands",
+        "mode": "pcn_1q",
+        "n_pcns": 35,
+        "registered_population": 1608369,
+        "n_qubits": 35,
+        "n_quadratic_edges": 75,
+        "n_cubic_hyperedges": 64,
+        "alpha_3_density": 1.8286,
+        "mccormick_lp_fractionality": 0.4571,
+        "lp_objective": -20.587048,
+        "highs_milp_exact_objective": -9.989185,
+        "highs_runtime_ms": 54.209,
+        "gate_g4_dispatched_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+        "compatible_qpu_devices": [
+          "ionq_forte_36q",
+          "iqm_emerald_54q",
+          "ibm_heron_133q",
+          "ibm_heron_156q"
+        ],
+        "packing_replicas_by_qpu": {
+          "iqm_garnet_20q": 0,
+          "ionq_forte_36q": 1,
+          "iqm_emerald_54q": 1,
+          "ibm_heron_133q": 3,
+          "ibm_heron_156q": 4
+        },
+        "emitted_haiqu_lines": 62
+      },
+      {
+        "icb_ods_code": "E54000054",
+        "icb_nhs_code": "QWO",
+        "icb_title": "NHS West Yorkshire ICB",
+        "region_name": "North East and Yorkshire",
+        "mode": "pcn_1q",
+        "n_pcns": 52,
+        "registered_population": 2675738,
+        "n_qubits": 52,
+        "n_quadratic_edges": 110,
+        "n_cubic_hyperedges": 102,
+        "alpha_3_density": 1.9615,
+        "mccormick_lp_fractionality": 0.3878,
+        "lp_objective": -31.179896,
+        "highs_milp_exact_objective": -18.334894,
+        "highs_runtime_ms": 51.948,
+        "gate_g4_dispatched_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+        "compatible_qpu_devices": [
+          "iqm_emerald_54q",
+          "ibm_heron_133q",
+          "ibm_heron_156q"
+        ],
+        "packing_replicas_by_qpu": {
+          "iqm_garnet_20q": 0,
+          "ionq_forte_36q": 0,
+          "iqm_emerald_54q": 1,
+          "ibm_heron_133q": 2,
+          "ibm_heron_156q": 3
+        },
+        "emitted_haiqu_lines": 62
+      },
+      {
+        "icb_ods_code": "E54000057",
+        "icb_nhs_code": "QOP",
+        "icb_title": "NHS Greater Manchester ICB",
+        "region_name": "North West",
+        "mode": "pcn_1q",
+        "n_pcns": 65,
+        "registered_population": 3301715,
+        "n_qubits": 65,
+        "n_quadratic_edges": 131,
+        "n_cubic_hyperedges": 117,
+        "alpha_3_density": 1.8,
+        "mccormick_lp_fractionality": 0.4692,
+        "lp_objective": -36.457682,
+        "highs_milp_exact_objective": -21.415419,
+        "highs_runtime_ms": 105.588,
+        "gate_g4_dispatched_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+        "compatible_qpu_devices": [
+          "ibm_heron_133q",
+          "ibm_heron_156q"
+        ],
+        "packing_replicas_by_qpu": {
+          "iqm_garnet_20q": 0,
+          "ionq_forte_36q": 0,
+          "iqm_emerald_54q": 0,
+          "ibm_heron_133q": 2,
+          "ibm_heron_156q": 2
+        },
+        "emitted_haiqu_lines": 62
+      },
+      {
+        "icb_ods_code": "E54000026",
+        "icb_nhs_code": "QH8",
+        "icb_title": "NHS Mid and South Essex ICB (3q ARRSxPGxxCore20 Heron Scale-Up)",
+        "region_name": "East of England",
+        "mode": "multi_resource_3q",
+        "n_pcns": 25,
+        "registered_population": 1218139,
+        "n_qubits": 75,
+        "n_quadratic_edges": 50,
+        "n_cubic_hyperedges": 75,
+        "alpha_3_density": 1.0,
+        "mccormick_lp_fractionality": 0.3333,
+        "lp_objective": -20.977081,
+        "highs_milp_exact_objective": -16.836962,
+        "highs_runtime_ms": 30.936,
+        "gate_g4_dispatched_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+        "compatible_qpu_devices": [
+          "ibm_heron_133q",
+          "ibm_heron_156q"
+        ],
+        "packing_replicas_by_qpu": {
+          "iqm_garnet_20q": 0,
+          "ionq_forte_36q": 0,
+          "iqm_emerald_54q": 0,
+          "ibm_heron_133q": 1,
+          "ibm_heron_156q": 2
+        },
+        "emitted_haiqu_lines": 62
+      }
+    ],
+    "experiment_b_organ_comb_obp": [
+      {
+        "experiment_id": "EXP-HAIQU-B-ORGAN-COMB-OBP",
+        "phi_present": false,
+        "patient_identifiable_records": 0,
+        "n_qubits": 8,
+        "n_time_slots": 4,
+        "bath_coupling_kappa": 0.14,
+        "max_error_total": 0.02,
+        "pt_mpo_chi16_tvd_error": 0.001453,
+        "pt_mpo_peak_schmidt_entropy_bits": 0.0981,
+        "pt_mpo_classical_runtime_ms": 1109.7,
+        "exceeds_clinical_tvd_0p01_floor": false,
+        "gate_g4_regime": "CLASSICAL_PT_MPO_EXACT_0L",
+        "raw_total_gates": 96,
+        "raw_two_qubit_gates": 32,
+        "post_obp_two_qubit_gates": 21,
+        "post_compression_two_qubit_gates": 11,
+        "combined_two_qubit_reduction_pct": 65.62,
+        "raw_pauli_terms": 19,
+        "qwc_measurement_cliques": 5,
+        "compatible_qpu_devices": [
+          "iqm_garnet_20q",
+          "ionq_forte_36q",
+          "iqm_emerald_54q",
+          "ibm_heron_133q",
+          "ibm_heron_156q"
+        ],
+        "packing_replicas_by_qpu": {
+          "iqm_garnet_20q": 2,
+          "ionq_forte_36q": 4,
+          "iqm_emerald_54q": 6,
+          "ibm_heron_133q": 16,
+          "ibm_heron_156q": 19
+        },
+        "emitted_haiqu_lines": 79
+      },
+      {
+        "experiment_id": "EXP-HAIQU-B-ORGAN-COMB-OBP",
+        "phi_present": false,
+        "patient_identifiable_records": 0,
+        "n_qubits": 8,
+        "n_time_slots": 4,
+        "bath_coupling_kappa": 0.34,
+        "max_error_total": 0.02,
+        "pt_mpo_chi16_tvd_error": 0.017092,
+        "pt_mpo_peak_schmidt_entropy_bits": 1.194,
+        "pt_mpo_classical_runtime_ms": 1054.15,
+        "exceeds_clinical_tvd_0p01_floor": true,
+        "gate_g4_regime": "QUANTUM_OBP_PACKED_COMB_BENCHMARK",
+        "raw_total_gates": 96,
+        "raw_two_qubit_gates": 32,
+        "post_obp_two_qubit_gates": 21,
+        "post_compression_two_qubit_gates": 11,
+        "combined_two_qubit_reduction_pct": 65.62,
+        "raw_pauli_terms": 19,
+        "qwc_measurement_cliques": 5,
+        "compatible_qpu_devices": [
+          "iqm_garnet_20q",
+          "ionq_forte_36q",
+          "iqm_emerald_54q",
+          "ibm_heron_133q",
+          "ibm_heron_156q"
+        ],
+        "packing_replicas_by_qpu": {
+          "iqm_garnet_20q": 2,
+          "ionq_forte_36q": 4,
+          "iqm_emerald_54q": 6,
+          "ibm_heron_133q": 16,
+          "ibm_heron_156q": 19
+        },
+        "emitted_haiqu_lines": 79
+      },
+      {
+        "experiment_id": "EXP-HAIQU-B-ORGAN-COMB-OBP",
+        "phi_present": false,
+        "patient_identifiable_records": 0,
+        "n_qubits": 12,
+        "n_time_slots": 5,
+        "bath_coupling_kappa": 0.34,
+        "max_error_total": 0.02,
+        "pt_mpo_chi16_tvd_error": 0.017092,
+        "pt_mpo_peak_schmidt_entropy_bits": 1.194,
+        "pt_mpo_classical_runtime_ms": 1057.954,
+        "exceeds_clinical_tvd_0p01_floor": true,
+        "gate_g4_regime": "QUANTUM_OBP_PACKED_COMB_BENCHMARK",
+        "raw_total_gates": 179,
+        "raw_two_qubit_gates": 59,
+        "post_obp_two_qubit_gates": 37,
+        "post_compression_two_qubit_gates": 20,
+        "combined_two_qubit_reduction_pct": 66.1,
+        "raw_pauli_terms": 31,
+        "qwc_measurement_cliques": 7,
+        "compatible_qpu_devices": [
+          "iqm_garnet_20q",
+          "ionq_forte_36q",
+          "iqm_emerald_54q",
+          "ibm_heron_133q",
+          "ibm_heron_156q"
+        ],
+        "packing_replicas_by_qpu": {
+          "iqm_garnet_20q": 1,
+          "ionq_forte_36q": 3,
+          "iqm_emerald_54q": 4,
+          "ibm_heron_133q": 11,
+          "ibm_heron_156q": 13
+        },
+        "emitted_haiqu_lines": 79
+      },
+      {
+        "experiment_id": "EXP-HAIQU-B-ORGAN-COMB-OBP",
+        "phi_present": false,
+        "patient_identifiable_records": 0,
+        "n_qubits": 18,
+        "n_time_slots": 6,
+        "bath_coupling_kappa": 0.38,
+        "max_error_total": 0.02,
+        "pt_mpo_chi16_tvd_error": 0.022522,
+        "pt_mpo_peak_schmidt_entropy_bits": 1.5875,
+        "pt_mpo_classical_runtime_ms": 1062.302,
+        "exceeds_clinical_tvd_0p01_floor": true,
+        "gate_g4_regime": "QUANTUM_OBP_PACKED_COMB_BENCHMARK",
+        "raw_total_gates": 322,
+        "raw_two_qubit_gates": 106,
+        "post_obp_two_qubit_gates": 66,
+        "post_compression_two_qubit_gates": 36,
+        "combined_two_qubit_reduction_pct": 66.04,
+        "raw_pauli_terms": 49,
+        "qwc_measurement_cliques": 11,
+        "compatible_qpu_devices": [
+          "iqm_garnet_20q",
+          "ionq_forte_36q",
+          "iqm_emerald_54q",
+          "ibm_heron_133q",
+          "ibm_heron_156q"
+        ],
+        "packing_replicas_by_qpu": {
+          "iqm_garnet_20q": 1,
+          "ionq_forte_36q": 2,
+          "iqm_emerald_54q": 3,
+          "ibm_heron_133q": 7,
+          "ibm_heron_156q": 8
+        },
+        "emitted_haiqu_lines": 79
+      },
+      {
+        "experiment_id": "EXP-HAIQU-B-ORGAN-COMB-OBP",
+        "phi_present": false,
+        "patient_identifiable_records": 0,
+        "n_qubits": 24,
+        "n_time_slots": 6,
+        "bath_coupling_kappa": 0.46,
+        "max_error_total": 0.02,
+        "pt_mpo_chi16_tvd_error": 0.035717,
+        "pt_mpo_peak_schmidt_entropy_bits": 2.4371,
+        "pt_mpo_classical_runtime_ms": 1063.3,
+        "exceeds_clinical_tvd_0p01_floor": true,
+        "gate_g4_regime": "QUANTUM_OBP_PACKED_COMB_BENCHMARK",
+        "raw_total_gates": 430,
+        "raw_two_qubit_gates": 142,
+        "post_obp_two_qubit_gates": 85,
+        "post_compression_two_qubit_gates": 46,
+        "combined_two_qubit_reduction_pct": 67.61,
+        "raw_pauli_terms": 67,
+        "qwc_measurement_cliques": 15,
+        "compatible_qpu_devices": [
+          "ionq_forte_36q",
+          "iqm_emerald_54q",
+          "ibm_heron_133q",
+          "ibm_heron_156q"
+        ],
+        "packing_replicas_by_qpu": {
+          "iqm_garnet_20q": 0,
+          "ionq_forte_36q": 1,
+          "iqm_emerald_54q": 2,
+          "ibm_heron_133q": 5,
+          "ibm_heron_156q": 6
+        },
+        "emitted_haiqu_lines": 79
+      }
+    ]
+  },
+  "pt_mpo_kappa_crossover_curve": [
+    {
+      "kappa": 0.1,
+      "pt_mpo_tvd": 0.00099,
+      "peak_schmidt_entropy_bits": 0.065
+    },
+    {
+      "kappa": 0.16,
+      "pt_mpo_tvd": 0.002349,
+      "peak_schmidt_entropy_bits": 0.1261
+    },
+    {
+      "kappa": 0.22,
+      "pt_mpo_tvd": 0.006177,
+      "peak_schmidt_entropy_bits": 0.3068
+    },
+    {
+      "kappa": 0.28,
+      "pt_mpo_tvd": 0.010161,
+      "peak_schmidt_entropy_bits": 0.6868
+    },
+    {
+      "kappa": 0.3,
+      "pt_mpo_tvd": 0.016958,
+      "peak_schmidt_entropy_bits": 0.8454
+    },
+    {
+      "kappa": 0.34,
+      "pt_mpo_tvd": 0.017092,
+      "peak_schmidt_entropy_bits": 1.194
+    },
+    {
+      "kappa": 0.4,
+      "pt_mpo_tvd": 0.028979,
+      "peak_schmidt_entropy_bits": 1.7937
+    },
+    {
+      "kappa": 0.46,
+      "pt_mpo_tvd": 0.035717,
+      "peak_schmidt_entropy_bits": 2.4371
+    },
+    {
+      "kappa": 0.52,
+      "pt_mpo_tvd": 0.047825,
+      "peak_schmidt_entropy_bits": 3.229
+    }
+  ],
+  "classical_floor_baseline": "SciPy HiGHS MILP Exact Integer Floor + McCormick LP Fractionality (>=0.20) + Right-Canonical PT-MPO (chi=16)",
+  "epistemic_demarcation": {
+    "physical_hardware_shots": 0,
+    "wet_lab_experiments_performed": 0,
+    "phi_present": false,
+    "runtime_agent_actions": 0,
+    "autonomous_clinical_decisions": 0,
+    "closed_hazards_claimed": 0,
+    "open_clinical_hazards": [
+      "H-OCQ-01",
+      "H-OCQ-02",
+      "H-OCQ-03",
+      "H-OCQ-04",
+      "H-OCQ-05",
+      "H-OCQ-06"
+    ]
+  },
+  "ml_dsa_65_envelope": {
+    "algorithm": "NIST-FIPS-204-ML-DSA-65",
+    "signed_digest_sha256": "5b9a2790da9c8ef62c979b17109892583f294f66db64ccaf37ffca7d4170b3c3",
+    "public_key_sha256": "7314a06f54192331813728d7a828b46da57191f0d7a5da75b68c1ec0953fa223",
+    "signature_bytes": 3309,
+    "signature_sha256": "d2e3cb57aed2c24f0789b973752c6dbd4f3f56fa193be0e6241390d3b98acf09",
+    "public_key_b64": "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",
+    "signature_b64": "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"
+  },
+  "receipt_sha256": "0ee49bccdedefcb5a93125d7b126394153c0e2cd22e7dbaae48674e25e622416"
+}

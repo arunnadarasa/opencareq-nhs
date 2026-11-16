@@ -238,6 +238,11 @@
       "label": "NVIDIA CUDA-Q (@cudaq.kernel) Trajectory Target"
     },
     {
+      "id": "compiler:haiqu_agenticos_v0_7",
+      "type": "Compiler_Target",
+      "label": "Haiqu SDK 1.6.0+ & AgenticOS Dual-Topology Target (25-75q Cubic HUBO + 8-24q OBP/Packed Comb)"
+    },
+    {
       "id": "receipt:samskrift_benchmark",
       "type": "Benchmark_Receipt",
       "label": "Sealed Samskrift v0.3 Benchmark Receipt (ML-DSA-65)"
@@ -268,6 +273,11 @@
       "label": "Sealed OpenCareQ v0.6 CSC-QT 36-Indicator DCB0129/DCB0160 Bow-Tie Safety Receipt (ML-DSA-65)"
     },
     {
+      "id": "receipt:v0_7_haiqu_agenticos",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v0.7 Haiqu SDK 1.6+ & AgenticOS Dual-Topology Readiness Receipt (ML-DSA-65)"
+    },
+    {
       "id": "safety:cscr_crmp_dcb0160_mse",
       "type": "Clinical_Safety_Suite",
       "label": "v0.6 Statutory DCB0129 CSCR + CRMP + MSE (E54000026) DCB0160 Shadow Pack"
@@ -275,7 +285,7 @@
     {
       "id": "paper:samskrift_v0_3",
       "type": "Publication",
-      "label": "OpenCareQ v0.6.0 Samskrift Research Monograph"
+      "label": "OpenCareQ v0.7.0 Samskrift Research Monograph"
     },
     {
       "id": "bench:anti_goodhart_policy",
@@ -762,6 +772,41 @@
       "target": "paper:samskrift_v0_3"
     },
     {
+      "source": "framework:opencareq_v0_3",
+      "relation": "compiles_agenticos_bundle_via",
+      "target": "compiler:haiqu_agenticos_v0_7"
+    },
+    {
+      "source": "compiler:gate_g4_highs",
+      "relation": "classical_hubo_floor_for",
+      "target": "compiler:haiqu_agenticos_v0_7"
+    },
+    {
+      "source": "compiler:pt_mpo_adversary",
+      "relation": "classical_comb_floor_for",
+      "target": "compiler:haiqu_agenticos_v0_7"
+    },
+    {
+      "source": "ogl:england_42icb_atlas_2026",
+      "relation": "grounds_25_to_65q_icb_hubo_in",
+      "target": "compiler:haiqu_agenticos_v0_7"
+    },
+    {
+      "source": "safety:cscr_crmp_dcb0160_mse",
+      "relation": "enforces_zero_pid_and_hazards_in",
+      "target": "compiler:haiqu_agenticos_v0_7"
+    },
+    {
+      "source": "compiler:haiqu_agenticos_v0_7",
+      "relation": "sealed_in",
+      "target": "receipt:v0_7_haiqu_agenticos"
+    },
+    {
+      "source": "receipt:v0_7_haiqu_agenticos",
+      "relation": "typeset_in",
+      "target": "paper:samskrift_v0_3"
+    },
+    {
       "source": "safety:cscr_crmp_dcb0160_mse",
       "relation": "governs_bowtie_open_hazard",
       "target": "hazard:H-OCQ-01"
@@ -832,5 +877,5 @@
       "target": "hazard:H-OCQ-07"
     }
   ],
-  "kg_sha256": "c33fa50f9bfc16e6f69ac93cb515520965868e050551ad6c88c07bc7ba53486f"
+  "kg_sha256": "4ddc36f4e3fbe21e8a2cbe511360a9360d6fe9fcf6b9768d6d9a0bb518cc46e6"
 }
