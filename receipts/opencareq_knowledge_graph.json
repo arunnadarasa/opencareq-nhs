@@ -138,6 +138,26 @@
       "label": "Cookson et al. 2017 Distributional Cost-Effectiveness Analysis (Atkinson eps=10.95)"
     },
     {
+      "id": "pmid:36323444",
+      "type": "HTA_Clinical_Model",
+      "label": "McEwan et al. 2022 CJASN UK NHS DAPA-CKD KDIGO & ESKD Dialysis HTA"
+    },
+    {
+      "id": "pmid:22815543",
+      "type": "NHS_Cost_Study",
+      "label": "Kerr et al. 2012 NDT Financial Burden of CKD & RRT to NHS England"
+    },
+    {
+      "id": "pmid:24246566",
+      "type": "HTA_Methodology",
+      "label": "Strong, Oakley & Brennan 2014 SAVI Nonparametric Regression EVPPI"
+    },
+    {
+      "id": "pmid:11747057",
+      "type": "HTA_Methodology",
+      "label": "Fenwick, Claxton & Sculpher 2001 Multi-Strategy CEAC & EVPI"
+    },
+    {
       "id": "dsl:qchoice_qcomb",
       "type": "DSL_Primitive",
       "label": "Gate-Free QChoice / QSequence / QComb Primitives"
@@ -156,6 +176,11 @@
       "id": "dcea:england_42icb_nice_20k",
       "type": "Health_Economics",
       "label": "v0.4 42-ICB NICE \u00a320k/QALY DCEA & IMD Decile 1-10 SII Prevention Atlas"
+    },
+    {
+      "id": "dcea:multiyear_eskd_psa_v0_5",
+      "type": "Health_Economics",
+      "label": "v0.5 10-Yr KDIGO ESKD Dialysis Horizon (3.5% NICE) & 1,000-Draw PSA/CEAC/SAVI EVPPI"
     },
     {
       "id": "wm:8q_non_markovian_comb",
@@ -223,9 +248,14 @@
       "label": "Sealed OpenCareQ v0.4 Coupled CKM+PGx & 42-ICB NICE DCEA Receipt (ML-DSA-65)"
     },
     {
+      "id": "receipt:v0_5_psa_eskd_horizon",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v0.5 10-Yr KDIGO ESKD Horizon & 1,000-Draw PSA/EVPPI Receipt (ML-DSA-65)"
+    },
+    {
       "id": "paper:samskrift_v0_3",
       "type": "Publication",
-      "label": "OpenCareQ v0.4.0 Samskrift Research Monograph"
+      "label": "OpenCareQ v0.5.0 Samskrift Research Monograph"
     },
     {
       "id": "bench:anti_goodhart_policy",
@@ -631,6 +661,41 @@
       "target": "paper:samskrift_v0_3"
     },
     {
+      "source": "dcea:england_42icb_nice_20k",
+      "relation": "extended_to_10yr_psa_in",
+      "target": "dcea:multiyear_eskd_psa_v0_5"
+    },
+    {
+      "source": "pmid:36323444",
+      "relation": "grounds_kdigo_eskd_transitions_in",
+      "target": "dcea:multiyear_eskd_psa_v0_5"
+    },
+    {
+      "source": "pmid:22815543",
+      "relation": "grounds_nhs_rrt_tariff_in",
+      "target": "dcea:multiyear_eskd_psa_v0_5"
+    },
+    {
+      "source": "pmid:24246566",
+      "relation": "grounds_savi_evppi_in",
+      "target": "dcea:multiyear_eskd_psa_v0_5"
+    },
+    {
+      "source": "pmid:11747057",
+      "relation": "grounds_ceac_evpi_in",
+      "target": "dcea:multiyear_eskd_psa_v0_5"
+    },
+    {
+      "source": "dcea:multiyear_eskd_psa_v0_5",
+      "relation": "sealed_in",
+      "target": "receipt:v0_5_psa_eskd_horizon"
+    },
+    {
+      "source": "receipt:v0_5_psa_eskd_horizon",
+      "relation": "typeset_in",
+      "target": "paper:samskrift_v0_3"
+    },
+    {
       "source": "pmid:34708996",
       "relation": "grounds_g7_pgx_trap_in",
       "target": "bench:anti_goodhart_policy"
@@ -671,5 +736,5 @@
       "target": "hazard:H-OCQ-06"
     }
   ],
-  "kg_sha256": "40cddba686603ac43d676a115ae8cb8147ea2535198fd7d891adc73494525997"
+  "kg_sha256": "9472198928a23a5acf95fed4f07c6158d8ddd40e0db950ef2e59a11624a332a1"
 }
