@@ -202,17 +202,15 @@
     <div class="site-nav-inner">
       <a href="index.html" class="brand">
         <span class="brand-mark">OC</span>
-        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--amber);margin-left:4px;">Challenge Pack</small></span>
+        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--amber);margin-left:4px;">v1.0</small></span>
       </a>
-      <nav class="nav-links" aria-label="Challenge Sections">
-        <a href="index.html">← Portal</a>
-        <a href="#taxonomy">G1–G8</a>
-        <a href="#contract">Action API</a>
-        <a href="#templates">Templates</a>
-        <a href="#linter" style="color:var(--signal);">AST Linter</a>
-        <a href="#leaderboard">Leaderboard</a>
-        <a href="#agenticos" style="color:var(--amber);">AgenticOS</a>
-        <a href="trial-protocol.html" style="color:var(--signal);">Trial Protocol ↗</a>
+      <nav class="nav-links" aria-label="Challenge Sections" style="flex-wrap:nowrap;gap:0.14rem;font-size:0.77rem;">
+        <a href="index.html#papers">Papers I–III</a>
+        <a href="index.html#studio">DSL → IR</a>
+        <a href="index.html#atlas42">42-ICB &amp; DCEA</a>
+        <a href="trial-protocol.html" style="color:var(--amber);">Trial ↗</a>
+        <a href="quantum-card.html" style="color:var(--signal);">Quantum Card++ ↗</a>
+        <a href="#leaderboard" style="color:var(--signal);">Challenge ↗</a>
         <a href="safety-case.html" style="color:var(--amber);">CSC-QT ↗</a>
         <a class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Paper PDF</a>
       </nav>
@@ -490,18 +488,21 @@ propose.batch_pcn = True</pre>
         </div>
 
         <div class="card" style="margin-top:1.15rem;">
-          <h3>3-Command Local Evaluation &amp; ML-DSA-65 Scorecard Minting</h3>
+          <h3>4-Command Local + Hardware-Isolated Modal <code>gVisor</code> Evaluation &amp; ML-DSA-65 Minting</h3>
           <pre># 1. Verify AST sandbox compliance &amp; evaluate across all 42 statutory English ICBs (1,280 PCNs)
 ocq eval-policy --policy my_pcn_policy.py --ast-sandbox
 ocq eval-policy --policy my_pcn_policy.py --all-england --ast-sandbox
 
-# 2. Mint a NIST FIPS 204 ML-DSA-65 + SHA-256 signed scorecard JSON
+# 2. Optional: Grade untrusted policy inside air-gapped Modal eu-west gVisor Sandbox (512 MiB, block_network=True)
+ocq eval-policy --policy my_pcn_policy.py --modal-sandbox
+
+# 3. Mint a NIST FIPS 204 ML-DSA-65 + SHA-256 signed scorecard JSON
 ocq submit-policy --policy my_pcn_policy.py \
   --submission-id ext-my-policy-v1 \
   --title "My Core20-Protective PCN Commissioning Policy" \
   --authors "Your Name / NHS ICB Analytics Team"
 
-# 3. Replay &amp; cryptographically audit all admitted scorecards and negative controls
+# 4. Replay &amp; cryptographically audit all admitted scorecards and negative controls
 ocq verify-submissions</pre>
         </div>
       </div>

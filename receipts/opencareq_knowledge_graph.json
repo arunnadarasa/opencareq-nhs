@@ -333,6 +333,36 @@
       "label": "Sealed OpenCareQ v0.9 EVSI/ENBS Stepped-Wedge & OpenSAFELY Target-Trial Receipt (ML-DSA-65)"
     },
     {
+      "id": "arxiv:2412.13151",
+      "type": "Quantum_Assurance_Standard",
+      "label": "Everitt & Ji 2024 Model Cards for Quantum Technologies Reporting (Innovate UK 10102791)"
+    },
+    {
+      "id": "nvidia:model_card_pp_cyclonedx",
+      "type": "AI_Assurance_Standard",
+      "label": "NVIDIA Model Card++ (4 Subcards) & CycloneDX Property Taxonomy v1.0.0 (CC0-1.0)"
+    },
+    {
+      "id": "safety:quantum_card_pp_v1_0",
+      "type": "Quantum_Assurance_Suite",
+      "label": "v1.0 Hierarchical 1+4 Tri-Standard Quantum Card++ & CycloneDX 1.6 QBOM (0 CSC-QT Score)"
+    },
+    {
+      "id": "cloud:modal_l4_cudaq_42icb",
+      "type": "Serverless_GPU_Cloud",
+      "label": "v1.0 Modal 1.6.0 eu-west Air-Gapped NVIDIA L4 CUDA-Q (28q/75q), 42-ICB .map() & gVisor Sandbox"
+    },
+    {
+      "id": "hf:socialprescribing_opencareq",
+      "type": "Open_Science_Hub",
+      "label": "v1.0 Hugging Face Hub Ecosystem (42-ICB Parquet Dataset, Quantum Card++ Repo, Static Space & Trilogy Collection)"
+    },
+    {
+      "id": "receipt:v1_0_modal_cloud",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v1.0 Modal GPU CUDA-Q, 42-ICB EVSI League, gVisor & HF Sync Receipt (ML-DSA-65)"
+    },
+    {
       "id": "safety:cscr_crmp_dcb0160_mse",
       "type": "Clinical_Safety_Suite",
       "label": "v0.6 Statutory DCB0129 CSCR + CRMP + MSE (E54000026) DCB0160 Shadow Pack"
@@ -977,6 +1007,76 @@
       "target": "paper:samskrift_trial_protocol"
     },
     {
+      "source": "compiler:nvidia_cudaq",
+      "relation": "executed_live_on_l4_gpu_in",
+      "target": "cloud:modal_l4_cudaq_42icb"
+    },
+    {
+      "source": "ogl:england_42icb_atlas_2026",
+      "relation": "fanned_out_across_42_icbs_in",
+      "target": "cloud:modal_l4_cudaq_42icb"
+    },
+    {
+      "source": "trial:opencareq_sw_mse_v0_9",
+      "relation": "scaled_nationally_via_map_in",
+      "target": "cloud:modal_l4_cudaq_42icb"
+    },
+    {
+      "source": "bench:anti_goodhart_policy",
+      "relation": "hardware_isolated_via_gvisor_in",
+      "target": "cloud:modal_l4_cudaq_42icb"
+    },
+    {
+      "source": "cloud:modal_l4_cudaq_42icb",
+      "relation": "sealed_in",
+      "target": "receipt:v1_0_modal_cloud"
+    },
+    {
+      "source": "arxiv:2412.13151",
+      "relation": "defines_quantum_entity_fmea_in",
+      "target": "safety:quantum_card_pp_v1_0"
+    },
+    {
+      "source": "nvidia:model_card_pp_cyclonedx",
+      "relation": "defines_subcards_and_qbom_in",
+      "target": "safety:quantum_card_pp_v1_0"
+    },
+    {
+      "source": "safety:cscr_crmp_dcb0160_mse",
+      "relation": "maps_level2_dcb0129_bands_in",
+      "target": "safety:quantum_card_pp_v1_0"
+    },
+    {
+      "source": "compiler:guppy_hugr_5579b",
+      "relation": "documented_as_ent01_in",
+      "target": "safety:quantum_card_pp_v1_0"
+    },
+    {
+      "source": "cloud:modal_l4_cudaq_42icb",
+      "relation": "documented_as_ent02_in",
+      "target": "safety:quantum_card_pp_v1_0"
+    },
+    {
+      "source": "compiler:haiqu_agenticos_v0_7",
+      "relation": "documented_as_ent03_in",
+      "target": "safety:quantum_card_pp_v1_0"
+    },
+    {
+      "source": "compiler:tessa_superpixel_v0_8",
+      "relation": "documented_as_ent04_in",
+      "target": "safety:quantum_card_pp_v1_0"
+    },
+    {
+      "source": "safety:quantum_card_pp_v1_0",
+      "relation": "published_zero_pid_to",
+      "target": "hf:socialprescribing_opencareq"
+    },
+    {
+      "source": "receipt:v1_0_modal_cloud",
+      "relation": "published_parquet_and_qbom_to",
+      "target": "hf:socialprescribing_opencareq"
+    },
+    {
       "source": "safety:cscr_crmp_dcb0160_mse",
       "relation": "governs_bowtie_open_hazard",
       "target": "hazard:H-OCQ-01"
@@ -1047,5 +1147,5 @@
       "target": "hazard:H-OCQ-07"
     }
   ],
-  "kg_sha256": "96b2d49f4663c37689fb08e09e166757ed92bb1ef01eb6b2fa8fcc000e1edb80"
+  "kg_sha256": "aa5679c513e13fc63b57e6bf7247a1e790ed85377ba9d6d99d755b732fc6ed22"
 }
