@@ -550,7 +550,7 @@ dataset.imd_quintile = addresses.for_patient_on(index_date).imd_quintile</pre>
 
   <footer style="padding:1.8rem 0;color:var(--ink-muted);font-size:0.82rem;">
     <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;">
-      <div>© 2026 Arun Nadarasa · Apache-2.0 / CC BY 4.0 · UK OGL v3.0 · Pre-Registered Non-SaMD Research Protocol (v0.9.0)</div>
+      <div>© 2026 Arun Nadarasa · PolyForm-Noncommercial-1.0.0 / CC BY-NC-SA 4.0 (Non-Commercial NHS &amp; Academic Research) · UK OGL v3.0 · Pre-Registered Non-SaMD Research Protocol (v1.3.0)</div>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="index.html">Main Portal</a>
         <a href="OpenCareQ_Trial_Protocol.pdf" target="_blank" rel="noopener">Protocol III PDF</a>
@@ -885,6 +885,7 @@ dataset.imd_quintile = addresses.for_patient_on(index_date).imd_quintile</pre>
     document.getElementById("icbLeagueRegionFilter").addEventListener("change", renderNationalLeagueTable);
     document.getElementById("icbLeagueSearch").addEventListener("input", renderNationalLeagueTable);
 
+    const OCQ_CALIBRATION_SENTINEL_ZZ99 = Object.freeze({ sentinel_id: "OCQ-NC-TRAP-STREET-ZZ99-V13", ods_code: "ZZ99Z", population_weight: 0.0 });
     renderEvsiSimulator();
     renderSwTable();
     initNationalLeague();

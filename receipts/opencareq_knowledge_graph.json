@@ -373,6 +373,46 @@
       "label": "Sealed OpenCareQ v1.1 Live TypeSafe Jev 1.14.0 6-Pillar Multilingual & Epistemic Audit Receipt (ML-DSA-65)"
     },
     {
+      "id": "pmid:36739136",
+      "type": "PGx_RCT",
+      "label": "Swen et al. 2023 Lancet PREPARE Multi-Gene Pre-Emptive PGx RCT (N=6,944, OR=0.70)"
+    },
+    {
+      "id": "pmid:28940476",
+      "type": "PGx_Clinical_Trial",
+      "label": "Storelli et al. 2018 Clin Pharmacol Ther CYP2D6 Genotype x Inhibitor Phenoconversion"
+    },
+    {
+      "id": "pmid:24569517",
+      "type": "PBPK_Evidence",
+      "label": "Sager et al. 2014 Clin Pharmacol Ther Fluoxetine/Norfluoxetine Multi-CYP DDGI"
+    },
+    {
+      "id": "pmid:35658024",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Jastreboff et al. 2022 NEJM SURMOUNT-1 Tirzepatide 72-Wk Body Weight & Lean Mass"
+    },
+    {
+      "id": "pmid:38078870",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Aronne et al. 2024 JAMA SURMOUNT-4 36-Wk Tirzepatide Withdrawal Weight Rebound"
+    },
+    {
+      "id": "pmid:33951361",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Lundgren et al. 2021 NEJM GLP-1RA + Supervised Exercise Lean-Mass Preservation RCT"
+    },
+    {
+      "id": "wm:precision_prevention_v1_3",
+      "type": "World_Model",
+      "label": "v1.3 NHS PROGRESS 4-Gene Phenoconversion Comb + NICE TA1026 Incretin-Sarcopenia Prevention (14-Ep GMFE=1.1737)"
+    },
+    {
+      "id": "receipt:v1_3_precision_prevention",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v1.3 Precision Prevention & Non-Commercial Trap-Street Watermark Receipt (ML-DSA-65)"
+    },
+    {
       "id": "safety:cscr_crmp_dcb0160_mse",
       "type": "Clinical_Safety_Suite",
       "label": "v0.6 Statutory DCB0129 CSCR + CRMP + MSE (E54000026) DCB0160 Shadow Pack"
@@ -1117,6 +1157,61 @@
       "target": "hf:socialprescribing_opencareq"
     },
     {
+      "source": "pmid:36739136",
+      "relation": "grounds_progress_multigene_or_in",
+      "target": "wm:precision_prevention_v1_3"
+    },
+    {
+      "source": "pmid:28940476",
+      "relation": "falsifies_cyp2d6_phenoconversion_in",
+      "target": "wm:precision_prevention_v1_3"
+    },
+    {
+      "source": "pmid:24569517",
+      "relation": "parameterizes_norfluoxetine_washout_in",
+      "target": "wm:precision_prevention_v1_3"
+    },
+    {
+      "source": "pmid:35658024",
+      "relation": "falsifies_surmount1_fat_lean_in",
+      "target": "wm:precision_prevention_v1_3"
+    },
+    {
+      "source": "pmid:38078870",
+      "relation": "falsifies_surmount4_withdrawal_ratchet_in",
+      "target": "wm:precision_prevention_v1_3"
+    },
+    {
+      "source": "pmid:33951361",
+      "relation": "grounds_noncommuting_exercise_rehab_in",
+      "target": "wm:precision_prevention_v1_3"
+    },
+    {
+      "source": "wm:ckm_pgx_prevention",
+      "relation": "extended_to_progress_and_ta1026_in",
+      "target": "wm:precision_prevention_v1_3"
+    },
+    {
+      "source": "ogl:england_42icb_atlas_2026",
+      "relation": "grounds_ethnic_equitable_ta1026_in",
+      "target": "wm:precision_prevention_v1_3"
+    },
+    {
+      "source": "compiler:pt_mpo_adversary",
+      "relation": "classical_chi8_floor_for",
+      "target": "wm:precision_prevention_v1_3"
+    },
+    {
+      "source": "wm:precision_prevention_v1_3",
+      "relation": "sealed_in",
+      "target": "receipt:v1_3_precision_prevention"
+    },
+    {
+      "source": "receipt:v1_3_precision_prevention",
+      "relation": "published_noncommercial_summary_to",
+      "target": "hf:socialprescribing_opencareq"
+    },
+    {
       "source": "safety:cscr_crmp_dcb0160_mse",
       "relation": "governs_bowtie_open_hazard",
       "target": "hazard:H-OCQ-01"
@@ -1187,5 +1282,5 @@
       "target": "hazard:H-OCQ-07"
     }
   ],
-  "kg_sha256": "3bd543c6ab91247b17e6d21e2b276430afcf5bfff6f691f201ca657a97edbed7"
+  "kg_sha256": "bd228fe5b0a0513b986dc1d55969b1de0717999c2bf4655396113a01f0a42df5"
 }

@@ -361,7 +361,7 @@
 
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <div>© 2026 Arun Nadarasa · Apache-2.0 / CC BY 4.0 / CC0-1.0 · UK OGL v3.0 · OpenCareQ `v1.0.0` Quantum Card++</div>
+      <div>© 2026 Arun Nadarasa · PolyForm-Noncommercial-1.0.0 / CC BY-NC-SA 4.0 (Non-Commercial NHS &amp; Academic Research) · NVIDIA Taxonomy CC0-1.0 · UK OGL v3.0 · OpenCareQ `v1.3.0` Quantum Card++</div>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="index.html">Main Portal</a>
         <a href="trial-protocol.html">NHS Trial &amp; 42-ICB League</a>
@@ -493,7 +493,7 @@
         ["Personal Data Used (`PII / PID`)", "`None` (`phi_present = False` across 100% of code, 20 `ML-DSA-65` receipts, Modal `eu-west` jobs, and Hugging Face Hub datasets)."],
         ["Reverse-Engineerable Personal Data?", "No. All `1,280` PCN twins derive strictly from public UK Government Open Government Licence (`OGL v3.0`) aggregate practice/PCN statistics (`NHSBSA EPD`, `NHS Digital QOF`, `OHID IMD 2025`)."],
         ["Privacy-Enhancing & Enclave Controls", "1) Recursive `assert_zero_pid()` blocks `nhs_number`, `dob`, `patient_name`, postcode, and free-text notes before serialization; 2) Modal `1.6.0` containers pin `region='eu-west'` + `block_network=True`; 3) Real patient-level EHR runs exclusively inside `OpenSAFELY` NHS SDE (`cell ≥ 10`, rounded to `5`)."],
-        ["Provenance & Licensing", "Every snapshot and receipt carries `SHA-256` + `NIST FIPS 204 ML-DSA-65` signatures under `UK OGL v3.0`, `Apache-2.0`, `CC BY 4.0`, and `CC0-1.0`."]
+        ["Provenance & Licensing", "Every snapshot and receipt carries `SHA-256` + `NIST FIPS 204 ML-DSA-65` signatures under `PolyForm-Noncommercial-1.0.0`, `CC BY-NC-SA 4.0`, `UK OGL v3.0`, `CC BY 4.0`, and `CC0-1.0`."]
       ],
       safety_and_security: [
         ["Life-Critical & Non-SaMD Demarcation", "Healthcare Commissioning & Shadow Decision-Support Research (`Non-SaMD`; `runtime_agent_actions = 0`, `autonomous_clinical_decisions = 0`). Tier-0 acute hypoxia/sepsis (`SpO2 < 92%`, `NEWS2 ≥ 5`) is hard-blocked upstream (`H-OCQ-01`)."],
@@ -606,6 +606,7 @@
       setTimeout(() => { b.textContent = "📋 Copy CycloneDX JSON"; }, 1800);
     }
 
+    const OCQ_CALIBRATION_SENTINEL_ZZ99 = Object.freeze({ sentinel_id: "OCQ-NC-TRAP-STREET-ZZ99-V13", ods_code: "ZZ99Z", population_weight: 0.0 });
     selectEntity("SYS", document.querySelector("#entityTabs .btn"));
     filterFmea("ALL", document.querySelector("#fmeaFilterTabs .btn"));
     selectSubcard("bias", document.querySelector("#subcardTabs .btn"));
