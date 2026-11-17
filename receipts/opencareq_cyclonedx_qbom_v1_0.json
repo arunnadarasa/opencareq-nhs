@@ -1,7 +1,7 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:0b83872e-6126-4e3c-a7e2-29287d4a8cc8",
+  "serialNumber": "urn:uuid:258a4c0f-acac-428b-af3b-ade270a032f6",
   "version": 1,
   "metadata": {
     "timestamp": "2026-11-16T20:00:00Z",
@@ -36,7 +36,11 @@
           },
           {
             "name": "nvidia:model:versions",
-            "value": "v1.0.0 (Unified Modal CUDA-Q, 42-ICB EVSI, Quantum Card++ & HF Suite)"
+            "value": "v1.1.0 (TypeSafe Jev 1.14.0 System One Control Plane, Modal CUDA-Q, 42-ICB EVSI & Quantum Card++)"
+          },
+          {
+            "name": "nvidia:model:upstream_system_one",
+            "value": "Optional TypeSafe System One (`jev-1.14.0`, RLCD primitives; `OfflineClinicalCalibrator` remains 100% air-gapped NHS SDE default; no TypeSafe endorsement implied)"
           },
           {
             "name": "nvidia:model:references",
@@ -96,7 +100,7 @@
           },
           {
             "name": "opencareq:quantum:fmea_rows",
-            "value": "6"
+            "value": "7"
           },
           {
             "name": "opencareq:quantum:csc_qt_numerical_score",
@@ -319,5 +323,32 @@
         }
       ]
     }
-  }
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "AI-SYS1-JEV-1.14.0",
+      "name": "TypeSafe System One (jev-1.14.0) Optional Upstream Control Plane",
+      "version": "1.14.0",
+      "description": "Optional connected-sandbox RLCD semantic intake, Pre-Parsed SDE span disambiguator, MDT hyperedge Noul-Screen, and claim-to-receipt epistemic auditor (`0` prose generation; `OfflineClinicalCalibrator` remains air-gapped OpenSAFELY default).",
+      "properties": [
+        {
+          "name": "opencareq:system_one:model_id",
+          "value": "jev-1.14.0"
+        },
+        {
+          "name": "opencareq:system_one:air_gapped_default",
+          "value": "OfflineClinicalCalibrator"
+        },
+        {
+          "name": "opencareq:system_one:egress_firewall",
+          "value": "assert_zero_pid_egress (Mod-11 NHS + UK Postcode + Email + Phone + DOB)"
+        },
+        {
+          "name": "opencareq:system_one:non_endorsement",
+          "value": "Integration does not imply endorsement or clinical certification by TypeSafe AI."
+        }
+      ]
+    }
+  ]
 }

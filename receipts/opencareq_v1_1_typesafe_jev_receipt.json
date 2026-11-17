@@ -1,0 +1,3081 @@
+{
+  "schema_version": "opencareq-v1.1-typesafe-jev-receipt-v1.0",
+  "release_version": "1.1.0",
+  "phi_present": false,
+  "runtime_agent_actions": 0,
+  "physical_qpu_shots": 0,
+  "csc_qt_numerical_score_computed": null,
+  "execution_mode": "live_typesafe_system_one_api",
+  "pinned_model_id": "jev-1.14.0",
+  "air_gapped_opensafely_default_preserved": true,
+  "outbound_pii_regex_firewall_enforced": true,
+  "typesafe_non_endorsement_notice": "OpenCareQ integrates TypeSafe AI's System One API (`jev-1.14.0`) as an optional upstream semantic calibration and epistemic citation-audit primitive in connected synthetic sandboxes; use of the TypeSafe SDK/API does not imply endorsement, warranty, or clinical safety certification by TypeSafe AI. `OfflineClinicalCalibrator` remains the 100% air-gapped default for OpenSAFELY and NHS Secure Data Environments.",
+  "telemetry": {
+    "total_api_calls": 60,
+    "total_input_tokens": 107631,
+    "output_tokens_billed": 0,
+    "price_per_mtok_input_usd": 0.042,
+    "estimated_cost_usd": 0.004521,
+    "latency_p50_ms": 154.58,
+    "latency_p95_ms": 606.62,
+    "wall_clock_seconds": 8.061,
+    "all_call_latencies_ms": [
+      606.62,
+      621.07,
+      577.13,
+      601.22,
+      624.97,
+      593.73,
+      153.33,
+      154.63,
+      152.79,
+      151.13,
+      172.91,
+      171.66,
+      152.76,
+      153.38,
+      172.76,
+      149.64,
+      187.13,
+      154.54,
+      141.87,
+      146.55,
+      158.57,
+      190.56,
+      194.72,
+      158.83,
+      138.81,
+      147.54,
+      139.32,
+      161.2,
+      188.93,
+      192.1,
+      183.62,
+      178.86,
+      180.92,
+      167.91,
+      165.59,
+      148.76,
+      131.28,
+      138.21,
+      144.66,
+      132.76,
+      166.8,
+      144.97,
+      149.12,
+      149.14,
+      153.87,
+      134.99,
+      144.97,
+      128.25,
+      176.98,
+      133.03,
+      151.16,
+      142.01,
+      133.5,
+      144.78,
+      156.53,
+      133.01,
+      157.23,
+      267.28,
+      260.4,
+      237.7
+    ]
+  },
+  "pillar1_multilingual_intake": {
+    "n_cases": 22,
+    "languages_tested": [
+      "en",
+      "bn",
+      "ur",
+      "pl",
+      "pa",
+      "ro"
+    ],
+    "icbs_covered": [
+      "NHS-BSOL-36PCN",
+      "NHS-DEVON-31PCN",
+      "NHS-MSE-28PCN",
+      "NHS-NCL-20PCN",
+      "NHS-NORFOLK-20PCN"
+    ],
+    "safety_gate_accuracy": 1.0,
+    "interpreter_detection_accuracy": 1.0,
+    "multilingual_warm_home_parity_rate": 1.0,
+    "borderline_superposition_held_count": 3,
+    "borderline_superposition_total": 3,
+    "rollout_order_invariance_rate": 1.0,
+    "records": [
+      {
+        "cohort_id": "intake-mse-en-warmhome-01",
+        "icb_id": "NHS-MSE-28PCN",
+        "language": "en",
+        "category": "multilingual_warm_home",
+        "wmty_excerpt": "Prepayment gas meter cut off twice this fortnight in cold damp flat with black mould on bedroom wall; struggling with winter heati",
+        "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+        "expected_safety_gate": "PROCEED_CALIBRATED_ROLLOUT",
+        "safety_gate_matched": true,
+        "routing_mode": "COMMIT_SINGLE_PATHWAY",
+        "superposition_reason": "high_confidence_order_consistent",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": "welfare_and_warm_home_first",
+        "expected_top_pathway": "welfare_and_warm_home_first",
+        "top_pathway_prob": 0.995,
+        "pathway_probabilities": {
+          "pharmacist_smr_deprescribing": 0.005,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 0.995
+        },
+        "bloch_angles_rad": {
+          "pharmacist_smr_deprescribing": 0.1415,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 3.0001
+        },
+        "conformal_prediction_set": [
+          "welfare_and_warm_home_first"
+        ],
+        "urgent_red_flag_prob": 0.04,
+        "uncharacterised_exposure_prob": 0.04,
+        "community_scope_fit_prob": 0.96,
+        "interpreter_required_prob": 0.03,
+        "choice_confidence": 0.9933,
+        "top_to_second_ratio": 199.0,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.01,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 1.0,
+          "regimen_complexity": 0.1633,
+          "carer_strain": 0.43,
+          "transport_isolation": 0.13
+        },
+        "input_tokens": 2570,
+        "latency_ms": 606.62
+      },
+      {
+        "cohort_id": "intake-mse-bn-warmhome-02",
+        "icb_id": "NHS-MSE-28PCN",
+        "language": "bn",
+        "category": "multilingual_warm_home",
+        "wmty_excerpt": "আমাদের ফ্ল্যাট খুব ঠান্ডা এবং দেয়ালে স্যাঁতসেঁতে কালো ফাঙ্গাস পড়েছে। প্রিপেইড গ্যাস মিটারের টাকা শেষ হয়ে গেছে, গরম করার বিল দিত",
+        "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+        "expected_safety_gate": "PROCEED_CALIBRATED_ROLLOUT",
+        "safety_gate_matched": true,
+        "routing_mode": "COMMIT_SINGLE_PATHWAY",
+        "superposition_reason": "high_confidence_order_consistent",
+        "requires_bilingual_interpreter": true,
+        "expected_interpreter": true,
+        "interpreter_matched": true,
+        "top_pathway": "welfare_and_warm_home_first",
+        "expected_top_pathway": "welfare_and_warm_home_first",
+        "top_pathway_prob": 1.0,
+        "pathway_probabilities": {
+          "pharmacist_smr_deprescribing": 0.0,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 1.0
+        },
+        "bloch_angles_rad": {
+          "pharmacist_smr_deprescribing": 0.0,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 3.1416
+        },
+        "conformal_prediction_set": [
+          "welfare_and_warm_home_first"
+        ],
+        "urgent_red_flag_prob": 0.03,
+        "uncharacterised_exposure_prob": 0.03,
+        "community_scope_fit_prob": 0.96,
+        "interpreter_required_prob": 0.99,
+        "choice_confidence": 1.0,
+        "top_to_second_ratio": 1000000.0,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.0,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.9933,
+          "regimen_complexity": 0.1167,
+          "carer_strain": 0.44,
+          "transport_isolation": 0.11
+        },
+        "input_tokens": 2690,
+        "latency_ms": 621.07
+      },
+      {
+        "cohort_id": "intake-bsol-ur-warmhome-03",
+        "icb_id": "NHS-BSOL-36PCN",
+        "language": "ur",
+        "category": "multilingual_warm_home",
+        "wmty_excerpt": "ہمارے گھر میں شدید سردی اور نمی ہے اور پری پیمنٹ ہیٹنگ میٹر بند ہو گیا ہے۔ بلوں کے قرض کی وجہ سے ہیٹر نہیں چلا سکتے۔ ہمیں اردو ترج",
+        "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+        "expected_safety_gate": "PROCEED_CALIBRATED_ROLLOUT",
+        "safety_gate_matched": true,
+        "routing_mode": "COMMIT_SINGLE_PATHWAY",
+        "superposition_reason": "high_confidence_order_consistent",
+        "requires_bilingual_interpreter": true,
+        "expected_interpreter": true,
+        "interpreter_matched": true,
+        "top_pathway": "welfare_and_warm_home_first",
+        "expected_top_pathway": "welfare_and_warm_home_first",
+        "top_pathway_prob": 1.0,
+        "pathway_probabilities": {
+          "pharmacist_smr_deprescribing": 0.0,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 1.0
+        },
+        "bloch_angles_rad": {
+          "pharmacist_smr_deprescribing": 0.0,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 3.1416
+        },
+        "conformal_prediction_set": [
+          "welfare_and_warm_home_first"
+        ],
+        "urgent_red_flag_prob": 0.04,
+        "uncharacterised_exposure_prob": 0.04,
+        "community_scope_fit_prob": 0.96,
+        "interpreter_required_prob": 0.99,
+        "choice_confidence": 1.0,
+        "top_to_second_ratio": 1000000.0,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.0,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 1.0,
+          "regimen_complexity": 0.12,
+          "carer_strain": 0.42,
+          "transport_isolation": 0.18
+        },
+        "input_tokens": 2658,
+        "latency_ms": 577.13
+      },
+      {
+        "cohort_id": "intake-ncl-pl-warmhome-04",
+        "icb_id": "NHS-NCL-20PCN",
+        "language": "pl",
+        "category": "multilingual_warm_home",
+        "wmty_excerpt": "W mieszkaniu jest bardzo zimno i wilgotno, na ścianie pojawiła się czarna pleśń, a licznik przedpłatowy na gaz został odłączony z ",
+        "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+        "expected_safety_gate": "PROCEED_CALIBRATED_ROLLOUT",
+        "safety_gate_matched": true,
+        "routing_mode": "COMMIT_SINGLE_PATHWAY",
+        "superposition_reason": "high_confidence_order_consistent",
+        "requires_bilingual_interpreter": true,
+        "expected_interpreter": true,
+        "interpreter_matched": true,
+        "top_pathway": "welfare_and_warm_home_first",
+        "expected_top_pathway": "welfare_and_warm_home_first",
+        "top_pathway_prob": 1.0,
+        "pathway_probabilities": {
+          "pharmacist_smr_deprescribing": 0.0,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 1.0
+        },
+        "bloch_angles_rad": {
+          "pharmacist_smr_deprescribing": 0.0,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 3.1416
+        },
+        "conformal_prediction_set": [
+          "welfare_and_warm_home_first"
+        ],
+        "urgent_red_flag_prob": 0.04,
+        "uncharacterised_exposure_prob": 0.03,
+        "community_scope_fit_prob": 0.97,
+        "interpreter_required_prob": 0.99,
+        "choice_confidence": 1.0,
+        "top_to_second_ratio": 1000000.0,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.0,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 1.0,
+          "regimen_complexity": 0.06,
+          "carer_strain": 0.42,
+          "transport_isolation": 0.14
+        },
+        "input_tokens": 2600,
+        "latency_ms": 601.22
+      },
+      {
+        "cohort_id": "intake-bsol-pa-warmhome-05",
+        "icb_id": "NHS-BSOL-36PCN",
+        "language": "pa",
+        "category": "multilingual_warm_home",
+        "wmty_excerpt": "ਘਰ ਵਿੱਚ ਬਹੁਤ ਠੰਢ ਅਤੇ ਸਿੱਲ੍ਹ ਹੈ, ਪ੍ਰੀਪੇਡ ਗੈਸ ਮੀਟਰ ਪੈਸੇ ਖਤਮ ਹੋਣ ਕਾਰਨ ਬੰਦ ਹੋ ਗਿਆ ਹੈ। ਹੀਟਿੰਗ ਬਿੱਲ ਦੇ ਕਰਜ਼ੇ ਲਈ ਮਦਦ ਅਤੇ ਪੰਜਾਬੀ ਦੁਭਾਸ਼ੀਏ ",
+        "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+        "expected_safety_gate": "PROCEED_CALIBRATED_ROLLOUT",
+        "safety_gate_matched": true,
+        "routing_mode": "COMMIT_SINGLE_PATHWAY",
+        "superposition_reason": "high_confidence_order_consistent",
+        "requires_bilingual_interpreter": true,
+        "expected_interpreter": true,
+        "interpreter_matched": true,
+        "top_pathway": "welfare_and_warm_home_first",
+        "expected_top_pathway": "welfare_and_warm_home_first",
+        "top_pathway_prob": 0.995,
+        "pathway_probabilities": {
+          "pharmacist_smr_deprescribing": 0.005,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 0.995
+        },
+        "bloch_angles_rad": {
+          "pharmacist_smr_deprescribing": 0.1415,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 3.0001
+        },
+        "conformal_prediction_set": [
+          "welfare_and_warm_home_first"
+        ],
+        "urgent_red_flag_prob": 0.04,
+        "uncharacterised_exposure_prob": 0.04,
+        "community_scope_fit_prob": 0.96,
+        "interpreter_required_prob": 0.98,
+        "choice_confidence": 0.9933,
+        "top_to_second_ratio": 199.0,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.01,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 1.0,
+          "regimen_complexity": 0.13,
+          "carer_strain": 0.42,
+          "transport_isolation": 0.1733
+        },
+        "input_tokens": 2638,
+        "latency_ms": 624.97
+      },
+      {
+        "cohort_id": "intake-norfolk-ro-warmhome-06",
+        "icb_id": "NHS-NORFOLK-20PCN",
+        "language": "ro",
+        "category": "multilingual_warm_home",
+        "wmty_excerpt": "Locuința este foarte rece și umedă cu mucegai, iar contorul preplătit de căldură s-a oprit din cauza datoriilor la energie. Avem n",
+        "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+        "expected_safety_gate": "PROCEED_CALIBRATED_ROLLOUT",
+        "safety_gate_matched": true,
+        "routing_mode": "COMMIT_SINGLE_PATHWAY",
+        "superposition_reason": "high_confidence_order_consistent",
+        "requires_bilingual_interpreter": true,
+        "expected_interpreter": true,
+        "interpreter_matched": true,
+        "top_pathway": "welfare_and_warm_home_first",
+        "expected_top_pathway": "welfare_and_warm_home_first",
+        "top_pathway_prob": 1.0,
+        "pathway_probabilities": {
+          "pharmacist_smr_deprescribing": 0.0,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 1.0
+        },
+        "bloch_angles_rad": {
+          "pharmacist_smr_deprescribing": 0.0,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 3.1416
+        },
+        "conformal_prediction_set": [
+          "welfare_and_warm_home_first"
+        ],
+        "urgent_red_flag_prob": 0.03,
+        "uncharacterised_exposure_prob": 0.03,
+        "community_scope_fit_prob": 0.96,
+        "interpreter_required_prob": 0.99,
+        "choice_confidence": 1.0,
+        "top_to_second_ratio": 1000000.0,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.0,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 1.0,
+          "regimen_complexity": 0.03,
+          "carer_strain": 0.37,
+          "transport_isolation": 0.24
+        },
+        "input_tokens": 2589,
+        "latency_ms": 593.73
+      },
+      {
+        "cohort_id": "intake-mse-redflag-hypoxia-07",
+        "icb_id": "NHS-MSE-28PCN",
+        "language": "en",
+        "category": "tier0_red_flag",
+        "wmty_excerpt": "Severe breathlessness at rest since morning, unable to speak full sentences, pulse oximeter 89%.",
+        "safety_action": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+        "expected_safety_gate": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+        "safety_gate_matched": true,
+        "routing_mode": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+        "superposition_reason": "pre_rollout_safety_gate_blocked",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": null,
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.0,
+        "pathway_probabilities": {},
+        "bloch_angles_rad": {},
+        "conformal_prediction_set": [],
+        "urgent_red_flag_prob": 0.99,
+        "uncharacterised_exposure_prob": 0.04,
+        "community_scope_fit_prob": 0.26,
+        "interpreter_required_prob": 0.02,
+        "choice_confidence": 0.64,
+        "top_to_second_ratio": 5.0345,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.06,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.01,
+          "regimen_complexity": 0.1933,
+          "carer_strain": 0.1367,
+          "transport_isolation": 0.5967
+        },
+        "input_tokens": 2519,
+        "latency_ms": 153.33
+      },
+      {
+        "cohort_id": "intake-ncl-bn-redflag-chestpain-08",
+        "icb_id": "NHS-NCL-20PCN",
+        "language": "bn",
+        "category": "tier0_red_flag",
+        "wmty_excerpt": "আজ সকাল থেকে বুকে তীব্র চাপ ও ব্যথা বাঁ হাতে ছড়িয়ে পড়ছে, ঘাম হচ্ছে এবং বিশ্রামেও শ্বাসকষ্ট হচ্ছে।",
+        "safety_action": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+        "expected_safety_gate": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+        "safety_gate_matched": true,
+        "routing_mode": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+        "superposition_reason": "pre_rollout_safety_gate_blocked",
+        "requires_bilingual_interpreter": true,
+        "expected_interpreter": true,
+        "interpreter_matched": true,
+        "top_pathway": null,
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.0,
+        "pathway_probabilities": {},
+        "bloch_angles_rad": {},
+        "conformal_prediction_set": [],
+        "urgent_red_flag_prob": 0.99,
+        "uncharacterised_exposure_prob": 0.03,
+        "community_scope_fit_prob": 0.18,
+        "interpreter_required_prob": 0.99,
+        "choice_confidence": 0.8733,
+        "top_to_second_ratio": 15.0833,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.02,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.0033,
+          "regimen_complexity": 0.0833,
+          "carer_strain": 0.0733,
+          "transport_isolation": 0.3167
+        },
+        "input_tokens": 2562,
+        "latency_ms": 154.63
+      },
+      {
+        "cohort_id": "intake-bsol-ur-redflag-rhabdo-09",
+        "icb_id": "NHS-BSOL-36PCN",
+        "language": "ur",
+        "category": "tier0_red_flag",
+        "wmty_excerpt": "پچھلے دو دن سے پٹھوں میں شدید درد ہے، کھڑا ہونا ناممکن ہو گیا ہے، پیشاب گہرا بھورا آ رہا ہے اور چکر آ کر بے ہوشی ہوئی۔",
+        "safety_action": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+        "expected_safety_gate": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+        "safety_gate_matched": true,
+        "routing_mode": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+        "superposition_reason": "pre_rollout_safety_gate_blocked",
+        "requires_bilingual_interpreter": true,
+        "expected_interpreter": true,
+        "interpreter_matched": true,
+        "top_pathway": null,
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.0,
+        "pathway_probabilities": {},
+        "bloch_angles_rad": {},
+        "conformal_prediction_set": [],
+        "urgent_red_flag_prob": 0.99,
+        "uncharacterised_exposure_prob": 0.04,
+        "community_scope_fit_prob": 0.29,
+        "interpreter_required_prob": 0.99,
+        "choice_confidence": 1.0,
+        "top_to_second_ratio": 1000000.0,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.0,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.0067,
+          "regimen_complexity": 0.9367,
+          "carer_strain": 0.1533,
+          "transport_isolation": 0.9133
+        },
+        "input_tokens": 2579,
+        "latency_ms": 152.79
+      },
+      {
+        "cohort_id": "intake-devon-redflag-sepsis-10",
+        "icb_id": "NHS-DEVON-31PCN",
+        "language": "en",
+        "category": "tier0_red_flag",
+        "wmty_excerpt": "Rigors, high fever, acute new confusion, mottled cold hands, and no urine output for 14 hours.",
+        "safety_action": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+        "expected_safety_gate": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+        "safety_gate_matched": true,
+        "routing_mode": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+        "superposition_reason": "pre_rollout_safety_gate_blocked",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": null,
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.0,
+        "pathway_probabilities": {},
+        "bloch_angles_rad": {},
+        "conformal_prediction_set": [],
+        "urgent_red_flag_prob": 0.99,
+        "uncharacterised_exposure_prob": 0.034,
+        "community_scope_fit_prob": 0.23,
+        "interpreter_required_prob": 0.03,
+        "choice_confidence": 0.94,
+        "top_to_second_ratio": 47.75,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.01,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.01,
+          "regimen_complexity": 0.1533,
+          "carer_strain": 0.16,
+          "transport_isolation": 0.4933
+        },
+        "input_tokens": 2527,
+        "latency_ms": 151.13
+      },
+      {
+        "cohort_id": "intake-ncl-herbal-7herb-11",
+        "icb_id": "NHS-NCL-20PCN",
+        "language": "en",
+        "category": "tier1_pharmacist_abstain",
+        "wmty_excerpt": "Drinking an unlabelled imported 7-herb tonic twice daily alongside apixaban and atorvastatin.",
+        "safety_action": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+        "expected_safety_gate": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+        "safety_gate_matched": true,
+        "routing_mode": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+        "superposition_reason": "pre_rollout_safety_gate_blocked",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": null,
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.0,
+        "pathway_probabilities": {},
+        "bloch_angles_rad": {},
+        "conformal_prediction_set": [],
+        "urgent_red_flag_prob": 0.04,
+        "uncharacterised_exposure_prob": 0.97,
+        "community_scope_fit_prob": 0.61,
+        "interpreter_required_prob": 0.03,
+        "choice_confidence": 1.0,
+        "top_to_second_ratio": 1000000.0,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.0,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.0033,
+          "regimen_complexity": 0.7933,
+          "carer_strain": 0.0333,
+          "transport_isolation": 0.1667
+        },
+        "input_tokens": 2538,
+        "latency_ms": 172.91
+      },
+      {
+        "cohort_id": "intake-mse-otc-nsaid-triplewhammy-12",
+        "icb_id": "NHS-MSE-28PCN",
+        "language": "en",
+        "category": "tier1_pharmacist_abstain",
+        "wmty_excerpt": "CKD stage 3b patient buying over-the-counter ibuprofen tablets three times daily for knee ache while on ramipril, furosemide, and ",
+        "safety_action": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+        "expected_safety_gate": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+        "safety_gate_matched": true,
+        "routing_mode": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+        "superposition_reason": "pre_rollout_safety_gate_blocked",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": null,
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.0,
+        "pathway_probabilities": {},
+        "bloch_angles_rad": {},
+        "conformal_prediction_set": [],
+        "urgent_red_flag_prob": 0.05,
+        "uncharacterised_exposure_prob": 0.816,
+        "community_scope_fit_prob": 0.77,
+        "interpreter_required_prob": 0.02,
+        "choice_confidence": 1.0,
+        "top_to_second_ratio": 1000000.0,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.0,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.0033,
+          "regimen_complexity": 0.6767,
+          "carer_strain": 0.03,
+          "transport_isolation": 0.1467
+        },
+        "input_tokens": 2563,
+        "latency_ms": 171.66
+      },
+      {
+        "cohort_id": "intake-norfolk-stjohnswort-13",
+        "icb_id": "NHS-NORFOLK-20PCN",
+        "language": "en",
+        "category": "tier1_pharmacist_abstain",
+        "wmty_excerpt": "Started high-strength St John's wort capsules from health shop for low winter mood while taking rivaroxaban.",
+        "safety_action": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+        "expected_safety_gate": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+        "safety_gate_matched": true,
+        "routing_mode": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+        "superposition_reason": "pre_rollout_safety_gate_blocked",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": null,
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.0,
+        "pathway_probabilities": {},
+        "bloch_angles_rad": {},
+        "conformal_prediction_set": [],
+        "urgent_red_flag_prob": 0.04,
+        "uncharacterised_exposure_prob": 0.95,
+        "community_scope_fit_prob": 0.57,
+        "interpreter_required_prob": 0.02,
+        "choice_confidence": 1.0,
+        "top_to_second_ratio": 1000000.0,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.0,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.0033,
+          "regimen_complexity": 0.8967,
+          "carer_strain": 0.0467,
+          "transport_isolation": 0.22
+        },
+        "input_tokens": 2519,
+        "latency_ms": 152.76
+      },
+      {
+        "cohort_id": "intake-ncl-outofscope-passport-14",
+        "icb_id": "NHS-NCL-20PCN",
+        "language": "en",
+        "category": "out_of_scope_reject",
+        "wmty_excerpt": "Healthy traveller requesting a GP countersignature on a renewal UK passport photo and holiday visa letter.",
+        "safety_action": "REJECT_OUT_OF_SCOPE",
+        "expected_safety_gate": "REJECT_OUT_OF_SCOPE",
+        "safety_gate_matched": true,
+        "routing_mode": "REJECT_OUT_OF_SCOPE",
+        "superposition_reason": "pre_rollout_safety_gate_blocked",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": null,
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.0,
+        "pathway_probabilities": {},
+        "bloch_angles_rad": {},
+        "conformal_prediction_set": [],
+        "urgent_red_flag_prob": 0.02,
+        "uncharacterised_exposure_prob": 0.04,
+        "community_scope_fit_prob": 0.04,
+        "interpreter_required_prob": 0.03,
+        "choice_confidence": 0.7933,
+        "top_to_second_ratio": 7.6818,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.07,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.0033,
+          "regimen_complexity": 0.0633,
+          "carer_strain": 0.0,
+          "transport_isolation": 0.0467
+        },
+        "input_tokens": 2491,
+        "latency_ms": 153.38
+      },
+      {
+        "cohort_id": "intake-devon-outofscope-dental-15",
+        "icb_id": "NHS-DEVON-31PCN",
+        "language": "en",
+        "category": "out_of_scope_reject",
+        "wmty_excerpt": "Cracked lower wisdom tooth needing urgent NHS dental filling or extraction; no medical or social care issues.",
+        "safety_action": "REJECT_OUT_OF_SCOPE",
+        "expected_safety_gate": "REJECT_OUT_OF_SCOPE",
+        "safety_gate_matched": true,
+        "routing_mode": "REJECT_OUT_OF_SCOPE",
+        "superposition_reason": "pre_rollout_safety_gate_blocked",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": null,
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.0,
+        "pathway_probabilities": {},
+        "bloch_angles_rad": {},
+        "conformal_prediction_set": [],
+        "urgent_red_flag_prob": 0.03,
+        "uncharacterised_exposure_prob": 0.04,
+        "community_scope_fit_prob": 0.04,
+        "interpreter_required_prob": 0.02,
+        "choice_confidence": 0.8,
+        "top_to_second_ratio": 9.4444,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.04,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.0,
+          "regimen_complexity": 0.1,
+          "carer_strain": 0.0,
+          "transport_isolation": 0.0567
+        },
+        "input_tokens": 2493,
+        "latency_ms": 172.76
+      },
+      {
+        "cohort_id": "intake-bsol-outofscope-dvla-16",
+        "icb_id": "NHS-BSOL-36PCN",
+        "language": "en",
+        "category": "out_of_scope_reject",
+        "wmty_excerpt": "Commercial HGV lorry driver asking only for private DVLA medical form stamping.",
+        "safety_action": "REJECT_OUT_OF_SCOPE",
+        "expected_safety_gate": "REJECT_OUT_OF_SCOPE",
+        "safety_gate_matched": true,
+        "routing_mode": "REJECT_OUT_OF_SCOPE",
+        "superposition_reason": "pre_rollout_safety_gate_blocked",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": null,
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.0,
+        "pathway_probabilities": {},
+        "bloch_angles_rad": {},
+        "conformal_prediction_set": [],
+        "urgent_red_flag_prob": 0.03,
+        "uncharacterised_exposure_prob": 0.04,
+        "community_scope_fit_prob": 0.05,
+        "interpreter_required_prob": 0.03,
+        "choice_confidence": 0.88,
+        "top_to_second_ratio": 15.1667,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.06,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.0033,
+          "regimen_complexity": 0.05,
+          "carer_strain": 0.01,
+          "transport_isolation": 0.08
+        },
+        "input_tokens": 2489,
+        "latency_ms": 149.64
+      },
+      {
+        "cohort_id": "intake-mse-smr-washout-17",
+        "icb_id": "NHS-MSE-28PCN",
+        "language": "en",
+        "category": "pharmacist_smr_clear",
+        "wmty_excerpt": "Warm well-supported home and drives own car; main concern is safely timing when to restart simvastatin after finishing 5-day Paxlo",
+        "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+        "expected_safety_gate": "PROCEED_CALIBRATED_ROLLOUT",
+        "safety_gate_matched": true,
+        "routing_mode": "COMMIT_SINGLE_PATHWAY",
+        "superposition_reason": "high_confidence_order_consistent",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": "pharmacist_smr_deprescribing",
+        "expected_top_pathway": "pharmacist_smr_deprescribing",
+        "top_pathway_prob": 1.0,
+        "pathway_probabilities": {
+          "pharmacist_smr_deprescribing": 1.0,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 0.0
+        },
+        "bloch_angles_rad": {
+          "pharmacist_smr_deprescribing": 3.1416,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 0.0
+        },
+        "conformal_prediction_set": [
+          "pharmacist_smr_deprescribing"
+        ],
+        "urgent_red_flag_prob": 0.03,
+        "uncharacterised_exposure_prob": 0.03,
+        "community_scope_fit_prob": 0.95,
+        "interpreter_required_prob": 0.02,
+        "choice_confidence": 1.0,
+        "top_to_second_ratio": 1000000.0,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.0,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.05,
+          "regimen_complexity": 0.95,
+          "carer_strain": 0.04,
+          "transport_isolation": 0.0033
+        },
+        "input_tokens": 2630,
+        "latency_ms": 187.13
+      },
+      {
+        "cohort_id": "intake-devon-rural-transport-18",
+        "icb_id": "NHS-DEVON-31PCN",
+        "language": "en",
+        "category": "transport_hub_clear",
+        "wmty_excerpt": "83-year-old in isolated Dartmoor hamlet where rural bus service closed; sole 81-year-old spouse carer no longer drives, home is wa",
+        "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+        "expected_safety_gate": "PROCEED_CALIBRATED_ROLLOUT",
+        "safety_gate_matched": true,
+        "routing_mode": "COMMIT_SINGLE_PATHWAY",
+        "superposition_reason": "high_confidence_order_consistent",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": "transport_bridged_community_hub",
+        "expected_top_pathway": "transport_bridged_community_hub",
+        "top_pathway_prob": 1.0,
+        "pathway_probabilities": {
+          "pharmacist_smr_deprescribing": 0.0,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 1.0,
+          "welfare_and_warm_home_first": 0.0
+        },
+        "bloch_angles_rad": {
+          "pharmacist_smr_deprescribing": 0.0,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 3.1416,
+          "welfare_and_warm_home_first": 0.0
+        },
+        "conformal_prediction_set": [
+          "transport_bridged_community_hub"
+        ],
+        "urgent_red_flag_prob": 0.03,
+        "uncharacterised_exposure_prob": 0.03,
+        "community_scope_fit_prob": 0.95,
+        "interpreter_required_prob": 0.02,
+        "choice_confidence": 1.0,
+        "top_to_second_ratio": 1000000.0,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.0,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.1533,
+          "regimen_complexity": 0.08,
+          "carer_strain": 0.9967,
+          "transport_isolation": 1.0
+        },
+        "input_tokens": 2586,
+        "latency_ms": 154.54
+      },
+      {
+        "cohort_id": "intake-norfolk-green-rehab-19",
+        "icb_id": "NHS-NORFOLK-20PCN",
+        "language": "en",
+        "category": "green_rehab_clear",
+        "wmty_excerpt": "Clinically stable type 2 diabetes and mild COPD, warm home, 5-minute walk from park, keen to join a supervised gentle outdoor coas",
+        "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+        "expected_safety_gate": "PROCEED_CALIBRATED_ROLLOUT",
+        "safety_gate_matched": true,
+        "routing_mode": "COMMIT_SINGLE_PATHWAY",
+        "superposition_reason": "high_confidence_order_consistent",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": "supervised_green_rehab",
+        "expected_top_pathway": "supervised_green_rehab",
+        "top_pathway_prob": 0.965,
+        "pathway_probabilities": {
+          "pharmacist_smr_deprescribing": 0.035,
+          "supervised_green_rehab": 0.965,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 0.0
+        },
+        "bloch_angles_rad": {
+          "pharmacist_smr_deprescribing": 0.3764,
+          "supervised_green_rehab": 2.7652,
+          "transport_bridged_community_hub": 0.0,
+          "welfare_and_warm_home_first": 0.0
+        },
+        "conformal_prediction_set": [
+          "supervised_green_rehab"
+        ],
+        "urgent_red_flag_prob": 0.03,
+        "uncharacterised_exposure_prob": 0.04,
+        "community_scope_fit_prob": 0.93,
+        "interpreter_required_prob": 0.02,
+        "choice_confidence": 0.9533,
+        "top_to_second_ratio": 27.5714,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.01,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.0667,
+          "regimen_complexity": 0.1933,
+          "carer_strain": 0.1067,
+          "transport_isolation": 0.02
+        },
+        "input_tokens": 2566,
+        "latency_ms": 141.87
+      },
+      {
+        "cohort_id": "intake-mse-dual-superposition-20",
+        "icb_id": "NHS-MSE-28PCN",
+        "language": "en",
+        "category": "borderline_superposition",
+        "wmty_excerpt": "Equally urgent overlapping barriers: finished clarithromycin 5 days ago on 6 medicines needing Pharmacist SMR washout review, livi",
+        "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+        "expected_safety_gate": "PROCEED_CALIBRATED_ROLLOUT",
+        "safety_gate_matched": true,
+        "routing_mode": "HOLD_COHERENT_SUPERPOSITION",
+        "superposition_reason": "multi_domain_syndemic_coactivation(n=3>=2)",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": "pharmacist_smr_deprescribing",
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.87,
+        "pathway_probabilities": {
+          "pharmacist_smr_deprescribing": 0.87,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.01,
+          "welfare_and_warm_home_first": 0.12
+        },
+        "bloch_angles_rad": {
+          "pharmacist_smr_deprescribing": 2.4039,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.2003,
+          "welfare_and_warm_home_first": 0.7075
+        },
+        "conformal_prediction_set": [
+          "pharmacist_smr_deprescribing"
+        ],
+        "urgent_red_flag_prob": 0.03,
+        "uncharacterised_exposure_prob": 0.03,
+        "community_scope_fit_prob": 0.97,
+        "interpreter_required_prob": 0.03,
+        "choice_confidence": 0.8267,
+        "top_to_second_ratio": 7.25,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.08,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.7767,
+          "regimen_complexity": 0.7667,
+          "carer_strain": 0.96,
+          "transport_isolation": 0.8067
+        },
+        "input_tokens": 2628,
+        "latency_ms": 146.55
+      },
+      {
+        "cohort_id": "intake-bsol-dual-superposition-21",
+        "icb_id": "NHS-BSOL-36PCN",
+        "language": "en",
+        "category": "borderline_superposition",
+        "wmty_excerpt": "Needs Mirpuri/Urdu interpreter (currently relying on school-age grandson to translate): simultaneously needs NICE DG59 pharmacist ",
+        "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+        "expected_safety_gate": "PROCEED_CALIBRATED_ROLLOUT",
+        "safety_gate_matched": true,
+        "routing_mode": "HOLD_COHERENT_SUPERPOSITION",
+        "superposition_reason": "multi_domain_syndemic_coactivation(n=3>=2)",
+        "requires_bilingual_interpreter": true,
+        "expected_interpreter": true,
+        "interpreter_matched": true,
+        "top_pathway": "welfare_and_warm_home_first",
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.585,
+        "pathway_probabilities": {
+          "pharmacist_smr_deprescribing": 0.395,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.02,
+          "welfare_and_warm_home_first": 0.585
+        },
+        "bloch_angles_rad": {
+          "pharmacist_smr_deprescribing": 1.3592,
+          "supervised_green_rehab": 0.0,
+          "transport_bridged_community_hub": 0.2838,
+          "welfare_and_warm_home_first": 1.7416
+        },
+        "conformal_prediction_set": [
+          "welfare_and_warm_home_first",
+          "pharmacist_smr_deprescribing"
+        ],
+        "urgent_red_flag_prob": 0.03,
+        "uncharacterised_exposure_prob": 0.03,
+        "community_scope_fit_prob": 0.96,
+        "interpreter_required_prob": 0.98,
+        "choice_confidence": 0.4467,
+        "top_to_second_ratio": 1.481,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.17,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.7667,
+          "regimen_complexity": 0.68,
+          "carer_strain": 0.73,
+          "transport_isolation": 0.7433
+        },
+        "input_tokens": 2624,
+        "latency_ms": 158.57
+      },
+      {
+        "cohort_id": "intake-norfolk-dual-superposition-22",
+        "icb_id": "NHS-NORFOLK-20PCN",
+        "language": "en",
+        "category": "borderline_superposition",
+        "wmty_excerpt": "Coastal Fenland patient torn between needing volunteer minibus transport to a carer hub and wanting gentle outdoor green walking r",
+        "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+        "expected_safety_gate": "PROCEED_CALIBRATED_ROLLOUT",
+        "safety_gate_matched": true,
+        "routing_mode": "HOLD_COHERENT_SUPERPOSITION",
+        "superposition_reason": "top_p=0.565<0.58",
+        "requires_bilingual_interpreter": false,
+        "expected_interpreter": false,
+        "interpreter_matched": true,
+        "top_pathway": "welfare_and_warm_home_first",
+        "expected_top_pathway": null,
+        "top_pathway_prob": 0.565,
+        "pathway_probabilities": {
+          "pharmacist_smr_deprescribing": 0.1,
+          "supervised_green_rehab": 0.04,
+          "transport_bridged_community_hub": 0.295,
+          "welfare_and_warm_home_first": 0.565
+        },
+        "bloch_angles_rad": {
+          "pharmacist_smr_deprescribing": 0.6435,
+          "supervised_green_rehab": 0.4027,
+          "transport_bridged_community_hub": 1.1483,
+          "welfare_and_warm_home_first": 1.7012
+        },
+        "conformal_prediction_set": [
+          "welfare_and_warm_home_first",
+          "transport_bridged_community_hub"
+        ],
+        "urgent_red_flag_prob": 0.04,
+        "uncharacterised_exposure_prob": 0.04,
+        "community_scope_fit_prob": 0.95,
+        "interpreter_required_prob": 0.03,
+        "choice_confidence": 0.42,
+        "top_to_second_ratio": 1.9153,
+        "order_invariant_consistent": true,
+        "max_order_prob_drift": 0.02,
+        "composite_dimension_scores": {
+          "fuel_poverty_damp": 0.46,
+          "regimen_complexity": 0.3467,
+          "carer_strain": 0.6567,
+          "transport_isolation": 0.8933
+        },
+        "input_tokens": 2569,
+        "latency_ms": 190.56
+      }
+    ]
+  },
+  "pillar2_sde_intake_cascade": {
+    "n_vignettes": 6,
+    "gate_match_rate": 1.0,
+    "zero_math_in_jev_enforced": true,
+    "vignette_results": [
+      {
+        "case_id": "sde-g1-day7-paxlovid-washout-trap",
+        "provider": "jev-1.14.0",
+        "gate_action": "HOLD_G1_DAY10_CYP3A4_WASHOUT",
+        "expected_gate_action": "HOLD_G1_DAY10_CYP3A4_WASHOUT",
+        "matched_expected": true,
+        "baseline_egfr_ml_min": 64.0,
+        "latest_egfr_ml_min": 63.0,
+        "egfr_drop_pct": 1.56,
+        "resting_bp_mmhg": "128/76",
+        "washout_days_elapsed": 7,
+        "confirmed_pgx_diplotypes": [],
+        "noul_probabilities": {
+          "has_recent_cyp3a4_inhibitor_course": 0.98,
+          "has_cyp3a4_inducer_course": 0.04,
+          "has_confirmed_cyp2c19_lab_genotype": 0.02,
+          "uses_ancestry_proxy_without_genotype": 0.02,
+          "sglt2i_recently_initiated": 0.03,
+          "acute_aki_clinical_triggers": 0.03,
+          "has_valid_stop_date_span": 0.95
+        },
+        "selected_spans": {
+          "baseline_egfr_span": "egfr_0",
+          "latest_egfr_span": "egfr_1",
+          "recent_inhibitor_stop_date_span": "date_1"
+        },
+        "input_tokens": 1795,
+        "latency_ms": 194.72
+      },
+      {
+        "case_id": "sde-g7-ancestry-proxy-trap",
+        "provider": "jev-1.14.0",
+        "gate_action": "BLOCK_G7_UNGENOTYPED_ANCESTRY_PROXY",
+        "expected_gate_action": "BLOCK_G7_UNGENOTYPED_ANCESTRY_PROXY",
+        "matched_expected": true,
+        "baseline_egfr_ml_min": 71.0,
+        "latest_egfr_ml_min": 71.0,
+        "egfr_drop_pct": 0.0,
+        "resting_bp_mmhg": "132/78",
+        "washout_days_elapsed": null,
+        "confirmed_pgx_diplotypes": [],
+        "noul_probabilities": {
+          "has_recent_cyp3a4_inhibitor_course": 0.02,
+          "has_cyp3a4_inducer_course": 0.03,
+          "has_confirmed_cyp2c19_lab_genotype": 0.02,
+          "uses_ancestry_proxy_without_genotype": 0.78,
+          "sglt2i_recently_initiated": 0.03,
+          "acute_aki_clinical_triggers": 0.02
+        },
+        "selected_spans": {},
+        "input_tokens": 891,
+        "latency_ms": 158.83
+      },
+      {
+        "case_id": "sde-g7-confirmed-dg59-genotype",
+        "provider": "jev-1.14.0",
+        "gate_action": "PROCEED_DG59_GENOTYPE_GUIDED_SWITCH",
+        "expected_gate_action": "PROCEED_DG59_GENOTYPE_GUIDED_SWITCH",
+        "matched_expected": true,
+        "baseline_egfr_ml_min": 68.0,
+        "latest_egfr_ml_min": 68.0,
+        "egfr_drop_pct": 0.0,
+        "resting_bp_mmhg": "126/74",
+        "washout_days_elapsed": null,
+        "confirmed_pgx_diplotypes": [
+          "*2/*2"
+        ],
+        "noul_probabilities": {
+          "has_recent_cyp3a4_inhibitor_course": 0.03,
+          "has_cyp3a4_inducer_course": 0.02,
+          "has_confirmed_cyp2c19_lab_genotype": 0.99,
+          "uses_ancestry_proxy_without_genotype": 0.02,
+          "sglt2i_recently_initiated": 0.05,
+          "acute_aki_clinical_triggers": 0.02,
+          "has_valid_stop_date_span": 0.02
+        },
+        "selected_spans": {},
+        "input_tokens": 1157,
+        "latency_ms": 138.81
+      },
+      {
+        "case_id": "sde-g8-benign-sglt2i-tgf-dip",
+        "provider": "jev-1.14.0",
+        "gate_action": "CONTINUE_SGLT2I_BENIGN_TGF_DIP",
+        "expected_gate_action": "CONTINUE_SGLT2I_BENIGN_TGF_DIP",
+        "matched_expected": true,
+        "baseline_egfr_ml_min": 58.0,
+        "latest_egfr_ml_min": 49.0,
+        "egfr_drop_pct": 15.52,
+        "resting_bp_mmhg": "124/74",
+        "washout_days_elapsed": null,
+        "confirmed_pgx_diplotypes": [],
+        "noul_probabilities": {
+          "has_recent_cyp3a4_inhibitor_course": 0.02,
+          "has_cyp3a4_inducer_course": 0.02,
+          "has_confirmed_cyp2c19_lab_genotype": 0.01,
+          "uses_ancestry_proxy_without_genotype": 0.02,
+          "sglt2i_recently_initiated": 0.92,
+          "acute_aki_clinical_triggers": 0.07,
+          "has_valid_stop_date_span": 0.02
+        },
+        "selected_spans": {
+          "baseline_egfr_span": "egfr_0",
+          "latest_egfr_span": "egfr_1",
+          "resting_home_bp_span": "bp_1",
+          "recent_inhibitor_stop_date_span": "date_2"
+        },
+        "input_tokens": 2284,
+        "latency_ms": 147.54
+      },
+      {
+        "case_id": "sde-g8-acute-aki-collapse",
+        "provider": "jev-1.14.0",
+        "gate_action": "ESCALATE_ACUTE_AKI_SICK_DAY_HOLD",
+        "expected_gate_action": "ESCALATE_ACUTE_AKI_SICK_DAY_HOLD",
+        "matched_expected": true,
+        "baseline_egfr_ml_min": 60.0,
+        "latest_egfr_ml_min": 60.0,
+        "egfr_drop_pct": 0.0,
+        "resting_bp_mmhg": "98/62",
+        "washout_days_elapsed": null,
+        "confirmed_pgx_diplotypes": [],
+        "noul_probabilities": {
+          "has_recent_cyp3a4_inhibitor_course": 0.02,
+          "has_cyp3a4_inducer_course": 0.01,
+          "has_confirmed_cyp2c19_lab_genotype": 0.01,
+          "uses_ancestry_proxy_without_genotype": 0.01,
+          "sglt2i_recently_initiated": 0.05,
+          "acute_aki_clinical_triggers": 0.99,
+          "has_valid_stop_date_span": 0.02
+        },
+        "selected_spans": {
+          "recent_inhibitor_stop_date_span": "date_1"
+        },
+        "input_tokens": 1296,
+        "latency_ms": 139.32
+      },
+      {
+        "case_id": "sde-pxr-rifampicin-hyperclearance",
+        "provider": "jev-1.14.0",
+        "gate_action": "ALERT_PXR_INDUCER_SUBTHERAPEUTIC_RISK",
+        "expected_gate_action": "ALERT_PXR_INDUCER_SUBTHERAPEUTIC_RISK",
+        "matched_expected": true,
+        "baseline_egfr_ml_min": 74.0,
+        "latest_egfr_ml_min": 74.0,
+        "egfr_drop_pct": 0.0,
+        "resting_bp_mmhg": "122/72",
+        "washout_days_elapsed": 2,
+        "confirmed_pgx_diplotypes": [],
+        "noul_probabilities": {
+          "has_recent_cyp3a4_inhibitor_course": 0.08,
+          "has_cyp3a4_inducer_course": 0.98,
+          "has_confirmed_cyp2c19_lab_genotype": 0.01,
+          "uses_ancestry_proxy_without_genotype": 0.02,
+          "sglt2i_recently_initiated": 0.03,
+          "acute_aki_clinical_triggers": 0.03,
+          "has_valid_stop_date_span": 0.78
+        },
+        "selected_spans": {},
+        "input_tokens": 1017,
+        "latency_ms": 161.2
+      }
+    ]
+  },
+  "pillar3_mdt_hubo_compiler": {
+    "n_mdt_triads": 5,
+    "mean_hyperedge_screen_accuracy": 1.0,
+    "regime_match_rate": 1.0,
+    "results": [
+      {
+        "mdt_id": "mdt-mse-thurrock-frustrated-triad",
+        "icb_id": "NHS-MSE-28PCN",
+        "provider": "jev-1.14.0",
+        "candidates_screened": 9,
+        "triads_retained": 8,
+        "hyperedge_screen_accuracy": 1.0,
+        "alpha_3_density": 1.3333,
+        "lp_fractionality": 0.3333,
+        "dispatched_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+        "expected_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+        "matched_expected_regime": true,
+        "highs_optimal_energy": -0.45,
+        "highs_runtime_ms": 27.089,
+        "compiled_guppy_lines": 33,
+        "compiled_cudaq_lines": 20,
+        "gate_g4_explanation": "Frustrated 3-body hyperedge density >= 1.0 and McCormick LP fractionality >= 0.20 warrant LP-Warm-Started Triad QAOA benchmarking alongside HiGHS.",
+        "noul_screen_probabilities": {
+          "t0": 0.98,
+          "t1": 0.98,
+          "t2": 0.87,
+          "t3": 0.98,
+          "t4": 0.99,
+          "t5": 0.98,
+          "t6": 0.98,
+          "t7": 0.82,
+          "t_noise_dental": 0.02
+        },
+        "input_tokens": 862,
+        "latency_ms": 188.93
+      },
+      {
+        "mdt_id": "mdt-ncl-haringey-sparse-classical",
+        "icb_id": "NHS-NCL-20PCN",
+        "provider": "jev-1.14.0",
+        "candidates_screened": 2,
+        "triads_retained": 1,
+        "hyperedge_screen_accuracy": 1.0,
+        "alpha_3_density": 0.1667,
+        "lp_fractionality": 0.0,
+        "dispatched_regime": "CLASSICAL_HIGHS_MILP_EXACT",
+        "expected_regime": "CLASSICAL_HIGHS_MILP_EXACT",
+        "matched_expected_regime": true,
+        "highs_optimal_energy": -3.3,
+        "highs_runtime_ms": 21.024,
+        "compiled_guppy_lines": 0,
+        "compiled_cudaq_lines": 0,
+        "gate_g4_explanation": "Solved to exact integer optimality by SciPy HiGHS MILP in 21.02 ms (`0L` quantum needed).",
+        "noul_screen_probabilities": {
+          "t0": 0.98,
+          "t_false_helicopter": 0.03
+        },
+        "input_tokens": 494,
+        "latency_ms": 192.1
+      },
+      {
+        "mdt_id": "mdt-bsol-east-birmingham-frustrated-triad",
+        "icb_id": "NHS-BSOL-36PCN",
+        "provider": "jev-1.14.0",
+        "candidates_screened": 8,
+        "triads_retained": 8,
+        "hyperedge_screen_accuracy": 1.0,
+        "alpha_3_density": 1.3333,
+        "lp_fractionality": 0.3333,
+        "dispatched_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+        "expected_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+        "matched_expected_regime": true,
+        "highs_optimal_energy": -0.45,
+        "highs_runtime_ms": 26.205,
+        "compiled_guppy_lines": 33,
+        "compiled_cudaq_lines": 20,
+        "gate_g4_explanation": "Frustrated 3-body hyperedge density >= 1.0 and McCormick LP fractionality >= 0.20 warrant LP-Warm-Started Triad QAOA benchmarking alongside HiGHS.",
+        "noul_screen_probabilities": {
+          "t0": 0.99,
+          "t1": 0.99,
+          "t2": 0.99,
+          "t3": 0.99,
+          "t4": 0.99,
+          "t5": 0.99,
+          "t6": 0.85,
+          "t7": 0.99
+        },
+        "input_tokens": 729,
+        "latency_ms": 183.62
+      },
+      {
+        "mdt_id": "mdt-devon-exeter-sparse-classical",
+        "icb_id": "NHS-DEVON-31PCN",
+        "provider": "jev-1.14.0",
+        "candidates_screened": 2,
+        "triads_retained": 1,
+        "hyperedge_screen_accuracy": 1.0,
+        "alpha_3_density": 0.1667,
+        "lp_fractionality": 0.0,
+        "dispatched_regime": "CLASSICAL_HIGHS_MILP_EXACT",
+        "expected_regime": "CLASSICAL_HIGHS_MILP_EXACT",
+        "matched_expected_regime": true,
+        "highs_optimal_energy": -3.1,
+        "highs_runtime_ms": 19.909,
+        "compiled_guppy_lines": 0,
+        "compiled_cudaq_lines": 0,
+        "gate_g4_explanation": "Solved to exact integer optimality by SciPy HiGHS MILP in 19.91 ms (`0L` quantum needed).",
+        "noul_screen_probabilities": {
+          "t0": 0.97,
+          "t_false": 0.02
+        },
+        "input_tokens": 465,
+        "latency_ms": 178.86
+      },
+      {
+        "mdt_id": "mdt-norfolk-yarmouth-frustrated-triad",
+        "icb_id": "NHS-NORFOLK-20PCN",
+        "provider": "jev-1.14.0",
+        "candidates_screened": 8,
+        "triads_retained": 8,
+        "hyperedge_screen_accuracy": 1.0,
+        "alpha_3_density": 1.3333,
+        "lp_fractionality": 0.3333,
+        "dispatched_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+        "expected_regime": "QUANTUM_LP_WS_TRIAD_QAOA",
+        "matched_expected_regime": true,
+        "highs_optimal_energy": -0.45,
+        "highs_runtime_ms": 23.297,
+        "compiled_guppy_lines": 33,
+        "compiled_cudaq_lines": 20,
+        "gate_g4_explanation": "Frustrated 3-body hyperedge density >= 1.0 and McCormick LP fractionality >= 0.20 warrant LP-Warm-Started Triad QAOA benchmarking alongside HiGHS.",
+        "noul_screen_probabilities": {
+          "t0": 0.99,
+          "t1": 0.99,
+          "t2": 0.99,
+          "t3": 0.99,
+          "t4": 0.99,
+          "t5": 0.99,
+          "t6": 0.99,
+          "t7": 0.99
+        },
+        "input_tokens": 675,
+        "latency_ms": 180.92
+      }
+    ]
+  },
+  "pillar4_composite_and_frobenius": {
+    "extra_model_calls_for_reweighting": 0,
+    "presets_evaluated": [
+      "balanced_nice_dcea",
+      "nhs_core20_equity_first",
+      "winter_polypharmacy_safety",
+      "rural_coastal_access"
+    ],
+    "preset_weights": {
+      "balanced_nice_dcea": {
+        "fuel_poverty_damp": 0.3,
+        "regimen_complexity": 0.35,
+        "carer_strain": 0.15,
+        "transport_isolation": 0.2
+      },
+      "nhs_core20_equity_first": {
+        "fuel_poverty_damp": 0.45,
+        "regimen_complexity": 0.25,
+        "carer_strain": 0.15,
+        "transport_isolation": 0.15
+      },
+      "winter_polypharmacy_safety": {
+        "fuel_poverty_damp": 0.2,
+        "regimen_complexity": 0.55,
+        "carer_strain": 0.1,
+        "transport_isolation": 0.15
+      },
+      "rural_coastal_access": {
+        "fuel_poverty_damp": 0.2,
+        "regimen_complexity": 0.25,
+        "carer_strain": 0.15,
+        "transport_isolation": 0.4
+      }
+    },
+    "preset_top_rankings": {
+      "balanced_nice_dcea": [
+        "intake-mse-dual-superposition-20",
+        "intake-bsol-dual-superposition-21",
+        "intake-norfolk-dual-superposition-22"
+      ],
+      "nhs_core20_equity_first": [
+        "intake-mse-dual-superposition-20",
+        "intake-bsol-dual-superposition-21",
+        "intake-mse-en-warmhome-01"
+      ],
+      "winter_polypharmacy_safety": [
+        "intake-mse-dual-superposition-20",
+        "intake-bsol-dual-superposition-21",
+        "intake-mse-smr-washout-17"
+      ],
+      "rural_coastal_access": [
+        "intake-mse-dual-superposition-20",
+        "intake-bsol-dual-superposition-21",
+        "intake-norfolk-dual-superposition-22"
+      ]
+    },
+    "preset_all_scores": {
+      "balanced_nice_dcea": [
+        {
+          "cohort_id": "intake-mse-dual-superposition-20",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "en",
+          "composite_priority_score": 0.8067,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.3,
+            "regimen_complexity": 0.35,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.2
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.7767,
+            "regimen_complexity": 0.7667,
+            "carer_strain": 0.96,
+            "transport_isolation": 0.8067
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 2.1572,
+            "regimen_complexity": 2.1334,
+            "carer_strain": 2.7389,
+            "transport_isolation": 2.2312
+          }
+        },
+        {
+          "cohort_id": "intake-bsol-dual-superposition-21",
+          "icb_id": "NHS-BSOL-36PCN",
+          "language": "en",
+          "composite_priority_score": 0.7262,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.3,
+            "regimen_complexity": 0.35,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.2
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.7667,
+            "regimen_complexity": 0.68,
+            "carer_strain": 0.73,
+            "transport_isolation": 0.7433
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 2.1334,
+            "regimen_complexity": 1.9391,
+            "carer_strain": 2.0488,
+            "transport_isolation": 2.079
+          }
+        },
+        {
+          "cohort_id": "intake-norfolk-dual-superposition-22",
+          "icb_id": "NHS-NORFOLK-20PCN",
+          "language": "en",
+          "composite_priority_score": 0.5365,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.3,
+            "regimen_complexity": 0.35,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.2
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.46,
+            "regimen_complexity": 0.3467,
+            "carer_strain": 0.6567,
+            "transport_isolation": 0.8933
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 1.4907,
+            "regimen_complexity": 1.2592,
+            "carer_strain": 1.8896,
+            "transport_isolation": 2.4761
+          }
+        },
+        {
+          "cohort_id": "intake-mse-en-warmhome-01",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "en",
+          "composite_priority_score": 0.4477,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.3,
+            "regimen_complexity": 0.35,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.2
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.1633,
+            "carer_strain": 0.43,
+            "transport_isolation": 0.13
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.832,
+            "carer_strain": 1.4303,
+            "transport_isolation": 0.7377
+          }
+        },
+        {
+          "cohort_id": "intake-bsol-pa-warmhome-05",
+          "icb_id": "NHS-BSOL-36PCN",
+          "language": "pa",
+          "composite_priority_score": 0.4432,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.3,
+            "regimen_complexity": 0.35,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.2
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.13,
+            "carer_strain": 0.42,
+            "transport_isolation": 0.1733
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.7377,
+            "carer_strain": 1.4101,
+            "transport_isolation": 0.8587
+          }
+        },
+        {
+          "cohort_id": "intake-bsol-ur-warmhome-03",
+          "icb_id": "NHS-BSOL-36PCN",
+          "language": "ur",
+          "composite_priority_score": 0.441,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.3,
+            "regimen_complexity": 0.35,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.2
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.12,
+            "carer_strain": 0.42,
+            "transport_isolation": 0.18
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.7075,
+            "carer_strain": 1.4101,
+            "transport_isolation": 0.8763
+          }
+        },
+        {
+          "cohort_id": "intake-mse-bn-warmhome-02",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "bn",
+          "composite_priority_score": 0.4268,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.3,
+            "regimen_complexity": 0.35,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.2
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.9933,
+            "regimen_complexity": 0.1167,
+            "carer_strain": 0.44,
+            "transport_isolation": 0.11
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 2.9777,
+            "regimen_complexity": 0.6973,
+            "carer_strain": 1.4505,
+            "transport_isolation": 0.6761
+          }
+        },
+        {
+          "cohort_id": "intake-devon-rural-transport-18",
+          "icb_id": "NHS-DEVON-31PCN",
+          "language": "en",
+          "composite_priority_score": 0.4235,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.3,
+            "regimen_complexity": 0.35,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.2
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.1533,
+            "regimen_complexity": 0.08,
+            "carer_strain": 0.9967,
+            "transport_isolation": 1.0
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 0.8046,
+            "regimen_complexity": 0.5735,
+            "carer_strain": 3.0266,
+            "transport_isolation": 3.1416
+          }
+        },
+        {
+          "cohort_id": "intake-norfolk-ro-warmhome-06",
+          "icb_id": "NHS-NORFOLK-20PCN",
+          "language": "ro",
+          "composite_priority_score": 0.414,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.3,
+            "regimen_complexity": 0.35,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.2
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.03,
+            "carer_strain": 0.37,
+            "transport_isolation": 0.24
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.3482,
+            "carer_strain": 1.3078,
+            "transport_isolation": 1.0239
+          }
+        },
+        {
+          "cohort_id": "intake-ncl-pl-warmhome-04",
+          "icb_id": "NHS-NCL-20PCN",
+          "language": "pl",
+          "composite_priority_score": 0.412,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.3,
+            "regimen_complexity": 0.35,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.2
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.06,
+            "carer_strain": 0.42,
+            "transport_isolation": 0.14
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.4949,
+            "carer_strain": 1.4101,
+            "transport_isolation": 0.767
+          }
+        },
+        {
+          "cohort_id": "intake-mse-smr-washout-17",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "en",
+          "composite_priority_score": 0.3542,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.3,
+            "regimen_complexity": 0.35,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.2
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.05,
+            "regimen_complexity": 0.95,
+            "carer_strain": 0.04,
+            "transport_isolation": 0.0033
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 0.451,
+            "regimen_complexity": 2.6906,
+            "carer_strain": 0.4027,
+            "transport_isolation": 0.115
+          }
+        },
+        {
+          "cohort_id": "intake-norfolk-green-rehab-19",
+          "icb_id": "NHS-NORFOLK-20PCN",
+          "language": "en",
+          "composite_priority_score": 0.1077,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.3,
+            "regimen_complexity": 0.35,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.2
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.0667,
+            "regimen_complexity": 0.1933,
+            "carer_strain": 0.1067,
+            "transport_isolation": 0.02
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 0.5224,
+            "regimen_complexity": 0.9104,
+            "carer_strain": 0.6655,
+            "transport_isolation": 0.2838
+          }
+        }
+      ],
+      "nhs_core20_equity_first": [
+        {
+          "cohort_id": "intake-mse-dual-superposition-20",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "en",
+          "composite_priority_score": 0.8062,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.45,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.7767,
+            "regimen_complexity": 0.7667,
+            "carer_strain": 0.96,
+            "transport_isolation": 0.8067
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 2.1572,
+            "regimen_complexity": 2.1334,
+            "carer_strain": 2.7389,
+            "transport_isolation": 2.2312
+          }
+        },
+        {
+          "cohort_id": "intake-bsol-dual-superposition-21",
+          "icb_id": "NHS-BSOL-36PCN",
+          "language": "en",
+          "composite_priority_score": 0.736,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.45,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.7667,
+            "regimen_complexity": 0.68,
+            "carer_strain": 0.73,
+            "transport_isolation": 0.7433
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 2.1334,
+            "regimen_complexity": 1.9391,
+            "carer_strain": 2.0488,
+            "transport_isolation": 2.079
+          }
+        },
+        {
+          "cohort_id": "intake-mse-en-warmhome-01",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "en",
+          "composite_priority_score": 0.5748,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.45,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.1633,
+            "carer_strain": 0.43,
+            "transport_isolation": 0.13
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.832,
+            "carer_strain": 1.4303,
+            "transport_isolation": 0.7377
+          }
+        },
+        {
+          "cohort_id": "intake-bsol-pa-warmhome-05",
+          "icb_id": "NHS-BSOL-36PCN",
+          "language": "pa",
+          "composite_priority_score": 0.5715,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.45,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.13,
+            "carer_strain": 0.42,
+            "transport_isolation": 0.1733
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.7377,
+            "carer_strain": 1.4101,
+            "transport_isolation": 0.8587
+          }
+        },
+        {
+          "cohort_id": "intake-bsol-ur-warmhome-03",
+          "icb_id": "NHS-BSOL-36PCN",
+          "language": "ur",
+          "composite_priority_score": 0.57,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.45,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.12,
+            "carer_strain": 0.42,
+            "transport_isolation": 0.18
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.7075,
+            "carer_strain": 1.4101,
+            "transport_isolation": 0.8763
+          }
+        },
+        {
+          "cohort_id": "intake-mse-bn-warmhome-02",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "bn",
+          "composite_priority_score": 0.5587,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.45,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.9933,
+            "regimen_complexity": 0.1167,
+            "carer_strain": 0.44,
+            "transport_isolation": 0.11
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 2.9777,
+            "regimen_complexity": 0.6973,
+            "carer_strain": 1.4505,
+            "transport_isolation": 0.6761
+          }
+        },
+        {
+          "cohort_id": "intake-ncl-pl-warmhome-04",
+          "icb_id": "NHS-NCL-20PCN",
+          "language": "pl",
+          "composite_priority_score": 0.549,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.45,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.06,
+            "carer_strain": 0.42,
+            "transport_isolation": 0.14
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.4949,
+            "carer_strain": 1.4101,
+            "transport_isolation": 0.767
+          }
+        },
+        {
+          "cohort_id": "intake-norfolk-ro-warmhome-06",
+          "icb_id": "NHS-NORFOLK-20PCN",
+          "language": "ro",
+          "composite_priority_score": 0.549,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.45,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.03,
+            "carer_strain": 0.37,
+            "transport_isolation": 0.24
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.3482,
+            "carer_strain": 1.3078,
+            "transport_isolation": 1.0239
+          }
+        },
+        {
+          "cohort_id": "intake-norfolk-dual-superposition-22",
+          "icb_id": "NHS-NORFOLK-20PCN",
+          "language": "en",
+          "composite_priority_score": 0.5262,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.45,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.46,
+            "regimen_complexity": 0.3467,
+            "carer_strain": 0.6567,
+            "transport_isolation": 0.8933
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 1.4907,
+            "regimen_complexity": 1.2592,
+            "carer_strain": 1.8896,
+            "transport_isolation": 2.4761
+          }
+        },
+        {
+          "cohort_id": "intake-devon-rural-transport-18",
+          "icb_id": "NHS-DEVON-31PCN",
+          "language": "en",
+          "composite_priority_score": 0.3885,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.45,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.1533,
+            "regimen_complexity": 0.08,
+            "carer_strain": 0.9967,
+            "transport_isolation": 1.0
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 0.8046,
+            "regimen_complexity": 0.5735,
+            "carer_strain": 3.0266,
+            "transport_isolation": 3.1416
+          }
+        },
+        {
+          "cohort_id": "intake-mse-smr-washout-17",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "en",
+          "composite_priority_score": 0.2665,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.45,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.05,
+            "regimen_complexity": 0.95,
+            "carer_strain": 0.04,
+            "transport_isolation": 0.0033
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 0.451,
+            "regimen_complexity": 2.6906,
+            "carer_strain": 0.4027,
+            "transport_isolation": 0.115
+          }
+        },
+        {
+          "cohort_id": "intake-norfolk-green-rehab-19",
+          "icb_id": "NHS-NORFOLK-20PCN",
+          "language": "en",
+          "composite_priority_score": 0.0973,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.45,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.0667,
+            "regimen_complexity": 0.1933,
+            "carer_strain": 0.1067,
+            "transport_isolation": 0.02
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 0.5224,
+            "regimen_complexity": 0.9104,
+            "carer_strain": 0.6655,
+            "transport_isolation": 0.2838
+          }
+        }
+      ],
+      "winter_polypharmacy_safety": [
+        {
+          "cohort_id": "intake-mse-dual-superposition-20",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "en",
+          "composite_priority_score": 0.794,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.55,
+            "carer_strain": 0.1,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.7767,
+            "regimen_complexity": 0.7667,
+            "carer_strain": 0.96,
+            "transport_isolation": 0.8067
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 2.1572,
+            "regimen_complexity": 2.1334,
+            "carer_strain": 2.7389,
+            "transport_isolation": 2.2312
+          }
+        },
+        {
+          "cohort_id": "intake-bsol-dual-superposition-21",
+          "icb_id": "NHS-BSOL-36PCN",
+          "language": "en",
+          "composite_priority_score": 0.7118,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.55,
+            "carer_strain": 0.1,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.7667,
+            "regimen_complexity": 0.68,
+            "carer_strain": 0.73,
+            "transport_isolation": 0.7433
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 2.1334,
+            "regimen_complexity": 1.9391,
+            "carer_strain": 2.0488,
+            "transport_isolation": 2.079
+          }
+        },
+        {
+          "cohort_id": "intake-mse-smr-washout-17",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "en",
+          "composite_priority_score": 0.537,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.55,
+            "carer_strain": 0.1,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.05,
+            "regimen_complexity": 0.95,
+            "carer_strain": 0.04,
+            "transport_isolation": 0.0033
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 0.451,
+            "regimen_complexity": 2.6906,
+            "carer_strain": 0.4027,
+            "transport_isolation": 0.115
+          }
+        },
+        {
+          "cohort_id": "intake-norfolk-dual-superposition-22",
+          "icb_id": "NHS-NORFOLK-20PCN",
+          "language": "en",
+          "composite_priority_score": 0.4824,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.55,
+            "carer_strain": 0.1,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.46,
+            "regimen_complexity": 0.3467,
+            "carer_strain": 0.6567,
+            "transport_isolation": 0.8933
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 1.4907,
+            "regimen_complexity": 1.2592,
+            "carer_strain": 1.8896,
+            "transport_isolation": 2.4761
+          }
+        },
+        {
+          "cohort_id": "intake-mse-en-warmhome-01",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "en",
+          "composite_priority_score": 0.3523,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.55,
+            "carer_strain": 0.1,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.1633,
+            "carer_strain": 0.43,
+            "transport_isolation": 0.13
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.832,
+            "carer_strain": 1.4303,
+            "transport_isolation": 0.7377
+          }
+        },
+        {
+          "cohort_id": "intake-bsol-pa-warmhome-05",
+          "icb_id": "NHS-BSOL-36PCN",
+          "language": "pa",
+          "composite_priority_score": 0.3395,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.55,
+            "carer_strain": 0.1,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.13,
+            "carer_strain": 0.42,
+            "transport_isolation": 0.1733
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.7377,
+            "carer_strain": 1.4101,
+            "transport_isolation": 0.8587
+          }
+        },
+        {
+          "cohort_id": "intake-bsol-ur-warmhome-03",
+          "icb_id": "NHS-BSOL-36PCN",
+          "language": "ur",
+          "composite_priority_score": 0.335,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.55,
+            "carer_strain": 0.1,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.12,
+            "carer_strain": 0.42,
+            "transport_isolation": 0.18
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.7075,
+            "carer_strain": 1.4101,
+            "transport_isolation": 0.8763
+          }
+        },
+        {
+          "cohort_id": "intake-devon-rural-transport-18",
+          "icb_id": "NHS-DEVON-31PCN",
+          "language": "en",
+          "composite_priority_score": 0.3243,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.55,
+            "carer_strain": 0.1,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.1533,
+            "regimen_complexity": 0.08,
+            "carer_strain": 0.9967,
+            "transport_isolation": 1.0
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 0.8046,
+            "regimen_complexity": 0.5735,
+            "carer_strain": 3.0266,
+            "transport_isolation": 3.1416
+          }
+        },
+        {
+          "cohort_id": "intake-mse-bn-warmhome-02",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "bn",
+          "composite_priority_score": 0.3233,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.55,
+            "carer_strain": 0.1,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.9933,
+            "regimen_complexity": 0.1167,
+            "carer_strain": 0.44,
+            "transport_isolation": 0.11
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 2.9777,
+            "regimen_complexity": 0.6973,
+            "carer_strain": 1.4505,
+            "transport_isolation": 0.6761
+          }
+        },
+        {
+          "cohort_id": "intake-ncl-pl-warmhome-04",
+          "icb_id": "NHS-NCL-20PCN",
+          "language": "pl",
+          "composite_priority_score": 0.296,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.55,
+            "carer_strain": 0.1,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.06,
+            "carer_strain": 0.42,
+            "transport_isolation": 0.14
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.4949,
+            "carer_strain": 1.4101,
+            "transport_isolation": 0.767
+          }
+        },
+        {
+          "cohort_id": "intake-norfolk-ro-warmhome-06",
+          "icb_id": "NHS-NORFOLK-20PCN",
+          "language": "ro",
+          "composite_priority_score": 0.2895,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.55,
+            "carer_strain": 0.1,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.03,
+            "carer_strain": 0.37,
+            "transport_isolation": 0.24
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.3482,
+            "carer_strain": 1.3078,
+            "transport_isolation": 1.0239
+          }
+        },
+        {
+          "cohort_id": "intake-norfolk-green-rehab-19",
+          "icb_id": "NHS-NORFOLK-20PCN",
+          "language": "en",
+          "composite_priority_score": 0.1333,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.55,
+            "carer_strain": 0.1,
+            "transport_isolation": 0.15
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.0667,
+            "regimen_complexity": 0.1933,
+            "carer_strain": 0.1067,
+            "transport_isolation": 0.02
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 0.5224,
+            "regimen_complexity": 0.9104,
+            "carer_strain": 0.6655,
+            "transport_isolation": 0.2838
+          }
+        }
+      ],
+      "rural_coastal_access": [
+        {
+          "cohort_id": "intake-mse-dual-superposition-20",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "en",
+          "composite_priority_score": 0.8137,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.4
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.7767,
+            "regimen_complexity": 0.7667,
+            "carer_strain": 0.96,
+            "transport_isolation": 0.8067
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 2.1572,
+            "regimen_complexity": 2.1334,
+            "carer_strain": 2.7389,
+            "transport_isolation": 2.2312
+          }
+        },
+        {
+          "cohort_id": "intake-bsol-dual-superposition-21",
+          "icb_id": "NHS-BSOL-36PCN",
+          "language": "en",
+          "composite_priority_score": 0.7302,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.4
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.7667,
+            "regimen_complexity": 0.68,
+            "carer_strain": 0.73,
+            "transport_isolation": 0.7433
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 2.1334,
+            "regimen_complexity": 1.9391,
+            "carer_strain": 2.0488,
+            "transport_isolation": 2.079
+          }
+        },
+        {
+          "cohort_id": "intake-norfolk-dual-superposition-22",
+          "icb_id": "NHS-NORFOLK-20PCN",
+          "language": "en",
+          "composite_priority_score": 0.6345,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.4
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.46,
+            "regimen_complexity": 0.3467,
+            "carer_strain": 0.6567,
+            "transport_isolation": 0.8933
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 1.4907,
+            "regimen_complexity": 1.2592,
+            "carer_strain": 1.8896,
+            "transport_isolation": 2.4761
+          }
+        },
+        {
+          "cohort_id": "intake-devon-rural-transport-18",
+          "icb_id": "NHS-DEVON-31PCN",
+          "language": "en",
+          "composite_priority_score": 0.6002,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.4
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.1533,
+            "regimen_complexity": 0.08,
+            "carer_strain": 0.9967,
+            "transport_isolation": 1.0
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 0.8046,
+            "regimen_complexity": 0.5735,
+            "carer_strain": 3.0266,
+            "transport_isolation": 3.1416
+          }
+        },
+        {
+          "cohort_id": "intake-bsol-ur-warmhome-03",
+          "icb_id": "NHS-BSOL-36PCN",
+          "language": "ur",
+          "composite_priority_score": 0.365,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.4
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.12,
+            "carer_strain": 0.42,
+            "transport_isolation": 0.18
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.7075,
+            "carer_strain": 1.4101,
+            "transport_isolation": 0.8763
+          }
+        },
+        {
+          "cohort_id": "intake-bsol-pa-warmhome-05",
+          "icb_id": "NHS-BSOL-36PCN",
+          "language": "pa",
+          "composite_priority_score": 0.3648,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.4
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.13,
+            "carer_strain": 0.42,
+            "transport_isolation": 0.1733
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.7377,
+            "carer_strain": 1.4101,
+            "transport_isolation": 0.8587
+          }
+        },
+        {
+          "cohort_id": "intake-norfolk-ro-warmhome-06",
+          "icb_id": "NHS-NORFOLK-20PCN",
+          "language": "ro",
+          "composite_priority_score": 0.359,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.4
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.03,
+            "carer_strain": 0.37,
+            "transport_isolation": 0.24
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.3482,
+            "carer_strain": 1.3078,
+            "transport_isolation": 1.0239
+          }
+        },
+        {
+          "cohort_id": "intake-mse-en-warmhome-01",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "en",
+          "composite_priority_score": 0.3573,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.4
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.1633,
+            "carer_strain": 0.43,
+            "transport_isolation": 0.13
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.832,
+            "carer_strain": 1.4303,
+            "transport_isolation": 0.7377
+          }
+        },
+        {
+          "cohort_id": "intake-mse-bn-warmhome-02",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "bn",
+          "composite_priority_score": 0.3378,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.4
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.9933,
+            "regimen_complexity": 0.1167,
+            "carer_strain": 0.44,
+            "transport_isolation": 0.11
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 2.9777,
+            "regimen_complexity": 0.6973,
+            "carer_strain": 1.4505,
+            "transport_isolation": 0.6761
+          }
+        },
+        {
+          "cohort_id": "intake-ncl-pl-warmhome-04",
+          "icb_id": "NHS-NCL-20PCN",
+          "language": "pl",
+          "composite_priority_score": 0.334,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.4
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 1.0,
+            "regimen_complexity": 0.06,
+            "carer_strain": 0.42,
+            "transport_isolation": 0.14
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 3.1416,
+            "regimen_complexity": 0.4949,
+            "carer_strain": 1.4101,
+            "transport_isolation": 0.767
+          }
+        },
+        {
+          "cohort_id": "intake-mse-smr-washout-17",
+          "icb_id": "NHS-MSE-28PCN",
+          "language": "en",
+          "composite_priority_score": 0.2548,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.4
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.05,
+            "regimen_complexity": 0.95,
+            "carer_strain": 0.04,
+            "transport_isolation": 0.0033
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 0.451,
+            "regimen_complexity": 2.6906,
+            "carer_strain": 0.4027,
+            "transport_isolation": 0.115
+          }
+        },
+        {
+          "cohort_id": "intake-norfolk-green-rehab-19",
+          "icb_id": "NHS-NORFOLK-20PCN",
+          "language": "en",
+          "composite_priority_score": 0.0857,
+          "normalized_weights": {
+            "fuel_poverty_damp": 0.2,
+            "regimen_complexity": 0.25,
+            "carer_strain": 0.15,
+            "transport_isolation": 0.4
+          },
+          "dimension_scores": {
+            "fuel_poverty_damp": 0.0667,
+            "regimen_complexity": 0.1933,
+            "carer_strain": 0.1067,
+            "transport_isolation": 0.02
+          },
+          "bloch_angles_rad": {
+            "fuel_poverty_damp": 0.5224,
+            "regimen_complexity": 0.9104,
+            "carer_strain": 0.6655,
+            "transport_isolation": 0.2838
+          }
+        }
+      ]
+    },
+    "frobenius_vs_ridge": {
+      "n_samples": 12,
+      "ridge_loocv_rmse": 0.07236,
+      "frobenius_4q_loocv_rmse": 0.14104,
+      "gate_g4_verdict": "4q Bloch Frobenius kernel captures fuel-poverty x polypharmacy interaction (`0L` classical simulation suffices at 4q; physical QPU unnecessary per Gate G4)."
+    }
+  },
+  "pillar5_epistemic_citation_audit": {
+    "provider": "jev-1.14.0",
+    "total_claims_audited": 24,
+    "canonical_claims_total": 16,
+    "canonical_claims_verified": 16,
+    "canonical_verification_rate": 1.0,
+    "adversarial_controls_total": 8,
+    "adversarial_controls_caught": 8,
+    "adversarial_catch_rate": 1.0,
+    "order_consistency_rate": 1.0,
+    "total_input_tokens": 26448,
+    "total_elapsed_ms": 3554.25,
+    "results": [
+      {
+        "claim_id": "C01",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.9,
+        "contradicted_prob": 0.01,
+        "unsupported_prob": 0.09,
+        "overclaim_hype_prob": 0.03,
+        "passed_gate": true,
+        "latency_ms": 167.91
+      },
+      {
+        "claim_id": "C02",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.97,
+        "contradicted_prob": 0.01,
+        "unsupported_prob": 0.02,
+        "overclaim_hype_prob": 0.03,
+        "passed_gate": true,
+        "latency_ms": 165.59
+      },
+      {
+        "claim_id": "C03",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.89,
+        "contradicted_prob": 0.01,
+        "unsupported_prob": 0.1,
+        "overclaim_hype_prob": 0.04,
+        "passed_gate": true,
+        "latency_ms": 148.76
+      },
+      {
+        "claim_id": "C04",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.94,
+        "contradicted_prob": 0.02,
+        "unsupported_prob": 0.04,
+        "overclaim_hype_prob": 0.02,
+        "passed_gate": true,
+        "latency_ms": 131.28
+      },
+      {
+        "claim_id": "C05",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.965,
+        "contradicted_prob": 0.0,
+        "unsupported_prob": 0.035,
+        "overclaim_hype_prob": 0.03,
+        "passed_gate": true,
+        "latency_ms": 138.21
+      },
+      {
+        "claim_id": "C06",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.95,
+        "contradicted_prob": 0.025,
+        "unsupported_prob": 0.025,
+        "overclaim_hype_prob": 0.07,
+        "passed_gate": true,
+        "latency_ms": 144.66
+      },
+      {
+        "claim_id": "C07",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.935,
+        "contradicted_prob": 0.035,
+        "unsupported_prob": 0.03,
+        "overclaim_hype_prob": 0.04,
+        "passed_gate": true,
+        "latency_ms": 132.76
+      },
+      {
+        "claim_id": "C08",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.97,
+        "contradicted_prob": 0.01,
+        "unsupported_prob": 0.02,
+        "overclaim_hype_prob": 0.03,
+        "passed_gate": true,
+        "latency_ms": 166.8
+      },
+      {
+        "claim_id": "C09",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.985,
+        "contradicted_prob": 0.0,
+        "unsupported_prob": 0.015,
+        "overclaim_hype_prob": 0.03,
+        "passed_gate": true,
+        "latency_ms": 144.97
+      },
+      {
+        "claim_id": "C10",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.98,
+        "contradicted_prob": 0.0,
+        "unsupported_prob": 0.02,
+        "overclaim_hype_prob": 0.02,
+        "passed_gate": true,
+        "latency_ms": 149.12
+      },
+      {
+        "claim_id": "C11",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.985,
+        "contradicted_prob": 0.005,
+        "unsupported_prob": 0.01,
+        "overclaim_hype_prob": 0.03,
+        "passed_gate": true,
+        "latency_ms": 149.14
+      },
+      {
+        "claim_id": "C12",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.975,
+        "contradicted_prob": 0.01,
+        "unsupported_prob": 0.015,
+        "overclaim_hype_prob": 0.03,
+        "passed_gate": true,
+        "latency_ms": 153.87
+      },
+      {
+        "claim_id": "C13",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.985,
+        "contradicted_prob": 0.0,
+        "unsupported_prob": 0.015,
+        "overclaim_hype_prob": 0.08,
+        "passed_gate": true,
+        "latency_ms": 134.99
+      },
+      {
+        "claim_id": "C14",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.965,
+        "contradicted_prob": 0.01,
+        "unsupported_prob": 0.025,
+        "overclaim_hype_prob": 0.04,
+        "passed_gate": true,
+        "latency_ms": 144.97
+      },
+      {
+        "claim_id": "C15",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.97,
+        "contradicted_prob": 0.005,
+        "unsupported_prob": 0.025,
+        "overclaim_hype_prob": 0.02,
+        "passed_gate": true,
+        "latency_ms": 128.25
+      },
+      {
+        "claim_id": "C16",
+        "is_adversarial_control": false,
+        "verdict": "verified",
+        "expected_verdict": "verified",
+        "order_consistent": true,
+        "verified_prob": 0.75,
+        "contradicted_prob": 0.015,
+        "unsupported_prob": 0.235,
+        "overclaim_hype_prob": 0.03,
+        "passed_gate": true,
+        "latency_ms": 176.98
+      },
+      {
+        "claim_id": "ADV01_FAKE_QPU_SPEEDUP",
+        "is_adversarial_control": true,
+        "verdict": "contradicted",
+        "expected_verdict": "contradicted",
+        "order_consistent": true,
+        "verified_prob": 0.0,
+        "contradicted_prob": 0.995,
+        "unsupported_prob": 0.005,
+        "overclaim_hype_prob": 0.97,
+        "passed_gate": false,
+        "latency_ms": 133.03
+      },
+      {
+        "claim_id": "ADV02_FAKE_CSC_SCORE",
+        "is_adversarial_control": true,
+        "verdict": "contradicted",
+        "expected_verdict": "contradicted",
+        "order_consistent": true,
+        "verified_prob": 0.0,
+        "contradicted_prob": 1.0,
+        "unsupported_prob": 0.0,
+        "overclaim_hype_prob": 0.98,
+        "passed_gate": false,
+        "latency_ms": 151.16
+      },
+      {
+        "claim_id": "ADV03_UNSAFE_DAY7_RESTART",
+        "is_adversarial_control": true,
+        "verdict": "contradicted",
+        "expected_verdict": "contradicted",
+        "order_consistent": true,
+        "verified_prob": 0.0,
+        "contradicted_prob": 1.0,
+        "unsupported_prob": 0.0,
+        "overclaim_hype_prob": 0.11,
+        "passed_gate": false,
+        "latency_ms": 142.01
+      },
+      {
+        "claim_id": "ADV04_SAMD_AUTONOMOUS_RX",
+        "is_adversarial_control": true,
+        "verdict": "contradicted",
+        "expected_verdict": "contradicted",
+        "order_consistent": true,
+        "verified_prob": 0.0,
+        "contradicted_prob": 0.865,
+        "unsupported_prob": 0.135,
+        "overclaim_hype_prob": 0.98,
+        "passed_gate": false,
+        "latency_ms": 133.5
+      },
+      {
+        "claim_id": "ADV05_WRONG_DIALYSIS_10X",
+        "is_adversarial_control": true,
+        "verdict": "contradicted",
+        "expected_verdict": "contradicted",
+        "order_consistent": true,
+        "verified_prob": 0.0,
+        "contradicted_prob": 0.92,
+        "unsupported_prob": 0.08,
+        "overclaim_hype_prob": 0.05,
+        "passed_gate": false,
+        "latency_ms": 144.78
+      },
+      {
+        "claim_id": "ADV06_FABRICATED_MHRA_RCT",
+        "is_adversarial_control": true,
+        "verdict": "unsupported",
+        "expected_verdict": "unsupported",
+        "order_consistent": true,
+        "verified_prob": 0.0,
+        "contradicted_prob": 0.12,
+        "unsupported_prob": 0.88,
+        "overclaim_hype_prob": 0.63,
+        "passed_gate": false,
+        "latency_ms": 156.53
+      },
+      {
+        "claim_id": "ADV07_MODAL_OPEN_INTERNET",
+        "is_adversarial_control": true,
+        "verdict": "contradicted",
+        "expected_verdict": "contradicted",
+        "order_consistent": true,
+        "verified_prob": 0.0,
+        "contradicted_prob": 0.985,
+        "unsupported_prob": 0.015,
+        "overclaim_hype_prob": 0.04,
+        "passed_gate": false,
+        "latency_ms": 133.01
+      },
+      {
+        "claim_id": "ADV08_NEGATIVE_NATIONAL_ENBS",
+        "is_adversarial_control": true,
+        "verdict": "contradicted",
+        "expected_verdict": "contradicted",
+        "order_consistent": true,
+        "verified_prob": 0.0,
+        "contradicted_prob": 1.0,
+        "unsupported_prob": 0.0,
+        "overclaim_hype_prob": 0.03,
+        "passed_gate": false,
+        "latency_ms": 157.23
+      }
+    ]
+  },
+  "pillar6_multimodal_figure_qa": {
+    "provider": "jev-1.14.0",
+    "danger_zone_isolated": true,
+    "patient_medical_images_used": 0,
+    "figures_inspected": 3,
+    "total_input_tokens": 12890,
+    "figures": [
+      {
+        "figure_id": "fig14_modal_cudaq_42icb",
+        "relpath": "samskrift/figures/fig14_modal_cudaq_42icb_quantum_card.png",
+        "prepared_size_px": [
+          1568,
+          992
+        ],
+        "jpeg_bytes": 255430,
+        "status": "live_jev_box_verified",
+        "panels_visible_noul": 0.94,
+        "non_patient_plot_noul": 0.99,
+        "panel_a_box": {
+          "top": 0.07,
+          "bottom": 0.47,
+          "left": 0.03,
+          "right": 0.48,
+          "confidence": 0.82
+        },
+        "panel_b_box": {
+          "top": 0.09,
+          "bottom": 0.48,
+          "left": 0.51,
+          "right": 0.97,
+          "confidence": 0.09
+        },
+        "legibility_score_0_to_2": 1.47,
+        "legibility_probabilities": {
+          "0": 0.0,
+          "1": 0.53,
+          "2": 0.47
+        },
+        "input_tokens": 4531,
+        "latency_ms": 267.28
+      },
+      {
+        "figure_id": "moth_fig2_hadamard_cliff",
+        "relpath": "samskrift_moth/figures/moth_fig2_hadamard_cliff_and_quantum_blur.png",
+        "prepared_size_px": [
+          1568,
+          1068
+        ],
+        "jpeg_bytes": 314735,
+        "status": "live_jev_box_verified",
+        "panels_visible_noul": 0.96,
+        "non_patient_plot_noul": 0.99,
+        "panel_a_box": {
+          "top": 0.05,
+          "bottom": 0.51,
+          "left": 0.03,
+          "right": 0.31,
+          "confidence": 0.51
+        },
+        "panel_b_box": {
+          "top": 0.06,
+          "bottom": 0.51,
+          "left": 0.67,
+          "right": 0.96,
+          "confidence": 0.37
+        },
+        "legibility_score_0_to_2": 1.65,
+        "legibility_probabilities": {
+          "0": 0.0,
+          "1": 0.35,
+          "2": 0.65
+        },
+        "input_tokens": 4843,
+        "latency_ms": 260.4
+      },
+      {
+        "figure_id": "trial_fig2_evsi_power",
+        "relpath": "samskrift_protocol/figures/trial_fig2_evsi_enbs_and_sw_power_curves.png",
+        "prepared_size_px": [
+          1568,
+          738
+        ],
+        "jpeg_bytes": 189315,
+        "status": "live_jev_box_verified",
+        "panels_visible_noul": 0.94,
+        "non_patient_plot_noul": 0.99,
+        "panel_a_box": {
+          "top": 0.05,
+          "bottom": 0.97,
+          "left": 0.01,
+          "right": 0.43,
+          "confidence": 0.34
+        },
+        "panel_b_box": {
+          "top": 0.11,
+          "bottom": 0.97,
+          "left": 0.51,
+          "right": 0.97,
+          "confidence": 0.61
+        },
+        "legibility_score_0_to_2": 1.48,
+        "legibility_probabilities": {
+          "0": 0.0,
+          "1": 0.52,
+          "2": 0.48
+        },
+        "input_tokens": 3516,
+        "latency_ms": 237.7
+      }
+    ]
+  },
+  "figure_fig15": {
+    "figure_relpath": "samskrift/figures/fig15_typesafe_jev_system_one_control_plane.png",
+    "bytes": 568633,
+    "dpi": 300
+  },
+  "classical_floor_baseline": "OfflineClinicalCalibrator (<1 ms, 0 network calls) + Regex Span Extractor + SciPy HiGHS MILP (<20 ms) + 4-Feature Classical Ridge LOOCV",
+  "epistemic_demarcation": {
+    "physical_hardware_shots": 0,
+    "wet_lab_experiments_performed": 0,
+    "phi_present": false,
+    "runtime_agent_actions": 0,
+    "autonomous_clinical_decisions": 0,
+    "closed_hazards_claimed": 0,
+    "open_clinical_hazards": [
+      "H-OCQ-01",
+      "H-OCQ-02",
+      "H-OCQ-03",
+      "H-OCQ-04",
+      "H-OCQ-05",
+      "H-OCQ-06"
+    ]
+  },
+  "ml_dsa_65_envelope": {
+    "algorithm": "NIST-FIPS-204-ML-DSA-65",
+    "signed_digest_sha256": "30e1bc096679d3ae7fa52612a1fc8a328c0e218b0beb0d2804a1c7a58fc6786e",
+    "public_key_sha256": "b01d9728f62df57739f23a4a34e9def382aaf42629bc2e9ef6b13317caead376",
+    "signature_bytes": 3309,
+    "signature_sha256": "016dd23069ad3ba05d430ed8dc54999c54ece8a8e5c679b5b4b8836feee266a3",
+    "public_key_b64": "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",
+    "signature_b64": "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"
+  },
+  "receipt_sha256": "fd18538ad9dafaa1bd45d0b4d9788322f9acddd8a722b483a1ebf8ff88d12ea6"
+}

@@ -1,0 +1,796 @@
+{
+  "schema_version": "opencareq-public-jev-explorer-v1.1",
+  "release_version": "1.1.0",
+  "phi_present": false,
+  "pinned_model_id": "jev-1.14.0",
+  "execution_mode": "live_typesafe_system_one_api",
+  "typesafe_non_endorsement_notice": "OpenCareQ integrates TypeSafe AI's System One API (`jev-1.14.0`) as an optional upstream semantic calibration and epistemic citation-audit primitive in connected synthetic sandboxes; use of the TypeSafe SDK/API does not imply endorsement, warranty, or clinical safety certification by TypeSafe AI. `OfflineClinicalCalibrator` remains the 100% air-gapped default for OpenSAFELY and NHS Secure Data Environments.",
+  "telemetry_headline": {
+    "total_api_calls": 60,
+    "total_input_tokens": 107631,
+    "estimated_cost_usd": 0.004521,
+    "latency_p50_ms": 154.58,
+    "latency_p95_ms": 606.62
+  },
+  "headline_metrics": {
+    "safety_gate_accuracy": 1.0,
+    "interpreter_detection_accuracy": 1.0,
+    "multilingual_warm_home_parity_rate": 1.0,
+    "borderline_superposition_held": "3/3",
+    "sde_cascade_gate_match_rate": 1.0,
+    "mdt_hubo_regime_match_rate": 1.0,
+    "canonical_claims_verified": "16/16",
+    "adversarial_controls_caught": "8/8",
+    "frobenius_4q_loocv_rmse": 0.14104,
+    "ridge_loocv_rmse": 0.07236
+  },
+  "commissioner_presets": {
+    "balanced_nice_dcea": {
+      "fuel_poverty_damp": 0.3,
+      "regimen_complexity": 0.35,
+      "carer_strain": 0.15,
+      "transport_isolation": 0.2
+    },
+    "nhs_core20_equity_first": {
+      "fuel_poverty_damp": 0.45,
+      "regimen_complexity": 0.25,
+      "carer_strain": 0.15,
+      "transport_isolation": 0.15
+    },
+    "winter_polypharmacy_safety": {
+      "fuel_poverty_damp": 0.2,
+      "regimen_complexity": 0.55,
+      "carer_strain": 0.1,
+      "transport_isolation": 0.15
+    },
+    "rural_coastal_access": {
+      "fuel_poverty_damp": 0.2,
+      "regimen_complexity": 0.25,
+      "carer_strain": 0.15,
+      "transport_isolation": 0.4
+    }
+  },
+  "explorer_cohorts": [
+    {
+      "cohort_id": "intake-mse-en-warmhome-01",
+      "icb_id": "NHS-MSE-28PCN",
+      "language": "en",
+      "category": "multilingual_warm_home",
+      "wmty_excerpt": "Prepayment gas meter cut off twice this fortnight in cold damp flat with black mould on bedroom wall; struggling with winter heati",
+      "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+      "routing_mode": "COMMIT_SINGLE_PATHWAY",
+      "superposition_reason": "high_confidence_order_consistent",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {
+        "pharmacist_smr_deprescribing": 0.005,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 0.995
+      },
+      "bloch_angles_rad": {
+        "pharmacist_smr_deprescribing": 0.1415,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 3.0001
+      },
+      "conformal_prediction_set": [
+        "welfare_and_warm_home_first"
+      ],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 1.0,
+        "regimen_complexity": 0.1633,
+        "carer_strain": 0.43,
+        "transport_isolation": 0.13
+      }
+    },
+    {
+      "cohort_id": "intake-mse-bn-warmhome-02",
+      "icb_id": "NHS-MSE-28PCN",
+      "language": "bn",
+      "category": "multilingual_warm_home",
+      "wmty_excerpt": "আমাদের ফ্ল্যাট খুব ঠান্ডা এবং দেয়ালে স্যাঁতসেঁতে কালো ফাঙ্গাস পড়েছে। প্রিপেইড গ্যাস মিটারের টাকা শেষ হয়ে গেছে, গরম করার বিল দিত",
+      "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+      "routing_mode": "COMMIT_SINGLE_PATHWAY",
+      "superposition_reason": "high_confidence_order_consistent",
+      "requires_bilingual_interpreter": true,
+      "pathway_probabilities": {
+        "pharmacist_smr_deprescribing": 0.0,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 1.0
+      },
+      "bloch_angles_rad": {
+        "pharmacist_smr_deprescribing": 0.0,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 3.1416
+      },
+      "conformal_prediction_set": [
+        "welfare_and_warm_home_first"
+      ],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.9933,
+        "regimen_complexity": 0.1167,
+        "carer_strain": 0.44,
+        "transport_isolation": 0.11
+      }
+    },
+    {
+      "cohort_id": "intake-bsol-ur-warmhome-03",
+      "icb_id": "NHS-BSOL-36PCN",
+      "language": "ur",
+      "category": "multilingual_warm_home",
+      "wmty_excerpt": "ہمارے گھر میں شدید سردی اور نمی ہے اور پری پیمنٹ ہیٹنگ میٹر بند ہو گیا ہے۔ بلوں کے قرض کی وجہ سے ہیٹر نہیں چلا سکتے۔ ہمیں اردو ترج",
+      "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+      "routing_mode": "COMMIT_SINGLE_PATHWAY",
+      "superposition_reason": "high_confidence_order_consistent",
+      "requires_bilingual_interpreter": true,
+      "pathway_probabilities": {
+        "pharmacist_smr_deprescribing": 0.0,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 1.0
+      },
+      "bloch_angles_rad": {
+        "pharmacist_smr_deprescribing": 0.0,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 3.1416
+      },
+      "conformal_prediction_set": [
+        "welfare_and_warm_home_first"
+      ],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 1.0,
+        "regimen_complexity": 0.12,
+        "carer_strain": 0.42,
+        "transport_isolation": 0.18
+      }
+    },
+    {
+      "cohort_id": "intake-ncl-pl-warmhome-04",
+      "icb_id": "NHS-NCL-20PCN",
+      "language": "pl",
+      "category": "multilingual_warm_home",
+      "wmty_excerpt": "W mieszkaniu jest bardzo zimno i wilgotno, na ścianie pojawiła się czarna pleśń, a licznik przedpłatowy na gaz został odłączony z ",
+      "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+      "routing_mode": "COMMIT_SINGLE_PATHWAY",
+      "superposition_reason": "high_confidence_order_consistent",
+      "requires_bilingual_interpreter": true,
+      "pathway_probabilities": {
+        "pharmacist_smr_deprescribing": 0.0,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 1.0
+      },
+      "bloch_angles_rad": {
+        "pharmacist_smr_deprescribing": 0.0,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 3.1416
+      },
+      "conformal_prediction_set": [
+        "welfare_and_warm_home_first"
+      ],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 1.0,
+        "regimen_complexity": 0.06,
+        "carer_strain": 0.42,
+        "transport_isolation": 0.14
+      }
+    },
+    {
+      "cohort_id": "intake-bsol-pa-warmhome-05",
+      "icb_id": "NHS-BSOL-36PCN",
+      "language": "pa",
+      "category": "multilingual_warm_home",
+      "wmty_excerpt": "ਘਰ ਵਿੱਚ ਬਹੁਤ ਠੰਢ ਅਤੇ ਸਿੱਲ੍ਹ ਹੈ, ਪ੍ਰੀਪੇਡ ਗੈਸ ਮੀਟਰ ਪੈਸੇ ਖਤਮ ਹੋਣ ਕਾਰਨ ਬੰਦ ਹੋ ਗਿਆ ਹੈ। ਹੀਟਿੰਗ ਬਿੱਲ ਦੇ ਕਰਜ਼ੇ ਲਈ ਮਦਦ ਅਤੇ ਪੰਜਾਬੀ ਦੁਭਾਸ਼ੀਏ ",
+      "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+      "routing_mode": "COMMIT_SINGLE_PATHWAY",
+      "superposition_reason": "high_confidence_order_consistent",
+      "requires_bilingual_interpreter": true,
+      "pathway_probabilities": {
+        "pharmacist_smr_deprescribing": 0.005,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 0.995
+      },
+      "bloch_angles_rad": {
+        "pharmacist_smr_deprescribing": 0.1415,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 3.0001
+      },
+      "conformal_prediction_set": [
+        "welfare_and_warm_home_first"
+      ],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 1.0,
+        "regimen_complexity": 0.13,
+        "carer_strain": 0.42,
+        "transport_isolation": 0.1733
+      }
+    },
+    {
+      "cohort_id": "intake-norfolk-ro-warmhome-06",
+      "icb_id": "NHS-NORFOLK-20PCN",
+      "language": "ro",
+      "category": "multilingual_warm_home",
+      "wmty_excerpt": "Locuința este foarte rece și umedă cu mucegai, iar contorul preplătit de căldură s-a oprit din cauza datoriilor la energie. Avem n",
+      "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+      "routing_mode": "COMMIT_SINGLE_PATHWAY",
+      "superposition_reason": "high_confidence_order_consistent",
+      "requires_bilingual_interpreter": true,
+      "pathway_probabilities": {
+        "pharmacist_smr_deprescribing": 0.0,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 1.0
+      },
+      "bloch_angles_rad": {
+        "pharmacist_smr_deprescribing": 0.0,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 3.1416
+      },
+      "conformal_prediction_set": [
+        "welfare_and_warm_home_first"
+      ],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 1.0,
+        "regimen_complexity": 0.03,
+        "carer_strain": 0.37,
+        "transport_isolation": 0.24
+      }
+    },
+    {
+      "cohort_id": "intake-mse-redflag-hypoxia-07",
+      "icb_id": "NHS-MSE-28PCN",
+      "language": "en",
+      "category": "tier0_red_flag",
+      "wmty_excerpt": "Severe breathlessness at rest since morning, unable to speak full sentences, pulse oximeter 89%.",
+      "safety_action": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+      "routing_mode": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+      "superposition_reason": "pre_rollout_safety_gate_blocked",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {},
+      "bloch_angles_rad": {},
+      "conformal_prediction_set": [],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.01,
+        "regimen_complexity": 0.1933,
+        "carer_strain": 0.1367,
+        "transport_isolation": 0.5967
+      }
+    },
+    {
+      "cohort_id": "intake-ncl-bn-redflag-chestpain-08",
+      "icb_id": "NHS-NCL-20PCN",
+      "language": "bn",
+      "category": "tier0_red_flag",
+      "wmty_excerpt": "আজ সকাল থেকে বুকে তীব্র চাপ ও ব্যথা বাঁ হাতে ছড়িয়ে পড়ছে, ঘাম হচ্ছে এবং বিশ্রামেও শ্বাসকষ্ট হচ্ছে।",
+      "safety_action": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+      "routing_mode": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+      "superposition_reason": "pre_rollout_safety_gate_blocked",
+      "requires_bilingual_interpreter": true,
+      "pathway_probabilities": {},
+      "bloch_angles_rad": {},
+      "conformal_prediction_set": [],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.0033,
+        "regimen_complexity": 0.0833,
+        "carer_strain": 0.0733,
+        "transport_isolation": 0.3167
+      }
+    },
+    {
+      "cohort_id": "intake-bsol-ur-redflag-rhabdo-09",
+      "icb_id": "NHS-BSOL-36PCN",
+      "language": "ur",
+      "category": "tier0_red_flag",
+      "wmty_excerpt": "پچھلے دو دن سے پٹھوں میں شدید درد ہے، کھڑا ہونا ناممکن ہو گیا ہے، پیشاب گہرا بھورا آ رہا ہے اور چکر آ کر بے ہوشی ہوئی۔",
+      "safety_action": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+      "routing_mode": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+      "superposition_reason": "pre_rollout_safety_gate_blocked",
+      "requires_bilingual_interpreter": true,
+      "pathway_probabilities": {},
+      "bloch_angles_rad": {},
+      "conformal_prediction_set": [],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.0067,
+        "regimen_complexity": 0.9367,
+        "carer_strain": 0.1533,
+        "transport_isolation": 0.9133
+      }
+    },
+    {
+      "cohort_id": "intake-devon-redflag-sepsis-10",
+      "icb_id": "NHS-DEVON-31PCN",
+      "language": "en",
+      "category": "tier0_red_flag",
+      "wmty_excerpt": "Rigors, high fever, acute new confusion, mottled cold hands, and no urine output for 14 hours.",
+      "safety_action": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+      "routing_mode": "BLOCK_TIER_0_EMERGENCY_ESCALATION",
+      "superposition_reason": "pre_rollout_safety_gate_blocked",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {},
+      "bloch_angles_rad": {},
+      "conformal_prediction_set": [],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.01,
+        "regimen_complexity": 0.1533,
+        "carer_strain": 0.16,
+        "transport_isolation": 0.4933
+      }
+    },
+    {
+      "cohort_id": "intake-ncl-herbal-7herb-11",
+      "icb_id": "NHS-NCL-20PCN",
+      "language": "en",
+      "category": "tier1_pharmacist_abstain",
+      "wmty_excerpt": "Drinking an unlabelled imported 7-herb tonic twice daily alongside apixaban and atorvastatin.",
+      "safety_action": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+      "routing_mode": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+      "superposition_reason": "pre_rollout_safety_gate_blocked",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {},
+      "bloch_angles_rad": {},
+      "conformal_prediction_set": [],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.0033,
+        "regimen_complexity": 0.7933,
+        "carer_strain": 0.0333,
+        "transport_isolation": 0.1667
+      }
+    },
+    {
+      "cohort_id": "intake-mse-otc-nsaid-triplewhammy-12",
+      "icb_id": "NHS-MSE-28PCN",
+      "language": "en",
+      "category": "tier1_pharmacist_abstain",
+      "wmty_excerpt": "CKD stage 3b patient buying over-the-counter ibuprofen tablets three times daily for knee ache while on ramipril, furosemide, and ",
+      "safety_action": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+      "routing_mode": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+      "superposition_reason": "pre_rollout_safety_gate_blocked",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {},
+      "bloch_angles_rad": {},
+      "conformal_prediction_set": [],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.0033,
+        "regimen_complexity": 0.6767,
+        "carer_strain": 0.03,
+        "transport_isolation": 0.1467
+      }
+    },
+    {
+      "cohort_id": "intake-norfolk-stjohnswort-13",
+      "icb_id": "NHS-NORFOLK-20PCN",
+      "language": "en",
+      "category": "tier1_pharmacist_abstain",
+      "wmty_excerpt": "Started high-strength St John's wort capsules from health shop for low winter mood while taking rivaroxaban.",
+      "safety_action": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+      "routing_mode": "ABSTAIN_TIER_1_PHARMACIST_SMR",
+      "superposition_reason": "pre_rollout_safety_gate_blocked",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {},
+      "bloch_angles_rad": {},
+      "conformal_prediction_set": [],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.0033,
+        "regimen_complexity": 0.8967,
+        "carer_strain": 0.0467,
+        "transport_isolation": 0.22
+      }
+    },
+    {
+      "cohort_id": "intake-ncl-outofscope-passport-14",
+      "icb_id": "NHS-NCL-20PCN",
+      "language": "en",
+      "category": "out_of_scope_reject",
+      "wmty_excerpt": "Healthy traveller requesting a GP countersignature on a renewal UK passport photo and holiday visa letter.",
+      "safety_action": "REJECT_OUT_OF_SCOPE",
+      "routing_mode": "REJECT_OUT_OF_SCOPE",
+      "superposition_reason": "pre_rollout_safety_gate_blocked",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {},
+      "bloch_angles_rad": {},
+      "conformal_prediction_set": [],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.0033,
+        "regimen_complexity": 0.0633,
+        "carer_strain": 0.0,
+        "transport_isolation": 0.0467
+      }
+    },
+    {
+      "cohort_id": "intake-devon-outofscope-dental-15",
+      "icb_id": "NHS-DEVON-31PCN",
+      "language": "en",
+      "category": "out_of_scope_reject",
+      "wmty_excerpt": "Cracked lower wisdom tooth needing urgent NHS dental filling or extraction; no medical or social care issues.",
+      "safety_action": "REJECT_OUT_OF_SCOPE",
+      "routing_mode": "REJECT_OUT_OF_SCOPE",
+      "superposition_reason": "pre_rollout_safety_gate_blocked",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {},
+      "bloch_angles_rad": {},
+      "conformal_prediction_set": [],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.0,
+        "regimen_complexity": 0.1,
+        "carer_strain": 0.0,
+        "transport_isolation": 0.0567
+      }
+    },
+    {
+      "cohort_id": "intake-bsol-outofscope-dvla-16",
+      "icb_id": "NHS-BSOL-36PCN",
+      "language": "en",
+      "category": "out_of_scope_reject",
+      "wmty_excerpt": "Commercial HGV lorry driver asking only for private DVLA medical form stamping.",
+      "safety_action": "REJECT_OUT_OF_SCOPE",
+      "routing_mode": "REJECT_OUT_OF_SCOPE",
+      "superposition_reason": "pre_rollout_safety_gate_blocked",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {},
+      "bloch_angles_rad": {},
+      "conformal_prediction_set": [],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.0033,
+        "regimen_complexity": 0.05,
+        "carer_strain": 0.01,
+        "transport_isolation": 0.08
+      }
+    },
+    {
+      "cohort_id": "intake-mse-smr-washout-17",
+      "icb_id": "NHS-MSE-28PCN",
+      "language": "en",
+      "category": "pharmacist_smr_clear",
+      "wmty_excerpt": "Warm well-supported home and drives own car; main concern is safely timing when to restart simvastatin after finishing 5-day Paxlo",
+      "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+      "routing_mode": "COMMIT_SINGLE_PATHWAY",
+      "superposition_reason": "high_confidence_order_consistent",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {
+        "pharmacist_smr_deprescribing": 1.0,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 0.0
+      },
+      "bloch_angles_rad": {
+        "pharmacist_smr_deprescribing": 3.1416,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 0.0
+      },
+      "conformal_prediction_set": [
+        "pharmacist_smr_deprescribing"
+      ],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.05,
+        "regimen_complexity": 0.95,
+        "carer_strain": 0.04,
+        "transport_isolation": 0.0033
+      }
+    },
+    {
+      "cohort_id": "intake-devon-rural-transport-18",
+      "icb_id": "NHS-DEVON-31PCN",
+      "language": "en",
+      "category": "transport_hub_clear",
+      "wmty_excerpt": "83-year-old in isolated Dartmoor hamlet where rural bus service closed; sole 81-year-old spouse carer no longer drives, home is wa",
+      "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+      "routing_mode": "COMMIT_SINGLE_PATHWAY",
+      "superposition_reason": "high_confidence_order_consistent",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {
+        "pharmacist_smr_deprescribing": 0.0,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 1.0,
+        "welfare_and_warm_home_first": 0.0
+      },
+      "bloch_angles_rad": {
+        "pharmacist_smr_deprescribing": 0.0,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 3.1416,
+        "welfare_and_warm_home_first": 0.0
+      },
+      "conformal_prediction_set": [
+        "transport_bridged_community_hub"
+      ],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.1533,
+        "regimen_complexity": 0.08,
+        "carer_strain": 0.9967,
+        "transport_isolation": 1.0
+      }
+    },
+    {
+      "cohort_id": "intake-norfolk-green-rehab-19",
+      "icb_id": "NHS-NORFOLK-20PCN",
+      "language": "en",
+      "category": "green_rehab_clear",
+      "wmty_excerpt": "Clinically stable type 2 diabetes and mild COPD, warm home, 5-minute walk from park, keen to join a supervised gentle outdoor coas",
+      "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+      "routing_mode": "COMMIT_SINGLE_PATHWAY",
+      "superposition_reason": "high_confidence_order_consistent",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {
+        "pharmacist_smr_deprescribing": 0.035,
+        "supervised_green_rehab": 0.965,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 0.0
+      },
+      "bloch_angles_rad": {
+        "pharmacist_smr_deprescribing": 0.3764,
+        "supervised_green_rehab": 2.7652,
+        "transport_bridged_community_hub": 0.0,
+        "welfare_and_warm_home_first": 0.0
+      },
+      "conformal_prediction_set": [
+        "supervised_green_rehab"
+      ],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.0667,
+        "regimen_complexity": 0.1933,
+        "carer_strain": 0.1067,
+        "transport_isolation": 0.02
+      }
+    },
+    {
+      "cohort_id": "intake-mse-dual-superposition-20",
+      "icb_id": "NHS-MSE-28PCN",
+      "language": "en",
+      "category": "borderline_superposition",
+      "wmty_excerpt": "Equally urgent overlapping barriers: finished clarithromycin 5 days ago on 6 medicines needing Pharmacist SMR washout review, livi",
+      "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+      "routing_mode": "HOLD_COHERENT_SUPERPOSITION",
+      "superposition_reason": "multi_domain_syndemic_coactivation(n=3>=2)",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {
+        "pharmacist_smr_deprescribing": 0.87,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.01,
+        "welfare_and_warm_home_first": 0.12
+      },
+      "bloch_angles_rad": {
+        "pharmacist_smr_deprescribing": 2.4039,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.2003,
+        "welfare_and_warm_home_first": 0.7075
+      },
+      "conformal_prediction_set": [
+        "pharmacist_smr_deprescribing"
+      ],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.7767,
+        "regimen_complexity": 0.7667,
+        "carer_strain": 0.96,
+        "transport_isolation": 0.8067
+      }
+    },
+    {
+      "cohort_id": "intake-bsol-dual-superposition-21",
+      "icb_id": "NHS-BSOL-36PCN",
+      "language": "en",
+      "category": "borderline_superposition",
+      "wmty_excerpt": "Needs Mirpuri/Urdu interpreter (currently relying on school-age grandson to translate): simultaneously needs NICE DG59 pharmacist ",
+      "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+      "routing_mode": "HOLD_COHERENT_SUPERPOSITION",
+      "superposition_reason": "multi_domain_syndemic_coactivation(n=3>=2)",
+      "requires_bilingual_interpreter": true,
+      "pathway_probabilities": {
+        "pharmacist_smr_deprescribing": 0.395,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.02,
+        "welfare_and_warm_home_first": 0.585
+      },
+      "bloch_angles_rad": {
+        "pharmacist_smr_deprescribing": 1.3592,
+        "supervised_green_rehab": 0.0,
+        "transport_bridged_community_hub": 0.2838,
+        "welfare_and_warm_home_first": 1.7416
+      },
+      "conformal_prediction_set": [
+        "welfare_and_warm_home_first",
+        "pharmacist_smr_deprescribing"
+      ],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.7667,
+        "regimen_complexity": 0.68,
+        "carer_strain": 0.73,
+        "transport_isolation": 0.7433
+      }
+    },
+    {
+      "cohort_id": "intake-norfolk-dual-superposition-22",
+      "icb_id": "NHS-NORFOLK-20PCN",
+      "language": "en",
+      "category": "borderline_superposition",
+      "wmty_excerpt": "Coastal Fenland patient torn between needing volunteer minibus transport to a carer hub and wanting gentle outdoor green walking r",
+      "safety_action": "PROCEED_CALIBRATED_ROLLOUT",
+      "routing_mode": "HOLD_COHERENT_SUPERPOSITION",
+      "superposition_reason": "top_p=0.565<0.58",
+      "requires_bilingual_interpreter": false,
+      "pathway_probabilities": {
+        "pharmacist_smr_deprescribing": 0.1,
+        "supervised_green_rehab": 0.04,
+        "transport_bridged_community_hub": 0.295,
+        "welfare_and_warm_home_first": 0.565
+      },
+      "bloch_angles_rad": {
+        "pharmacist_smr_deprescribing": 0.6435,
+        "supervised_green_rehab": 0.4027,
+        "transport_bridged_community_hub": 1.1483,
+        "welfare_and_warm_home_first": 1.7012
+      },
+      "conformal_prediction_set": [
+        "welfare_and_warm_home_first",
+        "transport_bridged_community_hub"
+      ],
+      "composite_dimension_scores": {
+        "fuel_poverty_damp": 0.46,
+        "regimen_complexity": 0.3467,
+        "carer_strain": 0.6567,
+        "transport_isolation": 0.8933
+      }
+    }
+  ],
+  "sde_cascade_vignettes": [
+    {
+      "case_id": "sde-g1-day7-paxlovid-washout-trap",
+      "gate_action": "HOLD_G1_DAY10_CYP3A4_WASHOUT",
+      "matched_expected": true,
+      "egfr_drop_pct": 1.56,
+      "washout_days_elapsed": 7,
+      "resting_bp_mmhg": "128/76"
+    },
+    {
+      "case_id": "sde-g7-ancestry-proxy-trap",
+      "gate_action": "BLOCK_G7_UNGENOTYPED_ANCESTRY_PROXY",
+      "matched_expected": true,
+      "egfr_drop_pct": 0.0,
+      "washout_days_elapsed": null,
+      "resting_bp_mmhg": "132/78"
+    },
+    {
+      "case_id": "sde-g7-confirmed-dg59-genotype",
+      "gate_action": "PROCEED_DG59_GENOTYPE_GUIDED_SWITCH",
+      "matched_expected": true,
+      "egfr_drop_pct": 0.0,
+      "washout_days_elapsed": null,
+      "resting_bp_mmhg": "126/74"
+    },
+    {
+      "case_id": "sde-g8-benign-sglt2i-tgf-dip",
+      "gate_action": "CONTINUE_SGLT2I_BENIGN_TGF_DIP",
+      "matched_expected": true,
+      "egfr_drop_pct": 15.52,
+      "washout_days_elapsed": null,
+      "resting_bp_mmhg": "124/74"
+    },
+    {
+      "case_id": "sde-g8-acute-aki-collapse",
+      "gate_action": "ESCALATE_ACUTE_AKI_SICK_DAY_HOLD",
+      "matched_expected": true,
+      "egfr_drop_pct": 0.0,
+      "washout_days_elapsed": null,
+      "resting_bp_mmhg": "98/62"
+    },
+    {
+      "case_id": "sde-pxr-rifampicin-hyperclearance",
+      "gate_action": "ALERT_PXR_INDUCER_SUBTHERAPEUTIC_RISK",
+      "matched_expected": true,
+      "egfr_drop_pct": 0.0,
+      "washout_days_elapsed": 2,
+      "resting_bp_mmhg": "122/72"
+    }
+  ],
+  "figure_box_qa": [
+    {
+      "figure_id": "fig14_modal_cudaq_42icb",
+      "relpath": "samskrift/figures/fig14_modal_cudaq_42icb_quantum_card.png",
+      "prepared_size_px": [
+        1568,
+        992
+      ],
+      "jpeg_bytes": 255430,
+      "status": "live_jev_box_verified",
+      "panels_visible_noul": 0.94,
+      "non_patient_plot_noul": 0.99,
+      "panel_a_box": {
+        "top": 0.07,
+        "bottom": 0.47,
+        "left": 0.03,
+        "right": 0.48,
+        "confidence": 0.82
+      },
+      "panel_b_box": {
+        "top": 0.09,
+        "bottom": 0.48,
+        "left": 0.51,
+        "right": 0.97,
+        "confidence": 0.09
+      },
+      "legibility_score_0_to_2": 1.47,
+      "legibility_probabilities": {
+        "0": 0.0,
+        "1": 0.53,
+        "2": 0.47
+      },
+      "input_tokens": 4531,
+      "latency_ms": 267.28
+    },
+    {
+      "figure_id": "moth_fig2_hadamard_cliff",
+      "relpath": "samskrift_moth/figures/moth_fig2_hadamard_cliff_and_quantum_blur.png",
+      "prepared_size_px": [
+        1568,
+        1068
+      ],
+      "jpeg_bytes": 314735,
+      "status": "live_jev_box_verified",
+      "panels_visible_noul": 0.96,
+      "non_patient_plot_noul": 0.99,
+      "panel_a_box": {
+        "top": 0.05,
+        "bottom": 0.51,
+        "left": 0.03,
+        "right": 0.31,
+        "confidence": 0.51
+      },
+      "panel_b_box": {
+        "top": 0.06,
+        "bottom": 0.51,
+        "left": 0.67,
+        "right": 0.96,
+        "confidence": 0.37
+      },
+      "legibility_score_0_to_2": 1.65,
+      "legibility_probabilities": {
+        "0": 0.0,
+        "1": 0.35,
+        "2": 0.65
+      },
+      "input_tokens": 4843,
+      "latency_ms": 260.4
+    },
+    {
+      "figure_id": "trial_fig2_evsi_power",
+      "relpath": "samskrift_protocol/figures/trial_fig2_evsi_enbs_and_sw_power_curves.png",
+      "prepared_size_px": [
+        1568,
+        738
+      ],
+      "jpeg_bytes": 189315,
+      "status": "live_jev_box_verified",
+      "panels_visible_noul": 0.94,
+      "non_patient_plot_noul": 0.99,
+      "panel_a_box": {
+        "top": 0.05,
+        "bottom": 0.97,
+        "left": 0.01,
+        "right": 0.43,
+        "confidence": 0.34
+      },
+      "panel_b_box": {
+        "top": 0.11,
+        "bottom": 0.97,
+        "left": 0.51,
+        "right": 0.97,
+        "confidence": 0.61
+      },
+      "legibility_score_0_to_2": 1.48,
+      "legibility_probabilities": {
+        "0": 0.0,
+        "1": 0.52,
+        "2": 0.48
+      },
+      "input_tokens": 3516,
+      "latency_ms": 237.7
+    }
+  ],
+  "source_receipt_sha256": "fd18538ad9dafaa1bd45d0b4d9788322f9acddd8a722b483a1ebf8ff88d12ea6"
+}
