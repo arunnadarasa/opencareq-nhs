@@ -160,8 +160,33 @@
     h2 { font-family: var(--font-display); font-size: 2.1rem; line-height: 1.1; margin: 0 0 0.4rem; letter-spacing: 0.02em; }
     .sec-sub { color: var(--ink-muted); margin: 0 0 1.35rem; max-width: 920px; }
 
-    .jev-split { display: grid; grid-template-columns: minmax(0, 1.36fr) minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+    .jev-split { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 1.25rem; align-items: stretch; }
     @media (max-width: 1040px) { .jev-split { grid-template-columns: 1fr; } }
+    .jev-row-click { cursor: pointer; transition: background 0.14s ease; }
+    .jev-row-click:hover { background: rgba(56, 214, 196, 0.06); }
+    .jev-row-selected { background: rgba(56, 214, 196, 0.11); box-shadow: inset 3px 0 0 var(--signal); }
+    .jev-subtabs { display: flex; gap: 0.38rem; flex-wrap: wrap; margin: 0.55rem 0 0.75rem; }
+    .jev-subtab {
+      font-family: var(--font-sans); font-size: 0.76rem; font-weight: 700;
+      padding: 0.3rem 0.68rem; border-radius: 7px; border: 1px solid var(--border);
+      background: var(--bg-card-alt); color: var(--ink-muted); cursor: pointer; white-space: nowrap;
+      transition: all 0.14s ease;
+    }
+    .jev-subtab:hover { color: var(--ink); border-color: var(--border-strong); }
+    .jev-subtab.active { background: var(--signal-soft); color: var(--signal); border-color: var(--border-strong); }
+    .jev-legend { display: flex; flex-wrap: wrap; gap: 0.45rem 0.85rem; font-size: 0.74rem; color: var(--ink-muted); margin-bottom: 0.45rem; }
+    .jev-legend-item { display: inline-flex; align-items: center; gap: 0.32rem; white-space: nowrap; }
+    .jev-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+    .jev-bloch-panel {
+      background: var(--bg-card-alt); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.72rem 0.85rem; margin-top: 0.55rem;
+    }
+    .jev-bloch-grid { display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 0.75rem; align-items: center; margin-top: 0.45rem; }
+    @media (max-width: 560px) { .jev-bloch-grid { grid-template-columns: 1fr; } }
+    .jev-wmty-excerpt {
+      margin-top: 0.5rem; padding-top: 0.45rem; border-top: 1px solid rgba(158, 183, 180, 0.12);
+      font-size: 0.76rem; line-height: 1.44; color: var(--ink-muted);
+    }
 
     .grants-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
     @media (max-width: 980px) { .grants-grid { grid-template-columns: 1fr; } }
@@ -205,6 +230,13 @@
     }
     label { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); margin-bottom: 0.35rem; }
     select, input[type="range"] { width: 100%; }
+    input[type="range"] {
+      accent-color: var(--signal);
+      cursor: pointer;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(158, 183, 180, 0.18);
+    }
     select {
       background: var(--bg-card); color: var(--ink); border: 1px solid var(--border);
       padding: 0.5rem 0.65rem; border-radius: 8px; font-family: var(--font-sans); font-size: 0.92rem;
@@ -1565,26 +1597,29 @@
 
         <div class="controls-grid">
           <div>
-            <label for="jevW1">Fuel Poverty &amp; Damp (<span id="jevW1Val">0.30</span>)</label>
+            <label for="jevW1"><span class="jev-dot" style="background:#38d6c4;margin-right:5px;"></span>Fuel Poverty &amp; Damp (<span id="jevW1Val" style="color:#38d6c4;">0.30</span>)</label>
             <input id="jevW1" type="range" min="0" max="100" value="30" oninput="onJevSliderChange()" />
           </div>
           <div>
-            <label for="jevW2">Regimen Complexity / SMR (<span id="jevW2Val">0.35</span>)</label>
+            <label for="jevW2"><span class="jev-dot" style="background:#f4ae42;margin-right:5px;"></span>Regimen Complexity / SMR (<span id="jevW2Val" style="color:#f4ae42;">0.35</span>)</label>
             <input id="jevW2" type="range" min="0" max="100" value="35" oninput="onJevSliderChange()" />
           </div>
           <div>
-            <label for="jevW3">Carer Strain &amp; Exhaustion (<span id="jevW3Val">0.15</span>)</label>
+            <label for="jevW3"><span class="jev-dot" style="background:#a78bfa;margin-right:5px;"></span>Carer Strain &amp; Exhaustion (<span id="jevW3Val" style="color:#a78bfa;">0.15</span>)</label>
             <input id="jevW3" type="range" min="0" max="100" value="15" oninput="onJevSliderChange()" />
           </div>
           <div>
-            <label for="jevW4">Transport Isolation (<span id="jevW4Val">0.20</span>)</label>
+            <label for="jevW4"><span class="jev-dot" style="background:#f06a3b;margin-right:5px;"></span>Transport Isolation (<span id="jevW4Val" style="color:#f06a3b;">0.20</span>)</label>
             <input id="jevW4" type="range" min="0" max="100" value="20" oninput="onJevSliderChange()" />
           </div>
         </div>
 
         <div class="jev-split" style="margin-bottom:1.25rem;">
-          <div class="card" style="overflow-x:auto;">
-            <span class="card-tag">Zero-Reinference Commissioner Priority Ranking (0 Extra API Calls)</span>
+          <div class="card" style="overflow-x:auto;display:flex;flex-direction:column;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:0.5rem;flex-wrap:wrap;">
+              <span class="card-tag">Zero-Reinference Commissioner Priority Ranking (0 Extra API Calls)</span>
+              <span style="font-family:var(--font-mono);font-size:0.69rem;color:var(--ink-dim);">Click row → inspect Bloch θ</span>
+            </div>
             <h3 style="margin-bottom:0.45rem;">Live Re-Weighted Synthetic NHS Referrals</h3>
             <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
               <thead>
@@ -1599,16 +1634,29 @@
             </table>
           </div>
 
-          <div class="card">
-            <span class="card-tag">300-DPI Live Benchmark Figure (FIG15)</span>
-            <h3 style="margin-bottom:0.4rem;">6-Pillar <code>jev-1.14.0</code> Governance &amp; Latency</h3>
-            <img
-              src="paper/figures/fig15_typesafe_jev_system_one_control_plane.png"
-              alt="OpenCareQ v1.1.0 TypeSafe Jev 1.14.0 6-Pillar System One Control Plane Figure"
-              style="width:100%;border-radius:8px;border:1px solid var(--border);cursor:zoom-in;background:#fff;"
-              onclick="openFigureLightbox('paper/figures/fig15_typesafe_jev_system_one_control_plane.png', 'Figure 15 — OpenCareQ v1.1.0 Live TypeSafe System One (jev-1.14.0) 6-Pillar Multilingual Intake, SDE Cascade, MDT-to-HUBO, Composite Re-Weighting, Citation Check & Box QA (Receipt fd18538a).', 1)"
-            />
-            <p style="font-size:0.78rem;color:var(--ink-muted);margin:0.55rem 0 0;">
+          <div class="card" id="jevAnalyticsCard" style="display:flex;flex-direction:column;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.6rem;flex-wrap:wrap;">
+              <div>
+                <span class="card-tag">Interactive System One Visualiser (Receipt fd18538a)</span>
+                <h3 style="margin:0.2rem 0 0;">Live <code>jev-1.14.0</code> Priority, Bloch θ &amp; Governance</h3>
+              </div>
+              <button
+                type="button"
+                class="btn-sm"
+                style="white-space:nowrap;"
+                onclick="openFigureLightbox('paper/figures/fig15_typesafe_jev_system_one_control_plane.png', 'Figure 15 — OpenCareQ v1.1.0 Live TypeSafe System One (jev-1.14.0) 6-Pillar Multilingual Intake, SDE Cascade, MDT-to-HUBO, Composite Re-Weighting, Citation Check & Box QA (Receipt fd18538a).', 1)"
+              >🖼 Print Fig 15 ↗</button>
+            </div>
+
+            <div class="jev-subtabs" id="jevGraphTabs" role="tablist" aria-label="Jev System One Interactive Charts">
+              <button type="button" class="jev-subtab active" onclick="switchJevGraphTab('priority', this)">Live Priority &amp; Bloch θ</button>
+              <button type="button" class="jev-subtab" onclick="switchJevGraphTab('pillars', this)">6-Pillar Audit (100%)</button>
+              <button type="button" class="jev-subtab" onclick="switchJevGraphTab('latency', this)">Latency &amp; Box QA (155 ms)</button>
+            </div>
+
+            <div id="jevGraphViewport" style="flex:1;"></div>
+
+            <p style="font-size:0.76rem;color:var(--ink-muted);margin:0.65rem 0 0;padding-top:0.55rem;border-top:1px solid rgba(158,183,180,0.12);">
               <strong>Non-Endorsement &amp; Outbound PII Firewall:</strong> Every outbound payload passes <code>assert_zero_pid_egress()</code> (blocking Mod-11 NHS numbers, UK full postcodes, emails, phones, and DOBs). Integration of <code>TypeSafe System One</code> (<code>jev-1.14.0</code>) does not imply endorsement or clinical safety certification by TypeSafe AI.
             </p>
           </div>
@@ -2300,6 +2348,19 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       img.alt = f.caption;
       document.getElementById('lightbox-caption').textContent = f.caption;
       activeLightboxPage = f.pg;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function openFigureLightbox(src, caption, pg) {
+      const modal = document.getElementById('img-lightbox');
+      if (!modal) return;
+      document.getElementById('lightbox-kicker').textContent = '300-DPI Benchmark Plate · Figure 15 (v1.1.0)';
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      img.alt = caption || 'OpenCareQ 300-DPI Benchmark Figure';
+      document.getElementById('lightbox-caption').textContent = caption || '';
+      activeLightboxPage = pg || 1;
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -3334,9 +3395,263 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       supervised_green_rehab: "Green Rehab"
     };
 
+    const JEV_PATHWAY_COLORS = {
+      welfare_and_warm_home_first: "#38d6c4",
+      pharmacist_smr_deprescribing: "#f4ae42",
+      transport_bridged_community_hub: "#f06a3b",
+      supervised_green_rehab: "#a78bfa"
+    };
+
+    let activeJevGraphTab = "priority";
+    let selectedJevCohortId = null;
+    let jevSummaryMeta = {
+      total_api_calls: 60,
+      total_input_tokens: 107631,
+      estimated_cost_usd: 0.004521,
+      latency_p50_ms: 154.58,
+      latency_p95_ms: 606.62,
+      ridge_loocv_rmse: 0.07236,
+      frobenius_4q_loocv_rmse: 0.14104,
+      figure_box_qa: [
+        { figure_id: "fig14_modal_cudaq_42icb", legibility_score_0_to_2: 1.47, latency_ms: 267.3, panel_a_box: { left: 0.03, top: 0.07, right: 0.48, bottom: 0.47 } },
+        { figure_id: "moth_fig2_hadamard_cliff", legibility_score_0_to_2: 1.65, latency_ms: 260.4, panel_a_box: { left: 0.03, top: 0.05, right: 0.31, bottom: 0.51 } },
+        { figure_id: "trial_fig2_evsi_power", legibility_score_0_to_2: 1.48, latency_ms: 237.7, panel_a_box: { left: 0.01, top: 0.05, right: 0.43, bottom: 0.97 } }
+      ]
+    };
+
     function formatJevCohortTitle(cohortId) {
       if (JEV_COHORT_LABELS[cohortId]) return JEV_COHORT_LABELS[cohortId];
       return String(cohortId || "").replace(/^intake-/, "").replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+    }
+
+    function selectJevCohort(cohortId) {
+      selectedJevCohortId = cohortId;
+      renderJevExplorer();
+    }
+
+    function switchJevGraphTab(tabKey, btn) {
+      activeJevGraphTab = tabKey || "priority";
+      document.querySelectorAll("#jevGraphTabs .jev-subtab").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+      renderJevExplorer();
+    }
+
+    function renderJevPriorityAndBlochHtml(allScored, weights, activeCohort) {
+      const safeTop = allScored.filter(c => c.safety_action === "PROCEED_CALIBRATED_ROLLOUT").slice(0, 6);
+      const x0 = 176, barMaxW = 258;
+      const ticks = [0, 0.25, 0.5, 0.75, 1.0];
+      const gridSvg = ticks.map(t => {
+        const gx = (x0 + t * barMaxW).toFixed(1);
+        return `<line x1="${gx}" y1="6" x2="${gx}" y2="152" stroke="rgba(158,183,180,0.13)" stroke-dasharray="2,2" />
+          <text x="${gx}" y="164" text-anchor="middle" fill="#6f8a87" font-family="JetBrains Mono, monospace" font-size="9.5">${t.toFixed(2)}</text>`;
+      }).join("");
+
+      const barsSvg = safeTop.map((r, idx) => {
+        const y = 10 + idx * 23.5;
+        const d = r.composite_dimension_scores || {};
+        const s1 = weights.w1 * Number(d.fuel_poverty_damp || 0);
+        const s2 = weights.w2 * Number(d.regimen_complexity || 0);
+        const s3 = weights.w3 * Number(d.carer_strain || 0);
+        const s4 = weights.w4 * Number(d.transport_isolation || 0);
+        const wPx1 = Math.max(0, s1 * barMaxW);
+        const wPx2 = Math.max(0, s2 * barMaxW);
+        const wPx3 = Math.max(0, s3 * barMaxW);
+        const wPx4 = Math.max(0, s4 * barMaxW);
+        const isSel = activeCohort && r.cohort_id === activeCohort.cohort_id;
+        const lbl = formatJevCohortTitle(r.cohort_id);
+        const shortLbl = lbl.length > 29 ? lbl.slice(0, 28) + "…" : lbl;
+        return `<g style="cursor:pointer;" onclick="selectJevCohort('${escHtml(r.cohort_id)}')">
+          <title>${escHtml(lbl)} — Priority ${r._comp.toFixed(3)} (click to inspect Bloch state)</title>
+          ${isSel ? `<rect x="2" y="${(y - 3).toFixed(1)}" width="486" height="20" rx="5" fill="rgba(56,214,196,0.09)" />` : ""}
+          <text x="${x0 - 7}" y="${(y + 10.5).toFixed(1)}" text-anchor="end" fill="${isSel ? "#38d6c4" : "#eef7f5"}" font-weight="${isSel ? "700" : "500"}" font-size="10.4">${escHtml(shortLbl)}</text>
+          <rect x="${x0}" y="${y.toFixed(1)}" width="${barMaxW}" height="13.5" rx="3.5" fill="rgba(255,255,255,0.05)" />
+          <rect x="${x0.toFixed(1)}" y="${y.toFixed(1)}" width="${wPx1.toFixed(1)}" height="13.5" fill="#38d6c4" />
+          <rect x="${(x0 + wPx1).toFixed(1)}" y="${y.toFixed(1)}" width="${wPx2.toFixed(1)}" height="13.5" fill="#f4ae42" />
+          <rect x="${(x0 + wPx1 + wPx2).toFixed(1)}" y="${y.toFixed(1)}" width="${wPx3.toFixed(1)}" height="13.5" fill="#a78bfa" />
+          <rect x="${(x0 + wPx1 + wPx2 + wPx3).toFixed(1)}" y="${y.toFixed(1)}" width="${wPx4.toFixed(1)}" height="13.5" fill="#f06a3b" />
+          <text x="${x0 + barMaxW + 8}" y="${(y + 10.5).toFixed(1)}" fill="${isSel ? "#38d6c4" : "#9eb7b4"}" font-family="JetBrains Mono, monospace" font-weight="${isSel ? "700" : "600"}" font-size="10.8">${r._comp.toFixed(3)}</text>
+        </g>`;
+      }).join("");
+
+      const sel = activeCohort || safeTop[0] || allScored[0];
+      const selTitle = sel ? formatJevCohortTitle(sel.cohort_id) : "Cohort";
+      const selLang = String(sel?.language || "en").toUpperCase();
+      const selSafe = sel?.safety_action === "PROCEED_CALIBRATED_ROLLOUT";
+      const selModePill = !selSafe
+        ? `<span class="pill pill-ember pill-nowrap" style="font-size:0.67rem;">0L Safety Bypass</span>`
+        : (sel?.routing_mode === "HOLD_COHERENT_SUPERPOSITION"
+          ? `<span class="pill pill-amber pill-nowrap" style="font-size:0.67rem;">Coherent Superposition</span>`
+          : `<span class="pill pill-signal pill-nowrap" style="font-size:0.67rem;">Single-Pathway Commit</span>`);
+
+      const cx = 36, cy = 66, R = 45;
+      const probs = sel?.pathway_probabilities || {};
+      const orderedKeys = ["welfare_and_warm_home_first", "pharmacist_smr_deprescribing", "transport_bridged_community_hub", "supervised_green_rehab"];
+      const sortedPathways = orderedKeys
+        .map(k => ({ key: k, p: Math.min(1, Math.max(0, Number(probs[k] || 0))), color: JEV_PATHWAY_COLORS[k], label: JEV_PATHWAY_LABELS[k] }))
+        .sort((a, b) => b.p - a.p);
+
+      const raysSvg = sortedPathways.filter(item => item.p > 0.004).map((item, i) => {
+        const theta = 2.0 * Math.asin(Math.sqrt(item.p));
+        const vx = cx + R * Math.sin(theta);
+        const vy = cy - R * Math.cos(theta);
+        return `<line x1="${cx}" y1="${cy}" x2="${vx.toFixed(1)}" y2="${vy.toFixed(1)}" stroke="${item.color}" stroke-width="${i === 0 ? "2.6" : "2.0"}" />
+          <circle cx="${vx.toFixed(1)}" cy="${vy.toFixed(1)}" r="${i === 0 ? "4.2" : "3.4"}" fill="${item.color}" stroke="#0b1517" stroke-width="1.2" />`;
+      }).join("");
+
+      const supX1 = (cx + R * Math.sin(0.85)).toFixed(1), supY1 = (cy - R * Math.cos(0.85)).toFixed(1);
+      const supX2 = (cx + R * Math.sin(2.29)).toFixed(1), supY2 = (cy - R * Math.cos(2.29)).toFixed(1);
+
+      const pathwayRowsHtml = sortedPathways.map(item => {
+        const theta = 2.0 * Math.asin(Math.sqrt(item.p));
+        return `<div style="margin:0.26rem 0;">
+          <div style="display:flex;justify-content:space-between;font-size:0.74rem;margin-bottom:2px;">
+            <span style="color:var(--ink);font-weight:600;white-space:nowrap;"><span class="jev-dot" style="background:${item.color};margin-right:5px;"></span>${escHtml(item.label)}</span>
+            <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--ink-muted);white-space:nowrap;">p=${item.p.toFixed(2)} · θ=${theta.toFixed(2)}</span>
+          </div>
+          <div style="height:5px;background:rgba(255,255,255,0.06);border-radius:99px;overflow:hidden;">
+            <div style="height:100%;width:${(item.p * 100).toFixed(1)}%;background:${item.color};border-radius:99px;"></div>
+          </div>
+        </div>`;
+      }).join("");
+
+      const wmtyText = sel?.wmty_excerpt
+        ? `${sel.wmty_excerpt}${sel.wmty_excerpt.length >= 125 ? "…" : ""}`
+        : (selSafe ? "Calibrated multi-criteria RLCD intake mapped to Bloch rotation angles θ_k = 2 arcsin(√p_k)." : "Intercepted at Tier-0/1 safety firewall prior to quantum-classical pathway routing (0L quantum calls).");
+
+      return `
+        <div class="jev-legend">
+          <span class="jev-legend-item"><span class="jev-dot" style="background:#38d6c4;"></span>Fuel Poverty</span>
+          <span class="jev-legend-item"><span class="jev-dot" style="background:#f4ae42;"></span>Regimen / SMR</span>
+          <span class="jev-legend-item"><span class="jev-dot" style="background:#a78bfa;"></span>Carer Strain</span>
+          <span class="jev-legend-item"><span class="jev-dot" style="background:#f06a3b;"></span>Transport</span>
+        </div>
+        <svg viewBox="0 0 490 168" width="100%" style="display:block;" role="img" aria-label="Stacked commissioner priority contributions">
+          ${gridSvg}
+          ${barsSvg}
+        </svg>
+        <div class="jev-bloch-panel">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+            <div>
+              <strong style="font-size:0.84rem;color:var(--ink);">${escHtml(selTitle)}</strong>
+              <span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--ink-muted);margin-left:6px;">${escHtml(sel?.icb_id || "")} · ${escHtml(selLang)}</span>
+            </div>
+            ${selModePill}
+          </div>
+          <div class="jev-bloch-grid">
+            <svg viewBox="0 0 156 132" width="100%" style="max-width:156px;display:block;" role="img" aria-label="Bloch polar state dial">
+              <path d="M ${cx} ${cy} L ${supX1} ${supY1} A ${R} ${R} 0 0 1 ${supX2} ${supY2} Z" fill="rgba(244,174,66,0.10)" />
+              <path d="M ${cx} ${cy - R} A ${R} ${R} 0 0 1 ${cx} ${cy + R}" fill="none" stroke="rgba(158,183,180,0.38)" stroke-width="1.4" />
+              <line x1="${cx}" y1="${cy - R}" x2="${cx}" y2="${cy + R}" stroke="rgba(158,183,180,0.25)" stroke-width="1" />
+              <line x1="${cx}" y1="${cy}" x2="${cx + R}" y2="${cy}" stroke="rgba(244,174,66,0.38)" stroke-dasharray="3,2" stroke-width="1" />
+              <circle cx="${cx}" cy="${cy}" r="2.4" fill="#9eb7b4" />
+              ${raysSvg}
+              <text x="${cx - 4}" y="${cy - R - 5}" fill="#9eb7b4" font-family="JetBrains Mono, monospace" font-size="9.5">|0⟩ θ=0</text>
+              <text x="${cx + R + 5}" y="${cy + 3}" fill="#f4ae42" font-family="JetBrains Mono, monospace" font-size="9">|+⟩ π/2</text>
+              <text x="${cx - 4}" y="${cy + R + 12}" fill="#38d6c4" font-family="JetBrains Mono, monospace" font-size="9.5">|1⟩ θ=π</text>
+            </svg>
+            <div>${pathwayRowsHtml}</div>
+          </div>
+          <div class="jev-wmty-excerpt">
+            <strong style="color:var(--ink);font-family:var(--font-mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.04em;">Synthetic WMTY · </strong>${escHtml(wmtyText)}
+          </div>
+        </div>`;
+    }
+
+    function renderJevSixPillarHtml() {
+      const rows = [
+        { lbl: "Pillar 1 · DCB0129 Safety Gates", sub: "22/22 live vs 18/22 (81.8%) offline keyword regex (+18.2 pp)", pct: 100, basePct: 81.8, badge: "22 / 22 (100%)", col: "#38d6c4" },
+        { lbl: "Pillar 1 · 6-Language G2 Interpreter", sub: "EN · BN · UR · PL · PA · RO warm-home parity (6/6) & G2 flags", pct: 100, basePct: null, badge: "22 / 22 (100%)", col: "#38d6c4" },
+        { lbl: "Pillar 2 · Pre-Parsed SDE Spans", sub: "G1 Day-7 washout · G7 DG59 genotype · G8 SGLT2i dip (0 math in Jev)", pct: 100, basePct: null, badge: "6 / 6 (100%)", col: "#38d6c4" },
+        { lbl: "Pillar 3 · MDT → Cubic HUBO Gate G4", sub: "Noul-Screen hyperedges → 2 HiGHS MILP + 3 LR-QAOA triads", pct: 100, basePct: null, badge: "5 / 5 (100%)", col: "#f4ae42" },
+        { lbl: "Pillar 5 · Canonical & Hype Citations", sub: "16/16 forward/reverse verified · 8/8 planted SaMD traps caught", pct: 100, basePct: null, badge: "24 / 24 (100%)", col: "#38d6c4" }
+      ];
+      const bars = rows.map(r => `
+        <div style="margin-bottom:0.68rem;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:0.5rem;">
+            <strong style="font-size:0.82rem;color:var(--ink);">${escHtml(r.lbl)}</strong>
+            <span style="font-family:var(--font-mono);font-size:0.75rem;font-weight:700;color:${r.col};white-space:nowrap;">${escHtml(r.badge)}</span>
+          </div>
+          <div style="font-size:0.73rem;color:var(--ink-muted);margin-bottom:0.25rem;">${escHtml(r.sub)}</div>
+          <div style="position:relative;height:9px;background:rgba(255,255,255,0.07);border-radius:99px;overflow:hidden;">
+            <div style="height:100%;width:${r.pct}%;background:${r.col};border-radius:99px;"></div>
+            ${r.basePct ? `<div title="Offline Heuristic Baseline: ${r.basePct}%" style="position:absolute;top:0;bottom:0;left:${r.basePct}%;width:2.5px;background:#f06a3b;"></div>` : ""}
+          </div>
+        </div>`).join("");
+
+      const ridge = Number(jevSummaryMeta.ridge_loocv_rmse || 0.0724).toFixed(4);
+      const frob = Number(jevSummaryMeta.frobenius_4q_loocv_rmse || 0.1410).toFixed(4);
+      return `
+        <div style="padding-top:0.15rem;">
+          ${bars}
+          <div class="jev-bloch-panel" style="margin-top:0.75rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+              <strong style="font-size:0.8rem;color:var(--amber);">Pillar 4 · Gate G4 Classical Floor Honesty (d = 4 Rubrics)</strong>
+              <span class="pill pill-amber pill-nowrap" style="font-size:0.67rem;">0L Quantum Dispatched</span>
+            </div>
+            <p style="font-size:0.76rem;color:var(--ink-muted);margin:0.35rem 0 0;">
+              Classical Ridge LOOCV RMSE (<code>${ridge}</code>) outperforms the 4-qubit Bloch Frobenius VQC kernel (<code>${frob}</code>) on 4 scalar rubrics — confirming <code>Gate G4</code> routes composite re-weighting to exact zero-cost classical algebra while reserving quantum circuits for frustrated 3-body HUBOs and non-Markovian combs.
+            </p>
+          </div>
+        </div>`;
+    }
+
+    function renderJevLatencyAndBoxHtml() {
+      const bins = [
+        { lbl: "120–140", cnt: 10 },
+        { lbl: "140–180", cnt: 34 },
+        { lbl: "180–220", cnt: 7 },
+        { lbl: "220–280", cnt: 3 },
+        { lbl: "280–480", cnt: 0 },
+        { lbl: "480–600", cnt: 4 },
+        { lbl: "600–630", cnt: 2 }
+      ];
+      const maxCnt = 44;
+      const chartH = 102, yBase = 138, xStart = 38, colW = 58, gap = 6;
+      const barsSvg = bins.map((b, i) => {
+        const bx = xStart + i * (colW + gap);
+        const bh = (b.cnt / maxCnt) * chartH;
+        const by = yBase - bh;
+        const fillCol = i === 1 ? "#38d6c4" : (i >= 5 ? "#f4ae42" : "rgba(56,214,196,0.58)");
+        return `<g>
+          <rect x="${bx}" y="${by.toFixed(1)}" width="${colW}" height="${Math.max(bh, 1.5).toFixed(1)}" rx="4" fill="${fillCol}" />
+          ${b.cnt > 0 ? `<text x="${bx + colW / 2}" y="${(by - 5).toFixed(1)}" text-anchor="middle" fill="#eef7f5" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700">${b.cnt}</text>` : ""}
+          <text x="${bx + colW / 2}" y="${yBase + 14}" text-anchor="middle" fill="#9eb7b4" font-family="JetBrains Mono, monospace" font-size="9">${b.lbl}</text>
+        </g>`;
+      }).join("");
+
+      const p50X = xStart + 1 * (colW + gap) + colW * 0.62;
+      const p95X = xStart + 6 * (colW + gap) + colW * 0.22;
+      const boxes = (jevSummaryMeta.figure_box_qa || []).slice(0, 3).map(f => {
+        const shortId = String(f.figure_id || "").replace("_modal_cudaq_42icb", "").replace("_hadamard_cliff", "").replace("_evsi_power", "");
+        return `<div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:0.48rem 0.6rem;">
+          <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--signal);font-weight:700;">${escHtml(shortId)}</div>
+          <div style="font-size:0.78rem;color:var(--ink);font-weight:600;margin-top:2px;">Score ${Number(f.legibility_score_0_to_2 || 1.5).toFixed(2)} / 2.0</div>
+          <div style="font-family:var(--font-mono);font-size:0.68rem;color:var(--ink-muted);">${Math.round(Number(f.latency_ms || 255))} ms · Box ✓</div>
+        </div>`;
+      }).join("");
+
+      return `
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:var(--ink-muted);margin-bottom:0.35rem;flex-wrap:wrap;gap:0.4rem;">
+            <span><strong>${jevSummaryMeta.total_api_calls}</strong> Live Parallel Calls (ms)</span>
+            <span style="font-family:var(--font-mono);color:var(--ink);">${Number(jevSummaryMeta.total_input_tokens).toLocaleString()} tok = <strong>$${Number(jevSummaryMeta.estimated_cost_usd).toFixed(4)}</strong> (0 output tok)</span>
+          </div>
+          <svg viewBox="0 0 490 164" width="100%" style="display:block;" role="img" aria-label="Live System One API call latency histogram">
+            <line x1="32" y1="${yBase}" x2="484" y2="${yBase}" stroke="rgba(158,183,180,0.28)" />
+            ${barsSvg}
+            <line x1="${p50X.toFixed(1)}" y1="10" x2="${p50X.toFixed(1)}" y2="${yBase}" stroke="#38d6c4" stroke-width="1.6" stroke-dasharray="4,3" />
+            <text x="${(p50X + 5).toFixed(1)}" y="19" fill="#38d6c4" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="700">p50 = ${Math.round(jevSummaryMeta.latency_p50_ms)} ms</text>
+            <line x1="${p95X.toFixed(1)}" y1="10" x2="${p95X.toFixed(1)}" y2="${yBase}" stroke="#f06a3b" stroke-width="1.6" stroke-dasharray="3,3" />
+            <text x="${(p95X - 5).toFixed(1)}" y="19" text-anchor="end" fill="#f06a3b" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="700">p95 = ${Math.round(jevSummaryMeta.latency_p95_ms)} ms</text>
+            <text x="258" y="161" text-anchor="middle" fill="#6f8a87" font-size="9.5">Single-Request Parallel System One Latency Bin (ms)</text>
+          </svg>
+          <div class="jev-bloch-panel" style="margin-top:0.5rem;">
+            <div style="font-family:var(--font-mono);font-size:0.69rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--amber);margin-bottom:0.4rem;">
+              Pillar 6 · Isolated Danger-Zone 300-DPI Box QA (0 Patient Images)
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.45rem;">${boxes}</div>
+          </div>
+        </div>`;
     }
 
     function renderJevExplorer() {
@@ -3353,15 +3668,19 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       document.getElementById("jevW3Val").textContent = w3.toFixed(2);
       document.getElementById("jevW4Val").textContent = w4.toFixed(2);
 
-      const scored = jevCohorts.map(c => {
+      const allScored = jevCohorts.map(c => {
         const d = c.composite_dimension_scores || {};
         const comp = w1 * Number(d.fuel_poverty_damp || 0) + w2 * Number(d.regimen_complexity || 0) + w3 * Number(d.carer_strain || 0) + w4 * Number(d.transport_isolation || 0);
         const isSafe = c.safety_action === "PROCEED_CALIBRATED_ROLLOUT";
         return Object.assign({}, c, { _comp: comp, _sortKey: isSafe ? comp : -1.0 });
-      }).sort((a, b) => b._sortKey - a._sortKey).slice(0, 8);
+      }).sort((a, b) => b._sortKey - a._sortKey);
+
+      const scored = allScored.slice(0, 8);
+      const activeCohort = allScored.find(c => c.cohort_id === selectedJevCohortId) || scored[0] || allScored[0];
 
       tbody.innerHTML = scored.map(r => {
         const isSafe = r.safety_action === "PROCEED_CALIBRATED_ROLLOUT";
+        const isSelected = activeCohort && r.cohort_id === activeCohort.cohort_id;
         const langUpper = String(r.language || "en").toUpperCase();
         const shortSafety = String(r.safety_action || "")
           .replace("BLOCK_TIER_0_EMERGENCY_ESCALATION", "0L Emergency")
@@ -3387,9 +3706,9 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
         }
         const prioStr = isSafe ? `<strong style="color:var(--signal);font-family:var(--font-mono);white-space:nowrap;">${r._comp.toFixed(3)}</strong>` : `<code>—</code>`;
         const cohortTitle = formatJevCohortTitle(r.cohort_id);
-        return `<tr style="border-bottom:1px solid rgba(158,183,180,0.09);">
+        return `<tr class="jev-row-click ${isSelected ? "jev-row-selected" : ""}" onclick="selectJevCohort('${escHtml(r.cohort_id)}')" style="border-bottom:1px solid rgba(158,183,180,0.09);">
           <td style="padding:0.46rem 0.5rem;" title="${escHtml(r.cohort_id)}">
-            <strong style="color:var(--ink);font-size:0.83rem;white-space:nowrap;">${escHtml(cohortTitle)}</strong><br/>
+            <strong style="color:${isSelected ? "var(--signal)" : "var(--ink)"};font-size:0.83rem;white-space:nowrap;">${escHtml(cohortTitle)}</strong><br/>
             <span style="font-family:var(--font-mono);font-size:0.71rem;color:var(--ink-muted);white-space:nowrap;">${escHtml(r.icb_id)} · ${escHtml(langUpper)}</span>
           </td>
           <td style="padding:0.46rem 0.5rem;vertical-align:middle;">${prioStr}</td>
@@ -3397,12 +3716,24 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
           <td style="padding:0.46rem 0.5rem;vertical-align:middle;">${blochCell}</td>
         </tr>`;
       }).join("");
+
+      const vp = document.getElementById("jevGraphViewport");
+      if (vp) {
+        if (activeJevGraphTab === "pillars") {
+          vp.innerHTML = renderJevSixPillarHtml();
+        } else if (activeJevGraphTab === "latency") {
+          vp.innerHTML = renderJevLatencyAndBoxHtml();
+        } else {
+          vp.innerHTML = renderJevPriorityAndBlochHtml(allScored, { w1, w2, w3, w4 }, activeCohort);
+        }
+      }
     }
 
     function applyJevPreset(key, btn) {
       const p = jevPresets[key] || JEV_PRESETS_FALLBACK.balanced_nice_dcea;
       document.querySelectorAll("#jevPresetTabs button").forEach(b => b.classList.remove("active", "btn-primary"));
       if (btn) btn.classList.add("active", "btn-primary");
+      selectedJevCohortId = null;
       document.getElementById("jevW1").value = Math.round(Number(p.fuel_poverty_damp || 0.3) * 100);
       document.getElementById("jevW2").value = Math.round(Number(p.regimen_complexity || 0.35) * 100);
       document.getElementById("jevW3").value = Math.round(Number(p.carer_strain || 0.15) * 100);
@@ -3427,6 +3758,11 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
           }
           const hm = data.headline_metrics || {};
           const tel = data.telemetry_headline || {};
+          jevSummaryMeta = Object.assign({}, jevSummaryMeta, tel, {
+            ridge_loocv_rmse: hm.ridge_loocv_rmse ?? jevSummaryMeta.ridge_loocv_rmse,
+            frobenius_4q_loocv_rmse: hm.frobenius_4q_loocv_rmse ?? jevSummaryMeta.frobenius_4q_loocv_rmse,
+            figure_box_qa: Array.isArray(data.figure_box_qa) && data.figure_box_qa.length ? data.figure_box_qa : jevSummaryMeta.figure_box_qa
+          });
           if (hm.safety_gate_accuracy != null) {
             document.getElementById("jevKpiSafety").textContent = (Number(hm.safety_gate_accuracy) * 100).toFixed(1) + "%";
           }
