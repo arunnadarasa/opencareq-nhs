@@ -465,12 +465,42 @@
     {
       "id": "harness:redteam_g1_g14_v1_6",
       "type": "Clinical_RedTeam_Harness",
-      "label": "v1.6 Clinical AI & Quantum G1-G14 Red-Team Safety Harness & Zero-Trust DCB0129 Commit Gate (28 Vignettes x 7 Agents)"
+      "label": "v1.6/v1.7 Clinical AI & Quantum G1-G16 Red-Team Safety Harness & Zero-Trust DCB0129 Commit Gate (32 Vignettes x 7 Agents)"
     },
     {
       "id": "receipt:v1_6_redteam_harness",
       "type": "Benchmark_Receipt",
-      "label": "Sealed OpenCareQ v1.6 G1-G14 Red-Team Safety Harness & Commit-Gate Receipt (ML-DSA-65)"
+      "label": "Sealed OpenCareQ G1-G16 Red-Team Safety Harness & Commit-Gate Receipt (ML-DSA-65)"
+    },
+    {
+      "id": "pmid:15289794",
+      "type": "Clinical_PK_Trial",
+      "label": "Faber & Fuhr 2004 Clin Pharmacol Ther Heavy-Smoking Cessation CYP1A2 De-Induction (t1/2=38.6h)"
+    },
+    {
+      "id": "pmid:24595134",
+      "type": "Clinical_PK_MetaAnalysis",
+      "label": "Tsuda et al. 2014 BMJ Open Smoking x Clozapine (2.00x) & Olanzapine (1.43x) Meta-Analysis"
+    },
+    {
+      "id": "pmid:31860457",
+      "type": "Clinical_Outcome_NMA",
+      "label": "Pillinger et al. 2020 Lancet Psychiatry 18 Antipsychotics Cardiometabolic NMA (N=25,952)"
+    },
+    {
+      "id": "pmid:29396118",
+      "type": "Pragmatic_Cluster_RCT",
+      "label": "Osborn et al. 2018 Lancet Psychiatry NIHR PRIMROSE English Primary-Care SMI Cluster RCT"
+    },
+    {
+      "id": "wm:smi_brain_body_v1_7",
+      "type": "World_Model",
+      "label": "v1.7 Core20PLUS5 SMI Brain\u2013Body Multimorbidity, AhR/CYP1A2 Comb & ChEMBL Metabolic Shield (12-Ep GMFE=1.1889)"
+    },
+    {
+      "id": "receipt:v1_7_smi_brain_body",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v1.7 Core20PLUS5 SMI Brain\u2013Body & 42-ICB DCEA Receipt (ML-DSA-65)"
     },
     {
       "id": "safety:cscr_crmp_dcb0160_mse",
@@ -1367,6 +1397,51 @@
       "target": "hf:socialprescribing_opencareq"
     },
     {
+      "source": "pmid:15289794",
+      "relation": "parameterizes_cyp1a2_38p6h_deinduction_in",
+      "target": "wm:smi_brain_body_v1_7"
+    },
+    {
+      "source": "pmid:24595134",
+      "relation": "falsifies_clozapine_olanzapine_surge_in",
+      "target": "wm:smi_brain_body_v1_7"
+    },
+    {
+      "source": "pmid:31860457",
+      "relation": "falsifies_chembl_h1_2c_m3_metabolic_drift_in",
+      "target": "wm:smi_brain_body_v1_7"
+    },
+    {
+      "source": "pmid:29396118",
+      "relation": "falsifies_primrose_nhs_cost_saving_in",
+      "target": "wm:smi_brain_body_v1_7"
+    },
+    {
+      "source": "wm:precision_prevention_v1_3",
+      "relation": "bridges_glp1_and_cyp2d6_to",
+      "target": "wm:smi_brain_body_v1_7"
+    },
+    {
+      "source": "ogl:england_42icb_atlas_2026",
+      "relation": "supplies_570k_smi_register_to",
+      "target": "wm:smi_brain_body_v1_7"
+    },
+    {
+      "source": "wm:smi_brain_body_v1_7",
+      "relation": "supplies_g15_g16_traps_to",
+      "target": "harness:redteam_g1_g14_v1_6"
+    },
+    {
+      "source": "wm:smi_brain_body_v1_7",
+      "relation": "sealed_in",
+      "target": "receipt:v1_7_smi_brain_body"
+    },
+    {
+      "source": "receipt:v1_7_smi_brain_body",
+      "relation": "published_smi_summary_to",
+      "target": "hf:socialprescribing_opencareq"
+    },
+    {
       "source": "safety:cscr_crmp_dcb0160_mse",
       "relation": "governs_bowtie_open_hazard",
       "target": "hazard:H-OCQ-01"
@@ -1437,5 +1512,5 @@
       "target": "hazard:H-OCQ-07"
     }
   ],
-  "kg_sha256": "05b29a2c76006c36d217da259d3c05766f88baf191456de4e0bc8a7394f47f48"
+  "kg_sha256": "e067f9a071e6972f139a15e5dd9021cf0a5d0405622bb45bdd43b1ab2b50d1a0"
 }

@@ -1,0 +1,563 @@
+{
+  "schema_version": "opencareq-public-smi-brain-body-v1.7",
+  "release_version": "1.7.0",
+  "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+  "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+  "phi_present": false,
+  "source_receipt_sha256": "75fa2a311035d4285188f93e7582ac5e8c3d77650ccce0b4ed7cf5782d6beb0b",
+  "smi_priors_sha256": "e4f35384127a8c1008887e721244548d6b7adc18b57d32766ee41c5d9c23f595",
+  "summary_metrics": {
+    "zero_fitted_clinical_trial_parameters": true,
+    "n_held_out_endpoints": 12,
+    "combined_12endpoint_gmfe": 1.1889,
+    "clinical_10endpoint_gmfe": 1.144,
+    "pct_within_1_25x": 75.0,
+    "pct_within_2_0x": 100.0,
+    "cyp1a2_clozapine_vape_surge_x": 2.004,
+    "cyp1a2_clozapine_taper_peak_x": 1.126,
+    "non_commuting_peer_clinical_verified": true,
+    "commutator_norm_upeer_uclin": 1.034,
+    "peer_protection_lift_pp": 77.41,
+    "england_smi_register_patients": 570034,
+    "sustained_smi_smoking_quits_yr": 26627.4,
+    "cyp1a2_toxicities_avoided_yr": 2873.2,
+    "acute_smi_cvd_admissions_avoided_yr": 9007.6,
+    "net_nhs_cost_gbp_m_yr": -60.07,
+    "england_42icb_inmb_20k_gbp_m": 400.15,
+    "england_42icb_positive_inmb_count": 42,
+    "sii_inequality_reduction_pct": 34.55,
+    "nc_watermark_verified": true,
+    "wall_clock_ms": 2714.54
+  },
+  "gnomad_variants": [
+    {
+      "gene": "CYP1A2",
+      "allele_label": "c.-9-154C>A (*1F — AhR tobacco-PAH hyper-inducibility allele)",
+      "rsid": "rs762551",
+      "grch38_variant_id": "15-74749576-C-A",
+      "exome_af": null,
+      "genome_af": 0.672324,
+      "homozygote_count": 34665,
+      "faf95_popmax": 0.706417,
+      "faf95_population": "nfe",
+      "ancestry_allele_frequencies": {
+        "remaining": 0.66698,
+        "amr": 0.70614,
+        "fin": 0.68915,
+        "ami": 0.64978,
+        "eas": 0.65126,
+        "mid": 0.68367,
+        "sas": 0.56781,
+        "asj": 0.68559,
+        "afr": 0.60527,
+        "nfe": 0.71173,
+        "xx": 0.67609,
+        "xy": 0.66838
+      },
+      "g7_equity_usage_rule": "COMMISSIONER_PRE_TEST_EVSI_ONLY_NEVER_INDIVIDUAL_GENOTYPE_PROXY"
+    },
+    {
+      "gene": "HTR2C",
+      "allele_label": "c.-759C>T (hypothalamic 5-HT2C antipsychotic weight-gain susceptibility polymorphism)",
+      "rsid": "rs3813929",
+      "grch38_variant_id": "X-114584047-C-T",
+      "exome_af": 0.155477,
+      "genome_af": 0.127121,
+      "homozygote_count": 1,
+      "faf95_popmax": 0.10819,
+      "faf95_population": "nfe",
+      "ancestry_allele_frequencies": {
+        "remaining": 0.0,
+        "amr": 0.0,
+        "fin": 0.15094,
+        "nfe": 0.1875,
+        "afr": 0.0,
+        "xx": 0.13953,
+        "xy": 0.18018
+      },
+      "g7_equity_usage_rule": "COMMISSIONER_PRE_TEST_EVSI_ONLY_NEVER_INDIVIDUAL_GENOTYPE_PROXY"
+    }
+  ],
+  "cyp1a2_trajectories": {
+    "clozapine_unadjusted_vape_switch": {
+      "daily_aucr": [
+        1.213,
+        1.407,
+        1.571,
+        1.7,
+        1.795,
+        1.863,
+        1.91,
+        1.942,
+        1.964,
+        1.978,
+        1.987,
+        1.993,
+        1.997,
+        2.0,
+        2.001,
+        2.002,
+        2.003,
+        2.004,
+        2.004,
+        2.004,
+        2.004
+      ],
+      "daily_cyp1a2": [
+        2.0528,
+        1.6842,
+        1.4446,
+        1.289,
+        1.1878,
+        1.122,
+        1.0793,
+        1.0515,
+        1.0335,
+        1.0218,
+        1.0141,
+        1.0092,
+        1.006,
+        1.0039,
+        1.0025,
+        1.0016,
+        1.0011,
+        1.0007,
+        1.0005,
+        1.0003,
+        1.0002
+      ],
+      "peak_aucr": 2.004
+    },
+    "clozapine_stepwise_taper_tdm": {
+      "daily_aucr": [
+        1.091,
+        1.126,
+        1.1,
+        1.02,
+        0.898,
+        0.93,
+        0.953,
+        0.969,
+        0.98,
+        0.987,
+        0.991,
+        0.994,
+        0.996,
+        0.998,
+        0.998,
+        0.999,
+        0.999,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "daily_dose_frac": [
+        0.9,
+        0.8,
+        0.7,
+        0.6,
+        0.5,
+        0.499,
+        0.499,
+        0.499,
+        0.499,
+        0.499,
+        0.499,
+        0.499,
+        0.499,
+        0.499,
+        0.499,
+        0.499,
+        0.499,
+        0.499,
+        0.499,
+        0.499,
+        0.499
+      ],
+      "peak_aucr": 1.126
+    },
+    "olanzapine_unadjusted_vape_switch": {
+      "daily_aucr": [
+        1.165,
+        1.305,
+        1.416,
+        1.499,
+        1.558,
+        1.598,
+        1.626,
+        1.645,
+        1.657,
+        1.665,
+        1.67,
+        1.674,
+        1.676,
+        1.678,
+        1.679,
+        1.679,
+        1.68,
+        1.68,
+        1.68,
+        1.68,
+        1.68
+      ],
+      "peak_aucr": 1.68
+    },
+    "clozapine_plus_fluvoxamine_ddi": {
+      "peak_aucr": 8.639
+    }
+  },
+  "receptor_metabolic_profiles": {
+    "clozapine_6wk": {
+      "compound": "clozapine",
+      "duration_weeks": 6,
+      "hrh1_occupancy_pct": 93.49,
+      "htr2c_occupancy_pct": 72.78,
+      "chrm3_occupancy_pct": 32.37,
+      "predicted_weight_delta_kg": 2.44,
+      "predicted_bmi_delta_kg_m2": 0.83,
+      "predicted_fasting_glucose_delta_mmol_l": 0.95
+    },
+    "olanzapine_6wk": {
+      "compound": "olanzapine",
+      "duration_weeks": 6,
+      "hrh1_occupancy_pct": 84.78,
+      "htr2c_occupancy_pct": 76.29,
+      "chrm3_occupancy_pct": 17.57,
+      "predicted_weight_delta_kg": 2.22,
+      "predicted_bmi_delta_kg_m2": 0.76,
+      "predicted_fasting_glucose_delta_mmol_l": 0.64
+    },
+    "quetiapine_6wk": {
+      "compound": "quetiapine",
+      "duration_weeks": 6,
+      "hrh1_occupancy_pct": 70.59,
+      "htr2c_occupancy_pct": 0.89,
+      "chrm3_occupancy_pct": 2.34,
+      "predicted_weight_delta_kg": 1.15,
+      "predicted_bmi_delta_kg_m2": 0.39,
+      "predicted_fasting_glucose_delta_mmol_l": 0.21
+    },
+    "risperidone_6wk": {
+      "compound": "risperidone",
+      "duration_weeks": 6,
+      "hrh1_occupancy_pct": 30.91,
+      "htr2c_occupancy_pct": 40.3,
+      "chrm3_occupancy_pct": 0.84,
+      "predicted_weight_delta_kg": 0.71,
+      "predicted_bmi_delta_kg_m2": 0.24,
+      "predicted_fasting_glucose_delta_mmol_l": 0.12
+    },
+    "aripiprazole_6wk": {
+      "compound": "aripiprazole",
+      "duration_weeks": 6,
+      "hrh1_occupancy_pct": 17.61,
+      "htr2c_occupancy_pct": 11.01,
+      "chrm3_occupancy_pct": 0.62,
+      "predicted_weight_delta_kg": 0.26,
+      "predicted_bmi_delta_kg_m2": 0.09,
+      "predicted_fasting_glucose_delta_mmol_l": 0.05
+    },
+    "olanzapine_plus_metformin_14wk_diff_kg": -2.93,
+    "clozapine_plus_liraglutide_16wk_kg": -7.34
+  },
+  "cyp2d6_profiles": {
+    "risperidone_pm": {
+      "compound": "risperidone",
+      "cyp2d6_effective_as": 0.0,
+      "predicted_active_moiety_ratio_vs_nm": 1.639,
+      "recommended_dose_adjustment_pct": -39.0,
+      "lai_90pct_washout_days": 99.6
+    },
+    "aripiprazole_pm": {
+      "compound": "aripiprazole",
+      "cyp2d6_effective_as": 0.0,
+      "predicted_active_moiety_ratio_vs_nm": 1.667,
+      "recommended_dose_adjustment_pct": -40.0,
+      "lai_90pct_washout_days": 112.9
+    }
+  },
+  "endpoints": [
+    {
+      "endpoint_label": "Faber & Fuhr 2004 CYP1A2 post-smoking clearance ratio",
+      "pmid": "15289794",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/15289794/",
+      "observed": 0.619,
+      "predicted": 0.619,
+      "fold_error": 1.0,
+      "within_2_0x": true
+    },
+    {
+      "endpoint_label": "Tsuda 2014 clozapine smoking-cessation C/D surge (x)",
+      "pmid": "24595134",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/24595134/",
+      "observed": 2.0,
+      "predicted": 2.004,
+      "fold_error": 1.002,
+      "within_2_0x": true
+    },
+    {
+      "endpoint_label": "Tsuda 2014 olanzapine smoking-cessation C/D surge (x)",
+      "pmid": "24595134",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/24595134/",
+      "observed": 1.43,
+      "predicted": 1.68,
+      "fold_error": 1.1748,
+      "within_2_0x": true
+    },
+    {
+      "endpoint_label": "Jukic 2019 CYP2D6 PM risperidone active-moiety ratio",
+      "pmid": "31000417",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/31000417/",
+      "observed": 1.568,
+      "predicted": 1.639,
+      "fold_error": 1.0453,
+      "within_2_0x": true
+    },
+    {
+      "endpoint_label": "Jukic 2019 CYP2D6 PM aripiprazole active-moiety ratio",
+      "pmid": "31000417",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/31000417/",
+      "observed": 1.585,
+      "predicted": 1.667,
+      "fold_error": 1.0517,
+      "within_2_0x": true
+    },
+    {
+      "endpoint_label": "Pillinger 2020 clozapine 6-wk weight gain (+kg)",
+      "pmid": "31860457",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/31860457/",
+      "observed": 3.01,
+      "predicted": 2.44,
+      "fold_error": 1.2336,
+      "within_2_0x": true
+    },
+    {
+      "endpoint_label": "Pillinger 2020 clozapine 6-wk fasting glucose (+mmol/L)",
+      "pmid": "31860457",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/31860457/",
+      "observed": 1.05,
+      "predicted": 0.95,
+      "fold_error": 1.1053,
+      "within_2_0x": true
+    },
+    {
+      "endpoint_label": "Pillinger 2020 olanzapine 6-wk BMI gain (+kg/m2)",
+      "pmid": "31860457",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/31860457/",
+      "observed": 1.07,
+      "predicted": 0.76,
+      "fold_error": 1.4079,
+      "within_2_0x": true
+    },
+    {
+      "endpoint_label": "de Silva 2016 metformin weight attenuation magnitude (kg)",
+      "pmid": "27716110",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/27716110/",
+      "observed": 3.27,
+      "predicted": 2.93,
+      "fold_error": 1.116,
+      "within_2_0x": true
+    },
+    {
+      "endpoint_label": "Larsen 2017 liraglutide 16-wk weight reduction in SMI (kg)",
+      "pmid": "28601891",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/28601891/",
+      "observed": 5.3,
+      "predicted": 7.34,
+      "fold_error": 1.3849,
+      "within_2_0x": true
+    },
+    {
+      "endpoint_label": "SCIMITAR+ bespoke SMI smoking-cessation 6-month quit OR",
+      "pmid": "30975539",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30975539/",
+      "observed": 2.4,
+      "predicted": 2.854,
+      "fold_error": 1.1892,
+      "within_2_0x": true
+    },
+    {
+      "endpoint_label": "PRIMROSE high-CVD-risk SMI annual healthcare saving (£/pt)",
+      "pmid": "29396118",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/29396118/",
+      "observed": 895.0,
+      "predicted": 512.3,
+      "fold_error": 1.7471,
+      "within_2_0x": true
+    }
+  ],
+  "non_commuting_peer_clinical": {
+    "commutator_spectral_norm_upeer_uclin": 1.034,
+    "non_commuting_verified": true,
+    "staged_peer_then_clinical_prob": 0.9845,
+    "reverse_clinical_then_peer_prob": 0.3569,
+    "uncoupled_gp_letter_only_prob": 0.2103,
+    "peer_support_only_prob": 0.0752,
+    "protection_lift_vs_letter_only_pp": 77.41,
+    "scimitar_plus_6m_quit_or_benchmark": {
+      "endpoint_label": "SCIMITAR+ bespoke SMI smoking-cessation 6-month quit OR",
+      "pmid": "30975539",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/30975539/",
+      "observed": 2.4,
+      "predicted": 2.854,
+      "fold_error": 1.1892,
+      "within_2_0x": true
+    }
+  },
+  "top_10_icbs_by_inmb": [
+    {
+      "icb_ons_code": "E54000057",
+      "icb_ods_code": "QOP",
+      "icb_title": "NHS Greater Manchester ICB",
+      "nhs_region": "North West",
+      "smi_register_patients": 33767,
+      "sustained_smoking_quits_yr": 1823.2,
+      "cyp1a2_toxicities_avoided_yr": 182.4,
+      "acute_smi_cvd_admissions_avoided_yr": 632.5,
+      "qalys_gained_yr": 1134.3,
+      "net_nhs_cost_gbp_m_yr": -4.505,
+      "inmb_20k_gbp_m_yr": 27.191
+    },
+    {
+      "icb_ons_code": "E54000050",
+      "icb_ods_code": "QHM",
+      "icb_title": "NHS North East and North Cumbria ICB",
+      "nhs_region": "North East and Yorkshire",
+      "smi_register_patients": 31990,
+      "sustained_smoking_quits_yr": 1679.0,
+      "cyp1a2_toxicities_avoided_yr": 171.7,
+      "acute_smi_cvd_admissions_avoided_yr": 582.1,
+      "qalys_gained_yr": 1053.8,
+      "net_nhs_cost_gbp_m_yr": -4.09,
+      "inmb_20k_gbp_m_yr": 25.166
+    },
+    {
+      "icb_ons_code": "E54000054",
+      "icb_ods_code": "QWO",
+      "icb_title": "NHS West Yorkshire ICB",
+      "nhs_region": "North East and Yorkshire",
+      "smi_register_patients": 26684,
+      "sustained_smoking_quits_yr": 1397.9,
+      "cyp1a2_toxicities_avoided_yr": 141.7,
+      "acute_smi_cvd_admissions_avoided_yr": 491.4,
+      "qalys_gained_yr": 876.9,
+      "net_nhs_cost_gbp_m_yr": -3.5,
+      "inmb_20k_gbp_m_yr": 21.037
+    },
+    {
+      "icb_ons_code": "E54000008",
+      "icb_ods_code": "QYG",
+      "icb_title": "NHS Cheshire and Merseyside ICB",
+      "nhs_region": "North West",
+      "smi_register_patients": 25787,
+      "sustained_smoking_quits_yr": 1327.8,
+      "cyp1a2_toxicities_avoided_yr": 137.2,
+      "acute_smi_cvd_admissions_avoided_yr": 451.1,
+      "qalys_gained_yr": 833.5,
+      "net_nhs_cost_gbp_m_yr": -3.108,
+      "inmb_20k_gbp_m_yr": 19.778
+    },
+    {
+      "icb_ons_code": "E54000027",
+      "icb_ods_code": "QRV",
+      "icb_title": "NHS North West London ICB",
+      "nhs_region": "London",
+      "smi_register_patients": 26987,
+      "sustained_smoking_quits_yr": 1240.5,
+      "cyp1a2_toxicities_avoided_yr": 133.5,
+      "acute_smi_cvd_admissions_avoided_yr": 421.3,
+      "qalys_gained_yr": 791.9,
+      "net_nhs_cost_gbp_m_yr": -2.823,
+      "inmb_20k_gbp_m_yr": 18.662
+    },
+    {
+      "icb_ons_code": "E54000029",
+      "icb_ods_code": "QMF",
+      "icb_title": "NHS North East London ICB",
+      "nhs_region": "London",
+      "smi_register_patients": 24093,
+      "sustained_smoking_quits_yr": 1242.9,
+      "cyp1a2_toxicities_avoided_yr": 129.3,
+      "acute_smi_cvd_admissions_avoided_yr": 426.1,
+      "qalys_gained_yr": 783.9,
+      "net_nhs_cost_gbp_m_yr": -2.939,
+      "inmb_20k_gbp_m_yr": 18.617
+    },
+    {
+      "icb_ons_code": "E54000055",
+      "icb_ods_code": "QHL",
+      "icb_title": "NHS Birmingham and Solihull ICB",
+      "nhs_region": "Midlands",
+      "smi_register_patients": 17556,
+      "sustained_smoking_quits_yr": 1024.5,
+      "cyp1a2_toxicities_avoided_yr": 98.2,
+      "acute_smi_cvd_admissions_avoided_yr": 372.3,
+      "qalys_gained_yr": 633.0,
+      "net_nhs_cost_gbp_m_yr": -2.789,
+      "inmb_20k_gbp_m_yr": 15.449
+    },
+    {
+      "icb_ons_code": "E54000048",
+      "icb_ods_code": "QE1",
+      "icb_title": "NHS Lancashire and South Cumbria ICB",
+      "nhs_region": "North West",
+      "smi_register_patients": 17531,
+      "sustained_smoking_quits_yr": 892.7,
+      "cyp1a2_toxicities_avoided_yr": 92.3,
+      "acute_smi_cvd_admissions_avoided_yr": 308.1,
+      "qalys_gained_yr": 562.2,
+      "net_nhs_cost_gbp_m_yr": -2.143,
+      "inmb_20k_gbp_m_yr": 13.388
+    },
+    {
+      "icb_ons_code": "E54000028",
+      "icb_ods_code": "QMJ",
+      "icb_title": "NHS North Central London ICB",
+      "nhs_region": "London",
+      "smi_register_patients": 17319,
+      "sustained_smoking_quits_yr": 856.8,
+      "cyp1a2_toxicities_avoided_yr": 90.1,
+      "acute_smi_cvd_admissions_avoided_yr": 287.0,
+      "qalys_gained_yr": 540.2,
+      "net_nhs_cost_gbp_m_yr": -1.936,
+      "inmb_20k_gbp_m_yr": 12.74
+    },
+    {
+      "icb_ons_code": "E54000061",
+      "icb_ods_code": "QF7",
+      "icb_title": "NHS South Yorkshire ICB",
+      "nhs_region": "North East and Yorkshire",
+      "smi_register_patients": 15343,
+      "sustained_smoking_quits_yr": 823.3,
+      "cyp1a2_toxicities_avoided_yr": 83.5,
+      "acute_smi_cvd_admissions_avoided_yr": 285.5,
+      "qalys_gained_yr": 515.1,
+      "net_nhs_cost_gbp_m_yr": -2.016,
+      "inmb_20k_gbp_m_yr": 12.319
+    }
+  ],
+  "ocq_nc_provenance": {
+    "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+    "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+    "artifact_id": "opencareq_public_smi_brain_body_summary",
+    "trap_sentinel_fixture": {
+      "ods_code": "ZZ99Z",
+      "pcn_ods_code": "U99999",
+      "sentinel_id": "OCQ-NC-TRAP-STREET-ZZ99-V13",
+      "role": "inert_cartographic_authorship_sentinel",
+      "population_weight": 0.0,
+      "clinical_effect_multiplier": 0.0,
+      "phi_present": false,
+      "stinespring_gauge_constants": [
+        0.1370359991,
+        0.2718281828,
+        0.3141592654,
+        0.5772156649
+      ]
+    },
+    "numerical_perturbation_delta": 0.0,
+    "canonical_content_sha256_prefix": "76ba292cac6a061ba77a6b4f",
+    "commitment_id": "hmac256:3875eb35ba606f568ba628a60a426889"
+  }
+}
