@@ -413,6 +413,56 @@
       "label": "Sealed OpenCareQ v1.3 Precision Prevention & Non-Commercial Trap-Street Watermark Receipt (ML-DSA-65)"
     },
     {
+      "id": "pmid:29768149",
+      "type": "Clinical_Outcome_Trial",
+      "label": "O'Byrne et al. 2018 NEJM SYGMA 1 Budesonide-Formoterol AIR RCT (N=3,849, RR=0.36)"
+    },
+    {
+      "id": "pmid:31112386",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Beasley et al. 2019 NEJM Novel START Open-Label AIR RCT (N=668, RR=0.49)"
+    },
+    {
+      "id": "pmid:31451207",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Hardy et al. 2019 Lancet PRACTICAL AIR vs Maintenance Budesonide RCT (N=885, RR=0.69)"
+    },
+    {
+      "id": "pmid:32720299",
+      "type": "Pharmacoepi_Cohort",
+      "label": "Bloom et al. 2020 SABINA UK Primary-Care SABA Overuse Cohort (N=574,913)"
+    },
+    {
+      "id": "pmid:12386638",
+      "type": "Clinical_PK_Trial",
+      "label": "Raaska et al. 2002 Clin Pharmacol Ther Inhaled Budesonide x Itraconazole CYP3A4 & Cortisol"
+    },
+    {
+      "id": "pmid:31633896",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Dransfield et al. 2019 NEJM BLOCK COPD Metoprolol Hospitalisation Hazard (HR=1.91)"
+    },
+    {
+      "id": "pmid:38762800",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Devereux et al. 2024 JAMA BICS 76-Site UK Bisoprolol COPD Safety RCT (IRR=0.97)"
+    },
+    {
+      "id": "pmid:31699805",
+      "type": "Lifecycle_Carbon_Study",
+      "label": "Janson et al. 2020 Thorax England vs Sweden pMDI/DPI Carbon Footprint (550 ktCO2e)"
+    },
+    {
+      "id": "wm:cardiorespiratory_greener_v1_5",
+      "type": "World_Model",
+      "label": "v1.5 NICE NG245 Cardiorespiratory, Awaab's Law Warm-Home & Greener NHS World Model (12-Ep GMFE=1.1918, G9 Guard)"
+    },
+    {
+      "id": "receipt:v1_5_cardiorespiratory_greener_nhs",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v1.5 Cardiorespiratory & Greener NHS Receipt (ML-DSA-65)"
+    },
+    {
       "id": "safety:cscr_crmp_dcb0160_mse",
       "type": "Clinical_Safety_Suite",
       "label": "v0.6 Statutory DCB0129 CSCR + CRMP + MSE (E54000026) DCB0160 Shadow Pack"
@@ -1212,6 +1262,71 @@
       "target": "hf:socialprescribing_opencareq"
     },
     {
+      "source": "pmid:29768149",
+      "relation": "falsifies_sygma1_air_rr_in",
+      "target": "wm:cardiorespiratory_greener_v1_5"
+    },
+    {
+      "source": "pmid:31112386",
+      "relation": "falsifies_novel_start_air_rr_in",
+      "target": "wm:cardiorespiratory_greener_v1_5"
+    },
+    {
+      "source": "pmid:31451207",
+      "relation": "falsifies_practical_air_vs_maint_in",
+      "target": "wm:cardiorespiratory_greener_v1_5"
+    },
+    {
+      "source": "pmid:32720299",
+      "relation": "grounds_sabina_uk_saba_overuse_in",
+      "target": "wm:cardiorespiratory_greener_v1_5"
+    },
+    {
+      "source": "pmid:12386638",
+      "relation": "falsifies_ics_cyp3a4_cortisol_in",
+      "target": "wm:cardiorespiratory_greener_v1_5"
+    },
+    {
+      "source": "pmid:31633896",
+      "relation": "falsifies_block_copd_metoprolol_in",
+      "target": "wm:cardiorespiratory_greener_v1_5"
+    },
+    {
+      "source": "pmid:38762800",
+      "relation": "falsifies_bics_bisoprolol_safety_in",
+      "target": "wm:cardiorespiratory_greener_v1_5"
+    },
+    {
+      "source": "pmid:31699805",
+      "relation": "falsifies_greener_nhs_ktco2e_in",
+      "target": "wm:cardiorespiratory_greener_v1_5"
+    },
+    {
+      "source": "wm:precision_prevention_v1_3",
+      "relation": "bridges_cyp2d6_phenoconversion_to",
+      "target": "wm:cardiorespiratory_greener_v1_5"
+    },
+    {
+      "source": "ogl:england_42icb_atlas_2026",
+      "relation": "supplies_5p32m_respiratory_and_epd_inhalers_to",
+      "target": "wm:cardiorespiratory_greener_v1_5"
+    },
+    {
+      "source": "compiler:pt_mpo_adversary",
+      "relation": "classical_chi16_floor_for",
+      "target": "wm:cardiorespiratory_greener_v1_5"
+    },
+    {
+      "source": "wm:cardiorespiratory_greener_v1_5",
+      "relation": "sealed_in",
+      "target": "receipt:v1_5_cardiorespiratory_greener_nhs"
+    },
+    {
+      "source": "receipt:v1_5_cardiorespiratory_greener_nhs",
+      "relation": "published_greener_nhs_summary_to",
+      "target": "hf:socialprescribing_opencareq"
+    },
+    {
       "source": "safety:cscr_crmp_dcb0160_mse",
       "relation": "governs_bowtie_open_hazard",
       "target": "hazard:H-OCQ-01"
@@ -1282,5 +1397,5 @@
       "target": "hazard:H-OCQ-07"
     }
   ],
-  "kg_sha256": "bd228fe5b0a0513b986dc1d55969b1de0717999c2bf4655396113a01f0a42df5"
+  "kg_sha256": "4d741dadb68daf48cd45c642143a6fbd55d196b57074773c91ddb4896a6fd1c0"
 }
