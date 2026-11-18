@@ -503,6 +503,46 @@
       "label": "Sealed OpenCareQ v1.7 Core20PLUS5 SMI Brain\u2013Body & 42-ICB DCEA Receipt (ML-DSA-65)"
     },
     {
+      "id": "pmid:30348537",
+      "type": "Clinical_PGx_Trial",
+      "label": "Henricks et al. 2018 Lancet Oncol Prospective DPYD Genotype-Guided Fluoropyrimidine Safety Study"
+    },
+    {
+      "id": "pmid:24333009",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Cuzick et al. 2014 Lancet IBIS-II Anastrozole Primary Breast Cancer Prevention RCT (HR=0.47)"
+    },
+    {
+      "id": "pmid:39429813",
+      "type": "Pragmatic_Cluster_RCT",
+      "label": "Lim et al. 2024 EClinicalMedicine YouScreen English NHS Primary-Care HPV Self-Sampling Trial"
+    },
+    {
+      "id": "pmid:28657417",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Rolnik et al. 2017 NEJM ASPRE <16w 150 mg Aspirin Preterm Pre-Eclampsia RCT (OR=0.38)"
+    },
+    {
+      "id": "pmid:30948284",
+      "type": "Pragmatic_Cluster_RCT",
+      "label": "Duhig et al. 2019 Lancet PARROT UK Revealed PlGF Pre-Eclampsia Stepped-Wedge RCT (aOR=0.32)"
+    },
+    {
+      "id": "pmid:37950919",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Kitt et al. 2023 JAMA POP-HT Postpartum Self-Monitored Enalapril Hypertension RCT (-5.80 mmHg DBP)"
+    },
+    {
+      "id": "wm:core20plus5_capstone_v1_8",
+      "type": "World_Model",
+      "label": "v1.8 Complete 5/5 Core20PLUS5 Capstone: Cancer Stage-Shift & DPYD/CYP2D6 + Maternity ASPRE/PlGF/POP-HT (14-Ep GMFE=1.0709)"
+    },
+    {
+      "id": "receipt:v1_8_core20plus5_capstone",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v1.8 Complete 5/5 Core20PLUS5 Capstone Receipt (ML-DSA-65)"
+    },
+    {
       "id": "safety:cscr_crmp_dcb0160_mse",
       "type": "Clinical_Safety_Suite",
       "label": "v0.6 Statutory DCB0129 CSCR + CRMP + MSE (E54000026) DCB0160 Shadow Pack"
@@ -1442,6 +1482,61 @@
       "target": "hf:socialprescribing_opencareq"
     },
     {
+      "source": "pmid:30348537",
+      "relation": "falsifies_dpyd_genotype_dosing_in",
+      "target": "wm:core20plus5_capstone_v1_8"
+    },
+    {
+      "source": "pmid:24333009",
+      "relation": "falsifies_ibis2_anastrozole_chemoprevention_in",
+      "target": "wm:core20plus5_capstone_v1_8"
+    },
+    {
+      "source": "pmid:39429813",
+      "relation": "falsifies_youscreen_navigator_uptake_in",
+      "target": "wm:core20plus5_capstone_v1_8"
+    },
+    {
+      "source": "pmid:28657417",
+      "relation": "falsifies_aspre_lt16w_aspirin_window_in",
+      "target": "wm:core20plus5_capstone_v1_8"
+    },
+    {
+      "source": "pmid:30948284",
+      "relation": "falsifies_parrot_plgf_triage_in",
+      "target": "wm:core20plus5_capstone_v1_8"
+    },
+    {
+      "source": "pmid:37950919",
+      "relation": "falsifies_popht_postpartum_enalapril_in",
+      "target": "wm:core20plus5_capstone_v1_8"
+    },
+    {
+      "source": "wm:precision_prevention_v1_3",
+      "relation": "supplies_cyp2d6_mbi_to",
+      "target": "wm:core20plus5_capstone_v1_8"
+    },
+    {
+      "source": "ogl:england_42icb_atlas_2026",
+      "relation": "completes_5_of_5_core20plus5_in",
+      "target": "wm:core20plus5_capstone_v1_8"
+    },
+    {
+      "source": "wm:core20plus5_capstone_v1_8",
+      "relation": "supplies_g17_g18_g19_g20_traps_to",
+      "target": "harness:redteam_g1_g14_v1_6"
+    },
+    {
+      "source": "wm:core20plus5_capstone_v1_8",
+      "relation": "sealed_in",
+      "target": "receipt:v1_8_core20plus5_capstone"
+    },
+    {
+      "source": "receipt:v1_8_core20plus5_capstone",
+      "relation": "published_capstone_summary_to",
+      "target": "hf:socialprescribing_opencareq"
+    },
+    {
       "source": "safety:cscr_crmp_dcb0160_mse",
       "relation": "governs_bowtie_open_hazard",
       "target": "hazard:H-OCQ-01"
@@ -1512,5 +1607,5 @@
       "target": "hazard:H-OCQ-07"
     }
   ],
-  "kg_sha256": "e067f9a071e6972f139a15e5dd9021cf0a5d0405622bb45bdd43b1ab2b50d1a0"
+  "kg_sha256": "6a7ef5fc110e819cb4e670a57d047ebeb9eec637b1ed497ca05ef9e94ff48a73"
 }
