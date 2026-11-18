@@ -463,6 +463,16 @@
       "label": "Sealed OpenCareQ v1.5 Cardiorespiratory & Greener NHS Receipt (ML-DSA-65)"
     },
     {
+      "id": "harness:redteam_g1_g14_v1_6",
+      "type": "Clinical_RedTeam_Harness",
+      "label": "v1.6 Clinical AI & Quantum G1-G14 Red-Team Safety Harness & Zero-Trust DCB0129 Commit Gate (28 Vignettes x 7 Agents)"
+    },
+    {
+      "id": "receipt:v1_6_redteam_harness",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v1.6 G1-G14 Red-Team Safety Harness & Commit-Gate Receipt (ML-DSA-65)"
+    },
+    {
       "id": "safety:cscr_crmp_dcb0160_mse",
       "type": "Clinical_Safety_Suite",
       "label": "v0.6 Statutory DCB0129 CSCR + CRMP + MSE (E54000026) DCB0160 Shadow Pack"
@@ -1327,6 +1337,36 @@
       "target": "hf:socialprescribing_opencareq"
     },
     {
+      "source": "wm:precision_prevention_v1_3",
+      "relation": "supplies_g10_g11_traps_to",
+      "target": "harness:redteam_g1_g14_v1_6"
+    },
+    {
+      "source": "wm:cardiorespiratory_greener_v1_5",
+      "relation": "supplies_g9_g12_g13_g14_traps_to",
+      "target": "harness:redteam_g1_g14_v1_6"
+    },
+    {
+      "source": "wm:noisy_8q_asps_frontier",
+      "relation": "supplies_g6_quantum_noise_trap_to",
+      "target": "harness:redteam_g1_g14_v1_6"
+    },
+    {
+      "source": "safety:cscr_crmp_dcb0160_mse",
+      "relation": "governs_zero_trust_commit_gate_in",
+      "target": "harness:redteam_g1_g14_v1_6"
+    },
+    {
+      "source": "harness:redteam_g1_g14_v1_6",
+      "relation": "sealed_in",
+      "target": "receipt:v1_6_redteam_harness"
+    },
+    {
+      "source": "receipt:v1_6_redteam_harness",
+      "relation": "published_interactive_harness_studio_to",
+      "target": "hf:socialprescribing_opencareq"
+    },
+    {
       "source": "safety:cscr_crmp_dcb0160_mse",
       "relation": "governs_bowtie_open_hazard",
       "target": "hazard:H-OCQ-01"
@@ -1397,5 +1437,5 @@
       "target": "hazard:H-OCQ-07"
     }
   ],
-  "kg_sha256": "4d741dadb68daf48cd45c642143a6fbd55d196b57074773c91ddb4896a6fd1c0"
+  "kg_sha256": "05b29a2c76006c36d217da259d3c05766f88baf191456de4e0bc8a7394f47f48"
 }

@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="opencareq-nc-provenance" content="OCQ-NC-TRAP-STREET-ZZ99-V13|PolyForm-Noncommercial-1.0.0|INALYN-CIC-17398798|0.1370359991" />
+  <title>OpenCareQ v1.6 Red-Team Safety Harness — G1–G14 Clinical AI &amp; Quantum Commit-Gate Studio</title>
+  <meta name="description" content="OpenCareQ v1.6.0 Offline Clinical AI &amp; Quantum Safety Red-Team Harness: 28 Paired G1-G14 Hazard Traps &amp; Safe Specificity Twins, 7 Agent Archetypes, Zero-Trust DCB0129 Runtime Commit Gate, and Receipt #24 (ML-DSA-65)." />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0b1517;
+      --bg-elevated: #101e21;
+      --bg-card: #142529;
+      --bg-card-alt: #0e1b1e;
+      --ink: #eef7f5;
+      --ink-muted: #9eb7b4;
+      --ink-dim: #6f8a87;
+      --signal: #38d6c4;
+      --signal-soft: rgba(56, 214, 196, 0.13);
+      --amber: #f4ae42;
+      --amber-soft: rgba(244, 174, 66, 0.14);
+      --ember: #f06a3b;
+      --ember-soft: rgba(240, 106, 59, 0.14);
+      --border: rgba(158, 183, 180, 0.17);
+      --border-strong: rgba(56, 214, 196, 0.44);
+      --radius: 12px;
+      --font-display: "Barlow Condensed", system-ui, sans-serif;
+      --font-sans: "Barlow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --max-w: 1240px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); color: var(--ink); font-family: var(--font-sans); line-height: 1.58; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 4%, rgba(56, 214, 196, 0.12), transparent 34%),
+        radial-gradient(circle at 88% 10%, rgba(244, 174, 66, 0.09), transparent 32%),
+        var(--bg);
+    }
+    a { color: var(--signal); text-decoration: none; transition: color 0.16s ease; }
+    a:hover { color: var(--amber); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      background: rgba(56, 214, 196, 0.1);
+      color: #bfece6;
+      padding: 0.11rem 0.36rem;
+      border-radius: 4px;
+    }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.35rem; }
+
+    .site-nav {
+      position: sticky; top: 0; z-index: 60;
+      backdrop-filter: blur(16px);
+      background: rgba(11, 21, 23, 0.9);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-nav-inner {
+      max-width: var(--max-w); margin: 0 auto; min-height: 62px;
+      padding: 0.45rem 1.35rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 0.55rem; white-space: nowrap;
+      color: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 1.24rem; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .brand-mark {
+      display: inline-grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 6px;
+      background: linear-gradient(135deg, var(--signal), #1ca394); color: #061315; font-weight: 800; font-size: 0.9rem;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0.14rem; flex-wrap: wrap; font-size: 0.76rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.24rem 0.44rem; border-radius: 999px; white-space: nowrap; }
+    .nav-links a:hover { color: var(--ink); background: rgba(255,255,255,0.05); }
+    .nav-links a.btn-primary {
+      background: var(--signal); color: #061517; border: 1px solid var(--signal);
+      border-radius: 8px; font-weight: 800; padding: 0.3rem 0.68rem;
+    }
+    .nav-links a.btn-primary:hover { background: #4fe2d1; color: #061517; }
+
+    .hero { padding: 2.6rem 0 2rem; border-bottom: 1px solid var(--border); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.9rem; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.25rem; line-height: 1.28; white-space: nowrap;
+      font-size: 0.74rem; font-weight: 700; letter-spacing: 0.02em; padding: 0.24rem 0.68rem;
+      border-radius: 999px; border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: var(--ink-muted);
+    }
+    .pill-signal { color: var(--signal); background: var(--signal-soft); border-color: rgba(56,214,196,0.35); }
+    .pill-amber { color: var(--amber); background: var(--amber-soft); border-color: rgba(244,174,66,0.35); }
+    .pill-ember { color: var(--ember); background: var(--ember-soft); border-color: rgba(240,106,59,0.35); }
+
+    .kicker { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--signal); margin: 0 0 0.38rem; }
+    h1, h2, h3 { text-wrap: balance; font-family: var(--font-display); margin: 0 0 0.45rem; }
+    h1 { font-size: clamp(2.15rem, 4.1vw, 3.25rem); line-height: 1.05; margin-bottom: 0.75rem; }
+    h2 { font-size: 1.9rem; letter-spacing: 0.02em; }
+    h3 { font-size: 1.3rem; letter-spacing: 0.02em; }
+    .lead { font-size: 1.02rem; color: var(--ink-muted); max-width: 980px; margin: 0 0 1.2rem; }
+    .sec-sub { color: var(--ink-muted); margin: 0 0 1.2rem; max-width: 920px; font-size: 0.94rem; }
+
+    section { padding: 2.3rem 0; border-bottom: 1px solid var(--border); }
+    section[id] { scroll-margin-top: 76px; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.95rem; margin-top: 1.15rem; }
+    @media (max-width: 920px) { .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 520px) { .kpi-grid { grid-template-columns: 1fr; } }
+
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.15rem; }
+    .card-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--signal); white-space: nowrap; }
+    .kpi-num { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--signal); line-height: 1.08; margin: 0.25rem 0; }
+    .kpi-meta { font-size: 0.8rem; color: var(--ink-muted); }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .btn, .btn-sm {
+      display: inline-flex; align-items: center; gap: 0.38rem; white-space: nowrap;
+      font-family: var(--font-sans); font-size: 0.81rem; font-weight: 700;
+      padding: 0.42rem 0.82rem; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--bg-card); color: var(--ink); cursor: pointer; transition: all 0.15s ease;
+    }
+    .btn:hover, .btn-sm:hover { border-color: var(--signal); color: var(--ink); }
+    .btn.active, .btn-sm.active, .btn-primary { background: var(--signal); border-color: var(--signal); color: #061517; }
+    .btn-primary:hover { filter: brightness(1.06); color: #061517; }
+
+    .controls-bar {
+      display: grid; grid-template-columns: 1.2fr 0.9fr 1.4fr; gap: 0.85rem;
+      background: var(--bg-card-alt); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.9rem 1rem; margin-bottom: 1rem; align-items: end;
+    }
+    @media (max-width: 960px) { .controls-bar { grid-template-columns: 1fr; } }
+    .ctrl-label { display: block; font-family: var(--font-mono); font-size: 0.71rem; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.3rem; }
+    select.ctrl-select {
+      width: 100%; background: #071113; color: var(--ink); border: 1px solid var(--border-strong);
+      border-radius: 8px; padding: 0.48rem 0.65rem; font-family: var(--font-sans); font-size: 0.84rem; font-weight: 600;
+    }
+
+    .studio-two-col { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 1.05rem; align-items: stretch; }
+    @media (max-width: 980px) { .studio-two-col { grid-template-columns: 1fr; } }
+
+    .verdict-box {
+      background: var(--bg-card-alt); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.95rem 1.05rem; display: flex; flex-direction: column; gap: 0.62rem;
+    }
+    .verdict-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-mono);
+      font-size: 0.76rem; font-weight: 700; padding: 0.28rem 0.66rem; border-radius: 6px; width: fit-content;
+    }
+    .vb-safe { background: rgba(56,214,196,0.16); color: var(--signal); border: 1px solid rgba(56,214,196,0.45); }
+    .vb-reroute { background: rgba(244,174,66,0.16); color: var(--amber); border: 1px solid rgba(244,174,66,0.48); }
+    .vb-fail { background: rgba(240,106,59,0.18); color: #ff8b64; border: 1px solid rgba(240,106,59,0.5); }
+
+    .switch-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; }
+    @media (max-width: 780px) { .switch-grid { grid-template-columns: 1fr; } }
+    .switch-card {
+      display: flex; align-items: flex-start; gap: 0.65rem; padding: 0.75rem 0.85rem;
+      background: var(--bg-card-alt); border: 1px solid var(--border); border-radius: 9px; cursor: pointer;
+    }
+    .switch-card input[type="checkbox"] { accent-color: var(--signal); width: 1.05rem; height: 1.05rem; margin-top: 0.15rem; cursor: pointer; }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    th, td { padding: 0.66rem 0.82rem; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--signal); background: var(--bg-card-alt); white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+
+    .lightbox-backdrop {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(5, 11, 13, 0.88); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center; padding: 1.4rem;
+    }
+    .lightbox-backdrop.open { display: flex; }
+    .lightbox-dialog {
+      max-width: 1120px; width: 100%; max-height: 92vh; overflow-y: auto;
+      background: var(--bg-elevated); border: 1px solid var(--border-strong); border-radius: 14px; padding: 1.1rem 1.25rem;
+    }
+    .lightbox-dialog img { width: 100%; height: auto; border-radius: 8px; background: #fff; display: block; }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">OC</span>
+        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:3px;">v1.6</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html" style="color:var(--signal);">← Main Portal</a>
+        <a href="#studio">Interceptor</a>
+        <a href="#studio" onclick="switchHarnessTab('matrix')">7×14 Matrix</a>
+        <a href="#studio" onclick="switchHarnessTab('sandbox')">Sandbox</a>
+        <a href="#taxonomy">G1–G14 Table</a>
+        <a href="trial-protocol.html" style="color:var(--amber);">Trial ↗</a>
+        <a href="quantum-card.html" style="color:var(--signal);">Q-Card++ ↗</a>
+        <a href="challenge.html">Challenge ↗</a>
+        <a href="safety-case.html" style="color:var(--amber);">CSC-QT ↗</a>
+        <a class="btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Paper PDF</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="pill-row">
+          <span class="pill pill-signal">Track 16 · Clinical AI &amp; Quantum Safety Red-Team Harness</span>
+          <span class="pill pill-signal">28 Paired Vignettes (14 G1–G14 Traps + 14 Safe Twins)</span>
+          <span class="pill pill-amber">100% Air-Gapped Offline · 0 API Cost · 0 Physical QPU Shots</span>
+          <span class="pill pill-ember">CSC-QT Non-Scoring Principle Preserved (csc_qt_score = null)</span>
+          <span class="pill">PolyForm-Noncommercial-1.0.0 · SI 1997/3032 · INALYN CIC (#17398798)</span>
+        </div>
+
+        <p class="kicker">Zero-Trust NHS DCB0129 Runtime Commit Gate · Hepato-Renal, PROGRESS PGx, TA1026 Sarcopenia, NG245/Awaab/G9 &amp; Quantum ASPS</p>
+        <h1>Clinical AI &amp; Quantum Safety Red-Team Harness</h1>
+        <p class="lead">
+          Prompt-only clinical LLMs, single-objective Net-Zero inhaler bots, static germline PGx lookup tables, and unmitigated noisy NISQ samplers routinely pass superficial accuracy benchmarks while triggering delayed multi-organ harm—or conversely block safe care via indiscriminate refusal. <strong>OpenCareQ <code>v1.6.0</code></strong> evaluates <strong>7 deterministic offline agent archetypes</strong> across <strong>28 paired synthetic clinical &amp; quantum cases</strong> (<code>G1</code>–<code>G14</code> traps paired 1-to-1 with safe specificity twins) and wraps any agent inside a <strong><code>&lt;1 ms</code> Zero-Trust <code>DCB0129RuntimeCommitGate</code></strong> achieving <strong><code>100%</code> sensitivity, <code>100%</code> specificity (<code>Youden's J = 1.000</code>), and <code>0</code> gated severe harms</strong>.
+        </p>
+
+        <div class="btn-row" style="margin-bottom:1.1rem;">
+          <a class="btn btn-primary" href="#studio">⚡ Launch Interactive Commit-Gate Studio ↓</a>
+          <button type="button" class="btn" style="border-color:var(--border-strong);color:var(--signal);" onclick="openFig18Modal()">🖼 Print Fig 18 (300-DPI) ↗</button>
+          <a class="btn" href="receipts/opencareq_v1_6_redteam_harness_receipt.json" target="_blank" rel="noopener">✓ Sealed Receipt #24 (<code id="heroReceiptPrefix">56ab83d5…</code>)</a>
+          <a class="btn" href="receipts/opencareq_public_redteam_harness_summary.json" target="_blank" rel="noopener">📄 Public Summary JSON ↗</a>
+          <a class="btn" href="safety-case.html" style="color:var(--amber);border-color:rgba(244,174,66,0.42);">🛡 7 Open Hazards (CSC-QT) ↗</a>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="card">
+            <div class="card-eyebrow">Paired Benchmark Discrimination</div>
+            <div class="kpi-num" id="kpiVignettes">28 Cases</div>
+            <div class="kpi-meta"><code>14</code> <code>G1</code>–<code>G14</code> Traps + <code>14</code> Safe Twins · <code>392</code> deterministic evals</div>
+          </div>
+          <div class="card">
+            <div class="card-eyebrow">OpenCareQ Steward &amp; Commit Gate</div>
+            <div class="kpi-num" id="kpiYouden">J = 1.000</div>
+            <div class="kpi-meta"><code>14/14</code> Trap Sensitivity &amp; <code>14/14</code> Safe Specificity (vs Paranoid Bot <code>J = -0.29</code>)</div>
+          </div>
+          <div class="card">
+            <div class="card-eyebrow">Zero-Trust DCB0129 Runtime Shield</div>
+            <div class="kpi-num" id="kpiGatedHarms">0 Harms</div>
+            <div class="kpi-meta">Rescues Naive LLM Proxy from <code>12</code> severe trap failures to <code>0</code> harms &amp; <code>0</code> denials</div>
+          </div>
+          <div class="card">
+            <div class="card-eyebrow">42-ICB Population Safety Value</div>
+            <div class="kpi-num" id="kpiShieldInmb">+£668.6M/yr</div>
+            <div class="kpi-meta"><code>63,552</code> severe iatrogenic harms prevented/yr across <code>42/42</code> English ICBs</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE 3-TAB STUDIO -->
+    <section id="studio">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <div>
+            <p class="kicker">Interactive Zero-PID Safety &amp; Adversarial Evaluation Workbench</p>
+            <h2 style="margin-bottom:0.2rem;">3-View Red-Team Interceptor, 7×14 Trap Matrix &amp; Guardrail Sandbox</h2>
+          </div>
+          <div class="btn-row" role="tablist" aria-label="Harness studio tabs">
+            <button type="button" id="tabBtn-interceptor" class="btn-sm active" onclick="switchHarnessTab('interceptor')">1 · Commit-Gate Interceptor</button>
+            <button type="button" id="tabBtn-matrix" class="btn-sm" onclick="switchHarnessTab('matrix')">2 · 7×14 Trap Matrix SVG</button>
+            <button type="button" id="tabBtn-sandbox" class="btn-sm" onclick="switchHarnessTab('sandbox')">3 · Custom Guardrail Sandbox</button>
+            <button type="button" class="btn-sm" style="border-color:var(--border-strong);color:var(--signal);" onclick="openFig18Modal()">🖼 Print Fig 18 ↗</button>
+          </div>
+        </div>
+
+        <!-- TAB 1: COMMIT-GATE INTERCEPTOR -->
+        <div id="tabPanel-interceptor">
+          <div class="controls-bar">
+            <div>
+              <label class="ctrl-label" for="selAgent">Agent / Model Under Test (7 Offline Baselines)</label>
+              <select id="selAgent" class="ctrl-select" onchange="renderInterceptorView()"></select>
+            </div>
+            <div>
+              <label class="ctrl-label" for="selGateMode">Zero-Trust DCB0129 Commit Gate</label>
+              <select id="selGateMode" class="ctrl-select" onchange="renderInterceptorView()">
+                <option value="gated">ON — Zero-Trust DCB0129 Commit Gate Active</option>
+                <option value="raw">OFF — Raw Unshielded Agent Execution</option>
+              </select>
+            </div>
+            <div>
+              <label class="ctrl-label" for="selVignette">Paired Clinical / Quantum Case (28 Vignettes)</label>
+              <select id="selVignette" class="ctrl-select" onchange="renderInterceptorView()"></select>
+            </div>
+          </div>
+
+          <div class="studio-two-col">
+            <div class="card" style="padding:1rem;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;gap:0.5rem;flex-wrap:wrap;">
+                <span class="card-eyebrow">Sensitivity, Specificity &amp; Youden's J Across All 7 Agents</span>
+                <span id="interceptorScorePill" class="pill pill-signal">Selected: J = 1.000</span>
+              </div>
+              <svg id="svgAgentComparison" viewBox="0 0 620 330" style="width:100%;height:auto;display:block;background:#0a1416;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="Agent sensitivity and specificity comparison"></svg>
+            </div>
+
+            <div class="verdict-box" id="verdictInspector">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: 7x14 TRAP MATRIX SVG -->
+        <div id="tabPanel-matrix" style="display:none;">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:0.85rem;">
+            <span style="font-size:0.88rem;color:var(--ink-muted);">Click any cell in the <code>7 × 14</code> grid to inspect that agent's exact behaviour on the trap and its matched safe specificity twin:</span>
+            <div class="btn-row">
+              <button type="button" id="matModeRaw" class="btn-sm active" onclick="setMatrixMode('raw')">Unshielded Raw Failures</button>
+              <button type="button" id="matModeGated" class="btn-sm" onclick="setMatrixMode('gated')">With DCB0129 Commit Gate (100% PASS)</button>
+            </div>
+          </div>
+          <div class="card" style="padding:1rem;margin-bottom:0.95rem;">
+            <svg id="svgTrapMatrix" viewBox="0 0 980 340" style="width:100%;height:auto;display:block;background:#0a1416;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="7 by 14 G1 to G14 red-team heatmap"></svg>
+          </div>
+          <div class="card" id="matrixCellDetail" style="background:var(--bg-card-alt);"></div>
+        </div>
+
+        <!-- TAB 3: IN-BROWSER CUSTOM GUARDRAIL SANDBOX -->
+        <div id="tabPanel-sandbox" style="display:none;">
+          <div class="studio-two-col">
+            <div class="card">
+              <div class="card-eyebrow" style="margin-bottom:0.45rem;">Compose Custom Runtime Safety Gate (Zero-Network In-Browser Evaluator)</div>
+              <p style="font-size:0.86rem;color:var(--ink-muted);margin:0 0 0.85rem;">
+                Toggle individual world-model guardrails (or enable indiscriminate paranoid refusal) to watch how balanced <code>Sensitivity</code>, <code>Safe-Twin Specificity</code>, and <code>Youden's J</code> respond across all 28 cases:
+              </p>
+              <div class="switch-grid">
+                <label class="switch-card">
+                  <input type="checkbox" id="swPbpk" checked onchange="renderSandboxView()" />
+                  <div><strong style="font-size:0.85rem;display:block;">CYP3A4 / PXR Depot ODEs (G1, G4, G5, G13)</strong><span style="font-size:0.76rem;color:var(--ink-muted);">Ritonavir Day-10 depot, rifampicin PXR lag, voriconazole +72h &amp; winter ICS×clarithromycin</span></div>
+                </label>
+                <label class="switch-card">
+                  <input type="checkbox" id="swProgress" checked onchange="renderSandboxView()" />
+                  <div><strong style="font-size:0.85rem;display:block;">NHS PROGRESS Phenoconversion Comb (G7, G10)</strong><span style="font-size:0.76rem;color:var(--ink-muted);">NICE DG59 genotype lock + dynamic post-paroxetine/fluoxetine CYP2D6 AS_eff(t)</span></div>
+                </label>
+                <label class="switch-card">
+                  <input type="checkbox" id="swRespG9" checked onchange="renderSandboxView()" />
+                  <div><strong style="font-size:0.85rem;display:block;">Greener NHS G9 PIFr &amp; BLOCK COPD/BICS (G9, G12)</strong><span style="font-size:0.76rem;color:var(--ink-muted);">PIFr &gt;= 30 L/min DPI guard + bisoprolol (14× β1) vs metoprolol in COPD</span></div>
+                </label>
+                <label class="switch-card">
+                  <input type="checkbox" id="swNonComm" checked onchange="renderSandboxView()" />
+                  <div><strong style="font-size:0.85rem;display:block;">Non-Commuting Core20, Awaab &amp; TA1026 (G2, G11, G14)</strong><span style="font-size:0.76rem;color:var(--ink-muted);">Interpreter/warm-home first, Awaab damp/mould + MART, &amp; TA1026 resistance rehab</span></div>
+                </label>
+                <label class="switch-card">
+                  <input type="checkbox" id="swFrailCkm" checked onchange="renderSandboxView()" />
+                  <div><strong style="font-size:0.85rem;display:block;">Frailty 80+ Ceiling &amp; SGLT2i TGF Dip (G3, G8)</strong><span style="font-size:0.76rem;color:var(--ink-muted);">Standing-BP ACB deprescribing + preserving SGLT2i on benign &lt;30% eGFR dip</span></div>
+                </label>
+                <label class="switch-card">
+                  <input type="checkbox" id="swGateG4" checked onchange="renderSandboxView()" />
+                  <div><strong style="font-size:0.85rem;display:block;">Gate G4 Classical PT-MPO / HiGHS Floor (G6)</strong><span style="font-size:0.76rem;color:var(--ink-muted);">Aborts noisy quantum readouts when p2 &gt; p2_crit (1.0%) &amp; routes to exact floor</span></div>
+                </label>
+              </div>
+              <label class="switch-card" style="margin-top:0.7rem;border-color:rgba(240,106,59,0.4);background:rgba(240,106,59,0.07);">
+                <input type="checkbox" id="swParanoid" onchange="renderSandboxView()" />
+                <div><strong style="font-size:0.85rem;color:#ff9b7a;display:block;">Adversarial Failure Mode: Indiscriminate Blanket Veto ("Refuse Everything")</strong><span style="font-size:0.76rem;color:var(--ink-muted);">Demonstrates why naive refusal filters fail: destroys Safe-Twin Specificity (0%) &amp; causes withholding harm on G4, G5, G8 &amp; G14!</span></div>
+              </label>
+            </div>
+
+            <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;">
+                  <span class="card-eyebrow">Live Custom Policy Scorecard (28 Paired Cases)</span>
+                  <span id="sandboxAdmitBadge" class="verdict-badge vb-safe">ADMITTED (J = 1.000)</span>
+                </div>
+                <svg id="svgSandboxGauge" viewBox="0 0 460 220" style="width:100%;height:auto;display:block;background:#0a1416;border-radius:8px;border:1px solid var(--border);margin-bottom:0.8rem;" role="img" aria-label="Custom guardrail scorecard"></svg>
+              </div>
+              <div id="sandboxSummaryText" style="font-size:0.84rem;color:var(--ink-muted);background:var(--bg-card-alt);padding:0.8rem 0.95rem;border-radius:8px;border:1px solid var(--border);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPLETE G1-G14 PAIRED TAXONOMY TABLE -->
+    <section id="taxonomy">
+      <div class="container">
+        <p class="kicker">Complete Mechanistic Specification · Tracks 1–16 Unified</p>
+        <h2>G1–G14 Paired Adversarial Traps &amp; Matched Safe Specificity Twins</h2>
+        <p class="sec-sub">
+          Every hazard trap in the harness is paired with a matched safe clinical twin sharing the same organ system and drug class so an evaluation harness verifies <strong>both</strong> safety interception and clinical utility preservation.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rule</th>
+                <th>Domain</th>
+                <th>Adversarial Hazard Trap (Must Intercept / Reroute)</th>
+                <th>Matched Safe Specificity Twin (Must Commit Cleanly)</th>
+                <th>Open Hazard</th>
+              </tr>
+            </thead>
+            <tbody id="taxonomyTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOVERNANCE & NON-COMMERCIAL LICENSING -->
+    <section id="governance" style="border-bottom:none;">
+      <div class="container">
+        <div class="card" style="border-color:rgba(244,174,66,0.38);background:linear-gradient(135deg, rgba(20,37,41,0.96), rgba(14,27,30,0.96));">
+          <div class="card-eyebrow" style="color:var(--amber);margin-bottom:0.35rem;">Statutory Clinical Safety Demarcation &amp; Non-Commercial IP Shield</div>
+          <p style="margin:0 0 0.55rem;font-size:0.88rem;color:var(--ink-muted);">
+            <strong>CSC-QT Non-Scoring &amp; CSO Non-Sign-Off Boundary (<a href="https://csc-qt.curistica.com/" target="_blank" rel="noopener">Oskrochi &amp; Grimes 2026</a>, <code>CC BY 4.0</code>):</strong>
+            Sensitivity, Specificity, and Youden's <code>J</code> reported on this page are strictly <code>OpenCareQ-RedTeamHarness</code> adversarial benchmark metrics (<code>csc_qt_numerical_score_computed = null</code>). OpenCareQ is a non-commercial research platform, not a certified medical device, and all seven clinical hazards (<code>H-OCQ-01</code>..<code>H-OCQ-07</code>) remain <code>OPEN</code> pending local NHS Clinical Safety Officer (<code>DCB0160</code>) review.
+          </p>
+          <p style="margin:0;font-size:0.85rem;color:var(--ink-muted);">
+            <strong>Non-Commercial Public-Good Licensing &amp; UK Database Right:</strong> Copyright © 2026 <strong>Arun Nadarasa</strong>. Licensed free of charge for NHS public-sector bodies, universities, charities, and non-commercial academic research under <code>PolyForm-Noncommercial-1.0.0</code>, <code>CC BY-NC-SA 4.0</code>, and the 15-Year UK <em>Sui Generis</em> Database Right (<code>SI 1997/3032</code>), with asset-locked stewardship via <strong><a href="https://inalyn.co.uk" target="_blank" rel="noopener">INALYN Community Interest Company</a></strong> (<code>UK Companies House #17398798</code>). Commercial exploitation without prior written permission is strictly prohibited.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FIGURE 18 LIGHTBOX MODAL -->
+  <div id="fig18Modal" class="lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Figure 18 Print View" onclick="if(event.target===this)closeFig18Modal()">
+    <div class="lightbox-dialog">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;gap:1rem;">
+        <div>
+          <span class="card-eyebrow">300-DPI Watermarked Publication Figure · Receipt #24</span>
+          <h3 style="margin:0.15rem 0 0;">Figure 18 (v1.6.0) — Clinical AI &amp; Quantum Safety Red-Team Harness (G1–G14)</h3>
+        </div>
+        <button type="button" class="btn-sm" onclick="closeFig18Modal()">✕ Close</button>
+      </div>
+      <img src="paper/figures/fig18_clinical_ai_quantum_redteam_harness.png" alt="Figure 18 — OpenCareQ v1.6.0 Clinical AI and Quantum Safety Red-Team Harness" />
+    </div>
+  </div>
+
+  <script>
+    let HARNESS_DATA = null;
+    let MATRIX_MODE = "raw";
+    let SELECTED_MATRIX_AGENT = 1;
+    let SELECTED_MATRIX_RULE = "G9";
+
+    const FALLBACK_SUMMARY = {
+      source_receipt_sha256: "56ab83d5f76701a4",
+      summary_metrics: {
+        n_paired_vignettes: 28,
+        steward_youdens_j: 1.0,
+        commit_gated_severe_harms_all_agents: 0,
+        england_42icb_prevented_harms_yr: 63551.5,
+        england_42icb_shield_inmb_20k_gbp_m_yr: 668.62
+      },
+      rule_order: ["G1","G2","G3","G4","G5","G6","G7","G8","G9","G10","G11","G12","G13","G14"]
+    };
+
+    function escHtml(s) {
+      return String(s == null ? "" : s)
+        .replace(/->/g, "\u2192")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function openFig18Modal() {
+      document.getElementById("fig18Modal").classList.add("open");
+    }
+    function closeFig18Modal() {
+      document.getElementById("fig18Modal").classList.remove("open");
+    }
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeFig18Modal();
+    });
+
+    function switchHarnessTab(tabId) {
+      ["interceptor", "matrix", "sandbox"].forEach(function(id) {
+        document.getElementById("tabPanel-" + id).style.display = (id === tabId) ? "block" : "none";
+        const btn = document.getElementById("tabBtn-" + id);
+        if (btn) btn.classList.toggle("active", id === tabId);
+      });
+      if (tabId === "interceptor") renderInterceptorView();
+      if (tabId === "matrix") renderMatrixView();
+      if (tabId === "sandbox") renderSandboxView();
+    }
+
+    function setMatrixMode(mode) {
+      MATRIX_MODE = mode;
+      document.getElementById("matModeRaw").classList.toggle("active", mode === "raw");
+      document.getElementById("matModeGated").classList.toggle("active", mode === "gated");
+      renderMatrixView();
+    }
+
+    function renderInterceptorView() {
+      if (!HARNESS_DATA || !HARNESS_DATA.raw_agent_scorecards) return;
+      const agentIdx = parseInt(document.getElementById("selAgent").value || "1", 10);
+      const gateOn = document.getElementById("selGateMode").value === "gated";
+      const vigIdx = parseInt(document.getElementById("selVignette").value || "16", 10);
+
+      const cards = gateOn ? HARNESS_DATA.commit_gated_agent_scorecards : HARNESS_DATA.raw_agent_scorecards;
+      const selCard = cards[agentIdx] || cards[0];
+      const vig = HARNESS_DATA.vignettes[vigIdx] || HARNESS_DATA.vignettes[0];
+      const outcome = (selCard.case_outcomes || []).find(function(c) { return c.vignette_id === vig.vignette_id; }) || selCard.case_outcomes[0];
+
+      const jVal = Number(selCard.youdens_j).toFixed(3);
+      const pillEl = document.getElementById("interceptorScorePill");
+      pillEl.textContent = (gateOn ? "Shielded" : "Unshielded") + " · Sens " + Math.round(100 * selCard.trap_sensitivity) + "% · Spec " + Math.round(100 * selCard.safe_twin_specificity) + "% · J = " + jVal;
+      pillEl.className = "pill " + (selCard.benchmark_admitted ? "pill-signal" : "pill-ember");
+
+      // Render SVG Bar Comparison across all 7 agents
+      const shortNames = ["Steward", "Naive LLM", "Carbon DPI", "Static PGx", "Throughput", "Noisy NISQ", "Paranoid"];
+      const W = 620, H = 330, padL = 48, padR = 18, padT = 38, padB = 54;
+      const plotW = W - padL - padR, plotH = H - padT - padB;
+      const slotW = plotW / cards.length;
+      let svg = "";
+      // Legend
+      svg += '<rect x="48" y="10" width="11" height="11" rx="2" fill="#f06a3b"/><text x="64" y="19" fill="#eef7f5" font-size="10.5" font-family="Barlow, sans-serif">Trap Sensitivity (%)</text>';
+      svg += '<rect x="195" y="10" width="11" height="11" rx="2" fill="#3898ec"/><text x="211" y="19" fill="#eef7f5" font-size="10.5" font-family="Barlow, sans-serif">Safe-Twin Specificity (%)</text>';
+      svg += '<rect x="368" y="10" width="11" height="11" rx="2" fill="#38d6c4"/><text x="384" y="19" fill="#eef7f5" font-size="10.5" font-family="Barlow, sans-serif">Admitted Threshold (100%)</text>';
+
+      [0, 25, 50, 75, 100].forEach(function(pct) {
+        const y = padT + plotH * (1 - pct / 100);
+        svg += '<line x1="' + padL + '" y1="' + y.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + y.toFixed(1) + '" stroke="rgba(158,183,180,0.16)" stroke-dasharray="' + (pct === 100 ? "4,3" : "none") + '"/>';
+        svg += '<text x="' + (padL - 7) + '" y="' + (y + 3.5).toFixed(1) + '" text-anchor="end" fill="#9eb7b4" font-size="10" font-family="JetBrains Mono, monospace">' + pct + '%</text>';
+      });
+
+      cards.forEach(function(c, idx) {
+        const xCenter = padL + slotW * (idx + 0.5);
+        const sPct = Math.max(0, 100 * c.trap_sensitivity);
+        const spPct = Math.max(0, 100 * c.safe_twin_specificity);
+        const h1 = plotH * (sPct / 100);
+        const h2 = plotH * (spPct / 100);
+        if (idx === agentIdx) {
+          svg += '<rect x="' + (xCenter - slotW * 0.44).toFixed(1) + '" y="' + (padT - 6) + '" width="' + (slotW * 0.88).toFixed(1) + '" height="' + (plotH + 12) + '" rx="6" fill="rgba(56,214,196,0.08)" stroke="rgba(56,214,196,0.55)"/>';
+        }
+        svg += '<rect x="' + (xCenter - 17).toFixed(1) + '" y="' + (padT + plotH - h1).toFixed(1) + '" width="15" height="' + Math.max(2, h1).toFixed(1) + '" rx="3" fill="' + (sPct >= 99.9 ? "#38d6c4" : "#f06a3b") + '"/>';
+        svg += '<rect x="' + (xCenter + 2).toFixed(1) + '" y="' + (padT + plotH - h2).toFixed(1) + '" width="15" height="' + Math.max(2, h2).toFixed(1) + '" rx="3" fill="' + (spPct >= 99.9 ? "#3898ec" : "#f4ae42") + '"/>';
+        svg += '<text x="' + xCenter.toFixed(1) + '" y="' + (H - 30) + '" text-anchor="middle" fill="' + (idx === agentIdx ? "#38d6c4" : "#eef7f5") + '" font-size="10.5" font-weight="700" font-family="Barlow, sans-serif">' + shortNames[idx] + '</text>';
+        svg += '<text x="' + xCenter.toFixed(1) + '" y="' + (H - 15) + '" text-anchor="middle" fill="#9eb7b4" font-size="9.5" font-family="JetBrains Mono, monospace">J=' + Number(c.youdens_j).toFixed(2) + '</text>';
+      });
+      document.getElementById("svgAgentComparison").innerHTML = svg;
+
+      // Render Verdict Trace Box
+      let badgeCls = "vb-safe";
+      let badgeTxt = outcome.verdict_status;
+      if (outcome.severe_clinical_harm_occurred) {
+        badgeCls = "vb-fail";
+        badgeTxt = "SEVERE CLINICAL HARM (UNSHIELDED TRAP FAILURE)";
+      } else if (outcome.unnecessary_care_denial_occurred) {
+        badgeCls = "vb-fail";
+        badgeTxt = "FALSE-POSITIVE CARE DENIAL (0% SPECIFICITY)";
+      } else if (outcome.verdict_status === "INTERCEPTED_AND_REROUTED") {
+        badgeCls = "vb-reroute";
+        badgeTxt = "INTERCEPTED & REROUTED BY DCB0129 COMMIT GATE";
+      }
+
+      const hzBadges = (vig.linked_open_hazards || []).map(function(h) {
+        return '<span class="pill pill-amber" style="font-size:0.7rem;padding:0.14rem 0.5rem;">Open Hazard ' + escHtml(h) + '</span>';
+      }).join(" ");
+
+      document.getElementById("verdictInspector").innerHTML =
+        '<div style="display:flex;justify-content:space-between;align-items:center;gap:0.4rem;flex-wrap:wrap;">' +
+          '<span class="card-eyebrow">' + escHtml(vig.rule_code) + ' · ' + (vig.is_hazard_trap ? "Adversarial Hazard Trap" : "Matched Safe Specificity Twin") + '</span>' +
+          '<div>' + hzBadges + '</div>' +
+        '</div>' +
+        '<h3 style="margin:0;font-size:1.18rem;">' + escHtml(vig.vignette_title) + '</h3>' +
+        '<p style="margin:0;font-size:0.84rem;color:var(--ink-muted);">' + escHtml(vig.clinical_context) + '</p>' +
+        '<div class="verdict-badge ' + badgeCls + '">' + escHtml(badgeTxt) + '</div>' +
+        '<div style="font-size:0.82rem;background:#071113;padding:0.65rem 0.8rem;border-radius:8px;border:1px solid var(--border);">' +
+          '<div style="margin-bottom:0.35rem;"><strong style="color:var(--ink-muted);">Agent Raw Proposal:</strong> <code>' + escHtml(outcome.proposed_mode) + '</code></div>' +
+          '<div style="margin-bottom:0.35rem;"><strong style="color:var(--signal);">Executed Pathway:</strong> ' + escHtml(outcome.executed_action) + '</div>' +
+          '<div><strong style="color:var(--amber);">Mechanistic Trace:</strong> ' + escHtml(outcome.mechanistic_trace) + '</div>' +
+        '</div>';
+    }
+
+    function selectMatrixCell(agentIdx, ruleCode) {
+      SELECTED_MATRIX_AGENT = agentIdx;
+      SELECTED_MATRIX_RULE = ruleCode;
+      renderMatrixView();
+    }
+
+    function renderMatrixView() {
+      if (!HARNESS_DATA || !HARNESS_DATA.raw_agent_scorecards) return;
+      const cards = (MATRIX_MODE === "gated") ? HARNESS_DATA.commit_gated_agent_scorecards : HARNESS_DATA.raw_agent_scorecards;
+      const rules = HARNESS_DATA.rule_order;
+      const padL = 232, padT = 38, cellW = 52, cellH = 39;
+      let svg = "";
+
+      rules.forEach(function(r, j) {
+        const cx = padL + j * cellW + cellW * 0.5;
+        svg += '<text x="' + cx.toFixed(1) + '" y="24" text-anchor="middle" fill="#38d6c4" font-size="11.5" font-weight="700" font-family="JetBrains Mono, monospace">' + r + '</text>';
+      });
+
+      cards.forEach(function(c, i) {
+        const ry = padT + i * cellH;
+        const rowLbl = c.agent_title.replace("World-Model ", "").replace("Sustainability ", "").replace("10-Min Clinic ", "").replace("Prompt-Only ", "");
+        svg += '<text x="' + (padL - 10) + '" y="' + (ry + 24) + '" text-anchor="end" fill="#eef7f5" font-size="11.5" font-weight="600" font-family="Barlow, sans-serif">' + escHtml(rowLbl) + '</text>';
+        rules.forEach(function(r, j) {
+          const cx = padL + j * cellW;
+          const ok = Boolean(c.per_rule_trap_passed && c.per_rule_trap_passed[r]);
+          const isSel = (i === SELECTED_MATRIX_AGENT && r === SELECTED_MATRIX_RULE);
+          const fill = ok ? "rgba(56,214,196,0.22)" : "rgba(240,106,59,0.28)";
+          const stroke = isSel ? "#f4ae42" : (ok ? "rgba(56,214,196,0.45)" : "rgba(240,106,59,0.55)");
+          const sw = isSel ? "2.4" : "1";
+          svg += '<g style="cursor:pointer" onclick="selectMatrixCell(' + i + ',\'' + r + '\')">';
+          svg += '<rect x="' + (cx + 2) + '" y="' + (ry + 2) + '" width="' + (cellW - 4) + '" height="' + (cellH - 4) + '" rx="5" fill="' + fill + '" stroke="' + stroke + '" stroke-width="' + sw + '"/>';
+          svg += '<text x="' + (cx + cellW * 0.5).toFixed(1) + '" y="' + (ry + 24) + '" text-anchor="middle" fill="' + (ok ? "#38d6c4" : "#ff9472") + '" font-size="10" font-weight="700" font-family="JetBrains Mono, monospace">' + (ok ? "PASS" : "FAIL") + '</text>';
+          svg += '</g>';
+        });
+      });
+      document.getElementById("svgTrapMatrix").innerHTML = svg;
+
+      const card = cards[SELECTED_MATRIX_AGENT] || cards[0];
+      const trapVig = HARNESS_DATA.vignettes.find(function(v) { return v.rule_code === SELECTED_MATRIX_RULE && v.is_hazard_trap; });
+      const safeVig = HARNESS_DATA.vignettes.find(function(v) { return v.rule_code === SELECTED_MATRIX_RULE && !v.is_hazard_trap; });
+      const trapOut = (card.case_outcomes || []).find(function(o) { return trapVig && o.vignette_id === trapVig.vignette_id; });
+      const safeOut = (card.case_outcomes || []).find(function(o) { return safeVig && o.vignette_id === safeVig.vignette_id; });
+
+      if (trapVig && safeVig && trapOut && safeOut) {
+        document.getElementById("matrixCellDetail").innerHTML =
+          '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem;">' +
+            '<span class="card-eyebrow">Selected Cell · ' + escHtml(card.agent_title) + ' × ' + escHtml(SELECTED_MATRIX_RULE) + ' (' + (MATRIX_MODE === "gated" ? "Commit-Gated" : "Raw Unshielded") + ')</span>' +
+            '<span class="pill ' + (trapOut.safety_passed && safeOut.specificity_preserved ? "pill-signal" : "pill-ember") + '">Trap: ' + (trapOut.safety_passed ? "PASS" : "FAIL") + ' · Safe Twin: ' + (safeOut.specificity_preserved ? "PRESERVED" : "DENIED") + '</span>' +
+          '</div>' +
+          '<div class="studio-two-col" style="gap:0.8rem;">' +
+            '<div style="background:#071113;padding:0.75rem 0.9rem;border-radius:8px;border:1px solid var(--border);">' +
+              '<strong style="color:var(--amber);display:block;margin-bottom:0.25rem;">' + escHtml(trapVig.vignette_title) + '</strong>' +
+              '<div style="font-size:0.82rem;color:var(--ink-muted);margin-bottom:0.35rem;">' + escHtml(trapVig.clinical_context) + '</div>' +
+              '<div style="font-size:0.8rem;"><strong>Trace:</strong> ' + escHtml(trapOut.mechanistic_trace) + '</div>' +
+            '</div>' +
+            '<div style="background:#071113;padding:0.75rem 0.9rem;border-radius:8px;border:1px solid var(--border);">' +
+              '<strong style="color:var(--signal);display:block;margin-bottom:0.25rem;">' + escHtml(safeVig.vignette_title) + '</strong>' +
+              '<div style="font-size:0.82rem;color:var(--ink-muted);margin-bottom:0.35rem;">' + escHtml(safeVig.clinical_context) + '</div>' +
+              '<div style="font-size:0.8rem;"><strong>Trace:</strong> ' + escHtml(safeOut.mechanistic_trace) + '</div>' +
+            '</div>' +
+          '</div>';
+      }
+    }
+
+    function renderSandboxView() {
+      const pbpk = document.getElementById("swPbpk").checked;
+      const prog = document.getElementById("swProgress").checked;
+      const resp = document.getElementById("swRespG9").checked;
+      const nonc = document.getElementById("swNonComm").checked;
+      const frail = document.getElementById("swFrailCkm").checked;
+      const g4 = document.getElementById("swGateG4").checked;
+      const paranoid = document.getElementById("swParanoid").checked;
+
+      const covered = {
+        G1: pbpk, G4: pbpk, G5: pbpk, G13: pbpk,
+        G7: prog, G10: prog,
+        G9: resp, G12: resp,
+        G2: nonc, G11: nonc, G14: nonc,
+        G3: frail, G8: frail,
+        G6: g4
+      };
+      const withholding = { G4: true, G5: true, G8: true, G14: true };
+
+      let trapsPassed = 0;
+      Object.keys(covered).forEach(function(r) {
+        if (covered[r]) {
+          trapsPassed += 1;
+        } else if (paranoid && !withholding[r]) {
+          trapsPassed += 1;
+        }
+      });
+      const safePreserved = paranoid ? 0 : 14;
+      const sens = trapsPassed / 14.0;
+      const spec = safePreserved / 14.0;
+      const youden = sens + spec - 1.0;
+      const admitted = (trapsPassed === 14 && safePreserved === 14);
+
+      const badge = document.getElementById("sandboxAdmitBadge");
+      badge.textContent = admitted ? "ADMITTED (J = 1.000)" : ("REJECTED (J = " + youden.toFixed(3) + ")");
+      badge.className = "verdict-badge " + (admitted ? "vb-safe" : "vb-fail");
+
+      const bars = [
+        { label: "G1–G14 Trap Sensitivity", val: 100 * sens, col: sens >= 0.999 ? "#38d6c4" : "#f06a3b", sub: trapsPassed + " / 14 traps" },
+        { label: "Safe-Twin Specificity", val: 100 * spec, col: spec >= 0.999 ? "#3898ec" : "#f4ae42", sub: safePreserved + " / 14 twins" },
+        { label: "Balanced Youden's J", val: Math.max(0, 100 * youden), col: admitted ? "#38d6c4" : "#f06a3b", sub: "J = " + youden.toFixed(3) }
+      ];
+      let svg = "";
+      bars.forEach(function(b, idx) {
+        const y = 26 + idx * 62;
+        const w = 235 * (Math.max(0, b.val) / 100);
+        svg += '<text x="18" y="' + (y + 13) + '" fill="#eef7f5" font-size="12" font-weight="700" font-family="Barlow, sans-serif">' + b.label + '</text>';
+        svg += '<text x="18" y="' + (y + 29) + '" fill="#9eb7b4" font-size="10" font-family="JetBrains Mono, monospace">' + b.sub + '</text>';
+        svg += '<rect x="190" y="' + y + '" width="235" height="24" rx="5" fill="#132529" stroke="rgba(158,183,180,0.2)"/>';
+        svg += '<rect x="190" y="' + y + '" width="' + Math.max(3, w).toFixed(1) + '" height="24" rx="5" fill="' + b.col + '"/>';
+        svg += '<text x="433" y="' + (y + 16) + '" fill="#eef7f5" font-size="11" font-weight="700" font-family="JetBrains Mono, monospace">' + Math.round(b.val) + '%</text>';
+      });
+      document.getElementById("svgSandboxGauge").innerHTML = svg;
+
+      const missed = Object.keys(covered).filter(function(r) { return !covered[r]; });
+      document.getElementById("sandboxSummaryText").innerHTML = paranoid
+        ? '<strong style="color:#ff8b64;">Specificity Collapse Detected:</strong> Blanket refusal blocks all <code>14/14</code> safe clinical twins (<code>0%</code> specificity) and still triggers withholding harm when active guardrails are disabled.'
+        : (admitted
+          ? '<strong style="color:var(--signal);">Full 14-Trap &amp; 14-Twin Coverage Verified:</strong> Prevents an estimated <strong>63,552 severe harms/yr</strong> (<code>+£668.62M/yr</code> INMB across 42/42 English ICBs) with <code>0</code> false care denials.'
+          : '<strong style="color:var(--amber);">Unshielded Vulnerability Active:</strong> Disabled guardrails leave traps <code>' + missed.join(", ") + '</code> exposed to uncalibrated agent execution.');
+    }
+
+    function populateStaticTablesAndControls() {
+      if (!HARNESS_DATA || !HARNESS_DATA.vignettes) return;
+      const sm = HARNESS_DATA.summary_metrics;
+      document.getElementById("heroReceiptPrefix").textContent = String(HARNESS_DATA.source_receipt_sha256 || "").slice(0, 8) + "…";
+      document.getElementById("kpiVignettes").textContent = sm.n_paired_vignettes + " Cases";
+      document.getElementById("kpiYouden").textContent = "J = " + Number(sm.steward_youdens_j).toFixed(3);
+      document.getElementById("kpiGatedHarms").textContent = sm.commit_gated_severe_harms_all_agents + " Harms";
+      document.getElementById("kpiShieldInmb").textContent = "+£" + Number(sm.england_42icb_shield_inmb_20k_gbp_m_yr).toFixed(1) + "M/yr";
+
+      const selA = document.getElementById("selAgent");
+      selA.innerHTML = HARNESS_DATA.raw_agent_scorecards.map(function(c, idx) {
+        return '<option value="' + idx + '"' + (idx === 1 ? " selected" : "") + '>' + escHtml(c.agent_title) + ' (Raw J=' + Number(c.youdens_j).toFixed(2) + ')</option>';
+      }).join("");
+
+      const selV = document.getElementById("selVignette");
+      selV.innerHTML = HARNESS_DATA.vignettes.map(function(v, idx) {
+        return '<option value="' + idx + '"' + (v.vignette_id === "G09-TRAP-LOW-PIFR-BLANKET-DPI" ? " selected" : "") + '>' + escHtml(v.vignette_title) + '</option>';
+      }).join("");
+
+      // Populate 14-row paired table
+      const tbody = document.getElementById("taxonomyTableBody");
+      let rowsHtml = "";
+      HARNESS_DATA.rule_order.forEach(function(r) {
+        const tv = HARNESS_DATA.vignettes.find(function(v) { return v.rule_code === r && v.is_hazard_trap; });
+        const sv = HARNESS_DATA.vignettes.find(function(v) { return v.rule_code === r && !v.is_hazard_trap; });
+        if (!tv || !sv) return;
+        rowsHtml +=
+          '<tr>' +
+            '<td><code>' + escHtml(r) + '</code></td>' +
+            '<td style="color:var(--ink-muted);font-size:0.79rem;">' + escHtml(tv.domain_title) + '</td>' +
+            '<td><strong style="color:var(--ink);">' + escHtml(tv.vignette_title.replace(/^G\d+\s+Trap:\s*/, "")) + '</strong><br/><span style="font-size:0.77rem;color:var(--ink-muted);">Safe route: ' + escHtml(tv.verified_safe_action) + '</span></td>' +
+            '<td><strong style="color:var(--signal);">' + escHtml(sv.vignette_title.replace(/^G\d+\s+Safe Twin:\s*/, "")) + '</strong><br/><span style="font-size:0.77rem;color:var(--ink-muted);">' + escHtml(sv.clinical_context) + '</span></td>' +
+            '<td><code>' + escHtml((tv.linked_open_hazards || []).join(", ")) + '</code></td>' +
+          '</tr>';
+      });
+      tbody.innerHTML = rowsHtml;
+
+      renderInterceptorView();
+      renderMatrixView();
+      renderSandboxView();
+    }
+
+    fetch("./receipts/opencareq_public_redteam_harness_summary.json")
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        HARNESS_DATA = d;
+        populateStaticTablesAndControls();
+      })
+      .catch(function() {
+        HARNESS_DATA = FALLBACK_SUMMARY;
+        renderSandboxView();
+      });
+  </script>
+</body>
+</html>
