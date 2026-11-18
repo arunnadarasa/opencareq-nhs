@@ -543,6 +543,41 @@
       "label": "Sealed OpenCareQ v1.8 Complete 5/5 Core20PLUS5 Capstone Receipt (ML-DSA-65)"
     },
     {
+      "id": "pmc:PMC9255409",
+      "type": "Paperclip_Verified_Study",
+      "label": "Osanlou, Pirmohamed et al. 2022 BMJ Open NHS England \u00a32.21B/yr ADR Burden (PMC9255409#L19)"
+    },
+    {
+      "id": "pmid:31233095",
+      "type": "Pharmacoepi_Cohort",
+      "label": "Coupland et al. 2019 JAMA Intern Med Anticholinergic TSDD Exposure & Dementia (N=284,343)"
+    },
+    {
+      "id": "pmid:36449413",
+      "type": "Clinical_Outcome_Trial",
+      "label": "van Dyck et al. 2023 NEJM Clarity AD Lecanemab & FDA BLA761269 ARIA-E (fda_f42ab846d717)"
+    },
+    {
+      "id": "pmid:37459141",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Sims et al. 2023 JAMA TRAILBLAZER-ALZ 2 Donanemab & FDA BLA761248 ARIA-E (fda_3a3ce9f859fb)"
+    },
+    {
+      "id": "pmid:37478886",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Lin et al. 2023 Lancet ACHIEVE Hearing Intervention RCT (-48% ARIC Cognitive Decline)"
+    },
+    {
+      "id": "wm:cp1350_ten_year_plan_v1_9",
+      "type": "World_Model",
+      "label": "v1.9 UK 10-Year Health Plan (CP 1350): Dementia/CHRM1/ARIA, Over-40s SPR My Medicines \u00a32.21B Shield & 42-ICB YCPs (15-Ep GMFE=1.0215)"
+    },
+    {
+      "id": "receipt:v1_9_cp1350_ten_year_plan",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v1.9 CP 1350 Ten-Year Plan & Paperclip Verification Receipt (ML-DSA-65)"
+    },
+    {
       "id": "safety:cscr_crmp_dcb0160_mse",
       "type": "Clinical_Safety_Suite",
       "label": "v0.6 Statutory DCB0129 CSCR + CRMP + MSE (E54000026) DCB0160 Shadow Pack"
@@ -1537,6 +1572,51 @@
       "target": "hf:socialprescribing_opencareq"
     },
     {
+      "source": "pmc:PMC9255409",
+      "relation": "grounds_2p21b_adr_shield_in",
+      "target": "wm:cp1350_ten_year_plan_v1_9"
+    },
+    {
+      "source": "pmid:31233095",
+      "relation": "falsifies_chrm1_tsdd_dementia_in",
+      "target": "wm:cp1350_ten_year_plan_v1_9"
+    },
+    {
+      "source": "pmid:36449413",
+      "relation": "falsifies_lecanemab_aria_e_in",
+      "target": "wm:cp1350_ten_year_plan_v1_9"
+    },
+    {
+      "source": "pmid:37459141",
+      "relation": "falsifies_donanemab_aria_e_in",
+      "target": "wm:cp1350_ten_year_plan_v1_9"
+    },
+    {
+      "source": "pmid:37478886",
+      "relation": "falsifies_achieve_audiology_in",
+      "target": "wm:cp1350_ten_year_plan_v1_9"
+    },
+    {
+      "source": "ogl:england_42icb_atlas_2026",
+      "relation": "grounds_42icb_ycp_capitation_in",
+      "target": "wm:cp1350_ten_year_plan_v1_9"
+    },
+    {
+      "source": "wm:cp1350_ten_year_plan_v1_9",
+      "relation": "supplies_g21_g22_g23_g24_traps_to",
+      "target": "harness:redteam_g1_g14_v1_6"
+    },
+    {
+      "source": "wm:cp1350_ten_year_plan_v1_9",
+      "relation": "sealed_in",
+      "target": "receipt:v1_9_cp1350_ten_year_plan"
+    },
+    {
+      "source": "receipt:v1_9_cp1350_ten_year_plan",
+      "relation": "published_cp1350_summary_to",
+      "target": "hf:socialprescribing_opencareq"
+    },
+    {
       "source": "safety:cscr_crmp_dcb0160_mse",
       "relation": "governs_bowtie_open_hazard",
       "target": "hazard:H-OCQ-01"
@@ -1607,5 +1687,5 @@
       "target": "hazard:H-OCQ-07"
     }
   ],
-  "kg_sha256": "6a7ef5fc110e819cb4e670a57d047ebeb9eec637b1ed497ca05ef9e94ff48a73"
+  "kg_sha256": "6e42975c068e02a55eda8deb46a1d82a879fea42729948abfa5b76b4522a8b1b"
 }
