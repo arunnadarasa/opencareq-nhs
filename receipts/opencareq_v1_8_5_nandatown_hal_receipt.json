@@ -1,0 +1,932 @@
+{
+  "schema_version": "opencareq-v1.8.5-nandatown-hal-receipt-v1.0",
+  "release_version": "1.8.5",
+  "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+  "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+  "phi_present": false,
+  "patient_identifiable_records": 0,
+  "runtime_agent_actions": 0,
+  "physical_qpu_shots": 0,
+  "billable_hqc": 0.0,
+  "csc_qt_numerical_score_computed": null,
+  "summary_metrics": {
+    "statutory_icbs": 42,
+    "statutory_pcns": 1280,
+    "raw_events_per_min": 33280.0,
+    "escalated_judgment_calls_per_min": 1.286,
+    "cumulative_hal_compression_ratio": 25878.7,
+    "tier1_g1_g20_traps_caught": "20/20",
+    "tier1_safe_twins_preserved": "20/20",
+    "teach_downward_round5_reduction_pct": 88.2,
+    "e1_heavy_layer_hysteresis_gap_pct": 26.85,
+    "e2_14pcn_fixed_icb_hiding_rate_pct": 75.0,
+    "e2_14pcn_hal_mitigated_hiding_rate_pct": 0.0,
+    "upstream_nandatown_bundles_verified": 15,
+    "all_bundle_integrities_clean": true,
+    "all_track_expectations_matched": true,
+    "paperclip_tier3_verified_pins_count": 4,
+    "wall_clock_ms": 2454.45
+  },
+  "deterministic_hal_commons_benchmark": {
+    "schema_version": "opencareq-nandatown-hal-commons-v1.0",
+    "phi_present": false,
+    "patient_identifiable_records": 0,
+    "csc_qt_numerical_score_computed": null,
+    "attribution": {
+      "repository": "https://github.com/projnanda/nandatown",
+      "portal": "https://nandatown.projectnanda.org/",
+      "license": "Apache-2.0",
+      "white_paper_title": "Who Watches the Swarm? Humans with one agent, a team of agents, and a population of agents",
+      "white_paper_authors": "Peter Danenberg (Google DeepMind), Vedh Krishnan (MIT Media Lab), Ramesh Raskar (MIT Media Lab)",
+      "white_paper_venue": "IEEE TPS 2026 NANDA Workshop (November 2026)",
+      "white_paper_url": "https://klutometis.github.io/who-watches-the-swarm/white-paper.pdf",
+      "nanda_index_arxiv": "arXiv:2507.14263",
+      "non_endorsement_notice": "Independent clean-room academic & NHS shadow-mode research integration; neither MIT Project NANDA, Google DeepMind, UK DHSC/NHS England, MHRA, NICE, nor Curistica Ltd endorse or certify OpenCareQ."
+    },
+    "nhs_commons_topology": {
+      "statutory_icbs": 42,
+      "statutory_pcns": 1280,
+      "gp_practices": 6080,
+      "registered_patients": 62925110,
+      "mean_pcns_per_icb_bin": 30.48,
+      "baseline_core20_deprived_share_mean": 0.3819,
+      "scarce_commons_resources": {
+        "the_road": "CP 1350 Neighbourhood Health Centre & Diagnostic Slots",
+        "the_board": "Multi-Disciplinary Team (MDT) & Community Pharmacy Triage Queue",
+        "the_purse": "Year-of-Care Risk-Adjusted Capitated Purse (>=25% Core20 Ringfence)"
+      }
+    },
+    "nhs_tier0_layers": [
+      {
+        "layer": "privacy",
+        "nandatown_default": "redact.v1",
+        "nhs_plugin_id": "ukcore_zero_pid.v1",
+        "latency_cost_ms": 0.14,
+        "clinical_guarantee": "Scrubs declared fields plus all 24 OpenCareQ `FORBIDDEN_PID_KEYS` (`nhs_number`, `dob`, `postcode`, etc.) and enforces `assert_zero_pid` (`phi_present == False`) before export."
+      },
+      {
+        "layer": "auth",
+        "nandatown_default": "hmac.v1",
+        "nhs_plugin_id": "mldsa65_grant.v1",
+        "latency_cost_ms": 0.42,
+        "clinical_guarantee": "Verifies sender authenticity plus scoped clinical Run-Grant capability ceilings and NIST FIPS 204 `ML-DSA-65` / `HMAC-SHA256` digests; rejects forged or out-of-scope prescribers."
+      },
+      {
+        "layer": "registry",
+        "nandatown_default": "index.owned.v1",
+        "nhs_plugin_id": "ods_owned.v1",
+        "latency_cost_ms": 0.31,
+        "clinical_guarantee": "Binds agent cards to statutory NHS ODS (`QXX`/`UXXXXX`/`GPhC`) ownership + monotonic `version >= 1` anti-rollback & generation-bound withdrawal (`0/10` spoofed cards)."
+      },
+      {
+        "layer": "payments",
+        "nandatown_default": "ledger.v1",
+        "nhs_plugin_id": "yoc_capitated.v1",
+        "latency_cost_ms": 0.11,
+        "clinical_guarantee": "Conserves total `CP 1350` Year-of-Care capitated integer pence while enforcing a `>=25%` `Core20` deprivation ringfence so affluent spot-bids cannot drain IMD Decile 1-2 reserves."
+      },
+      {
+        "layer": "trust",
+        "nandatown_default": "reputation.capped.v1",
+        "nhs_plugin_id": "sii_equity_capped.v1",
+        "latency_cost_ms": 0.09,
+        "clinical_guarantee": "Caps per-observer reputation at `+/-1` per settled pathway AND applies a Slope Index of Inequality (`SII`) parity lock (`equity_ratio >= 0.85`) blocking `E2` cherry-picking rings."
+      },
+      {
+        "layer": "data_facts",
+        "nandatown_default": "evidence.v1",
+        "nhs_plugin_id": "dcb0129_paperclip.v1",
+        "latency_cost_ms": 0.18,
+        "clinical_guarantee": "Enforces non-self-attestation (`observer != subject`), binds `G1-G20` / `H-OCQ-01..07` hazard tags, and records verifiable `Paperclip` (`#L<n>`) primary-source pins."
+      }
+    ],
+    "paperclip_tier3_pins": [
+      {
+        "pin_id": "PC-HAL-01",
+        "doc_id": "arx_2507.14263",
+        "source": "papers/arxiv",
+        "citation": "Raskar, R. et al. Beyond DNS: Unlocking the Internet of AI Agents via the NANDA Index and Verified AgentFacts. arXiv:2507.14263 (2025).",
+        "lines": "L4,L8,L13,L17,L31-L35",
+        "url": "https://paperclip.gxl.ai/citations/papers/arx_2507.14263#L4,L8,L13,L17",
+        "verified_fact": "Lean <=120-byte index pointers + W3C/JSON-LD AgentFacts (<5 min short-lived credentials) and quilt-like governmental/enterprise split-horizon registry governance.",
+        "hal_role": "Tier 0 Registry (`ods_owned.v1`) & Identity (`AgentFacts`) Governance"
+      },
+      {
+        "pin_id": "PC-HAL-02",
+        "doc_id": "PMC9255409",
+        "source": "papers/pmc",
+        "citation": "Osanlou, R., Walker, L., Hughes, D. A., Burnside, G. & Pirmohamed, M. Adverse drug reactions, multimorbidity and polypharmacy: a prospective analysis of 1 month of medical admissions. BMJ Open 12, e055551 (2022). doi:10.1136/bmjopen-2021-055551",
+        "lines": "L18-L21,L29-L31",
+        "url": "https://paperclip.gxl.ai/citations/papers/PMC9255409#L19",
+        "verified_fact": "ADRs accounted for 16.5% of NHS medical admissions (mean 10.5 vs 7.8 medicines, p<0.01; 40.4% avoidable/possibly avoidable), projecting £2.21 billion/yr annual cost across NHS England.",
+        "hal_role": "Clinical Motivation for Eliminating Watchtower Alert Fatigue in Polypharmacy Triage"
+      },
+      {
+        "pin_id": "PC-HAL-03",
+        "doc_id": "PMC12407033",
+        "source": "papers/pmc",
+        "citation": "Peeters, S. L. J. et al. Real-world study on fluoropyrimidine-related toxicity outcomes in cancer patients with select DPYD variant alleles that received DPYD genotype-guided dosing. Int. J. Cancer (2025).",
+        "lines": "L13,L30",
+        "url": "https://paperclip.gxl.ai/citations/papers/PMC12407033#L13,L30",
+        "verified_fact": "DPD deficiency increases severe fluoropyrimidine toxicity 2- to 4-fold and treatment-related mortality 25-fold; heterozygous DPYD*2A/c.2846A>T/DPYD*13/c.1236G>A carriers (~5%) require initial 25-50% dose reduction.",
+        "hal_role": "Tier 1/3 Grounding for `Track` `quote-llm-truncation` Handover Amnesia Recovery (`G17`)"
+      },
+      {
+        "pin_id": "PC-HAL-04",
+        "doc_id": "fda_039eb12033a3",
+        "source": "fda/us",
+        "citation": "U.S. Food and Drug Administration. CLOZARIL (clozapine) NDA 019758/S-061/S-077 Approval & Shared Clozapine REMS Elements to Assure Safe Use (21 CFR 314.520).",
+        "lines": "L8-L9,L29-L30,L40-L44",
+        "url": "https://paperclip.gxl.ai/citations/fda/fda_039eb12033a3#L29-L30,L44",
+        "verified_fact": "Mandates shared Clozapine REMS prescriber/pharmacy certification and pre-dispense ANC monitoring algorithms prior to dispensing narrow-therapeutic-index clozapine.",
+        "hal_role": "Tier 0/1 Grounding for `Track` Lease Fencing Against Double-Dispensing (`G15` / `H-OCQ-01`)"
+      }
+    ],
+    "suite1_hal_compression": {
+      "raw_events_per_min": 33280.0,
+      "raw_events_per_hr": 1996800.0,
+      "unassisted_fte_clinicians_needed": 1109.3,
+      "escalated_judgment_calls_per_min_national": 1.286,
+      "escalated_judgment_calls_per_hr_per_icb": 1.84,
+      "cumulative_compression_ratio": 25878.7,
+      "tier1_commit_gate_traps_caught": "20/20",
+      "tier1_commit_gate_safe_twins_preserved": "20/20",
+      "tier1_latency_ms_per_vignette": 0.0159,
+      "tiers": [
+        {
+          "tier": 0,
+          "hal_name": "Protocol Layers (6 NHS Swappable Plugins)",
+          "opencareq_component": "ukcore_zero_pid.v1 + mldsa65_grant.v1 + ods_owned.v1 + yoc_capitated.v1 + sii_equity_capped.v1 + dcb0129_paperclip.v1",
+          "in_per_min": 33280.0,
+          "out_per_min": 4160.0,
+          "tier_compression_ratio": 8.0,
+          "latency_ms": 1.25,
+          "compute_gbp_per_hr": 0.04,
+          "action": "Rejects forged signatures, unowned ODS cards, PID leaks & Core20 ringfence drains outright."
+        },
+        {
+          "tier": 1,
+          "hal_name": "Deterministic Rule & Mechanistic ODE Monitors",
+          "opencareq_component": "DCB0129RuntimeCommitGate (G1-G20 ODEs, 0.0159 ms/case) + Gate G4 (PT-MPO / HiGHS)",
+          "in_per_min": 4160.0,
+          "out_per_min": 155.22,
+          "tier_compression_ratio": 26.8,
+          "latency_ms": 0.05,
+          "compute_gbp_per_hr": 0.18,
+          "action": "Settles concordant pathways & hard-blocks 20/20 contraindications (20/20 safe twins untouched)."
+        },
+        {
+          "tier": 2,
+          "hal_name": "Calibrated Small Models (Anomaly Scoring & Case Clustering)",
+          "opencareq_component": "TypeSafe System One (jev-1.14.0, 155 ms p50) + Companion Confidence Superposition",
+          "in_per_min": 155.22,
+          "out_per_min": 10.93,
+          "tier_compression_ratio": 14.2,
+          "latency_ms": 155.0,
+          "compute_gbp_per_hr": 1.42,
+          "action": "Clusters cross-practice prescribing/social anomalies into cases; applies 'Invite, don't notify'."
+        },
+        {
+          "tier": 3,
+          "hal_name": "Case-Investigation Synthesis & Line-Pinned Verification",
+          "opencareq_component": "Paperclip (v0.8.19 #L<n> FDA/PMC/arXiv Pins) + CSC-QT Bow-Tie Hazard Dossier",
+          "in_per_min": 10.93,
+          "out_per_min": 1.286,
+          "tier_compression_ratio": 8.5,
+          "latency_ms": 640.0,
+          "compute_gbp_per_hr": 4.85,
+          "action": "Verifies primary regulatory/trial lines (`[OK]`) and prepares structured options for human crew."
+        },
+        {
+          "tier": 4,
+          "hal_name": "Human Crew (`L3` Crewed Sailing Under Fixed Attention Budget)",
+          "opencareq_component": "NHS DCB0160 CSO (Defender) + PCN Pharmacist/Link Worker (Observer/Teammate) + Red-Team (Adversary) + 42-ICB Commissioning Council (Governor)",
+          "in_per_min": 1.286,
+          "out_per_min": 1.286,
+          "tier_compression_ratio": 1.0,
+          "latency_ms": 45000.0,
+          "compute_gbp_per_hr": 0.0,
+          "action": "Resolves ~1.29 national judgment calls/min (1.84 calls/hr/ICB) within 30 min/hr attention budget & teaches downward."
+        }
+      ],
+      "oversight_regimes": [
+        {
+          "regime_id": "full_automation_unguarded",
+          "label": "Full Automation (No Human Crew, Plain Protocol)",
+          "judgment_calls_per_min": 0.0,
+          "clinician_attention_min_per_hr_icb": 0.0,
+          "severe_harms_caught_pct": 31.2,
+          "severe_harms_escaped_per_hr": 660,
+          "false_alarm_rate_pct": 0.0,
+          "pathways_settled_pct": 98.4,
+          "agency_influence_score": 0.0,
+          "failure_mode": "Silent unguarded clinical harm & spoofed/truncated prescribing."
+        },
+        {
+          "regime_id": "flat_random_stream_reader",
+          "label": "Flat Uniform Stream Reader (Same 30 min/hr Budget, No Hierarchy)",
+          "judgment_calls_per_min": 21.0,
+          "clinician_attention_min_per_hr_icb": 30.0,
+          "severe_harms_caught_pct": 0.9,
+          "severe_harms_escaped_per_hr": 951,
+          "false_alarm_rate_pct": 14.8,
+          "pathways_settled_pct": 94.1,
+          "agency_influence_score": 0.04,
+          "failure_mode": "1,996,800 events/hr overwhelms uniform sampling (0.063% stream visibility)."
+        },
+        {
+          "regime_id": "watchtower_approval_queue",
+          "label": "Passive Watchtower Approval Queue (Bainbridge Vigilance Decay)",
+          "judgment_calls_per_min": 18.6,
+          "clinician_attention_min_per_hr_icb": 30.0,
+          "severe_harms_caught_pct": 74.5,
+          "severe_harms_escaped_per_hr": 245,
+          "false_alarm_rate_pct": 22.4,
+          "pathways_settled_pct": 61.8,
+          "agency_influence_score": 0.11,
+          "failure_mode": "Approval fatigue >30 min causes rubber-stamp commission errors & queue backlog."
+        },
+        {
+          "regime_id": "opencareq_hal_l3_crewed_sailing",
+          "label": "OpenCareQ HAL L3 Crewed Sailing + Teach Downward (6 NHS Layers)",
+          "judgment_calls_per_min": 1.29,
+          "clinician_attention_min_per_hr_icb": 2.76,
+          "severe_harms_caught_pct": 100.0,
+          "severe_harms_escaped_per_hr": 0,
+          "false_alarm_rate_pct": 1.8,
+          "pathways_settled_pct": 95.6,
+          "agency_influence_score": 0.964,
+          "failure_mode": "None: clinicians stay crew (2.76/30.0 attention-min/hr/ICB) & compile overrides to Tier 1."
+        }
+      ],
+      "teach_downward_rounds": [
+        {
+          "round": 1,
+          "escalated_cases_per_hr": 77.2,
+          "repeat_case_recurrence_pct": 100.0,
+          "compiled_tier1_rules": 20
+        },
+        {
+          "round": 2,
+          "escalated_cases_per_hr": 38.4,
+          "repeat_case_recurrence_pct": 41.5,
+          "compiled_tier1_rules": 23
+        },
+        {
+          "round": 3,
+          "escalated_cases_per_hr": 19.8,
+          "repeat_case_recurrence_pct": 18.2,
+          "compiled_tier1_rules": 25
+        },
+        {
+          "round": 4,
+          "escalated_cases_per_hr": 11.4,
+          "repeat_case_recurrence_pct": 11.8,
+          "compiled_tier1_rules": 27
+        },
+        {
+          "round": 5,
+          "escalated_cases_per_hr": 9.1,
+          "repeat_case_recurrence_pct": 8.4,
+          "compiled_tier1_rules": 28
+        }
+      ],
+      "round5_escalation_reduction_pct": 88.2
+    },
+    "suite2_clinical_track_faults": {
+      "matrix": [
+        {
+          "fault_id": "crash_after_claim_fencing",
+          "nandatown_profile": "quote-crash-restart",
+          "clinical_scenario": "Clozapine REMS + Smoking-Cessation CYP1A2 Dose Adjustment (`G15`)",
+          "unguarded_error_rate_pct": 48.0,
+          "fenced_journal_error_rate_pct": 0.0,
+          "mechanism": "Coordinator monotonic lease fencing token (`HTTP 409`) rejects stale crashed prescriber.",
+          "paperclip_pin": "https://paperclip.gxl.ai/citations/fda/fda_039eb12033a3#L29-L30,L44"
+        },
+        {
+          "fault_id": "amnesia_fresh_ids_vs_idempotent",
+          "nandatown_profile": "quote-amnesia-fresh-ids -> quote-amnesia-restart",
+          "clinical_scenario": "Post-Crash Narrow-TI Apixaban / Clozapine Double-Dispensing (`H-OCQ-01`)",
+          "unguarded_error_rate_pct": 100.0,
+          "fenced_journal_error_rate_pct": 0.0,
+          "mechanism": "Fresh Rx IDs cause 100% double-dispense (`FAIL` control); deterministic request-hash IDs settle once.",
+          "paperclip_pin": "https://paperclip.gxl.ai/citations/papers/PMC9255409#L19"
+        },
+        {
+          "fault_id": "duplicate_delivery_dedup",
+          "nandatown_profile": "quote-duplicate-delivery",
+          "clinical_scenario": "GP -> Community Pharmacy Duplicate Electronic Repeat Dispensing (`eRD`)",
+          "unguarded_error_rate_pct": 62.5,
+          "fenced_journal_error_rate_pct": 0.0,
+          "mechanism": "Durable inbox claim/ack state machine applies duplicate referral intent exactly once.",
+          "paperclip_pin": "https://paperclip.gxl.ai/citations/papers/PMC9255409#L19"
+        },
+        {
+          "fault_id": "llm_context_truncation_handover",
+          "nandatown_profile": "quote-llm-truncation",
+          "clinical_scenario": "Oncology Handover Dropping Day-12 Brivudine History Before 5-FU (`G17`)",
+          "unguarded_error_rate_pct": 85.0,
+          "fenced_journal_error_rate_pct": 0.0,
+          "mechanism": "Middle-context compaction erases herpes zoster brivudine note from LLM prompt, but `dcb0129_paperclip.v1` protocol journal + `G17` gate reconstructs 28-day DPD washout.",
+          "paperclip_pin": "https://paperclip.gxl.ai/citations/papers/PMC12407033#L13,L30"
+        }
+      ],
+      "llm_truncation_unguarded_error_pct": 85.0,
+      "llm_truncation_protocol_recovered_error_pct": 0.0,
+      "fresh_id_double_dispense_control_error_pct": 100.0,
+      "fenced_idempotent_double_dispense_error_pct": 0.0
+    },
+    "suite3_commons_emergence": {
+      "e1_hysteresis_sweep": {
+        "load_lambda_grid": [
+          0.55,
+          0.65,
+          0.72,
+          0.8,
+          0.88,
+          0.96,
+          1.04,
+          1.1
+        ],
+        "heavy_sync_layer_up_settled_pct": [
+          97.0,
+          97.0,
+          97.0,
+          97.0,
+          89.15,
+          79.54,
+          67.4,
+          53.95
+        ],
+        "heavy_sync_layer_down_settled_pct": [
+          97.0,
+          79.29,
+          70.15,
+          61.97,
+          54.47,
+          46.97,
+          39.47,
+          33.74
+        ],
+        "opencareq_hal_up_settled_pct": [
+          98.6,
+          98.6,
+          98.6,
+          98.6,
+          98.6,
+          98.6,
+          92.91,
+          87.77
+        ],
+        "opencareq_hal_down_settled_pct": [
+          98.6,
+          98.6,
+          98.6,
+          98.6,
+          98.6,
+          98.6,
+          92.91,
+          87.69
+        ],
+        "hysteresis_gap_at_lambda_0_72_heavy_pct": 26.85,
+        "hysteresis_gap_at_lambda_0_72_ocq_pct": 0.0
+      },
+      "e2_scale_blindness_and_hiding_rate": {
+        "mean_icb_aggregation_bin_pcns": 30.48,
+        "sweep": [
+          {
+            "ring_size_pcns": 4,
+            "ratio_to_icb_bin": 0.13,
+            "fixed_icb_detection_pct": 0.0,
+            "fixed_icb_hiding_rate_pct": 100.0,
+            "flat_reader_detection_pct": 0.0,
+            "hal_mitigated_detection_pct": 50.0,
+            "hal_mitigated_hiding_rate_pct": 50.0
+          },
+          {
+            "ring_size_pcns": 8,
+            "ratio_to_icb_bin": 0.26,
+            "fixed_icb_detection_pct": 0.0,
+            "fixed_icb_hiding_rate_pct": 100.0,
+            "flat_reader_detection_pct": 4.2,
+            "hal_mitigated_detection_pct": 100.0,
+            "hal_mitigated_hiding_rate_pct": 0.0
+          },
+          {
+            "ring_size_pcns": 14,
+            "ratio_to_icb_bin": 0.46,
+            "fixed_icb_detection_pct": 25.0,
+            "fixed_icb_hiding_rate_pct": 75.0,
+            "flat_reader_detection_pct": 16.7,
+            "hal_mitigated_detection_pct": 100.0,
+            "hal_mitigated_hiding_rate_pct": 0.0
+          },
+          {
+            "ring_size_pcns": 24,
+            "ratio_to_icb_bin": 0.79,
+            "fixed_icb_detection_pct": 45.8,
+            "fixed_icb_hiding_rate_pct": 54.2,
+            "flat_reader_detection_pct": 12.5,
+            "hal_mitigated_detection_pct": 100.0,
+            "hal_mitigated_hiding_rate_pct": 0.0
+          },
+          {
+            "ring_size_pcns": 32,
+            "ratio_to_icb_bin": 1.05,
+            "fixed_icb_detection_pct": 70.8,
+            "fixed_icb_hiding_rate_pct": 29.2,
+            "flat_reader_detection_pct": 41.7,
+            "hal_mitigated_detection_pct": 100.0,
+            "hal_mitigated_hiding_rate_pct": 0.0
+          },
+          {
+            "ring_size_pcns": 64,
+            "ratio_to_icb_bin": 2.1,
+            "fixed_icb_detection_pct": 100.0,
+            "fixed_icb_hiding_rate_pct": 0.0,
+            "flat_reader_detection_pct": 62.5,
+            "hal_mitigated_detection_pct": 100.0,
+            "hal_mitigated_hiding_rate_pct": 0.0
+          }
+        ],
+        "ring_14pcn_fixed_icb_hiding_rate_pct": 75.0,
+        "ring_14pcn_hal_mitigated_hiding_rate_pct": 0.0,
+        "ring_14pcn_hal_detection_pct": 100.0
+      }
+    },
+    "wall_clock_ms": 383.82
+  },
+  "live_upstream_nandatown_verification": {
+    "nandatown_version": "0.2.0",
+    "upstream_git_commit": "6f9a7c064486c4a0ae9242f1ff341b8a4aad0244",
+    "registered_nhs_tier0_layers": {
+      "privacy": "ukcore_zero_pid.v1",
+      "auth": "mldsa65_grant.v1",
+      "registry": "ods_owned.v1",
+      "payments": "yoc_capitated.v1",
+      "trust": "sii_equity_capped.v1",
+      "data_facts": "dcb0129_paperclip.v1"
+    },
+    "upstream_lab_adversarial_pairs": [
+      {
+        "scenario": "capability_spoofing",
+        "verdict": "PASS",
+        "raw_verdict": "passed",
+        "evaluator_version": "lab-0.2.6",
+        "events_count": 38,
+        "intents_count": 13,
+        "bundle_fingerprint": "sha256:f906c751cdf693b2c315403420c3e26e054cad5bb6ffd8bd0531f9e8b9f8bceb",
+        "integrity_problems": [],
+        "version_diff": null
+      },
+      {
+        "scenario": "capability_spoofing_weak_auth",
+        "verdict": "FAIL",
+        "raw_verdict": "failed",
+        "evaluator_version": "lab-0.2.6",
+        "events_count": 28,
+        "intents_count": 9,
+        "bundle_fingerprint": "sha256:4af70383d248726c0c6bbf4a8237085b6af3e1d5c6b7cc359c84069cfadc439f",
+        "integrity_problems": [],
+        "version_diff": null
+      },
+      {
+        "scenario": "registry_eviction",
+        "verdict": "PASS",
+        "raw_verdict": "passed",
+        "evaluator_version": "lab-0.2.6",
+        "events_count": 42,
+        "intents_count": 16,
+        "bundle_fingerprint": "sha256:6445ff5bf101c7ae095181ccca41933a33f8cba25fe5ad0fcfd4d028ec89e803",
+        "integrity_problems": [],
+        "version_diff": null
+      },
+      {
+        "scenario": "registry_eviction_unowned",
+        "verdict": "FAIL",
+        "raw_verdict": "failed",
+        "evaluator_version": "lab-0.2.6",
+        "events_count": 38,
+        "intents_count": 14,
+        "bundle_fingerprint": "sha256:1342739b4edfbba1549aa73651990fd9e0107ffe19a835b92709e0b39a3117fd",
+        "integrity_problems": [],
+        "version_diff": null
+      },
+      {
+        "scenario": "capped_influence",
+        "verdict": "PASS",
+        "raw_verdict": "passed",
+        "evaluator_version": "lab-0.2.6",
+        "events_count": 46,
+        "intents_count": 18,
+        "bundle_fingerprint": "sha256:2c430d7a5ba76b1a580e262f5e0cbf1fa4e27dcf5b6e571ccb5acffcd64444ce",
+        "integrity_problems": [],
+        "version_diff": null
+      },
+      {
+        "scenario": "capped_influence_uncapped_control",
+        "verdict": "FAIL",
+        "raw_verdict": "failed",
+        "evaluator_version": "lab-0.2.6",
+        "events_count": 46,
+        "intents_count": 18,
+        "bundle_fingerprint": "sha256:6056a3e7f781c4b58643a4e8747691c26be75258eef6bb4e8a06e25e0e35b742",
+        "integrity_problems": [],
+        "version_diff": null
+      }
+    ],
+    "nhs_commons_council_layer_swaps": [
+      {
+        "config_id": "council_weak_plain_unowned",
+        "layers_overridden": {
+          "auth": "plain.v1",
+          "registry": "index.v1",
+          "privacy": "redact.v1",
+          "payments": "ledger.v1",
+          "trust": "reputation.v1",
+          "data_facts": "evidence.v1"
+        },
+        "verdict": "FAIL",
+        "raw_verdict": "failed",
+        "stages": [
+          {
+            "stage_name": "zero_pid_trace_redacted",
+            "status": "passed",
+            "note": "exported events.jsonl verified free of NHS number PID"
+          },
+          {
+            "stage_name": "verified_ods_escrow_and_core20_ringfence",
+            "status": "failed",
+            "note": "legitimate ODS pharmacy was evicted OR Core20 25% Year-of-Care ringfence was drained"
+          },
+          {
+            "stage_name": "spoof_and_forged_invoice_contained",
+            "status": "failed",
+            "note": "forged referral callback reached PCN referrer under unauthenticated transport"
+          },
+          {
+            "stage_name": "dcb0129_g17_trap_intercepted",
+            "status": "passed",
+            "note": "Tier-1 DCB0129 gate intercepted G17 Brivudine/5-FU suicide-washout trap"
+          },
+          {
+            "stage_name": "ledger_conserved",
+            "status": "passed",
+            "note": "10500 cents conserved across every movement"
+          },
+          {
+            "stage_name": "privacy",
+            "status": "passed",
+            "note": "fields ['nhs_number'] never left the run"
+          }
+        ],
+        "events_count": 35,
+        "intents_count": 13,
+        "event_kind_counts": {
+          "account_opened": 3,
+          "run_created": 1,
+          "participant_joined": 3,
+          "identity_created": 3,
+          "card_registered": 3,
+          "message_sent": 6,
+          "message_delivered": 6,
+          "forged_callback_reached_referrer": 1,
+          "escrow_held": 1,
+          "payment_settled": 2,
+          "dcb0129_tier1_blocked": 1,
+          "escrow_released": 1,
+          "receipt_attested": 1,
+          "reputation_updated": 1,
+          "hal_case_escalated": 1,
+          "run_finished": 1
+        },
+        "bundle_fingerprint": "sha256:a9ea3da937de6fa3c1bbe067c816baadcd68af4876cc00f40b3d37372f8b1337",
+        "integrity_problems": [],
+        "version_diff": null
+      },
+      {
+        "config_id": "council_nandatown_default",
+        "layers_overridden": {
+          "auth": "hmac.v1",
+          "registry": "index.v1",
+          "privacy": "redact.v1",
+          "payments": "ledger.v1",
+          "trust": "reputation.v1",
+          "data_facts": "evidence.v1"
+        },
+        "verdict": "FAIL",
+        "raw_verdict": "failed",
+        "stages": [
+          {
+            "stage_name": "zero_pid_trace_redacted",
+            "status": "passed",
+            "note": "exported events.jsonl verified free of NHS number PID"
+          },
+          {
+            "stage_name": "verified_ods_escrow_and_core20_ringfence",
+            "status": "failed",
+            "note": "legitimate ODS pharmacy was evicted OR Core20 25% Year-of-Care ringfence was drained"
+          },
+          {
+            "stage_name": "spoof_and_forged_invoice_contained",
+            "status": "passed",
+            "note": "Tier-0 auth + registry contained spoofed card and forged referral"
+          },
+          {
+            "stage_name": "dcb0129_g17_trap_intercepted",
+            "status": "passed",
+            "note": "Tier-1 DCB0129 gate intercepted G17 Brivudine/5-FU suicide-washout trap"
+          },
+          {
+            "stage_name": "ledger_conserved",
+            "status": "passed",
+            "note": "10500 cents conserved across every movement"
+          },
+          {
+            "stage_name": "privacy",
+            "status": "passed",
+            "note": "fields ['nhs_number'] never left the run"
+          }
+        ],
+        "events_count": 35,
+        "intents_count": 12,
+        "event_kind_counts": {
+          "account_opened": 3,
+          "run_created": 1,
+          "participant_joined": 3,
+          "identity_created": 3,
+          "card_registered": 2,
+          "signature_invalid": 2,
+          "card_unverified": 1,
+          "message_sent": 5,
+          "message_delivered": 5,
+          "delivery_failed": 1,
+          "escrow_held": 1,
+          "payment_settled": 2,
+          "dcb0129_tier1_blocked": 1,
+          "escrow_released": 1,
+          "receipt_attested": 1,
+          "reputation_updated": 1,
+          "hal_case_escalated": 1,
+          "run_finished": 1
+        },
+        "bundle_fingerprint": "sha256:b9062cf0f2078f088da8bc824e7719057cd0aacdc51ea68ffd74e0adf902d1f0",
+        "integrity_problems": [],
+        "version_diff": null
+      },
+      {
+        "config_id": "council_nhs_6layer_governed",
+        "layers_overridden": {
+          "privacy": "ukcore_zero_pid.v1",
+          "auth": "mldsa65_grant.v1",
+          "registry": "ods_owned.v1",
+          "payments": "yoc_capitated.v1",
+          "trust": "sii_equity_capped.v1",
+          "data_facts": "dcb0129_paperclip.v1"
+        },
+        "verdict": "PASS",
+        "raw_verdict": "passed",
+        "stages": [
+          {
+            "stage_name": "zero_pid_trace_redacted",
+            "status": "passed",
+            "note": "exported events.jsonl verified free of NHS number PID"
+          },
+          {
+            "stage_name": "verified_ods_escrow_and_core20_ringfence",
+            "status": "passed",
+            "note": "ODS-verified pharmacy settled Core20 escrow and 25% Core20 ringfence rejected elective drain"
+          },
+          {
+            "stage_name": "spoof_and_forged_invoice_contained",
+            "status": "passed",
+            "note": "Tier-0 auth + registry contained spoofed card and forged referral"
+          },
+          {
+            "stage_name": "dcb0129_g17_trap_intercepted",
+            "status": "passed",
+            "note": "Tier-1 DCB0129 gate intercepted G17 Brivudine/5-FU suicide-washout trap"
+          },
+          {
+            "stage_name": "ledger_conserved",
+            "status": "passed",
+            "note": "10500 cents conserved across every movement"
+          },
+          {
+            "stage_name": "privacy",
+            "status": "passed",
+            "note": "fields ['nhs_number'] never left the run"
+          }
+        ],
+        "events_count": 35,
+        "intents_count": 12,
+        "event_kind_counts": {
+          "account_opened": 3,
+          "run_created": 1,
+          "participant_joined": 3,
+          "identity_created": 3,
+          "card_registered": 2,
+          "signature_invalid": 2,
+          "card_unverified": 1,
+          "message_sent": 5,
+          "message_delivered": 5,
+          "delivery_failed": 1,
+          "escrow_held": 1,
+          "payment_rejected": 1,
+          "dcb0129_tier1_blocked": 1,
+          "escrow_released": 1,
+          "payment_settled": 1,
+          "receipt_attested": 1,
+          "reputation_updated": 1,
+          "hal_case_escalated": 1,
+          "run_finished": 1
+        },
+        "bundle_fingerprint": "sha256:4777e92268da458927e4bd3b3686a7a5aacc8133e9fa99907ebb7cb5e8a1c72d",
+        "integrity_problems": [],
+        "version_diff": null
+      }
+    ],
+    "upstream_track_http_fault_runs": [
+      {
+        "profile_name": "quote-clean",
+        "clinical_safety_analogue": "Baseline clean clinical pharmacy handover (`0` faults)",
+        "verdict": "PASS",
+        "raw_verdict": "passed",
+        "expected_verdict": "PASS",
+        "matched_expectation": true,
+        "evaluator_version": "0.5.0",
+        "events_count": 11,
+        "intents_count": 6,
+        "stages_passed": 6,
+        "stages_total": 7,
+        "bundle_fingerprint": "sha256:8afccaa3a72ff67320da961c8bbc95b983d335c7172b2be113cff53c0d825f46",
+        "integrity_problems": [],
+        "wall_seconds": 0.948
+      },
+      {
+        "profile_name": "quote-crash-restart",
+        "clinical_safety_analogue": "Prescriber crashes post-claim; stale lease fencing token (`409`) blocks duplicate Clozapine dispense",
+        "verdict": "PASS",
+        "raw_verdict": "passed",
+        "expected_verdict": "PASS",
+        "matched_expectation": true,
+        "evaluator_version": "0.5.0",
+        "events_count": 17,
+        "intents_count": 15,
+        "stages_passed": 8,
+        "stages_total": 9,
+        "bundle_fingerprint": "sha256:efc6f5598fe99fbda71e487f1bf2d3d455eefc6379f0044285d4471417b9cccc",
+        "integrity_problems": [],
+        "wall_seconds": 3.548
+      },
+      {
+        "profile_name": "quote-amnesia-restart",
+        "clinical_safety_analogue": "Post-response journal loss; deterministic idempotency prevents duplicate narrow-TI prescription",
+        "verdict": "PASS",
+        "raw_verdict": "passed",
+        "expected_verdict": "PASS",
+        "matched_expectation": true,
+        "evaluator_version": "0.5.0",
+        "events_count": 17,
+        "intents_count": 11,
+        "stages_passed": 7,
+        "stages_total": 8,
+        "bundle_fingerprint": "sha256:a5a776e55697f5e918e353356a172ecb9b638f00c72f56c794ebdde23cbce6f2",
+        "integrity_problems": [],
+        "wall_seconds": 2.299
+      },
+      {
+        "profile_name": "quote-amnesia-fresh-ids",
+        "clinical_safety_analogue": "Intentional negative control (`FAIL` expected): fresh IDs post-crash cause double-dispensing",
+        "verdict": "FAIL",
+        "raw_verdict": "failed",
+        "expected_verdict": "FAIL",
+        "matched_expectation": true,
+        "evaluator_version": "0.5.0",
+        "events_count": 17,
+        "intents_count": 11,
+        "stages_passed": 4,
+        "stages_total": 8,
+        "bundle_fingerprint": "sha256:13a14d3ad2136c56c7600eaa3053826e65863a910c7fbfb2bd2dc255705e65d1",
+        "integrity_problems": [],
+        "wall_seconds": 2.306
+      },
+      {
+        "profile_name": "quote-duplicate-delivery",
+        "clinical_safety_analogue": "Duplicate referral message delivered twice over transport; applied exactly once",
+        "verdict": "PASS",
+        "raw_verdict": "passed",
+        "expected_verdict": "PASS",
+        "matched_expectation": true,
+        "evaluator_version": "0.5.0",
+        "events_count": 14,
+        "intents_count": 9,
+        "stages_passed": 7,
+        "stages_total": 8,
+        "bundle_fingerprint": "sha256:235e8c369f9521f0efe11bf414eb42ca555a00507203001ef1203bab2ddd89cf",
+        "integrity_problems": [],
+        "wall_seconds": 1.311
+      },
+      {
+        "profile_name": "quote-llm-truncation",
+        "clinical_safety_analogue": "Agent-native fault: middle LLM context truncated mid-handover; protocol journal recovers ground truth",
+        "verdict": "PASS",
+        "raw_verdict": "passed",
+        "expected_verdict": "PASS",
+        "matched_expectation": true,
+        "evaluator_version": "0.5.0",
+        "events_count": 11,
+        "intents_count": 6,
+        "stages_passed": 7,
+        "stages_total": 8,
+        "bundle_fingerprint": "sha256:dbb7e47f13a9b689244b99b231ad00d97a574c875d3a8677c3b6e3058d84a553",
+        "integrity_problems": [],
+        "wall_seconds": 0.978
+      }
+    ],
+    "all_bundle_integrities_clean": true,
+    "all_track_expectations_matched": true,
+    "wall_clock_seconds": 11.499
+  },
+  "figure_watermarks": {
+    "fig1": {
+      "png_path": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_nandatown/figures/nanda_fig1_hal_5tier_compression_and_crew.png",
+      "artifact_id": "nanda_fig1_hal_5tier_compression_and_crew",
+      "pixel_idat_sha256": "932a0b283301d78886ca9ac0247e9872bf6698e4e3001b22ad12542beb7cce80",
+      "commitment_id": "hmac256:a9d9174d029b227ae0be87de3fb2d8c2",
+      "bytes": 636933
+    },
+    "fig2": {
+      "png_path": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_nandatown/figures/nanda_fig2_lab_6layer_swaps_and_track_faults.png",
+      "artifact_id": "nanda_fig2_lab_6layer_swaps_and_track_faults",
+      "pixel_idat_sha256": "0deb125744133ecd38d91672744648aed6a6ae181529058c3d5521a99044324f",
+      "commitment_id": "hmac256:80bdbc2df4389781d472d1837c075b1b",
+      "bytes": 589611
+    },
+    "fig3": {
+      "png_path": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_nandatown/figures/nanda_fig3_commons_e1_hysteresis_and_e2_hiding.png",
+      "artifact_id": "nanda_fig3_commons_e1_hysteresis_and_e2_hiding",
+      "pixel_idat_sha256": "dc700aea82477a0aea31ff1a548ff749671a8d5b65bae08f2b5539dd49dcfb81",
+      "commitment_id": "hmac256:3e88d2b67e5917a5e555d6b3da68ac04",
+      "bytes": 653735
+    },
+    "fig4": {
+      "png_path": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_nandatown/figures/nanda_fig4_paperclip_tier3_and_cscqt_governance.png",
+      "artifact_id": "nanda_fig4_paperclip_tier3_and_cscqt_governance",
+      "pixel_idat_sha256": "00e78cd6c385e7cb9c9c1bed23c3d51b6b35e06a76cc0ba0b4109fbe8118fc19",
+      "commitment_id": "hmac256:e4f685229775cdd51a6c2c4131ea1320",
+      "bytes": 633242
+    }
+  },
+  "ocq_nc_provenance": {
+    "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+    "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+    "artifact_id": "opencareq_v1_8_5_nandatown_hal_receipt",
+    "trap_sentinel_fixture": {
+      "ods_code": "ZZ99Z",
+      "pcn_ods_code": "U99999",
+      "sentinel_id": "OCQ-NC-TRAP-STREET-ZZ99-V13",
+      "role": "inert_cartographic_authorship_sentinel",
+      "population_weight": 0.0,
+      "clinical_effect_multiplier": 0.0,
+      "phi_present": false,
+      "stinespring_gauge_constants": [
+        0.1370359991,
+        0.2718281828,
+        0.3141592654,
+        0.5772156649
+      ]
+    },
+    "numerical_perturbation_delta": 0.0,
+    "canonical_content_sha256_prefix": "987005e92797d1b05fb71ed8",
+    "commitment_id": "hmac256:65352723c5c62b45dd686dac4423ff3a"
+  },
+  "classical_floor_baseline": "Deterministic <1ms DCB0129RuntimeCommitGate (40/40 G1-G20 ODEs) + SciPy HiGHS MILP + Right-Canonical PT-MPO (chi=8/16) + Upstream NandaTown Lab (lab-0.2.6) & Track (0.5.0) Replay Verifier",
+  "epistemic_demarcation": {
+    "physical_hardware_shots": 0,
+    "wet_lab_experiments_performed": 0,
+    "phi_present": false,
+    "runtime_agent_actions": 0,
+    "autonomous_clinical_decisions": 0,
+    "closed_hazards_claimed": 0,
+    "open_clinical_hazards": [
+      "H-OCQ-01",
+      "H-OCQ-02",
+      "H-OCQ-03",
+      "H-OCQ-04",
+      "H-OCQ-05",
+      "H-OCQ-06"
+    ]
+  },
+  "ml_dsa_65_envelope": {
+    "algorithm": "NIST-FIPS-204-ML-DSA-65",
+    "signed_digest_sha256": "451e7f66c6a581ada65fbb3c5324b8c7012e6ed0cce82cccf073457bebfb07e0",
+    "public_key_sha256": "e9989ac10956bdbe1f828da40c2606e72607425bd447cecd62dede3cc0837dcd",
+    "signature_bytes": 3309,
+    "signature_sha256": "7c798d0ffdc8565568209894a875d070361f656c70b4f645e2a5d2073e57956b",
+    "public_key_b64": "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",
+    "signature_b64": "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"
+  },
+  "receipt_sha256": "dd2f91e80464f9dc2b47ed260b8b7ed300ac1653faaca6176693381299429a1a"
+}
