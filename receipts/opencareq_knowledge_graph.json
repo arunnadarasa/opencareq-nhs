@@ -618,6 +618,36 @@
       "label": "OpenCareQ 1-Page Landscape A3 9-Block NHS Public-Good Lean Canvas Pitch Poster"
     },
     {
+      "id": "pmc:PMC3821392",
+      "type": "Clinical_Outcome_Trial",
+      "label": "Offer et al. 2013 CPT African DPYD p.Tyr186Cys (-46% DPD Activity, Paperclip L5)"
+    },
+    {
+      "id": "pmc:PMC9264755",
+      "type": "Regulatory_Guidance",
+      "label": "Diasio & Offer 2022 / EMA 2020 DHPC Pre-5FU DPD Uracil & UH2/U Phenotyping (Paperclip L50)"
+    },
+    {
+      "id": "pmc:PMC9499570",
+      "type": "Quantum_Chemistry_Benchmark",
+      "label": "Goings et al. 2022 PNAS Cytochrome P450 Compound I Classical DMRG vs FTQC Benchmark (Paperclip L10)"
+    },
+    {
+      "id": "wm:molecules_to_neighbourhoods_v2_0",
+      "type": "World_Model",
+      "label": "v2.0 Ab Initio Metalloenzyme VUS (PySCF + Haiqu SKQD/SU2) & Q-BIOMED 60 MHz Spin Diagnostics (14-Ep GMFE=1.0347)"
+    },
+    {
+      "id": "receipt:v2_0_molecules_to_neighbourhoods",
+      "type": "Benchmark_Receipt",
+      "label": "Sealed OpenCareQ v2.0 Quantum Molecules-to-Neighbourhoods Receipt (ML-DSA-65)"
+    },
+    {
+      "id": "paper:samskrift_v2_0_molecules_companion",
+      "type": "Publication",
+      "label": "OpenCareQ Companion Paper VI: Quantum Molecules-to-Neighbourhoods (Metalloenzyme VUS SKQD & Q-BIOMED Spin Diagnostics)"
+    },
+    {
       "id": "bench:anti_goodhart_policy",
       "type": "Policy_Benchmark",
       "label": "42-ICB (1,280-PCN) Bidirectional, PGx/CKM & Core20PLUS5 Anti-Goodhart Benchmark (G1-G8)"
@@ -1677,6 +1707,46 @@
       "target": "paper:samskrift_lean_canvas_poster_1p"
     },
     {
+      "source": "pmc:PMC3821392",
+      "relation": "grounds_african_dpyd_y186c_in",
+      "target": "wm:molecules_to_neighbourhoods_v2_0"
+    },
+    {
+      "source": "pmc:PMC9264755",
+      "relation": "grounds_ema_uh2_uracil_in",
+      "target": "wm:molecules_to_neighbourhoods_v2_0"
+    },
+    {
+      "source": "pmc:PMC9499570",
+      "relation": "grounds_p450_ftqc_crossover_in",
+      "target": "wm:molecules_to_neighbourhoods_v2_0"
+    },
+    {
+      "source": "ogl:england_42icb_atlas_2026",
+      "relation": "grounds_42icb_v2_dcea_in",
+      "target": "wm:molecules_to_neighbourhoods_v2_0"
+    },
+    {
+      "source": "wm:molecules_to_neighbourhoods_v2_0",
+      "relation": "supplies_g25_g26_g27_g28_traps_to",
+      "target": "harness:redteam_g1_g14_v1_6"
+    },
+    {
+      "source": "wm:molecules_to_neighbourhoods_v2_0",
+      "relation": "sealed_in",
+      "target": "receipt:v2_0_molecules_to_neighbourhoods"
+    },
+    {
+      "source": "receipt:v2_0_molecules_to_neighbourhoods",
+      "relation": "published_v2_summary_to",
+      "target": "hf:socialprescribing_opencareq"
+    },
+    {
+      "source": "receipt:v2_0_molecules_to_neighbourhoods",
+      "relation": "typeset_in",
+      "target": "paper:samskrift_v2_0_molecules_companion"
+    },
+    {
       "source": "safety:cscr_crmp_dcb0160_mse",
       "relation": "governs_bowtie_open_hazard",
       "target": "hazard:H-OCQ-01"
@@ -1747,5 +1817,5 @@
       "target": "hazard:H-OCQ-07"
     }
   ],
-  "kg_sha256": "fbee518ad6249932b166cea909bdd1287c8f753ae0c5d37d3426e060d760f570"
+  "kg_sha256": "6a81f0f7b2b3a3772bd50766744778ce6f386675f236d8e5ca2dc6f3e5bba060"
 }
