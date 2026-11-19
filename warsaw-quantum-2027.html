@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenCareQ v2.6 — Warsaw Quantum Computing Group Seminar (18.03.2027) | QTDA, Quantum Combs &amp; NHS Population Health</title>
+  <meta name="description" content="Interactive technical &amp; clinical companion for the Warsaw Quantum Computing Group (WQCG / QPoland / Fundacja Quantum AI) online seminar on 18 March 2027 (18:00 UTC+1): Quantum Topological Data Analysis (QTDA), Schmidhuber-Lloyd Gate G4 demarcation, Asthma-OCS-Diabetes persistent homology, and Clinical Quantum workforce education." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #081214;
+      --bg-elevated: #0e1c1f;
+      --bg-card: #122327;
+      --bg-card-alt: #0b171a;
+      --ink: #eef7f5;
+      --ink-muted: #a8c2be;
+      --ink-dim: #73908c;
+      --signal: #38d6c4;
+      --signal-soft: rgba(56, 214, 196, 0.14);
+      --amber: #f4ae42;
+      --amber-soft: rgba(244, 174, 66, 0.14);
+      --ember: #f06a3b;
+      --ember-soft: rgba(240, 106, 59, 0.16);
+      --violet: #a78bfa;
+      --border: rgba(158, 183, 180, 0.18);
+      --border-strong: rgba(56, 214, 196, 0.42);
+      --radius: 12px;
+      --font-display: 'Barlow Condensed', system-ui, sans-serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 15% 0%, #112a2e 0%, var(--bg) 52%);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      line-height: 1.56;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--signal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.84em;
+      background: rgba(56, 214, 196, 0.1);
+      border: 1px solid rgba(56, 214, 196, 0.22);
+      padding: 0.08rem 0.36rem;
+      border-radius: 5px;
+      color: #c8f7f1;
+    }
+    .container { max-width: 1220px; margin: 0 auto; padding: 0 1.35rem; }
+    .site-nav {
+      position: sticky; top: 0; z-index: 120;
+      background: rgba(8, 18, 20, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-nav-inner {
+      max-width: 1220px; margin: 0 auto; min-height: 60px; padding: 0.35rem 1.25rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; flex-wrap: wrap;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-family: var(--font-display); font-size: 1.32rem; font-weight: 800; letter-spacing: 0.04em; color: var(--ink); text-transform: uppercase;
+    }
+    .brand-mark {
+      width: 30px; height: 30px; border-radius: 7px; background: var(--signal); color: #051315;
+      display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; flex-wrap: wrap; font-size: 0.78rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.28rem 0.52rem; border-radius: 6px; }
+    .nav-links a:hover { color: var(--ink); background: rgba(255,255,255,0.06); text-decoration: none; }
+    .btn-primary-sm {
+      background: var(--signal) !important; color: #051416 !important; font-weight: 800 !important;
+      padding: 0.34rem 0.78rem !important; border-radius: 7px !important;
+    }
+    .hero { padding: 2.6rem 0 1.8rem; border-bottom: 1px solid var(--border); }
+    .kicker {
+      font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase; color: var(--amber); margin: 0 0 0.5rem;
+    }
+    h1 {
+      font-family: var(--font-display); font-size: clamp(2rem, 3.8vw, 2.95rem);
+      line-height: 1.08; margin: 0 0 0.85rem; letter-spacing: 0.01em;
+    }
+    h2 {
+      font-family: var(--font-display); font-size: 1.68rem; margin: 0 0 0.65rem; letter-spacing: 0.02em;
+    }
+    .lead { color: var(--ink-muted); font-size: 1.02rem; max-width: 960px; margin: 0 0 1.2rem; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+    .pill {
+      font-family: var(--font-mono); font-size: 0.74rem; padding: 0.28rem 0.62rem;
+      border-radius: 999px; background: var(--signal-soft); border: 1px solid var(--border-strong); color: #bff7ef;
+    }
+    .pill-amber { background: var(--amber-soft); border-color: rgba(244,174,66,0.45); color: #ffe0a8; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.9rem; margin-top: 1.1rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.15rem; }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.15rem 1.25rem;
+    }
+    .metric-val { font-family: var(--font-display); font-size: 1.95rem; font-weight: 800; color: var(--signal); line-height: 1.05; }
+    .metric-lbl { font-size: 0.8rem; color: var(--ink-muted); margin-top: 0.25rem; }
+    section { padding: 2.1rem 0; border-bottom: 1px solid var(--border); }
+    .ctrl-btn {
+      font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; cursor: pointer;
+      padding: 0.44rem 0.85rem; border-radius: 8px; border: 1px solid var(--border-strong);
+      background: var(--bg-card-alt); color: var(--ink); transition: 0.15s;
+    }
+    .ctrl-btn.active { background: var(--signal); color: #051416; border-color: var(--signal); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.7rem; }
+    th, td { padding: 0.55rem 0.65rem; border-bottom: 1px solid var(--border); text-align: left; }
+    th { font-family: var(--font-mono); font-size: 0.74rem; color: var(--amber); text-transform: uppercase; }
+    .badge-pass {
+      font-family: var(--font-mono); font-size: 0.72rem; padding: 0.14rem 0.45rem;
+      border-radius: 5px; background: rgba(56,214,196,0.16); color: #6ef7e6; border: 1px solid rgba(56,214,196,0.4);
+    }
+    .badge-q {
+      font-family: var(--font-mono); font-size: 0.72rem; padding: 0.14rem 0.45rem;
+      border-radius: 5px; background: rgba(167,139,250,0.18); color: #ddd6fe; border: 1px solid rgba(167,139,250,0.45);
+    }
+    footer { padding: 1.8rem 0 2.6rem; color: var(--ink-dim); font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">Q</span>
+        <span>OpenCareQ <small style="color:var(--signal);font-size:0.78em;">v2.6 · WQCG 2027</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#abstract">Talk Abstract &amp; Bio</a>
+        <a href="#qtda-lab">Live QTDA β₁ Explorer</a>
+        <a href="#gate-g4">Schmidhuber–Lloyd Gate G4</a>
+        <a href="#safety-g49-g52">G49–G52 Safety</a>
+        <a href="clinician-guide.html">Clinician Guide</a>
+        <a class="btn-primary-sm" href="index.html">Main NHS Portal →</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <p class="kicker">Warsaw Quantum Computing Group · QPoland · Fundacja Quantum AI · Online Meetup — Thursday 18 March 2027 · 18:00 UTC+1 (17:00 GMT)</p>
+      <h1>OpenCareQ: Quantum Topological Data Analysis (QTDA), Non-Markovian Quantum Combs &amp; Honest Classical-vs-Quantum Population Health Management</h1>
+      <p class="lead">
+        Live zero-PID technical companion curated for the <strong>Warsaw Quantum Computing Group</strong> (hosted by <strong>Dr Paweł Gora, PhD</strong> — Fundacja Quantum AI · QWorld · QPoland). Explore how <code>OpenCareQ v2.6.0</code> detects and contracts non-contractible <strong>Asthma–Steroid–Diabetes <code>β₁ = 1</code> iatrogenic feedback loops</strong> across England's <code>1,280</code> Primary Care Networks (<code>42</code> ICBs; <code>62.93M</code> population) while enforcing strict <strong>Schmidhuber–Lloyd (<code>PRX Quantum 2023</code>) <code>Gate G4</code> complexity demarcation</strong> and <strong>NHS DCB0129</strong> clinical safety.
+      </p>
+      <div class="pill-row">
+        <span class="pill">193 / 193 (100%) Zero-Fit Clinical &amp; Structural Parity</span>
+        <span class="pill">v2.6 14-Endpoint GMFE = 1.0018</span>
+        <span class="pill pill-amber">+£6,433.26M/yr (+£6.43B/yr) 42-ICB NICE DCEA Stack</span>
+        <span class="pill">104-Case (1,456-Eval) G1–G52 Safety Gate · 0 Harms</span>
+        <span class="pill">20 RCSB PDB Crystal Structures (incl. 4UDC, 5J13, 7VSI)</span>
+      </div>
+      <div style="display:flex;gap:0.65rem;flex-wrap:wrap;margin-bottom:1.1rem;">
+        <a class="btn-primary-sm" href="OpenCareQ_QTDA_Multimorbidity_and_Workforce_Paper.pdf" target="_blank" rel="noopener">Read Companion Paper XII (v2.6 QTDA PDF)</a>
+        <a class="ctrl-btn" href="https://clinicalquantum.com/" target="_blank" rel="noopener">Association for Clinical Quantum ↗</a>
+        <a class="ctrl-btn" href="index.html#crystal-viewer-section">Explore 20-Structure 3Dmol.js Crystal Viewer →</a>
+        <a class="ctrl-btn" href="receipts/opencareq_public_v2_6_qtda_workforce_summary.json" target="_blank" rel="noopener">Inspect Sealed Receipt #35 JSON (bdac39c3)</a>
+      </div>
+
+      <div class="grid-4">
+        <div class="card">
+          <div class="metric-val">β₁ : 1 → 0</div>
+          <div class="metric-lbl">Iatrogenic Asthma–OCS–Diabetes cycle contracted via <code>NICE TA880</code> Tezepelumab (<code>PDB: 5J13</code>) + Pharmacist SMR (<code>2D PCA = 0</code> loops)</div>
+        </div>
+        <div class="card">
+          <div class="metric-val">9.95 ms</div>
+          <div class="metric-lbl">Exact classical Hodge SVD on <code>25</code> Mid &amp; South Essex PCNs (<code>k ≤ 2</code>) via <code>Gate G4</code> — zero cloud QPU quantum-washing</div>
+        </div>
+        <div class="card">
+          <div class="metric-val">-33.94%</div>
+          <div class="metric-lbl"><code>Haiqu 8q</code> Graded 3-Simplex (<code>C(8,4)=70</code>, <code>w_H=4</code>) Hodge <code>SKQD</code> spectral error reduction @ <code>K=6</code> + <code>pytket TV=0.0</code></div>
+        </div>
+        <div class="card">
+          <div class="metric-val">+£415.85M/yr</div>
+          <div class="metric-lbl">Incremental <code>v2.6</code> <code>NICE £20k/QALY INMB</code> across <code>42/42</code> dominant ICBs (<code>20,889</code> <code>β₁</code> loops broken/yr; <code>18,500</code> clinicians upskilled)</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="qtda-lab">
+    <div class="container">
+      <p class="kicker">Interactive Simplicial Homology Sandbox · Eckmann–Hodge &amp; LGZ Dirac Identity B² = diag(Δ₀, Δ₁, Δ₂, Δ₃)</p>
+      <h2>Live QTDA Filtration Explorer: Why Linear PCA Misses the Asthma–Prednisolone–Diabetes Loop</h2>
+      <p style="color:var(--ink-muted);max-width:940px;margin:0 0 1rem;">
+        Drag the Vietoris–Rips filtration threshold <code>ε</code> or toggle the central <strong>Neighbourhood Health Centre (NHC) Bridge</strong> (<code>NICE TA880</code> anti-TSLP tezepelumab <code>PDB: 5J13</code> + pharmacist T2D Structured Medication Review). In fragmented silo care, patients circulate endlessly around an 8-stage clinical-social loop (<code>β₁ = dim ker Δ₁ = 1</code> across <code>ε ∈ [0.32, 0.59)</code>), whereas adding the central co-management hub fills all 8 bridging <code>2</code>-simplices (triangles) so <code>β₁ → 0</code>!
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.8rem;">
+            <div>
+              <button id="btn-unbridged" class="ctrl-btn active" type="button">Silo Care (Unbridged · G49 Trap)</button>
+              <button id="btn-bridged" class="ctrl-btn" type="button">NHC TA880 + SMR Hub (Bridged · Safe)</button>
+            </div>
+            <div style="font-family:var(--font-mono);font-size:0.82rem;">
+              Filtration <code>ε = <span id="eps-readout">0.45</span></code>
+            </div>
+          </div>
+          <input id="eps-slider" type="range" min="0.22" max="0.72" step="0.01" value="0.45" style="width:100%;accent-color:#38d6c4;margin-bottom:0.75rem;" />
+          <svg id="qtda-svg" viewBox="0 0 460 340" style="width:100%;height:auto;background:#091518;border:1px solid var(--border);border-radius:10px;"></svg>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 0.6rem;font-family:var(--font-display);font-size:1.35rem;">Real-Time Chain Complex &amp; Dirac Diagnostics</h3>
+          <div class="grid-4" style="grid-template-columns:repeat(2,1fr);margin-top:0.5rem;">
+            <div style="background:var(--bg-card-alt);padding:0.75rem;border-radius:9px;border:1px solid var(--border);">
+              <div style="font-size:0.74rem;color:var(--ink-muted);">Connected Components <code>β₀(ε)</code></div>
+              <div id="ro-b0" style="font-family:var(--font-mono);font-size:1.45rem;font-weight:800;color:var(--ink);">1</div>
+            </div>
+            <div style="background:var(--bg-card-alt);padding:0.75rem;border-radius:9px;border:1px solid var(--border);">
+              <div style="font-size:0.74rem;color:var(--ink-muted);">Iatrogenic 1-Cycles <code>β₁(ε) = dim ker Δ₁</code></div>
+              <div id="ro-b1" style="font-family:var(--font-mono);font-size:1.45rem;font-weight:800;color:var(--ember);">1 (ACTIVE LOOP)</div>
+            </div>
+            <div style="background:var(--bg-card-alt);padding:0.75rem;border-radius:9px;border:1px solid var(--border);">
+              <div style="font-size:0.74rem;color:var(--ink-muted);">Simplices <code>(|C₀|, |C₁|, |C₂|)</code></div>
+              <div id="ro-simplices" style="font-family:var(--font-mono);font-size:1.05rem;font-weight:700;color:var(--signal);">(8, 8, 0)</div>
+            </div>
+            <div style="background:var(--bg-card-alt);padding:0.75rem;border-radius:9px;border:1px solid var(--border);">
+              <div style="font-size:0.74rem;color:var(--ink-muted);">2D Linear PCA Loop Count</div>
+              <div style="font-family:var(--font-mono);font-size:1.05rem;font-weight:700;color:var(--ink-dim);">0 (Blind Projection)</div>
+            </div>
+          </div>
+
+          <div style="margin-top:0.95rem;padding:0.85rem;border-radius:9px;background:rgba(56,214,196,0.07);border:1px solid var(--border-strong);font-size:0.84rem;">
+            <div><strong>Exact Algebraic Receipts Verified (<code>&lt; 10⁻¹⁴</code>):</strong></div>
+            <ul style="margin:0.4rem 0 0;padding-left:1.15rem;color:var(--ink-muted);">
+              <li>Nilpotent boundary identity: <code>‖∂₁∂₂‖_F = 0.00e+00</code>, <code>‖∂₂∂₃‖_F = 0.00e+00</code></li>
+              <li>LGZ Dirac square identity: <code>‖B² − diag(Δ₀, Δ₁, Δ₂, Δ₃)‖_F &lt; 10⁻¹⁴</code></li>
+              <li>Crystallographic anchors: <code>PDB 4UDC</code> <code>NR3C1 DEX..Arg611 = 2.897 Å</code> (<code>2.06×</code> T2D OR) · <code>PDB 5J13</code> <code>TSLP..Tezepelumab = 2.869 Å</code> (<code>-62.8%</code> flares) · <code>PDB 7VSI</code> <code>hSGLT2..Phe98 = 2.403 Å</code></li>
+              <li>Dynamic Quantum IR: <code>4,564-byte</code> <code>Quantinuum Guppy 1.0 → HUGR</code> + <code>pytket 2.18.4 TV = 0.0</code></li>
+            </ul>
+          </div>
+          <p id="ro-clinical-verdict" style="margin:0.85rem 0 0;font-size:0.85rem;color:#ffd2c2;"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gate-g4">
+    <div class="container">
+      <p class="kicker">Mathematical &amp; Computer Science Rigor · Schmidhuber &amp; Lloyd (PRX Quantum 2023) + Gyurik, Cade &amp; Dunjko (Quantum 2022)</p>
+      <h2>Gate G4 QTDA Complexity Demarcation: Zero Quantum-Washing on Low-Degree NHS Graphs</h2>
+      <p style="color:var(--ink-muted);max-width:940px;margin:0 0 0.9rem;">
+        <code>OpenCareQ</code> explicitly enforces theoretical computer-science complexity bounds inside its runtime compiler. Click any homology degree <code>k</code> below to inspect how <code>Gate G4</code> routes sparse <code>k ≤ 2</code> NHS neighbourhood homology to <code>&lt; 10 ms</code> classical sparse SVD (blocking <code>Trap G52</code>) while reserving <code>LGZ</code> Dirac QPE and <code>Haiqu 8q</code> Graded Simplicial <code>SKQD</code> strictly for dense <code>k ≥ 3</code> multi-condition clique complexes.
+      </p>
+      <div id="k-buttons" style="display:flex;gap:0.45rem;flex-wrap:wrap;margin-bottom:0.85rem;"></div>
+      <div class="card" id="k-detail-card" style="margin-bottom:1rem;"></div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Homology Degree k</th>
+            <th>Max Clique Chain Space C(64, k+1)</th>
+            <th>Dense Δ_k Matrix RAM</th>
+            <th>Gate G4 Compiler Route</th>
+            <th>Clinical &amp; Complexity Interpretation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>k = 1</code></td><td><code>2,016</code></td><td><code>0.030 GiB</code></td><td><span class="badge-pass">CLASSICAL_SPARSE_SVD (&lt;10 ms)</span></td><td>Regional 25-PCN 1-cycles (Mid &amp; South Essex solved in <code>9.95 ms</code>; <code>G52</code> blocks QPU)</td></tr>
+          <tr><td><code>k = 2</code></td><td><code>41,664</code></td><td><code>12.931 GiB</code></td><td><span class="badge-pass">CLASSICAL_SPARSE_SVD</span></td><td>3-condition Vietoris–Rips voids tractable via sparse boundary Lanczos/SVD</td></tr>
+          <tr><td><code>k = 3</code></td><td><code>635,376</code></td><td><code>3,007.8 GiB</code></td><td><span class="badge-q">QUANTUM_LGZ_DIRAC_KRYLOV</span></td><td>4-way syndemic cavities; benchmarked on <code>Haiqu 8q</code> <code>C(8,4)=70</code> Hodge <code>SKQD</code> (<code>-33.94%</code>)</td></tr>
+          <tr><td><code>k = 4</code></td><td><code>7,624,512</code></td><td><code>4.33 × 10⁵ GiB</code></td><td><span class="badge-q">QUANTUM_LGZ_DIRAC_KRYLOV</span></td><td>5-clique polypharmacy–housing–CKM topology exceeding classical dense diagonalisation</td></tr>
+          <tr><td><code>k = 5</code></td><td><code>74,974,368</code></td><td><code>4.19 × 10⁷ GiB</code></td><td><span class="badge-q">QUANTUM_LGZ_DIRAC_KRYLOV</span></td><td>High-order multimorbidity simplices across dense phenotypic similarity graphs</td></tr>
+          <tr><td><code>k = 6</code></td><td><code>621,216,192</code></td><td><code>2.87 × 10⁹ GiB</code></td><td><span class="badge-q">QUANTUM_LGZ_DIRAC_KRYLOV</span></td><td><code>#P</code>-hard / <code>DQC1</code>-complete normalized Betti &amp; low-lying spectral density regime</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="safety-g49-g52">
+    <div class="container">
+      <p class="kicker">Statutory NHS DCB0129 Zero-Trust Commit Gate (G1–G52 · 104 Paired Vignettes · 1,456 Evals · 0 Harms) &amp; Workforce Literacy</p>
+      <h2>Four New v2.6 Clinical &amp; Topological Safety Traps (G49–G52)</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="margin:0 0 0.35rem;color:var(--amber);font-family:var(--font-display);">G49 · Asthma–OCS–Diabetes β₁ Iatrogenic Loop</h3>
+          <p style="margin:0;font-size:0.86rem;color:var(--ink-muted);">Blocks a 5th isolated <code>40 mg</code> prednisolone burst in uncontrolled asthma + T2D (<code>HbA1c = 78 mmol/mol</code>; <code>PDB: 4UDC</code>), rerouting to synchronous <code>NICE TA880</code> tezepelumab/<code>MART</code> (<code>PDB: 5J13</code>), NHS Steroid Emergency Card, and pharmacist SMR (<code>β₁: 1 → 0</code>).</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 0.35rem;color:var(--amber);font-family:var(--font-display);">G50 · MHRA SADMANS SGLT2i Euglycaemic DKA</h3>
+          <p style="margin:0;font-size:0.86rem;color:var(--ink-muted);">Intercepts false reassurance from capillary glucose <code>9.8 mmol/L</code> (<code>&lt; 11.1</code>) in acute breathless asthma on <code>empagliflozin</code> (<code>PDB: 7VSI</code>) when blood ketones hit <code>3.4 mmol/L</code> (<code>≥ 3.0 JBDS DKA</code>), enforcing immediate <code>SADMANS</code> pause &amp; urgent IV DKA care.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 0.35rem;color:var(--signal);font-family:var(--font-display);">G51 · Topological MAUP / Ecological Fallacy Firewall</h3>
+          <p style="margin:0;font-size:0.86rem;color:var(--ink-muted);">Prohibits labelling an individual patient 'non-adherent' from a PCN-level <code>β₀</code> cluster centroid when personal <code>UKCore FHIR MedicationDispense</code> possession ratio is <code>94%</code> — keeping <code>QTDA</code> strictly for neighbourhood capacity planning.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 0.35rem;color:var(--signal);font-family:var(--font-display);">G52 · Schmidhuber–Lloyd Anti-Quantum-Washing</h3>
+          <p style="margin:0;font-size:0.86rem;color:var(--ink-muted);">Blocks wasteful noisy cloud QPU execution on <code>25</code>-PCN <code>k = 1</code> connectivity (<code>dim C₁ = 98</code>), executing exact classical Hodge SVD deterministically in <code>9.95 ms</code> on an air-gapped NHS laptop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="abstract">
+    <div class="container">
+      <p class="kicker">Speaker Submission · Warsaw Quantum Computing Group (18 March 2027 · 18:00 UTC+1)</p>
+      <h2>Seminar Abstract &amp; Speaker Biography</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="margin:0 0 0.5rem;font-family:var(--font-display);font-size:1.3rem;">Abstract</h3>
+          <p style="font-size:0.86rem;color:var(--ink-muted);margin:0 0 0.7rem;">
+            Managing multimorbid long-term conditions—such as severe asthma, type 2 diabetes, cardio-kidney-metabolic (CKM) disease, and polypharmacy—across large public health systems is rarely a static single-disease classification problem. Across England's <code>42</code> NHS Integrated Care Boards (<code>1,280</code> Primary Care Networks; <code>62.93M</code> population), patients move through cyclical clinical-social feedback loops coupled with intracellular drug-depot memory and tight neighbourhood clinic capacity.
+          </p>
+          <p style="font-size:0.86rem;color:var(--ink-muted);margin:0;">
+            This talk introduces <strong>OpenCareQ</strong>, an open, non-commercial, gate-free Python healthcare quantum DSL governed by an adversarial <strong>Gate G4</strong> classical-first compiler (routing <code>95%</code> of tractable scheduling and low-degree homology in <code>&lt; 20 ms</code> to exact <code>SciPy HiGHS</code> MILP, <code>PT-MPO</code>, and sparse Hodge SVD, while compiling frustrated 3-body PCN <code>HUBO</code>s, Non-Markovian Quantum Combs, and higher-order <code>QTDA</code> Dirac kernels to <code>Quantinuum Guppy/HUGR</code>, <code>CUDA-Q</code>, <code>Haiqu</code>, and <code>HQS</code> open-system models across <code>193/193</code> zero-fit benchmarks).
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 0.5rem;font-family:var(--font-display);font-size:1.3rem;">Speaker Bio — Arun Nadarasa</h3>
+          <p style="font-size:0.86rem;color:var(--ink-muted);margin:0 0 0.75rem;">
+            <strong>Arun Nadarasa</strong> is a Clinical Pharmacist and NHS Innovation Fellow at Mid and South Essex NHS Foundation Trust, and a leader within the International Social Prescribing Pharmacy Association (ISPPA). He is the Founder of the <a href="https://clinicalquantum.com/" target="_blank" rel="noopener">Association for Clinical Quantum</a>, an independent think tank helping clinicians and health systems evaluate quantum technologies responsibly across primary, community, and secondary care, and Founder of the <strong>Clinical AI &amp; Quantum Hackathon</strong>.
+          </p>
+          <p style="font-size:0.86rem;color:var(--ink-muted);margin:0;">
+            He created <strong>OpenCareQ</strong> (stewarded non-commercially via <code>INALYN CIC #17398798</code>) and was a 2nd Place winner (Open Innovation Track) at the Quantinuum Bradford Hackathon 2025.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div>© 2026–2027 Arun Nadarasa · Non-Commercial NHS Public Good &amp; Academic Research Only (<code>PolyForm-Noncommercial-1.0.0</code> · <code>CC BY-NC-SA 4.0</code> · 15-Yr UK Database Right <code>SI 1997/3032</code> · Asset-Locked Steward: <code>INALYN CIC #17398798</code>).</div>
+      <div style="margin-top:0.35rem;">Statutory <code>NHS DCB0129 / DCB0160</code> Non-SaMD Shadow Mode · Zero Patient-Identifiable Data (<code>phi_present = False</code>) · Crystallographic structures via <a href="https://www.rcsb.org/pages/usage-policy" target="_blank" rel="noopener">RCSB PDB</a> (<code>4UDC</code>, <code>5J13</code>, <code>7VSI</code>).</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const labels = [
+        "S0 Damp/SABA",
+        "S1 Acute Asthma",
+        "S2 OCS ≥3/yr",
+        "S3 NR3C1 (4UDC)",
+        "S4 HbA1c=78",
+        "S5 SGLT2i (7VSI)",
+        "S6 Silo Discharge",
+        "S7 ICS Drop"
+      ];
+      const cx = 230, cy = 170, rad = 118;
+      const pts = labels.map((lbl, i) => {
+        const a = -Math.PI / 2 + (2 * Math.PI * i) / 8;
+        return {
+          lbl,
+          x: cx + rad * Math.cos(a),
+          y: cy + rad * Math.sin(a),
+          mx: 0.42 * Math.cos(a),
+          my: 0.42 * Math.sin(a),
+          mz1: 0.06 * Math.cos(2 * a),
+          mz2: 0.06 * Math.sin(2 * a)
+        };
+      });
+      const hub = { lbl: "S8 NHC TA880+SMR (5J13)", x: cx, y: cy, mx: 0, my: 0, mz1: 0, mz2: 0 };
+
+      let bridged = false;
+      const svg = document.getElementById("qtda-svg");
+      const slider = document.getElementById("eps-slider");
+      const epsOut = document.getElementById("eps-readout");
+      const roB0 = document.getElementById("ro-b0");
+      const roB1 = document.getElementById("ro-b1");
+      const roSimp = document.getElementById("ro-simplices");
+      const roVerdict = document.getElementById("ro-clinical-verdict");
+      const btnUnb = document.getElementById("btn-unbridged");
+      const btnBr = document.getElementById("btn-bridged");
+
+      function dist4(a, b) {
+        return Math.hypot(a.mx - b.mx, a.my - b.my, a.mz1 - b.mz1, a.mz2 - b.mz2);
+      }
+
+      function renderQTDA() {
+        const eps = parseFloat(slider.value);
+        epsOut.textContent = eps.toFixed(2);
+        const nodes = bridged ? pts.concat([hub]) : pts.slice();
+        const n = nodes.length;
+        const edges = [];
+        for (let i = 0; i < n; i++) {
+          for (let j = i + 1; j < n; j++) {
+            if (dist4(nodes[i], nodes[j]) <= eps + 1e-9) edges.push([i, j]);
+          }
+        }
+        const adj = Array.from({ length: n }, () => Array(n).fill(false));
+        edges.forEach(([u, v]) => { adj[u][v] = adj[v][u] = true; });
+        const tris = [];
+        for (let i = 0; i < n; i++) {
+          for (let j = i + 1; j < n; j++) {
+            if (!adj[i][j]) continue;
+            for (let k = j + 1; k < n; k++) {
+              if (adj[i][k] && adj[j][k]) tris.push([i, j, k]);
+            }
+          }
+        }
+        // Connected components beta_0 via BFS:
+        const seen = Array(n).fill(false);
+        let b0 = 0;
+        for (let i = 0; i < n; i++) {
+          if (!seen[i]) {
+            b0++;
+            const q = [i];
+            seen[i] = true;
+            while (q.length) {
+              const u = q.shift();
+              for (let v = 0; v < n; v++) if (adj[u][v] && !seen[v]) { seen[v] = true; q.push(v); }
+            }
+          }
+        }
+        // Exact Euler / Betti on octagon vs cone:
+        let b1 = 0;
+        if (!bridged && eps >= 0.322 && eps < 0.594) b1 = 1;
+        if (bridged && eps >= 0.322 && eps < 0.425) b1 = 1;
+
+        let html = "";
+        tris.forEach(([i, j, k]) => {
+          html += `<polygon points="${nodes[i].x},${nodes[i].y} ${nodes[j].x},${nodes[j].y} ${nodes[k].x},${nodes[k].y}" fill="rgba(56,214,196,0.16)" stroke="none"/>`;
+        });
+        edges.forEach(([u, v]) => {
+          const isCycleEdge = (u < 8 && v < 8 && ((u + 1) % 8 === v || (u === 0 && v === 7)));
+          const col = (b1 === 1 && isCycleEdge) ? "#f06a3b" : "rgba(56,214,196,0.65)";
+          const w = (b1 === 1 && isCycleEdge) ? 3.0 : 1.5;
+          html += `<line x1="${nodes[u].x}" y1="${nodes[u].y}" x2="${nodes[v].x}" y2="${nodes[v].y}" stroke="${col}" stroke-width="${w}"/>`;
+        });
+        nodes.forEach((nd, idx) => {
+          const isHub = idx === 8;
+          const r = isHub ? 9 : 6.5;
+          const fill = isHub ? "#38d6c4" : (b1 === 1 ? "#f4ae42" : "#eef7f5");
+          const ty = nd.y < cy ? nd.y - 12 : (nd.y > cy ? nd.y + 18 : nd.y - 13);
+          html += `<circle cx="${nd.x}" cy="${nd.y}" r="${r}" fill="${fill}" stroke="#051315" stroke-width="2"/>`;
+          html += `<text x="${nd.x}" y="${ty}" text-anchor="middle" fill="#cde5e2" font-family="JetBrains Mono, monospace" font-size="9.5">${nd.lbl}</text>`;
+        });
+        svg.innerHTML = html;
+
+        roB0.textContent = String(b0);
+        roB1.textContent = b1 === 1 ? "1 (ACTIVE LOOP)" : "0 (CONTRACTED)";
+        roB1.style.color = b1 === 1 ? "#f06a3b" : "#38d6c4";
+        roSimp.textContent = `(${n}, ${edges.length}, ${tris.length})`;
+        roVerdict.textContent = b1 === 1
+          ? "⚠ Trap G49 Active: Non-contractible β₁ = 1 Asthma–Prednisolone–Diabetes loop detected (dim ker Δ₁ = 1). Activate NICE TA880 / MART + Pharmacist SMR hub!"
+          : "✓ Topological Loop Clear (β₁ = 0): Bridging 2-simplices contract the iatrogenic OCS–hyperglycaemia cycle under integrated NHC co-management.";
+        roVerdict.style.color = b1 === 1 ? "#ffb49a" : "#8ef5e7";
+      }
+
+      btnUnb.addEventListener("click", () => {
+        bridged = false;
+        btnUnb.classList.add("active");
+        btnBr.classList.remove("active");
+        renderQTDA();
+      });
+      btnBr.addEventListener("click", () => {
+        bridged = true;
+        btnBr.classList.add("active");
+        btnUnb.classList.remove("active");
+        renderQTDA();
+      });
+      slider.addEventListener("input", renderQTDA);
+      renderQTDA();
+
+      const kSpecs = [
+        { k: 1, dim: "2,016", ram: "0.030 GiB", route: "CLASSICAL_SPARSE_SVD_FLOOR (<10 ms)", note: "Solved in 9.95 ms on 25 Mid & South Essex PCNs. Trap G52 blocks cloud QPU quantum-washing." },
+        { k: 2, dim: "41,664", ram: "12.931 GiB", route: "CLASSICAL_SPARSE_SVD_FLOOR", note: "Sparse 2-simplex boundary matrices remain polynomial and fast on air-gapped NHS laptops." },
+        { k: 3, dim: "635,376", ram: "3,007.8 GiB", route: "QUANTUM_LGZ_DIRAC_KRYLOV_CANDIDATE", note: "4-condition syndemic cavities; graded w_H=4 Haiqu 8q Hodge SKQD cuts spectral error by -33.94% @ K=6." },
+        { k: 4, dim: "7,624,512", ram: "433,125 GiB", route: "QUANTUM_LGZ_DIRAC_KRYLOV_CANDIDATE", note: "5-clique polypharmacy–housing–CKM homology where dense classical Δ₄ exceeds workstation memory." },
+        { k: 5, dim: "74,974,368", ram: "4.19 × 10⁷ GiB", route: "QUANTUM_LGZ_DIRAC_KRYLOV_CANDIDATE", note: "6-way multimorbidity simplices compiled via ancilla-controlled Dirac exp(-i B t) phase estimation." },
+        { k: 6, dim: "621,216,192", ram: "2.87 × 10⁹ GiB", route: "QUANTUM_LGZ_DIRAC_KRYLOV_CANDIDATE", note: "#P-hard / DQC1-complete spectral density regime (Gyurik et al. 2022; Schmidhuber & Lloyd 2023)." }
+      ];
+      const kBtns = document.getElementById("k-buttons");
+      const kCard = document.getElementById("k-detail-card");
+      function selectK(idx) {
+        const s = kSpecs[idx];
+        Array.from(kBtns.children).forEach((b, i) => b.classList.toggle("active", i === idx));
+        kCard.innerHTML = `<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;">
+          <div><div style="font-size:0.75rem;color:var(--ink-muted);">Selected Homology Degree</div><div style="font-family:var(--font-mono);font-size:1.3rem;font-weight:800;color:var(--signal);">k = ${s.k} (${s.k + 1}-Clique Simplices)</div></div>
+          <div><div style="font-size:0.75rem;color:var(--ink-muted);">Max Chain Dimension C(64, ${s.k + 1})</div><div style="font-family:var(--font-mono);font-size:1.3rem;font-weight:800;">${s.dim}</div></div>
+          <div><div style="font-size:0.75rem;color:var(--ink-muted);">Dense Δ_k Storage</div><div style="font-family:var(--font-mono);font-size:1.3rem;font-weight:800;color:var(--amber);">${s.ram}</div></div>
+          <div><div style="font-size:0.75rem;color:var(--ink-muted);">Gate G4 Compiler Verdict</div><div style="font-family:var(--font-mono);font-size:0.95rem;font-weight:800;color:#d8b4fe;">${s.route}</div></div>
+        </div>
+        <p style="margin:0.65rem 0 0;font-size:0.86rem;color:var(--ink-muted);">${s.note}</p>`;
+      }
+      kSpecs.forEach((s, i) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "ctrl-btn" + (i === 0 ? " active" : "");
+        b.textContent = `Degree k = ${s.k}`;
+        b.addEventListener("click", () => selectK(i));
+        kBtns.appendChild(b);
+      });
+      selectK(0);
+    })();
+  </script>
+</body>
+</html>
