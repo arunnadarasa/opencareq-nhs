@@ -641,6 +641,112 @@
     .footer-col ul a { color: var(--ink-muted); }
     .footer-col ul a:hover { color: var(--amber); }
 
+    /* === Interactive Dark-Native Graph UX, Button Code Contrast & Floating SVG Tooltips === */
+    .btn-primary code, .btn-sm.btn-primary code, .btn.active code, .shift-tab-btn.active code, .btn-hero.primary code {
+      background: rgba(6, 21, 23, 0.18);
+      color: #061517;
+      border-color: rgba(6, 21, 23, 0.25);
+      font-weight: 700;
+    }
+    .ocq-chart-stage {
+      background: linear-gradient(180deg, #09171a 0%, #061012 100%);
+      border: 1px solid rgba(56, 214, 196, 0.22);
+      border-radius: 10px;
+      padding: 0.72rem 0.85rem 0.65rem;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+    .ocq-chart-legend {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem 1.05rem;
+      margin-bottom: 0.45rem;
+      padding-bottom: 0.42rem;
+      border-bottom: 1px solid rgba(158, 183, 180, 0.12);
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+    }
+    .ocq-lg-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      font-weight: 600;
+      color: #d7eeec;
+    }
+    .ocq-lg-swatch {
+      width: 14px;
+      height: 3.5px;
+      border-radius: 99px;
+      display: inline-block;
+    }
+    .ocq-lg-box {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+    .svg-hit {
+      cursor: pointer;
+      transition: filter 0.14s ease, opacity 0.14s ease, stroke-width 0.14s ease;
+    }
+    .svg-hit:hover {
+      filter: brightness(1.24) drop-shadow(0 0 6px rgba(56, 214, 196, 0.42));
+    }
+    .spr-gene-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.38rem;
+      margin-top: 0.55rem;
+    }
+    .spr-gene-chip {
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      font-weight: 700;
+      padding: 0.22rem 0.52rem;
+      border-radius: 6px;
+      background: rgba(56, 214, 196, 0.09);
+      border: 1px solid rgba(56, 214, 196, 0.3);
+      color: var(--signal);
+      cursor: help;
+      transition: all 0.14s ease;
+    }
+    .spr-gene-chip:hover {
+      background: rgba(56, 214, 196, 0.22);
+      border-color: var(--signal);
+      color: #ffffff;
+    }
+    #ocqGraphTooltip {
+      display: none;
+      position: fixed;
+      z-index: 280;
+      pointer-events: none;
+      max-width: 320px;
+      padding: 0.62rem 0.82rem;
+      border-radius: 9px;
+      background: #061417;
+      border: 1px solid rgba(56, 214, 196, 0.75);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(0, 0, 0, 0.6);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      line-height: 1.44;
+      color: var(--ink);
+    }
+    #ocqGraphTooltip.visible {
+      display: block;
+      opacity: 1;
+    }
+    #ocqGraphTooltip .tip-head {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--signal);
+      margin-bottom: 0.2rem;
+    }
+    #ocqGraphTooltip .tip-body {
+      color: #d8efec;
+      font-size: 0.75rem;
+    }
+
   </style>
 </head>
 <body>
@@ -834,27 +940,70 @@
               </div>
             </div>
 
-            <div class="two-col">
-              <div class="card">
-                <div class="card-tag">Watermarked 300-DPI Publication Figure 21</div>
-                <h3 style="margin-bottom:0.55rem;">CHRM1 Cascade, Paperclip ARIA-E, 15-Ep Parity &amp; 42-ICB YCPs</h3>
-                <img src="paper/figures/fig21_cp1350_dementia_mymedicines_ycp.png" alt="Figure 21 — OpenCareQ v1.9.0 CP 1350 Dementia, My Medicines and 42-ICB YCPs" style="width:100%;height:auto;border-radius:8px;background:#fff;cursor:zoom-in;" onclick="document.getElementById('lightbox-img').src=this.src;document.getElementById('lightbox-caption').textContent=this.alt;document.getElementById('img-lightbox').classList.add('open');" />
+            <div class="jev-split">
+              <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;gap:0.65rem;">
+                    <div>
+                      <span class="card-tag">Interactive Zero-Fit CP 1350 Studio (88018a75)</span>
+                      <h3 style="margin-bottom:0.2rem;">CHRM1 Reserve, FDA/EMA ARIA-E &amp; £2.21B SPR Shield</h3>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn-sm"
+                      style="font-size:0.74rem;padding:0.28rem 0.62rem;white-space:nowrap;flex-shrink:0;"
+                      onclick="openFigureLightbox('paper/figures/fig21_cp1350_dementia_mymedicines_ycp.png', 'Figure 21 — OpenCareQ v1.9.0 UK 10-Year Health Plan (CP 1350): 36-Month CHRM1 Cascade vs Mirabegron, Paperclip FDA/EMA ARIA-E Stratification, 15-Endpoint Parity (GMFE = 1.0215), and 42-ICB YCPs (Receipt 88018a75).', 7)"
+                    >🖼 Print Fig 21 ↗</button>
+                  </div>
+
+                  <div class="jev-subtabs" id="cp1350Subtabs" role="tablist" aria-label="CP 1350 Healthy Ageing Views">
+                    <button type="button" class="jev-subtab active" onclick="switchCp1350Subtab('chrm1', this)">CHRM1 Cascade (36m)</button>
+                    <button type="button" class="jev-subtab" onclick="switchCp1350Subtab('aria', this)">FDA/EMA ARIA-E (G23)</button>
+                    <button type="button" class="jev-subtab" onclick="switchCp1350Subtab('spr', this)">£2.21B SPR Shield</button>
+                    <button type="button" class="jev-subtab" onclick="switchCp1350Subtab('parity', this)">ACHIEVE &amp; 15-Ep Parity</button>
+                  </div>
+
+                  <div class="ocq-chart-stage">
+                    <div id="cp1350LegendBar" class="ocq-chart-legend"></div>
+                    <div id="cp1350SvgStage"></div>
+                    <div id="cp1350GeneStrip" class="spr-gene-grid" style="display:none;"></div>
+                  </div>
+                  <div id="cp1350ReadoutStrip" style="display:flex;flex-wrap:wrap;gap:0.45rem;margin-top:0.65rem;"></div>
+                </div>
+
+                <p style="font-size:0.77rem;color:var(--ink-muted);margin:0.72rem 0 0;line-height:1.45;">
+                  <strong>Hover any point or bar for exact trial &amp; regulatory pins:</strong> <code>gnomAD v4</code> <em>CHRM1</em> (<code>pLI = 0.9999</code>) explains why <code>oxybutynin</code> cancels central <code>donepezil</code> M1 gain (<code>+50%</code> ADL decline, <code>G21</code>) while <code>mirabegron</code> preserves <code>93.2%</code> 36-month reserve; <code>||[U_Aud, U_CogSMR]||_2 = 0.756</code> proves <code>ACHIEVE</code> audiology must precede verbal memory labelling (<code>+51.9 pp</code> lift, <code>G24</code>).
+                </p>
               </div>
-              <div class="card">
-                <div class="card-tag">Live Paperclip v0.8.19 Line-Pinned Evidence &amp; Over-40s 8-Gene SPR</div>
-                <h3 style="margin-bottom:0.45rem;">Verified Regulatory &amp; Full-Text Ledger (<code>opencareq-v1-9-cp1350</code>)</h3>
-                <p style="font-size:0.85rem;">Every primary literature and regulatory parameter in <code>v1.9.0</code> is line-verified via <code>Paperclip</code> behind <code>assert_zero_pid_egress()</code>:</p>
-                <ul style="font-size:0.82rem;color:var(--ink-muted);padding-left:1.15rem;margin:0 0 0.85rem;">
-                  <li><strong><code>PMC9255409#L19</code> (<code>Osanlou, Pirmohamed et al. 2022</code>):</strong> <code>16.5%</code> of NHS admissions ADR-driven, <code>40.4%</code> avoidable, <code>6</code>-day LOS, <code>£2.21B/yr</code> England cost (<code>[OK] Jev p=0.97</code>).</li>
-                  <li><strong>US FDA <code>fda_f42ab846d717#L195-L214</code> (<code>LEQEMBI BLA761269</code>):</strong> Clarity AD <code>ARIA-E = 12.6%</code> overall, <code>32.6%</code> in <code>APOE ε4/ε4</code> (<code>[OK] Jev p=0.95</code>).</li>
-                  <li><strong>US FDA <code>fda_3a3ce9f859fb#L49-L66</code> (<code>KISUNLA BLA761248</code>):</strong> Donanemab <code>ARIA-E = 24.0%</code> pool, <code>40.6%</code> in <code>APOE ε4/ε4</code> (<code>[OK] Jev p=0.94</code>).</li>
-                  <li><strong>EU EMA <code>tri_ec55c04f3933#L20-L26</code> (<code>Leqembi EPAR</code>):</strong> Restricts indication to <code>ApoE ε4</code> non-carriers/heterozygotes; mandates pre-Rx genotyping (<code>[OK] Jev p=0.97</code>).</li>
-                  <li><strong>Over-40s Health Check <code>8</code>-Gene <code>SPR</code> (<code>CP 1350 pp.75–76, 122</code>):</strong> <code>CYP2D6</code>, <code>CYP2C19</code>, <code>SLCO1B1</code>, <code>CYP2C9</code>, <code>DPYD</code>, <code>UGT1A1</code>, <code>CYP1A2</code>, <code>APOE</code>.</li>
-                </ul>
-                <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-                  <a class="btn-sm btn-primary" href="receipts/opencareq_v1_9_cp1350_ten_year_plan_receipt.json" target="_blank" rel="noopener">✓ Sealed Receipt #28 (<code>88018a75…</code>)</a>
-                  <a class="btn-sm" href="receipts/opencareq_public_cp1350_ten_year_plan_summary.json" target="_blank" rel="noopener">📄 v1.9 Public Summary JSON ↗</a>
-                  <a class="btn-sm" href="harness.html" style="color:var(--amber);">🛡 Test G21–G24 in Harness ↗</a>
+
+              <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                  <span class="card-tag">Live Paperclip v0.8.19 · FDA/EMA · PMC9255409#L19</span>
+                  <h3 style="margin-bottom:0.45rem;">Zero-Fit 15-Endpoint Parity &amp; Regulatory Ledger</h3>
+                  <div class="table-wrap" style="margin-bottom:0.75rem;">
+                    <table style="font-size:0.8rem;">
+                      <thead>
+                        <tr>
+                          <th style="padding:0.46rem 0.6rem;">Benchmark / Paperclip Pin</th>
+                          <th style="padding:0.46rem 0.52rem;">Obs</th>
+                          <th style="padding:0.46rem 0.52rem;">Pred</th>
+                          <th style="padding:0.46rem 0.6rem;">Audit / Fold</th>
+                        </tr>
+                      </thead>
+                      <tbody id="cp1350BenchBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="callout-warn" style="margin-top:0;margin-bottom:0.72rem;padding:0.74rem 0.92rem;font-size:0.78rem;line-height:1.44;">
+                    <strong>Runtime Guards <code>G21</code>–<code>G24</code> (<a href="harness.html" style="color:var(--amber);text-decoration:underline;">48-Case Harness ↗</a>):</strong> Intercepts <code>donepezil × oxybutynin</code> cascades (<code>G21 → mirabegron</code>), <code>CYP2D6</code> PM <code>10 mg</code> syncope + triggers 2030 <code>FLS</code> &amp; <code>EMPOWER</code> taper (<code>G22</code>), UK MHRA / EMA <code>APOE ε4/ε4</code> + <code>DOAC</code> anti-amyloid infusions (<code>G23</code>), and unamplified 45 dB deafness screens (<code>G24</code>).
+                  </div>
+                  <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+                    <a class="btn-sm btn-primary" href="receipts/opencareq_v1_9_cp1350_ten_year_plan_receipt.json" target="_blank" rel="noopener">✓ Sealed Receipt #28 · 88018a75…</a>
+                    <a class="btn-sm" href="receipts/opencareq_public_cp1350_ten_year_plan_summary.json" target="_blank" rel="noopener">📄 v1.9 Summary JSON ↗</a>
+                    <a class="btn-sm" href="harness.html" style="color:var(--amber);">🛡 Test G21–G24 ↗</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1450,6 +1599,40 @@
                 <div class="kpi-num">260,593 Days</div>
                 <div class="kpi-meta">Annual acute medical &amp; post-fall bed-days released via Over-40s SPR + 2030 FLS</div>
               </div>
+            </div>
+
+            <div class="card" style="margin-top:0.2rem;">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:0.6rem;">
+                <div>
+                  <span class="card-tag">Interactive 42-ICB Capitated Plumbing &amp; Full-Stack Economics</span>
+                  <h3 style="margin-bottom:0.15rem;">Legacy Episode Deficit vs FY 2026/27 Capitated YCP Surplus &amp; 6-Domain Portfolio</h3>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                  <select id="ycpRegionSel" onchange="renderYcpNhcStudio()" style="width:auto;min-width:215px;padding:0.34rem 0.62rem;font-size:0.8rem;" aria-label="Filter ICBs by region">
+                    <option value="ALL">Top English ICBs (All Regions)</option>
+                    <option value="North">North West + NE &amp; Yorkshire</option>
+                    <option value="London">London Integrated Care Boards</option>
+                    <option value="MidSouth">Midlands, East &amp; South</option>
+                  </select>
+                  <button
+                    type="button"
+                    class="btn-sm"
+                    style="font-size:0.74rem;padding:0.32rem 0.65rem;white-space:nowrap;"
+                    onclick="openFigureLightbox('paper/figures/cp1350_fig4_ycp_42icb_g1_g24_innovator_passport.png', 'Companion Paper V (Fig 4) — 42-ICB Year-of-Care Payments (YCPs), 48-Case G1–G24 Safety Matrix, Gate G4 PT-MPO Boundary & CP 1350 Macro-Fiscal Envelope.', 10)"
+                  >🖼 Paper V Fig 4 ↗</button>
+                </div>
+              </div>
+
+              <div class="jev-subtabs" id="ycpSubtabs" role="tablist" aria-label="YCP Financial Views">
+                <button type="button" class="jev-subtab active" onclick="switchYcpSubtab('cashflow', this)">42-ICB YCP Cashflow Flip (Deficit → Surplus)</button>
+                <button type="button" class="jev-subtab" onclick="switchYcpSubtab('fullstack', this)">6-Domain +£4,081.7M/yr Stack vs CP 1350 Envelope</button>
+              </div>
+
+              <div class="ocq-chart-stage">
+                <div id="ycpLegendBar" class="ocq-chart-legend"></div>
+                <div id="ycpSvgStage"></div>
+              </div>
+              <div id="ycpReadoutStrip" style="display:flex;flex-wrap:wrap;gap:0.45rem;margin-top:0.65rem;"></div>
             </div>
           </section>
 </div>
@@ -2669,6 +2852,12 @@
     </div>
   </div>
 
+  <!-- Floating Interactive SVG Data Tooltip -->
+  <div id="ocqGraphTooltip" role="tooltip" aria-hidden="true">
+    <div class="tip-head" id="ocqTipHead"></div>
+    <div class="tip-body" id="ocqTipBody"></div>
+  </div>
+
   <script>
     window.addEventListener('scroll', () => {
       const h = document.documentElement;
@@ -3224,15 +3413,19 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
     function openFigureLightbox(src, caption, pg) {
       const modal = document.getElementById('img-lightbox');
       if (!modal) return;
-      const figTag = (src && src.includes('fig20'))
-        ? 'Figure 20 (v1.8.0)'
-        : ((src && src.includes('fig19'))
-          ? 'Figure 19 (v1.7.0)'
-          : ((src && src.includes('fig18'))
-            ? 'Figure 18 (v1.8.0)'
-            : ((src && src.includes('fig17'))
-              ? 'Figure 17 (v1.5.0)'
-              : ((src && src.includes('fig16')) ? 'Figure 16 (v1.3.0)' : 'Figure 15 (v1.1.0)'))));
+      const figTag = (src && src.includes('cp1350_fig'))
+        ? 'Companion Paper V Plate (v1.9.5)'
+        : ((src && src.includes('fig21'))
+          ? 'Figure 21 (v1.9.0)'
+          : ((src && src.includes('fig20'))
+            ? 'Figure 20 (v1.8.0)'
+            : ((src && src.includes('fig19'))
+              ? 'Figure 19 (v1.7.0)'
+              : ((src && src.includes('fig18'))
+                ? 'Figure 18 (v1.9.0)'
+                : ((src && src.includes('fig17'))
+                  ? 'Figure 17 (v1.5.0)'
+                  : ((src && src.includes('fig16')) ? 'Figure 16 (v1.3.0)' : 'Figure 15 (v1.1.0)'))))));
       document.getElementById('lightbox-kicker').textContent = `300-DPI Benchmark Plate · ${figTag}`;
       const img = document.getElementById('lightbox-img');
       img.src = src;
@@ -5509,17 +5702,20 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
         const xDay28 = mapX(27).toFixed(1);
         const yDay28 = mapY(1.005).toFixed(1);
 
+        const bvuDots = arr.map((v, i) => ([0, 5, 9, 13, 20, 27].includes(i))
+          ? `<circle class="svg-hit" cx="${mapX(i).toFixed(1)}" cy="${mapY(v).toFixed(1)}" r="${(i === 9 || i === 27) ? "5.0" : "3.6"}" fill="${i === 27 ? "#38d6c4" : "#f06a3b"}" stroke="#061012" stroke-width="1.3" data-tip-title="Day ${i + 1} Post-Brivudine · 5-FU AUCR ${v.toFixed(2)}×" data-tip-body="${i < 27 ? "Unsafe (<28d DPD resynthesis window · G17 Trap)" : "Day-28 Mandatory Washout Complete (1.005× Safe)"}"/>`
+          : "").join("");
+
         stage.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" style="display:block;" role="img" aria-label="28-day post-brivudine DPD suicide-washout and DPYD 5-FU AUCR trajectory">
           <rect x="${x0}" y="${yTop}" width="${x1 - x0}" height="${(yTox - yTop).toFixed(1)}" fill="rgba(240,106,59,0.14)"/>
           ${gridY}${gridX}
           <line x1="${x0}" y1="${unguidedY}" x2="${x1}" y2="${unguidedY}" stroke="#f4ae42" stroke-width="1.8" stroke-dasharray="5,3"/>
           <line x1="${x0}" y1="${guidedY}" x2="${x1}" y2="${guidedY}" stroke="#38d6c4" stroke-width="2.2" stroke-dasharray="3,3"/>
           <polyline fill="none" stroke="#f06a3b" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" points="${bvuPts}"/>
-          <circle cx="${xDay10}" cy="${yDay10}" r="4.5" fill="#f06a3b" stroke="#eef7f5" stroke-width="1.2"/>
-          <circle cx="${xDay28}" cy="${yDay28}" r="4.5" fill="#38d6c4" stroke="#eef7f5" stroke-width="1.2"/>
-          <text x="${Number(xDay10) + 7}" y="${Number(yDay10) - 5}" fill="#ff9b7a" font-size="9.6" font-family="JetBrains Mono, monospace">d10: 1.64× [G17 Trap]</text>
-          <text x="${x1 - 8}" y="${(yTop + 14).toFixed(1)}" fill="#f59b7c" font-size="9.6" font-family="JetBrains Mono, monospace" text-anchor="end">Severe Grade ≥3 Fluoropyrimidine Toxicity (&gt;1.45× AUCR)</text>
-          <text x="${(x0 + x1) / 2}" y="${h - 4}" fill="#9eb7b4" font-size="10.3" font-family="Plus Jakarta Sans, sans-serif" text-anchor="middle">Days Post Brivudine (BVU 6d Depot + t1/2 = 68 h DPD Resynthesis) vs Guided DPYD*2A (1.05×)</text>
+          ${bvuDots}
+          <text x="${Number(xDay10) + 8}" y="${Number(yDay10) - 6}" fill="#ff9b7a" font-size="10.2" font-weight="700" font-family="JetBrains Mono, monospace">d10: 1.64× [G17 Trap]</text>
+          <text x="${x1 - 8}" y="${(yTop + 14).toFixed(1)}" fill="#f59b7c" font-size="10.0" font-family="JetBrains Mono, monospace" text-anchor="end">Severe Grade ≥3 Fluoropyrimidine Toxicity (&gt;1.45× AUCR)</text>
+          <text x="${(x0 + x1) / 2}" y="${h - 4}" fill="#9eb7b4" font-size="10.6" font-family="Plus Jakarta Sans, sans-serif" text-anchor="middle">Days Post Brivudine (BVU 6d Depot + t1/2 = 68 h DPD Resynthesis) vs Guided DPYD*2A (1.05×)</text>
         </svg>`;
       } else if (activeCapSubtab === "maternity") {
         const w = 560, h = 232, x0 = 54, x1 = 536, yTop = 26, yBot = 192, yMin = 1.0, yMax = 1.72;
@@ -5677,6 +5873,92 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       }
     }
 
+    let activeCp1350Subtab = "chrm1";
+    let activeYcpSubtab = "cashflow";
+    let cp1350SummaryData = {
+      summary_metrics: {
+        combined_15endpoint_gmfe: 1.0215,
+        v1_9_cp1350_inmb_20k_gbp_m_yr: 752.81,
+        cumulative_national_opencareq_inmb_20k_gbp_m_yr: 4081.72,
+        acute_bed_days_shifted_to_nhc_yr: 260593.0
+      },
+      chrm1_cascade_trajectories: {
+        donepezil_plus_mirabegron_switch: {
+          months_grid: [0,3,6,9,12,15,18,21,24,27,30,33,36],
+          cholinergic_reserve_pct_curve: [100.0,99.43,98.87,98.30,97.73,97.17,96.60,96.03,95.47,94.90,94.33,93.77,93.20]
+        },
+        amitriptyline_3yr_acb3: {
+          months_grid: [0,3,6,9,12,15,18,21,24,27,30,33,36],
+          cholinergic_reserve_pct_curve: [100.0,98.53,97.07,95.60,94.13,92.67,91.20,89.73,88.26,86.80,85.33,83.86,82.40]
+        },
+        donepezil_plus_oxybutynin_cascade: {
+          months_grid: [0,3,6,9,12,15,18,21,24,27,30,33,36],
+          cholinergic_reserve_pct_curve: [100.0,97.37,95.07,93.02,91.14,89.38,87.71,86.11,84.55,83.02,81.52,80.04,78.56]
+        }
+      },
+      aria_apoe_profiles: {
+        lecanemab_noncarrier: { predicted_genotype_aria_e_pct: 5.4 },
+        lecanemab_heterozygote: { predicted_genotype_aria_e_pct: 11.6 },
+        lecanemab_homozygote_e4e4: { predicted_genotype_aria_e_pct: 33.26 },
+        donanemab_noncarrier: { predicted_genotype_aria_e_pct: 15.4 },
+        donanemab_heterozygote: { predicted_genotype_aria_e_pct: 22.67 },
+        donanemab_homozygote_e4e4: { predicted_genotype_aria_e_pct: 38.61 }
+      },
+      adr_shield_detail: {
+        england_baseline_adr_cost_gbp_m_yr: 2210.0,
+        england_avoidable_adr_pool_gbp_m_yr: 892.84,
+        gross_inpatient_adr_savings_gbp_m_yr: 308.67,
+        adr_shield_inmb_20k_gbp_m_yr: 272.01,
+        prevented_adr_admissions_yr: 32682.2,
+        acute_bed_days_freed_yr: 196093.4,
+        eight_gene_spr_panel: [
+          { gene_symbol: "CYP2D6", clinical_scope: "Donepezil syncope (G22), codeine/tramadol UM, metoprolol, tamoxifen & paroxetine MBI" },
+          { gene_symbol: "CYP2C19", clinical_scope: "NICE DG59 clopidogrel stroke/ACS bioactivation, PPIs & escitalopram/sertraline" },
+          { gene_symbol: "SLCO1B1", clinical_scope: "Simvastatin/atorvastatin hepatic OATP1B1 myopathy & rhabdomyolysis shield" },
+          { gene_symbol: "CYP2C9", clinical_scope: "Warfarin, NSAID GI bleed & phenytoin narrow-therapeutic-index clearance" },
+          { gene_symbol: "DPYD", clinical_scope: "5-FU/capecitabine fluoropyrimidine lethality + 28-day post-brivudine washout (G17)" },
+          { gene_symbol: "UGT1A1", clinical_scope: "Irinotecan / sacituzumab govitecan severe neutropenia & bilirubin conjugation" },
+          { gene_symbol: "CYP1A2", clinical_scope: "Clozapine/olanzapine AhR zero-PAH smoking-to-vape de-induction shield (G15)" },
+          { gene_symbol: "APOE", clinical_scope: "UK MHRA & EMA EPAR lecanemab/donanemab ε4/ε4 ARIA-E exclusion (G23) & lipid risk" }
+        ]
+      },
+      top_10_icbs: [
+        { icb_title: "NHS Greater Manchester ICB", icb_ods_code: "QOP", nhs_region: "North West", pcn_count: 65, mean_imd_2025: 30.07, cp1350_3pct_transformation_ringfence_gbp_m: 214.08, cp1350_deprivation_reallocation_delta_gbp_m: 58.49, legacy_episode_tariff_pcn_balance_gbp_m: -7.70, fy2627_ycp_nhc_shared_savings_gbp_m: 12.01, acute_bed_days_shifted_to_nhc_yr: 14732.0, v1_9_cp1350_inmb_20k_gbp_m_yr: 42.56 },
+        { icb_title: "NHS North East and North Cumbria ICB", icb_ods_code: "QHM", nhs_region: "North East and Yorkshire", pcn_count: 67, mean_imd_2025: 28.70, cp1350_3pct_transformation_ringfence_gbp_m: 208.10, cp1350_deprivation_reallocation_delta_gbp_m: 45.74, legacy_episode_tariff_pcn_balance_gbp_m: -7.39, fy2627_ycp_nhc_shared_savings_gbp_m: 11.53, acute_bed_days_shifted_to_nhc_yr: 14137.0, v1_9_cp1350_inmb_20k_gbp_m_yr: 40.84 },
+        { icb_title: "NHS North West London ICB", icb_ods_code: "QRV", nhs_region: "London", pcn_count: 45, mean_imd_2025: 24.06, cp1350_3pct_transformation_ringfence_gbp_m: 188.35, cp1350_deprivation_reallocation_delta_gbp_m: 9.13, legacy_episode_tariff_pcn_balance_gbp_m: -6.39, fy2627_ycp_nhc_shared_savings_gbp_m: 9.98, acute_bed_days_shifted_to_nhc_yr: 12236.0, v1_9_cp1350_inmb_20k_gbp_m_yr: 35.35 },
+        { icb_title: "NHS West Yorkshire ICB", icb_ods_code: "QWO", nhs_region: "North East and Yorkshire", pcn_count: 52, mean_imd_2025: 28.68, cp1350_3pct_transformation_ringfence_gbp_m: 173.49, cp1350_deprivation_reallocation_delta_gbp_m: 38.04, legacy_episode_tariff_pcn_balance_gbp_m: -6.16, fy2627_ycp_nhc_shared_savings_gbp_m: 9.61, acute_bed_days_shifted_to_nhc_yr: 11784.0, v1_9_cp1350_inmb_20k_gbp_m_yr: 34.04 },
+        { icb_title: "NHS Cheshire and Merseyside ICB", icb_ods_code: "QYG", nhs_region: "North West", pcn_count: 48, mean_imd_2025: 24.99, cp1350_3pct_transformation_ringfence_gbp_m: 173.71, cp1350_deprivation_reallocation_delta_gbp_m: 14.20, legacy_episode_tariff_pcn_balance_gbp_m: -5.95, fy2627_ycp_nhc_shared_savings_gbp_m: 9.29, acute_bed_days_shifted_to_nhc_yr: 11388.0, v1_9_cp1350_inmb_20k_gbp_m_yr: 32.90 },
+        { icb_title: "NHS North East London ICB", icb_ods_code: "QMF", nhs_region: "London", pcn_count: 48, mean_imd_2025: 27.65, cp1350_3pct_transformation_ringfence_gbp_m: 160.24, cp1350_deprivation_reallocation_delta_gbp_m: 28.85, legacy_episode_tariff_pcn_balance_gbp_m: -5.63, fy2627_ycp_nhc_shared_savings_gbp_m: 8.79, acute_bed_days_shifted_to_nhc_yr: 10778.0, v1_9_cp1350_inmb_20k_gbp_m_yr: 31.14 },
+        { icb_title: "NHS South East London ICB", icb_ods_code: "QKK", nhs_region: "London", pcn_count: 36, mean_imd_2025: 23.10, cp1350_3pct_transformation_ringfence_gbp_m: 137.30, cp1350_deprivation_reallocation_delta_gbp_m: 8.40, legacy_episode_tariff_pcn_balance_gbp_m: -4.49, fy2627_ycp_nhc_shared_savings_gbp_m: 7.01, acute_bed_days_shifted_to_nhc_yr: 8602.0, v1_9_cp1350_inmb_20k_gbp_m_yr: 24.85 },
+        { icb_title: "NHS Kent and Medway ICB", icb_ods_code: "QKS", nhs_region: "South East", pcn_count: 42, mean_imd_2025: 21.40, cp1350_3pct_transformation_ringfence_gbp_m: 129.80, cp1350_deprivation_reallocation_delta_gbp_m: 6.20, legacy_episode_tariff_pcn_balance_gbp_m: -4.23, fy2627_ycp_nhc_shared_savings_gbp_m: 6.60, acute_bed_days_shifted_to_nhc_yr: 8095.0, v1_9_cp1350_inmb_20k_gbp_m_yr: 23.38 },
+        { icb_title: "NHS Birmingham and Solihull ICB", icb_ods_code: "QHL", nhs_region: "Midlands", pcn_count: 35, mean_imd_2025: 31.80, cp1350_3pct_transformation_ringfence_gbp_m: 112.40, cp1350_deprivation_reallocation_delta_gbp_m: 34.10, legacy_episode_tariff_pcn_balance_gbp_m: -4.08, fy2627_ycp_nhc_shared_savings_gbp_m: 6.37, acute_bed_days_shifted_to_nhc_yr: 7810.0, v1_9_cp1350_inmb_20k_gbp_m_yr: 22.56 },
+        { icb_title: "NHS Mid and South Essex ICB", icb_ods_code: "QJG", nhs_region: "East of England", pcn_count: 25, mean_imd_2025: 18.90, cp1350_3pct_transformation_ringfence_gbp_m: 84.50, cp1350_deprivation_reallocation_delta_gbp_m: 4.10, legacy_episode_tariff_pcn_balance_gbp_m: -2.86, fy2627_ycp_nhc_shared_savings_gbp_m: 4.46, acute_bed_days_shifted_to_nhc_yr: 5472.0, v1_9_cp1350_inmb_20k_gbp_m_yr: 15.82 }
+      ]
+    };
+
+    const CP1350_BENCH_ROWS = [
+      { title: "Osanlou 2022 · NHS ADR Burden", sub: "PMC9255409#L19 · 16.5% Adm · 40.4% Avoidable", obs: "£2.21B/yr", pred: "32,682 Saved", badge: "[OK] Jev 0.97", cls: "pill-signal" },
+      { title: "Coupland & Sink · CHRM1 Cascade", sub: "PMID 31233095 & 18384584 · Bladder ACB=3 / ADL", obs: "1.65 / 1.50×", pred: "1.65 / 1.51×", badge: "1.00× BE", cls: "pill-signal" },
+      { title: "Gill 2009 & Noetzli · CYP2D6 FLS", sub: "PMID 19433698 & 24433464 · Syncope / PM CL", obs: "1.76 / 0.68×", pred: "1.76 / 0.66×", badge: "1.00× BE", cls: "pill-signal" },
+      { title: "EMPOWER RCT · 24w BZD Taper", sub: "NCT01148186 · Direct Patient Empowerment", obs: "27.0%", pred: "27.2%", badge: "1.01× BE", cls: "pill-signal" },
+      { title: "LEQEMBI · BLA761269 & EMA EPAR", sub: "fda_f42ab846d717#L195 & tri_ec55c04f3933#L20", obs: "12.6 / 32.6%", pred: "13.1 / 33.3%", badge: "[OK] Jev 0.97", cls: "pill-signal" },
+      { title: "KISUNLA & ACHIEVE · ARIA / Hearing", sub: "fda_3a3ce9f859fb#L49 & Lancet NCT03243422", obs: "40.6 / -48%", pred: "38.6 / -42.5%", badge: "1.05× BE", cls: "pill-amber" }
+    ];
+
+    function switchCp1350Subtab(tab, btn) {
+      activeCp1350Subtab = tab || "chrm1";
+      document.querySelectorAll("#cp1350Subtabs .jev-subtab").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+      renderCp1350AgeingStudio();
+    }
+
+    function switchYcpSubtab(tab, btn) {
+      activeYcpSubtab = tab || "cashflow";
+      document.querySelectorAll("#ycpSubtabs .jev-subtab").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+      renderYcpNhcStudio();
+    }
+
     function renderCp1350AgeingStudio() {
       const bEl = document.getElementById("cp1350BladderSel");
       const aEl = document.getElementById("cp1350ApoeSel");
@@ -5687,6 +5969,17 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       const a = aEl.value;
       const u = uEl.value;
 
+      const benchBody = document.getElementById("cp1350BenchBody");
+      if (benchBody && !benchBody.dataset.hydrated) {
+        benchBody.innerHTML = CP1350_BENCH_ROWS.map(r => `<tr>
+          <td style="padding:0.42rem 0.6rem;"><strong>${escHtml(r.title)}</strong><div style="font-size:0.69rem;color:var(--ink-muted);">${escHtml(r.sub)}</div></td>
+          <td style="padding:0.42rem 0.52rem;font-family:var(--font-mono);white-space:nowrap;">${escHtml(r.obs)}</td>
+          <td style="padding:0.42rem 0.52rem;font-family:var(--font-mono);color:var(--signal);white-space:nowrap;">${escHtml(r.pred)}</td>
+          <td style="padding:0.42rem 0.6rem;"><span class="pill pill-nowrap ${r.cls}" style="font-size:0.67rem;">${escHtml(r.badge)}</span></td>
+        </tr>`).join("");
+        benchBody.dataset.hydrated = "1";
+      }
+
       const chrm1Kpi = document.getElementById("cp1350KpiChrm1");
       const chrm1Meta = document.getElementById("cp1350MetaChrm1");
       if (b === "mirabegron") {
@@ -5694,7 +5987,7 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
         chrm1Kpi.style.color = "var(--signal)";
         chrm1Meta.textContent = "SAFE (G21 Twin): ADRB3 mirabegron preserves 100% of donepezil central M1 gain";
       } else if (b === "amitriptyline") {
-        chrm1Kpi.textContent = "52.4% · aOR 1.32";
+        chrm1Kpi.textContent = "64.3% · aOR 1.32";
         chrm1Kpi.style.color = "var(--amber)";
         chrm1Meta.textContent = "INTERCEPTED (G24): ACB=3 tricyclic cognitive haze; taper before memory labelling";
       } else {
@@ -5718,10 +6011,319 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
         ariaKpi.style.color = "var(--ember)";
         ariaMeta.textContent = (u === "unamplified" ? "DOUBLE TRAP (G23+G24): " : "CONTRAINDICATED (G23): ") + "UK MHRA & EMA EPAR exclude APOE ε4/ε4 & DOACs";
       }
+
+      const stage = document.getElementById("cp1350SvgStage");
+      const legend = document.getElementById("cp1350LegendBar");
+      const geneStrip = document.getElementById("cp1350GeneStrip");
+      const strip = document.getElementById("cp1350ReadoutStrip");
+      if (!stage || !legend || !strip) return;
+      if (geneStrip) geneStrip.style.display = activeCp1350Subtab === "spr" ? "flex" : "none";
+
+      if (activeCp1350Subtab === "chrm1") {
+        const trM = cp1350SummaryData.chrm1_cascade_trajectories.donepezil_plus_mirabegron_switch;
+        const trA = cp1350SummaryData.chrm1_cascade_trajectories.amitriptyline_3yr_acb3;
+        const trO = cp1350SummaryData.chrm1_cascade_trajectories.donepezil_plus_oxybutynin_cascade;
+        const mos = trM.months_grid || [0,3,6,9,12,15,18,21,24,27,30,33,36];
+        const w = 580, h = 246, x0 = 56, x1 = 556, yTop = 18, yBot = 204, yMin = 75.0, yMax = 101.0;
+        const mapX = m => x0 + (m / 36.0) * (x1 - x0);
+        const mapY = v => yBot - ((Math.max(yMin, Math.min(yMax, v)) - yMin) / (yMax - yMin)) * (yBot - yTop);
+
+        legend.innerHTML = `
+          <span class="ocq-lg-item"><span class="ocq-lg-swatch" style="background:#38d6c4;"></span>Donepezil + Mirabegron ADRB3 (0% CHRM1 · 93.2%)</span>
+          <span class="ocq-lg-item"><span class="ocq-lg-swatch" style="background:#f4ae42;"></span>Amitriptyline ACB=3 (82.4%)</span>
+          <span class="ocq-lg-item"><span class="ocq-lg-swatch" style="background:#f06a3b;"></span>Donepezil × Oxybutynin Cascade (78.6% · G21 Trap)</span>`;
+
+        const gridY = [78, 84, 90, 96, 100].map(g => {
+          const yg = mapY(g).toFixed(1);
+          return `<line x1="${x0}" y1="${yg}" x2="${x1}" y2="${yg}" stroke="rgba(158,183,180,0.14)" stroke-width="1"/>
+                  <text x="${x0 - 9}" y="${Number(yg) + 4}" fill="#9eb7b4" font-size="11" font-family="JetBrains Mono, monospace" text-anchor="end">${g}%</text>`;
+        }).join("");
+        const gridX = [0, 6, 12, 18, 24, 30, 36].map(m => {
+          const xm = mapX(m).toFixed(1);
+          return `<text x="${xm}" y="${yBot + 18}" fill="#9eb7b4" font-size="11" font-family="JetBrains Mono, monospace" text-anchor="middle">${m}m</text>`;
+        }).join("");
+
+        const buildCurve = (arr, color, key, label, detail, dash) => {
+          const isSel = b === key;
+          const pts = arr.map((v, i) => `${mapX(mos[i]).toFixed(1)},${mapY(v).toFixed(1)}`).join(" ");
+          const dots = arr.map((v, i) => (mos[i] % 6 === 0)
+            ? `<circle class="svg-hit" cx="${mapX(mos[i]).toFixed(1)}" cy="${mapY(v).toFixed(1)}" r="${isSel ? "5.0" : "3.6"}" fill="${color}" stroke="#061012" stroke-width="1.4" data-tip-title="${escHtml(label)} · Month ${mos[i]}" data-tip-body="Cortical CHRM1 reserve: ${v.toFixed(1)}% · ${escHtml(detail)}"/>`
+            : "").join("");
+          return `<polyline fill="none" stroke="${color}" stroke-width="${isSel ? "3.4" : "1.9"}" stroke-opacity="${isSel ? "1.0" : "0.52"}" ${dash ? `stroke-dasharray="${dash}"` : ""} stroke-linejoin="round" stroke-linecap="round" points="${pts}"/>${dots}`;
+        };
+
+        stage.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" style="display:block;" role="img" aria-label="36-month cortical CHRM1 cholinergic reserve trajectories">
+          <rect x="${x0}" y="${mapY(85).toFixed(1)}" width="${x1 - x0}" height="${(yBot - mapY(85)).toFixed(1)}" fill="rgba(240,106,59,0.09)"/>
+          ${gridY}${gridX}
+          ${buildCurve(trM.cholinergic_reserve_pct_curve, "#38d6c4", "mirabegron", "Donepezil + Mirabegron 25 mg", "ADRB3 selective switch (0% CHRM1 blockade · G21 Safe Twin)", "")}
+          ${buildCurve(trA.cholinergic_reserve_pct_curve, "#f4ae42", "amitriptyline", "Chronic Amitriptyline ACB=3", "Coupland 2019 dementia aOR = 1.32 (G24 Anticholinergic Haze)", "6,4")}
+          ${buildCurve(trO.cholinergic_reserve_pct_curve, "#f06a3b", "oxybutynin", "Donepezil × Oxybutynin Cascade", "Gill 2005 aHR = 1.55 · Sink 2008 +50% faster ADL decline (G21 Trap)", "")}
+          <text x="${(x0 + x1) / 2}" y="${h - 5}" fill="#b7cfcc" font-size="11.2" font-family="Plus Jakarta Sans, sans-serif" text-anchor="middle">Follow-Up Horizon (0–36 Months) — Cortical CHRM1 (pLI = 0.9999) Synaptic &amp; Functional Reserve</text>
+        </svg>`;
+      } else if (activeCp1350Subtab === "aria") {
+        const p = cp1350SummaryData.aria_apoe_profiles;
+        const groups = [
+          { key: "e3e3_nodoac", lbl: "APOE ε3/ε3 Non-Carrier", sub: "UK MHRA / EMA Eligible", lec: p.lecanemab_noncarrier.predicted_genotype_aria_e_pct, don: p.donanemab_noncarrier.predicted_genotype_aria_e_pct },
+          { key: "e3e4_nodoac", lbl: "APOE ε3/ε4 Heterozygote", sub: "Enhanced MRI Surveillance", lec: p.lecanemab_heterozygote.predicted_genotype_aria_e_pct, don: p.donanemab_heterozygote.predicted_genotype_aria_e_pct },
+          { key: "e4e4_doac", lbl: "APOE ε4/ε4 Homozygote", sub: "MHRA / EMA Excluded (G23)", lec: p.lecanemab_homozygote_e4e4.predicted_genotype_aria_e_pct, don: p.donanemab_homozygote_e4e4.predicted_genotype_aria_e_pct }
+        ];
+        legend.innerHTML = `
+          <span class="ocq-lg-item"><span class="ocq-lg-box" style="background:#3898ec;"></span>Lecanemab (FDA BLA761269 · fda_f42ab846d717)</span>
+          <span class="ocq-lg-item"><span class="ocq-lg-box" style="background:#b07cfb;"></span>Donanemab (FDA BLA761248 · fda_3a3ce9f859fb)</span>
+          <span class="ocq-lg-item"><span class="ocq-lg-box" style="background:rgba(240,106,59,0.45);border:1px solid #f06a3b;"></span>MHRA / EMA EPAR Excluded (G23)</span>`;
+
+        const w = 580, h = 246, x0 = 56, x1 = 556, yTop = 22, yBot = 198, yMax = 46.0;
+        const mapY = v => yBot - (Math.min(yMax, v) / yMax) * (yBot - yTop);
+        const gridY = [0, 10, 20, 30, 40].map(g => {
+          const yg = mapY(g).toFixed(1);
+          return `<line x1="${x0}" y1="${yg}" x2="${x1}" y2="${yg}" stroke="rgba(158,183,180,0.14)" stroke-width="1"/>
+                  <text x="${x0 - 9}" y="${Number(yg) + 4}" fill="#9eb7b4" font-size="11" font-family="JetBrains Mono, monospace" text-anchor="end">${g}%</text>`;
+        }).join("");
+
+        const colW = (x1 - x0) / 3;
+        const bars = groups.map((g, idx) => {
+          const cx = x0 + colW * (idx + 0.5);
+          const isSel = a === g.key;
+          const bw = 42, gap = 8;
+          const xl = cx - bw - gap / 2, xd = cx + gap / 2;
+          const yl = mapY(g.lec), yd = mapY(g.don);
+          const selBox = isSel
+            ? `<rect x="${(cx - 64).toFixed(1)}" y="${yTop - 6}" width="128" height="${(yBot - yTop + 10).toFixed(1)}" rx="8" fill="none" stroke="${idx === 2 ? "#f06a3b" : "#38d6c4"}" stroke-width="1.7" stroke-dasharray="4,3"/>`
+            : "";
+          return `${selBox}
+            <rect class="svg-hit" x="${xl.toFixed(1)}" y="${yl.toFixed(1)}" width="${bw}" height="${(yBot - yl).toFixed(1)}" rx="5" fill="#3898ec" data-tip-title="Lecanemab · ${escHtml(g.lbl)}" data-tip-body="Predicted ARIA-E: ${g.lec.toFixed(1)}% · Clarity AD / BLA761269 fda_f42ab846d717#L195 (${escHtml(g.sub)})"/>
+            <text x="${(xl + bw / 2).toFixed(1)}" y="${(yl - 6).toFixed(1)}" fill="#d9eeff" font-size="10.8" font-weight="700" font-family="JetBrains Mono, monospace" text-anchor="middle">${g.lec.toFixed(1)}%</text>
+            <rect class="svg-hit" x="${xd.toFixed(1)}" y="${yd.toFixed(1)}" width="${bw}" height="${(yBot - yd).toFixed(1)}" rx="5" fill="#b07cfb" data-tip-title="Donanemab · ${escHtml(g.lbl)}" data-tip-body="Predicted ARIA-E: ${g.don.toFixed(1)}% · TRAILBLAZER-ALZ 2 / BLA761248 fda_3a3ce9f859fb#L49 (${escHtml(g.sub)})"/>
+            <text x="${(xd + bw / 2).toFixed(1)}" y="${(yd - 6).toFixed(1)}" fill="#efe2ff" font-size="10.8" font-weight="700" font-family="JetBrains Mono, monospace" text-anchor="middle">${g.don.toFixed(1)}%</text>
+            <text x="${cx.toFixed(1)}" y="${yBot + 17}" fill="${isSel ? "#ffffff" : "#cfe3e0"}" font-weight="${isSel ? "700" : "600"}" font-size="10.9" font-family="Plus Jakarta Sans, sans-serif" text-anchor="middle">${escHtml(g.lbl)}</text>
+            <text x="${cx.toFixed(1)}" y="${yBot + 31}" fill="${idx === 2 ? "#ff9472" : "#8faea9"}" font-size="9.8" font-family="JetBrains Mono, monospace" text-anchor="middle">${escHtml(g.sub)}</text>`;
+        }).join("");
+
+        stage.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" style="display:block;" role="img" aria-label="Paperclip FDA and EMA ARIA-E incidence by APOE genotype">
+          <rect x="${(x0 + colW * 2 + 4).toFixed(1)}" y="${yTop}" width="${(colW - 8).toFixed(1)}" height="${yBot - yTop}" rx="6" fill="rgba(240,106,59,0.12)"/>
+          ${gridY}${bars}
+        </svg>`;
+      } else if (activeCp1350Subtab === "spr") {
+        const adr = cp1350SummaryData.adr_shield_detail;
+        legend.innerHTML = `
+          <span class="ocq-lg-item"><span class="ocq-lg-box" style="background:#f06a3b;"></span>Baseline NHS England ADR Burden (PMC9255409#L19)</span>
+          <span class="ocq-lg-item"><span class="ocq-lg-box" style="background:#38d6c4;"></span>Captured Savings &amp; Net NICE £20k/QALY INMB (68% SPR × 82% SMR)</span>`;
+
+        const rows = [
+          { lbl: "England Inpatient ADR Cost", val: adr.england_baseline_adr_cost_gbp_m_yr, col: "#f06a3b", note: "Osanlou, Pirmohamed et al. 2022 (PMC9255409#L19): 16.5% of NHS admissions" },
+          { lbl: "40.4% Avoidable ADR Pool", val: adr.england_avoidable_adr_pool_gbp_m_yr, col: "#f4ae42", note: "Avoidable / possibly avoidable polypharmacy admissions (mean 10.5 medicines)" },
+          { lbl: "Gross Inpatient Savings", val: adr.gross_inpatient_adr_savings_gbp_m_yr, col: "#3898ec", note: "32,682 admissions & 196,093 acute bed-days prevented/yr via 8-gene SPR" },
+          { lbl: "Net My Medicines INMB", val: adr.adr_shield_inmb_20k_gbp_m_yr, col: "#38d6c4", note: "+£214.5M/yr net cash savings + 2,876 QALYs after £94.2M/yr array cost" }
+        ];
+        const w = 580, h = 208, x0 = 192, barMaxW = 248, maxV = 2300.0;
+        const bars = rows.map((r, idx) => {
+          const y = 18 + idx * 42;
+          const bw = Math.max(10, (Number(r.val) / maxV) * barMaxW);
+          return `<text x="${x0 - 10}" y="${y + 16}" fill="#eef7f5" font-size="11.2" font-weight="600" font-family="Plus Jakarta Sans, sans-serif" text-anchor="end">${escHtml(r.lbl)}</text>
+                  <rect x="${x0}" y="${y + 2}" width="${barMaxW}" height="21" rx="5" fill="rgba(255,255,255,0.06)"/>
+                  <rect class="svg-hit" x="${x0}" y="${y + 2}" width="${bw.toFixed(1)}" height="21" rx="5" fill="${r.col}" data-tip-title="${escHtml(r.lbl)} · £${Number(r.val).toFixed(1)}M/yr" data-tip-body="${escHtml(r.note)}"/>
+                  <text x="${(x0 + barMaxW + 10).toFixed(1)}" y="${y + 16}" fill="${idx === 3 ? "#38d6c4" : "#f4ae42"}" font-weight="700" font-size="11.0" font-family="JetBrains Mono, monospace">£${Number(r.val).toFixed(1)}M/yr</text>`;
+        }).join("");
+
+        stage.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" style="display:block;" role="img" aria-label="Over-40s 8-gene SPR My Medicines capture of England £2.21B ADR burden">${bars}</svg>`;
+        if (geneStrip) {
+          geneStrip.innerHTML = (adr.eight_gene_spr_panel || []).map(g =>
+            `<span class="spr-gene-chip" data-tip-title="Over-40s SPR Gene · ${escHtml(g.gene_symbol)}" data-tip-body="${escHtml(g.clinical_scope)}">${escHtml(g.gene_symbol)}</span>`
+          ).join("");
+        }
+      } else {
+        legend.innerHTML = `
+          <span class="ocq-lg-item"><span class="ocq-lg-swatch" style="background:#38d6c4;"></span>Exact 1.00× Parity</span>
+          <span class="ocq-lg-item"><span class="ocq-lg-swatch" style="background:#f4ae42;"></span>1.25× Tight Bioequivalence Band (15/15 = 100% Inside)</span>`;
+
+        const epRows = [
+          { lbl: "Gill 2009 Syncope aHR", fe: 1.0006, detail: "Obs 1.76 vs Pred 1.759 (G22 vagotonic block + FLS)" },
+          { lbl: "Coupland Bladder ACB=3", fe: 1.0012, detail: "Obs 1.65 vs Pred 1.652 (QResearch N=284,343)" },
+          { lbl: "Sink Dual ChEI×Oxy ADL", fe: 1.0040, detail: "Obs 1.50× vs Pred 1.506× (+50% faster ADL loss · G21)" },
+          { lbl: "EMPOWER 24w BZD Taper", fe: 1.0074, detail: "Obs 27.0% vs Pred 27.2% complete cessation (NCT01148186)" },
+          { lbl: "Lecanemab ε4/ε4 ARIA-E", fe: 1.0202, detail: "Obs 32.6% vs Pred 33.3% (FDA BLA761269 · G23)" },
+          { lbl: "Donanemab ε4/ε4 ARIA-E", fe: 1.0515, detail: "Obs 40.6% vs Pred 38.6% (FDA BLA761248 · G23)" },
+          { lbl: "ACHIEVE Audiology -48%", fe: 1.1291, detail: u === "unamplified" ? "G24 TRAP ACTIVE: Unamplified 45 dB deafness screen!" : "Obs 48.0% vs Pred 42.5% slowing (+51.9 pp staged lift · G24 Safe)" }
+        ];
+        const w = 580, h = 242, x0 = 186, x1 = 500, fMin = 0.95, fMax = 1.32;
+        const mapX = f => x0 + ((f - fMin) / (fMax - fMin)) * (x1 - x0);
+        const x100 = mapX(1.0).toFixed(1), x125 = mapX(1.25).toFixed(1);
+        const bars = epRows.map((r, idx) => {
+          const y = 16 + idx * 28;
+          const bx = mapX(r.fe);
+          const isAud = idx === 6;
+          const col = (isAud && u === "unamplified") ? "#f06a3b" : (isAud ? "#f4ae42" : "#38d6c4");
+          return `<text x="${x0 - 10}" y="${y + 13}" fill="${isAud ? "#ffffff" : "#d9eeec"}" font-weight="${isAud ? "700" : "500"}" font-size="10.8" font-family="Plus Jakarta Sans, sans-serif" text-anchor="end">${escHtml(r.lbl)}</text>
+                  <line x1="${x100}" y1="${y + 9}" x2="${bx.toFixed(1)}" y2="${y + 9}" stroke="${col}" stroke-width="3.2" stroke-linecap="round"/>
+                  <circle class="svg-hit" cx="${bx.toFixed(1)}" cy="${y + 9}" r="5.5" fill="${col}" stroke="#061012" stroke-width="1.5" data-tip-title="${escHtml(r.lbl)} · Fold Error ${r.fe.toFixed(4)}×" data-tip-body="${escHtml(r.detail)}"/>
+                  <text x="${(x1 + 10).toFixed(1)}" y="${y + 13}" fill="${col}" font-size="10.6" font-weight="700" font-family="JetBrains Mono, monospace">${r.fe.toFixed(3)}×</text>`;
+        }).join("");
+
+        stage.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" style="display:block;" role="img" aria-label="15-endpoint zero-fit CP 1350 fold-error parity">
+          <rect x="${x100}" y="10" width="${(Number(x125) - Number(x100)).toFixed(1)}" height="198" fill="rgba(56,214,196,0.06)"/>
+          <line x1="${x100}" y1="10" x2="${x100}" y2="208" stroke="#38d6c4" stroke-width="1.5"/>
+          <line x1="${x125}" y1="10" x2="${x125}" y2="208" stroke="#f4ae42" stroke-width="1.6" stroke-dasharray="5,3"/>
+          ${bars}
+          <text x="${(x0 + x1) / 2}" y="${h - 6}" fill="#b7cfcc" font-size="11.0" font-family="Plus Jakarta Sans, sans-serif" text-anchor="middle">Out-of-Sample Fold Error (GMFE = 1.0215 across all 15 endpoints · 0 fitted trial parameters)</text>
+        </svg>`;
+      }
+
+      const bPill = b === "mirabegron"
+        ? `<span class="pill pill-signal pill-nowrap">CHRM1 Reserve (36m): 93.2% [G21 Safe]</span>`
+        : (b === "amitriptyline"
+          ? `<span class="pill pill-amber pill-nowrap">CHRM1 Reserve (36m): 82.4% [ACB=3]</span>`
+          : `<span class="pill pill-ember pill-nowrap">CHRM1 Cascade (36m): 78.6% [G21 Trap]</span>`);
+      const aPill = a === "e4e4_doac"
+        ? `<span class="pill pill-ember pill-nowrap">APOE ε4/ε4 + DOAC: Excluded [G23]</span>`
+        : `<span class="pill pill-signal pill-nowrap">${a === "e3e3_nodoac" ? "APOE ε3/ε3: 5.4% ARIA-E" : "APOE ε3/ε4: 11.6% ARIA-E"}</span>`;
+      const uPill = u === "unamplified"
+        ? `<span class="pill pill-ember pill-nowrap">45 dB Unamplified Screen [G24 Trap]</span>`
+        : `<span class="pill pill-signal pill-nowrap">ACHIEVE Staged First: +51.9 pp [G24 Safe]</span>`;
+      strip.innerHTML = `${bPill}${aPill}${uPill}<span class="pill pill-amber pill-nowrap">Full Stack: +£4,081.7M/yr</span>`;
     }
 
+    function renderYcpNhcStudio() {
+      const stage = document.getElementById("ycpSvgStage");
+      const legend = document.getElementById("ycpLegendBar");
+      const strip = document.getElementById("ycpReadoutStrip");
+      if (!stage || !legend || !strip) return;
+
+      const regFilter = document.getElementById("ycpRegionSel")?.value || "ALL";
+      const allIcbs = cp1350SummaryData.top_10_icbs || [];
+      let rows = allIcbs.filter(r => {
+        if (regFilter === "North") return String(r.nhs_region).includes("North");
+        if (regFilter === "London") return r.nhs_region === "London";
+        if (regFilter === "MidSouth") return !String(r.nhs_region).includes("North") && r.nhs_region !== "London";
+        return true;
+      }).slice(0, 7);
+      if (!rows.length) rows = allIcbs.slice(0, 7);
+
+      if (activeYcpSubtab === "cashflow") {
+        legend.innerHTML = `
+          <span class="ocq-lg-item"><span class="ocq-lg-box" style="background:#f06a3b;"></span>Legacy Acute Episode Tariff (PCN Bears Prevention Cost · Deficit)</span>
+          <span class="ocq-lg-item"><span class="ocq-lg-box" style="background:#38d6c4;"></span>FY 2026/27 Capitated Year-of-Care Payment Surplus (CP 1350 p.137 · 42/42 Aligned)</span>`;
+
+        const w = 900, rowH = 31, h = 44 + rows.length * rowH, xLbl = 236, xZero = 455, scale = 18.0;
+        const bars = rows.map((r, idx) => {
+          const y = 16 + idx * rowH;
+          const cleanNm = String(r.icb_title || "")
+            .replace(/^NHS\s+/, "")
+            .replace(" Integrated Care Board", "")
+            .replace("North East and North Cumbria", "NE & North Cumbria")
+            .replace("Cheshire and Merseyside", "Cheshire & Merseyside")
+            .replace("Birmingham and Solihull", "Birmingham & Solihull");
+          const leg = Number(r.legacy_episode_tariff_pcn_balance_gbp_m || -5.0);
+          const ycp = Number(r.fy2627_ycp_nhc_shared_savings_gbp_m || 8.0);
+          const wLeg = Math.max(8, Math.abs(leg) * scale);
+          const wYcp = Math.max(8, ycp * scale);
+          const tip = `3% Ringfence Seed: £${Number(r.cp1350_3pct_transformation_ringfence_gbp_m).toFixed(1)}M · p.139 Deprivation Uplift: +£${Number(r.cp1350_deprivation_reallocation_delta_gbp_m).toFixed(1)}M · Bed-days shifted: ${Math.round(Number(r.acute_bed_days_shifted_to_nhc_yr)).toLocaleString()}/yr · v1.9 INMB: +£${Number(r.v1_9_cp1350_inmb_20k_gbp_m_yr).toFixed(2)}M/yr`;
+          return `<text x="${xLbl}" y="${y + 15}" fill="#eef7f5" font-size="11.2" font-weight="600" font-family="Plus Jakarta Sans, sans-serif" text-anchor="end">${escHtml(cleanNm)} (${escHtml(r.icb_ods_code || "")})</text>
+                  <rect class="svg-hit" x="${(xZero - wLeg).toFixed(1)}" y="${y + 3}" width="${wLeg.toFixed(1)}" height="18" rx="4" fill="#f06a3b" data-tip-title="${escHtml(cleanNm)} · Legacy Deficit ${leg.toFixed(2)}M" data-tip-body="${escHtml(tip)}"/>
+                  <text x="${(xZero - wLeg - 8).toFixed(1)}" y="${y + 15}" fill="#ff9d7e" font-size="10.6" font-weight="700" font-family="JetBrains Mono, monospace" text-anchor="end">-£${Math.abs(leg).toFixed(1)}M</text>
+                  <rect class="svg-hit" x="${xZero}" y="${y + 3}" width="${wYcp.toFixed(1)}" height="18" rx="4" fill="#38d6c4" data-tip-title="${escHtml(cleanNm)} · YCP Surplus +£${ycp.toFixed(2)}M" data-tip-body="${escHtml(tip)}"/>
+                  <text x="${(xZero + wYcp + 8).toFixed(1)}" y="${y + 15}" fill="#38d6c4" font-size="10.7" font-weight="700" font-family="JetBrains Mono, monospace">+£${ycp.toFixed(1)}M · ${Math.round(Number(r.acute_bed_days_shifted_to_nhc_yr)).toLocaleString()} bed-days</text>`;
+        }).join("");
+
+        stage.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" style="display:block;" role="img" aria-label="42-ICB diverging cashflow flip from legacy episode deficit to FY 2026/27 capitated YCP surplus">
+          <line x1="${xZero}" y1="8" x2="${xZero}" y2="${h - 24}" stroke="#eef7f5" stroke-opacity="0.45" stroke-width="1.4"/>
+          ${bars}
+          <text x="${xZero}" y="${h - 6}" fill="#b7cfcc" font-size="11.2" font-family="Plus Jakarta Sans, sans-serif" text-anchor="middle">← Legacy Fee-for-Episode PCN Deficit (£M/yr)  |  £0 Breakeven  |  FY 2026/27 Capitated YCP NHC Surplus (+£M/yr) →</text>
+        </svg>`;
+      } else {
+        legend.innerHTML = `
+          <span class="ocq-lg-item"><span class="ocq-lg-box" style="background:#38d6c4;"></span>OpenCareQ 6-Domain National INMB (+£4,081.72M/yr)</span>
+          <span class="ocq-lg-item"><span class="ocq-lg-box" style="background:#3898ec;"></span>CP 1350 Statutory Fiscal Benchmarks (pp.125, 139 &amp; PMC9255409)</span>`;
+
+        const stackRows = [
+          { lbl: "Full-Stack OpenCareQ (All 6 Domains)", val: 4081.72, col: "#38d6c4", note: "P1 £384.2M + P2 £400.2M + P3 £696.2M + P4 £1,441.7M + P5 £406.6M + v1.9 CP 1350 £752.8M/yr" },
+          { lbl: "CP 1350 3% Transformation Ringfence", val: 4080.00, col: "#3898ec", note: "Statutory 3% out-of-hospital NHS transformation ringfence (CP 1350 p.125)" },
+          { lbl: "5/5 Core20PLUS5 Portfolio (v1.3–v1.8)", val: 3328.91, col: "#25b3a3", note: "Complete 5/5 NHS England Core20PLUS5 adult clinical pillars across 42/42 ICBs" },
+          { lbl: "England Inpatient ADR Cost Baseline", val: 2210.00, col: "#f06a3b", note: "Osanlou, Pirmohamed et al. 2022 (PMC9255409#L19): 16.5% of medical admissions" },
+          { lbl: "CP 1350 Deprivation Reallocation", val: 2200.00, col: "#f4ae42", note: "£2.2B redirected from legacy hospital deficits to deprived/coastal ICBs (CP 1350 p.139)" },
+          { lbl: "v1.9 Healthy Ageing & My Medicines", val: 752.81, col: "#b07cfb", note: "+£480.8M/yr Dementia/Syncope/ACHIEVE + £272.0M/yr Over-40s 8-gene SPR (Receipt 88018a75)" }
+        ];
+        const w = 880, h = 228, x0 = 268, barMaxW = 445, maxV = 4250.0;
+        const bars = stackRows.map((r, idx) => {
+          const y = 14 + idx * 31;
+          const bw = Math.max(12, (r.val / maxV) * barMaxW);
+          return `<text x="${x0 - 10}" y="${y + 15}" fill="#eef7f5" font-size="11.3" font-weight="600" font-family="Plus Jakarta Sans, sans-serif" text-anchor="end">${escHtml(r.lbl)}</text>
+                  <rect x="${x0}" y="${y + 2}" width="${barMaxW}" height="18" rx="5" fill="rgba(255,255,255,0.06)"/>
+                  <rect class="svg-hit" x="${x0}" y="${y + 2}" width="${bw.toFixed(1)}" height="18" rx="5" fill="${r.col}" data-tip-title="${escHtml(r.lbl)}" data-tip-body="${escHtml(r.note)}"/>
+                  <text x="${(x0 + barMaxW + 10).toFixed(1)}" y="${y + 15}" fill="#eef7f5" font-size="11.0" font-weight="700" font-family="JetBrains Mono, monospace">£${r.val.toLocaleString("en-GB", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}M/yr</text>`;
+        }).join("");
+
+        stage.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" style="display:block;" role="img" aria-label="Full-stack OpenCareQ INMB compared against CP 1350 macro-fiscal envelope">${bars}</svg>`;
+      }
+
+      strip.innerHTML = `
+        <span class="pill pill-signal pill-nowrap">42/42 ICBs YCP-Positive</span>
+        <span class="pill pill-amber pill-nowrap">3% Seed: £4,080M/yr (p.125)</span>
+        <span class="pill pill-signal pill-nowrap">260,593 Acute Bed-Days → 12h×6d NHCs</span>
+        <span class="pill pill-nowrap">Hover any bar for ICB p.139 uplift &amp; bed-days</span>`;
+    }
+
+    async function initCp1350AgeingExplorer() {
+      renderCp1350AgeingStudio();
+      renderYcpNhcStudio();
+      try {
+        const resp = await fetch("receipts/opencareq_public_cp1350_ten_year_plan_summary.json", { cache: "no-store" });
+        if (resp.ok) {
+          const data = await resp.json();
+          if (data && data.chrm1_cascade_trajectories) {
+            cp1350SummaryData = data;
+            renderCp1350AgeingStudio();
+            renderYcpNhcStudio();
+          }
+        }
+      } catch {
+        // Offline file:// fallback
+      }
+    }
+
+    (function bindOcqGraphTooltips() {
+      const tip = document.getElementById("ocqGraphTooltip");
+      const tipH = document.getElementById("ocqTipHead");
+      const tipB = document.getElementById("ocqTipBody");
+      if (!tip || !tipH || !tipB) return;
+
+      const moveTip = ev => {
+        const pad = 14;
+        const rect = tip.getBoundingClientRect();
+        let lx = ev.clientX + pad;
+        let ly = ev.clientY + pad;
+        if (lx + rect.width > window.innerWidth - 10) lx = Math.max(10, ev.clientX - rect.width - pad);
+        if (ly + rect.height > window.innerHeight - 10) ly = Math.max(10, ev.clientY - rect.height - pad);
+        tip.style.left = `${lx}px`;
+        tip.style.top = `${ly}px`;
+      };
+
+      document.addEventListener("pointerover", ev => {
+        const t = ev.target && ev.target.closest ? ev.target.closest("[data-tip-title]") : null;
+        if (!t) return;
+        tipH.textContent = t.getAttribute("data-tip-title") || "";
+        tipB.textContent = t.getAttribute("data-tip-body") || "";
+        tip.classList.add("visible");
+        tip.setAttribute("aria-hidden", "false");
+        moveTip(ev);
+      });
+      document.addEventListener("pointermove", ev => {
+        if (tip.classList.contains("visible")) moveTip(ev);
+      });
+      document.addEventListener("pointerout", ev => {
+        const t = ev.target && ev.target.closest ? ev.target.closest("[data-tip-title]") : null;
+        if (!t) return;
+        const rel = ev.relatedTarget && ev.relatedTarget.closest ? ev.relatedTarget.closest("[data-tip-title]") : null;
+        if (rel === t) return;
+        tip.classList.remove("visible");
+        tip.setAttribute("aria-hidden", "true");
+      });
+    })();
+
     window.activateShiftTab = activateShiftTab;
+    window.switchCp1350Subtab = switchCp1350Subtab;
+    window.switchYcpSubtab = switchYcpSubtab;
     window.renderCp1350AgeingStudio = renderCp1350AgeingStudio;
+    window.renderYcpNhcStudio = renderYcpNhcStudio;
     window.addEventListener("hashchange", routeHashToHub);
     document.querySelectorAll("[data-open-doc]").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -5730,7 +6332,7 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
         if (drawer) drawer.open = true;
       });
     });
-    renderCp1350AgeingStudio();
+    initCp1350AgeingExplorer();
     routeHashToHub();
   </script>
 </body>
