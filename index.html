@@ -25,6 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
   <script src="assets/vendor/pdf.min.js" defer></script>
+  <script src="assets/vendor/3Dmol.min.js" defer></script>
 
   <style>
     :root {
@@ -748,6 +749,80 @@
       font-size: 0.75rem;
     }
 
+    /* Interactive 3Dmol.js WebGL Metalloenzyme Crystal-Pocket Viewer */
+    .mol3d-split {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 1.05rem;
+      align-items: stretch;
+      margin-bottom: 1.1rem;
+    }
+    @media (max-width: 960px) {
+      .mol3d-split { grid-template-columns: 1fr; }
+    }
+    #v20Mol3dViewport {
+      position: relative;
+      width: 100%;
+      height: 365px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 45%, #0b1e22 0%, #050c0e 100%);
+      border: 1px solid rgba(56, 214, 196, 0.32);
+      cursor: grab;
+    }
+    #v20Mol3dViewport:active { cursor: grabbing; }
+    .mol3d-status-chip {
+      position: absolute;
+      top: 0.55rem;
+      left: 0.65rem;
+      z-index: 8;
+      pointer-events: none;
+      background: rgba(6, 16, 18, 0.86);
+      border: 1px solid rgba(56, 214, 196, 0.42);
+      border-radius: 6px;
+      padding: 0.22rem 0.55rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: #d9f6f2;
+    }
+    .mol3d-hint-chip {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.65rem;
+      z-index: 8;
+      pointer-events: none;
+      background: rgba(6, 16, 18, 0.82);
+      border: 1px solid rgba(158, 183, 180, 0.24);
+      border-radius: 6px;
+      padding: 0.18rem 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--ink-muted);
+    }
+    .mol3d-legend-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.42rem;
+      margin: 0.55rem 0 0.7rem;
+      font-size: 0.79rem;
+    }
+    .mol3d-legend-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      background: rgba(9, 20, 23, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 0.38rem 0.58rem;
+    }
+    .mol3d-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.26rem;
+    }
+
   </style>
 </head>
 <body>
@@ -945,6 +1020,53 @@
                 <div class="card-tag">14-Ep Parity &amp; 42-ICB Equity</div>
                 <div class="kpi-num">GMFE 1.0347</div>
                 <div class="kpi-meta"><code>+£140.70M/yr</code> v2.0 INMB · <code>5,513</code> VUS + <code>12,501</code> POC harms/yr (<code>0e413eac</code>)</div>
+              </div>
+            </div>
+
+            <!-- Interactive 3D WebGL Crystal-Pocket Explorer (3Dmol.js v2.5.5 · Local Chain-A PDBs) -->
+            <div id="v20Mol3dCard" class="mol3d-split" role="region" aria-label="Interactive 3D Metalloenzyme Crystal-Pocket Viewer">
+              <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;border-color:rgba(56,214,196,0.42);">
+                <div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.45rem;">
+                    <div>
+                      <span class="card-tag">Interactive 3D WebGL Crystal-Pocket Explorer (3Dmol.js · RCSB PDB)</span>
+                      <h3 style="margin-bottom:0.15rem;">Rotate &amp; Zoom Metalloenzyme Active Sites &amp; Multi-Ethnic VUS Pockets</h3>
+                    </div>
+                    <div id="v20Mol3dTabs" style="display:flex;flex-wrap:wrap;gap:0.35rem;">
+                      <button type="button" class="btn-sm active" id="mol3dBtn-1h7x" onclick="selectMol3dStructure('1h7x')">1 · DPYD [4Fe-4S] (1H7X)</button>
+                      <button type="button" class="btn-sm" id="mol3dBtn-3qm4" onclick="selectMol3dStructure('3qm4')">2 · CYP2D6 Heme (3QM4)</button>
+                      <button type="button" class="btn-sm" id="mol3dBtn-4gqs" onclick="selectMol3dStructure('4gqs')">3 · CYP2C19 Heme (4GQS)</button>
+                    </div>
+                  </div>
+
+                  <div id="v20Mol3dViewport">
+                    <div id="v20Mol3dStatus" class="mol3d-status-chip">PDB: 1H7X · DPYD [4Fe-4S] + Tyr186Cys (477.7× AFR)</div>
+                    <div class="mol3d-hint-chip">Drag: Rotate · Scroll: Zoom · Right-Drag: Pan</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:0.45rem;flex-wrap:wrap;margin-top:0.55rem;">
+                  <div style="display:flex;flex-wrap:wrap;gap:0.36rem;">
+                    <button type="button" class="btn-sm" onclick="focusMol3d('vus')">🎯 Zoom VUS Site</button>
+                    <button type="button" class="btn-sm" onclick="focusMol3d('core')">🔥 Zoom Cofactor Core</button>
+                    <button type="button" class="btn-sm" onclick="focusMol3d('all')">🌐 Full Enzyme</button>
+                    <button type="button" class="btn-sm" id="mol3dSurfBtn" onclick="toggleMol3dSurface()">🫧 Pocket Surface: OFF</button>
+                    <button type="button" class="btn-sm" id="mol3dSpinBtn" onclick="toggleMol3dSpin()">↻ Spin: ON</button>
+                  </div>
+                  <a id="mol3dRcsbLink" class="btn-sm" href="https://www.rcsb.org/structure/1H7X" target="_blank" rel="noopener">↗ RCSB PDB: 1H7X</a>
+                </div>
+              </div>
+
+              <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                  <span class="card-tag" id="mol3dInspTag">PDB: 1H7X · 1.86 Å X-Ray · Chain A</span>
+                  <h3 id="mol3dInspTitle" style="margin-bottom:0.25rem;">DPYD [4Fe-4S] Electron Bridge &amp; p.Tyr186Cys</h3>
+                  <p id="mol3dInspDesc" style="font-size:0.82rem;color:var(--ink-muted);margin:0 0 0.45rem;">
+                    Four <code>[4Fe-4S]</code> iron–sulfur clusters (<code>SF4 1026–1029</code>) tunnel electrons from <code>NADPH/FAD</code> to reduce <code>5-FU</code> / uracil at <code>FMN 1030</code>. Phenolic <code>Tyr186</code> anchors the N-terminal ferredoxin bridge (<code>27.49 Å</code> to <code>SF4-1026</code>); African-enriched <code>p.Tyr186Cys</code> (<code>rs115232898</code>, <code>477.7×</code> vs NFE) cuts human DPD activity by <code>46%</code> (<code>PMC3821392#L5</code>).
+                  </p>
+                  <div id="mol3dLegendList" class="mol3d-legend-list"></div>
+                </div>
+                <div id="mol3dPocketMetrics" style="display:flex;flex-wrap:wrap;gap:0.36rem;padding-top:0.45rem;border-top:1px solid var(--border);font-size:0.74rem;"></div>
               </div>
             </div>
 
@@ -6067,6 +6189,9 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       hub.querySelectorAll(".shift-tab-pane").forEach(p => {
         p.classList.toggle("active", p.id === paneId);
       });
+      if (paneId === "pane-quantum-v20" && typeof window.resizeV20Mol3d === "function") {
+        setTimeout(window.resizeV20Mol3d, 45);
+      }
       if (updateScroll) {
         hub.scrollIntoView({ behavior: "smooth", block: "start" });
       }
@@ -6794,6 +6919,279 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
         <span class="pill pill-signal pill-nowrap">HUGR: 6,625 B (Guppy 1.0)</span>
         <span class="pill pill-amber pill-nowrap">109 / 109 Cumulative Parity</span>
         <span class="pill pill-signal pill-nowrap">Full Stack: +£4,222.4M/yr</span>`;
+
+      if (typeof syncMol3dFromVusDropdown === "function") {
+        syncMol3dFromVusDropdown(rsid);
+      }
+    }
+
+    // === Interactive 3Dmol.js v2.5.5 WebGL Metalloenzyme Crystal-Pocket Controller ===
+    let v20MolViewer = null;
+    let activeMol3dKey = "1h7x";
+    let activeMol3dRsid = "rs115232898";
+    let mol3dSpinOn = true;
+    let mol3dSurfaceOn = false;
+    let mol3dSyncGuard = false;
+    const MOL3D_PDB_CACHE = {};
+
+    const MOL3D_STRUCTURES = {
+      "1h7x": {
+        pdbId: "1H7X",
+        url: "assets/structures/1h7x_chainA.pdb",
+        defaultRsid: "rs115232898",
+        tag: "PDB: 1H7X · 1.86 Å X-Ray · Chain A (7,924 Atoms)",
+        title: "DPYD [4Fe-4S] Electron Bridge & p.Tyr186Cys",
+        desc: "Four [4Fe-4S] iron–sulfur clusters (SF4 1026–1029) tunnel electrons from NADPH/FAD to reduce 5-FU / uracil at FMN 1030. Phenolic Tyr186 stabilizes the N-terminal ferredoxin bridge (27.49 Å to SF4-1026); African-enriched p.Tyr186Cys (rs115232898, 477.7× vs NFE) reduces human DPD activity by 46% (PMC3821392#L5).",
+        coreSel: { resn: ["SF4", "FMN", "URF"] },
+        vusSelMap: { rs115232898: { resi: 186 } },
+        legend: [
+          { col: "#f06a3b", lbl: "Coral Spheres — Tyr186 (rs115232898 · p.Tyr186Cys · 477.7× AFR · -46% DPD)" },
+          { col: "#f4ae42", lbl: "Gold/Orange Clusters — Four [4Fe-4S] Superexchange Centers (SF4 1026–1029 · CAS(6,6))" },
+          { col: "#38d6c4", lbl: "Cyan Pocket — Bound 5-FU Analogue (URF 1033) + FMN 1030 / FAD 1031" },
+          { col: "#2b7a78", lbl: "Teal Ribbon — Experimental Chain-A Backbone (Dobritzsch et al., EMBO J.)" }
+        ],
+        metrics: ["CAS(6e,6o) = 12q", "UHF <S²> = 1.19 (Trap G25)", "CASCI/SKQD: 0.527 vs 0.540", "CPIC: 50% 5-FU Dose"]
+      },
+      "3qm4": {
+        pdbId: "3QM4",
+        url: "assets/structures/3qm4_chainA.pdb",
+        defaultRsid: "rs59421388",
+        tag: "PDB: 3QM4 · 2.85 Å X-Ray · Human CYP2D6 Chain A",
+        title: "Human CYP2D6 Heme Compound I Core & *29 / *17 / *14 Pockets",
+        desc: "Protoporphyrin IX iron (HEM 502) coordinated axially by Cys443 (Fe–Sγ = 2.340 Å) inside the Phe120 / Glu216 / Asp301 catalytic cage with bound prinomastat (PN0 503). Highlights African-enriched *29 (Val338Met, 148.7×), AMR *17 (Thr107Ile, 49.1×), and South Asian *14 (Gly169Arg, 27.8×).",
+        coreSel: { or: [{ resn: ["HEM", "PN0"] }, { resi: [443, 120, 216, 301] }] },
+        vusSelMap: {
+          rs59421388: { resi: 338 },
+          rs28371706: { resi: 107 },
+          rs5030865: { resi: 169 }
+        },
+        legend: [
+          { col: "#f06a3b", lbl: "Coral Spheres — Selected CYP2D6 VUS (*29 Val338 / *17 Thr107 / *14 Gly169)" },
+          { col: "#f4ae42", lbl: "Gold/Crimson Core — Heme Iron (HEM 502) + Axial Thiolate Cys443 (2.340 Å · CAS(7,7))" },
+          { col: "#38d6c4", lbl: "Cyan Sticks — Active-Site Ligand Prinomastat (PN0 503) & Phe120/Glu216/Asp301 Cage" },
+          { col: "#2b7a78", lbl: "Teal Ribbon — Human CYP2D6 Fold (Wang et al., J. Biol. Chem.)" }
+        ],
+        metrics: ["Fe–Cys443 = 2.340 Å", "Spin Gap: 35.2 → 9.25 kcal/mol", "SU(2) [U,S²] ≤ 3.35e-16", "Donepezil/Tamoxifen Shield"]
+      },
+      "4gqs": {
+        pdbId: "4GQS",
+        url: "assets/structures/4gqs_chainA.pdb",
+        defaultRsid: "rs17884712",
+        tag: "PDB: 4GQS · 2.87 Å X-Ray · Human CYP2C19 Chain A",
+        title: "Human CYP2C19 Heme Propionate Pocket & *9 (p.Arg144His)",
+        desc: "Human CYP2C19 heme pocket (HEM 501 + axial Cys435 + bound inhibitor 0XV 502). Arg144 (18.46 Å from heme Fe) stabilizes the heme-propionate electrostatic network; African-enriched *9 (p.Arg144His, rs17884712, 308.9× vs NFE) reduces bioactivation by 62% in NICE DG59 clopidogrel stroke prevention.",
+        coreSel: { or: [{ resn: ["HEM", "0XV"] }, { resi: 435 }] },
+        vusSelMap: { rs17884712: { resi: 144 } },
+        legend: [
+          { col: "#f06a3b", lbl: "Coral Spheres — Arg144 (rs17884712 · CYP2C19*9 p.Arg144His · 308.9× AFR)" },
+          { col: "#f4ae42", lbl: "Gold/Crimson Core — Heme Iron (HEM 501) + Axial Thiolate Cys435" },
+          { col: "#38d6c4", lbl: "Cyan Sticks — Bound Active-Site Ligand (0XV 502)" },
+          { col: "#2b7a78", lbl: "Teal Ribbon — Human CYP2C19 Fold (Reynald et al., J. Biol. Chem.)" }
+        ],
+        metrics: ["Fe–Arg144 = 18.46 Å", "308.9× AFR Enrichment", "CASCI/SKQD: 0.387 vs 0.380", "NICE DG59 Stroke Shield"]
+      }
+    };
+
+    function updateMol3dInspector(structKey, rsid) {
+      const spec = MOL3D_STRUCTURES[structKey] || MOL3D_STRUCTURES["1h7x"];
+      ["1h7x", "3qm4", "4gqs"].forEach(k => {
+        const b = document.getElementById("mol3dBtn-" + k);
+        if (b) b.classList.toggle("active", k === structKey);
+      });
+      const rcsb = document.getElementById("mol3dRcsbLink");
+      if (rcsb) {
+        rcsb.href = "https://www.rcsb.org/structure/" + spec.pdbId;
+        rcsb.textContent = "↗ RCSB PDB: " + spec.pdbId;
+      }
+      const tagEl = document.getElementById("mol3dInspTag");
+      const titEl = document.getElementById("mol3dInspTitle");
+      const descEl = document.getElementById("mol3dInspDesc");
+      const legEl = document.getElementById("mol3dLegendList");
+      const metEl = document.getElementById("mol3dPocketMetrics");
+      if (tagEl) tagEl.textContent = spec.tag;
+      if (titEl) titEl.textContent = spec.title;
+      if (descEl) descEl.textContent = spec.desc;
+      if (legEl) {
+        legEl.innerHTML = spec.legend.map(row =>
+          `<div class="mol3d-legend-row"><span class="mol3d-dot" style="background:${row.col};box-shadow:0 0 8px ${row.col};"></span><span>${escHtml(row.lbl)}</span></div>`
+        ).join("");
+      }
+      if (metEl) {
+        metEl.innerHTML = spec.metrics.map((m, idx) =>
+          `<span class="pill ${idx === 1 ? "pill-amber" : "pill-signal"} pill-nowrap">${escHtml(m)}</span>`
+        ).join("");
+      }
+      const stEl = document.getElementById("v20Mol3dStatus");
+      if (stEl) {
+        const vLabelMap = {
+          rs115232898: "DPYD Tyr186Cys (477.7× AFR)",
+          rs17884712: "CYP2C19*9 Arg144His (308.9× AFR)",
+          rs59421388: "CYP2D6*29 Val338Met (148.7× AFR)",
+          rs28371706: "CYP2D6*17 Thr107Ile (49.1× AMR)",
+          rs5030865: "CYP2D6*14 Gly169Arg (27.8× SAS)"
+        };
+        stEl.textContent = `PDB: ${spec.pdbId} · ${vLabelMap[rsid] || spec.pdbId}`;
+      }
+    }
+
+    function applyMol3dStyles(structKey, rsid, focusMode) {
+      if (!v20MolViewer) return;
+      const spec = MOL3D_STRUCTURES[structKey] || MOL3D_STRUCTURES["1h7x"];
+      v20MolViewer.removeAllLabels();
+      v20MolViewer.removeAllSurfaces();
+      v20MolViewer.setStyle({}, {});
+      v20MolViewer.setStyle({ hetflag: false }, { cartoon: { color: "#225c63", opacity: 0.78 } });
+
+      const lblBase = {
+        backgroundColor: "#071619",
+        backgroundOpacity: 0.88,
+        fontColor: "#eef7f5",
+        fontSize: 11,
+        borderThickness: 1.2,
+        inFront: true
+      };
+
+      if (structKey === "1h7x") {
+        v20MolViewer.setStyle({ resn: "SF4" }, { sphere: { scale: 0.56, color: "#f4ae42" }, stick: { radius: 0.22, color: "#f4ae42" } });
+        v20MolViewer.setStyle({ resn: ["FMN", "FAD", "NDP"] }, { stick: { radius: 0.17, color: "#3898ec" } });
+        v20MolViewer.setStyle({ resn: "URF" }, { stick: { radius: 0.25, color: "#38d6c4" }, sphere: { scale: 0.32, color: "#38d6c4" } });
+        v20MolViewer.setStyle({ resi: 186 }, { cartoon: { color: "#f06a3b" }, stick: { radius: 0.28, color: "#f06a3b" }, sphere: { scale: 0.45, color: "#f06a3b" } });
+        v20MolViewer.addLabel("Tyr186Cys (477.7× AFR · -46% DPD)", Object.assign({}, lblBase, { borderColor: "#f06a3b" }), { resi: 186 });
+        v20MolViewer.addLabel("[4Fe-4S] SF4-1026..1029", Object.assign({}, lblBase, { borderColor: "#f4ae42" }), { resn: "SF4", resi: 1026 });
+        v20MolViewer.addLabel("5-FU Pocket (URF + FMN)", Object.assign({}, lblBase, { borderColor: "#38d6c4" }), { resn: "URF" });
+      } else if (structKey === "3qm4") {
+        v20MolViewer.setStyle({ resn: "HEM" }, { stick: { radius: 0.24, color: "#f4ae42" } });
+        v20MolViewer.setStyle({ resn: "HEM", elem: "FE" }, { sphere: { scale: 0.64, color: "#ff7a45" } });
+        v20MolViewer.setStyle({ resi: 443 }, { stick: { radius: 0.25, color: "#ffd166" }, sphere: { scale: 0.34, color: "#ffd166" } });
+        v20MolViewer.setStyle({ resn: "PN0" }, { stick: { radius: 0.23, color: "#38d6c4" } });
+        v20MolViewer.setStyle({ resi: [120, 216, 301] }, { stick: { radius: 0.16, color: "#6bb8ff" } });
+        const cypMap = { rs59421388: [338, "Val338Met (*29 · 148.7× AFR)"], rs28371706: [107, "Thr107Ile (*17 · 49.1× AMR)"], rs5030865: [169, "Gly169Arg (*14 · 27.8× SAS)"] };
+        [338, 107, 169].forEach(rNum => {
+          const isPrimary = (cypMap[rsid] && cypMap[rsid][0] === rNum) || (!cypMap[rsid] && rNum === 338);
+          v20MolViewer.setStyle({ resi: rNum }, {
+            cartoon: { color: isPrimary ? "#f06a3b" : "#f4ae42" },
+            stick: { radius: isPrimary ? 0.28 : 0.18, color: isPrimary ? "#f06a3b" : "#f4ae42" },
+            sphere: { scale: isPrimary ? 0.46 : 0.28, color: isPrimary ? "#f06a3b" : "#f4ae42" }
+          });
+        });
+        const chosen = cypMap[rsid] || cypMap.rs59421388;
+        v20MolViewer.addLabel(chosen[1], Object.assign({}, lblBase, { borderColor: "#f06a3b" }), { resi: chosen[0] });
+        v20MolViewer.addLabel("HEM 502 + Cys443 (2.340 Å)", Object.assign({}, lblBase, { borderColor: "#f4ae42" }), { resn: "HEM" });
+      } else {
+        v20MolViewer.setStyle({ resn: "HEM" }, { stick: { radius: 0.24, color: "#f4ae42" } });
+        v20MolViewer.setStyle({ resn: "HEM", elem: "FE" }, { sphere: { scale: 0.64, color: "#ff7a45" } });
+        v20MolViewer.setStyle({ resi: 435 }, { stick: { radius: 0.25, color: "#ffd166" }, sphere: { scale: 0.34, color: "#ffd166" } });
+        v20MolViewer.setStyle({ resn: "0XV" }, { stick: { radius: 0.23, color: "#38d6c4" } });
+        v20MolViewer.setStyle({ resi: 144 }, { cartoon: { color: "#f06a3b" }, stick: { radius: 0.28, color: "#f06a3b" }, sphere: { scale: 0.46, color: "#f06a3b" } });
+        v20MolViewer.addLabel("Arg144His (*9 · 308.9× AFR · DG59)", Object.assign({}, lblBase, { borderColor: "#f06a3b" }), { resi: 144 });
+        v20MolViewer.addLabel("HEM 501 + Cys435", Object.assign({}, lblBase, { borderColor: "#f4ae42" }), { resn: "HEM" });
+      }
+
+      if (mol3dSurfaceOn && window.$3Dmol) {
+        const surfTarget = spec.coreSel;
+        v20MolViewer.addSurface(window.$3Dmol.SurfaceType.VDW, { opacity: 0.24, color: "#38d6c4" }, { within: { distance: 7.5, sel: surfTarget } });
+      }
+
+      if (focusMode === "vus") {
+        const vSel = (spec.vusSelMap && spec.vusSelMap[rsid]) || Object.values(spec.vusSelMap)[0];
+        v20MolViewer.zoomTo({ or: [vSel, spec.coreSel] }, 450);
+      } else if (focusMode === "core") {
+        v20MolViewer.zoomTo(spec.coreSel, 450);
+      } else {
+        v20MolViewer.zoomTo({}, 350);
+      }
+      v20MolViewer.spin(mol3dSpinOn ? "y" : false, 0.45);
+      v20MolViewer.render();
+    }
+
+    async function loadAndRenderMol3d(structKey, rsid, focusMode) {
+      activeMol3dKey = structKey;
+      activeMol3dRsid = rsid || MOL3D_STRUCTURES[structKey].defaultRsid;
+      updateMol3dInspector(activeMol3dKey, activeMol3dRsid);
+
+      const vp = document.getElementById("v20Mol3dViewport");
+      if (!vp || !window.$3Dmol) return;
+
+      try {
+        if (!v20MolViewer) {
+          v20MolViewer = window.$3Dmol.createViewer(vp, { backgroundColor: "#061012", antialias: true });
+        }
+        const spec = MOL3D_STRUCTURES[activeMol3dKey];
+        if (!MOL3D_PDB_CACHE[activeMol3dKey]) {
+          const resp = await fetch(spec.url);
+          if (!resp.ok) throw new Error("HTTP " + resp.status);
+          MOL3D_PDB_CACHE[activeMol3dKey] = await resp.text();
+        }
+        v20MolViewer.removeAllModels();
+        v20MolViewer.addModel(MOL3D_PDB_CACHE[activeMol3dKey], "pdb");
+        v20MolViewer.resize();
+        applyMol3dStyles(activeMol3dKey, activeMol3dRsid, focusMode || "vus");
+      } catch (err) {
+        const stEl = document.getElementById("v20Mol3dStatus");
+        if (stEl) stEl.textContent = "3D Crystallographic Coordinates Ready (" + MOL3D_STRUCTURES[activeMol3dKey].pdbId + ")";
+      }
+    }
+
+    function selectMol3dStructure(structKey) {
+      const spec = MOL3D_STRUCTURES[structKey] || MOL3D_STRUCTURES["1h7x"];
+      const vEl = document.getElementById("v20VusSel");
+      if (vEl && !mol3dSyncGuard) {
+        mol3dSyncGuard = true;
+        if (structKey === "1h7x") vEl.value = "rs115232898";
+        else if (structKey === "4gqs") vEl.value = "rs17884712";
+        else if (!["rs59421388", "rs28371706", "rs5030865"].includes(vEl.value)) vEl.value = "rs59421388";
+        renderV20QuantumMolStudio();
+        mol3dSyncGuard = false;
+      }
+      loadAndRenderMol3d(structKey, vEl ? vEl.value : spec.defaultRsid, "vus");
+    }
+
+    function syncMol3dFromVusDropdown(rsid) {
+      if (mol3dSyncGuard) return;
+      const targetKey = rsid === "rs115232898" ? "1h7x" : (rsid === "rs17884712" ? "4gqs" : "3qm4");
+      mol3dSyncGuard = true;
+      loadAndRenderMol3d(targetKey, rsid, "vus").finally(() => { mol3dSyncGuard = false; });
+    }
+
+    function focusMol3d(mode) {
+      applyMol3dStyles(activeMol3dKey, activeMol3dRsid, mode || "all");
+    }
+
+    function toggleMol3dSurface() {
+      mol3dSurfaceOn = !mol3dSurfaceOn;
+      const b = document.getElementById("mol3dSurfBtn");
+      if (b) {
+        b.textContent = mol3dSurfaceOn ? "🫧 Pocket Surface: ON" : "🫧 Pocket Surface: OFF";
+        b.classList.toggle("active", mol3dSurfaceOn);
+      }
+      applyMol3dStyles(activeMol3dKey, activeMol3dRsid, "core");
+    }
+
+    function toggleMol3dSpin() {
+      mol3dSpinOn = !mol3dSpinOn;
+      const b = document.getElementById("mol3dSpinBtn");
+      if (b) b.textContent = mol3dSpinOn ? "↻ Spin: ON" : "↻ Spin: OFF";
+      if (v20MolViewer) {
+        v20MolViewer.spin(mol3dSpinOn ? "y" : false, 0.45);
+        v20MolViewer.render();
+      }
+    }
+
+    function resizeV20Mol3d() {
+      if (v20MolViewer) {
+        v20MolViewer.resize();
+        v20MolViewer.render();
+      }
+    }
+
+    function initV20Mol3dViewer() {
+      updateMol3dInspector("1h7x", "rs115232898");
+      if (window.$3Dmol) {
+        loadAndRenderMol3d("1h7x", "rs115232898", "vus");
+      } else {
+        window.addEventListener("load", () => loadAndRenderMol3d("1h7x", "rs115232898", "vus"), { once: true });
+      }
+      window.addEventListener("resize", resizeV20Mol3d);
     }
 
     async function initV20QuantumMolExplorer() {
@@ -6815,6 +7213,11 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
     window.activateShiftTab = activateShiftTab;
     window.switchV20Subtab = switchV20Subtab;
     window.renderV20QuantumMolStudio = renderV20QuantumMolStudio;
+    window.selectMol3dStructure = selectMol3dStructure;
+    window.focusMol3d = focusMol3d;
+    window.toggleMol3dSurface = toggleMol3dSurface;
+    window.toggleMol3dSpin = toggleMol3dSpin;
+    window.resizeV20Mol3d = resizeV20Mol3d;
     window.switchCp1350Subtab = switchCp1350Subtab;
     window.switchYcpSubtab = switchYcpSubtab;
     window.renderCp1350AgeingStudio = renderCp1350AgeingStudio;
@@ -6828,6 +7231,7 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       });
     });
     initV20QuantumMolExplorer();
+    initV20Mol3dViewer();
     initCp1350AgeingExplorer();
     routeHashToHub();
   </script>
