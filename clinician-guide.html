@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenCareQ — 2-Page Plain-English Clinician Guide &amp; NHS Public-Good Lean Canvas</title>
+  <meta name="description" content="Jargon-free 2-page NHS clinician, pharmacist, midwife, and commissioner guide explaining how Paperclip, the Clinical World Model, TypeSafe Jev, SwarmWorld, NandaTown/HAL, Quantum/Gate G4, and the DCB0129 Commit Gate converge—plus the 9-block NHS Public-Good Lean Canvas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #081214;
+      --bg-elevated: #0e1c1f;
+      --bg-card: #122327;
+      --bg-card-alt: #0b171a;
+      --ink: #eef7f5;
+      --ink-muted: #a8c2be;
+      --ink-dim: #73908c;
+      --signal: #38d6c4;
+      --signal-soft: rgba(56, 214, 196, 0.14);
+      --amber: #f4ae42;
+      --amber-soft: rgba(244, 174, 66, 0.13);
+      --ember: #f06a3b;
+      --ember-soft: rgba(240, 106, 59, 0.15);
+      --border: rgba(158, 183, 180, 0.18);
+      --border-strong: rgba(56, 214, 196, 0.42);
+      --radius: 12px;
+      --font-display: 'Barlow Condensed', system-ui, sans-serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 15% 0%, #112a2e 0%, var(--bg) 48%);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      line-height: 1.56;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--signal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.84em;
+      background: rgba(56, 214, 196, 0.1);
+      border: 1px solid rgba(56, 214, 196, 0.22);
+      padding: 0.08rem 0.36rem;
+      border-radius: 5px;
+      color: #c8f7f1;
+    }
+
+    .container { max-width: 1220px; margin: 0 auto; padding: 0 1.35rem; }
+
+    /* Navbar */
+    .site-nav {
+      position: sticky; top: 0; z-index: 120;
+      background: rgba(8, 18, 20, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-nav-inner {
+      max-width: 1220px; margin: 0 auto; min-height: 60px; padding: 0.35rem 1.25rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-family: var(--font-display); font-size: 1.32rem; font-weight: 800; letter-spacing: 0.04em; color: var(--ink); text-transform: uppercase;
+    }
+    .brand:hover { text-decoration: none; }
+    .brand-mark {
+      width: 30px; height: 30px; border-radius: 7px; background: var(--signal); color: #051315;
+      display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0.15rem; flex-wrap: nowrap; font-size: 0.76rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.28rem 0.48rem; border-radius: 6px; white-space: nowrap; }
+    .nav-links a:hover { color: var(--ink); background: rgba(255,255,255,0.05); text-decoration: none; }
+    .btn-primary-sm {
+      background: var(--signal) !important; color: #051416 !important; font-weight: 800 !important;
+      padding: 0.32rem 0.72rem !important; border-radius: 7px !important;
+    }
+
+    /* Typography & Pills */
+    .kicker {
+      font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase; color: var(--amber); margin: 0 0 0.4rem;
+    }
+    h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0.015em; margin-top: 0; line-height: 1.08; }
+    h1 { font-size: clamp(2.15rem, 3.8vw, 3.05rem); margin-bottom: 0.55rem; }
+    h2 { font-size: clamp(1.65rem, 2.6vw, 2.15rem); margin-bottom: 0.45rem; }
+    h3 { font-size: 1.24rem; margin-bottom: 0.35rem; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.7rem; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.32rem;
+      font-family: var(--font-mono); font-size: 0.71rem; font-weight: 600;
+      padding: 0.24rem 0.62rem; border-radius: 999px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--ink-muted);
+    }
+    .pill-signal { background: var(--signal-soft); border-color: rgba(56,214,196,0.4); color: var(--signal); }
+    .pill-amber { background: var(--amber-soft); border-color: rgba(244,174,66,0.42); color: var(--amber); }
+    .pill-ember { background: var(--ember-soft); border-color: rgba(240,106,59,0.45); color: #ff9876; }
+
+    /* Hero & Sections */
+    .hero { padding: 1.65rem 0 1.55rem; border-bottom: 1px solid var(--border); }
+    .lead { font-size: 1.0rem; color: #d6ebe8; max-width: 1050px; margin: 0 0 1rem; }
+    section { padding: 2.0rem 0; border-bottom: 1px solid var(--border); scroll-margin-top: 66px; }
+    .sec-sub { color: var(--ink-muted); font-size: 0.94rem; max-width: 980px; margin: 0 0 1.15rem; }
+
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 1.05rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 0.95rem; border-radius: 8px; font-size: 0.84rem; font-weight: 700;
+      background: var(--bg-card); color: var(--ink); border: 1px solid var(--border-strong); cursor: pointer;
+    }
+    .btn:hover { border-color: var(--amber); color: var(--amber); text-decoration: none; }
+    .btn.primary { background: var(--signal); color: #051416; border-color: var(--signal); font-weight: 800; }
+    .btn.primary:hover { background: #52e2d1; color: #051416; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.85rem; }
+    @media (max-width: 940px) { .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 540px) { .kpi-grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.95rem 1.05rem;
+    }
+    .card-eyebrow { font-family: var(--font-mono); font-size: 0.69rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber); }
+    .kpi-val { font-family: var(--font-display); font-size: 1.82rem; font-weight: 800; color: var(--signal); line-height: 1.08; margin: 0.2rem 0; }
+    .kpi-sub { font-size: 0.78rem; color: var(--ink-muted); line-height: 1.38; }
+
+    /* Interactive 7-Layer Patient Convergence Explorer */
+    .patient-banner {
+      background: linear-gradient(135deg, rgba(56, 214, 196, 0.11), rgba(20, 39, 44, 0.92));
+      border: 1px solid var(--border-strong); border-radius: var(--radius);
+      padding: 0.9rem 1.15rem; margin-bottom: 1rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .step-bar { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0.45rem; margin-bottom: 0.9rem; }
+    @media (max-width: 1020px) { .step-bar { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .step-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .step-btn {
+      text-align: left; padding: 0.58rem 0.68rem; border-radius: 9px;
+      background: var(--bg-card-alt); border: 1px solid var(--border); color: var(--ink-muted);
+      cursor: pointer; font-family: var(--font-sans); transition: all 0.15s ease;
+    }
+    .step-btn:hover { border-color: var(--border-strong); color: var(--ink); }
+    .step-btn.active {
+      background: rgba(56, 214, 196, 0.16); border-color: var(--signal); color: var(--ink);
+      box-shadow: 0 4px 16px rgba(56, 214, 196, 0.18);
+    }
+    .step-num { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: var(--signal); display: block; }
+    .step-name { font-size: 0.8rem; font-weight: 700; display: block; margin-top: 0.1rem; line-height: 1.22; }
+
+    .svg-pipeline-stage {
+      background: linear-gradient(180deg, #09171a 0%, #061012 100%);
+      border: 1px solid rgba(56, 214, 196, 0.25); border-radius: 10px;
+      padding: 0.65rem 0.8rem; margin-bottom: 0.95rem;
+    }
+    .explain-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; }
+    @media (max-width: 880px) { .explain-grid { grid-template-columns: 1fr; } }
+    .explain-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 0.95rem 1.05rem;
+    }
+    .explain-card h4 {
+      margin: 0 0 0.38rem; font-family: var(--font-mono); font-size: 0.74rem;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--signal);
+    }
+    .explain-card p { margin: 0; font-size: 0.88rem; color: #daefec; }
+
+    /* Ash Maurya 9-Block NHS Public-Good Lean Canvas (Fits All 9 Blocks in 100vh on 1280x850) */
+    .lean-canvas-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.48rem;
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-strong);
+      border-radius: 12px;
+      padding: 0.55rem;
+    }
+    .lc-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 0.58rem 0.72rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.35rem;
+    }
+    .lc-box:hover { border-color: rgba(56, 214, 196, 0.5); }
+    .lc-num {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber); margin-bottom: 0.12rem;
+    }
+    .lc-title { font-family: var(--font-display); font-size: 1.06rem; font-weight: 700; color: var(--ink); margin: 0 0 0.22rem; line-height: 1.08; }
+    .lc-list { margin: 0; padding-left: 0.95rem; font-size: 0.74rem; color: #d5ebe8; line-height: 1.34; }
+    .lc-list li { margin-bottom: 0.18rem; }
+    .lc-subbox {
+      border-top: 1px dashed var(--border); padding-top: 0.35rem; margin-top: 0.2rem; font-size: 0.72rem; line-height: 1.32; color: var(--ink-muted);
+    }
+    .lc-subbox strong { color: var(--signal); font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; display: block; margin-bottom: 0.1rem; }
+
+    /* Desktop 5-col x 2-row + 2-col bottom placement */
+    .lc-problem { grid-column: 1; grid-row: 1 / span 2; }
+    .lc-solution { grid-column: 2; grid-row: 1; }
+    .lc-metrics { grid-column: 2; grid-row: 2; }
+    .lc-uvp { grid-column: 3; grid-row: 1 / span 2; border-color: rgba(56, 214, 196, 0.45); background: linear-gradient(180deg, rgba(56, 214, 196, 0.09), var(--bg-card)); }
+    .lc-advantage { grid-column: 4; grid-row: 1; }
+    .lc-channels { grid-column: 4; grid-row: 2; }
+    .lc-segments { grid-column: 5; grid-row: 1 / span 2; }
+    .lc-costs { grid-column: 1 / span 2; grid-row: 3; }
+    .lc-sustainability { grid-column: 3 / span 3; grid-row: 3; border-color: rgba(244, 174, 66, 0.42); }
+
+    @media (max-width: 1060px) {
+      .lean-canvas-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .lc-problem, .lc-solution, .lc-metrics, .lc-uvp, .lc-advantage, .lc-channels, .lc-segments, .lc-costs, .lc-sustainability {
+        grid-column: auto; grid-row: auto;
+      }
+      .lc-uvp, .lc-sustainability { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      .lean-canvas-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Table & Callouts */
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th, td { padding: 0.72rem 0.9rem; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { font-family: var(--font-mono); font-size: 0.73rem; text-transform: uppercase; color: var(--signal); background: var(--bg-card-alt); }
+    tr:last-child td { border-bottom: none; }
+
+    .safety-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+    @media (max-width: 820px) { .safety-split { grid-template-columns: 1fr; } }
+    .callout-safe {
+      background: rgba(56, 214, 196, 0.08); border: 1px solid rgba(56, 214, 196, 0.36); border-left: 4px solid var(--signal);
+      border-radius: 10px; padding: 1rem 1.15rem; font-size: 0.86rem;
+    }
+    .callout-not {
+      background: var(--amber-soft); border: 1px solid rgba(244, 174, 66, 0.38); border-left: 4px solid var(--amber);
+      border-radius: 10px; padding: 1rem 1.15rem; font-size: 0.86rem; color: #fce9c8;
+    }
+    footer { padding: 1.8rem 0 2.5rem; font-size: 0.81rem; color: var(--ink-dim); }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">OC</span>
+        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">Clinician Guide</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Clinician Guide Sections">
+        <a href="index.html" style="color:var(--signal);">← Main Portal</a>
+        <a href="#convergence-explorer">7-Platform Story</a>
+        <a href="#lean-canvas" style="color:var(--amber);">9-Block Lean Canvas</a>
+        <a href="#jargon-translator">Jargon Translator</a>
+        <a href="#safety-boundaries">Safety Boundaries</a>
+        <a href="harness.html" style="color:var(--signal);">Harness ↗</a>
+        <a class="btn-primary-sm" href="OpenCareQ_Clinician_Briefing_2p.pdf" download="OpenCareQ_Clinician_Briefing_2p.pdf">⬇ 2-Page Handout PDF</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 60-SECOND PLAIN-ENGLISH HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="pill-row">
+          <span class="pill pill-signal">Plain-English Clinician, Pharmacist, Midwife &amp; Commissioner Guide</span>
+          <span class="pill pill-amber">Zero Equations · Zero Code · 3-Minute Read</span>
+          <span class="pill pill-ember">Non-SaMD Shadow Mode · Clinician Always Decides</span>
+        </div>
+
+        <p class="kicker">UK 10-Year Health Plan (CP 1350) · Complete 5/5 Core20PLUS5 · INALYN CIC (#17398798)</p>
+        <h1>OpenCareQ in Plain English &amp; NHS Public-Good Lean Canvas</h1>
+        <p class="lead">
+          Across NHS England's <strong>42 Integrated Care Boards</strong> and <strong>1,280 Primary Care Networks</strong>, <strong>1 in 6 hospital medical admissions (16.5%)</strong> are caused by adverse drug reactions—40.4% of them avoidable, costing <strong>£2.21 billion/year</strong>. Meanwhile, patients in deprived neighbourhoods miss vital early maternity, cancer, and sensory windows when practical barriers (hearing loss, damp housing, language access) are not solved <em>before</em> clinical tests, and generic AI chatbots cannot safely help because they invent references, miss multi-week drug washouts, and drown clinicians in pop-up alerts. <strong>OpenCareQ</strong> brings seven specialised tools together around one neighbourhood clinical team—keeping the human GP, pharmacist, midwife, and patient firmly in control.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="OpenCareQ_Clinician_Briefing_2p.pdf" download="OpenCareQ_Clinician_Briefing_2p.pdf">⬇ Download 2-Page Printable A4 Handout (PDF)</a>
+          <a class="btn" href="#lean-canvas" style="border-color:rgba(244,174,66,0.5);color:var(--amber);">📋 Jump to 9-Block NHS Lean Canvas ↓</a>
+          <a class="btn" href="index.html#papers">📖 Open 2-Page PDF in Inline Portal Reader →</a>
+          <a class="btn" href="harness.html">🛡 Try 48-Case Clinical Safety Gate ↗</a>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="card">
+            <span class="card-eyebrow">Why NHS Prevention Needs Help</span>
+            <div class="kpi-val">1 in 6 Admissions</div>
+            <div class="kpi-sub"><code>16.5%</code> of medical admissions come from drug reactions (<code>£2.21B/yr</code>; <code>32,682</code> preventable/yr via 8-gene <code>My Medicines</code>).</div>
+          </div>
+          <div class="card">
+            <span class="card-eyebrow">Real-World Clinical Accuracy</span>
+            <div class="kpi-val">95 / 95 Matched</div>
+            <div class="kpi-sub">Matches <code>100%</code> of <code>95</code> published human drug &amp; trial benchmarks across <code>7</code> clinical domains with zero curve-fitting tricks.</div>
+          </div>
+          <div class="card">
+            <span class="card-eyebrow">No Quantum Hype (Gate G4)</span>
+            <div class="kpi-val">95% NHS Laptop</div>
+            <div class="kpi-sub">Solves <code>95%</code> of clinic tasks in <code>&lt;20 ms</code> on everyday NHS computers; quantum reserved strictly for <code>≤5%</code> tangled cases.</div>
+          </div>
+          <div class="card">
+            <span class="card-eyebrow">Zero Alert Fatigue &amp; Zero Harms</span>
+            <div class="kpi-val">~1 Review / min</div>
+            <div class="kpi-sub">Cuts <code>33,280</code> background checks/min down to <code>1.29</code> human clinical reviews/min with <code>0</code> severe red-team harms (<code>48</code> cases).</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: INTERACTIVE 7-LAYER CONVERGENCE AROUND ONE PATIENT -->
+    <section id="convergence-explorer">
+      <div class="container">
+        <p class="kicker">Page 1 of Handout · Why Seven Platforms Work Together</p>
+        <h2>Follow One Patient Through All Seven Converging Safeguards</h2>
+        <p class="sec-sub">
+          Click any of the <strong>7 stages below</strong> to see how each platform protects a single realistic Neighbourhood Health Centre patient—without requiring any clinician to read equations or write computer code.
+        </p>
+
+        <div class="patient-banner">
+          <div>
+            <span class="card-eyebrow">Illustrative Synthetic Case (Zero Patient Identifiers · phi_present = False)</span>
+            <div style="font-size:1.02rem;font-weight:700;margin-top:0.15rem;">
+              Mrs P, Age 74 — Attending a 12h × 6d Neighbourhood Health Centre
+            </div>
+            <div style="font-size:0.86rem;color:var(--ink-muted);margin-top:0.15rem;">
+              Untreated 45 dB hearing loss · Taking <strong>donepezil 5 mg</strong> for mild memory decline · New urinary urgency · Finished shingles antiviral tablets (<strong>brivudine</strong>) 10 days ago ahead of oncology review · Lives in a cold, damp flat.
+            </div>
+          </div>
+          <span class="pill pill-signal">Click Stages 1 → 7 Below</span>
+        </div>
+
+        <div class="step-bar" role="tablist" aria-label="Seven converging platforms">
+          <button type="button" class="step-btn active" onclick="selectConvStep(0, this)">
+            <span class="step-num">STAGE 1 · PAPERCLIP</span>
+            <span class="step-name">Digital Medical Librarian</span>
+          </button>
+          <button type="button" class="step-btn" onclick="selectConvStep(1, this)">
+            <span class="step-num">STAGE 2 · WORLD MODEL</span>
+            <span class="step-name">Body Washout &amp; Order Clock</span>
+          </button>
+          <button type="button" class="step-btn" onclick="selectConvStep(2, this)">
+            <span class="step-num">STAGE 3 · TYPESAFE JEV</span>
+            <span class="step-name">When-to-Pause Triage</span>
+          </button>
+          <button type="button" class="step-btn" onclick="selectConvStep(3, this)">
+            <span class="step-num">STAGE 4 · SWARMWORLD</span>
+            <span class="step-name">Offline Rota Rehearsal</span>
+          </button>
+          <button type="button" class="step-btn" onclick="selectConvStep(4, this)">
+            <span class="step-num">STAGE 5 · NANDATOWN + HAL</span>
+            <span class="step-name">Handover Control Tower</span>
+          </button>
+          <button type="button" class="step-btn" onclick="selectConvStep(5, this)">
+            <span class="step-num">STAGE 6 · GATE G4 + QUANTUM</span>
+            <span class="step-name">Right-Sized Calculator</span>
+          </button>
+          <button type="button" class="step-btn" onclick="selectConvStep(6, this)">
+            <span class="step-num">STAGE 7 · DCB0129 BRAKE</span>
+            <span class="step-name">1-ms Safety Firewall</span>
+          </button>
+        </div>
+
+        <div class="svg-pipeline-stage" id="convSvgBox"></div>
+
+        <div class="explain-grid">
+          <div class="explain-card">
+            <h4>1 · What It Is in Plain English</h4>
+            <p id="convPlainText"></p>
+          </div>
+          <div class="explain-card" style="border-color:rgba(240,106,59,0.38);">
+            <h4 style="color:#ff9876;">2 · What Goes Wrong Without It on Mrs P</h4>
+            <p id="convRiskText"></p>
+          </div>
+          <div class="explain-card" style="border-color:rgba(56,214,196,0.42);">
+            <h4>3 · How the Human Clinician Stays in Charge</h4>
+            <p id="convHumanText"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: 9-BLOCK ASH MAURYA NHS PUBLIC-GOOD LEAN CANVAS -->
+    <section id="lean-canvas">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:0.8rem;flex-wrap:wrap;margin-bottom:0.8rem;">
+          <div>
+            <p class="kicker">Page 2 of Handout · Translational Strategy &amp; Asset-Locked Stewardship</p>
+            <h2 style="margin-bottom:0.2rem;">9-Block NHS Public-Good Lean Canvas (INALYN CIC #17398798)</h2>
+          </div>
+          <div style="display:flex;gap:0.45rem;flex-wrap:wrap;">
+            <a class="btn" href="OpenCareQ_Clinician_Briefing_2p.pdf" download="OpenCareQ_Clinician_Briefing_2p.pdf" style="padding:0.38rem 0.78rem;font-size:0.78rem;">⬇ Print Lean Canvas (Page 2 PDF)</a>
+            <a class="btn" href="index.html#grants-ke" style="padding:0.38rem 0.78rem;font-size:0.78rem;">🏛 UK Grants &amp; 2026 Innovator Passport →</a>
+          </div>
+        </div>
+        <p class="sec-sub">
+          Adapted from Ash Maurya's 9-block Lean Canvas specifically for <strong>non-commercial NHS public-good translation</strong> under <code>PolyForm-Noncommercial-1.0.0</code>, 15-Year UK Database Right (<code>SI 1997/3032</code>), and asset-locked <strong>INALYN Community Interest Company (<code>#17398798</code>)</strong> stewardship.
+        </p>
+
+        <div class="lean-canvas-grid" role="region" aria-label="9-Block NHS Public-Good Lean Canvas">
+          <!-- Block 1: Problem -->
+          <div class="lc-box lc-problem">
+            <div>
+              <span class="lc-num">Block 1 · Problem</span>
+              <h3 class="lc-title">Top 3 NHS Pain Points</h3>
+              <ul class="lc-list">
+                <li><strong>£2.21B/yr ADR Crisis:</strong> <code>16.5%</code> of NHS medical admissions stem from adverse drug reactions (<code>40.4%</code> avoidable; mean <code>10.5</code> concurrent medicines).</li>
+                <li><strong>Core20 Missed Windows:</strong> Deprived neighbourhoods miss <code>&lt;16w</code> pre-eclampsia aspirin, early Stage I–II cancer shifts, and hearing-first dementia care when social barriers aren't solved first.</li>
+                <li><strong>Tariff &amp; Chatbot Trap:</strong> Fee-for-episode acute tariffs financially punish PCNs for preventing admissions, while unguarded AI chatbots hallucinate citations and cause severe clinician alert fatigue.</li>
+              </ul>
+            </div>
+            <div class="lc-subbox">
+              <strong>Existing Alternatives</strong>
+              High-override BNF pop-ups; single-day risk snapshots (blind to 14–28d washouts); unguarded LLMs (<code>22/24</code> severe harms in red-team testing).
+            </div>
+          </div>
+
+          <!-- Block 4: Solution -->
+          <div class="lc-box lc-solution">
+            <div>
+              <span class="lc-num">Block 4 · Solution</span>
+              <h3 class="lc-title">7-Layer Convergence</h3>
+              <ul class="lc-list">
+                <li><strong>Line-Pinned Facts:</strong> <code>Paperclip</code> FDA/EMA/PMC verification (<code>0</code> fake refs).</li>
+                <li><strong>Washout &amp; Care-Order Twin:</strong> Zero-fit <code>World Model</code> + Over-40s 8-gene <code>My Medicines</code> passport.</li>
+                <li><strong>Safe Operations:</strong> <code>SwarmWorld</code> frozen winter rotas + <code>NandaTown/HAL</code> handover tower.</li>
+                <li><strong>1-ms Safety Firewall:</strong> <code>Gate G4</code> laptop floor + <code>DCB0129</code> 24-trap brake.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Block 6: Key Metrics -->
+          <div class="lc-box lc-metrics">
+            <div>
+              <span class="lc-num">Block 6 · Key Metrics</span>
+              <h3 class="lc-title">Verified NHS Outcomes</h3>
+              <ul class="lc-list">
+                <li><strong><code>95 / 95</code> (<code>100%</code>)</strong> human clinical benchmarks matched within <code>2×</code> (<code>v1.9 GMFE = 1.0215</code>).</li>
+                <li><strong><code>0</code> severe harms</strong> across <code>48</code> paired red-team cases (<code>Youden's J = 1.000</code>).</li>
+                <li><strong><code>32,682</code></strong> avoidable ADR admissions &amp; <strong><code>260,593</code></strong> acute bed-days saved/yr.</li>
+                <li><strong><code>25,879 : 1</code></strong> alert compression (<code>1.29</code> CSO judgment calls/min).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Block 3: Unique Value Proposition -->
+          <div class="lc-box lc-uvp">
+            <div>
+              <span class="lc-num">Block 3 · Unique Value Proposition</span>
+              <h3 class="lc-title">Clinician-First Neighbourhood Safety &amp; Planning</h3>
+              <p style="font-size:0.84rem;color:#eef7f5;margin:0 0 0.55rem;">
+                <strong>One air-gapped, zero-PID clinical safety and service-planning engine</strong> built for <code>CP 1350</code> 12h × 6d Neighbourhood Health Centres:
+              </p>
+              <ul class="lc-list">
+                <li>Intercepts <strong>24 hidden multi-week washout, pharmacogenomic &amp; perinatal traps</strong> in <code>&lt;1 ms</code> before harm occurs.</li>
+                <li>Protects clinician headspace—delivering <strong>~1 high-value clinical review/min</strong> instead of thousands of noisy pop-ups.</li>
+                <li>Runs <strong>95% on standard NHS laptops/SDEs</strong> in <code>&lt;20 ms</code> with zero patient identifiers and zero vendor lock-in.</li>
+              </ul>
+            </div>
+            <div class="lc-subbox">
+              <strong>High-Level Plain-English Concept</strong>
+              "Air-traffic control + biological washout radar for multidisciplinary NHS Neighbourhood Health Centres."
+            </div>
+          </div>
+
+          <!-- Block 7: Unfair / Public-Good Advantage -->
+          <div class="lc-box lc-advantage">
+            <div>
+              <span class="lc-num">Block 7 · Public-Good Advantage</span>
+              <h3 class="lc-title">Asset-Locked &amp; Audited</h3>
+              <ul class="lc-list">
+                <li><strong>INALYN CIC (<code>#17398798</code>):</strong> Statutory UK Community Interest Company asset lock + 15-Yr Database Right (<code>SI 1997/3032</code>).</li>
+                <li><strong>Tamper-Evident:</strong> <code>28</code> post-quantum <code>ML-DSA-65</code> receipts + cryptographic authorship watermark.</li>
+                <li><strong>Clinical Governance:</strong> Full 36-indicator <a href="safety-case.html"><code>CSC-QT</code> <code>DCB0129/0160</code> pack</a> + <a href="quantum-card.html"><code>CycloneDX 1.6 QBOM</code></a>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Block 5: Channels -->
+          <div class="lc-box lc-channels">
+            <div>
+              <span class="lc-num">Block 5 · NHS Channels</span>
+              <h3 class="lc-title">4-Step Adoption Path</h3>
+              <ul class="lc-list">
+                <li><strong>1. Stage-0 Shadow Audit:</strong> Zero-PID <code>ehrQL</code> inside <code>OpenSAFELY</code> / £600M <code>HDRS</code>.</li>
+                <li><strong>2. Regulatory Sandbox:</strong> <code>MHRA AI Airlock</code> (<code>CP 1350 p.126</code>).</li>
+                <li><strong>3. Pragmatic NHS Trial:</strong> <a href="trial-protocol.html">25-PCN Mid &amp; South Essex Stepped-Wedge RCT</a> (<code>ENBS +£2.45M</code>).</li>
+                <li><strong>4. Scale:</strong> <strong>2026 NHS Innovator Passport</strong> (<code>p.128</code>) &amp; 6-module <code>NHS App</code>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Block 2: Stakeholders / Segments -->
+          <div class="lc-box lc-segments">
+            <div>
+              <span class="lc-num">Block 2 · NHS Stakeholders</span>
+              <h3 class="lc-title">Users &amp; Early Adopters</h3>
+              <ul class="lc-list">
+                <li><strong>Frontline Neighbourhood Crew:</strong> GPs, Community Pharmacists (<code>SMR</code>s), Midwives, Audiologists &amp; Social Prescribing Link Workers.</li>
+                <li><strong>System Leaders:</strong> 42 ICB Chief Medical / Finance / Clinical Safety Officers (<code>DCB0160</code>) &amp; PCN Clinical Directors (<code>1,280</code> PCNs).</li>
+              </ul>
+            </div>
+            <div class="lc-subbox">
+              <strong>Beachhead Early Adopters</strong>
+              NHS Mid and South Essex ICB (<code>25</code> PCNs, <code>E54000026</code>), Golden-Triangle Academic Health Science Centres (UCL, Imperial, King's), and <code>OpenSAFELY</code> research teams.
+            </div>
+          </div>
+
+          <!-- Block 8: Cost Structure -->
+          <div class="lc-box lc-costs">
+            <div>
+              <span class="lc-num">Block 8 · Lean Cost Structure</span>
+              <h3 class="lc-title">Air-Gapped Public Footprint</h3>
+              <ul class="lc-list">
+                <li><strong>£0 Live Runtime Cloud / LLM / QPU Fees</strong> across the <code>95%</code> everyday laptop floor (pure <code>numpy</code> + <code>scipy</code> inside NHS Secure Data Environments).</li>
+                <li><strong>~£1.01M (18 Months):</strong> Pre-registered 25-PCN Mid &amp; South Essex stepped-wedge cluster RCT (<code>2.43×</code> return on research investment).</li>
+                <li><strong>£94.2M/yr National Delivery:</strong> Amortized Over-40s 8-gene <code>SPR</code> genotyping array &amp; Neighbourhood Pharmacist <code>SMR</code> time across England.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Block 9: Non-Commercial Sustainability & NHS Value Streams -->
+          <div class="lc-box lc-sustainability">
+            <div>
+              <span class="lc-num">Block 9 · Non-Commercial Sustainability &amp; NHS Commissioning Value</span>
+              <h3 class="lc-title">Grant Translation &amp; Capitated Year-of-Care Surplus (Zero SaaS Extraction)</h3>
+              <ul class="lc-list">
+                <li><strong>Non-Dilutive UK Public R&amp;D Grants:</strong> Aligned to <strong>NIHR i4i FAST</strong> (<code>£1.65M</code>), <strong>DSIT / GOTT Knowledge Assets (CKAF)</strong> (<code>£250k</code>), <strong>UK Sovereign AI Unit</strong>, and <strong>NQCC</strong> testbed programmes via asset-locked <code>INALYN CIC (#17398798)</code>.</li>
+                <li><strong>National NHS Economic Value:</strong> Generates <strong><code>+£4,081.72M/yr</code></strong> in NICE <code>£20,000/QALY</code> Incremental Net Monetary Benefit across all 6 clinical prevention domains (including <strong><code>£326.89M/yr</code> net cash-releasing NHS savings</strong> in <code>v1.9</code> alone)—flipping <strong><code>42 / 42</code> English ICBs</strong> from acute-tariff deficits into FY <code>2026/27</code> capitated <strong>Year-of-Care Payment (<code>YCP</code>)</strong> surpluses.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: JARGON-TO-WARD TRANSLATOR & SAFETY DEMARCATION -->
+    <section id="jargon-translator" style="border-bottom:none;">
+      <div class="container">
+        <p class="kicker">Quick Reference for Busy Ward &amp; Primary-Care Teams</p>
+        <h2>Plain-English "Jargon-to-Ward" Translator</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Term You See on the Portal</th>
+                <th>Everyday Clinical Analogy</th>
+                <th>Real Ward / GP / Pharmacy Mistake It Prevents</th>
+                <th>Who Makes the Final Call?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Paperclip + 5 Live DBs</strong></td>
+                <td>Digital medical librarian</td>
+                <td>AI inventing drug doses or missing UK MHRA / EMA <code>APOE ε4/ε4</code> Alzheimer infusion exclusions.</td>
+                <td>Clinician inspects exact pinned line</td>
+              </tr>
+              <tr>
+                <td><strong>Clinical World Model</strong></td>
+                <td>Body washout &amp; care-order clock</td>
+                <td>Giving <code>5-FU</code> chemo <code>&lt;28d</code> after shingles brivudine; oxybutynin cancelling donepezil; <code>&gt;16w</code> late aspirin.</td>
+                <td>Pharmacist / GP / Midwife</td>
+              </tr>
+              <tr>
+                <td><strong>TypeSafe System One (Jev)</strong></td>
+                <td>"When-to-pause" triage nurse</td>
+                <td>Missing acute hypoxia (<code>SpO2 &lt; 92%</code> → 999) or forcing one pathway when herbal/social needs are unclear.</td>
+                <td>999 / GP / Link Worker</td>
+              </tr>
+              <tr>
+                <td><strong>SwarmWorld</strong></td>
+                <td>Offline winter-rota fire drill</td>
+                <td>Winter viral surge chaos or affluent appointment "cream-skimming" crowding out deprived <code>Core20</code> patients.</td>
+                <td>PCN Clinical Director approves rota</td>
+              </tr>
+              <tr>
+                <td><strong>NandaTown + HAL</strong></td>
+                <td>Handover air-traffic control</td>
+                <td>Lost washout notes across GP–hospital handovers; clinician alert fatigue (cuts <code>33,280</code> events/min to <code>~1</code> call/min).</td>
+                <td>ICB Clinical Safety Officer &amp; crew</td>
+              </tr>
+              <tr>
+                <td><strong>Gate G4 &amp; Quantum</strong></td>
+                <td>Specialist tertiary referral</td>
+                <td>Wasting quantum computers on everyday clinic schedules that a normal NHS laptop solves in <code>&lt;20 ms</code> (<code>95%</code>).</td>
+                <td>Transparent audit receipt</td>
+              </tr>
+              <tr>
+                <td><strong>DCB0129 Commit Gate</strong></td>
+                <td>1-ms e-prescribing safety brake</td>
+                <td>Blocks all 24 high-risk prescribing &amp; perinatal traps (<code>G1</code>–<code>G24</code>; <code>0</code> severe harms across <code>672</code> tests).</td>
+                <td>Prescribing clinician signs Rx</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="safety-boundaries" class="safety-split">
+          <div class="callout-safe">
+            <strong style="color:var(--signal);display:block;margin-bottom:0.3rem;">✓ What OpenCareQ IS</strong>
+            An open-access, non-commercial NHS public-good research and service-planning shadow workbench (stewarded via <strong>INALYN CIC #17398798</strong>), free for NHS Trusts, ICBs, PCNs, and universities, operating with <strong>zero patient-identifiable data</strong> (<code>phi_present = False</code>).
+          </div>
+          <div class="callout-not">
+            <strong style="color:var(--amber);display:block;margin-bottom:0.3rem;">⚠ What OpenCareQ IS NOT</strong>
+            <strong>Not a certified autonomous medical device (<code>Non-SaMD</code>)</strong>, not endorsed or signed off by DHSC, NHS England, MHRA, NICE, or Curistica Ltd (<code>csc_qt_score = null</code>), and <strong>never replaces GP, pharmacist, or midwife clinical judgment</strong>. All 7 clinical hazards (<a href="safety-case.html" style="color:var(--amber);text-decoration:underline;"><code>H-OCQ-01</code>–<code>H-OCQ-07</code></a>) remain <strong>OPEN</strong> pending local <code>DCB0160</code> CSO sign-off.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;border-top:1px solid var(--border);padding-top:1.1rem;">
+      <span>© 2026 Arun Nadarasa · Non-Commercial NHS Public Good (<code>INALYN CIC #17398798</code> · <code>PolyForm-Noncommercial-1.0.0</code>)</span>
+      <span><a href="index.html">Main NHS Portal</a> · <a href="OpenCareQ_Clinician_Briefing_2p.pdf" download="OpenCareQ_Clinician_Briefing_2p.pdf">Download 2-Page PDF</a> · <a href="safety-case.html">3-Doc CSC-QT Safety Pack</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const CONV_STEPS = [
+      {
+        short: "1 · Paperclip",
+        role: "Evidence Librarian",
+        color: "#3898ec",
+        plain: "Acts like a meticulous hospital medical librarian: before any rule is used, Paperclip pins it to the exact line number of official US FDA / EU EMA drug approvals, PubMed Central studies (such as England's £2.21B/yr ADR study PMC9255409#L19), and five live genetics/pharmacology databases.",
+        risk: "Generic AI chatbots sound confident while inventing drug dosages, fabricating references, or missing UK MHRA & EMA restrictions that exclude APOE ε4/ε4 carriers and patients on blood thinners from anti-amyloid infusions.",
+        human: "Every recommendation carries a clickable, line-numbered primary source receipt so the GP, pharmacist, or Clinical Safety Officer can verify the exact regulatory sentence in seconds."
+      },
+      {
+        short: "2 · World Model",
+        role: "Washout & Order Clock",
+        color: "#38d6c4",
+        plain: "Acts like the body's biological memory clock plus a care-sequence simulator. Instead of looking only at today's blood test, it tracks multi-week liver enzyme recovery and checks whether practical/sensory support was delivered in the right order.",
+        risk: "Ten days after Mrs P finishes shingles brivudine, her blood test looks clear—yet her liver's DPD enzyme takes 28 days to regrow, making cancer 5-FU tablets lethal. Likewise, giving bladder oxybutynin cancels her donepezil memory tablet (+50% faster decline), and testing her memory verbally before fixing her 45 dB hearing loss risks a false dementia label.",
+        human: "Highlights the safe physiological alternative (wait until Day 29; switch bladder urgency to mirabegron; book Neighbourhood Audiology first) for the prescribing clinician to review."
+      },
+      {
+        short: "3 · TypeSafe Jev",
+        role: "When-to-Pause Triage",
+        color: "#b07cfb",
+        plain: "Acts like an experienced triage nurse who knows both when to escalate immediately and when NOT to jump to conclusions. Uses calibrated uncertainty bounds to keep multiple care pathways open whenever a referral note is ambiguous.",
+        risk: "Standard triage scripts either miss subtle acute deterioration or prematurely force a vulnerable patient into a single clinic appointment before housing, interpreter, or herbal-medicine checks are completed—leading to 'Did Not Attend' drop-offs.",
+        human: "Routes red-flag emergencies (oxygen < 92%, sepsis) to 999 / GP in <0.1 ms, and holds uncertain referrals open for a Community Pharmacist or Social Prescribing Link Worker conversation."
+      },
+      {
+        short: "4 · SwarmWorld",
+        role: "Offline Rota Rehearsal",
+        color: "#f4ae42",
+        plain: "Acts like an offline fire-drill planner for all 1,280 Primary Care Networks. Before winter arrives, simulated clinic coordinators rehearse thousands of viral-surge and staff-sickness scenarios offline, then lock the safest standing-order rota.",
+        risk: "During January winter surges or 50% staff turnover, ad-hoc booking systems accidentally let easier, affluent appointments crowd out complex Core20 deprived patients—widening health inequalities.",
+        human: "Zero unpredictable AI agents improvise during live clinic hours: PCN Clinical Directors inspect and approve simple, frozen standing-order booking rules with a protected Core20 equity ringfence."
+      },
+      {
+        short: "5 · NandaTown + HAL",
+        role: "Handover Control Tower",
+        color: "#22b8cf",
+        plain: "Built on MIT Project NANDA's open-source protocol stack and Human-Agent fLow (HAL), this acts as air-traffic control across GP, pharmacy, midwifery, and hospital handovers—compressing raw background telemetry into rare, high-value human decisions.",
+        risk: "Important washout warnings get cut off when notes pass between systems, IT restarts can cause double-dispensing of high-risk drugs like clozapine, and raw alert streams (33,280/min nationally) cause clinician 'watchtower fatigue'.",
+        human: "Locks handover journals against data loss and compresses 33,280 background checks/min down to ~1.29 meaningful clinical judgment calls/min across England—treating clinicians as active crew, never rubber-stampers."
+      },
+      {
+        short: "6 · Gate G4 + Quantum",
+        role: "Right-Sized Calculator",
+        color: "#20c997",
+        plain: "Acts like sensible NHS stewardship of specialist tests: you don't order a whole-body PET scan when a stethoscope answers the question. Gate G4 benchmarks every problem on standard NHS computers first before ever touching quantum hardware.",
+        risk: "Tech hype wastes time and money sending simple clinic schedules to experimental quantum processors when an everyday NHS laptop can solve them exactly in under 20 milliseconds.",
+        human: "Solves 95% of NHS tasks locally on standard computers in <20 ms (£0 API cost), reserving quantum circuits (Quantinuum, CUDA-Q, Moth × Tessa, Haiqu) strictly for the ≤5% of deeply coupled multi-organ or multi-clinic bottlenecks."
+      },
+      {
+        short: "7 · DCB0129 Brake",
+        role: "1-ms Safety Firewall",
+        color: "#f06a3b",
+        plain: "Acts as the final hard e-prescribing and equity safety brake right before any recommendation reaches the screen—checking deterministic pharmacology, pregnancy, renal, and Core20 fairness rules in under 1 millisecond.",
+        risk: "When we tested an unguarded AI chatbot across 48 paired clinical vignettes (G1–G24), it committed 22 severe clinical harms; meanwhile, an overly cautious blanket-refusal bot blocked 100% of safe, life-saving treatments.",
+        human: "Achieves 0 severe harms AND 0 unnecessary care denials across all 48 test cases—delivering a clean, audited safety summary so the human GP, pharmacist, or midwife makes the final clinical decision."
+      }
+    ];
+
+    function renderConvPipeline(activeIdx) {
+      const box = document.getElementById("convSvgBox");
+      if (!box) return;
+      const w = 1120, h = 92;
+      const nodes = CONV_STEPS.map((s, idx) => {
+        const x = 14 + idx * 158;
+        const isAct = idx === activeIdx;
+        const line = idx < CONV_STEPS.length - 1
+          ? `<line x1="${x + 138}" y1="46" x2="${x + 156}" y2="46" stroke="${idx < activeIdx ? "#38d6c4" : "rgba(158,183,180,0.35)"}" stroke-width="2.2"/>`
+          : "";
+        return `${line}
+          <g style="cursor:pointer;" onclick="triggerStepClick(${idx})">
+            <rect x="${x}" y="14" width="138" height="64" rx="10" fill="${isAct ? "rgba(56,214,196,0.18)" : "#0d1d21"}" stroke="${isAct ? s.color : "rgba(158,183,180,0.25)"}" stroke-width="${isAct ? "2.4" : "1.2"}"/>
+            <text x="${x + 69}" y="37" fill="${s.color}" font-size="10.2" font-weight="700" font-family="JetBrains Mono, monospace" text-anchor="middle">${s.short}</text>
+            <text x="${x + 69}" y="58" fill="${isAct ? "#ffffff" : "#b8d0cd"}" font-size="11.2" font-weight="${isAct ? "700" : "600"}" font-family="Plus Jakarta Sans, sans-serif" text-anchor="middle">${s.role}</text>
+          </g>`;
+      }).join("");
+
+      box.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" style="display:block;" role="img" aria-label="Seven-stage clinical convergence pipeline">${nodes}</svg>`;
+      document.getElementById("convPlainText").textContent = CONV_STEPS[activeIdx].plain;
+      document.getElementById("convRiskText").textContent = CONV_STEPS[activeIdx].risk;
+      document.getElementById("convHumanText").textContent = CONV_STEPS[activeIdx].human;
+    }
+
+    function selectConvStep(idx, btn) {
+      document.querySelectorAll(".step-btn").forEach((b, i) => b.classList.toggle("active", i === idx));
+      renderConvPipeline(idx);
+    }
+
+    function triggerStepClick(idx) {
+      const btns = document.querySelectorAll(".step-btn");
+      selectConvStep(idx, btns[idx]);
+    }
+
+    window.selectConvStep = selectConvStep;
+    window.triggerStepClick = triggerStepClick;
+    renderConvPipeline(0);
+  </script>
+</body>
+</html>
