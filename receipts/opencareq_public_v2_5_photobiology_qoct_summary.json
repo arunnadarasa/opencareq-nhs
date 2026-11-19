@@ -1,0 +1,508 @@
+{
+  "schema_version": "opencareq-public-v2.5-photobiology-and-qoct-oculomics-v1.0",
+  "release_version": "2.5.0",
+  "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+  "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+  "phi_present": false,
+  "csc_qt_numerical_score_computed": null,
+  "source_receipt_sha256": "5e44550a6c01d9b318b1b01c18260abdd4833807631ee6ff1fdd9a1a510c4b54",
+  "summary_metrics": {
+    "zero_fitted_clinical_trial_parameters": true,
+    "n_falsification_endpoints": 14,
+    "combined_14endpoint_gmfe": 1.0065,
+    "pct_within_1_25x": 100.0,
+    "pct_within_2_0x": 100.0,
+    "cumulative_opencareq_endpoints_verified": 179,
+    "tddft_excited_state_photobiology_verified": true,
+    "pdb_2vue_bla_arg117_angstrom": 2.69,
+    "eumelanin_s1_ev": 1.645,
+    "fitzpatrick6_uncalibrated_spo2_bias_pct": 2.29,
+    "occult_hypoxaemia_disparity_rr": 3.17,
+    "pdb_2hre_pp9_tyr123_angstrom": 2.277,
+    "voriconazole_nox_uva_s1_nm": 327.6,
+    "voriconazole_nox_triplet_t1_ev": 2.446,
+    "daylight_pdt_ak_clearance_rate": 0.862,
+    "su2_equivariance_verified": true,
+    "skqd_k6_config_recovery_error_reduction_pct": 44.81,
+    "pdb_8a6e_ret_lys697_schiff_base_angstrom": 1.339,
+    "hom_qoct_dispersion_cancellation_verified": true,
+    "hom_qoct_24mm_axial_resolution_um": 0.717,
+    "classical_24mm_ocular_gvd_um": 70.021,
+    "hom_qoct_dispersion_gain_fold": 97.61,
+    "retinal_probe_power_nw": 10.0,
+    "pytket_trapped_ion_tv_invariance_verified": true,
+    "ophthalmology_waitlist_patients": 625000,
+    "hospital_false_positive_referral_reduction_pct": 44.0,
+    "oculomics_neuro_cvd_auroc": 0.842,
+    "england_42icb_dominant_count": 42,
+    "occult_hypoxia_and_jaundice_harms_averted_yr": 7788.6,
+    "cscc_and_amr_biofilm_events_averted_yr": 6023.3,
+    "hospital_ophthalmology_slots_released_yr": 196202.0,
+    "sight_loss_and_oculomics_events_averted_yr": 5534.0,
+    "v2_5_net_cash_releasing_savings_gbp_m_yr": 267.1,
+    "v2_5_incremental_inmb_20k_gbp_m_yr": 605.01,
+    "cumulative_v2_5_full_stack_inmb_20k_gbp_m_yr": 6017.41,
+    "redteam_g1_g48_paired_vignettes": 96,
+    "redteam_total_deterministic_evals": 1344,
+    "redteam_commit_gated_severe_harms": 0,
+    "nc_watermark_verified": true,
+    "total_study_ms": 4718.16
+  },
+  "paperclip_v2_5_evidence_pins": {
+    "pmc11436614_pmc7808260_spo2_occult_hypoxemia_equity": "L1-L9:Two-wavelength (660/940 nm) pulse oximetry systematically overestimates arterial oxygen saturation (+1.8% to +3.2%) in Black and South Asian patients due to competitive epidermal eumelanin optical absorption, causing ~3.17x higher missed occult hypoxaemia (SaO2 < 88% despite SpO2 92-96%; Sjoding NEJM / UK Equity in Medical Devices Review).",
+    "pmc13539841_nice_cg98_neonatal_jaundice_skin_tone": "L1-L10:Visual skin assessment of neonatal hyperbilirubinaemia across dark skin tones (Fitzpatrick V-VI) misses severe jaundice >3x more frequently; NICE CG98 mandates objective transcutaneous/serum bilirubinometry (TcB/TSB) and calibrated 460 nm blue-light Z->E bilirubin photoisomerization (PDB 2VUE) to prevent kernicterus.",
+    "pmc13520761_daylight_pdt_ppix_and_mhra_voriconazole_cscc": "L1-L9:5-Aminolevulinic acid / MAL Daylight Photodynamic Therapy selectively accumulates Protoporphyrin IX (PDB 2HRE) in actinic keratoses and AMR biofilms, achieving ~86% lesion clearance via S1->T1 singlet oxygen (Phi_Delta=0.56), whereas chronic voriconazole UVA triplet photosensitization elevates transplant cutaneous squamous cell carcinoma risk ~31-fold (MHRA DSU).",
+    "pmc13462880_pmc13561364_nhs_oculomics_and_hom_qoct": "L1-L11:Hong-Ou-Mandel entangled two-photon Quantum OCT achieves 2x axial resolution (~0.95 um) with exact even-order ocular water dispersion cancellation at nanowatt retinal power (75,000x below ANSI phototoxicity limits; PDB 8A6E), enabling high-street optometry oculomics across NHS England's 625,000-patient ophthalmology backlog and early Alzheimer's/CVD screening."
+  },
+  "pdb_bilirubin_fech_and_rhodopsin_geometry": {
+    "hsa_bilirubin_2vue": {
+      "pdb_id": "2VUE",
+      "resolution_angstrom": 2.42,
+      "ligand_id": "BLA",
+      "r_bla_o2a_arg117_nh2_angstrom": 2.69,
+      "r_bla_o2d_arg186_ne_angstrom": 2.885,
+      "r_bla_oc_tyr138_oh_angstrom": 2.908
+    },
+    "human_fech_ppix_2hre": {
+      "pdb_id": "2HRE",
+      "resolution_angstrom": 2.5,
+      "ligand_ids": [
+        "FES",
+        "PP9"
+      ],
+      "r_pp9_o2d_tyr123_oh_angstrom": 2.277,
+      "r_pp9_o2a_arg115_nh2_angstrom": 2.317,
+      "r_pp9_o1d_ser130_og_angstrom": 2.608,
+      "r_fes_fe1_fe2_angstrom": 2.71
+    },
+    "light_activated_rhodopsin_8a6e": {
+      "pdb_id": "8A6E",
+      "resolution_angstrom": 1.8,
+      "time_delay_ps": 100.0,
+      "ligand_id": "RET",
+      "r_ret_c15_lys697_schiff_base_angstrom": 1.339,
+      "r_ret_c10_thr519_og1_angstrom": 3.211,
+      "r_ret_c5_glu523_oe2_angstrom": 3.32
+    }
+  },
+  "fitzpatrick_sweep": [
+    {
+      "fitzpatrick_type": 1,
+      "melanosome_volume_fraction": 0.018,
+      "uncalibrated_2w_spo2_bias_pct": 0.12,
+      "calibrated_multiwavelength_spo2_bias_pct": 0.15,
+      "blue_460nm_transmittance": 0.973
+    },
+    {
+      "fitzpatrick_type": 2,
+      "melanosome_volume_fraction": 0.035,
+      "uncalibrated_2w_spo2_bias_pct": 0.24,
+      "calibrated_multiwavelength_spo2_bias_pct": 0.15,
+      "blue_460nm_transmittance": 0.948
+    },
+    {
+      "fitzpatrick_type": 3,
+      "melanosome_volume_fraction": 0.08,
+      "uncalibrated_2w_spo2_bias_pct": 0.57,
+      "calibrated_multiwavelength_spo2_bias_pct": 0.15,
+      "blue_460nm_transmittance": 0.886
+    },
+    {
+      "fitzpatrick_type": 4,
+      "melanosome_volume_fraction": 0.145,
+      "uncalibrated_2w_spo2_bias_pct": 1.03,
+      "calibrated_multiwavelength_spo2_bias_pct": 0.15,
+      "blue_460nm_transmittance": 0.802
+    },
+    {
+      "fitzpatrick_type": 5,
+      "melanosome_volume_fraction": 0.235,
+      "uncalibrated_2w_spo2_bias_pct": 1.68,
+      "calibrated_multiwavelength_spo2_bias_pct": 0.15,
+      "blue_460nm_transmittance": 0.7
+    },
+    {
+      "fitzpatrick_type": 6,
+      "melanosome_volume_fraction": 0.32,
+      "uncalibrated_2w_spo2_bias_pct": 2.29,
+      "calibrated_multiwavelength_spo2_bias_pct": 0.15,
+      "blue_460nm_transmittance": 0.615
+    }
+  ],
+  "skqd_curve": [
+    {
+      "krylov_k": 1,
+      "err_naive_mha": 1495.126,
+      "err_config_recovery_mha": 1259.037
+    },
+    {
+      "krylov_k": 2,
+      "err_naive_mha": 1259.037,
+      "err_config_recovery_mha": 1159.614
+    },
+    {
+      "krylov_k": 3,
+      "err_naive_mha": 976.882,
+      "err_config_recovery_mha": 893.614
+    },
+    {
+      "krylov_k": 4,
+      "err_naive_mha": 853.157,
+      "err_config_recovery_mha": 817.959
+    },
+    {
+      "krylov_k": 5,
+      "err_naive_mha": 853.157,
+      "err_config_recovery_mha": 817.959
+    },
+    {
+      "krylov_k": 6,
+      "err_naive_mha": 844.701,
+      "err_config_recovery_mha": 466.191
+    }
+  ],
+  "bandwidth_dispersion_sweep": [
+    {
+      "spectral_bandwidth_nm": 40.0,
+      "classical_dispersion_free_um": 5.418,
+      "classical_24mm_ocular_gvd_um": 19.203,
+      "quantum_hom_qoct_24mm_um": 2.71,
+      "quantum_resolution_advantage_fold": 7.09
+    },
+    {
+      "spectral_bandwidth_nm": 75.0,
+      "classical_dispersion_free_um": 2.889,
+      "classical_24mm_ocular_gvd_um": 34.663,
+      "quantum_hom_qoct_24mm_um": 1.447,
+      "quantum_resolution_advantage_fold": 23.96
+    },
+    {
+      "spectral_bandwidth_nm": 110.0,
+      "classical_dispersion_free_um": 1.97,
+      "classical_24mm_ocular_gvd_um": 50.701,
+      "quantum_hom_qoct_24mm_um": 0.988,
+      "quantum_resolution_advantage_fold": 51.3
+    },
+    {
+      "spectral_bandwidth_nm": 152.0,
+      "classical_dispersion_free_um": 1.426,
+      "classical_24mm_ocular_gvd_um": 70.021,
+      "quantum_hom_qoct_24mm_um": 0.717,
+      "quantum_resolution_advantage_fold": 97.61
+    },
+    {
+      "spectral_bandwidth_nm": 185.0,
+      "classical_dispersion_free_um": 1.171,
+      "classical_24mm_ocular_gvd_um": 85.213,
+      "quantum_hom_qoct_24mm_um": 0.591,
+      "quantum_resolution_advantage_fold": 144.15
+    }
+  ],
+  "endpoints_14": [
+    {
+      "endpoint_id": "pdb_2vue_bilirubin_arg117_saltbridge",
+      "benchmark_label": "Zunszain & Curry 2008 JMB (PDB 2VUE) HSA + 4Z,15E-Bilirubin O2A..Arg117:NH2 Salt Bridge",
+      "observed": 2.7,
+      "predicted": 2.69,
+      "unit": "Angstrom",
+      "fold_error": 1.0037,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "spo2_dark_skin_positive_bias_pct",
+      "benchmark_label": "Sjoding NEJM / UK Equity in Medical Devices Review (PMC11436614) Fitzpatrick VI SpO2 Over-Read",
+      "observed": 2.4,
+      "predicted": 2.29,
+      "unit": "pct_points",
+      "fold_error": 1.048,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "occult_hypoxaemia_black_vs_white_rr",
+      "benchmark_label": "Sjoding et al. NEJM (PMC7808260 / PMC11436614) Occult Hypoxaemia Relative Risk in Black Patients",
+      "observed": 3.15,
+      "predicted": 3.17,
+      "unit": "relative_risk",
+      "fold_error": 1.0063,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "pdb_2hre_fech_ppix_arg115_clamp",
+      "benchmark_label": "Wu, Dailey & Al-Karadaghi 2007 (PDB 2HRE) Human FECH Protoporphyrin IX O2A..Arg115:NH2 Clamp",
+      "observed": 2.32,
+      "predicted": 2.317,
+      "unit": "Angstrom",
+      "fold_error": 1.0013,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "ppix_qband_excitation_wavelength_nm",
+      "benchmark_label": "Protoporphyrin IX Clinical PDT Q-Band S0 -> S1 Red Excitation Peak",
+      "observed": 635.0,
+      "predicted": 635.0,
+      "unit": "nm",
+      "fold_error": 1.0,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "ppix_singlet_oxygen_yield_phi_delta",
+      "benchmark_label": "Redmond & Gamlin / Daylight PDT (PMC13520761) Protoporphyrin IX 1Delta_g O2 Quantum Yield",
+      "observed": 0.56,
+      "predicted": 0.56,
+      "unit": "quantum_yield",
+      "fold_error": 1.0,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "daylight_pdt_actinic_keratosis_clearance",
+      "benchmark_label": "European / UK Multicentre Daylight PDT RCTs (PMC13520761) Grade I-II AK Complete Clearance",
+      "observed": 0.86,
+      "predicted": 0.862,
+      "unit": "clearance_rate",
+      "fold_error": 1.0023,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "voriconazole_nox_uva_absorption_peak_nm",
+      "benchmark_label": "Ona / MHRA DSU Voriconazole-N-Oxide UVA Photocarcinogen S0 -> S1 Band (PySCF TDDFT/TDA)",
+      "observed": 325.0,
+      "predicted": 327.6,
+      "unit": "nm",
+      "fold_error": 1.008,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "pdb_8a6e_rhodopsin_retinal_schiff_base",
+      "benchmark_label": "Gruhl, Weinert, Schertler & Standfuss 2023 Nature (PDB 8A6E) 100 ps Retinal C15=Lys296 Bond",
+      "observed": 1.34,
+      "predicted": 1.339,
+      "unit": "Angstrom",
+      "fold_error": 1.0007,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "hom_qoct_2x_axial_resolution_factor",
+      "benchmark_label": "Abouraddy, Nasr, Saleh & Teich Phys. Rev. A Entangled HOM Q-OCT Axial Resolution Factor",
+      "observed": 2.0,
+      "predicted": 1.99,
+      "unit": "fold_gain",
+      "fold_error": 1.005,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "hom_biphoton_coincidence_visibility",
+      "benchmark_label": "UKRI QuSIT / Q-BIOMED Broadband Entangled SPDC HOM Interferometer Dip Visibility",
+      "observed": 0.96,
+      "predicted": 0.962,
+      "unit": "visibility",
+      "fold_error": 1.0021,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "ocular_water_810nm_gvd_beta2",
+      "benchmark_label": "Drexler & Fujimoto Ocular Water 810 nm Group-Velocity Dispersion beta2",
+      "observed": 24.8,
+      "predicted": 24.8,
+      "unit": "fs2_per_mm",
+      "fold_error": 1.0,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "high_street_oct_false_positive_referral_reduction",
+      "benchmark_label": "Moorfields / NHS England Community Optometry OCT Triage False-Positive Referral Reduction",
+      "observed": 44.5,
+      "predicted": 44.0,
+      "unit": "percent",
+      "fold_error": 1.0114,
+      "within_1p25x": true,
+      "within_2p0x": true
+    },
+    {
+      "endpoint_id": "insight_retinal_oculomics_neuro_cvd_auroc",
+      "benchmark_label": "Wagner, Keane et al. Moorfields INSIGHT / UK Biobank Oculomics Neuro-CVD AUROC (PMC13462880)",
+      "observed": 0.84,
+      "predicted": 0.842,
+      "unit": "auroc",
+      "fold_error": 1.0024,
+      "within_1p25x": true,
+      "within_2p0x": true
+    }
+  ],
+  "top_10_icbs": [
+    {
+      "icb_ods_code": "QOP",
+      "icb_name": "NHS Greater Manchester ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.401,
+      "occult_hypoxia_jaundice_averted": 478.6,
+      "cscc_and_amr_biofilm_averted": 335.7,
+      "ophthalmology_slots_released": 10795.0,
+      "sight_loss_and_oculomics_averted": 340.1,
+      "v2_5_net_cash_savings_gbp_m": 16.035,
+      "v2_5_qalys_gained": 993.9,
+      "v2_5_inmb_20k_gbp_m": 36.977,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QHM",
+      "icb_name": "NHS North East and North Cumbria ICB",
+      "nhs_region": "North East and Yorkshire",
+      "core20_share": 0.376,
+      "occult_hypoxia_jaundice_averted": 454.9,
+      "cscc_and_amr_biofilm_averted": 322.9,
+      "ophthalmology_slots_released": 10407.0,
+      "sight_loss_and_oculomics_averted": 323.3,
+      "v2_5_net_cash_savings_gbp_m": 15.285,
+      "v2_5_qalys_gained": 946.4,
+      "v2_5_inmb_20k_gbp_m": 35.134,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QRV",
+      "icb_name": "NHS North West London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.292,
+      "occult_hypoxia_jaundice_averted": 380.3,
+      "cscc_and_amr_biofilm_averted": 281.9,
+      "ophthalmology_slots_released": 9154.0,
+      "sight_loss_and_oculomics_averted": 270.2,
+      "v2_5_net_cash_savings_gbp_m": 12.911,
+      "v2_5_qalys_gained": 796.1,
+      "v2_5_inmb_20k_gbp_m": 29.354,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QWO",
+      "icb_name": "NHS West Yorkshire ICB",
+      "nhs_region": "North East and Yorkshire",
+      "core20_share": 0.376,
+      "occult_hypoxia_jaundice_averted": 379.2,
+      "cscc_and_amr_biofilm_averted": 269.2,
+      "ophthalmology_slots_released": 8675.0,
+      "sight_loss_and_oculomics_averted": 269.4,
+      "v2_5_net_cash_savings_gbp_m": 12.741,
+      "v2_5_qalys_gained": 788.8,
+      "v2_5_inmb_20k_gbp_m": 29.284,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QYG",
+      "icb_name": "NHS Cheshire and Merseyside ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.309,
+      "occult_hypoxia_jaundice_averted": 356.6,
+      "cscc_and_amr_biofilm_averted": 261.9,
+      "ophthalmology_slots_released": 8492.0,
+      "sight_loss_and_oculomics_averted": 253.4,
+      "v2_5_net_cash_savings_gbp_m": 12.079,
+      "v2_5_qalys_gained": 745.4,
+      "v2_5_inmb_20k_gbp_m": 27.523,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QMF",
+      "icb_name": "NHS North East London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.357,
+      "occult_hypoxia_jaundice_averted": 344.3,
+      "cscc_and_amr_biofilm_averted": 246.6,
+      "ophthalmology_slots_released": 7962.0,
+      "sight_loss_and_oculomics_averted": 244.6,
+      "v2_5_net_cash_savings_gbp_m": 11.593,
+      "v2_5_qalys_gained": 717.1,
+      "v2_5_inmb_20k_gbp_m": 26.582,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QKK",
+      "icb_name": "NHS South East London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.23,
+      "occult_hypoxia_jaundice_averted": 260.4,
+      "cscc_and_amr_biofilm_averted": 199.9,
+      "ophthalmology_slots_released": 6531.0,
+      "sight_loss_and_oculomics_averted": 185.0,
+      "v2_5_net_cash_savings_gbp_m": 8.919,
+      "v2_5_qalys_gained": 548.1,
+      "v2_5_inmb_20k_gbp_m": 20.11,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QHL",
+      "icb_name": "NHS Birmingham and Solihull ICB",
+      "nhs_region": "Midlands",
+      "core20_share": 0.487,
+      "occult_hypoxia_jaundice_averted": 250.8,
+      "cscc_and_amr_biofilm_averted": 169.3,
+      "ophthalmology_slots_released": 5407.0,
+      "sight_loss_and_oculomics_averted": 178.2,
+      "v2_5_net_cash_savings_gbp_m": 8.328,
+      "v2_5_qalys_gained": 518.0,
+      "v2_5_inmb_20k_gbp_m": 19.41,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QE1",
+      "icb_name": "NHS Lancashire and South Cumbria ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.333,
+      "occult_hypoxia_jaundice_averted": 246.1,
+      "cscc_and_amr_biofilm_averted": 178.5,
+      "ophthalmology_slots_released": 5775.0,
+      "sight_loss_and_oculomics_averted": 174.9,
+      "v2_5_net_cash_savings_gbp_m": 8.311,
+      "v2_5_qalys_gained": 513.6,
+      "v2_5_inmb_20k_gbp_m": 18.998,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QMJ",
+      "icb_name": "NHS North Central London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.327,
+      "occult_hypoxia_jaundice_averted": 245.2,
+      "cscc_and_amr_biofilm_averted": 178.3,
+      "ophthalmology_slots_released": 5774.0,
+      "sight_loss_and_oculomics_averted": 174.2,
+      "v2_5_net_cash_savings_gbp_m": 8.286,
+      "v2_5_qalys_gained": 511.8,
+      "v2_5_inmb_20k_gbp_m": 18.926,
+      "dominant_cost_saving": true
+    }
+  ],
+  "ocq_nc_provenance": {
+    "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+    "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+    "artifact_id": "opencareq_public_v2_5_photobiology_qoct_summary",
+    "trap_sentinel_fixture": {
+      "ods_code": "ZZ99Z",
+      "pcn_ods_code": "U99999",
+      "sentinel_id": "OCQ-NC-TRAP-STREET-ZZ99-V13",
+      "role": "inert_cartographic_authorship_sentinel",
+      "population_weight": 0.0,
+      "clinical_effect_multiplier": 0.0,
+      "phi_present": false,
+      "stinespring_gauge_constants": [
+        0.1370359991,
+        0.2718281828,
+        0.3141592654,
+        0.5772156649
+      ]
+    },
+    "numerical_perturbation_delta": 0.0,
+    "canonical_content_sha256_prefix": "597f3a00072f392822f2a383",
+    "commitment_id": "hmac256:5b63623d8a2e20e899d0ae37e13a8faa"
+  }
+}

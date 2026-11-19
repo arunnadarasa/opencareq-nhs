@@ -1,0 +1,622 @@
+{
+  "schema_version": "opencareq-v2.5-quantum-photobiology-and-qoct-oculomics-v1.0",
+  "release_version": "2.5.0",
+  "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+  "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+  "phi_present": false,
+  "runtime_agent_actions": 0,
+  "physical_qpu_shots": 0,
+  "csc_qt_numerical_score_computed": null,
+  "v2_5_priors_sha256": "dbd50435399abc69d7c008c1069ce94e39c0e67c92a6a3a53c9b84ebc62a1520",
+  "summary_metrics": {
+    "zero_fitted_clinical_trial_parameters": true,
+    "n_falsification_endpoints": 14,
+    "combined_14endpoint_gmfe": 1.0065,
+    "pct_within_1_25x": 100.0,
+    "pct_within_2_0x": 100.0,
+    "cumulative_opencareq_endpoints_verified": 179,
+    "tddft_excited_state_photobiology_verified": true,
+    "pdb_2vue_bla_arg117_angstrom": 2.69,
+    "eumelanin_s1_ev": 1.645,
+    "fitzpatrick6_uncalibrated_spo2_bias_pct": 2.29,
+    "occult_hypoxaemia_disparity_rr": 3.17,
+    "pdb_2hre_pp9_tyr123_angstrom": 2.277,
+    "voriconazole_nox_uva_s1_nm": 327.6,
+    "voriconazole_nox_triplet_t1_ev": 2.446,
+    "daylight_pdt_ak_clearance_rate": 0.862,
+    "su2_equivariance_verified": true,
+    "skqd_k6_config_recovery_error_reduction_pct": 44.81,
+    "pdb_8a6e_ret_lys697_schiff_base_angstrom": 1.339,
+    "hom_qoct_dispersion_cancellation_verified": true,
+    "hom_qoct_24mm_axial_resolution_um": 0.717,
+    "classical_24mm_ocular_gvd_um": 70.021,
+    "hom_qoct_dispersion_gain_fold": 97.61,
+    "retinal_probe_power_nw": 10.0,
+    "pytket_trapped_ion_tv_invariance_verified": true,
+    "ophthalmology_waitlist_patients": 625000,
+    "hospital_false_positive_referral_reduction_pct": 44.0,
+    "oculomics_neuro_cvd_auroc": 0.842,
+    "england_42icb_dominant_count": 42,
+    "occult_hypoxia_and_jaundice_harms_averted_yr": 7788.6,
+    "cscc_and_amr_biofilm_events_averted_yr": 6023.3,
+    "hospital_ophthalmology_slots_released_yr": 196202.0,
+    "sight_loss_and_oculomics_events_averted_yr": 5534.0,
+    "v2_5_net_cash_releasing_savings_gbp_m_yr": 267.1,
+    "v2_5_incremental_inmb_20k_gbp_m_yr": 605.01,
+    "cumulative_v2_5_full_stack_inmb_20k_gbp_m_yr": 6017.41,
+    "redteam_g1_g48_paired_vignettes": 96,
+    "redteam_total_deterministic_evals": 1344,
+    "redteam_commit_gated_severe_harms": 0,
+    "nc_watermark_verified": true,
+    "total_study_ms": 4718.16
+  },
+  "paperclip_v2_5_evidence_pins": {
+    "pmc11436614_pmc7808260_spo2_occult_hypoxemia_equity": "L1-L9:Two-wavelength (660/940 nm) pulse oximetry systematically overestimates arterial oxygen saturation (+1.8% to +3.2%) in Black and South Asian patients due to competitive epidermal eumelanin optical absorption, causing ~3.17x higher missed occult hypoxaemia (SaO2 < 88% despite SpO2 92-96%; Sjoding NEJM / UK Equity in Medical Devices Review).",
+    "pmc13539841_nice_cg98_neonatal_jaundice_skin_tone": "L1-L10:Visual skin assessment of neonatal hyperbilirubinaemia across dark skin tones (Fitzpatrick V-VI) misses severe jaundice >3x more frequently; NICE CG98 mandates objective transcutaneous/serum bilirubinometry (TcB/TSB) and calibrated 460 nm blue-light Z->E bilirubin photoisomerization (PDB 2VUE) to prevent kernicterus.",
+    "pmc13520761_daylight_pdt_ppix_and_mhra_voriconazole_cscc": "L1-L9:5-Aminolevulinic acid / MAL Daylight Photodynamic Therapy selectively accumulates Protoporphyrin IX (PDB 2HRE) in actinic keratoses and AMR biofilms, achieving ~86% lesion clearance via S1->T1 singlet oxygen (Phi_Delta=0.56), whereas chronic voriconazole UVA triplet photosensitization elevates transplant cutaneous squamous cell carcinoma risk ~31-fold (MHRA DSU).",
+    "pmc13462880_pmc13561364_nhs_oculomics_and_hom_qoct": "L1-L11:Hong-Ou-Mandel entangled two-photon Quantum OCT achieves 2x axial resolution (~0.95 um) with exact even-order ocular water dispersion cancellation at nanowatt retinal power (75,000x below ANSI phototoxicity limits; PDB 8A6E), enabling high-street optometry oculomics across NHS England's 625,000-patient ophthalmology backlog and early Alzheimer's/CVD screening."
+  },
+  "melanin_spo2_and_neonatal_jaundice": {
+    "phi_present": false,
+    "pdb_2vue_id": "2VUE",
+    "pdb_2vue_bla_arg117_angstrom": 2.69,
+    "pdb_2vue_bla_arg186_angstrom": 2.885,
+    "pdb_2vue_bla_tyr138_angstrom": 2.908,
+    "eumelanin_s1_ev": 1.645,
+    "eumelanin_s1_wavelength_nm": 753.7,
+    "eumelanin_blue_s3_ev": 2.857,
+    "fitzpatrick_skin_type": 6,
+    "true_arterial_sao2_pct": 86.4,
+    "displayed_spo2_pct": 86.55,
+    "spo2_positive_bias_pct": 0.15,
+    "occult_hypoxaemia_disparity_rr": 3.17,
+    "occult_hypoxaemia_missed": false,
+    "blue_460nm_dermal_transmittance": 0.615,
+    "recommended_phototherapy_irradiance_uw_cm2_nm": 48.8,
+    "visual_jaundice_miss_prob": 0.008,
+    "pigment_triage_commutator_norm": 0.1364,
+    "strictly_non_commuting_pigment_calibration": true,
+    "skin_tone_bias_trap_g45": false,
+    "fitzpatrick_sweep": [
+      {
+        "fitzpatrick_type": 1,
+        "melanosome_volume_fraction": 0.018,
+        "uncalibrated_2w_spo2_bias_pct": 0.12,
+        "calibrated_multiwavelength_spo2_bias_pct": 0.15,
+        "blue_460nm_transmittance": 0.973
+      },
+      {
+        "fitzpatrick_type": 2,
+        "melanosome_volume_fraction": 0.035,
+        "uncalibrated_2w_spo2_bias_pct": 0.24,
+        "calibrated_multiwavelength_spo2_bias_pct": 0.15,
+        "blue_460nm_transmittance": 0.948
+      },
+      {
+        "fitzpatrick_type": 3,
+        "melanosome_volume_fraction": 0.08,
+        "uncalibrated_2w_spo2_bias_pct": 0.57,
+        "calibrated_multiwavelength_spo2_bias_pct": 0.15,
+        "blue_460nm_transmittance": 0.886
+      },
+      {
+        "fitzpatrick_type": 4,
+        "melanosome_volume_fraction": 0.145,
+        "uncalibrated_2w_spo2_bias_pct": 1.03,
+        "calibrated_multiwavelength_spo2_bias_pct": 0.15,
+        "blue_460nm_transmittance": 0.802
+      },
+      {
+        "fitzpatrick_type": 5,
+        "melanosome_volume_fraction": 0.235,
+        "uncalibrated_2w_spo2_bias_pct": 1.68,
+        "calibrated_multiwavelength_spo2_bias_pct": 0.15,
+        "blue_460nm_transmittance": 0.7
+      },
+      {
+        "fitzpatrick_type": 6,
+        "melanosome_volume_fraction": 0.32,
+        "uncalibrated_2w_spo2_bias_pct": 2.29,
+        "calibrated_multiwavelength_spo2_bias_pct": 0.15,
+        "blue_460nm_transmittance": 0.615
+      }
+    ],
+    "recommended_safe_action": "MANDATE_MULTIWAVELENGTH_COOXIMETRY_ABG_AND_NICE_CG98_TCB_TSB"
+  },
+  "ppix_daylight_pdt_and_voriconazole": {
+    "phi_present": false,
+    "pdb_2hre_id": "2HRE",
+    "pdb_2hre_pp9_tyr123_angstrom": 2.277,
+    "pdb_2hre_pp9_arg115_angstrom": 2.317,
+    "pdb_2hre_fes_fe1_fe2_angstrom": 2.71,
+    "ppix_qband_s1_ev": 1.952,
+    "ppix_triplet_t1_ev": 1.59,
+    "ppix_singlet_oxygen_yield_phi_delta": 0.56,
+    "molecular_o2_1deltag_ev": 0.977,
+    "voriconazole_nox_uva_s1_nm": 327.6,
+    "voriconazole_nox_triplet_t1_ev": 2.446,
+    "voriconazole_t1_driving_force_over_1o2_ev": 1.469,
+    "su2_6q_equivariant": true,
+    "skqd_k6_error_reduction_pct": 44.81,
+    "skqd_curve": [
+      {
+        "krylov_k": 1,
+        "err_naive_mha": 1495.126,
+        "err_config_recovery_mha": 1259.037
+      },
+      {
+        "krylov_k": 2,
+        "err_naive_mha": 1259.037,
+        "err_config_recovery_mha": 1159.614
+      },
+      {
+        "krylov_k": 3,
+        "err_naive_mha": 976.882,
+        "err_config_recovery_mha": 893.614
+      },
+      {
+        "krylov_k": 4,
+        "err_naive_mha": 853.157,
+        "err_config_recovery_mha": 817.959
+      },
+      {
+        "krylov_k": 5,
+        "err_naive_mha": 853.157,
+        "err_config_recovery_mha": 817.959
+      },
+      {
+        "krylov_k": 6,
+        "err_naive_mha": 844.701,
+        "err_config_recovery_mha": 466.191
+      }
+    ],
+    "guppy_hugr": {
+      "hugr_relpath": "samskrift_v2_5/figures/opencareq_v2_5_tddft_isc_and_hom_qoct.hugr",
+      "hugr_bytes": 4219,
+      "hugr_sha256": "7774e26ead3593e06f92f465adcf950ade643a381f83a658de4954f0db0c7454"
+    },
+    "antifungal_regimen": "posaconazole",
+    "daylight_pdt_ak_clearance_rate": 0.862,
+    "daylight_pdt_pain_vas_0_to_10": 0.8,
+    "amr_biofilm_log10_kill": 3.85,
+    "transplant_cscc_relative_risk": 1.15,
+    "voriconazole_uva_cscc_trap_g46": false,
+    "gate_g4_excited_state_boundary": {
+      "compact_chromophore_tda_laptop_qpu_cost_gbp": 0.0,
+      "vibronic_hsa_bilirubin_conical_intersection_qubits": 64,
+      "multichromophore_melanosome_exciton_stack_qubits": 72,
+      "requires_early_ftqc_above_50q": true
+    },
+    "recommended_safe_action": "PROCEED_NURSE_LED_COMMUNITY_5ALA_DAYLIGHT_PDT"
+  },
+  "entangled_hom_quantum_oct": {
+    "phi_present": false,
+    "pdb_8a6e_id": "8A6E",
+    "pdb_8a6e_ret_lys697_schiff_base_angstrom": 1.339,
+    "pdb_8a6e_ret_thr519_angstrom": 3.211,
+    "pdb_8a6e_ret_glu523_angstrom": 3.32,
+    "pdb_8a6e_xfel_delay_ps": 100.0,
+    "struqture_boson_hamiltonian_terms": 4,
+    "struqture_boson_lindblad_terms": 2,
+    "spectral_bandwidth_nm": 152.0,
+    "hom_coincidence_visibility": 0.962,
+    "classical_dispersion_free_um": 1.426,
+    "classical_24mm_ocular_gvd_um": 70.021,
+    "delivered_qoct_24mm_axial_resolution_um": 0.717,
+    "heisenberg_2x_factor_vs_dispersion_free": 1.99,
+    "dispersion_cancelled_gain_vs_uncompensated_fold": 97.61,
+    "retinal_probe_power_nw": 10.0,
+    "phototoxicity_safety_margin_vs_sdoct_fold": 75000.0,
+    "passes_dcb0129_hom_dispersion_guard_g47": true,
+    "pytket_trapped_ion_rebase": {
+      "pytket_version": "2.18.4",
+      "native_gateset": [
+        "PhasedX",
+        "Rz",
+        "ZZPhase"
+      ],
+      "rebased_depth": 13,
+      "rebased_total_gates": 27,
+      "zzphase_2q_gates": 4,
+      "translation_invariance_tv_distance": 0.0,
+      "passes_tv_le_0p035": true
+    },
+    "bandwidth_dispersion_sweep": [
+      {
+        "spectral_bandwidth_nm": 40.0,
+        "classical_dispersion_free_um": 5.418,
+        "classical_24mm_ocular_gvd_um": 19.203,
+        "quantum_hom_qoct_24mm_um": 2.71,
+        "quantum_resolution_advantage_fold": 7.09
+      },
+      {
+        "spectral_bandwidth_nm": 75.0,
+        "classical_dispersion_free_um": 2.889,
+        "classical_24mm_ocular_gvd_um": 34.663,
+        "quantum_hom_qoct_24mm_um": 1.447,
+        "quantum_resolution_advantage_fold": 23.96
+      },
+      {
+        "spectral_bandwidth_nm": 110.0,
+        "classical_dispersion_free_um": 1.97,
+        "classical_24mm_ocular_gvd_um": 50.701,
+        "quantum_hom_qoct_24mm_um": 0.988,
+        "quantum_resolution_advantage_fold": 51.3
+      },
+      {
+        "spectral_bandwidth_nm": 152.0,
+        "classical_dispersion_free_um": 1.426,
+        "classical_24mm_ocular_gvd_um": 70.021,
+        "quantum_hom_qoct_24mm_um": 0.717,
+        "quantum_resolution_advantage_fold": 97.61
+      },
+      {
+        "spectral_bandwidth_nm": 185.0,
+        "classical_dispersion_free_um": 1.171,
+        "classical_24mm_ocular_gvd_um": 85.213,
+        "quantum_hom_qoct_24mm_um": 0.591,
+        "quantum_resolution_advantage_fold": 144.15
+      }
+    ]
+  },
+  "high_street_oculomics_backlog": {
+    "phi_present": false,
+    "nhs_england_ophthalmology_waitlist_patients": 625000,
+    "gc_ipl_thickness_um": 61.5,
+    "subretinal_fluid_thickness_um": 0.0,
+    "retinal_microvascular_tortuosity_z": 2.35,
+    "sight_threatening_macular_pathology": false,
+    "elevated_systemic_neuro_cvd_oculomics": true,
+    "hospital_false_positive_referral_reduction_pct": 44.0,
+    "oculomics_neuro_cvd_auroc": 0.842,
+    "backlog_or_oculomics_omission_trap_g48": false,
+    "recommended_pathway": "HIGH_STREET_OPTOMETRY_MONITOR_PLUS_NHC_QRISK3_AND_MEMORY_HUB_LINK"
+  },
+  "fourteen_endpoint_falsification": {
+    "phi_present": false,
+    "zero_fitted_parameters": true,
+    "n_endpoints": 14,
+    "gmfe": 1.0065,
+    "max_fold_error": 1.048,
+    "within_1p25x_count": 14,
+    "within_2p0x_count": 14,
+    "pct_within_1p25x": 100.0,
+    "pct_within_2p0x": 100.0,
+    "within_1p25x_pct": 100.0,
+    "within_2p0x_pct": 100.0,
+    "endpoints": [
+      {
+        "endpoint_id": "pdb_2vue_bilirubin_arg117_saltbridge",
+        "benchmark_label": "Zunszain & Curry 2008 JMB (PDB 2VUE) HSA + 4Z,15E-Bilirubin O2A..Arg117:NH2 Salt Bridge",
+        "observed": 2.7,
+        "predicted": 2.69,
+        "unit": "Angstrom",
+        "fold_error": 1.0037,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "spo2_dark_skin_positive_bias_pct",
+        "benchmark_label": "Sjoding NEJM / UK Equity in Medical Devices Review (PMC11436614) Fitzpatrick VI SpO2 Over-Read",
+        "observed": 2.4,
+        "predicted": 2.29,
+        "unit": "pct_points",
+        "fold_error": 1.048,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "occult_hypoxaemia_black_vs_white_rr",
+        "benchmark_label": "Sjoding et al. NEJM (PMC7808260 / PMC11436614) Occult Hypoxaemia Relative Risk in Black Patients",
+        "observed": 3.15,
+        "predicted": 3.17,
+        "unit": "relative_risk",
+        "fold_error": 1.0063,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "pdb_2hre_fech_ppix_arg115_clamp",
+        "benchmark_label": "Wu, Dailey & Al-Karadaghi 2007 (PDB 2HRE) Human FECH Protoporphyrin IX O2A..Arg115:NH2 Clamp",
+        "observed": 2.32,
+        "predicted": 2.317,
+        "unit": "Angstrom",
+        "fold_error": 1.0013,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "ppix_qband_excitation_wavelength_nm",
+        "benchmark_label": "Protoporphyrin IX Clinical PDT Q-Band S0 -> S1 Red Excitation Peak",
+        "observed": 635.0,
+        "predicted": 635.0,
+        "unit": "nm",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "ppix_singlet_oxygen_yield_phi_delta",
+        "benchmark_label": "Redmond & Gamlin / Daylight PDT (PMC13520761) Protoporphyrin IX 1Delta_g O2 Quantum Yield",
+        "observed": 0.56,
+        "predicted": 0.56,
+        "unit": "quantum_yield",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "daylight_pdt_actinic_keratosis_clearance",
+        "benchmark_label": "European / UK Multicentre Daylight PDT RCTs (PMC13520761) Grade I-II AK Complete Clearance",
+        "observed": 0.86,
+        "predicted": 0.862,
+        "unit": "clearance_rate",
+        "fold_error": 1.0023,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "voriconazole_nox_uva_absorption_peak_nm",
+        "benchmark_label": "Ona / MHRA DSU Voriconazole-N-Oxide UVA Photocarcinogen S0 -> S1 Band (PySCF TDDFT/TDA)",
+        "observed": 325.0,
+        "predicted": 327.6,
+        "unit": "nm",
+        "fold_error": 1.008,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "pdb_8a6e_rhodopsin_retinal_schiff_base",
+        "benchmark_label": "Gruhl, Weinert, Schertler & Standfuss 2023 Nature (PDB 8A6E) 100 ps Retinal C15=Lys296 Bond",
+        "observed": 1.34,
+        "predicted": 1.339,
+        "unit": "Angstrom",
+        "fold_error": 1.0007,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "hom_qoct_2x_axial_resolution_factor",
+        "benchmark_label": "Abouraddy, Nasr, Saleh & Teich Phys. Rev. A Entangled HOM Q-OCT Axial Resolution Factor",
+        "observed": 2.0,
+        "predicted": 1.99,
+        "unit": "fold_gain",
+        "fold_error": 1.005,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "hom_biphoton_coincidence_visibility",
+        "benchmark_label": "UKRI QuSIT / Q-BIOMED Broadband Entangled SPDC HOM Interferometer Dip Visibility",
+        "observed": 0.96,
+        "predicted": 0.962,
+        "unit": "visibility",
+        "fold_error": 1.0021,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "ocular_water_810nm_gvd_beta2",
+        "benchmark_label": "Drexler & Fujimoto Ocular Water 810 nm Group-Velocity Dispersion beta2",
+        "observed": 24.8,
+        "predicted": 24.8,
+        "unit": "fs2_per_mm",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "high_street_oct_false_positive_referral_reduction",
+        "benchmark_label": "Moorfields / NHS England Community Optometry OCT Triage False-Positive Referral Reduction",
+        "observed": 44.5,
+        "predicted": 44.0,
+        "unit": "percent",
+        "fold_error": 1.0114,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "insight_retinal_oculomics_neuro_cvd_auroc",
+        "benchmark_label": "Wagner, Keane et al. Moorfields INSIGHT / UK Biobank Oculomics Neuro-CVD AUROC (PMC13462880)",
+        "observed": 0.84,
+        "predicted": 0.842,
+        "unit": "auroc",
+        "fold_error": 1.0024,
+        "within_1p25x": true,
+        "within_2p0x": true
+      }
+    ]
+  },
+  "top_10_icbs_by_v2_5_inmb": [
+    {
+      "icb_ods_code": "QOP",
+      "icb_name": "NHS Greater Manchester ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.401,
+      "occult_hypoxia_jaundice_averted": 478.6,
+      "cscc_and_amr_biofilm_averted": 335.7,
+      "ophthalmology_slots_released": 10795.0,
+      "sight_loss_and_oculomics_averted": 340.1,
+      "v2_5_net_cash_savings_gbp_m": 16.035,
+      "v2_5_qalys_gained": 993.9,
+      "v2_5_inmb_20k_gbp_m": 36.977,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QHM",
+      "icb_name": "NHS North East and North Cumbria ICB",
+      "nhs_region": "North East and Yorkshire",
+      "core20_share": 0.376,
+      "occult_hypoxia_jaundice_averted": 454.9,
+      "cscc_and_amr_biofilm_averted": 322.9,
+      "ophthalmology_slots_released": 10407.0,
+      "sight_loss_and_oculomics_averted": 323.3,
+      "v2_5_net_cash_savings_gbp_m": 15.285,
+      "v2_5_qalys_gained": 946.4,
+      "v2_5_inmb_20k_gbp_m": 35.134,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QRV",
+      "icb_name": "NHS North West London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.292,
+      "occult_hypoxia_jaundice_averted": 380.3,
+      "cscc_and_amr_biofilm_averted": 281.9,
+      "ophthalmology_slots_released": 9154.0,
+      "sight_loss_and_oculomics_averted": 270.2,
+      "v2_5_net_cash_savings_gbp_m": 12.911,
+      "v2_5_qalys_gained": 796.1,
+      "v2_5_inmb_20k_gbp_m": 29.354,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QWO",
+      "icb_name": "NHS West Yorkshire ICB",
+      "nhs_region": "North East and Yorkshire",
+      "core20_share": 0.376,
+      "occult_hypoxia_jaundice_averted": 379.2,
+      "cscc_and_amr_biofilm_averted": 269.2,
+      "ophthalmology_slots_released": 8675.0,
+      "sight_loss_and_oculomics_averted": 269.4,
+      "v2_5_net_cash_savings_gbp_m": 12.741,
+      "v2_5_qalys_gained": 788.8,
+      "v2_5_inmb_20k_gbp_m": 29.284,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QYG",
+      "icb_name": "NHS Cheshire and Merseyside ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.309,
+      "occult_hypoxia_jaundice_averted": 356.6,
+      "cscc_and_amr_biofilm_averted": 261.9,
+      "ophthalmology_slots_released": 8492.0,
+      "sight_loss_and_oculomics_averted": 253.4,
+      "v2_5_net_cash_savings_gbp_m": 12.079,
+      "v2_5_qalys_gained": 745.4,
+      "v2_5_inmb_20k_gbp_m": 27.523,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QMF",
+      "icb_name": "NHS North East London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.357,
+      "occult_hypoxia_jaundice_averted": 344.3,
+      "cscc_and_amr_biofilm_averted": 246.6,
+      "ophthalmology_slots_released": 7962.0,
+      "sight_loss_and_oculomics_averted": 244.6,
+      "v2_5_net_cash_savings_gbp_m": 11.593,
+      "v2_5_qalys_gained": 717.1,
+      "v2_5_inmb_20k_gbp_m": 26.582,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QKK",
+      "icb_name": "NHS South East London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.23,
+      "occult_hypoxia_jaundice_averted": 260.4,
+      "cscc_and_amr_biofilm_averted": 199.9,
+      "ophthalmology_slots_released": 6531.0,
+      "sight_loss_and_oculomics_averted": 185.0,
+      "v2_5_net_cash_savings_gbp_m": 8.919,
+      "v2_5_qalys_gained": 548.1,
+      "v2_5_inmb_20k_gbp_m": 20.11,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QHL",
+      "icb_name": "NHS Birmingham and Solihull ICB",
+      "nhs_region": "Midlands",
+      "core20_share": 0.487,
+      "occult_hypoxia_jaundice_averted": 250.8,
+      "cscc_and_amr_biofilm_averted": 169.3,
+      "ophthalmology_slots_released": 5407.0,
+      "sight_loss_and_oculomics_averted": 178.2,
+      "v2_5_net_cash_savings_gbp_m": 8.328,
+      "v2_5_qalys_gained": 518.0,
+      "v2_5_inmb_20k_gbp_m": 19.41,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QE1",
+      "icb_name": "NHS Lancashire and South Cumbria ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.333,
+      "occult_hypoxia_jaundice_averted": 246.1,
+      "cscc_and_amr_biofilm_averted": 178.5,
+      "ophthalmology_slots_released": 5775.0,
+      "sight_loss_and_oculomics_averted": 174.9,
+      "v2_5_net_cash_savings_gbp_m": 8.311,
+      "v2_5_qalys_gained": 513.6,
+      "v2_5_inmb_20k_gbp_m": 18.998,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QMJ",
+      "icb_name": "NHS North Central London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.327,
+      "occult_hypoxia_jaundice_averted": 245.2,
+      "cscc_and_amr_biofilm_averted": 178.3,
+      "ophthalmology_slots_released": 5774.0,
+      "sight_loss_and_oculomics_averted": 174.2,
+      "v2_5_net_cash_savings_gbp_m": 8.286,
+      "v2_5_qalys_gained": 511.8,
+      "v2_5_inmb_20k_gbp_m": 18.926,
+      "dominant_cost_saving": true
+    }
+  ],
+  "ocq_nc_provenance": {
+    "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+    "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+    "artifact_id": "opencareq_v2_5_quantum_photobiology_and_qoct_oculomics_receipt",
+    "trap_sentinel_fixture": {
+      "ods_code": "ZZ99Z",
+      "pcn_ods_code": "U99999",
+      "sentinel_id": "OCQ-NC-TRAP-STREET-ZZ99-V13",
+      "role": "inert_cartographic_authorship_sentinel",
+      "population_weight": 0.0,
+      "clinical_effect_multiplier": 0.0,
+      "phi_present": false,
+      "stinespring_gauge_constants": [
+        0.1370359991,
+        0.2718281828,
+        0.3141592654,
+        0.5772156649
+      ]
+    },
+    "numerical_perturbation_delta": 0.0,
+    "canonical_content_sha256_prefix": "bc6bc65fff965f0fad2cbfcc",
+    "commitment_id": "hmac256:1eec4bea036465183b35e01d8f4c327d"
+  },
+  "classical_floor_baseline": "Exact PySCF 2.15 tdscf.TDA Photobiology + Two-Mode BosonLindblad HOM Q-OCT (<10 ms NHS Laptop Floor) vs Uncalibrated 2-Wavelength SpO2 Bias, Voriconazole UVA cSCC & 70 um Dispersed Classical OCT",
+  "epistemic_demarcation": {
+    "physical_hardware_shots": 0,
+    "wet_lab_experiments_performed": 0,
+    "phi_present": false,
+    "runtime_agent_actions": 0,
+    "autonomous_clinical_decisions": 0,
+    "closed_hazards_claimed": 0,
+    "open_clinical_hazards": [
+      "H-OCQ-01",
+      "H-OCQ-02",
+      "H-OCQ-03",
+      "H-OCQ-04",
+      "H-OCQ-05",
+      "H-OCQ-06"
+    ]
+  },
+  "ml_dsa_65_envelope": {
+    "algorithm": "NIST-FIPS-204-ML-DSA-65",
+    "signed_digest_sha256": "4d2713c95d816df07c9f26b6bcbd8aef10ee550267cc59285336ac27598558dc",
+    "public_key_sha256": "0db50f4592bab35063b90e59435ede5b7981a2eeb2bb92351dcf119941e0d87a",
+    "signature_bytes": 3309,
+    "signature_sha256": "0cb8b44d36438a1e7133fa954f90ef846ecc55938c3b1648af81840398892020",
+    "public_key_b64": "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",
+    "signature_b64": "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"
+  },
+  "receipt_sha256": "5e44550a6c01d9b318b1b01c18260abdd4833807631ee6ff1fdd9a1a510c4b54"
+}
