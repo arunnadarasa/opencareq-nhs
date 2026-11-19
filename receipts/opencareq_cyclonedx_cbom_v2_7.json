@@ -1,0 +1,126 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "phi_present": false,
+  "metadata": {
+    "component": {
+      "type": "application",
+      "bom-ref": "opencareq-nhs-sde-v2.7.0",
+      "name": "OpenCareQ Sovereign Clinical & Population-Health Quantum Workbench",
+      "version": "2.7.0"
+    },
+    "properties": [
+      {
+        "name": "uk.gov.ncsc.pqc.milestone.2028",
+        "value": "COMPLETE_CRYPTO_DISCOVERY_AND_CYCLONEDX_CBOM"
+      },
+      {
+        "name": "uk.gov.ncsc.pqc.milestone.2031",
+        "value": "HYBRID_X25519_ML_KEM_768_SDE_HNDL_SHIELD_ACTIVE"
+      },
+      {
+        "name": "uk.gov.ncsc.pqc.milestone.2035",
+        "value": "DUAL_FAMILY_ML_DSA_65_AND_SHAKE256_AGILITY_READY"
+      },
+      {
+        "name": "uk.gov.ncsc.qkd.position",
+        "value": "MATHEMATICAL_PQC_PREFERRED_OVER_QKD_FOR_NHS_CNI"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto-kem-x25519-mlkem768",
+      "name": "X25519MLKEM768-Hybrid-KEM",
+      "version": "FIPS-203 + RFC-7748",
+      "properties": [
+        {
+          "name": "primitive",
+          "value": "kem"
+        },
+        {
+          "name": "nistQuantumSecurityCategory",
+          "value": "3"
+        },
+        {
+          "name": "encapsulationKeyBytes",
+          "value": "1184"
+        },
+        {
+          "name": "ciphertextBytes",
+          "value": "1088"
+        },
+        {
+          "name": "hndlProtection",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto-sig-mldsa65",
+      "name": "ML-DSA-65",
+      "version": "NIST-FIPS-204",
+      "properties": [
+        {
+          "name": "primitive",
+          "value": "signature"
+        },
+        {
+          "name": "mathematicalFamily",
+          "value": "Module-Lattice-MLWE-MSIS"
+        },
+        {
+          "name": "nistQuantumSecurityCategory",
+          "value": "3"
+        },
+        {
+          "name": "signatureBytes",
+          "value": "3309"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto-sig-wots-shake256",
+      "name": "WOTS+-SHAKE256-Agility-Fallback",
+      "version": "FIPS-205-Building-Block",
+      "properties": [
+        {
+          "name": "primitive",
+          "value": "signature"
+        },
+        {
+          "name": "mathematicalFamily",
+          "value": "Stateless-Hash-Based-Non-Lattice"
+        },
+        {
+          "name": "signatureBytes",
+          "value": "2144"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto-aead-aes256gcm",
+      "name": "AES-256-GCM",
+      "version": "NIST-SP-800-38D",
+      "properties": [
+        {
+          "name": "primitive",
+          "value": "ae"
+        },
+        {
+          "name": "groverEffectiveBits",
+          "value": "128"
+        },
+        {
+          "name": "kdf",
+          "value": "HKDF-SHA256"
+        }
+      ]
+    }
+  ]
+}

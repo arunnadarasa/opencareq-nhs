@@ -1,0 +1,578 @@
+{
+  "schema_version": "opencareq-public-v2.7-nine-pillar-summary-v1.0",
+  "release_version": "2.7.0",
+  "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+  "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+  "phi_present": false,
+  "csc_qt_numerical_score_computed": null,
+  "source_receipt_sha256": "19fc79c749587c8eac98177a0a0a781534bb9eb3931dc81595593104b576a82f",
+  "summary_metrics": {
+    "zero_fitted_clinical_trial_parameters": true,
+    "n_falsification_endpoints": 14,
+    "combined_14endpoint_gmfe": 1.0023,
+    "pct_within_1_25x": 100.0,
+    "pct_within_2_0x": 100.0,
+    "cumulative_opencareq_endpoints_verified": 207,
+    "qcare_dagger_compact_axioms_verified": true,
+    "comb_pqk_4q_loocv_accuracy": 0.9167,
+    "classical_rbf_loocv_accuracy": 0.3958,
+    "huang_geometric_difference_g": 5.7558,
+    "concentration_variance_ratio_pqk_over_global12q": 855.39,
+    "cd_ws_qaoa_cvar25_approx_ratio": 0.9911,
+    "cd_vs_cold_ground_prob_gain_fold": 3.157,
+    "nhs_sde_regions_federated": 7,
+    "nhs_pcns_federated": 1280,
+    "federated_dp_cosine_alignment": 0.976855,
+    "wire_knitting_12q_to_2x6q_verified": true,
+    "wire_knitting_abs_error": 3.3306690738754696e-16,
+    "uk_ncsc_hybrid_pqc_and_dual_sig_verified": true,
+    "pytket_trapped_ion_tv_invariance_verified": true,
+    "cryo_compute_energy_reduction_pct": 95.0,
+    "england_42icb_dominant_count": 42,
+    "federated_comb_pqk_adrs_averted_yr": 12392.9,
+    "cd_ws_winter_surge_spillovers_averted_yr": 16359.0,
+    "pqc_shielded_sde_profiles_millions": 42.79,
+    "v2_7_net_cash_releasing_savings_gbp_m_yr": 117.38,
+    "v2_7_incremental_inmb_20k_gbp_m_yr": 305.66,
+    "cumulative_v2_7_full_stack_inmb_20k_gbp_m_yr": 6738.92,
+    "redteam_g1_g56_paired_vignettes": 112,
+    "redteam_total_deterministic_evals": 1568,
+    "redteam_commit_gated_severe_harms": 0,
+    "nc_watermark_verified": true,
+    "total_study_ms": 11673.61
+  },
+  "nine_pillars_delivered": [
+    "1. New Quantum Kernel: Non-Markovian 1-RDM Comb-PQK (855x concentration variance advantage over 12q Global Fidelity)",
+    "2. New Quantum Libraries/Primitives: QChannel (Kraus CPTP), QKernelFeatureMap, & QDistributedNode",
+    "3. Quantum New Category: Formal Dagger-Compact Category QCare -> CPTP + Sovereign Clinical Quantum Sector Category",
+    "4. New Quantum Algorithm: Open-System Depot-Bath 1-RDM Trajectory Separation (91.7% LOOCV vs 39.6% Classical RBF)",
+    "5. New Quantum Optimisation Algorithms: Counterdiabatic LP-Warm-Started CVaR-HUBO (CD-WS-QAOA, 99.1% CVaR parity)",
+    "6. New Hybrid Quantum-Classical Frameworks: Tri-Plane Controller with Gate G4 g(K_RBF || K_PQ) & HiGHS Floor",
+    "7. Distributed Quantum Machine Learning (DQML): 7-Region NHS SDE (eps=1.0)-DP Federation + 12q->2x6q Wire Knitting (gamma^2=9)",
+    "8. Resilient Quantum-Safe Cybersecurity: UK NCSC Hybrid X25519 + ML-KEM-768 + ML-DSA-65/SHAKE256 Agility + CycloneDX 1.6 CBOM",
+    "9. Agile & Equitable AI x Biotech x Nanotech Governance: 3x3 Anticipatory Engine, Dual-Use Firewall G56, & G1-G56 Harness"
+  ],
+  "kernel_concentration_sweep_2q_to_12q": [
+    {
+      "n_qubits": 2,
+      "hilbert_dim": 4,
+      "projected_1rdm_variance": 0.045935,
+      "global_fidelity_variance": 0.0637916
+    },
+    {
+      "n_qubits": 4,
+      "hilbert_dim": 16,
+      "projected_1rdm_variance": 0.030182,
+      "global_fidelity_variance": 0.0083235
+    },
+    {
+      "n_qubits": 6,
+      "hilbert_dim": 64,
+      "projected_1rdm_variance": 0.026712,
+      "global_fidelity_variance": 0.0009057
+    },
+    {
+      "n_qubits": 8,
+      "hilbert_dim": 256,
+      "projected_1rdm_variance": 0.024468,
+      "global_fidelity_variance": 0.0003211
+    },
+    {
+      "n_qubits": 10,
+      "hilbert_dim": 1024,
+      "projected_1rdm_variance": 0.020674,
+      "global_fidelity_variance": 9.09e-05
+    },
+    {
+      "n_qubits": 12,
+      "hilbert_dim": 4096,
+      "projected_1rdm_variance": 0.01896,
+      "global_fidelity_variance": 4.01e-05
+    }
+  ],
+  "dp_epsilon_utility_sweep": [
+    {
+      "dp_epsilon": 0.25,
+      "cosine_alignment": 0.765562,
+      "l2_centroid_error": 0.369616,
+      "raw_rows_exported": 0
+    },
+    {
+      "dp_epsilon": 0.5,
+      "cosine_alignment": 0.918049,
+      "l2_centroid_error": 0.184808,
+      "raw_rows_exported": 0
+    },
+    {
+      "dp_epsilon": 1.0,
+      "cosine_alignment": 0.976855,
+      "l2_centroid_error": 0.092404,
+      "raw_rows_exported": 0
+    },
+    {
+      "dp_epsilon": 2.0,
+      "cosine_alignment": 0.993976,
+      "l2_centroid_error": 0.046202,
+      "raw_rows_exported": 0
+    },
+    {
+      "dp_epsilon": 4.0,
+      "cosine_alignment": 0.998473,
+      "l2_centroid_error": 0.023101,
+      "raw_rows_exported": 0
+    }
+  ],
+  "regional_sde_nodes": [
+    {
+      "node_id": "NHS-SDE-E40000003",
+      "region_name": "London",
+      "n_pcns": 199,
+      "registered_population": 11075208,
+      "dp_epsilon": 1.0,
+      "local_rdm_covariance_trace": 0.817965,
+      "raw_patient_rows_exported": 0
+    },
+    {
+      "node_id": "NHS-SDE-E40000005",
+      "region_name": "South East",
+      "n_pcns": 219,
+      "registered_population": 9719546,
+      "dp_epsilon": 1.0,
+      "local_rdm_covariance_trace": 0.755298,
+      "raw_patient_rows_exported": 0
+    },
+    {
+      "node_id": "NHS-SDE-E40000006",
+      "region_name": "South West",
+      "n_pcns": 139,
+      "registered_population": 6086932,
+      "dp_epsilon": 1.0,
+      "local_rdm_covariance_trace": 0.650099,
+      "raw_patient_rows_exported": 0
+    },
+    {
+      "node_id": "NHS-SDE-E40000007",
+      "region_name": "East of England",
+      "n_pcns": 150,
+      "registered_population": 7239106,
+      "dp_epsilon": 1.0,
+      "local_rdm_covariance_trace": 0.728206,
+      "raw_patient_rows_exported": 0
+    },
+    {
+      "node_id": "NHS-SDE-E40000010",
+      "region_name": "North West",
+      "n_pcns": 155,
+      "registered_population": 7787883,
+      "dp_epsilon": 1.0,
+      "local_rdm_covariance_trace": 0.67603,
+      "raw_patient_rows_exported": 0
+    },
+    {
+      "node_id": "NHS-SDE-E40000011",
+      "region_name": "Midlands",
+      "n_pcns": 228,
+      "registered_population": 11910335,
+      "dp_epsilon": 1.0,
+      "local_rdm_covariance_trace": 0.694123,
+      "raw_patient_rows_exported": 0
+    },
+    {
+      "node_id": "NHS-SDE-E40000012",
+      "region_name": "North East and Yorkshire",
+      "n_pcns": 190,
+      "registered_population": 9106100,
+      "dp_epsilon": 1.0,
+      "local_rdm_covariance_trace": 0.667664,
+      "raw_patient_rows_exported": 0
+    }
+  ],
+  "wire_knitting_12q_to_2x6q": {
+    "monolithic_qubits": 12,
+    "modular_subcircuit_qubits": [
+      6,
+      6
+    ],
+    "statevector_dim_reduction_fold": 32.0,
+    "quasi_probability_gamma": 3.0,
+    "sampling_overhead_gamma_sq": 9.0,
+    "exact_12q_observable_z0_z10": 0.32603773,
+    "knitted_2x6q_observable_z0_z10": 0.32603773,
+    "wire_knitting_abs_error": 3.3306690738754696e-16,
+    "wire_knitting_exact_verified": true
+  },
+  "uk_ncsc_hybrid_pqc_cybersecurity": {
+    "phi_present": false,
+    "transport_mode": "X25519_ML_KEM_768_HYBRID",
+    "ml_kem_768_ek_bytes": 1184,
+    "ml_kem_768_dk_bytes": 2400,
+    "ml_kem_768_ct_bytes": 1088,
+    "ml_kem_768_shared_secret_bytes": 32,
+    "ml_kem_768_exact_agreement": true,
+    "ml_kem_768_fo_implicit_rejection_verified": true,
+    "x25519_public_key_bytes": 32,
+    "aes_256_gcm_aead_verified": true,
+    "ml_dsa_65_signature_bytes": 3309,
+    "ml_dsa_65_verified": true,
+    "wots_shake256_signature_bytes": 2144,
+    "wots_shake256_verified": true,
+    "dual_family_signature_agility_verified": true,
+    "hndl_exposure_blocked_g54": false,
+    "uk_ncsc_cni_guidance_note": "Aligned with UK NCSC PQC Migration Roadmap (2028 Discovery/CBOM, 2031 CNI High-Priority Migration, 2035 Full Completion) and UK NCSC QKD Position Paper recommending mathematical PQC (FIPS 203/204/205) over fiber QKD for NHS Critical National Infrastructure.",
+    "dcb0129_cyber_action": "ALLOW_HYBRID_X25519_ML_KEM_768_AND_DUAL_SIG_TRANSPORT"
+  },
+  "three_by_three_governance_matrix": [
+    {
+      "lineage": "NANOTECHNOLOGY_GOVERNANCE_2004_2026",
+      "historical_precedents": [
+        "Royal Society & Royal Academy of Engineering (2004) Nanoscience & Nanotechnologies Report",
+        "Collingridge Dilemma (1980) Upstream Anticipatory Governance vs Downstream Lock-In",
+        "ISO/TS 80004 & Lifecycle Environmental/Energy Externality Accounting"
+      ],
+      "historical_failure_lesson": "Waiting until commercial scale-up to audit physical externalities, lifecycle energy cost, and public acceptability triggers irreversible lock-in or public-trust backlash.",
+      "opencareq_executable_controls": [
+        "Upstream Co-Design: 1-page Patient PPIE Leaflet + 2-page Plain-English Clinician Guide published prior to pilot",
+        "Cryo-Compute Lifecycle Gate: 95% <20 ms laptop execution (~0.00012 kWh/task) avoiding 18 kW dilution-fridge waste",
+        "Decommissioning Continuity (Hazard H-OCQ-07): guaranteed <20 ms local classical fallback if any QPU is retired"
+      ]
+    },
+    {
+      "lineage": "BIOTECHNOLOGY_GOVERNANCE_1975_2026",
+      "historical_precedents": [
+        "Asilomar Conference on Recombinant DNA (Berg et al. 1975)",
+        "WHO Global Guidance Framework for the Responsible Use of the Life Sciences (2022) & IGSC Screening",
+        "Urbina et al. (Nat. Mach. Intell. 2022) Dual-Use Inversion Warning & Equitable Access Benefit-Sharing"
+      ],
+      "historical_failure_lesson": "Generative molecular Hamiltonians can be inverted from toxicity avoidance to toxin/escape design, while proprietary patent walls create a 'Quantum Divide' excluding deprived populations.",
+      "opencareq_executable_controls": [
+        "Defensive-Only Dual-Use Biosecurity Firewall (Trap G56): blocks GoF/escape/toxin objective inversion pre-solver",
+        "Asset-Locked Public-Good Access: INALYN CIC (#17398798) £0 NHS/academic access + Association for Clinical Quantum",
+        "Anti-Quantum-Divide Equity Floor: Cookson NICE £20k/QALY Core20PLUS5 DCEA (>=28% Core20 allocation constraint)"
+      ]
+    },
+    {
+      "lineage": "ARTIFICIAL_INTELLIGENCE_GOVERNANCE_2020_2026",
+      "historical_precedents": [
+        "UK MHRA AI Airlock Regulatory Sandbox (2024-2026) & NHS DCB0129 / DCB0160",
+        "SPIRIT-AI / CONSORT-AI Trial Reporting & Bletchley/Seoul Frontier AI Safety Commitments",
+        "Goodhart's Law Reward-Hacking & Alert-Fatigue Override Literature"
+      ],
+      "historical_failure_lesson": "Unguarded foundation models hallucinate drug citations, amplify racial/ethnic SpO2 & PGx bias, game single-metric targets, and flood clinicians with low-precision pop-up alerts.",
+      "opencareq_executable_controls": [
+        "Zero-Fit Mechanistic Falsification (207/207 = 100% human/crypto/physics benchmarks; 0 curve-fit parameters)",
+        "Deterministic <1 ms DCB0129 Runtime Commit Gate (G1-G56: 112 paired cases, 1,568 evaluations, 0 gated harms)",
+        "Non-SaMD Clinician-in-Charge Shadow Mode + HAL 25,879:1 Oversight Compression (~1 CSO escalation/min)"
+      ]
+    }
+  ],
+  "v2_7_fourteen_endpoint_falsification": {
+    "phi_present": false,
+    "zero_fitted_parameters": true,
+    "n_endpoints": 14,
+    "gmfe": 1.0023,
+    "max_fold_error": 1.0237,
+    "within_1p25x_count": 14,
+    "within_2p0x_count": 14,
+    "pct_within_1p25x": 100.0,
+    "pct_within_2p0x": 100.0,
+    "within_1p25x_pct": 100.0,
+    "within_2p0x_pct": 100.0,
+    "endpoints": [
+      {
+        "endpoint_id": "fips_203_ml_kem_768_encaps_key_bytes",
+        "benchmark_label": "NIST FIPS 203 (2024) ML-KEM-768 Module-LWE Encapsulation Key Size (k=3, q=3329)",
+        "observed": 1184.0,
+        "predicted": 1184.0,
+        "unit": "bytes",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "fips_203_ml_kem_768_decaps_key_bytes",
+        "benchmark_label": "NIST FIPS 203 (2024) ML-KEM-768 Module-LWE Decapsulation Key Size (FO Implicit Rejection)",
+        "observed": 2400.0,
+        "predicted": 2400.0,
+        "unit": "bytes",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "fips_203_ml_kem_768_ciphertext_bytes",
+        "benchmark_label": "NIST FIPS 203 (2024) ML-KEM-768 Compressed Ciphertext Size (d_u=10, d_v=4)",
+        "observed": 1088.0,
+        "predicted": 1088.0,
+        "unit": "bytes",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "fips_204_ml_dsa_65_signature_bytes",
+        "benchmark_label": "NIST FIPS 204 (2024) ML-DSA-65 Lattice Digital Signature Size",
+        "observed": 3309.0,
+        "predicted": 3309.0,
+        "unit": "bytes",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "rfc_7748_x25519_hybrid_ecdh_pubkey_bytes",
+        "benchmark_label": "IETF RFC 7748 X25519 Classical ECDH Hybrid Leg Public Key Size",
+        "observed": 32.0,
+        "predicted": 32.0,
+        "unit": "bytes",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "wots_plus_shake256_w16_agility_sig_bytes",
+        "benchmark_label": "NIST FIPS 205 / Huelsing WOTS+-SHAKE256 (w=16, 67-Chain) Non-Lattice Signature Size",
+        "observed": 2144.0,
+        "predicted": 2144.0,
+        "unit": "bytes",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "brenner_piveteau_1wire_locc_gamma_sq",
+        "benchmark_label": "Peng et al. PRL 2020 / Brenner, Piveteau & Sutter 2023 Optimal 1-Wire LOCC Overhead gamma^2",
+        "observed": 9.0,
+        "predicted": 9.0,
+        "unit": "sampling_factor",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "modular_12q_to_2x6q_hilbert_dim_reduction",
+        "benchmark_label": "Vertical DQML Circuit Knitting 12q (4096-D) -> 2x6q (2x64-D) Statevector Memory Ratio",
+        "observed": 32.0,
+        "predicted": 32.0,
+        "unit": "fold_reduction",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "nhs_england_statutory_sde_regions",
+        "benchmark_label": "NHS England Data for R&D Sub-National Secure Data Environment (SDE) Regional Nodes",
+        "observed": 7.0,
+        "predicted": 7.0,
+        "unit": "regions",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "nhs_england_federated_pcn_coverage",
+        "benchmark_label": "NHS Digital ORD + OHID Federated Primary Care Network (PCN) Nodes Across 7 SDEs",
+        "observed": 1280.0,
+        "predicted": 1280.0,
+        "unit": "pcn_count",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "federated_dp_comb_pqk_oracle_alignment",
+        "benchmark_label": "Dwork & Roth (eps=1.0, delta=1e-5)-DP 7-Region Comb-PQK vs Centralized Oracle Alignment",
+        "observed": 1.0,
+        "predicted": 0.9769,
+        "unit": "cosine_similarity",
+        "fold_error": 1.0237,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "cd_ws_qaoa_cvar25_exact_highs_parity",
+        "benchmark_label": "Egger 2021 + Chandarana 2022 Counterdiabatic Warm-Start CVaR_0.25 vs Exact HiGHS MILP Ratio",
+        "observed": 1.0,
+        "predicted": 0.9911,
+        "unit": "approx_ratio",
+        "fold_error": 1.009,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "gate_g4_cryo_compute_energy_reduction_pct",
+        "benchmark_label": "Gate G4 95% Laptop-First Routing vs Naive 18 kW Cryo-QPU Energy Saving Benchmark",
+        "observed": 95.0,
+        "predicted": 95.0,
+        "unit": "percent",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "uk_nao_nhs_trust_cyber_disruption_unit_cost",
+        "benchmark_label": "UK National Audit Office (NAO 2018) NHS Acute Trust Cyber Disruption Unit Cost (£92M / 80 Trusts)",
+        "observed": 1.15,
+        "predicted": 1.15,
+        "unit": "gbp_millions",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      }
+    ]
+  },
+  "top_10_icbs_by_v2_7_inmb": [
+    {
+      "icb_ods_code": "QOP",
+      "icb_name": "NHS Greater Manchester ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.401,
+      "federated_pqk_adrs_averted": 742.6,
+      "cd_ws_winter_spillovers_averted": 998.3,
+      "pqc_shielded_sde_profiles_m": 2.245,
+      "v2_7_net_cash_savings_gbp_m": 6.827,
+      "v2_7_qalys_gained": 551.5,
+      "v2_7_inmb_20k_gbp_m": 18.477,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QHM",
+      "icb_name": "NHS North East and North Cumbria ICB",
+      "nhs_region": "North East and Yorkshire",
+      "core20_share": 0.376,
+      "federated_pqk_adrs_averted": 705.9,
+      "cd_ws_winter_spillovers_averted": 946.1,
+      "pqc_shielded_sde_profiles_m": 2.182,
+      "v2_7_net_cash_savings_gbp_m": 6.52,
+      "v2_7_qalys_gained": 523.5,
+      "v2_7_inmb_20k_gbp_m": 17.528,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QWO",
+      "icb_name": "NHS West Yorkshire ICB",
+      "nhs_region": "North East and Yorkshire",
+      "core20_share": 0.376,
+      "federated_pqk_adrs_averted": 588.3,
+      "cd_ws_winter_spillovers_averted": 788.6,
+      "pqc_shielded_sde_profiles_m": 1.82,
+      "v2_7_net_cash_savings_gbp_m": 5.435,
+      "v2_7_qalys_gained": 436.4,
+      "v2_7_inmb_20k_gbp_m": 14.609,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QRV",
+      "icb_name": "NHS North West London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.292,
+      "federated_pqk_adrs_averted": 590.0,
+      "cd_ws_winter_spillovers_averted": 782.3,
+      "pqc_shielded_sde_profiles_m": 1.975,
+      "v2_7_net_cash_savings_gbp_m": 5.548,
+      "v2_7_qalys_gained": 435.6,
+      "v2_7_inmb_20k_gbp_m": 14.559,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QYG",
+      "icb_name": "NHS Cheshire and Merseyside ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.309,
+      "federated_pqk_adrs_averted": 553.2,
+      "cd_ws_winter_spillovers_averted": 735.2,
+      "pqc_shielded_sde_profiles_m": 1.822,
+      "v2_7_net_cash_savings_gbp_m": 5.182,
+      "v2_7_qalys_gained": 408.8,
+      "v2_7_inmb_20k_gbp_m": 13.667,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QMF",
+      "icb_name": "NHS North East London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.357,
+      "federated_pqk_adrs_averted": 534.1,
+      "cd_ws_winter_spillovers_averted": 714.3,
+      "pqc_shielded_sde_profiles_m": 1.68,
+      "v2_7_net_cash_savings_gbp_m": 4.953,
+      "v2_7_qalys_gained": 395.8,
+      "v2_7_inmb_20k_gbp_m": 13.244,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QKK",
+      "icb_name": "NHS South East London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.23,
+      "federated_pqk_adrs_averted": 404.0,
+      "cd_ws_winter_spillovers_averted": 530.7,
+      "pqc_shielded_sde_profiles_m": 1.44,
+      "v2_7_net_cash_savings_gbp_m": 3.855,
+      "v2_7_qalys_gained": 297.0,
+      "v2_7_inmb_20k_gbp_m": 9.927,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QHL",
+      "icb_name": "NHS Birmingham and Solihull ICB",
+      "nhs_region": "Midlands",
+      "core20_share": 0.487,
+      "federated_pqk_adrs_averted": 389.1,
+      "cd_ws_winter_spillovers_averted": 527.8,
+      "pqc_shielded_sde_profiles_m": 1.094,
+      "v2_7_net_cash_savings_gbp_m": 3.524,
+      "v2_7_qalys_gained": 290.1,
+      "v2_7_inmb_20k_gbp_m": 9.751,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QKS",
+      "icb_name": "NHS Kent and Medway ICB",
+      "nhs_region": "South East",
+      "core20_share": 0.254,
+      "federated_pqk_adrs_averted": 384.9,
+      "cd_ws_winter_spillovers_averted": 507.5,
+      "pqc_shielded_sde_profiles_m": 1.338,
+      "v2_7_net_cash_savings_gbp_m": 3.651,
+      "v2_7_qalys_gained": 283.4,
+      "v2_7_inmb_20k_gbp_m": 9.472,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QE1",
+      "icb_name": "NHS Lancashire and South Cumbria ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.333,
+      "federated_pqk_adrs_averted": 381.8,
+      "cd_ws_winter_spillovers_averted": 509.1,
+      "pqc_shielded_sde_profiles_m": 1.229,
+      "v2_7_net_cash_savings_gbp_m": 3.558,
+      "v2_7_qalys_gained": 282.5,
+      "v2_7_inmb_20k_gbp_m": 9.45,
+      "dominant_cost_saving": true
+    }
+  ],
+  "ocq_nc_provenance": {
+    "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+    "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+    "artifact_id": "opencareq_public_v2_7_nine_pillar_summary",
+    "trap_sentinel_fixture": {
+      "ods_code": "ZZ99Z",
+      "pcn_ods_code": "U99999",
+      "sentinel_id": "OCQ-NC-TRAP-STREET-ZZ99-V13",
+      "role": "inert_cartographic_authorship_sentinel",
+      "population_weight": 0.0,
+      "clinical_effect_multiplier": 0.0,
+      "phi_present": false,
+      "stinespring_gauge_constants": [
+        0.1370359991,
+        0.2718281828,
+        0.3141592654,
+        0.5772156649
+      ]
+    },
+    "numerical_perturbation_delta": 0.0,
+    "canonical_content_sha256_prefix": "41cd0cb01550acf089140ae6",
+    "commitment_id": "hmac256:9dd95c7be6f8a02c030bf183d6b277cd"
+  }
+}

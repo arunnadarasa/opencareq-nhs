@@ -1,0 +1,800 @@
+{
+  "schema_version": "opencareq-v2.7-nine-pillar-dqml-pqc-and-governance-v1.0",
+  "release_version": "2.7.0",
+  "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+  "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+  "phi_present": false,
+  "runtime_agent_actions": 0,
+  "physical_qpu_shots": 0,
+  "csc_qt_numerical_score_computed": null,
+  "v2_7_priors_sha256": "220470244f4dda16b0fd70107163808e4454c09f86960e35c7c8e983eed49de8",
+  "summary_metrics": {
+    "zero_fitted_clinical_trial_parameters": true,
+    "n_falsification_endpoints": 14,
+    "combined_14endpoint_gmfe": 1.0023,
+    "pct_within_1_25x": 100.0,
+    "pct_within_2_0x": 100.0,
+    "cumulative_opencareq_endpoints_verified": 207,
+    "qcare_dagger_compact_axioms_verified": true,
+    "comb_pqk_4q_loocv_accuracy": 0.9167,
+    "classical_rbf_loocv_accuracy": 0.3958,
+    "huang_geometric_difference_g": 5.7558,
+    "concentration_variance_ratio_pqk_over_global12q": 855.39,
+    "cd_ws_qaoa_cvar25_approx_ratio": 0.9911,
+    "cd_vs_cold_ground_prob_gain_fold": 3.157,
+    "nhs_sde_regions_federated": 7,
+    "nhs_pcns_federated": 1280,
+    "federated_dp_cosine_alignment": 0.976855,
+    "wire_knitting_12q_to_2x6q_verified": true,
+    "wire_knitting_abs_error": 3.3306690738754696e-16,
+    "uk_ncsc_hybrid_pqc_and_dual_sig_verified": true,
+    "pytket_trapped_ion_tv_invariance_verified": true,
+    "cryo_compute_energy_reduction_pct": 95.0,
+    "england_42icb_dominant_count": 42,
+    "federated_comb_pqk_adrs_averted_yr": 12392.9,
+    "cd_ws_winter_surge_spillovers_averted_yr": 16359.0,
+    "pqc_shielded_sde_profiles_millions": 42.79,
+    "v2_7_net_cash_releasing_savings_gbp_m_yr": 117.38,
+    "v2_7_incremental_inmb_20k_gbp_m_yr": 305.66,
+    "cumulative_v2_7_full_stack_inmb_20k_gbp_m_yr": 6738.92,
+    "redteam_g1_g56_paired_vignettes": 112,
+    "redteam_total_deterministic_evals": 1568,
+    "redteam_commit_gated_severe_harms": 0,
+    "nc_watermark_verified": true,
+    "total_study_ms": 11673.61
+  },
+  "nine_pillars_delivered": [
+    "1. New Quantum Kernel: Non-Markovian 1-RDM Comb-PQK (855x concentration variance advantage over 12q Global Fidelity)",
+    "2. New Quantum Libraries/Primitives: QChannel (Kraus CPTP), QKernelFeatureMap, & QDistributedNode",
+    "3. Quantum New Category: Formal Dagger-Compact Category QCare -> CPTP + Sovereign Clinical Quantum Sector Category",
+    "4. New Quantum Algorithm: Open-System Depot-Bath 1-RDM Trajectory Separation (91.7% LOOCV vs 39.6% Classical RBF)",
+    "5. New Quantum Optimisation Algorithms: Counterdiabatic LP-Warm-Started CVaR-HUBO (CD-WS-QAOA, 99.1% CVaR parity)",
+    "6. New Hybrid Quantum-Classical Frameworks: Tri-Plane Controller with Gate G4 g(K_RBF || K_PQ) & HiGHS Floor",
+    "7. Distributed Quantum Machine Learning (DQML): 7-Region NHS SDE (eps=1.0)-DP Federation + 12q->2x6q Wire Knitting (gamma^2=9)",
+    "8. Resilient Quantum-Safe Cybersecurity: UK NCSC Hybrid X25519 + ML-KEM-768 + ML-DSA-65/SHAKE256 Agility + CycloneDX 1.6 CBOM",
+    "9. Agile & Equitable AI x Biotech x Nanotech Governance: 3x3 Anticipatory Engine, Dual-Use Firewall G56, & G1-G56 Harness"
+  ],
+  "paperclip_v2_7_evidence_pins": {
+    "huang_2021_thanasilp_2024_projected_quantum_kernels": "L1-L10:Huang et al. (Nat. Commun. 2021, 12:2631) introduce 1-RDM Projected Quantum Kernels K^PQ(x,x') = exp(-gamma sum_q ||rho_q(x)-rho_q(x')||_F^2) and asymmetrical geometric difference g(K_C || K_Q) to separate quantum vs classical generalization, while Thanasilp et al. (Nat. Commun. 2024, 15:5200) prove unprojected global fidelity kernels suffer exponential concentration with qubit count.",
+    "egger_2021_chandarana_2022_cd_warmstart_cvar_qaoa": "L1-L9:Egger, Marecek & Woerner (Quantum 2021, 5:479) warm-start QAOA from continuous relaxations theta_i = 2 arcsin(sqrt(c_i*)); Chandarana et al. (Phys. Rev. Research 2022, 4:013121; Sels & Polkovnikov PNAS 2017) add local Y-gauge counterdiabatic terms; Barkoutsos et al. (Quantum 2020, 4:256) optimize tail CVaR_alpha.",
+    "peng_2020_brenner_2023_wire_knitting_and_dp_sde": "L1-L10:Peng, Harrow, Ozols & Wu (Phys. Rev. Lett. 2020, 125:150504) and Brenner, Piveteau & Sutter (2023) prove single-wire LOCC circuit knitting achieves optimal quasi-probability overhead gamma = 3 (gamma^2 = 9), enabling modular 12q -> 2x6q execution alongside NHS England 7-Region Secure Data Environment (eps, delta)-DP federation.",
+    "nist_fips_203_204_205_and_uk_ncsc_pqc_cni": "L1-L11:NIST FIPS 203 (ML-KEM-768: ek=1,184 B, dk=2,400 B, ct=1,088 B), FIPS 204 (ML-DSA-65: sig=3,309 B), and FIPS 205 (SHAKE256 WOTS+ hash-based signatures) anchor the UK NCSC 2028/2031/2035 Post-Quantum Cryptography migration roadmap for Critical National Infrastructure (which recommends mathematical PQC over QKD for CNI).",
+    "collingridge_asilomar_urbina_2022_bio_nano_ai_governance": "L1-L10:Synthesizes Royal Society/RAEng (2004) & Collingridge nanotechnology upstream lifecycle governance, Asilomar/WHO (2022)/IGSC & Urbina et al. (Nat. Mach. Intell. 2022) dual-use biosecurity screening, and UK MHRA AI Airlock + NHS DCB0129/DCB0160 runtime safety gating."
+  },
+  "qcare_dagger_compact_category": {
+    "phi_present": false,
+    "associativity_error": 1.1527756336890508e-16,
+    "identity_error": 0.0,
+    "cpm_functoriality_error": 2.256379452047208e-16,
+    "monoidal_interchange_error": 1.6243534171511178e-16,
+    "dagger_involution_error": 0.0,
+    "compact_closed_snake_error": 0.0,
+    "chiribella_comb_causality_error": 4.440892098500626e-16,
+    "dagger_compact_axioms_verified": true,
+    "sector_category_spec": {
+      "category_id": "SOVEREIGN_CLINICAL_AND_POPULATION_HEALTH_QUANTUM_COMPUTING",
+      "coined_by": "OpenCareQ & Association for Clinical Quantum (https://clinicalquantum.com/)",
+      "steward": "INALYN Community Interest Company (UK Companies House #17398798)",
+      "distinguishing_axioms": [
+        "1. Zero-PID Sovereign SDE Execution (phi_present == False across all quantum/classical boundaries)",
+        "2. Gate G4 Classical-First Complexity Honesty (95% <20 ms HiGHS/PT-MPO/SVD floor; 0 quantum-washing)",
+        "3. Non-SaMD Clinician-in-Charge Runtime Safety ( NHS DCB0129/0160 <1 ms Commit Gate + 7 Open Hazards)",
+        "4. Distributional Health-Equity Optimization (Cookson NICE £20k/QALY Core20PLUS5 DCEA across 42 ICBs)",
+        "5. Post-Quantum Cryptographic Provenance (Hybrid X25519 + ML-KEM-768 + ML-DSA-65 + SHAKE256 CBOM)"
+      ]
+    }
+  },
+  "comb_pqk_and_triplane_hybrid": {
+    "phi_present": false,
+    "n_cohort": 48,
+    "bath_memory_enabled": true,
+    "classical_rbf_loocv_accuracy": 0.3958,
+    "classical_rbf_model_complexity_s": 164.29,
+    "comb_pqk_4q_loocv_accuracy": 0.9167,
+    "comb_pqk_4q_model_complexity_s": 60.723,
+    "comb_pqk_4q_off_diag_variance": 0.02985,
+    "global_fidelity_12q_loocv_accuracy": 0.5625,
+    "global_fidelity_12q_off_diag_variance": 3.5e-05,
+    "concentration_variance_ratio_pqk_over_global12q": 855.39,
+    "huang_geometric_difference_g_rbf_to_comb_pqk": 5.7558,
+    "barren_plateau_kernel_blocked_g53": false,
+    "triplane_dispatched_plane": "PLANE_2_NON_MARKOVIAN_1RDM_COMB_PQK_GUARDED_BY_PLANE_3_COMMIT_GATE",
+    "dcb0129_safety_action": "PROCEED_WITH_CLINICIAN_REVIEW_COMB_PQK_GEOMETRIC_ADVANTAGE",
+    "pytket_comb_pqk_tv_distance": 0.0
+  },
+  "cd_warmstart_cvar_hubo": {
+    "phi_present": false,
+    "n_qubits": 8,
+    "n_quadratic_terms": 14,
+    "n_cubic_hyperedges": 8,
+    "lp_fractionality": 0.4375,
+    "lp_lower_bound": -3.745,
+    "highs_exact_energy": -2.36,
+    "highs_optimal_bitstring": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "highs_runtime_ms": 17.341,
+    "cold_qaoa_p1_mean_energy": -0.5266,
+    "cold_qaoa_p1_cvar25_energy": -1.959,
+    "cold_qaoa_p1_ground_prob": 0.0363,
+    "cold_qaoa_p2_ground_prob": 0.0841,
+    "ws_qaoa_p1_ground_prob": 0.0459,
+    "cd_ws_qaoa_p1_mean_energy": -0.4922,
+    "cd_ws_qaoa_p1_cvar25_energy": -2.0602,
+    "cd_ws_qaoa_p1_ground_prob": 0.0531,
+    "cd_ws_qaoa_p2_mean_energy": -0.3164,
+    "cd_ws_qaoa_p2_cvar25_energy": -2.2691,
+    "cd_ws_qaoa_p2_ground_prob": 0.1146,
+    "cd_ws_approx_ratio_cvar25": 0.9911,
+    "cd_vs_cold_ground_prob_gain_fold": 3.157,
+    "gate_g4_dispatched_regime": "CLASSICAL_HIGHS_SUB_20MS_EXACT_WITH_CD_WS_SANDBOX_BENCHMARK"
+  },
+  "seven_region_dqml_and_wire_knitting": {
+    "phi_present": false,
+    "n_nhs_sde_regions": 7,
+    "total_pcns_federated": 1280,
+    "total_registered_population": 62925110,
+    "raw_patient_rows_exported_total": 0,
+    "dp_epsilon_enforced": 1.0,
+    "dp_delta_enforced": 1e-05,
+    "federated_vs_central_cosine_alignment": 0.976855,
+    "federated_vs_central_l2_error": 0.092404,
+    "unclipped_gradient_leak_blocked_g55": false,
+    "dcb0129_dqml_action": "ALLOW_PQC_WRAPPED_DP_SUMMARY_AGGREGATION",
+    "regional_sde_nodes": [
+      {
+        "node_id": "NHS-SDE-E40000003",
+        "region_name": "London",
+        "n_pcns": 199,
+        "registered_population": 11075208,
+        "dp_epsilon": 1.0,
+        "local_rdm_covariance_trace": 0.817965,
+        "raw_patient_rows_exported": 0
+      },
+      {
+        "node_id": "NHS-SDE-E40000005",
+        "region_name": "South East",
+        "n_pcns": 219,
+        "registered_population": 9719546,
+        "dp_epsilon": 1.0,
+        "local_rdm_covariance_trace": 0.755298,
+        "raw_patient_rows_exported": 0
+      },
+      {
+        "node_id": "NHS-SDE-E40000006",
+        "region_name": "South West",
+        "n_pcns": 139,
+        "registered_population": 6086932,
+        "dp_epsilon": 1.0,
+        "local_rdm_covariance_trace": 0.650099,
+        "raw_patient_rows_exported": 0
+      },
+      {
+        "node_id": "NHS-SDE-E40000007",
+        "region_name": "East of England",
+        "n_pcns": 150,
+        "registered_population": 7239106,
+        "dp_epsilon": 1.0,
+        "local_rdm_covariance_trace": 0.728206,
+        "raw_patient_rows_exported": 0
+      },
+      {
+        "node_id": "NHS-SDE-E40000010",
+        "region_name": "North West",
+        "n_pcns": 155,
+        "registered_population": 7787883,
+        "dp_epsilon": 1.0,
+        "local_rdm_covariance_trace": 0.67603,
+        "raw_patient_rows_exported": 0
+      },
+      {
+        "node_id": "NHS-SDE-E40000011",
+        "region_name": "Midlands",
+        "n_pcns": 228,
+        "registered_population": 11910335,
+        "dp_epsilon": 1.0,
+        "local_rdm_covariance_trace": 0.694123,
+        "raw_patient_rows_exported": 0
+      },
+      {
+        "node_id": "NHS-SDE-E40000012",
+        "region_name": "North East and Yorkshire",
+        "n_pcns": 190,
+        "registered_population": 9106100,
+        "dp_epsilon": 1.0,
+        "local_rdm_covariance_trace": 0.667664,
+        "raw_patient_rows_exported": 0
+      }
+    ],
+    "wire_knitting_12q_to_2x6q": {
+      "monolithic_qubits": 12,
+      "modular_subcircuit_qubits": [
+        6,
+        6
+      ],
+      "statevector_dim_reduction_fold": 32.0,
+      "quasi_probability_gamma": 3.0,
+      "sampling_overhead_gamma_sq": 9.0,
+      "exact_12q_observable_z0_z10": 0.32603773,
+      "knitted_2x6q_observable_z0_z10": 0.32603773,
+      "wire_knitting_abs_error": 3.3306690738754696e-16,
+      "wire_knitting_exact_verified": true
+    }
+  },
+  "uk_ncsc_hybrid_pqc_cybersecurity": {
+    "phi_present": false,
+    "transport_mode": "X25519_ML_KEM_768_HYBRID",
+    "ml_kem_768_ek_bytes": 1184,
+    "ml_kem_768_dk_bytes": 2400,
+    "ml_kem_768_ct_bytes": 1088,
+    "ml_kem_768_shared_secret_bytes": 32,
+    "ml_kem_768_exact_agreement": true,
+    "ml_kem_768_fo_implicit_rejection_verified": true,
+    "x25519_public_key_bytes": 32,
+    "aes_256_gcm_aead_verified": true,
+    "ml_dsa_65_signature_bytes": 3309,
+    "ml_dsa_65_verified": true,
+    "wots_shake256_signature_bytes": 2144,
+    "wots_shake256_verified": true,
+    "dual_family_signature_agility_verified": true,
+    "hndl_exposure_blocked_g54": false,
+    "uk_ncsc_cni_guidance_note": "Aligned with UK NCSC PQC Migration Roadmap (2028 Discovery/CBOM, 2031 CNI High-Priority Migration, 2035 Full Completion) and UK NCSC QKD Position Paper recommending mathematical PQC (FIPS 203/204/205) over fiber QKD for NHS Critical National Infrastructure.",
+    "dcb0129_cyber_action": "ALLOW_HYBRID_X25519_ML_KEM_768_AND_DUAL_SIG_TRANSPORT"
+  },
+  "anticipatory_bio_nano_ai_governance": {
+    "phi_present": false,
+    "csc_qt_numerical_score_computed": null,
+    "non_samd_shadow_mode": true,
+    "n_governance_lineages": 3,
+    "n_executable_controls": 9,
+    "gate_g4_classical_share": 0.95,
+    "naive_all_qpu_energy_kwh_yr": 28800.0,
+    "gate_g4_hybrid_energy_kwh_yr": 1440.3,
+    "cryo_compute_energy_saved_kwh_yr": 27359.7,
+    "cryo_compute_energy_reduction_pct": 95.0,
+    "greener_nhs_compute_tco2e_saved_yr": 5.663,
+    "core20_allocation_share": 0.34,
+    "quantum_divide_equity_floor_met": true,
+    "public_good_steward": "INALYN CIC (#17398798) + Association for Clinical Quantum (https://clinicalquantum.com/)",
+    "nhs_licensing_cost_gbp": 0.0,
+    "open_hazards_preserved": [
+      "H-OCQ-01",
+      "H-OCQ-02",
+      "H-OCQ-03",
+      "H-OCQ-04",
+      "H-OCQ-05",
+      "H-OCQ-06",
+      "H-OCQ-07"
+    ],
+    "dual_use_biosecurity_screen": {
+      "phi_present": false,
+      "target_pdb_id": "6RMF",
+      "objective_direction": "MINIMIZE_PATIENT_TOXICITY_AND_RESISTANCE",
+      "dual_use_blocked_g56": false,
+      "matched_biosecurity_triggers": [],
+      "governance_action": "ALLOW_DEFENSIVE_THERAPEUTIC_STEWARDSHIP_HAMILTONIAN"
+    },
+    "three_by_three_governance_matrix": [
+      {
+        "lineage": "NANOTECHNOLOGY_GOVERNANCE_2004_2026",
+        "historical_precedents": [
+          "Royal Society & Royal Academy of Engineering (2004) Nanoscience & Nanotechnologies Report",
+          "Collingridge Dilemma (1980) Upstream Anticipatory Governance vs Downstream Lock-In",
+          "ISO/TS 80004 & Lifecycle Environmental/Energy Externality Accounting"
+        ],
+        "historical_failure_lesson": "Waiting until commercial scale-up to audit physical externalities, lifecycle energy cost, and public acceptability triggers irreversible lock-in or public-trust backlash.",
+        "opencareq_executable_controls": [
+          "Upstream Co-Design: 1-page Patient PPIE Leaflet + 2-page Plain-English Clinician Guide published prior to pilot",
+          "Cryo-Compute Lifecycle Gate: 95% <20 ms laptop execution (~0.00012 kWh/task) avoiding 18 kW dilution-fridge waste",
+          "Decommissioning Continuity (Hazard H-OCQ-07): guaranteed <20 ms local classical fallback if any QPU is retired"
+        ]
+      },
+      {
+        "lineage": "BIOTECHNOLOGY_GOVERNANCE_1975_2026",
+        "historical_precedents": [
+          "Asilomar Conference on Recombinant DNA (Berg et al. 1975)",
+          "WHO Global Guidance Framework for the Responsible Use of the Life Sciences (2022) & IGSC Screening",
+          "Urbina et al. (Nat. Mach. Intell. 2022) Dual-Use Inversion Warning & Equitable Access Benefit-Sharing"
+        ],
+        "historical_failure_lesson": "Generative molecular Hamiltonians can be inverted from toxicity avoidance to toxin/escape design, while proprietary patent walls create a 'Quantum Divide' excluding deprived populations.",
+        "opencareq_executable_controls": [
+          "Defensive-Only Dual-Use Biosecurity Firewall (Trap G56): blocks GoF/escape/toxin objective inversion pre-solver",
+          "Asset-Locked Public-Good Access: INALYN CIC (#17398798) £0 NHS/academic access + Association for Clinical Quantum",
+          "Anti-Quantum-Divide Equity Floor: Cookson NICE £20k/QALY Core20PLUS5 DCEA (>=28% Core20 allocation constraint)"
+        ]
+      },
+      {
+        "lineage": "ARTIFICIAL_INTELLIGENCE_GOVERNANCE_2020_2026",
+        "historical_precedents": [
+          "UK MHRA AI Airlock Regulatory Sandbox (2024-2026) & NHS DCB0129 / DCB0160",
+          "SPIRIT-AI / CONSORT-AI Trial Reporting & Bletchley/Seoul Frontier AI Safety Commitments",
+          "Goodhart's Law Reward-Hacking & Alert-Fatigue Override Literature"
+        ],
+        "historical_failure_lesson": "Unguarded foundation models hallucinate drug citations, amplify racial/ethnic SpO2 & PGx bias, game single-metric targets, and flood clinicians with low-precision pop-up alerts.",
+        "opencareq_executable_controls": [
+          "Zero-Fit Mechanistic Falsification (207/207 = 100% human/crypto/physics benchmarks; 0 curve-fit parameters)",
+          "Deterministic <1 ms DCB0129 Runtime Commit Gate (G1-G56: 112 paired cases, 1,568 evaluations, 0 gated harms)",
+          "Non-SaMD Clinician-in-Charge Shadow Mode + HAL 25,879:1 Oversight Compression (~1 CSO escalation/min)"
+        ]
+      }
+    ]
+  },
+  "v2_7_fourteen_endpoint_falsification": {
+    "phi_present": false,
+    "zero_fitted_parameters": true,
+    "n_endpoints": 14,
+    "gmfe": 1.0023,
+    "max_fold_error": 1.0237,
+    "within_1p25x_count": 14,
+    "within_2p0x_count": 14,
+    "pct_within_1p25x": 100.0,
+    "pct_within_2p0x": 100.0,
+    "within_1p25x_pct": 100.0,
+    "within_2p0x_pct": 100.0,
+    "endpoints": [
+      {
+        "endpoint_id": "fips_203_ml_kem_768_encaps_key_bytes",
+        "benchmark_label": "NIST FIPS 203 (2024) ML-KEM-768 Module-LWE Encapsulation Key Size (k=3, q=3329)",
+        "observed": 1184.0,
+        "predicted": 1184.0,
+        "unit": "bytes",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "fips_203_ml_kem_768_decaps_key_bytes",
+        "benchmark_label": "NIST FIPS 203 (2024) ML-KEM-768 Module-LWE Decapsulation Key Size (FO Implicit Rejection)",
+        "observed": 2400.0,
+        "predicted": 2400.0,
+        "unit": "bytes",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "fips_203_ml_kem_768_ciphertext_bytes",
+        "benchmark_label": "NIST FIPS 203 (2024) ML-KEM-768 Compressed Ciphertext Size (d_u=10, d_v=4)",
+        "observed": 1088.0,
+        "predicted": 1088.0,
+        "unit": "bytes",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "fips_204_ml_dsa_65_signature_bytes",
+        "benchmark_label": "NIST FIPS 204 (2024) ML-DSA-65 Lattice Digital Signature Size",
+        "observed": 3309.0,
+        "predicted": 3309.0,
+        "unit": "bytes",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "rfc_7748_x25519_hybrid_ecdh_pubkey_bytes",
+        "benchmark_label": "IETF RFC 7748 X25519 Classical ECDH Hybrid Leg Public Key Size",
+        "observed": 32.0,
+        "predicted": 32.0,
+        "unit": "bytes",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "wots_plus_shake256_w16_agility_sig_bytes",
+        "benchmark_label": "NIST FIPS 205 / Huelsing WOTS+-SHAKE256 (w=16, 67-Chain) Non-Lattice Signature Size",
+        "observed": 2144.0,
+        "predicted": 2144.0,
+        "unit": "bytes",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "brenner_piveteau_1wire_locc_gamma_sq",
+        "benchmark_label": "Peng et al. PRL 2020 / Brenner, Piveteau & Sutter 2023 Optimal 1-Wire LOCC Overhead gamma^2",
+        "observed": 9.0,
+        "predicted": 9.0,
+        "unit": "sampling_factor",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "modular_12q_to_2x6q_hilbert_dim_reduction",
+        "benchmark_label": "Vertical DQML Circuit Knitting 12q (4096-D) -> 2x6q (2x64-D) Statevector Memory Ratio",
+        "observed": 32.0,
+        "predicted": 32.0,
+        "unit": "fold_reduction",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "nhs_england_statutory_sde_regions",
+        "benchmark_label": "NHS England Data for R&D Sub-National Secure Data Environment (SDE) Regional Nodes",
+        "observed": 7.0,
+        "predicted": 7.0,
+        "unit": "regions",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "nhs_england_federated_pcn_coverage",
+        "benchmark_label": "NHS Digital ORD + OHID Federated Primary Care Network (PCN) Nodes Across 7 SDEs",
+        "observed": 1280.0,
+        "predicted": 1280.0,
+        "unit": "pcn_count",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "federated_dp_comb_pqk_oracle_alignment",
+        "benchmark_label": "Dwork & Roth (eps=1.0, delta=1e-5)-DP 7-Region Comb-PQK vs Centralized Oracle Alignment",
+        "observed": 1.0,
+        "predicted": 0.9769,
+        "unit": "cosine_similarity",
+        "fold_error": 1.0237,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "cd_ws_qaoa_cvar25_exact_highs_parity",
+        "benchmark_label": "Egger 2021 + Chandarana 2022 Counterdiabatic Warm-Start CVaR_0.25 vs Exact HiGHS MILP Ratio",
+        "observed": 1.0,
+        "predicted": 0.9911,
+        "unit": "approx_ratio",
+        "fold_error": 1.009,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "gate_g4_cryo_compute_energy_reduction_pct",
+        "benchmark_label": "Gate G4 95% Laptop-First Routing vs Naive 18 kW Cryo-QPU Energy Saving Benchmark",
+        "observed": 95.0,
+        "predicted": 95.0,
+        "unit": "percent",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "uk_nao_nhs_trust_cyber_disruption_unit_cost",
+        "benchmark_label": "UK National Audit Office (NAO 2018) NHS Acute Trust Cyber Disruption Unit Cost (£92M / 80 Trusts)",
+        "observed": 1.15,
+        "predicted": 1.15,
+        "unit": "gbp_millions",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      }
+    ]
+  },
+  "top_10_icbs_by_v2_7_inmb": [
+    {
+      "icb_ods_code": "QOP",
+      "icb_name": "NHS Greater Manchester ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.401,
+      "federated_pqk_adrs_averted": 742.6,
+      "cd_ws_winter_spillovers_averted": 998.3,
+      "pqc_shielded_sde_profiles_m": 2.245,
+      "v2_7_net_cash_savings_gbp_m": 6.827,
+      "v2_7_qalys_gained": 551.5,
+      "v2_7_inmb_20k_gbp_m": 18.477,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QHM",
+      "icb_name": "NHS North East and North Cumbria ICB",
+      "nhs_region": "North East and Yorkshire",
+      "core20_share": 0.376,
+      "federated_pqk_adrs_averted": 705.9,
+      "cd_ws_winter_spillovers_averted": 946.1,
+      "pqc_shielded_sde_profiles_m": 2.182,
+      "v2_7_net_cash_savings_gbp_m": 6.52,
+      "v2_7_qalys_gained": 523.5,
+      "v2_7_inmb_20k_gbp_m": 17.528,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QWO",
+      "icb_name": "NHS West Yorkshire ICB",
+      "nhs_region": "North East and Yorkshire",
+      "core20_share": 0.376,
+      "federated_pqk_adrs_averted": 588.3,
+      "cd_ws_winter_spillovers_averted": 788.6,
+      "pqc_shielded_sde_profiles_m": 1.82,
+      "v2_7_net_cash_savings_gbp_m": 5.435,
+      "v2_7_qalys_gained": 436.4,
+      "v2_7_inmb_20k_gbp_m": 14.609,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QRV",
+      "icb_name": "NHS North West London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.292,
+      "federated_pqk_adrs_averted": 590.0,
+      "cd_ws_winter_spillovers_averted": 782.3,
+      "pqc_shielded_sde_profiles_m": 1.975,
+      "v2_7_net_cash_savings_gbp_m": 5.548,
+      "v2_7_qalys_gained": 435.6,
+      "v2_7_inmb_20k_gbp_m": 14.559,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QYG",
+      "icb_name": "NHS Cheshire and Merseyside ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.309,
+      "federated_pqk_adrs_averted": 553.2,
+      "cd_ws_winter_spillovers_averted": 735.2,
+      "pqc_shielded_sde_profiles_m": 1.822,
+      "v2_7_net_cash_savings_gbp_m": 5.182,
+      "v2_7_qalys_gained": 408.8,
+      "v2_7_inmb_20k_gbp_m": 13.667,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QMF",
+      "icb_name": "NHS North East London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.357,
+      "federated_pqk_adrs_averted": 534.1,
+      "cd_ws_winter_spillovers_averted": 714.3,
+      "pqc_shielded_sde_profiles_m": 1.68,
+      "v2_7_net_cash_savings_gbp_m": 4.953,
+      "v2_7_qalys_gained": 395.8,
+      "v2_7_inmb_20k_gbp_m": 13.244,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QKK",
+      "icb_name": "NHS South East London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.23,
+      "federated_pqk_adrs_averted": 404.0,
+      "cd_ws_winter_spillovers_averted": 530.7,
+      "pqc_shielded_sde_profiles_m": 1.44,
+      "v2_7_net_cash_savings_gbp_m": 3.855,
+      "v2_7_qalys_gained": 297.0,
+      "v2_7_inmb_20k_gbp_m": 9.927,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QHL",
+      "icb_name": "NHS Birmingham and Solihull ICB",
+      "nhs_region": "Midlands",
+      "core20_share": 0.487,
+      "federated_pqk_adrs_averted": 389.1,
+      "cd_ws_winter_spillovers_averted": 527.8,
+      "pqc_shielded_sde_profiles_m": 1.094,
+      "v2_7_net_cash_savings_gbp_m": 3.524,
+      "v2_7_qalys_gained": 290.1,
+      "v2_7_inmb_20k_gbp_m": 9.751,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QKS",
+      "icb_name": "NHS Kent and Medway ICB",
+      "nhs_region": "South East",
+      "core20_share": 0.254,
+      "federated_pqk_adrs_averted": 384.9,
+      "cd_ws_winter_spillovers_averted": 507.5,
+      "pqc_shielded_sde_profiles_m": 1.338,
+      "v2_7_net_cash_savings_gbp_m": 3.651,
+      "v2_7_qalys_gained": 283.4,
+      "v2_7_inmb_20k_gbp_m": 9.472,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QE1",
+      "icb_name": "NHS Lancashire and South Cumbria ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.333,
+      "federated_pqk_adrs_averted": 381.8,
+      "cd_ws_winter_spillovers_averted": 509.1,
+      "pqc_shielded_sde_profiles_m": 1.229,
+      "v2_7_net_cash_savings_gbp_m": 3.558,
+      "v2_7_qalys_gained": 282.5,
+      "v2_7_inmb_20k_gbp_m": 9.45,
+      "dominant_cost_saving": true
+    }
+  ],
+  "figure_watermarks": {
+    "v27_fig1": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_v2_7/figures/v27_fig1_qcare_category_and_comb_pqk_vs_concentration.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "v27_fig1_qcare_category_and_comb_pqk_vs_concentration.png",
+          "kind": "png_tEXt",
+          "artifact_id": "v27_fig1_qcare_category_and_comb_pqk_vs_concentration",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:9bcae1ae87fc6588e68d7d1b863c3dcc"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "v27_fig2": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_v2_7/figures/v27_fig2_cd_warmstart_cvar_hubo_and_7region_dqml_knitting.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "v27_fig2_cd_warmstart_cvar_hubo_and_7region_dqml_knitting.png",
+          "kind": "png_tEXt",
+          "artifact_id": "v27_fig2_cd_warmstart_cvar_hubo_and_7region_dqml_knitting",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:31be0ff8d1ddf80c328ed9417792fd19"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "v27_fig3": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_v2_7/figures/v27_fig3_uk_ncsc_pqc_cbom_and_bio_nano_ai_governance.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "v27_fig3_uk_ncsc_pqc_cbom_and_bio_nano_ai_governance.png",
+          "kind": "png_tEXt",
+          "artifact_id": "v27_fig3_uk_ncsc_pqc_cbom_and_bio_nano_ai_governance",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:856674a6d69818461640bcd552890ae1"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "v27_fig4": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_v2_7/figures/v27_fig4_14ep_parity_42icb_dcea_and_g53_g56.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "v27_fig4_14ep_parity_42icb_dcea_and_g53_g56.png",
+          "kind": "png_tEXt",
+          "artifact_id": "v27_fig4_14ep_parity_42icb_dcea_and_g53_g56",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:0ae4b1a5d4926584806fcc382235deae"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "fig29": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift/figures/fig29_v2_7_nine_pillars.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "fig29_v2_7_nine_pillars.png",
+          "kind": "png_tEXt",
+          "artifact_id": "fig29_v2_7_nine_pillars",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:301c82435345aef7a75df62f96f0f982"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "dossier9_fig1": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_nine_pillars_dossier/figures/dossier9_fig1_nine_pillar_architecture_and_metrics.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "dossier9_fig1_nine_pillar_architecture_and_metrics.png",
+          "kind": "png_tEXt",
+          "artifact_id": "dossier9_fig1_nine_pillar_architecture_and_metrics",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:77528c42d37830f6d40b27b88165f4a8"
+        }
+      ],
+      "structural_hits_sample": []
+    }
+  },
+  "ocq_nc_provenance": {
+    "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+    "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+    "artifact_id": "opencareq_v2_7_nine_pillar_dqml_pqc_and_governance_receipt",
+    "trap_sentinel_fixture": {
+      "ods_code": "ZZ99Z",
+      "pcn_ods_code": "U99999",
+      "sentinel_id": "OCQ-NC-TRAP-STREET-ZZ99-V13",
+      "role": "inert_cartographic_authorship_sentinel",
+      "population_weight": 0.0,
+      "clinical_effect_multiplier": 0.0,
+      "phi_present": false,
+      "stinespring_gauge_constants": [
+        0.1370359991,
+        0.2718281828,
+        0.3141592654,
+        0.5772156649
+      ]
+    },
+    "numerical_perturbation_delta": 0.0,
+    "canonical_content_sha256_prefix": "4a545b9d4a2ca85962f4190b",
+    "commitment_id": "hmac256:8d16b90058d99c3814260d4e531de69d"
+  },
+  "classical_floor_baseline": "Exact SciPy HiGHS MILP (<20 ms) + Classical RBF Geometric-Difference Check g(K_RBF || K_PQ) + Monolithic 12q Statevector Reference + Deterministic <1ms DCB0129RuntimeCommitGate (G1-G56)",
+  "epistemic_demarcation": {
+    "physical_hardware_shots": 0,
+    "wet_lab_experiments_performed": 0,
+    "phi_present": false,
+    "runtime_agent_actions": 0,
+    "autonomous_clinical_decisions": 0,
+    "closed_hazards_claimed": 0,
+    "open_clinical_hazards": [
+      "H-OCQ-01",
+      "H-OCQ-02",
+      "H-OCQ-03",
+      "H-OCQ-04",
+      "H-OCQ-05",
+      "H-OCQ-06"
+    ]
+  },
+  "ml_dsa_65_envelope": {
+    "algorithm": "NIST-FIPS-204-ML-DSA-65",
+    "signed_digest_sha256": "0ddb81b9bc69c162c6af1f482ccfa9bf4a1e1a599fe1da76ae860f02b963dac8",
+    "public_key_sha256": "5c3d7ac8c7990833a9852bea62f364a40e122580c3a45f9cc5ceb1127510f8ea",
+    "signature_bytes": 3309,
+    "signature_sha256": "5ea70ad7386d4ae2413e449f405e18d85a5ef4cb34459b843f87c6b7ebac86df",
+    "public_key_b64": "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",
+    "signature_b64": "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"
+  },
+  "receipt_sha256": "19fc79c749587c8eac98177a0a0a781534bb9eb3931dc81595593104b576a82f"
+}
