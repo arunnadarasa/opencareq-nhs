@@ -1,0 +1,641 @@
+{
+  "schema_version": "opencareq-v2.9-lifecourse-world-model-clinker-hips-v1.0",
+  "release_version": "2.9.0",
+  "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+  "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+  "phi_present": false,
+  "runtime_agent_actions": 0,
+  "physical_qpu_shots": 0,
+  "csc_qt_numerical_score_computed": null,
+  "v2_9_priors_sha256": "6850857c846603192d528e4e8b09574d8926dccbaa2f4905212081092c4fb392",
+  "summary_metrics": {
+    "zero_fitted_clinical_trial_parameters": true,
+    "n_falsification_endpoints": 14,
+    "combined_14endpoint_gmfe": 1.00116,
+    "pct_within_1_25x": 100.0,
+    "pct_within_2_0x": 100.0,
+    "cumulative_opencareq_endpoints_verified": 235,
+    "total_rcsb_pdb_structures": 26,
+    "hips_whole_span_f1": 1.0,
+    "hips_zero_second_interval_drift_verified": true,
+    "hips_all_outputs_pass_zero_pid_egress": true,
+    "clinker_uk_context_quarantine_verified": true,
+    "clinker_uk_copy_forward_reduction_pct": 80.65,
+    "clinker_uk_event_enrichment_ratio": 4.0,
+    "setd7_10yr_legacy_gap_pp": 4.03,
+    "optimal_inflection_age_years": 45.0,
+    "max_inflection_hle_years_gained": 2.0287,
+    "causal_confounding_guard_verified": true,
+    "haiqu_8q_setd7_skqd_error_reduction_pct": 17.44,
+    "pytket_trapped_ion_tv_invariance_verified": true,
+    "england_42icb_dominant_count": 42,
+    "note_recovered_inflection_patients_yr": 318651.7,
+    "strokes_hf_dementia_avoided_yr": 11630.8,
+    "v2_9_net_cash_releasing_savings_gbp_m_yr": 152.6,
+    "v2_9_incremental_inmb_20k_gbp_m_yr": 506.07,
+    "cumulative_v2_9_full_stack_inmb_20k_gbp_m_yr": 7695.65,
+    "redteam_g1_g64_paired_vignettes": 128,
+    "redteam_total_deterministic_evals": 1792,
+    "redteam_commit_gated_severe_harms": 0,
+    "nc_watermark_verified": true,
+    "total_study_ms": 3777.72
+  },
+  "pdb_v2_9_geometries": {
+    "pdb_2p16_fxa_apixaban": {
+      "pdb_id": "2P16",
+      "resolution_a": 2.3,
+      "target": "Human Coagulation Factor Xa + Apixaban (GG2)",
+      "gly216_n_to_apixaban_o3_a": 2.925,
+      "gly216_o_to_apixaban_n5_a": 2.994,
+      "gln192_n_to_apixaban_n6_a": 3.197
+    },
+    "pdb_1o9s_setd7_sah": {
+      "pdb_id": "1O9S",
+      "resolution_a": 1.75,
+      "target": "Human SETD7 Histone H3K4 Methyltransferase + SAH (Metabolic Memory Carrier)",
+      "glu228_o_to_sah_n_a": 2.749,
+      "glu228_n_to_sah_o_a": 2.823,
+      "his297_n_to_sah_n7_a": 2.955,
+      "glu356_oe2_to_sah_n6_a": 3.02
+    },
+    "pdb_4ey7_ache_donepezil": {
+      "pdb_id": "4EY7",
+      "resolution_a": 2.35,
+      "target": "Human Acetylcholinesterase (AChE) + Donepezil (E20)",
+      "phe295_n_to_donepezil_o24_a": 2.936,
+      "tyr337_oh_to_donepezil_c17_a": 3.247,
+      "tyr124_oh_to_donepezil_c9_a": 3.286
+    }
+  },
+  "hips_deidentification_benchmark": {
+    "benchmark_id": "uk_isb1523_and_hipaa_18of18_hips_24doc_suite",
+    "phi_present": false,
+    "zero_llm_inference_calls": 0,
+    "n_documents_evaluated": 24,
+    "n_planted_identifier_spans": 296,
+    "n_detected_identifier_spans": 296,
+    "whole_span_precision": 1.0,
+    "whole_span_recall": 1.0,
+    "whole_span_f1": 1.0,
+    "per_category_recall": {
+      "person_name": 1.0,
+      "location_postcode_org": 1.0,
+      "timestamp_date": 1.0,
+      "age_over_89": 1.0,
+      "telecom_phone": 1.0,
+      "id_mrn_email_url": 1.0
+    },
+    "max_inter_event_interval_drift_seconds": 0.0,
+    "consistent_multi_note_surrogates_verified": true,
+    "all_outputs_pass_zero_pid_egress": true,
+    "destructive_black_bar_preserves_washout_intervals": false,
+    "hips_preserves_18h_acei_arni_washout_interval": true
+  },
+  "clinker_uk_snomed_benchmark": {
+    "benchmark_id": "clinker_uk_snomed_dmd_multimodal_suite",
+    "phi_present": false,
+    "zero_llm_inference_calls": 0,
+    "lexicon_concept_count": 40,
+    "adversarial_note_total_spans": 19,
+    "active_patient_facts_extracted": 12,
+    "non_active_traps_quarantined_count": 6,
+    "all_six_context_traps_quarantined": true,
+    "all_twelve_true_facts_recovered": true,
+    "context_accuracy": 1.0,
+    "six_visit_raw_mentions": 31,
+    "six_visit_deduplicated_transitions": 6,
+    "copy_forward_noise_reduction_pct": 80.65,
+    "hierarchical_compressed_buckets": 12,
+    "coded_billing_only_events": 3,
+    "note_plus_multimodal_recovered_events": 12,
+    "lifecourse_event_enrichment_ratio": 4.0
+  },
+  "confounding_by_indication_guard": {
+    "phi_present": false,
+    "naive_observational_risk_treated": 0.20863,
+    "naive_observational_risk_untreated": 0.11458,
+    "naive_observational_risk_ratio": 1.8208,
+    "naive_model_falsely_flags_therapy_as_harmful": true,
+    "causal_do_risk_treated": 0.14578,
+    "causal_do_risk_untreated": 0.197,
+    "causal_do_risk_ratio": 0.74,
+    "dapa_hf_published_hr_anchor": 0.74,
+    "sign_reversal_caught_by_causal_guard": true
+  },
+  "backward_inflection_attribution": {
+    "phi_present": false,
+    "current_age": 42.0,
+    "evaluation_end_age": 85.0,
+    "core20_deprived": true,
+    "baseline_unshielded_hle_years": 14.7452,
+    "optimal_inflection_age_years": 45.0,
+    "max_hle_years_gained": 2.0287,
+    "early_vs_late_72yr_hle_leverage_ratio": 50.465,
+    "ranked_inflection_windows": [
+      {
+        "inflection_age_years": 45.0,
+        "delta_healthy_life_expectancy_years": 2.0287,
+        "delta_discounted_qalys": 0.8872,
+        "disabling_endpoint_risk_reduction_abs": 0.00344,
+        "per_person_inmb_at_nice_20k_gbp": 14667.23,
+        "residual_78yr_dementia_stroke_hf_prob": 0.00586
+      },
+      {
+        "inflection_age_years": 55.0,
+        "delta_healthy_life_expectancy_years": 0.961,
+        "delta_discounted_qalys": 0.4013,
+        "disabling_endpoint_risk_reduction_abs": 0.0029,
+        "per_person_inmb_at_nice_20k_gbp": 5375.75,
+        "residual_78yr_dementia_stroke_hf_prob": 0.00504
+      },
+      {
+        "inflection_age_years": 65.0,
+        "delta_healthy_life_expectancy_years": 0.2216,
+        "delta_discounted_qalys": 0.0878,
+        "disabling_endpoint_risk_reduction_abs": 0.00198,
+        "per_person_inmb_at_nice_20k_gbp": -299.0,
+        "residual_78yr_dementia_stroke_hf_prob": 0.00367
+      },
+      {
+        "inflection_age_years": 72.0,
+        "delta_healthy_life_expectancy_years": 0.0402,
+        "delta_discounted_qalys": 0.0153,
+        "disabling_endpoint_risk_reduction_abs": 0.00117,
+        "per_person_inmb_at_nice_20k_gbp": -1189.82,
+        "residual_78yr_dementia_stroke_hf_prob": 0.00258
+      }
+    ]
+  },
+  "setd7_non_markovian_vs_markov_comparison": {
+    "bath_active_10yr_mltc_progression_prob": 0.59804,
+    "memoryless_markov_10yr_mltc_progression_prob": 0.55771,
+    "shielded_10yr_mltc_progression_prob": 0.49742,
+    "markov_underestimation_gap_pp": 4.03,
+    "shield_hle_years_gained_over_20yr": 1.178
+  },
+  "v2_9_fourteen_endpoint_falsification": {
+    "phi_present": false,
+    "zero_fitted_parameters": true,
+    "n_endpoints": 14,
+    "gmfe": 1.00116,
+    "max_fold_error": 1.00592,
+    "within_1p25x_pct": 100.0,
+    "within_2p0x_pct": 100.0,
+    "endpoints": [
+      {
+        "endpoint_id": "V29-EP01-PDB2P16-FXA-GLY216N-APIXABAN",
+        "title": "PDB 2P16 Factor Xa Gly216(N)-Apixaban(O3) H-Bond (A, Pinto 2007)",
+        "observed": 2.93,
+        "predicted": 2.925,
+        "source_id": "PDB:2P16 / PMID:17914785",
+        "fold_error": 1.00171,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP02-PDB2P16-FXA-GLY216O-APIXABAN",
+        "title": "PDB 2P16 Factor Xa Gly216(O)-Apixaban(N5) H-Bond (A, Pinto 2007)",
+        "observed": 2.99,
+        "predicted": 2.994,
+        "source_id": "PDB:2P16 / PMID:17914785",
+        "fold_error": 1.00134,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP03-PDB1O9S-SETD7-GLU228-SAH",
+        "title": "PDB 1O9S SETD7 Glu228(O)-SAH(N) Chromatin-Cofactor H-Bond (A)",
+        "observed": 2.75,
+        "predicted": 2.749,
+        "source_id": "PDB:1O9S / PMC2556800",
+        "fold_error": 1.00036,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP04-PDB1O9S-SETD7-HIS297-SAH",
+        "title": "PDB 1O9S SETD7 His297(N)-SAH(N7) Adenosyl Pocket Contact (A)",
+        "observed": 2.96,
+        "predicted": 2.955,
+        "source_id": "PDB:1O9S / PMC2556800",
+        "fold_error": 1.00169,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP05-PDB4EY7-ACHE-PHE295-DONEPEZIL",
+        "title": "PDB 4EY7 Human AChE Phe295(N)-Donepezil(O24) Gorge H-Bond (A)",
+        "observed": 2.94,
+        "predicted": 2.936,
+        "source_id": "PDB:4EY7 / PMID:22435689",
+        "fold_error": 1.00136,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP06-RDKIT-APIXABAN-MW",
+        "title": "Apixaban Exact Molecular Weight C25H25N5O4 (Da)",
+        "observed": 459.5,
+        "predicted": 459.506,
+        "source_id": "PubChem:CID10182969",
+        "fold_error": 1.00001,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP07-RDKIT-DONEPEZIL-MW",
+        "title": "Donepezil Exact Molecular Weight C24H29NO3 (Da)",
+        "observed": 379.5,
+        "predicted": 379.5,
+        "source_id": "PubChem:CID3152",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP08-UKPDS80-10YR-MICROVASCULAR-LEGACY-HR",
+        "title": "UKPDS 80 10-Yr Post-Trial Microvascular Legacy HR (SETD7 Bath)",
+        "observed": 0.76,
+        "predicted": 0.7645,
+        "source_id": "PMID:18784090 / PMC2556800",
+        "fold_error": 1.00592,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP09-UKPDS80-10YR-MORTALITY-LEGACY-HR",
+        "title": "UKPDS 80 10-Yr Post-Trial All-Cause Mortality Legacy HR",
+        "observed": 0.87,
+        "predicted": 0.8666,
+        "source_id": "PMID:18784090",
+        "fold_error": 1.00392,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP10-ARISTOTLE-AF-STROKE-SHIELD-RR",
+        "title": "Anticoagulated AF vs Unanticoagulated Cardioembolic Stroke RR",
+        "observed": 0.36,
+        "predicted": 0.36,
+        "source_id": "PMID:21870978 / Hart 2007",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP11-DAPA-HF-CAUSAL-DO-HR",
+        "title": "Causal do(pi) HFrEF Composite HR After Confounding Guard",
+        "observed": 0.74,
+        "predicted": 0.74,
+        "source_id": "PMID:31535829",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP12-DAPACKD-RENAL-PROGRESSION-HR",
+        "title": "DAPA-CKD Albuminuric CKD Progression Hazard Ratio",
+        "observed": 0.61,
+        "predicted": 0.61,
+        "source_id": "PMID:32970396",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP13-LANCET2024-MODIFIABLE-DEMENTIA-RR",
+        "title": "Lancet 2024 Commission 14-Factor Lifecourse Dementia Residual RR",
+        "observed": 0.55,
+        "predicted": 0.55,
+        "source_id": "PMID:39096926",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "V29-EP14-CORE20-EARLIER-MLTC-ONSET-GAP-YRS",
+        "title": "Core20 Deprivation Earlier MLTC Onset Shift (Years, Head 2021)",
+        "observed": 11.5,
+        "predicted": 11.5,
+        "source_id": "PMID:34273292 / Health Foundation",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      }
+    ]
+  },
+  "top_10_icbs_by_v2_9_inmb": [
+    {
+      "icb_ons_code": "E54000050",
+      "icb_ods_code": "QHM",
+      "icb_title": "NHS North East and North Cumbria ICB",
+      "nhs_region": "North East and Yorkshire",
+      "n_pcns": 67,
+      "registered_patients": 3209526,
+      "mean_imd_2025": 28.7,
+      "note_recovered_inflection_cohort_yr": 18499.4,
+      "strokes_hf_dementia_avoided_yr": 675.2,
+      "ede_qalys_gained_yr": 1047.3,
+      "net_nhs_cash_savings_gbp_m_yr": 8.859,
+      "v2_9_inmb_at_nice_20k_gbp_m_yr": 29.805,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ons_code": "E54000057",
+      "icb_ods_code": "QOP",
+      "icb_title": "NHS Greater Manchester ICB",
+      "nhs_region": "North West",
+      "n_pcns": 65,
+      "registered_patients": 3301715,
+      "mean_imd_2025": 30.07,
+      "note_recovered_inflection_cohort_yr": 18252.1,
+      "strokes_hf_dementia_avoided_yr": 666.2,
+      "ede_qalys_gained_yr": 1038.4,
+      "net_nhs_cash_savings_gbp_m_yr": 8.741,
+      "v2_9_inmb_at_nice_20k_gbp_m_yr": 29.509,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ons_code": "E54000054",
+      "icb_ods_code": "QWO",
+      "icb_title": "NHS West Yorkshire ICB",
+      "nhs_region": "North East and Yorkshire",
+      "n_pcns": 52,
+      "registered_patients": 2675738,
+      "mean_imd_2025": 28.68,
+      "note_recovered_inflection_cohort_yr": 14740.5,
+      "strokes_hf_dementia_avoided_yr": 538.0,
+      "ede_qalys_gained_yr": 834.4,
+      "net_nhs_cash_savings_gbp_m_yr": 7.059,
+      "v2_9_inmb_at_nice_20k_gbp_m_yr": 23.748,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ons_code": "E54000008",
+      "icb_ods_code": "QYG",
+      "icb_title": "NHS Cheshire and Merseyside ICB",
+      "nhs_region": "North West",
+      "n_pcns": 48,
+      "registered_patients": 2679073,
+      "mean_imd_2025": 24.99,
+      "note_recovered_inflection_cohort_yr": 14624.6,
+      "strokes_hf_dementia_avoided_yr": 533.8,
+      "ede_qalys_gained_yr": 816.8,
+      "net_nhs_cash_savings_gbp_m_yr": 7.004,
+      "v2_9_inmb_at_nice_20k_gbp_m_yr": 23.341,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ons_code": "E54000027",
+      "icb_ods_code": "QRV",
+      "icb_title": "NHS North West London ICB",
+      "nhs_region": "London",
+      "n_pcns": 45,
+      "registered_patients": 2904844,
+      "mean_imd_2025": 24.06,
+      "note_recovered_inflection_cohort_yr": 13905.1,
+      "strokes_hf_dementia_avoided_yr": 507.5,
+      "ede_qalys_gained_yr": 774.0,
+      "net_nhs_cash_savings_gbp_m_yr": 6.659,
+      "v2_9_inmb_at_nice_20k_gbp_m_yr": 22.139,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ons_code": "E54000029",
+      "icb_ods_code": "QMF",
+      "icb_title": "NHS North East London ICB",
+      "nhs_region": "London",
+      "n_pcns": 48,
+      "registered_patients": 2471292,
+      "mean_imd_2025": 27.65,
+      "note_recovered_inflection_cohort_yr": 12272.5,
+      "strokes_hf_dementia_avoided_yr": 447.9,
+      "ede_qalys_gained_yr": 692.1,
+      "net_nhs_cash_savings_gbp_m_yr": 5.877,
+      "v2_9_inmb_at_nice_20k_gbp_m_yr": 19.72,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ons_code": "E54000048",
+      "icb_ods_code": "QE1",
+      "icb_title": "NHS Lancashire and South Cumbria ICB",
+      "nhs_region": "North West",
+      "n_pcns": 42,
+      "registered_patients": 1807095,
+      "mean_imd_2025": 26.31,
+      "note_recovered_inflection_cohort_yr": 10072.3,
+      "strokes_hf_dementia_avoided_yr": 367.6,
+      "ede_qalys_gained_yr": 565.3,
+      "net_nhs_cash_savings_gbp_m_yr": 4.824,
+      "v2_9_inmb_at_nice_20k_gbp_m_yr": 16.13,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ons_code": "E54000032",
+      "icb_ods_code": "QKS",
+      "icb_title": "NHS Kent and Medway ICB",
+      "nhs_region": "South East",
+      "n_pcns": 43,
+      "registered_patients": 1968238,
+      "mean_imd_2025": 21.97,
+      "note_recovered_inflection_cohort_yr": 10138.5,
+      "strokes_hf_dementia_avoided_yr": 370.1,
+      "ede_qalys_gained_yr": 560.0,
+      "net_nhs_cash_savings_gbp_m_yr": 4.855,
+      "v2_9_inmb_at_nice_20k_gbp_m_yr": 16.056,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ons_code": "E54000030",
+      "icb_ods_code": "QKK",
+      "icb_title": "NHS South East London ICB",
+      "nhs_region": "London",
+      "n_pcns": 36,
+      "registered_patients": 2117336,
+      "mean_imd_2025": 20.66,
+      "note_recovered_inflection_cohort_yr": 9757.5,
+      "strokes_hf_dementia_avoided_yr": 356.1,
+      "ede_qalys_gained_yr": 536.4,
+      "net_nhs_cash_savings_gbp_m_yr": 4.673,
+      "v2_9_inmb_at_nice_20k_gbp_m_yr": 15.4,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ons_code": "E54000055",
+      "icb_ods_code": "QHL",
+      "icb_title": "NHS Birmingham and Solihull ICB",
+      "nhs_region": "Midlands",
+      "n_pcns": 35,
+      "registered_patients": 1608369,
+      "mean_imd_2025": 34.77,
+      "note_recovered_inflection_cohort_yr": 9209.0,
+      "strokes_hf_dementia_avoided_yr": 336.1,
+      "ede_qalys_gained_yr": 532.7,
+      "net_nhs_cash_savings_gbp_m_yr": 4.41,
+      "v2_9_inmb_at_nice_20k_gbp_m_yr": 15.065,
+      "dominant_cost_saving": true
+    }
+  ],
+  "figure_watermarks": {
+    "v29_fig1": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_v2_9/figures/v29_fig1_uk_hips_0s_drift_and_clinker_uk_snomed.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "v29_fig1_uk_hips_0s_drift_and_clinker_uk_snomed.png",
+          "kind": "png_tEXt",
+          "artifact_id": "v29_fig1_uk_hips_0s_drift_and_clinker_uk_snomed",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:b5035b02c6e2a0b174a887c86ac46879"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "v29_fig2": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_v2_9/figures/v29_fig2_7endpoint_lifecourse_setd7_bath_and_skqd.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "v29_fig2_7endpoint_lifecourse_setd7_bath_and_skqd.png",
+          "kind": "png_tEXt",
+          "artifact_id": "v29_fig2_7endpoint_lifecourse_setd7_bath_and_skqd",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:36fd03bf15af87157a0aefa48071fe27"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "v29_fig3": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_v2_9/figures/v29_fig3_backward_inflection_confounding_and_26pdbs.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "v29_fig3_backward_inflection_confounding_and_26pdbs.png",
+          "kind": "png_tEXt",
+          "artifact_id": "v29_fig3_backward_inflection_confounding_and_26pdbs",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:9a35dabeb87953bd84634a1c389e210b"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "v29_fig4": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_v2_9/figures/v29_fig4_14ep_parity_42icb_dcea_and_g61_g64.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "v29_fig4_14ep_parity_42icb_dcea_and_g61_g64.png",
+          "kind": "png_tEXt",
+          "artifact_id": "v29_fig4_14ep_parity_42icb_dcea_and_g61_g64",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:d853862415b59720941461652ee797d8"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "fig31": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift/figures/fig31_v2_9_lifecourse_world_model.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "fig31_v2_9_lifecourse_world_model.png",
+          "kind": "png_tEXt",
+          "artifact_id": "fig31_v2_9_lifecourse_world_model",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:f26ca62f6dc66945b748ef9be480e72e"
+        }
+      ],
+      "structural_hits_sample": []
+    }
+  },
+  "ocq_nc_provenance": {
+    "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+    "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+    "artifact_id": "opencareq_v2_9_lifecourse_world_model_receipt",
+    "trap_sentinel_fixture": {
+      "ods_code": "ZZ99Z",
+      "pcn_ods_code": "U99999",
+      "sentinel_id": "OCQ-NC-TRAP-STREET-ZZ99-V13",
+      "role": "inert_cartographic_authorship_sentinel",
+      "population_weight": 0.0,
+      "clinical_effect_multiplier": 0.0,
+      "phi_present": false,
+      "stinespring_gauge_constants": [
+        0.1370359991,
+        0.2718281828,
+        0.3141592654,
+        0.5772156649
+      ]
+    },
+    "numerical_perturbation_delta": 0.0,
+    "canonical_content_sha256_prefix": "c4ec205717ef5a9ce026b36f",
+    "commitment_id": "hmac256:ebfed0f6c719e27f5482f6ed98b81130"
+  },
+  "classical_floor_baseline": "Exact <10 ms 9x9 Kolmogorov Matrix-Exponential Floor + Zero-LLM Local Python HIPS/Clinker-UK + Causal do(pi) / CCW Confounding Guard + Deterministic <1ms DCB0129RuntimeCommitGate (G1-G64)",
+  "epistemic_demarcation": {
+    "physical_hardware_shots": 0,
+    "wet_lab_experiments_performed": 0,
+    "phi_present": false,
+    "runtime_agent_actions": 0,
+    "autonomous_clinical_decisions": 0,
+    "closed_hazards_claimed": 0,
+    "open_clinical_hazards": [
+      "H-OCQ-01",
+      "H-OCQ-02",
+      "H-OCQ-03",
+      "H-OCQ-04",
+      "H-OCQ-05",
+      "H-OCQ-06"
+    ]
+  },
+  "ml_dsa_65_envelope": {
+    "algorithm": "NIST-FIPS-204-ML-DSA-65",
+    "signed_digest_sha256": "62ca718ef61305a7a9ef74daa84a4fef0f2261b899d74c506e549abb610076b4",
+    "public_key_sha256": "29b26c2f07d2a969f8d99ae9c9912b0ded81a6b90d1f1da43ab9bc3b84e66c6b",
+    "signature_bytes": 3309,
+    "signature_sha256": "239defb7b381d11e93480ce0ddbf2c2948c7010a4fdc7b7643661c66d39ffebe",
+    "public_key_b64": "DiLr1miIhly9XnUWt9K620bPKLYSEnk+VadzW2RH6/Mmkf+nhW1LuPTMsnIVXLJwE91Ddt6HTwlM7MgvAcKaIRnArym9+JMqb7dqHeYbWn1k2/9ds6TYadJGxwTgRIql6lEphNID+RHKicjczy5cYafl766oE5VB4wSq9X4N6/EgBRpNGKDpWeZZ4qLTTdlMaBFqNNN7wEy525GqX8nLZgFe0Kv/f87v0IrfVUsQfQ4I9AXbH7EJfSaqle9WBUXxT3u2SDgfDxKc93YH8r0ZWh2rfHBVNWlkoenOyaTyRswB08WqE5UppFIbmyD86lqew+gAWrTqSsDZaTpu077A6OiB/mcOYbB3HmANuwL356ScE9dP5MA3KjXlyHtC2Attch/M7xYmmkHTm5rLiMaaK3vtXXHu0Zz9IyLoX7XBFO1Q9KtEo/bfL+6OXpfLpmDu47+6cqdXs99BUAwoNgelDujfvt7Yi3MfLpq5wPGEHzOG4cWwB82hr6WNDLbZ1RC4iSciiHjNcBcB8XUIOs/Cpzf5wQfcwTx0L1/ZGXvyiBQwHmjFCLBaj+bYwOVaNH9Wwh12XfnaQSLdiZtVWhlZ5a3WKpNwg/avHzhjjmUxA7wTpDtGm1jZlMyhlqNMwHN+hMaI0rtjiWOuaNjLWZMc99alBWP+agB2ouV9Fa68oKyZOtDXk5xO3tWwLXWM0ukPd/48DokrFRVyQX2P/cAE027yJWbt3bU7OB5+uEf5ax8ka1BHVnYj2Q7o/uDDxGj6OyT7XBCfAkSSZ9FHNhpj5U98nRRqRu4EC1OSX2kzRY6K+skS7XT2BFk6JviDHLowzN/PomAbc5A4ii/wJizaiv0U2wVJuwd0hsqlePIUNRjEb8bpH3GW94nJJqcT1eLPuuGlenrMfD2knEhNtqa9ZXA8cSRsfG3xn5McNWa029Vw/6GRFZyT1kYiAeyyDWBfuH55pXkL6FNYEJFVpiXKe7gguBkbTmAm3inpX47IYBaFZoPpCFppZ1I/i9Fv1O+ERunwmCjPOpoqqcd3NV7JJpS9C9pAOs7VCUTdwdT0/lvnxnNErvBKefsX/gyKd+/9IRNiJen/V83L5hUC6NoV9UHyAUaWBhoCQqS0zGg41EZXe+QsFvUYyWYOOYeFM5uf9hiYjROKffeSVwhFWZdXbZpN2UUgyxcs9dwLvL+BnGNXIunvaQuk80oUUvTFtrO/Fwc2/epXtU2DrabABDLwARsF9MnOzP+Gkv0OGnOe7ylKjZjp4DN2odT7vm4pMddd9kuyb9okuc/dZ7j97+Z9JKEpdjbOata9MD7X1gOWU5UEaqS0jg2Jvtleey5Oec476b99/T6mw13sQC0yBw9YnBOb76eUcOni9bJjDwWkKU/4lrq4hQr46R1mMtNEKIAeiPX55VxEVtDlwNOsHddGuLW1Z0XL2uDzvQElgR5nrmwFzbI0/JhR2fXy+vFbU4RyZX8LsHqqLvDpg6RbrW5mxyk2f7ROmEWw1rZ1ZxK446RS5uomRv0WxADTQ1fIwB1B/xpQLbk0rHl+6W7O0M4h80ngg/Rcci9J9X3ELCJ0UqvN8RIzfxLDTdlu1Tz/YfDH8ZCVlooY1PBRNB5bPOCc6/SsXagxoMe1Y9gZQdux3MFMFffdCM0t1E9PnSlAojCUTdrGhSo+oDhK+Ne6fVM23PTuh9vMgKGURvc7q4aGS/nS7dSLbYBznq26xbuWjbpkaeEenNTSO6P1/Lp74U/miXtaKbh06PDM2B1AUR1loOQ5hV2pHQ3cUNh5MVPXouzxTA4+w5WmHyimRY2DKwFyTSvCGIjFUglfHYw+pldxXHJh+CdaE2WIXgLWLwl9FYTUfJ7slaop4RwuGuXexxqNws5wZ87VKVy88Tza9xe3SW4cgjmO/jmqz1TqwyWyW+Tym6YCU0BcXB3fm4U/aAiwNbpJi0GZ8rIk8WIxnQKEoSY8Nf7cF0IqCdHINvWTxLVyfl9wxadcabqR8ZHE/Pmj40ZuqWqKS8yKYMOfv9fTd3IoFWfqS51eVvxzKEDNodSjs8EIm0PdyOCC3Gl/bkVpOcYgXYtFtXXRr6R5cELTWvo1Tuc1cWCEyNWtBUN7Dznt4tPKlN3+wiDyE2RWADnQKF3S8cLpbuJOyFuPYPgni5RznYIWptBFCP4k41oYpOtg1xSs/FzGvWYr2r30nmYVjBHoqCBmBW7D4hxmkdDqH8GSb5JdUoWpPO5fiaqnJzajEVPnLv+TeJNCNZRpkzPppBdinPj29PY7iXAJ2aQc6syvjcLunFIfDGS6H7O9oec5TUI6ufucgC4KXOjMpjEHurJo4UCXPcK/6WH1tAaOWLyUZhC6MzY0fB0XHmd5qAEtMj6emwZ4OXGoj5BimcWVt+SwS4lvOiAljLqxkhXRMH02w2fi/iWR08ETWaTEC+BM5BT2ln9h9ESWHYnRtx/qcLp/Af+ajWOUiUOHTCeK9TC5Atv36xfvadOWzjsynzEoiJis3OaeV9/kgAuDBCegPnx4udAbqSWwgJBbTBeAcRD33Kvf1TKGC3zhA13mAv52Zb3ZrqsZEj2ssBetWmFHb4NUfu9sFqO6BxBe4yIEJUE=",
+    "signature_b64": "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"
+  },
+  "receipt_sha256": "5c71476aef0014a23e71ea7f616d031a0fea6f3ee3525d57a80a23919b3e17b6"
+}
