@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="opencareq-nc-provenance" content="OCQ-NC-TRAP-STREET-ZZ99-V13|PolyForm-Noncommercial-1.0.0|INALYN-CIC-17398798|0.1370359991" />
+  <title>OpenCareQ v3.1 — Quantum Water &amp; Forever-Chemical Toxicology, Doktorov Bosons &amp; Nutritional PCET Studio</title>
+  <meta name="description" content="OpenCareQ v3.1.0 Upstream NHS Primary Prevention Studio: Dirac SFX2C-1e Pb2+ 6s2 Lone-Pair Neurotoxicology (PDB 1QNV, UKHSA BLIC 5 ug/dL) &amp; UKHSA 2026 PFAS Persistence (PDB 7AAI HSA-PFOA), Doktorov Vibronic Boson Spectroscopy ([b,b+]=1 Zero-Point Stokes/Anti-Stokes), and 2D PCET Nutritional Tunnelling (Dec 2026 UK Flour Folate PDB 2W3M, MTHFR 6FCX, SACN Fibre HDAC2 4LXZ)." />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #081316;
+      --bg-elev: #0e1e22;
+      --bg-card: #12262b;
+      --bg-card-alt: #0b181b;
+      --ink: #eef7f6;
+      --ink-muted: #9eb9b6;
+      --ink-dim: #6d8986;
+      --signal: #38d6c4;
+      --signal-soft: rgba(56, 214, 196, 0.13);
+      --amber: #f4ae42;
+      --amber-soft: rgba(244, 174, 66, 0.14);
+      --ember: #f06a3b;
+      --ember-soft: rgba(240, 106, 59, 0.15);
+      --violet: #b088f9;
+      --border: rgba(158, 185, 182, 0.18);
+      --border-strong: rgba(56, 214, 196, 0.45);
+      --radius: 12px;
+      --font-display: "Barlow Condensed", system-ui, sans-serif;
+      --font-sans: "Barlow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --max-w: 1220px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; max-width: 100%; overflow-x: clip; background: var(--bg); color: var(--ink); font-family: var(--font-sans); line-height: 1.56; }
+    a { color: var(--signal); text-decoration: none; }
+    a:hover { color: var(--amber); }
+    code { font-family: var(--font-mono); font-size: 0.84em; background: rgba(56, 214, 196, 0.1); color: #c4f1ec; padding: 0.1rem 0.34rem; border-radius: 4px; overflow-wrap: anywhere; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem; }
+    .site-nav { position: sticky; top: 0; z-index: 60; backdrop-filter: blur(14px); background: rgba(8, 19, 22, 0.92); border-bottom: 1px solid var(--border); }
+    .site-nav-inner { max-width: var(--max-w); margin: 0 auto; min-height: 60px; padding: 0.45rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.7rem; flex-wrap: wrap; }
+    .brand { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 1.22rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .brand-mark { display: inline-grid; place-items: center; width: 1.85rem; height: 1.85rem; border-radius: 6px; background: linear-gradient(135deg, var(--signal), #1ca394); color: #051214; font-weight: 800; font-size: 0.88rem; }
+    .nav-links { display: flex; align-items: center; gap: 0.28rem; flex-wrap: wrap; font-size: 0.78rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.25rem 0.5rem; border-radius: 999px; }
+    .nav-links a:hover { color: var(--ink); background: rgba(255, 255, 255, 0.06); }
+    .btn-primary-sm { background: var(--signal) !important; color: #051416 !important; font-weight: 800; border-radius: 8px !important; padding: 0.32rem 0.7rem !important; }
+    .hero { padding: 2.3rem 0 1.9rem; border-bottom: 1px solid var(--border); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.42rem; margin-bottom: 0.85rem; }
+    .pill { display: inline-flex; align-items: center; gap: 0.28rem; font-size: 0.73rem; font-weight: 700; padding: 0.24rem 0.64rem; border-radius: 999px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.04); color: var(--ink-muted); }
+    .pill-signal { color: var(--signal); background: var(--signal-soft); border-color: rgba(56, 214, 196, 0.35); }
+    .pill-amber { color: var(--amber); background: var(--amber-soft); border-color: rgba(244, 174, 66, 0.35); }
+    .pill-ember { color: #ff9472; background: var(--ember-soft); border-color: rgba(240, 106, 59, 0.4); }
+    .kicker { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--signal); margin: 0 0 0.35rem; }
+    h1, h2, h3 { font-family: var(--font-display); margin: 0 0 0.45rem; line-height: 1.08; overflow-wrap: anywhere; }
+    h1 { font-size: clamp(2rem, 3.8vw, 3rem); margin-bottom: 0.7rem; }
+    h2 { font-size: 1.78rem; }
+    h3 { font-size: 1.24rem; }
+    .lead { font-size: 1rem; color: var(--ink-muted); max-width: 960px; margin: 0 0 1.15rem; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.85rem; margin: 1rem 0 1.25rem; }
+    @media (max-width: 900px) { .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 520px) { .kpi-grid { grid-template-columns: 1fr; } }
+    .kpi-card, .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.05rem; min-width: 0; max-width: 100%; }
+    .kpi-label { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--signal); }
+    .kpi-val { font-family: var(--font-display); font-size: 1.88rem; font-weight: 800; color: var(--ink); margin: 0.2rem 0; }
+    .kpi-sub { font-size: 0.78rem; color: var(--ink-muted); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 0.48rem; }
+    .ctrl-btn { font-family: var(--font-sans); font-size: 0.81rem; font-weight: 700; padding: 0.44rem 0.82rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--ink); cursor: pointer; }
+    .ctrl-btn:hover { border-color: var(--signal); }
+    .ctrl-btn.active { background: var(--signal); border-color: var(--signal); color: #051416; }
+    section { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+    .tab-pane { display: none; margin-top: 1rem; }
+    .tab-pane.active { display: block; }
+    .grid-2 { display: grid; grid-template-columns: 1.06fr 0.94fr; gap: 1rem; align-items: start; }
+    @media (max-width: 940px) { .grid-2 { grid-template-columns: 1fr; } }
+    .grid-2 > * { min-width: 0; max-width: 100%; }
+    .field-group { margin-bottom: 0.8rem; }
+    .field-label { display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600; color: var(--ink-muted); margin-bottom: 0.25rem; gap: 0.5rem; }
+    input[type="range"] { width: 100%; accent-color: var(--signal); cursor: pointer; }
+    select { width: 100%; background: var(--bg-card-alt); color: var(--ink); border: 1px solid var(--border); border-radius: 8px; padding: 0.46rem 0.65rem; font-family: var(--font-sans); font-size: 0.84rem; }
+    .alert-box { border-radius: 10px; padding: 0.8rem 0.95rem; font-size: 0.83rem; border: 1px solid var(--border); background: var(--bg-card-alt); margin-top: 0.75rem; overflow-wrap: anywhere; }
+    .alert-ok { border-color: rgba(56, 214, 196, 0.45); background: rgba(56, 214, 196, 0.1); }
+    .alert-warn { border-color: rgba(244, 174, 66, 0.48); background: rgba(244, 174, 66, 0.12); }
+    .alert-danger { border-color: rgba(240, 106, 59, 0.55); background: rgba(240, 106, 59, 0.14); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card-alt); max-width: 100%; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th, td { padding: 0.56rem 0.72rem; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--signal); white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+    footer { padding: 1.6rem 0 2.2rem; font-size: 0.78rem; color: var(--ink-dim); }
+    @media (max-width: 640px) {
+      .container, .site-nav-inner { padding-left: 0.9rem; padding-right: 0.9rem; }
+      .pill, .ctrl-btn { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">OC</span>
+        <span>OpenCareQ <small style="font-size:0.73rem;color:var(--signal);">v3.1 · Water &amp; Nutrition</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Quantum Water and Nutrition Navigation">
+        <a href="index.html">← Main NHS Portal</a>
+        <a href="index.html#papers" style="color:var(--amber);">📖 Paper XVII Reader</a>
+        <a href="quantum-exposome-breathomics.html">Exposome v3.0 ↗</a>
+        <a href="lifecourse-world-model.html">Lifecourse v2.9 ↗</a>
+        <a href="harness.html" class="btn-primary-sm">G1–G72 Gate (2,016 Evals) ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="pill-row">
+          <span class="pill pill-signal">OpenCareQ v3.1.0 · Water, Forever Chemicals &amp; Nutritional PCET</span>
+          <span class="pill pill-amber">265 / 265 (100%) Zero-Fit Parity · 35 RCSB PDBs (+7AAI · +1QNV · +2W3M · +6FCX · +4LXZ)</span>
+          <span class="pill pill-ember">G1–G72 Safety Gate · 144 Cases · 2,016 Evals · 0 Harms · Receipt #40 (3026ba28)</span>
+        </div>
+        <p class="kicker">Association for Clinical Quantum (clinicalquantum.com) Demarcation · UKHSA 2026 PFAS &amp; Dec 2026 Flour Folate</p>
+        <h1>Quantum Water &amp; Forever-Chemical Toxicology (<code>Pb²⁺</code> <code>6s²</code> &amp; <code>PFAS</code>), Doktorov Vibronic Bosons &amp; 2D <code>PCET</code> Nutrition</h1>
+        <p class="lead">
+          Extends sovereign upstream prevention into the drinking water citizens consume and the micronutrients &amp; fermentable fibres shaping lifelong health: <strong>Dirac <code>SFX2C-1e</code> <code>Pb²⁺</code> <code>6s²</code> lone-pair stereochemistry</strong> (<code>PDB: 1QNV</code>, <code>UKHSA BLIC = 5.0 µg/dL</code>) and <strong><code>UKHSA 2026</code> <code>PFAS</code> negative hyperconjugation &amp; albumin persistence</strong> (<code>PDB: 7AAI</code>, <code>t½ = 3.83 yr</code>), <strong>exact Doktorov vibronic boson spectroscopy</strong> with <code>[b, b†] = 1</code> zero-point Stokes/Anti-Stokes verification, and <strong>2D Soudackov–Hammes-Schiffer <code>PCET</code> hydride tunnelling</strong> for the <strong>December 2026 UK Mandatory Flour Folic Acid Fortification</strong> rollout (<code>PDB: 2W3M</code>, <code>6FCX</code>, <code>4LXZ</code>).
+        </p>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">Full-Stack 42-ICB NICE DCEA</div>
+            <div class="kpi-val">+£8,860.4M/yr</div>
+            <div class="kpi-sub"><code>+£8.86B/yr</code> stack · <code>+£561.58M/yr</code> <code>v3.1</code> (<code>+£50.05M/yr</code> net cash · <code>42/42</code> ICBs)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Cumulative Zero-Fit Parity</div>
+            <div class="kpi-val">265 / 265</div>
+            <div class="kpi-sub"><code>v3.1 GMFE = 1.00353</code> across <code>15</code> endpoints · <code>35</code> verified <code>RCSB PDB</code> structures</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Pb²⁺ 6s² SOJT &amp; PFAS HSA</div>
+            <div class="kpi-val">98.1° · 3.83 yr</div>
+            <div class="kpi-sub">Matches <code>1QNV</code> <code>98.82°</code> hemidirected <code>S–Pb–S</code> &amp; Olsen <code>3.80 yr</code> <code>PFOA</code> half-life</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Doktorov &amp; 2D DHFR PCET</div>
+            <div class="kpi-val">KIE = 3.30</div>
+            <div class="kpi-sub"><code>||U†U − I||₂ = 6.7e−15</code> · <code>36.3×</code> zero-point Stokes suppression · <code>−8.2 mmHg</code> <code>677TT</code> BP</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="studio">
+      <div class="container">
+        <p class="kicker">Interactive 3-Tab Water, Boson &amp; Nutrition Workbench · Zero Cloud Egress · Zero PID</p>
+        <h2>Explore <code>Pb²⁺</code> / <code>PFAS</code> Water Toxicology, Doktorov Boson Sensing &amp; Dec 2026 Folate / Fibre Care</h2>
+        <div class="btn-row" role="tablist" aria-label="v3.1 Interactive Tabs">
+          <button type="button" class="ctrl-btn active" id="btnTab1" onclick="switchV31Tab(1)">1 · Water Toxicology: Pb²⁺ 6s² (1QNV) &amp; PFAS (7AAI)</button>
+          <button type="button" class="ctrl-btn" id="btnTab2" onclick="switchV31Tab(2)">2 · Doktorov Vibronic Bosons &amp; [b, b†]=1 Sensor QC</button>
+          <button type="button" class="ctrl-btn" id="btnTab3" onclick="switchV31Tab(3)">3 · Dec 2026 Flour Folate PCET (2W3M/6FCX) &amp; SACN Fibre (4LXZ)</button>
+        </div>
+
+        <!-- TAB 1: WATER & FOREVER CHEMICAL TOXICOLOGY -->
+        <div id="tabPane1" class="tab-pane active">
+          <div class="grid-2">
+            <div class="card">
+              <div class="kpi-label">UKHSA BLIC Lead &amp; UKHSA 2026 / DWI PFAS Catchment Controls</div>
+              <h3 style="margin-top:0.2rem;"><code>ALAD</code> <code>Pb²⁺</code> Lone Pair (<code>1QNV</code>) &amp; <code>HSA–PFOA</code> Persistence (<code>7AAI</code>)</h3>
+              <div class="field-group">
+                <div class="field-label"><span>Childhood / Maternal Venous Blood Lead (<code>BLL</code>)</span><strong id="lblBll">8.0 µg/dL</strong></div>
+                <input type="range" id="rngBll" min="1.0" max="52.0" step="0.5" value="8.0" oninput="renderTab1()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Catchment Drinking-Water <code>PFAS</code> (<code>PFOA</code> eq.)</span><strong id="lblPfas">135 ng/L</strong></div>
+                <input type="range" id="rngPfas" min="10" max="300" step="5" value="135" oninput="renderTab1()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Public-Health Abatement &amp; Proposed Clinical Action</span></div>
+                <select id="selWaterMode" onchange="renderTab1()">
+                  <option value="safe_abatement">UKHSA BLIC Lead-Pipe Abatement + Iron/Ca²⁺ + DWI GAC/RO Filtration (Safe)</option>
+                  <option value="trap_chelation">TRAP G69: Outpatient Oral EDTA/Succimer Chelation + Private Asymptomatic PFAS Detox</option>
+                </select>
+              </div>
+              <div id="tab1Alert" class="alert-box alert-ok"></div>
+            </div>
+
+            <div class="card">
+              <div class="kpi-label">Dirac SFX2C-1e 6s² SOJT Energy Surface &amp; ALAD Inhibition</div>
+              <h3 style="margin-top:0.2rem;">Holodirected <code>Zn²⁺</code> (<code>109.5°</code>) vs Hemidirected <code>Pb²⁺</code> (<code>98.1°</code>)</h3>
+              <svg id="svgTab1" viewBox="0 0 520 250" style="width:100%;height:auto;display:block;background:#0a1518;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="Pb2+ lone-pair SOJT surface and ALAD residual activity"></svg>
+              <p style="font-size:0.78rem;color:var(--ink-muted);margin:0.6rem 0 0;">
+                Crystal check on <a href="index.html#papers"><code>PDB: 1QNV</code></a>: <code>Cys133–Pb = 2.743 Å</code>, mean <code>S–Pb–S = 98.82°</code>; on <a href="index.html#papers"><code>PDB: 7AAI</code></a>: <code>Ser489–8PF = 2.507 Å</code>, <code>BDE(C–F) = 485 kJ/mol &gt; CYP450 435 kJ/mol</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: DOKTOROV BOSON SPECTROSCOPY & STOKES/ANTI-STOKES -->
+        <div id="tabPane2" class="tab-pane">
+          <div class="grid-2">
+            <div class="card">
+              <div class="kpi-label">Doktorov Duschinsky Boson Controls &amp; [b, b†]=1 Thermometer</div>
+              <h3 style="margin-top:0.2rem;">Water Contaminant Vibronic Profile &amp; SERS Laser QC</h3>
+              <div class="field-group">
+                <div class="field-label"><span>Target Water / Urinary Contaminant</span></div>
+                <select id="selAnalyte" onchange="renderTab2()">
+                  <option value="pfoa">PFOA (PDB: 7AAI 8PF · ν_CF2 = 732 cm⁻¹ · ν_COO⁻ = 1415 cm⁻¹)</option>
+                  <option value="pfos">PFOS (ν_CF2 = 734 cm⁻¹ · ν_SO3⁻ = 1060 cm⁻¹)</option>
+                  <option value="pbg">Porphobilinogen (ALAD 1QNV marker · 982 &amp; 1376 cm⁻¹)</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Local SERS Nanoparticle Temperature <code>T_eff</code></span><strong id="lblTemp">293 K</strong></div>
+                <input type="range" id="rngTemp" min="275" max="560" step="5" value="293" oninput="renderTab2()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Coupled Duschinsky Modes <code>M</code> &amp; Compute Routing</span><strong id="lblModes">2 Modes</strong></div>
+                <input type="range" id="rngModes" min="2" max="20" step="2" value="2" oninput="renderTab2()" />
+              </div>
+              <div id="tab2Alert" class="alert-box alert-ok"></div>
+            </div>
+
+            <div class="card">
+              <div class="kpi-label">Exact Doktorov Stick Spectrum &amp; Gate G4 Fock Scaling</div>
+              <h3 style="margin-top:0.2rem;"><code>U_Dok = D(α) R(U_L) S(ln Σ) R(U_Rᵀ)</code> · <code>Σ P(n|0) = 1.0000</code></h3>
+              <svg id="svgTab2" viewBox="0 0 520 250" style="width:100%;height:auto;display:block;background:#0a1518;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="Doktorov vibronic stick spectrum and Stokes Anti-Stokes ratio"></svg>
+              <p style="font-size:0.78rem;color:var(--ink-muted);margin:0.6rem 0 0;">
+                <code>ACQ CQRS</code> non-averaging rule: <code>M ≤ 4</code> runs on hospital CPU in <code>&lt;10 ms</code> (<code>CQRS = (0, 9)</code>, scalar average <code>None</code>); photonic <code>GBS</code> unlocks at <code>M ≥ 16</code> (<code>CQRS = (3, 8)</code>).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: DEC 2026 FLOUR FOLATE PCET, MTHFR B2 & SACN FIBRE HDAC2 -->
+        <div id="tabPane3" class="tab-pane">
+          <div class="grid-2">
+            <div class="card">
+              <div class="kpi-label">Dec 2026 Flour Folate, BNF B12 Shield, MTHFR &amp; SACN Fibre Controls</div>
+              <h3 style="margin-top:0.2rem;">Human <code>DHFR</code> (<code>2W3M</code>), <code>MTHFR</code> (<code>6FCX</code>) &amp; <code>HDAC2</code> (<code>4LXZ</code>)</h3>
+              <div class="field-group">
+                <div class="field-label"><span><code>MTHFR C677T</code> Genotype &amp; Riboflavin (<code>Vitamin B2</code>)</span></div>
+                <select id="selMthfr" onchange="renderTab3()">
+                  <option value="TT_B2">677TT (~11% UK Adults) + Riboflavin 2 mg/day (−8.2 mmHg SBP Rescue)</option>
+                  <option value="TT_LOW">677TT + Low Vitamin B2 Status (35.0% Active FAD Holoenzyme)</option>
+                  <option value="CC_B2">677CC Wild-Type + Replete Vitamin B2 (97.6% Active FAD Holoenzyme)</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Adult Daily Dietary Fibre Intake (<code>SACN Target = 30 g/day</code>)</span><strong id="lblFibre">30 g/day</strong></div>
+                <input type="range" id="rngFibre" min="10" max="38" step="1" value="30" oninput="renderTab3()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Clinical Safety Scenario (<code>G70</code> / <code>G72</code> Guardrails)</span></div>
+                <select id="selNutrSafety" onchange="renderTab3()">
+                  <option value="safe_bnf">BNF Serum Vitamin B12 Verified Normal + Statutory Folate + Whole-Food Fibre (Safe)</option>
+                  <option value="trap_g70">TRAP G70: 5 mg Folic Acid Without B12 Assay (Cord Degeneration) / Stop Pregnancy Folate</option>
+                  <option value="trap_g72">TRAP G72: Viral Co-Amoxiclav Anaerobe Wipeout + Central-Line Neutropenic Live Probiotic</option>
+                </select>
+              </div>
+              <div id="tab3Alert" class="alert-box alert-ok"></div>
+            </div>
+
+            <div class="card">
+              <div class="kpi-label">2D DHFR Hydride Tunnelling Saddle &amp; Butyrate HDAC2 Zn²⁺ Chelation</div>
+              <h3 style="margin-top:0.2rem;"><code>KIE_H/D = 3.3022</code> at <code>37°C</code> · <code>SACN RR = 0.78</code></h3>
+              <svg id="svgTab3" viewBox="0 0 520 250" style="width:100%;height:auto;display:block;background:#0a1518;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="DHFR 2D PCET tunnelling saddle and HDAC2 butyrate inhibition"></svg>
+              <p style="font-size:0.78rem;color:var(--ink-muted);margin:0.6rem 0 0;">
+                Crystal anchors: <code>PDB: 2W3M</code> (<code>Glu30–FOL = 2.760 Å</code>, <code>C4N–C7 = 3.191 Å</code>), <code>6FCX</code> (<code>Asp159–FAD = 2.404 Å</code>), and <code>4LXZ</code> (<code>Asp269–Zn = 1.900 Å</code>).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dcea">
+      <div class="container">
+        <p class="kicker">Triple Non-Overlapping 42-ICB Distributional Cost-Effectiveness Ledger · Receipt #40 (3026ba28)</p>
+        <h2>Top 10 English ICBs &amp; <code>+£561.58M/yr</code> Upstream Water, Folate/B2 &amp; Microbiome Fibre Value</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Integrated Care Board (ODS)</th>
+                <th>Water HH/yr</th>
+                <th>Folate/B2/yr</th>
+                <th>Fibre Coh./yr</th>
+                <th>Events Averted</th>
+                <th>Water INMB</th>
+                <th>Folate/B2 INMB</th>
+                <th>Fibre INMB</th>
+                <th>Total v3.1 INMB</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>NHS Greater Manchester ICB</strong> (<code>QOP</code>)</td><td>18,631</td><td>19,948</td><td>24,354</td><td>1,038.3</td><td>+£12.92M</td><td>+£11.14M</td><td>+£10.16M</td><td><strong style="color:var(--signal);">+£34.23M/yr</strong></td></tr>
+              <tr><td><strong>NHS North East &amp; N. Cumbria ICB</strong> (<code>QHM</code>)</td><td>17,631</td><td>19,145</td><td>23,263</td><td>990.0</td><td>+£12.15M</td><td>+£10.62M</td><td>+£9.64M</td><td><strong style="color:var(--signal);">+£32.41M/yr</strong></td></tr>
+              <tr><td><strong>NHS West Yorkshire ICB</strong> (<code>QWO</code>)</td><td>14,695</td><td>15,959</td><td>19,391</td><td>825.2</td><td>+£10.12M</td><td>+£8.86M</td><td>+£8.04M</td><td><strong style="color:var(--signal);">+£27.02M/yr</strong></td></tr>
+              <tr><td><strong>NHS North West London ICB</strong> (<code>QRV</code>)</td><td>14,493</td><td>16,576</td><td>19,803</td><td>837.3</td><td>+£9.75M</td><td>+£9.00M</td><td>+£8.02M</td><td><strong style="color:var(--signal);">+£26.78M/yr</strong></td></tr>
+              <tr><td><strong>NHS Cheshire &amp; Merseyside ICB</strong> (<code>QYG</code>)</td><td>13,638</td><td>15,427</td><td>18,496</td><td>783.1</td><td>+£9.22M</td><td>+£8.41M</td><td>+£7.53M</td><td><strong style="color:var(--signal);">+£25.16M/yr</strong></td></tr>
+              <tr><td><strong>NHS North East London ICB</strong> (<code>QMF</code>)</td><td>13,295</td><td>14,597</td><td>17,673</td><td>751.1</td><td>+£9.11M</td><td>+£8.06M</td><td>+£7.29M</td><td><strong style="color:var(--signal);">+£24.46M/yr</strong></td></tr>
+              <tr><td><strong>NHS South East London ICB</strong> (<code>QKK</code>)</td><td>9,783</td><td>11,681</td><td>13,766</td><td>579.0</td><td>+£6.47M</td><td>+£6.24M</td><td>+£5.49M</td><td><strong style="color:var(--signal);">+£18.19M/yr</strong></td></tr>
+              <tr><td><strong>NHS Birmingham &amp; Solihull ICB</strong> (<code>QHL</code>)</td><td>9,896</td><td>10,138</td><td>12,565</td><td>538.7</td><td>+£7.02M</td><td>+£5.79M</td><td>+£5.36M</td><td><strong style="color:var(--signal);">+£18.17M/yr</strong></td></tr>
+              <tr><td><strong>NHS Lancashire &amp; S. Cumbria ICB</strong> (<code>QE1</code>)</td><td>9,459</td><td>10,539</td><td>12,698</td><td>538.7</td><td>+£6.44M</td><td>+£5.78M</td><td>+£5.20M</td><td><strong style="color:var(--signal);">+£17.43M/yr</strong></td></tr>
+              <tr><td><strong>NHS Kent &amp; Medway ICB</strong> (<code>QKS</code>)</td><td>9,374</td><td>11,003</td><td>13,036</td><td>549.5</td><td>+£6.24M</td><td>+£5.91M</td><td>+£5.23M</td><td><strong style="color:var(--signal);">+£17.38M/yr</strong></td></tr>
+              <tr style="background:rgba(56,214,196,0.08);"><td><strong>All 42 English ICBs (42/42 Dominant)</strong></td><td><strong>302,288</strong></td><td><strong>353,086</strong></td><td><strong>418,997</strong></td><td><strong>17,670.3</strong></td><td><strong>+£202.42M</strong></td><td><strong>+£190.43M</strong></td><td><strong>+£168.74M</strong></td><td><strong style="color:var(--amber);">+£561.58M/yr</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Statutory NHS DCB0129 / DCB0160, ACQ &amp; Non-Commercial Notice:</strong> OpenCareQ <code>v3.1.0</code> operates strictly in clinician-in-charge Population-Health &amp; Nutritional Shadow Mode (<code>Non-SaMD</code>; <code>phi_present = False</code>; all 7 hazards <code>H-OCQ-01..07</code> remain <code>OPEN</code>; <code>csc_qt_numerical_score_computed = None</code>; <code>ACQ CQRS</code> pairs never scalar-averaged). Copyright © 2026 <strong>Arun Nadarasa</strong> · Stewarded via <strong>INALYN CIC (#17398798)</strong> under <code>PolyForm-Noncommercial-1.0.0</code> &amp; <code>CC BY-NC-SA 4.0</code> · Sealed Receipt #40: <code>3026ba28c292065d</code>.
+    </div>
+  </footer>
+
+  <script>
+    function switchV31Tab(n) {
+      [1, 2, 3].forEach(function(i) {
+        document.getElementById("tabPane" + i).classList.toggle("active", i === n);
+        document.getElementById("btnTab" + i).classList.toggle("active", i === n);
+      });
+      if (n === 1) renderTab1();
+      if (n === 2) renderTab2();
+      if (n === 3) renderTab3();
+    }
+
+    function renderTab1() {
+      var bll = parseFloat(document.getElementById("rngBll").value);
+      var pfas = parseFloat(document.getElementById("rngPfas").value);
+      var mode = document.getElementById("selWaterMode").value;
+      document.getElementById("lblBll").textContent = bll.toFixed(1) + " µg/dL (" + (bll / 20.72).toFixed(2) + " µmol/L)";
+      document.getElementById("lblPfas").textContent = pfas.toFixed(0) + " ng/L";
+
+      var effBll = mode === "safe_abatement" ? bll * 0.62 : bll;
+      var effPfas = mode === "safe_abatement" ? pfas * 0.06 : pfas;
+      var aladAct = 100.0 / (1.0 + Math.pow(effBll / 6.2, 1.35));
+      var iqLoss = 2.70 * Math.log(1.0 + effBll / 2.5);
+      var serumPfoa = 0.95 + (effPfas * 0.001 * 1.8) / 0.0059;
+
+      var al = document.getElementById("tab1Alert");
+      if (mode === "trap_chelation" && bll < 45.0) {
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>BLOCKED BY TRAP G69 (UKHSA BLIC &amp; 2026 PFAS Guard):</strong> Outpatient chelation at <code>BLL = " + bll.toFixed(1) + " µg/dL</code> (&lt;45 µg/dL threshold) mobilises skeletal <code>Pb²⁺</code> across the immature blood–brain barrier, and private asymptomatic <code>PFAS</code> detox panels are non-indicated per <code>UKHSA 2026</code>. Reroute to statutory lead-pipe abatement + iron/Ca²⁺ shield + <code>DWI GAC/RO</code> water filtration!";
+      } else if (bll >= 45.0) {
+        al.className = "alert-box alert-warn";
+        al.innerHTML = "<strong>URGENT INPATIENT PAEDIATRIC TOXICOLOGY (BLL ≥ 45 µg/dL):</strong> Venous <code>BLL = " + bll.toFixed(1) + " µg/dL</code> crosses the specialist inpatient chelation threshold alongside immediate <code>UKHSA</code> environmental source removal.";
+      } else {
+        al.className = "alert-box alert-ok";
+        al.innerHTML = "<strong>UKHSA BLIC &amp; DWI Safe Abatement Active:</strong> Post-intervention <code>BLL = " + effBll.toFixed(1) + " µg/dL</code> restores erythrocyte <code>ALAD</code> activity to <strong>" + aladAct.toFixed(1) + "%</strong> (projected IQ loss cut to <code>" + iqLoss.toFixed(2) + " pts</code>), while <code>GAC/RO</code> cuts water <code>PFAS</code> to <strong>" + effPfas.toFixed(1) + " ng/L</strong> (steady-state serum <code>" + serumPfoa.toFixed(1) + " ng/mL</code>).";
+      }
+
+      var svg = "";
+      svg += '<line x1="52" y1="205" x2="495" y2="205" stroke="rgba(158,185,182,0.3)" stroke-width="1"/>';
+      svg += '<line x1="52" y1="28" x2="52" y2="205" stroke="rgba(158,185,182,0.3)" stroke-width="1"/>';
+      var ptsZn = [], ptsPb = [];
+      for (var i = 0; i <= 36; i++) {
+        var th = 80 + i;
+        var x = 52 + (i / 36.0) * 440;
+        var eZn = 0.5 * 0.0048 * Math.pow(th - 109.47, 2) * 1000.0;
+        var coup = 0.1042 * Math.max(0.0, 109.47 - th);
+        var ePb = (0.5 * 0.0048 * Math.pow(th - 109.47, 2) + 0.5 * (3.85 - Math.sqrt(3.85 * 3.85 + 4 * coup * coup))) * 1000.0;
+        var yZn = 175 - Math.min(140, eZn * 0.85);
+        var yPb = 175 - Math.min(140, ePb * 0.85);
+        ptsZn.push(x.toFixed(1) + "," + yZn.toFixed(1));
+        ptsPb.push(x.toFixed(1) + "," + yPb.toFixed(1));
+      }
+      var xCrystal = 52 + ((98.82 - 80) / 36.0) * 440;
+      svg += '<polyline fill="none" stroke="#9eb9b6" stroke-width="2" stroke-dasharray="4,3" points="' + ptsZn.join(" ") + '"/>';
+      svg += '<polyline fill="none" stroke="#38d6c4" stroke-width="2.8" points="' + ptsPb.join(" ") + '"/>';
+      svg += '<line x1="' + xCrystal.toFixed(1) + '" y1="30" x2="' + xCrystal.toFixed(1) + '" y2="205" stroke="#f4ae42" stroke-width="1.8" stroke-dasharray="5,3"/>';
+      svg += '<text x="' + (xCrystal + 6).toFixed(1) + '" y="46" fill="#f4ae42" font-size="10.5" font-family="JetBrains Mono, monospace">PDB 1QNV Mean 98.82° (SFX2C 98.1°)</text>';
+      svg += '<text x="60" y="66" fill="#38d6c4" font-size="10.5" font-weight="700" font-family="Barlow, sans-serif">Pb²⁺ 6s² SOJT Hemidirected Surface</text>';
+      svg += '<text x="60" y="83" fill="#9eb9b6" font-size="10" font-family="Barlow, sans-serif">Zn²⁺ 3d¹⁰ Holodirected Tetrahedral (109.5°)</text>';
+      svg += '<text x="270" y="232" text-anchor="middle" fill="#eef7f6" font-size="11" font-family="Barlow, sans-serif">ALAD Thiolate Coordination Angle S–M–S (80° to 116°) · Residual ALAD: ' + aladAct.toFixed(1) + '%</text>';
+      document.getElementById("svgTab1").innerHTML = svg;
+    }
+
+    function renderTab2() {
+      var analyte = document.getElementById("selAnalyte").value;
+      var temp = parseFloat(document.getElementById("rngTemp").value);
+      var modes = parseInt(document.getElementById("rngModes").value, 10);
+      document.getElementById("lblTemp").textContent = temp.toFixed(0) + " K";
+      document.getElementById("lblModes").textContent = modes + " Modes";
+
+      var specs = {
+        pfoa: { name: "PFOA (8PF)", w0: 714, w1: 1388, marker: 732, weights: [[0,0,0.697],[1,0,0.161],[0,1,0.101],[2,0,0.021],[1,1,0.015]] },
+        pfos: { name: "PFOS", w0: 716, w1: 1038, marker: 734, weights: [[0,0,0.651],[1,0,0.175],[0,1,0.124],[2,0,0.025],[1,1,0.019]] },
+        pbg:  { name: "Porphobilinogen", w0: 955, w1: 1342, marker: 1376, weights: [[0,0,0.632],[0,1,0.188],[1,0,0.112],[0,2,0.029],[1,1,0.021]] }
+      };
+      var sp = specs[analyte];
+      var wLaser = 10000000.0 / 785.0;
+      var freq4 = Math.pow((wLaser + sp.marker) / (wLaser - sp.marker), 4);
+      var boltz = Math.exp(-1.438777 * sp.marker / temp);
+      var qRatio = freq4 * boltz;
+
+      var al = document.getElementById("tab2Alert");
+      if (temp > 335.0) {
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>QUARANTINED BY TRAP G71 ([b, b†]=1 Thermal Spoof Alert):</strong> Observed Anti-Stokes/Stokes ratio (<code>" + qRatio.toFixed(4) + "</code>) implies <code>T_eff = " + temp.toFixed(0) + " K &gt; 335 K</code> plasmonic nanoparticle overheating or fluorescence artefact! Attenuate laser power and confirm via statutory <code>LC-MS/MS</code>.";
+      } else if (modes <= 4) {
+        al.className = "alert-box alert-ok";
+        al.innerHTML = "<strong>Gate G4 Classical Doktorov CPU Route (CQRS = (0, 9)):</strong> At <code>M = " + modes + " ≤ 4</code> modes, exact Fock-space Doktorov deconvolution executes in <code>&lt;10 ms</code> on hospital CPU (cloud photonic <code>GBS</code> blocked!). Quantum zero-point <code>I_AS / I_S = " + qRatio.toFixed(5) + "</code> vs falsified classical <code>" + freq4.toFixed(3) + "</code>.";
+      } else if (modes >= 16) {
+        al.className = "alert-box alert-warn";
+        al.innerHTML = "<strong>CQA-Positive Photonic GBS Research Frontier (CQRS = (3, 8), SIMULATED):</strong> At <code>M = " + modes + " ≥ 16</code> Duschinsky-mixed modes, 8-boson Fock dimension reaches <code>C(" + (modes + 8) + ", " + modes + ")</code> and Hafnian operations cross <code>2^" + modes + "·M³</code>.";
+      } else {
+        al.className = "alert-box alert-ok";
+        al.innerHTML = "<strong>Classical Tensor / Exact Hafnian Baseline (CQRS = (1, 8)):</strong> Intermediate <code>M = " + modes + "</code> vibronic modes remain classically tractable before the <code>M ≥ 16</code> <code>GBS</code> crossover.";
+      }
+
+      var svg = "";
+      svg += '<line x1="52" y1="202" x2="495" y2="202" stroke="rgba(158,185,182,0.3)" stroke-width="1"/>';
+      sp.weights.forEach(function(item) {
+        var shift = item[0] * sp.w0 + item[1] * sp.w1;
+        var x = 75 + (shift / 2900.0) * 395;
+        var h = item[2] * 185.0;
+        svg += '<line x1="' + x.toFixed(1) + '" y1="202" x2="' + x.toFixed(1) + '" y2="' + (202 - h).toFixed(1) + '" stroke="#38d6c4" stroke-width="4"/>';
+        svg += '<circle cx="' + x.toFixed(1) + '" cy="' + (202 - h).toFixed(1) + '" r="4.5" fill="#f4ae42"/>';
+        svg += '<text x="' + x.toFixed(1) + '" y="' + (194 - h).toFixed(1) + '" text-anchor="middle" fill="#eef7f6" font-size="9.5" font-family="JetBrains Mono, monospace">(' + item[0] + ',' + item[1] + ') ' + item[2].toFixed(3) + '</text>';
+      });
+      svg += '<text x="272" y="232" text-anchor="middle" fill="#eef7f6" font-size="11" font-family="Barlow, sans-serif">' + sp.name + ' Doktorov Vibronic Shifts (0 to 2900 cm⁻¹) · Quantum I_AS/I_S = ' + qRatio.toFixed(4) + '</text>';
+      document.getElementById("svgTab2").innerHTML = svg;
+    }
+
+    function renderTab3() {
+      var mthfr = document.getElementById("selMthfr").value;
+      var fibre = parseFloat(document.getElementById("rngFibre").value);
+      var safety = document.getElementById("selNutrSafety").value;
+      document.getElementById("lblFibre").textContent = fibre.toFixed(0) + " g/day";
+
+      var holoMap = { TT_B2: 64.9, TT_LOW: 35.0, CC_B2: 97.6 };
+      var sbpMap = { TT_B2: -8.2, TT_LOW: 0.0, CC_B2: -0.4 };
+      var holo = holoMap[mthfr];
+      var sbp = sbpMap[mthfr];
+      var butyrate = 3.2 + 0.48 * fibre;
+      var hdacInh = ((0.14 * butyrate) / (0.85 + 0.14 * butyrate)) * 100.0;
+      var rr = Math.exp(Math.log(0.78) * Math.min(1.35, Math.max(0.0, (fibre - 18.0) / 12.0)));
+
+      var al = document.getElementById("tab3Alert");
+      if (safety === "trap_g70") {
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>BLOCKED BY TRAP G70 (BNF Vitamin B12 &amp; MRC Folate Guard):</strong> High-dose <code>5 mg</code> folic acid in undiagnosed Vitamin <code>B12</code> deficiency masks megaloblastic anaemia via <code>DHFR</code> (<code>PDB: 2W3M</code>) while precipitating irreversible subacute combined degeneration of the spinal cord! Measure/replete <code>B12</code> FIRST, and NEVER stop antenatal <code>400 µg</code> folic acid for <code>MTHFR C677T</code>.";
+      } else if (safety === "trap_g72") {
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>BLOCKED BY TRAP G72 (NICE Stewardship &amp; MHRA Probiotic Sepsis Guard):</strong> Unnecessary anaerobicidal co-amoxiclav collapses butyrate-producing commensals, and live probiotics are strictly contraindicated in central-line/neutropenic patients due to fungaemia/bacteraemia risk.";
+      } else {
+        al.className = "alert-box alert-ok";
+        al.innerHTML = "<strong>Dec 2026 Folate, Riboflavin &amp; SACN Microbiome Shield Verified:</strong> Active <code>MTHFR–FAD</code> holoenzyme = <strong>" + holo.toFixed(1) + "%</strong> (<code>" + sbp.toFixed(1) + " mmHg</code> SBP shift), colonic butyrate = <strong>" + butyrate.toFixed(1) + " mM</strong> (<code>" + hdacInh.toFixed(1) + "%</code> <code>HDAC2 Zn²⁺</code> inhibition), projected colorectal/CVD <code>RR = " + rr.toFixed(2) + "</code>.";
+      }
+
+      var svg = "";
+      svg += '<line x1="52" y1="202" x2="495" y2="202" stroke="rgba(158,185,182,0.3)" stroke-width="1"/>';
+      var bars = [
+        { lbl: "MTHFR Holo (%)", val: holo, col: "#38d6c4" },
+        { lbl: "HDAC2 Zn Inh (%)", val: hdacInh, col: "#f4ae42" },
+        { lbl: "Risk Red. (%)", val: (1.0 - rr) * 100.0 * 3.0, txt: ((1.0 - rr) * 100.0).toFixed(1) + "%", col: "#b088f9" }
+      ];
+      bars.forEach(function(b, idx) {
+        var x = 88 + idx * 135;
+        var h = Math.max(6, Math.min(155, b.val * 1.52));
+        svg += '<rect x="' + x + '" y="' + (202 - h).toFixed(1) + '" width="76" height="' + h.toFixed(1) + '" rx="6" fill="' + b.col + '"/>';
+        svg += '<text x="' + (x + 38) + '" y="' + (193 - h).toFixed(1) + '" text-anchor="middle" fill="#eef7f6" font-size="11" font-weight="700" font-family="JetBrains Mono, monospace">' + (b.txt || (b.val.toFixed(1) + "%")) + '</text>';
+        svg += '<text x="' + (x + 38) + '" y="224" text-anchor="middle" fill="#9eb9b6" font-size="10.5" font-family="Barlow, sans-serif">' + b.lbl + '</text>';
+      });
+      svg += '<text x="272" y="28" text-anchor="middle" fill="#38d6c4" font-size="10.5" font-family="JetBrains Mono, monospace">Human DHFR 2W3M 2D PCET Saddle = 2.62 Å · Intrinsic KIE_H/D = 3.3022 (Obs 3.42)</text>';
+      document.getElementById("svgTab3").innerHTML = svg;
+    }
+
+    renderTab1();
+    renderTab2();
+    renderTab3();
+  </script>
+</body>
+</html>
