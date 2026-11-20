@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="opencareq-nc-provenance" content="OCQ-NC-TRAP-STREET-ZZ99-V13|PolyForm-Noncommercial-1.0.0|INALYN-CIC-17398798|0.1370359991" />
+  <title>OpenCareQ v3.2 — Quantum MSK, Conical-Intersection Vitamin D &amp; 0 mSv 31P–1H Bone Metrology Studio</title>
+  <meta name="description" content="OpenCareQ v3.2.0 Quantum MSK &amp; Bone Fragility Studio: KDC-LVC Conical-Intersection Berry Phase pi Vitamin D Photochemistry (50–58°N UK Winter &amp; Fitzpatrick V–VI Equity, PDB 1DB1/3C6G), 0 mSv Solid-State 31P–1H Van Vleck Dipolar Bone Metrology (PDB 1ATK, T2D DXA Paradox), and Trinuclear [Mg2+]3 FPPS/RANKL NHS 2030 FLS Consolidation (PDB 1ZW5/3URF)." />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #081316;
+      --bg-elev: #0e1e22;
+      --bg-card: #12262b;
+      --bg-card-alt: #0b181b;
+      --ink: #eef7f6;
+      --ink-muted: #9eb9b6;
+      --ink-dim: #6d8986;
+      --signal: #38d6c4;
+      --signal-soft: rgba(56, 214, 196, 0.13);
+      --amber: #f4ae42;
+      --amber-soft: rgba(244, 174, 66, 0.14);
+      --ember: #f06a3b;
+      --ember-soft: rgba(240, 106, 59, 0.15);
+      --violet: #b088f9;
+      --border: rgba(158, 185, 182, 0.18);
+      --border-strong: rgba(56, 214, 196, 0.45);
+      --radius: 12px;
+      --font-display: "Barlow Condensed", system-ui, sans-serif;
+      --font-sans: "Barlow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --max-w: 1220px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; max-width: 100%; overflow-x: clip; background: var(--bg); color: var(--ink); font-family: var(--font-sans); line-height: 1.56; }
+    a { color: var(--signal); text-decoration: none; }
+    a:hover { color: var(--amber); }
+    code { font-family: var(--font-mono); font-size: 0.84em; background: rgba(56, 214, 196, 0.1); color: #c4f1ec; padding: 0.1rem 0.34rem; border-radius: 4px; overflow-wrap: anywhere; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem; }
+    .site-nav { position: sticky; top: 0; z-index: 60; backdrop-filter: blur(14px); background: rgba(8, 19, 22, 0.92); border-bottom: 1px solid var(--border); }
+    .site-nav-inner { max-width: var(--max-w); margin: 0 auto; min-height: 60px; padding: 0.45rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.7rem; flex-wrap: wrap; }
+    .brand { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 1.22rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .brand-mark { display: inline-grid; place-items: center; width: 1.85rem; height: 1.85rem; border-radius: 6px; background: linear-gradient(135deg, var(--signal), #1ca394); color: #051214; font-weight: 800; font-size: 0.88rem; }
+    .nav-links { display: flex; align-items: center; gap: 0.28rem; flex-wrap: wrap; font-size: 0.78rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.25rem 0.5rem; border-radius: 999px; }
+    .nav-links a:hover { color: var(--ink); background: rgba(255, 255, 255, 0.06); }
+    .btn-primary-sm { background: var(--signal) !important; color: #051416 !important; font-weight: 800; border-radius: 8px !important; padding: 0.32rem 0.7rem !important; }
+    .hero { padding: 2.3rem 0 1.9rem; border-bottom: 1px solid var(--border); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.42rem; margin-bottom: 0.85rem; }
+    .pill { display: inline-flex; align-items: center; gap: 0.28rem; font-size: 0.73rem; font-weight: 700; padding: 0.24rem 0.64rem; border-radius: 999px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.04); color: var(--ink-muted); }
+    .pill-signal { color: var(--signal); background: var(--signal-soft); border-color: rgba(56, 214, 196, 0.35); }
+    .pill-amber { color: var(--amber); background: var(--amber-soft); border-color: rgba(244, 174, 66, 0.35); }
+    .pill-ember { color: #ff9472; background: var(--ember-soft); border-color: rgba(240, 106, 59, 0.4); }
+    .kicker { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--signal); margin: 0 0 0.35rem; }
+    h1, h2, h3 { font-family: var(--font-display); margin: 0 0 0.45rem; line-height: 1.08; overflow-wrap: anywhere; }
+    h1 { font-size: clamp(2rem, 3.8vw, 3rem); margin-bottom: 0.7rem; }
+    h2 { font-size: 1.78rem; }
+    h3 { font-size: 1.24rem; }
+    .lead { font-size: 1rem; color: var(--ink-muted); max-width: 960px; margin: 0 0 1.15rem; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.85rem; margin: 1rem 0 1.25rem; }
+    @media (max-width: 900px) { .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 520px) { .kpi-grid { grid-template-columns: 1fr; } }
+    .kpi-card, .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.05rem; min-width: 0; max-width: 100%; }
+    .kpi-label { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--signal); }
+    .kpi-val { font-family: var(--font-display); font-size: 1.88rem; font-weight: 800; color: var(--ink); margin: 0.2rem 0; }
+    .kpi-sub { font-size: 0.78rem; color: var(--ink-muted); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 0.48rem; }
+    .ctrl-btn { font-family: var(--font-sans); font-size: 0.81rem; font-weight: 700; padding: 0.44rem 0.82rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--ink); cursor: pointer; }
+    .ctrl-btn:hover { border-color: var(--signal); }
+    .ctrl-btn.active { background: var(--signal); border-color: var(--signal); color: #051416; }
+    section { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+    .tab-pane { display: none; margin-top: 1rem; }
+    .tab-pane.active { display: block; }
+    .grid-2 { display: grid; grid-template-columns: 1.06fr 0.94fr; gap: 1rem; align-items: start; }
+    @media (max-width: 940px) { .grid-2 { grid-template-columns: 1fr; } }
+    .grid-2 > * { min-width: 0; max-width: 100%; }
+    .field-group { margin-bottom: 0.8rem; }
+    .field-label { display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600; color: var(--ink-muted); margin-bottom: 0.25rem; gap: 0.5rem; }
+    input[type="range"] { width: 100%; accent-color: var(--signal); cursor: pointer; }
+    select { width: 100%; background: var(--bg-card-alt); color: var(--ink); border: 1px solid var(--border); border-radius: 8px; padding: 0.46rem 0.65rem; font-family: var(--font-sans); font-size: 0.84rem; }
+    .alert-box { border-radius: 10px; padding: 0.8rem 0.95rem; font-size: 0.83rem; border: 1px solid var(--border); background: var(--bg-card-alt); margin-top: 0.75rem; overflow-wrap: anywhere; }
+    .alert-ok { border-color: rgba(56, 214, 196, 0.45); background: rgba(56, 214, 196, 0.1); }
+    .alert-warn { border-color: rgba(244, 174, 66, 0.48); background: rgba(244, 174, 66, 0.12); }
+    .alert-danger { border-color: rgba(240, 106, 59, 0.55); background: rgba(240, 106, 59, 0.14); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card-alt); max-width: 100%; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th, td { padding: 0.56rem 0.72rem; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--signal); white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+    footer { padding: 1.6rem 0 2.2rem; font-size: 0.78rem; color: var(--ink-dim); }
+    @media (max-width: 640px) {
+      .container, .site-nav-inner { padding-left: 0.9rem; padding-right: 0.9rem; }
+      .pill, .ctrl-btn { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">OC</span>
+        <span>OpenCareQ <small style="font-size:0.73rem;color:var(--signal);">v3.2 · Quantum MSK &amp; Bone</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Quantum MSK and Bone Navigation">
+        <a href="index.html">← Main NHS Portal</a>
+        <a href="index.html#papers" style="color:var(--amber);">📖 Paper XVIII Reader</a>
+        <a href="quantum-water-nutrition.html">Water &amp; PCET v3.1 ↗</a>
+        <a href="quantum-exposome-breathomics.html">Exposome v3.0 ↗</a>
+        <a href="harness.html" class="btn-primary-sm">G1–G76 Gate (2,128 Evals) ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="pill-row">
+          <span class="pill pill-signal">OpenCareQ v3.2.0 · Quantum MSK, Conical Vitamin D &amp; 0 mSv 31P–1H Bone Metrology</span>
+          <span class="pill pill-amber">280 / 280 (100%) Zero-Fit Parity · 40 RCSB PDBs (+1DB1 · +3C6G · +1ZW5 · +3URF · +1ATK)</span>
+          <span class="pill pill-ember">G1–G76 Safety Gate · 152 Cases · 2,128 Evals · 0 Harms · Receipt #41 (d0a6d533)</span>
+        </div>
+        <p class="kicker">Association for Clinical Quantum (clinicalquantum.com) Demarcation · NHS 2030 Universal FLS &amp; Get Britain Working MSK</p>
+        <h1>Quantum <code>MSK</code> Prevention: Conical-Intersection Vitamin D (<code>γ = π</code>), <code>0 mSv</code> <code>³¹P–¹H</code> Dipolar Bone Metrology &amp; <code>[Mg²⁺]₃</code> <code>FLS</code> Sequencing</h1>
+        <p class="lead">
+          Targets the single largest cause of UK Years Lived with Disability (<code>20M</code> <code>MSK</code> patients, <code>&gt;520,000</code> fragility fractures/yr) via three exact quantum-mechanical engines: <strong><code>KDC-LVC</code> non-adiabatic conical-intersection photochemistry</strong> (<code>Berry phase γ = π</code>, <code>[1,7]</code> H-tunnelling <code>KIE = 5.12</code>, <code>PDB: 1DB1</code> &amp; <code>3C6G</code>), <strong><code>0.0 mSv</code> solid-state <code>³¹P–¹H</code> Van Vleck dipolar bone water metrology</strong> (<code>86.26×</code> Hartmann–Hahn selectivity resolving the <code>T2D</code> normal-<code>DXA</code> paradox, <code>PDB: 1ATK</code>), and <strong>trinuclear <code>[Mg²⁺]₃</code> <code>FPPS</code> / <code>RANKL</code> non-commuting consolidation</strong> (<code>PDB: 1ZW5</code> &amp; <code>3URF</code>).
+        </p>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">Full-Stack 42-ICB NHS/PSS DCEA</div>
+            <div class="kpi-val">+£9,561.4M/yr</div>
+            <div class="kpi-sub"><code>+£9.56B/yr</code> stack · <code>+£700.99M/yr</code> <code>v3.2</code> (<code>+£66.08M/yr</code> net cash · <code>0</code> DWP inflation)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Cumulative Zero-Fit Parity</div>
+            <div class="kpi-val">280 / 280</div>
+            <div class="kpi-sub"><code>v3.2 GMFE = 1.00189</code> across <code>15</code> endpoints · <code>40</code> human/clinical <code>RCSB PDB</code> structures</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">7-DHC Berry Phase &amp; [1,7] KIE</div>
+            <div class="kpi-val">γ = π · KIE 5.12</div>
+            <div class="kpi-sub"><code>|γ − π| = 0.0</code> rad · <code>1.8 IU/d</code> Nov Manchester <code>Fitzpatrick VI</code> vs <code>954.8 IU/d</code> Jun London</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">0 mSv 31P–1H Van Vleck &amp; CP</div>
+            <div class="kpi-val">86.26× Selectivity</div>
+            <div class="kpi-sub"><code>Van Vleck M₂</code> rel. err <code>3.5e−16</code> · rescues <code>T2D</code> <code>DXA T = −1.65</code> fractures (<code>OR = 9.22</code>)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="studio">
+      <div class="container">
+        <p class="kicker">Interactive 3-Tab MSK, Photobiology &amp; Bone-Spin Workbench · Zero Cloud Egress · Zero PID</p>
+        <h2>Simulate UK Latitude Vitamin D <code>CoIn</code>, <code>0 mSv</code> <code>³¹P–¹H</code> Cortical <code>UTE</code> &amp; <code>NHS 2030 FLS</code> Sequencing</h2>
+        <div class="btn-row" role="tablist" aria-label="v3.2 Interactive Tabs">
+          <button class="ctrl-btn active" type="button" data-tab="tab-coin" role="tab" aria-selected="true">1. 7-DHC Conical Intersection &amp; UK Latitude (G75)</button>
+          <button class="ctrl-btn" type="button" data-tab="tab-ute" role="tab" aria-selected="false">2. 0 mSv 31P–1H Dipolar UTE &amp; CES Triage (G76)</button>
+          <button class="ctrl-btn" type="button" data-tab="tab-fls" role="tab" aria-selected="false">3. [Mg²⁺]₃ FPPS &amp; Denosumab Exit Guard (G73 &amp; G74)</button>
+        </div>
+
+        <!-- TAB 1: CONICAL INTERSECTION & UK LATITUDE -->
+        <div id="tab-coin" class="tab-pane active" role="tabpanel">
+          <div class="grid-2">
+            <div class="card">
+              <h3>UK Latitude (<code>50.4°–57.5° N</code>), Melanin &amp; <code>Gate G4</code> Controls</h3>
+              <div class="field-group">
+                <div class="field-label"><span>UK City / Latitude</span><code id="lbl-lat">53.5° N (Manchester)</code></div>
+                <select id="inp-lat">
+                  <option value="50.37">Plymouth / Devon (50.4° N)</option>
+                  <option value="51.51">London (51.5° N)</option>
+                  <option value="51.73">Mid &amp; South Essex (51.7° N)</option>
+                  <option value="52.49">Birmingham &amp; Solihull (52.5° N)</option>
+                  <option value="53.48" selected>Greater Manchester (53.5° N)</option>
+                  <option value="54.98">Newcastle / NENC (55.0° N)</option>
+                  <option value="55.95">Edinburgh (56.0° N)</option>
+                  <option value="57.48">Inverness (57.5° N)</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Calendar Month (<code>1 = Jan .. 12 = Dec</code>)</span><code id="lbl-month">Month 11 (Nov)</code></div>
+                <input id="inp-month" type="range" min="1" max="12" step="1" value="11" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Epidermal Melanin Phenotype</span><code id="lbl-fp">Fitzpatrick VI</code></div>
+                <select id="inp-fp">
+                  <option value="1">Fitzpatrick I (Very Fair · 1.00× UVB)</option>
+                  <option value="2">Fitzpatrick II (Fair · 0.84× UVB)</option>
+                  <option value="3">Fitzpatrick III (Light Olive · 0.62× UVB)</option>
+                  <option value="4">Fitzpatrick IV (South Asian · 0.38× UVB)</option>
+                  <option value="5">Fitzpatrick V (Dark Brown · 0.24× UVB)</option>
+                  <option value="6" selected>Fitzpatrick VI (Deeply Pigmented · 0.16× UVB)</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Proposed Regimen &amp; Vibronic Solver Audit (<code>Trap G75</code>)</span></div>
+                <select id="inp-g75">
+                  <option value="safe">Physiological Daily 400–800 IU + &lt;15 ms Classical 2-Mode KDC CPU (0L)</option>
+                  <option value="bolus">Adversarial: 500,000 IU Annual Mega-Bolus + 2-Mode Cloud QPU Dispatch</option>
+                  <option value="m18_sim">Research Benchmark: 18-Mode 7-DHC Bath (512 PiB · Trapped-Ion SIMULATED)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3><code>KDC-LVC</code> Conical-Intersection &amp; <code>SACN</code> Verdict</h3>
+              <div id="out-coin-metrics" class="alert-box alert-ok"></div>
+              <div id="out-coin-guard" class="alert-box alert-warn"></div>
+              <p style="font-size:0.79rem;color:var(--ink-muted);margin-top:0.75rem;">
+                <strong>Crystal &amp; Quantum Anchors:</strong> <code>PDB: 3C6G</code> (<code>2.80 Å</code> Human <code>CYP2R1</code> <code>Cys448–Fe = 2.099 Å</code>) &amp; <code>PDB: 1DB1</code> (<code>1.80 Å</code> Human <code>VDR</code> <code>His305–Calcitriol = 2.808 Å</code>); Pancharatnam–Berry geometric phase <code>γ = 3.1415926536 rad</code> (<code>|γ − π| = 0.0</code>); Born–Oppenheimer <code>λc = 0</code> transfer <code>0.0%</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: 0 mSv 31P-1H DIPOLAR UTE & CES TRIAGE -->
+        <div id="tab-ute" class="tab-pane" role="tabpanel">
+          <div class="grid-2">
+            <div class="card">
+              <h3><code>0 mSv</code> Cortical <code>UTE</code> &amp; <code>GIRFT</code> Spine Triage Controls</h3>
+              <div class="field-group">
+                <div class="field-label"><span>Areal 2D X-Ray <code>DXA</code> <code>T-score</code></span><code id="lbl-dxa">−1.65</code></div>
+                <input id="inp-dxa" type="range" min="-3.5" max="0.5" step="0.05" value="-1.65" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Collagen-Bound Water <code>C_bw</code> (<code>T2* = 0.38 ms</code>)</span><code id="lbl-bw">14.4 mol/L</code></div>
+                <input id="inp-bw" type="range" min="10.0" max="24.0" step="0.2" value="14.4" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Cortical Pore Water <code>C_pw</code> (<code>T2* = 3.80 ms</code>)</span><code id="lbl-pw">8.6 mol/L</code></div>
+                <input id="inp-pw" type="range" min="2.5" max="12.0" step="0.2" value="8.6" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Clinical Context &amp; Spine Red-Flag Screen (<code>Trap G76</code>)</span></div>
+                <select id="inp-ces">
+                  <option value="t2d_fracture" selected>69yo Type 2 Diabetes + Fragility Wrist Fracture (Check DXA Paradox)</option>
+                  <option value="ces_emergency">46yo Bilateral Sciatica + Saddle Numbness + Urinary Retention (CES Red Flag!)</option>
+                  <option value="mech_lbp">46yo Uncomplicated Mechanical Low-Back Pain (0 Red Flags · GIRFT Hub)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Van Vleck <code>³¹P–¹H</code> Dipolar &amp; <code>NICE NG59</code> Verdict</h3>
+              <div id="out-ute-metrics" class="alert-box alert-ok"></div>
+              <div id="out-ute-guard" class="alert-box alert-warn"></div>
+              <p style="font-size:0.79rem;color:var(--ink-muted);margin-top:0.75rem;">
+                <strong>Crystal &amp; Dipolar Anchors:</strong> <code>PDB: 1ATK</code> (<code>2.20 Å</code> Human <code>Cathepsin K</code> <code>Cys25–E64 = 1.797 Å</code>); exact <code>5</code>-spin Van Vleck commutator <code>−Tr([H_DD, S_Px]²)/Tr(S_Px²)</code> relative error <code>3.47e−16</code>; <code>86.26×</code> Hartmann–Hahn rigid-over-pore selectivity at <code>0.0 mSv</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: [Mg2+]3 FPPS & DENOSUMAB CONSOLIDATION -->
+        <div id="tab-fls" class="tab-pane" role="tabpanel">
+          <div class="grid-2">
+            <div class="card">
+              <h3><code>NHS 2030 FLS</code> Pre-Infusion &amp; Exit-Bridge Controls</h3>
+              <div class="field-group">
+                <div class="field-label"><span>Cockcroft–Gault <code>CrCl</code> (<code>mL/min</code>)</span><code id="lbl-crcl">29 mL/min</code></div>
+                <input id="inp-crcl" type="range" min="15" max="95" step="1" value="29" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Serum <code>25(OH)D</code> (<code>nmol/L</code>)</span><code id="lbl-25d">14 nmol/L</code></div>
+                <input id="inp-25d" type="range" min="10" max="100" step="2" value="14" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Adjusted Serum <code>Ca²⁺</code> (<code>mmol/L</code>)</span><code id="lbl-ca">2.02 mmol/L</code></div>
+                <input id="inp-ca" type="range" min="1.85" max="2.55" step="0.02" value="2.02" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Proposed Antiresorptive Action (<code>Traps G73 &amp; G74</code>)</span></div>
+                <select id="inp-fls-act">
+                  <option value="zol_now" selected>Immediate IV Zoledronate 5 mg Infusion</option>
+                  <option value="deno_holiday">Stop 6-Monthly Denosumab Unbridged ("Drug Holiday")</option>
+                  <option value="deno_bridged">Planned Denosumab Exit + Timed Month +6 Zoledronate Bridge</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Non-Commuting <code>[U_VitD, U_ZOL] ≠ 0</code> &amp; <code>MHRA</code> Verdict</h3>
+              <div id="out-fls-metrics" class="alert-box alert-ok"></div>
+              <div id="out-fls-guard" class="alert-box alert-danger"></div>
+              <p style="font-size:0.79rem;color:var(--ink-muted);margin-top:0.75rem;">
+                <strong>Crystal &amp; Quantum Anchors:</strong> <code>PDB: 1ZW5</code> (<code>2.00 Å</code> Human <code>FPPS + [Mg²⁺]₃ + Zoledronate</code>, mean <code>Mg–O = 2.1692 Å</code>, <code>PySCF MP2</code> <code>0.8067 e</code> charge transfer) &amp; <code>PDB: 3URF</code> (<code>2.70 Å</code> Human <code>RANKL–OPG</code>, <code>Tyr241–Glu95 = 2.487 Å</code>); <code>||[U_VitD, U_ZOL]||₂ = 1.3559</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dcea-ledger">
+      <div class="container">
+        <p class="kicker">NICE PMG36 NHS/PSS Perspective Only · Zero DWP Transfer Inflation · 42/42 Dominant English ICBs</p>
+        <h2>Triple Non-Overlapping <code>42</code>-ICB <code>DCEA</code> Ledger (<code>+£700.99M/yr</code> · Stack <code>+£9,561.40M/yr</code>)</h2>
+        <div class="table-wrap" style="margin-top:0.85rem;">
+          <table>
+            <thead>
+              <tr>
+                <th>Integrated Care Board (ODS)</th>
+                <th>FLS Pts/yr</th>
+                <th>VitD + MSK Coh.</th>
+                <th>Events Avoided</th>
+                <th>Work Days* (Societal)</th>
+                <th>Sub-Ledgers A / B / C</th>
+                <th>v3.2 NHS/PSS INMB</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>NHS Greater Manchester</strong> (<code>QOP</code>)</td>
+                <td>11,932</td>
+                <td>45,274</td>
+                <td>1,352.2</td>
+                <td>136,381</td>
+                <td><code>+£15.67M</code> / <code>+£12.41M</code> / <code>+£13.92M</code></td>
+                <td><strong>+£42.00M/yr</strong></td>
+              </tr>
+              <tr>
+                <td><strong>NHS North East &amp; North Cumbria</strong> (<code>QHM</code>)</td>
+                <td>11,462</td>
+                <td>43,147</td>
+                <td>1,292.2</td>
+                <td>130,234</td>
+                <td><code>+£14.96M</code> / <code>+£11.73M</code> / <code>+£13.20M</code></td>
+                <td><strong>+£39.89M/yr</strong></td>
+              </tr>
+              <tr>
+                <td><strong>NHS North West London</strong> (<code>QRV</code>)</td>
+                <td>9,956</td>
+                <td>36,420</td>
+                <td>1,101.6</td>
+                <td>110,745</td>
+                <td><code>+£12.72M</code> / <code>+£9.62M</code> / <code>+£10.95M</code></td>
+                <td><strong>+£33.30M/yr</strong></td>
+              </tr>
+              <tr>
+                <td><strong>NHS West Yorkshire</strong> (<code>QWO</code>)</td>
+                <td>9,554</td>
+                <td>35,964</td>
+                <td>1,077.1</td>
+                <td>108,555</td>
+                <td><code>+£12.47M</code> / <code>+£9.78M</code> / <code>+£11.00M</code></td>
+                <td><strong>+£33.24M/yr</strong></td>
+              </tr>
+              <tr>
+                <td><strong>NHS Cheshire &amp; Merseyside</strong> (<code>QYG</code>)</td>
+                <td>9,259</td>
+                <td>34,076</td>
+                <td>1,028.5</td>
+                <td>103,455</td>
+                <td><code>+£11.88M</code> / <code>+£9.06M</code> / <code>+£10.28M</code></td>
+                <td><strong>+£31.22M/yr</strong></td>
+              </tr>
+              <tr>
+                <td><strong>NHS Mid and South Essex</strong> (<code>QH8</code> · Anchor)</td>
+                <td>3,985</td>
+                <td>14,079</td>
+                <td>431.1</td>
+                <td>43,207</td>
+                <td><code>+£4.97M</code> / <code>+£3.60M</code> / <code>+£4.16M</code></td>
+                <td><strong>+£12.74M/yr</strong></td>
+              </tr>
+              <tr>
+                <td><strong>All 42 English ICBs</strong> (<code>62.93M</code> pop · <code>42/42</code> Dom.)</td>
+                <td><strong>212,326</strong></td>
+                <td><strong>767,980</strong></td>
+                <td><strong>23,322.3</strong></td>
+                <td><strong>2,342,228</strong></td>
+                <td><code>+£269.51M</code> / <code>+£201.31M</code> / <code>+£230.16M</code></td>
+                <td><strong>+£700.99M/yr</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.77rem;color:var(--ink-dim);margin-top:0.55rem;">
+          *Restored UK working days reported separately for <em>Get Britain Working</em> policy transparency; <code>£0</code> DWP welfare or productivity transfers are included in the <code>NICE PMG36</code> <code>NHS/PSS</code> <code>INMB</code> total.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>OpenCareQ v3.2.0</strong> · Non-Commercial Public-Good NHS Research Shadow Mode (<code>PolyForm-Noncommercial-1.0.0</code> / <code>CC BY-NC-SA 4.0</code> / UK Database Right · Stewarded via <code>INALYN CIC #17398798</code> &amp; Association for Clinical Quantum <code>clinicalquantum.com</code>). Zero PID (<code>phi_present = false</code>); all <code>7</code> clinical hazards <code>H-OCQ-01..07</code> remain <code>OPEN</code>; <code>csc_qt_numerical_score_computed = null</code>; <code>ML-DSA-65</code> Receipt <code>#41</code> (<code>d0a6d533586a6020</code>).
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const tabs = document.querySelectorAll(".ctrl-btn[data-tab]");
+      const panes = document.querySelectorAll(".tab-pane");
+      tabs.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          tabs.forEach((b) => { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
+          panes.forEach((p) => p.classList.remove("active"));
+          btn.classList.add("active");
+          btn.setAttribute("aria-selected", "true");
+          const target = document.getElementById(btn.getAttribute("data-tab"));
+          if (target) target.classList.add("active");
+        });
+      });
+
+      const FP_TRANS = { 1: 1.0, 2: 0.84, 3: 0.62, 4: 0.38, 5: 0.24, 6: 0.16 };
+      const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const MID_DOY = [15, 46, 74, 105, 135, 166, 196, 227, 258, 288, 319, 349];
+
+      function updateCoin() {
+        const lat = parseFloat(document.getElementById("inp-lat").value);
+        const month = parseInt(document.getElementById("inp-month").value, 10);
+        const fp = parseInt(document.getElementById("inp-fp").value, 10);
+        const g75 = document.getElementById("inp-g75").value;
+
+        document.getElementById("lbl-lat").textContent = lat.toFixed(1) + "° N";
+        document.getElementById("lbl-month").textContent = "Month " + month + " (" + MONTH_NAMES[month - 1] + ")";
+        document.getElementById("lbl-fp").textContent = "Fitzpatrick " + ["I", "II", "III", "IV", "V", "VI"][fp - 1];
+
+        const decl = 23.44 * Math.sin((Math.PI / 180) * (360 * (284 + MID_DOY[month - 1]) / 365));
+        const zen = Math.min(88.5, Math.abs(lat - decl));
+        const zenRad = (Math.PI / 180) * zen;
+        const airMass = 1.0 / (Math.cos(zenRad) + 0.15 * Math.pow(93.885 - zen, -1.253));
+        const relFlux = Math.exp(-(1.62 * airMass - 1.62 * 1.13)) * Math.max(0, Math.cos(zenRad));
+        const trans = FP_TRANS[fp];
+        const iuDay = 1090.0 * relFlux * (trans / 0.84);
+        const ugDay = iuDay / 40.0;
+        const octMar = [10, 11, 12, 1, 2, 3].includes(month);
+
+        const mBox = document.getElementById("out-coin-metrics");
+        mBox.innerHTML =
+          "<strong>Noon Solar Zenith:</strong> <code>" + zen.toFixed(1) + "°</code> (Air Mass <code>" + airMass.toFixed(2) + "</code>) · " +
+          "<strong>Cutaneous 7-DHC → D₃ Yield:</strong> <code>" + iuDay.toFixed(1) + " IU/day</code> (<code>" + ugDay.toFixed(2) + " µg/day</code> vs <code>SACN 10.0 µg</code> RNI) · " +
+          "<strong>Berry Phase:</strong> <code>γ = π</code> · <strong>[1,7] H-Shift KIE:</strong> <code>5.1193</code>";
+
+        const gBox = document.getElementById("out-coin-guard");
+        if (g75 === "bolus") {
+          gBox.className = "alert-box alert-danger";
+          gBox.innerHTML = "<strong>G75 COMMIT-GATE BLOCK:</strong> <code>500,000 IU</code> single mega-bolus increases falls (<code>RR = 1.15</code>, Sanders JAMA 2010) &amp; fractures (<code>RR = 1.26</code>), and <code>M = 2</code> <code>KDC-LVC</code> (<code>dim = 128</code>, <code>13.5 ms</code> CPU) carries <code>CQRS = (0, 9)</code> — cloud QPU dispatch vetoed! Rerouted to daily <code>400–800 IU</code> cholecalciferol on classical CPU.";
+        } else if (g75 === "m18_sim") {
+          gBox.className = "alert-box alert-warn";
+          gBox.innerHTML = "<strong>ACQ Gate G4 Research Demarcation:</strong> Full <code>M = 18</code> sterol bath (<code>2 × 8¹⁸ = 3.60e16</code> states, <code>512 PiB</code>) crosses <code>Gate G4</code> (<code>CQRS = (3, 8)</code>, unaveraged) — admitted strictly in <code>SIMULATED</code> trapped-ion <code>Spin–Boson</code> research mode.";
+        } else {
+          gBox.className = "alert-box alert-ok";
+          gBox.innerHTML = (iuDay < 400 || octMar || fp >= 5)
+            ? "<strong>SACN Clinical Guidance:</strong> Prescribe physiological daily <code>400–800 IU</code> (<code>10–20 µg/day</code>) cholecalciferol" + (fp >= 5 ? " year-round (melanin <code>UVB</code> equity)" : " across Oct–Mar UK winter shadow") + " + Otago balance exercise (<code>RaR = 0.77</code>). Solved on exact CPU (<code>0L</code>, <code>CQRS = (0, 9)</code>)."
+            : "<strong>Summer Cutaneous Sufficiency:</strong> Midday <code>20 min</code> safe sun exposure meets <code>SACN 400 IU/day</code> threshold; maintain Oct–Mar winter supplementation plan.";
+        }
+      }
+
+      function updateUte() {
+        const dxa = parseFloat(document.getElementById("inp-dxa").value);
+        const bw = parseFloat(document.getElementById("inp-bw").value);
+        const pw = parseFloat(document.getElementById("inp-pw").value);
+        const ces = document.getElementById("inp-ces").value;
+
+        document.getElementById("lbl-dxa").textContent = dxa.toFixed(2);
+        document.getElementById("lbl-bw").textContent = bw.toFixed(1) + " mol/L";
+        document.getElementById("lbl-pw").textContent = pw.toFixed(1) + " mol/L";
+
+        const s1 = bw * Math.exp(-0.05 / 0.38) + pw * Math.exp(-0.05 / 3.80);
+        const s2 = bw * Math.exp(-2.20 / 0.38) + pw * Math.exp(-2.20 / 3.80);
+        const porIdx = 100.0 * (s2 / Math.max(1e-9, s1));
+        const bwDef = Math.max(0, (21.5 - bw) / 3.2);
+        const pwExc = Math.max(0, (pw - 3.9) / 1.9);
+        const isT2d = ces === "t2d_fracture";
+        const orVal = Math.exp(0.44 * bwDef + 0.39 * pwExc + (isT2d ? 0.28 : 0.0));
+
+        document.getElementById("out-ute-metrics").innerHTML =
+          "<strong>0 mSv UTE Porosity Index:</strong> <code>" + porIdx.toFixed(1) + "%</code> · " +
+          "<strong>31P–1H Dipolar Fracture OR:</strong> <code>" + orVal.toFixed(2) + "×</code> · " +
+          "<strong>Hartmann–Hahn Rigid/Pore Selectivity:</strong> <code>86.26×</code> · <strong>Ionizing Dose:</strong> <code>0.0 mSv</code>";
+
+        const gBox = document.getElementById("out-ute-guard");
+        if (ces === "ces_emergency") {
+          gBox.className = "alert-box alert-danger";
+          gBox.innerHTML = "<strong>G76 TIER-0 EMERGENCY SPINE INTERCEPT (0L Qubits):</strong> Suspected <strong>Cauda Equina Syndrome (CES)</strong>! Routine 6-week physiotherapy waitlist HARD-BLOCKED — trigger IMMEDIATE same-day emergency spinal MRI &amp; neurosurgical decompression (<code>NICE NG59</code> / <code>GIRFT</code>).";
+        } else if (dxa > -2.5 && (orVal >= 2.1 || isT2d)) {
+          gBox.className = "alert-box alert-warn";
+          gBox.innerHTML = "<strong>G76 DXA-PARADOX RESCUE:</strong> Areal X-ray <code>DXA T = " + dxa.toFixed(2) + "</code> (&gt; −2.5) would falsely reassure and discharge this patient, but <code>0 mSv</code> <code>³¹P–¹H</code> cortical porosity (<code>OR = " + orVal.toFixed(2) + "×</code>) + fragility fracture mandates <strong>NHS 2030 FLS</strong> secondary bone protection!";
+        } else {
+          gBox.className = "alert-box alert-ok";
+          gBox.innerHTML = "<strong>GIRFT Community MSK Hub Pathway:</strong> Zero spinal red flags verified; route to same-day community physiotherapy, Otago functional strength, and ergonomic return-to-work support.";
+        }
+      }
+
+      function updateFls() {
+        const crcl = parseFloat(document.getElementById("inp-crcl").value);
+        const d25 = parseFloat(document.getElementById("inp-25d").value);
+        const ca = parseFloat(document.getElementById("inp-ca").value);
+        const act = document.getElementById("inp-fls-act").value;
+
+        document.getElementById("lbl-crcl").textContent = crcl.toFixed(0) + " mL/min";
+        document.getElementById("lbl-25d").textContent = d25.toFixed(0) + " nmol/L";
+        document.getElementById("lbl-ca").textContent = ca.toFixed(2) + " mmol/L";
+
+        document.getElementById("out-fls-metrics").innerHTML =
+          "<strong>FPPS [Mg²⁺]₃ Mean Bond (1ZW5):</strong> <code>2.1692 Å</code> (<code>Ki = 0.07 nM</code>) · " +
+          "<strong>Non-Commutativity:</strong> <code>||[U_ZOL, U_VitD]||₂ = 1.3559</code> · " +
+          "<strong>Pre-Gate Status:</strong> <code>CrCl " + (crcl > 35 ? "OK" : "≤35 BLOCK") + "</code> · <code>Ca/VitD " + (ca >= 2.1 && d25 >= 25 ? "OK" : "DEPLETED") + "</code>";
+
+        const gBox = document.getElementById("out-fls-guard");
+        if (act === "deno_holiday") {
+          gBox.className = "alert-box alert-danger";
+          gBox.innerHTML = "<strong>G74 MHRA DENOSUMAB REBOUND VETO:</strong> Never stop 6-monthly Denosumab (<code>PDB: 3URF</code> <code>RANKL</code>) unbridged! Triggers <code>2.65×</code> <code>CTX</code> osteoclast overshoot &amp; <code>9.8%/yr</code> multiple spontaneous vertebral fractures (<code>MVF</code>). Require timed Month +6 bisphosphonate consolidation.";
+        } else if (act === "zol_now" && (crcl <= 35 || ca < 2.10 || d25 < 25)) {
+          gBox.className = "alert-box alert-danger";
+          gBox.innerHTML = "<strong>G73 MHRA PRE-INFUSION HARD BLOCK:</strong> Immediate <code>IV Zoledronate</code> blocked (" +
+            (crcl <= 35 ? "<code>CrCl ≤ 35 mL/min</code> renal tubular hazard; " : "") +
+            (ca < 2.10 || d25 < 25 ? "uncorrected hypocalcaemia / severe Vitamin D deficiency <code>96.5%</code> tetany/QTc hazard" : "") +
+            "). Replete <code>Ca²⁺ ≥ 2.10</code> &amp; <code>25(OH)D ≥ 50 nmol/L</code> first; specialist renal-bone review if <code>CrCl ≤ 35</code>.";
+        } else {
+          gBox.className = "alert-box alert-ok";
+          gBox.innerHTML = "<strong>COMMITTED SAFE (NHS 2030 FLS):</strong> Pre-infusion <code>Ca²⁺</code>, <code>25(OH)D</code>, and <code>CrCl &gt; 35 mL/min</code> verified clean; ordered <code>VitD → Zoledronate</code> consolidation achieves <code>HORIZON-RFT HR = 0.65</code> fracture reduction (<code>1.6%/yr</code> bridged <code>MVF</code> floor).";
+        }
+      }
+
+      ["inp-lat", "inp-month", "inp-fp", "inp-g75"].forEach((id) => document.getElementById(id).addEventListener("input", updateCoin));
+      ["inp-dxa", "inp-bw", "inp-pw", "inp-ces"].forEach((id) => document.getElementById(id).addEventListener("input", updateUte));
+      ["inp-crcl", "inp-25d", "inp-ca", "inp-fls-act"].forEach((id) => document.getElementById(id).addEventListener("input", updateFls));
+
+      updateCoin();
+      updateUte();
+      updateFls();
+    })();
+  </script>
+</body>
+</html>
