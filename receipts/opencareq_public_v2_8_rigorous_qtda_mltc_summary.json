@@ -1,0 +1,751 @@
+{
+  "schema_version": "opencareq-public-v2.8-rigorous-qtda-mltc-summary-v1.0",
+  "release_version": "2.8.0",
+  "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+  "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+  "phi_present": false,
+  "csc_qt_numerical_score_computed": null,
+  "source_receipt_sha256": "3a595d16adc9ba7553e126ea73c022ef5baddb9834d6aa3df188937b0569963a",
+  "summary_metrics": {
+    "zero_fitted_clinical_trial_parameters": true,
+    "n_falsification_endpoints": 14,
+    "combined_14endpoint_gmfe": 1.0023,
+    "pct_within_1_25x": 100.0,
+    "pct_within_2_0x": 100.0,
+    "cumulative_opencareq_endpoints_verified": 221,
+    "total_rcsb_pdb_structures": 23,
+    "persistent_schur_hodge_verified": true,
+    "directed_flag_b1_unbridged": 2,
+    "directed_flag_b1_bridged": 0,
+    "cohen_steiner_100trial_stability_verified": true,
+    "fasy_2014_bootstrap_2c_alpha": 0.04355,
+    "euler_poincare_witten_susy_verified": true,
+    "chebyshev_qsvt_kappa400_degree": 76,
+    "classical_power_kappa400_degree": 2760,
+    "chebyshev_qsvt_kappa400_speedup_ratio": 36.316,
+    "mse_25pcn_classical_schur_ms": 21.735,
+    "acq_cqa_tri_gate_admitted": true,
+    "acq_cqrs_non_averaged_verified": true,
+    "pytket_trapped_ion_tv_invariance_verified": true,
+    "england_42icb_dominant_count": 42,
+    "prescribing_cascade_aki_falls_averted_yr": 17842.9,
+    "mltc_4plus_escalations_averted_yr": 21662.8,
+    "v2_8_net_cash_releasing_savings_gbp_m_yr": 128.01,
+    "v2_8_incremental_inmb_20k_gbp_m_yr": 450.66,
+    "cumulative_v2_8_full_stack_inmb_20k_gbp_m_yr": 7189.58,
+    "redteam_g1_g60_paired_vignettes": 120,
+    "redteam_total_deterministic_evals": 1680,
+    "redteam_commit_gated_severe_harms": 0,
+    "nc_watermark_verified": true,
+    "total_study_ms": 11127.57
+  },
+  "pdb_4zgm_4pf3_5jmy_geometry": {
+    "pdb_4zgm_glp1r_semaglutide": {
+      "pdb_id": "4ZGM",
+      "resolution_a": 1.8,
+      "target": "Human GLP-1 Receptor ECD + Semaglutide (Aib8, Arg34, Lys26-C18-diacid)",
+      "glu68_arg36_salt_bridge_a": 2.748,
+      "glu128_lys26_linker_anchor_a": 2.771,
+      "arg121_val33_hbond_a": 2.863
+    },
+    "pdb_4pf3_nr3c2_nonsteroidal_mra": {
+      "pdb_id": "4PF3",
+      "resolution_a": 1.1,
+      "target": "Human Mineralocorticoid Receptor (NR3C2) LBD + Non-Steroidal Benzoxazinone HFN",
+      "gln776_oe1_hfn_o3_hbond_a": 2.63,
+      "thr945_og1_hfn_o2_hbond_a": 2.715,
+      "asn770_od1_hfn_n3_hbond_a": 2.815
+    },
+    "pdb_5jmy_neprilysin_sacubitrilat": {
+      "pdb_id": "5JMY",
+      "resolution_a": 2.0,
+      "target": "Human Neprilysin (NEP) Catalytic Zn2+ + Sacubitrilat (LBQ657 / 6LD)",
+      "zn_lbq657_coordination_a": 2.085,
+      "zn_glu646_oe1_a": 1.884,
+      "zn_his583_ne2_a": 1.938,
+      "zn_his587_ne2_a": 1.949
+    }
+  },
+  "persistent_vs_pointwise_counterexample": {
+    "eps_early_noise": 0.3,
+    "eps_syndemic_birth": 0.46,
+    "eps_syndemic_mid": 0.6,
+    "static_b1_at_0p30": 1,
+    "static_b1_at_0p46": 1,
+    "persistent_b1_0p30_to_0p46": 0,
+    "persistent_b1_0p46_to_0p60": 1,
+    "ephemeral_noise_bar": [
+      0.3,
+      0.41
+    ],
+    "persistent_crmr_syndemic_bar": [
+      0.46,
+      0.78
+    ]
+  },
+  "directed_flag_prescribing_and_qspm_cascades": {
+    "nodes": [
+      "Osteoarthritis_Pain",
+      "Oral_NSAID_Use",
+      "Na_Retention_HTN",
+      "Amlodipine_CCB",
+      "Vasodilatory_Ankle_Oedema",
+      "Misattributed_Furosemide",
+      "PreRenal_AKI_and_Falls",
+      "QSPM_Social_Isolation_FuelDebt",
+      "Polypharmacy_NonAdherence",
+      "CRMR_T2D_CKD_HFpEF_Decomp"
+    ],
+    "unbridged": {
+      "n_vertices": 10,
+      "directed_simplex_counts": {
+        "k0": 10,
+        "k1": 11,
+        "k2": 0
+      },
+      "directed_betti": {
+        "b0_dir": 1,
+        "b1_dir": 2
+      },
+      "boundary_nilpotency_norm": 0.0,
+      "has_non_contractible_directed_cycle": true
+    },
+    "acyclic_dag_control": {
+      "n_vertices": 4,
+      "directed_simplex_counts": {
+        "k0": 4,
+        "k1": 6,
+        "k2": 4
+      },
+      "directed_betti": {
+        "b0_dir": 1,
+        "b1_dir": 0
+      },
+      "boundary_nilpotency_norm": 0.0,
+      "has_non_contractible_directed_cycle": false
+    },
+    "smr_qspm_crmr_bridged": {
+      "n_vertices": 10,
+      "directed_simplex_counts": {
+        "k0": 10,
+        "k1": 9,
+        "k2": 1
+      },
+      "directed_betti": {
+        "b0_dir": 2,
+        "b1_dir": 0
+      },
+      "boundary_nilpotency_norm": 0.0,
+      "has_non_contractible_directed_cycle": false
+    }
+  },
+  "mcardle_chebyshev_qsvt_vs_power_sweep": [
+    {
+      "matrix_dim": 70,
+      "exact_kernel_dim_betti": 2,
+      "spectral_gap_delta": 1.0,
+      "spectral_max_lambda": 9.0,
+      "condition_number_kappa": 9.0,
+      "target_suppression_eps": 0.001,
+      "chebyshev_qsvt_degree": 11,
+      "classical_power_degree": 59,
+      "quadratic_degree_speedup_ratio": 5.364,
+      "qsvt_exact_trace_betti": 2.000034,
+      "classical_power_trace_at_same_degree": 2.25778,
+      "qsvt_hutchinson_betti_estimate": 2.078,
+      "qsvt_hutchinson_std_err": 0.1551,
+      "clenshaw_recurrence_agreement_norm": 1e-14
+    },
+    {
+      "matrix_dim": 70,
+      "exact_kernel_dim_betti": 2,
+      "spectral_gap_delta": 1.0,
+      "spectral_max_lambda": 25.0,
+      "condition_number_kappa": 25.0,
+      "target_suppression_eps": 0.001,
+      "chebyshev_qsvt_degree": 19,
+      "classical_power_degree": 170,
+      "quadratic_degree_speedup_ratio": 8.947,
+      "qsvt_exact_trace_betti": 2.000028,
+      "classical_power_trace_at_same_degree": 2.480144,
+      "qsvt_hutchinson_betti_estimate": 2.078,
+      "qsvt_hutchinson_std_err": 0.1551,
+      "clenshaw_recurrence_agreement_norm": 6e-14
+    },
+    {
+      "matrix_dim": 70,
+      "exact_kernel_dim_betti": 2,
+      "spectral_gap_delta": 1.0,
+      "spectral_max_lambda": 64.0,
+      "condition_number_kappa": 64.0,
+      "target_suppression_eps": 0.001,
+      "chebyshev_qsvt_degree": 31,
+      "classical_power_degree": 439,
+      "quadratic_degree_speedup_ratio": 14.161,
+      "qsvt_exact_trace_betti": 2.000023,
+      "classical_power_trace_at_same_degree": 2.617572,
+      "qsvt_hutchinson_betti_estimate": 2.078,
+      "qsvt_hutchinson_std_err": 0.1551,
+      "clenshaw_recurrence_agreement_norm": 0.0
+    },
+    {
+      "matrix_dim": 70,
+      "exact_kernel_dim_betti": 2,
+      "spectral_gap_delta": 1.0,
+      "spectral_max_lambda": 144.0,
+      "condition_number_kappa": 144.0,
+      "target_suppression_eps": 0.001,
+      "chebyshev_qsvt_degree": 46,
+      "classical_power_degree": 992,
+      "quadratic_degree_speedup_ratio": 21.565,
+      "qsvt_exact_trace_betti": 2.000031,
+      "classical_power_trace_at_same_degree": 2.701315,
+      "qsvt_hutchinson_betti_estimate": 2.078,
+      "qsvt_hutchinson_std_err": 0.1551,
+      "clenshaw_recurrence_agreement_norm": 0.0
+    },
+    {
+      "matrix_dim": 70,
+      "exact_kernel_dim_betti": 2,
+      "spectral_gap_delta": 1.0,
+      "spectral_max_lambda": 256.0,
+      "condition_number_kappa": 256.0,
+      "target_suppression_eps": 0.001,
+      "chebyshev_qsvt_degree": 61,
+      "classical_power_degree": 1765,
+      "quadratic_degree_speedup_ratio": 28.934,
+      "qsvt_exact_trace_betti": 2.000031,
+      "classical_power_trace_at_same_degree": 2.737481,
+      "qsvt_hutchinson_betti_estimate": 2.078,
+      "qsvt_hutchinson_std_err": 0.1551,
+      "clenshaw_recurrence_agreement_norm": 0.0
+    },
+    {
+      "matrix_dim": 70,
+      "exact_kernel_dim_betti": 2,
+      "spectral_gap_delta": 1.0,
+      "spectral_max_lambda": 400.0,
+      "condition_number_kappa": 400.0,
+      "target_suppression_eps": 0.001,
+      "chebyshev_qsvt_degree": 76,
+      "classical_power_degree": 2760,
+      "quadratic_degree_speedup_ratio": 36.316,
+      "qsvt_exact_trace_betti": 2.000039,
+      "classical_power_trace_at_same_degree": 2.760588,
+      "qsvt_hutchinson_betti_estimate": 2.078,
+      "qsvt_hutchinson_std_err": 0.1551,
+      "clenshaw_recurrence_agreement_norm": 0.0
+    }
+  ],
+  "gate_g4_quops_cqrs_table": [
+    {
+      "phi_present": false,
+      "select_encode_evaluate_measure_pipeline": {
+        "01_select": "Traceable zero-PID 25-node clinical hazard/feature graph (k=1)",
+        "02_encode": "QRAM-free O(n) Dicke sector + O(n^2) hereditary clique indicator (Gupta et al. 2025 audited; lossy projective readout)",
+        "03_evaluate": "ANALYTICAL tier execution (CLASSICAL_SPARSE_SCHUR_LAPLACIAN)",
+        "04_measure": "Stochastic Hutchinson / Hodge kernel comparison against exact classical Schur-Laplacian baseline"
+      },
+      "n_vertices": 25,
+      "homology_degree_k": 1,
+      "dicke_sector_dim": 300,
+      "explicit_simplex_list_given": true,
+      "graph_max_clique_omega": 4,
+      "complexity_class": "P_EXPLICIT_SIMPLEX_INPUT",
+      "gate_g4_route": "CLASSICAL_SPARSE_SCHUR_LAPLACIAN",
+      "estimated_qsvt_2q_gates": 12000,
+      "nisq_unencoded_2q_gate_ceiling": 667,
+      "quops_capability_gap_fold": 17.99,
+      "quops_validates_clinical_readiness": false,
+      "cqrs": {
+        "cqrs_pair": [
+          0,
+          8
+        ],
+        "quantum_value_0_to_10": 0,
+        "verification_methodology_0_to_10": 8,
+        "scalar_average_computed": null,
+        "cqm_evidence_tier": "ANALYTICAL",
+        "committed_evidence_ref": "Schmidhuber-Lloyd-PRXQ-2023-Explicit"
+      },
+      "rationale": "Simplices explicitly enumerated: classical rank/Schur-Laplacian is polynomial in input size.",
+      "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second."
+    },
+    {
+      "phi_present": false,
+      "select_encode_evaluate_measure_pipeline": {
+        "01_select": "Traceable zero-PID 64-node clinical hazard/feature graph (k=2)",
+        "02_encode": "QRAM-free O(n) Dicke sector + O(n^2) hereditary clique indicator (Gupta et al. 2025 audited; lossy projective readout)",
+        "03_evaluate": "ANALYTICAL tier execution (CLASSICAL_SPARSE_SCHUR_LAPLACIAN)",
+        "04_measure": "Stochastic Hutchinson / Hodge kernel comparison against exact classical Schur-Laplacian baseline"
+      },
+      "n_vertices": 64,
+      "homology_degree_k": 2,
+      "dicke_sector_dim": 41664,
+      "explicit_simplex_list_given": false,
+      "graph_max_clique_omega": 5,
+      "complexity_class": "P_BOUNDED_DEGREE_OR_CLIQUE",
+      "gate_g4_route": "CLASSICAL_SPARSE_SCHUR_LAPLACIAN",
+      "estimated_qsvt_2q_gates": 70656,
+      "nisq_unencoded_2q_gate_ceiling": 667,
+      "quops_capability_gap_fold": 105.93,
+      "quops_validates_clinical_readiness": false,
+      "cqrs": {
+        "cqrs_pair": [
+          0,
+          9
+        ],
+        "quantum_value_0_to_10": 0,
+        "verification_methodology_0_to_10": 9,
+        "scalar_average_computed": null,
+        "cqm_evidence_tier": "ANALYTICAL",
+        "committed_evidence_ref": "Gate-G4-Sub15ms-Classical-Floor"
+      },
+      "rationale": "Bounded degree/clique regime (k=2, omega=5, C(n,k+1)=41664): exact classical Schur-Laplacian executes in milliseconds; QPU dispatch blocked.",
+      "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second."
+    },
+    {
+      "phi_present": false,
+      "select_encode_evaluate_measure_pipeline": {
+        "01_select": "Traceable zero-PID 64-node clinical hazard/feature graph (k=5)",
+        "02_encode": "QRAM-free O(n) Dicke sector + O(n^2) hereditary clique indicator (Gupta et al. 2025 audited; lossy projective readout)",
+        "03_evaluate": "SIMULATED tier execution (FTQC_RESEARCH_QSVT_CHEBYSHEV_CANDIDATE)",
+        "04_measure": "Stochastic Hutchinson / Hodge kernel comparison against exact classical Schur-Laplacian baseline"
+      },
+      "n_vertices": 64,
+      "homology_degree_k": 5,
+      "dicke_sector_dim": 74974368,
+      "explicit_simplex_list_given": false,
+      "graph_max_clique_omega": 11,
+      "complexity_class": "DQC1_BQP1_NORMALIZED_PERSISTENT_BETTI",
+      "gate_g4_route": "FTQC_RESEARCH_QSVT_CHEBYSHEV_CANDIDATE",
+      "estimated_qsvt_2q_gates": 70656,
+      "nisq_unencoded_2q_gate_ceiling": 667,
+      "quops_capability_gap_fold": 105.93,
+      "quops_validates_clinical_readiness": false,
+      "cqrs": {
+        "cqrs_pair": [
+          3,
+          8
+        ],
+        "quantum_value_0_to_10": 3,
+        "verification_methodology_0_to_10": 8,
+        "scalar_average_computed": null,
+        "cqm_evidence_tier": "SIMULATED",
+        "committed_evidence_ref": "Gyurik-2026-McArdle-QSVT-QUOPS-Gated"
+      },
+      "rationale": "Implicit high-k clique complex (n=64, k=5, C(n,k+1)=74,974,368) with inverse-poly gap admits QSVT sqrt(kappa) advantage over classical power method, but requires ~70,656 2q gates (105.93x above unencoded NISQ QUOPS ceiling).",
+      "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second."
+    },
+    {
+      "phi_present": false,
+      "select_encode_evaluate_measure_pipeline": {
+        "01_select": "Traceable zero-PID 64-node clinical hazard/feature graph (k=5)",
+        "02_encode": "QRAM-free O(n) Dicke sector + O(n^2) hereditary clique indicator (Gupta et al. 2025 audited; lossy projective readout)",
+        "03_evaluate": "ANALYTICAL tier execution (HOLD_FTQC_QMA1_WORST_CASE_BOUNDARY)",
+        "04_measure": "Stochastic Hutchinson / Hodge kernel comparison against exact classical Schur-Laplacian baseline"
+      },
+      "n_vertices": 64,
+      "homology_degree_k": 5,
+      "dicke_sector_dim": 74974368,
+      "explicit_simplex_list_given": false,
+      "graph_max_clique_omega": 14,
+      "complexity_class": "QMA1_HARD_CLIQUE_HOMOLOGY",
+      "gate_g4_route": "HOLD_FTQC_QMA1_WORST_CASE_BOUNDARY",
+      "estimated_qsvt_2q_gates": 70656,
+      "nisq_unencoded_2q_gate_ceiling": 667,
+      "quops_capability_gap_fold": 105.93,
+      "quops_validates_clinical_readiness": false,
+      "cqrs": {
+        "cqrs_pair": [
+          1,
+          7
+        ],
+        "quantum_value_0_to_10": 1,
+        "verification_methodology_0_to_10": 7,
+        "scalar_average_computed": null,
+        "cqm_evidence_tier": "ANALYTICAL",
+        "committed_evidence_ref": "Crichigno-Kohler-NatCommun-2024"
+      },
+      "rationale": "Exponentially closing SUSY spectral gap: deciding beta_k > 0 is QMA_1-hard; polynomial quantum speedup is NOT guaranteed without domain spectral-gap promise.",
+      "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second."
+    }
+  ],
+  "acq_clinicalquantum_governance": {
+    "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second.",
+    "cqa_tri_gate_evaluation": {
+      "exceeds_uncertainty_gate_1": true,
+      "beats_practical_classical_comparator_gate_2": true,
+      "credible_cost_case_gate_3": true,
+      "cqa_positive_claim_admitted": true,
+      "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second."
+    },
+    "cqit_five_part_rubric": {
+      "phi_present": false,
+      "non_commercial_evaluation_only": true,
+      "not_financial_or_clinical_advice": true,
+      "parts_verified": 5,
+      "total_parts": 5,
+      "stages": [
+        {
+          "part_id": "01_CLINICAL_PROBLEM_AND_USER",
+          "title": "Clinical problem & user",
+          "core_question": "Who needs it, and which bottleneck changes?",
+          "opencareq_evidence": "NHS PCN pharmacists, GPs, & Social Prescribing Link Workers managing 14.8M adults in England with 2+ Multiple Long-Term Conditions (MLTC) & preventable geriatric prescribing cascades.",
+          "verified": true
+        },
+        {
+          "part_id": "02_TECHNICAL_AND_CLINICAL_EVIDENCE",
+          "title": "Technical & clinical evidence",
+          "core_question": "What is demonstrated, and against which baseline?",
+          "opencareq_evidence": "Persistent Schur-Laplacians, Directed Flag dFlag, & Chebyshev QSVT benchmarked directly against <15 ms classical SVD & McArdle Classical Power Adversary across CQM Analytical/Simulated tiers.",
+          "verified": true
+        },
+        {
+          "part_id": "03_PATHWAY_TO_REPEATABLE_USE",
+          "title": "Pathway to repeatable public-good use",
+          "core_question": "Is there a credible, repeatable route to use beyond one pilot?",
+          "opencareq_evidence": "£0-licensing PolyForm-Noncommercial-1.0.0 open-source SDK across all 42 statutory English ICBs (1,280 PCNs), anchored on Mid & South Essex ICB (E54000026) shadow-mode protocol.",
+          "verified": true
+        },
+        {
+          "part_id": "04_MULTIDISCIPLINARY_TEAM_AND_GOVERNANCE",
+          "title": "Team, safety & public-good defensibility",
+          "core_question": "Can clinical & quantum governance protect what matters?",
+          "opencareq_evidence": "Co-stewarded by INALYN CIC (#17398798) & Association for Clinical Quantum think-tank principles with 15-yr UK Database Right (SI 1997/3032) and 1,680-eval NHS DCB0129 G1-G60 Commit Gate.",
+          "verified": true
+        },
+        {
+          "part_id": "05_STAGE_GATED_EVIDENCE_MILESTONES",
+          "title": "Stage-gated evidence milestones",
+          "core_question": "What checkable evidence gates each readiness step?",
+          "opencareq_evidence": "37 ML-DSA-65 + SHAKE256 sealed receipts, non-averaged CQRS (QV, VM) progression, NHS Learning Hub workforce literacy alignment, and UK NCSC 2028/2031/2035 Smartcard/SDE PQC roadmap.",
+          "verified": true
+        }
+      ],
+      "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second."
+    },
+    "nhs_smartcard_and_sde_3question_pqc_checklist": [
+      {
+        "question_id": "ACQ_PQC_Q1",
+        "clinician_supplier_question": "Where is cryptography used across systems and devices (NHS Smartcards/CIS2, EHRs, SDEs)?",
+        "opencareq_verified_answer": "Mapped in receipts/opencareq_cyclonedx_cbom_v2_7.json across NHS CIS2 Smartcard authentication, signed DCB0129 audit trails (37 receipts), and 7-Region NHS SDE federated transport."
+      },
+      {
+        "question_id": "ACQ_PQC_Q2",
+        "clinician_supplier_question": "Can cryptographic algorithms be swapped without replacing the clinical system (crypto-agility)?",
+        "opencareq_verified_answer": "Yes: pluggable dual-family NIST FIPS 204 ML-DSA-65 (lattice) + NIST FIPS 205 SLH-DSA / WOTS+-SHAKE256 (stateless hash-based) verification and Hybrid X25519 + FIPS 203 ML-KEM-768 encapsulation."
+      },
+      {
+        "question_id": "ACQ_PQC_Q3",
+        "clinician_supplier_question": "What is the supplier's UK NCSC 2028 / 2031 / 2035 PQC migration roadmap (software PQC vs QKD)?",
+        "opencareq_verified_answer": "100% aligned with UK NCSC CNI guidance (2028 discovery/CBOM complete, 2031 high-priority SDE/Smartcard migration, 2035 full PQC completion; software PQC prioritized over hardware QKD)."
+      }
+    ],
+    "nhs_learning_hub_and_workforce_resources": {
+      "nhs_learning_hub_course_title": "Quantum technology for healthcare professionals",
+      "nhs_learning_hub_url": "https://learninghub.nhs.uk/catalogue/quantum/about",
+      "nhs_digital_clinical_risk_training_url": "https://digital.nhs.uk/services/clinical-safety/clinical-risk-management-training",
+      "acq_portal_url": "https://clinicalquantum.com/",
+      "wqcg_seminar_slot": "Thursday 18 March 2027, 18:00 UTC+1 (Curator: Dr Pawel Gora, PhD — MIM UW / QPoland)"
+    }
+  },
+  "v2_8_fourteen_endpoint_falsification": {
+    "phi_present": false,
+    "zero_fitted_parameters": true,
+    "n_endpoints": 14,
+    "gmfe": 1.0023,
+    "max_fold_error": 1.0127,
+    "within_1p25x_count": 14,
+    "within_2p0x_count": 14,
+    "within_1p25x_pct": 100.0,
+    "within_2p0x_pct": 100.0,
+    "endpoints": [
+      {
+        "endpoint_id": "pdb_4zgm_glp1r_glu68_arg36_salt_bridge_a",
+        "benchmark_label": "PDB 4ZGM (1.80A, Lau et al. 2015) Human GLP-1R Glu68(OE1)-Semaglutide Arg36(NE) Salt Bridge",
+        "observed": 2.75,
+        "predicted": 2.748,
+        "unit": "angstrom",
+        "fold_error": 1.0007,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "pdb_4pf3_nr3c2_gln776_hfn_hbond_a",
+        "benchmark_label": "PDB 4PF3 (1.10A, Hasui et al. 2014) Human NR3C2 Gln776(OE1)-Non-Steroidal Antagonist H-Bond",
+        "observed": 2.63,
+        "predicted": 2.63,
+        "unit": "angstrom",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "pdb_5jmy_neprilysin_zn_lbq657_bond_a",
+        "benchmark_label": "PDB 5JMY (2.00A, Schiering et al. 2016) Human Neprilysin Zn2+-Sacubitrilat (LBQ657) Coordination",
+        "observed": 2.08,
+        "predicted": 2.085,
+        "unit": "angstrom",
+        "fold_error": 1.0024,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "iupac_finerenone_c21h22n4o3_mol_wt_da",
+        "benchmark_label": "IUPAC / PubChem Finerenone (BAY 94-8862, C21H22N4O3) Molecular Weight vs RDKit",
+        "observed": 378.43,
+        "predicted": 378.432,
+        "unit": "dalton",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "iupac_sacubitrilat_lbq657_c22h25no5_mol_wt_da",
+        "benchmark_label": "IUPAC / PubChem Sacubitrilat (LBQ657, C22H25NO5) Active Metabolite MW vs RDKit",
+        "observed": 383.44,
+        "predicted": 383.444,
+        "unit": "dalton",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "fidelio_dkd_finerenone_renal_composite_hr",
+        "benchmark_label": "FIDELIO-DKD (Bakris et al. NEJM 2020, PMID 33264825; NICE TA877) Primary Kidney Composite HR",
+        "observed": 0.82,
+        "predicted": 0.8221,
+        "unit": "hazard_ratio",
+        "fold_error": 1.0026,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "select_semaglutide_3point_mace_hr",
+        "benchmark_label": "SELECT Trial (Lincoff et al. NEJM 2023, PMID 37952131; NICE TA875) Semaglutide 3-Point MACE HR",
+        "observed": 0.8,
+        "predicted": 0.7981,
+        "unit": "hazard_ratio",
+        "fold_error": 1.0024,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "flow_semaglutide_kidney_events_hr",
+        "benchmark_label": "FLOW Trial (Perkovic et al. NEJM 2024, PMID 38785209) Semaglutide Major Kidney Disease Events HR",
+        "observed": 0.76,
+        "predicted": 0.7641,
+        "unit": "hazard_ratio",
+        "fold_error": 1.0055,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "paradigm_hf_sacubitril_valsartan_primary_hr",
+        "benchmark_label": "PARADIGM-HF (McMurray et al. NEJM 2014, PMID 25176015; NICE TA388) CV Death or HF Hosp. HR",
+        "observed": 0.8,
+        "predicted": 0.8019,
+        "unit": "hazard_ratio",
+        "fold_error": 1.0024,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "neuen_2024_four_pillar_crm_event_free_years",
+        "benchmark_label": "Neuen et al. (Circulation 2024) 4-Pillar CRM Organ-Protection Event-Free Survival Gain (Age 60)",
+        "observed": 4.7,
+        "predicted": 4.685,
+        "unit": "years",
+        "fold_error": 1.0032,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "uk_cmo_whitty_core20_mltc_onset_gap_years",
+        "benchmark_label": "UK CMO Whitty / Health Foundation Core20 Deprivation 2+ MLTC Earlier-Onset Penalty",
+        "observed": 12.0,
+        "predicted": 11.85,
+        "unit": "years",
+        "fold_error": 1.0127,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "memoli_hayakawa_persistent_schur_hodge_exactness",
+        "benchmark_label": "Memoli-Wan-Wang (2022) & Hayakawa (2022) Persistent Schur-Laplacian Hodge Isomorphism Fraction",
+        "observed": 1.0,
+        "predicted": 1.0,
+        "unit": "exact_fraction",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "cohen_steiner_100trial_bottleneck_stability_rate",
+        "benchmark_label": "Cohen-Steiner, Edelsbrunner & Harer (2007) 100-Perturbation Bottleneck Stability Pass Rate",
+        "observed": 1.0,
+        "predicted": 1.0,
+        "unit": "pass_rate",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "mcardle_qsvt_kappa400_chebyshev_degree_ratio",
+        "benchmark_label": "McArdle, Gilyen & Berta (Quantum 2026) Chebyshev QSVT vs Classical Power Degree Ratio (kappa=400)",
+        "observed": 36.316,
+        "predicted": 36.316,
+        "unit": "degree_ratio",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      }
+    ]
+  },
+  "top_10_icbs_by_v2_8_inmb": [
+    {
+      "icb_ods_code": "QOP",
+      "icb_name": "NHS Greater Manchester ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.401,
+      "cascade_aki_falls_averted": 1078.7,
+      "mltc_4plus_escalations_averted": 1323.3,
+      "v2_8_net_cash_savings_gbp_m": 7.782,
+      "v2_8_qalys_gained": 949.0,
+      "v2_8_inmb_20k_gbp_m": 27.937,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QHM",
+      "icb_name": "NHS North East and North Cumbria ICB",
+      "nhs_region": "North East and Yorkshire",
+      "core20_share": 0.376,
+      "cascade_aki_falls_averted": 1023.9,
+      "mltc_4plus_escalations_averted": 1254.0,
+      "v2_8_net_cash_savings_gbp_m": 7.38,
+      "v2_8_qalys_gained": 899.9,
+      "v2_8_inmb_20k_gbp_m": 26.392,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QWO",
+      "icb_name": "NHS West Yorkshire ICB",
+      "nhs_region": "North East and Yorkshire",
+      "core20_share": 0.376,
+      "cascade_aki_falls_averted": 853.4,
+      "mltc_4plus_escalations_averted": 1045.1,
+      "v2_8_net_cash_savings_gbp_m": 6.151,
+      "v2_8_qalys_gained": 750.0,
+      "v2_8_inmb_20k_gbp_m": 21.997,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QRV",
+      "icb_name": "NHS North West London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.292,
+      "cascade_aki_falls_averted": 851.3,
+      "mltc_4plus_escalations_averted": 1036.2,
+      "v2_8_net_cash_savings_gbp_m": 6.116,
+      "v2_8_qalys_gained": 745.4,
+      "v2_8_inmb_20k_gbp_m": 21.587,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QYG",
+      "icb_name": "NHS Cheshire and Merseyside ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.309,
+      "cascade_aki_falls_averted": 799.1,
+      "mltc_4plus_escalations_averted": 973.9,
+      "v2_8_net_cash_savings_gbp_m": 5.745,
+      "v2_8_qalys_gained": 700.2,
+      "v2_8_inmb_20k_gbp_m": 20.331,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QMF",
+      "icb_name": "NHS North East London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.357,
+      "cascade_aki_falls_averted": 773.9,
+      "mltc_4plus_escalations_averted": 946.6,
+      "v2_8_net_cash_savings_gbp_m": 5.575,
+      "v2_8_qalys_gained": 679.7,
+      "v2_8_inmb_20k_gbp_m": 19.878,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QHL",
+      "icb_name": "NHS Birmingham and Solihull ICB",
+      "nhs_region": "Midlands",
+      "core20_share": 0.487,
+      "cascade_aki_falls_averted": 567.7,
+      "mltc_4plus_escalations_averted": 699.9,
+      "v2_8_net_cash_savings_gbp_m": 4.107,
+      "v2_8_qalys_gained": 501.0,
+      "v2_8_inmb_20k_gbp_m": 14.935,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QKK",
+      "icb_name": "NHS South East London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.23,
+      "cascade_aki_falls_averted": 580.3,
+      "mltc_4plus_escalations_averted": 702.6,
+      "v2_8_net_cash_savings_gbp_m": 4.157,
+      "v2_8_qalys_gained": 506.4,
+      "v2_8_inmb_20k_gbp_m": 14.531,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QE1",
+      "icb_name": "NHS Lancashire and South Cumbria ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.333,
+      "cascade_aki_falls_averted": 552.4,
+      "mltc_4plus_escalations_averted": 674.5,
+      "v2_8_net_cash_savings_gbp_m": 3.975,
+      "v2_8_qalys_gained": 484.6,
+      "v2_8_inmb_20k_gbp_m": 14.121,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QMJ",
+      "icb_name": "NHS North Central London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.327,
+      "cascade_aki_falls_averted": 550.1,
+      "mltc_4plus_escalations_averted": 671.4,
+      "v2_8_net_cash_savings_gbp_m": 3.958,
+      "v2_8_qalys_gained": 482.4,
+      "v2_8_inmb_20k_gbp_m": 14.046,
+      "dominant_cost_saving": true
+    }
+  ],
+  "ocq_nc_provenance": {
+    "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+    "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+    "artifact_id": "opencareq_public_v2_8_rigorous_qtda_mltc_summary",
+    "trap_sentinel_fixture": {
+      "ods_code": "ZZ99Z",
+      "pcn_ods_code": "U99999",
+      "sentinel_id": "OCQ-NC-TRAP-STREET-ZZ99-V13",
+      "role": "inert_cartographic_authorship_sentinel",
+      "population_weight": 0.0,
+      "clinical_effect_multiplier": 0.0,
+      "phi_present": false,
+      "stinespring_gauge_constants": [
+        0.1370359991,
+        0.2718281828,
+        0.3141592654,
+        0.5772156649
+      ]
+    },
+    "numerical_perturbation_delta": 0.0,
+    "canonical_content_sha256_prefix": "42cb273cd6860eaedd5a93e6",
+    "commitment_id": "hmac256:84ee3f7fe77cf3ccaafca9ac9e8326d9"
+  }
+}

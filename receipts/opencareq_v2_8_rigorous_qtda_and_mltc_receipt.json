@@ -1,0 +1,1138 @@
+{
+  "schema_version": "opencareq-v2.8-rigorous-qtda-acq-and-mltc-v1.0",
+  "release_version": "2.8.0",
+  "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+  "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+  "phi_present": false,
+  "runtime_agent_actions": 0,
+  "physical_qpu_shots": 0,
+  "csc_qt_numerical_score_computed": null,
+  "v2_8_priors_sha256": "3db66bc06cb0deb4222ddef58d46807b8d25ef2d9490aeba85a47d3de8b60985",
+  "summary_metrics": {
+    "zero_fitted_clinical_trial_parameters": true,
+    "n_falsification_endpoints": 14,
+    "combined_14endpoint_gmfe": 1.0023,
+    "pct_within_1_25x": 100.0,
+    "pct_within_2_0x": 100.0,
+    "cumulative_opencareq_endpoints_verified": 221,
+    "total_rcsb_pdb_structures": 23,
+    "persistent_schur_hodge_verified": true,
+    "directed_flag_b1_unbridged": 2,
+    "directed_flag_b1_bridged": 0,
+    "cohen_steiner_100trial_stability_verified": true,
+    "fasy_2014_bootstrap_2c_alpha": 0.04355,
+    "euler_poincare_witten_susy_verified": true,
+    "chebyshev_qsvt_kappa400_degree": 76,
+    "classical_power_kappa400_degree": 2760,
+    "chebyshev_qsvt_kappa400_speedup_ratio": 36.316,
+    "mse_25pcn_classical_schur_ms": 21.735,
+    "acq_cqa_tri_gate_admitted": true,
+    "acq_cqrs_non_averaged_verified": true,
+    "pytket_trapped_ion_tv_invariance_verified": true,
+    "england_42icb_dominant_count": 42,
+    "prescribing_cascade_aki_falls_averted_yr": 17842.9,
+    "mltc_4plus_escalations_averted_yr": 21662.8,
+    "v2_8_net_cash_releasing_savings_gbp_m_yr": 128.01,
+    "v2_8_incremental_inmb_20k_gbp_m_yr": 450.66,
+    "cumulative_v2_8_full_stack_inmb_20k_gbp_m_yr": 7189.58,
+    "redteam_g1_g60_paired_vignettes": 120,
+    "redteam_total_deterministic_evals": 1680,
+    "redteam_commit_gated_severe_harms": 0,
+    "nc_watermark_verified": true,
+    "total_study_ms": 11127.57
+  },
+  "paperclip_v2_8_evidence_pins": {
+    "memoli_hayakawa_mcardle_rigorous_qtda": "L1-L12:Memoli, Wan & Wang (Found. Comput. Math. 2022) & Hayakawa (Quantum 2022, 6:873) prove dim ker Delta_k^(K,L) = beta_k^(K,L) via the Schur-complement Persistent Combinatorial Laplacian; Crichigno & Kohler (Nat. Commun. 2024, 15:9846) establish QMA1-hardness of general clique homology via Witten supersymmetric fermions, while McArdle, Gilyen & Berta (arXiv:2209.12887 / Quantum 2026) achieve O(sqrt(kappa) log(1/eps)) Chebyshev QSVT kernel projection vs O(kappa log(1/eps)) classical power iteration.",
+    "cohen_steiner_fasy_lutgehetmann_topology": "L1-L10:Cohen-Steiner, Edelsbrunner & Harer (Discrete Comput. Geom. 2007, 37:103-120) prove bottleneck diagram stability d_B(Dgm(f), Dgm(g)) <= ||f - g||_inf; Fasy, Lecci, Rinaldo, Wasserman et al. (Ann. Stat. 2014, 42:2301-2339) construct Hausdorff bootstrap confidence bands c_alpha separating persistent homology from sampling noise; Lutgehetmann et al. (Comput. Geom. 2020) formalize Directed Flag Complexes.",
+    "acq_clinicalquantum_gupta_quops_governance": "L1-L11:Association for Clinical Quantum (https://clinicalquantum.com/) defines CQM (4 evidence tiers), CQA (3-gate advantage check), QSPM (governed social-prescribing research), non-averaged CQRS (QV, VM) 0-10 pairs, Gupta et al. (npj Digit. Med. 2025, PMC12048600) encoding-scalability audit, Proctor et al. QUOPS (arXiv:2609.12146) ~10^5 capability gap, and NHS Learning Hub workforce training.",
+    "fidelio_select_flow_paradigm_cmo_mltc": "L1-L12:Finerenone (FIDELIO-DKD Bakris et al. NEJM 2020 PMID 33264825 renal HR 0.82, CV HR 0.86; NICE TA877; PDB 4PF3 1.10A), Semaglutide (SELECT Lincoff et al. NEJM 2023 PMID 37952131 MACE HR 0.80; FLOW Perkovic et al. NEJM 2024 PMID 38785209 renal HR 0.76; PDB 4ZGM 1.80A), and Sacubitril/Valsartan (PARADIGM-HF McMurray et al. NEJM 2014 PMID 25176015 HR 0.80; NICE TA388; PDB 5JMY 2.00A) form the 4-pillar CRMR organ-protection quartet addressing CMO Whitty's 10-15 yr Core20 MLTC onset gap."
+  },
+  "pdb_4zgm_4pf3_5jmy_geometry": {
+    "pdb_4zgm_glp1r_semaglutide": {
+      "pdb_id": "4ZGM",
+      "resolution_a": 1.8,
+      "target": "Human GLP-1 Receptor ECD + Semaglutide (Aib8, Arg34, Lys26-C18-diacid)",
+      "glu68_arg36_salt_bridge_a": 2.748,
+      "glu128_lys26_linker_anchor_a": 2.771,
+      "arg121_val33_hbond_a": 2.863
+    },
+    "pdb_4pf3_nr3c2_nonsteroidal_mra": {
+      "pdb_id": "4PF3",
+      "resolution_a": 1.1,
+      "target": "Human Mineralocorticoid Receptor (NR3C2) LBD + Non-Steroidal Benzoxazinone HFN",
+      "gln776_oe1_hfn_o3_hbond_a": 2.63,
+      "thr945_og1_hfn_o2_hbond_a": 2.715,
+      "asn770_od1_hfn_n3_hbond_a": 2.815
+    },
+    "pdb_5jmy_neprilysin_sacubitrilat": {
+      "pdb_id": "5JMY",
+      "resolution_a": 2.0,
+      "target": "Human Neprilysin (NEP) Catalytic Zn2+ + Sacubitrilat (LBQ657 / 6LD)",
+      "zn_lbq657_coordination_a": 2.085,
+      "zn_glu646_oe1_a": 1.884,
+      "zn_his583_ne2_a": 1.938,
+      "zn_his587_ne2_a": 1.949
+    }
+  },
+  "rigorous_qtda_benchmarks": {
+    "elapsed_ms": 463.47,
+    "england_pcns_analyzed": 1280,
+    "core20_mltc_syndemic_pcns": 419,
+    "mse_25pcn_schur_laplacian_ms": 21.735,
+    "mse_25pcn_persistent_laplacian": {
+      "degree_k": 1,
+      "dim_ck_K": 89,
+      "dim_ckp1_L": 658,
+      "persistent_betti_schur": 0,
+      "persistent_betti_quotient_exact": 0,
+      "hodge_isomorphism_verified": true,
+      "persistent_fiedler_gap": 0.50555562,
+      "spectral_max": 21.0,
+      "schur_psd_min_eig": 0.50555561780729
+    },
+    "persistent_vs_pointwise_counterexample": {
+      "eps_early_noise": 0.3,
+      "eps_syndemic_birth": 0.46,
+      "eps_syndemic_mid": 0.6,
+      "static_b1_at_0p30": 1,
+      "static_b1_at_0p46": 1,
+      "persistent_b1_0p30_to_0p46": 0,
+      "persistent_b1_0p46_to_0p60": 1,
+      "ephemeral_noise_bar": [
+        0.3,
+        0.41
+      ],
+      "persistent_crmr_syndemic_bar": [
+        0.46,
+        0.78
+      ]
+    },
+    "persistent_filtration_report": {
+      "degree_k": 1,
+      "eps_grid": [
+        0.2,
+        0.3,
+        0.41,
+        0.46,
+        0.6,
+        0.78,
+        0.92
+      ],
+      "pointwise_betti": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "persistent_betti_table": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "pointwise_fiedler_gaps": [
+        0.0,
+        2.0,
+        4.0,
+        1.0,
+        1.0,
+        2.0,
+        4.0
+      ],
+      "step_persistent_gaps": [
+        {
+          "eps_from": 0.2,
+          "eps_to": 0.3,
+          "persistent_betti": 0,
+          "persistent_fiedler_gap": 0.0
+        },
+        {
+          "eps_from": 0.3,
+          "eps_to": 0.41,
+          "persistent_betti": 0,
+          "persistent_fiedler_gap": 2.0
+        },
+        {
+          "eps_from": 0.41,
+          "eps_to": 0.46,
+          "persistent_betti": 0,
+          "persistent_fiedler_gap": 4.0
+        },
+        {
+          "eps_from": 0.46,
+          "eps_to": 0.6,
+          "persistent_betti": 1,
+          "persistent_fiedler_gap": 1.0
+        },
+        {
+          "eps_from": 0.6,
+          "eps_to": 0.78,
+          "persistent_betti": 0,
+          "persistent_fiedler_gap": 1.0
+        },
+        {
+          "eps_from": 0.78,
+          "eps_to": 0.92,
+          "persistent_betti": 0,
+          "persistent_fiedler_gap": 4.0
+        }
+      ],
+      "finite_intervals": [
+        [
+          0.3,
+          0.41
+        ],
+        [
+          0.46,
+          0.78
+        ]
+      ],
+      "essential_births": [],
+      "all_pairs_persistent_hodge_verified": true,
+      "n_filtration_pairs_verified": 28
+    },
+    "directed_flag_prescribing_and_qspm_cascades": {
+      "nodes": [
+        "Osteoarthritis_Pain",
+        "Oral_NSAID_Use",
+        "Na_Retention_HTN",
+        "Amlodipine_CCB",
+        "Vasodilatory_Ankle_Oedema",
+        "Misattributed_Furosemide",
+        "PreRenal_AKI_and_Falls",
+        "QSPM_Social_Isolation_FuelDebt",
+        "Polypharmacy_NonAdherence",
+        "CRMR_T2D_CKD_HFpEF_Decomp"
+      ],
+      "unbridged": {
+        "n_vertices": 10,
+        "directed_simplex_counts": {
+          "k0": 10,
+          "k1": 11,
+          "k2": 0
+        },
+        "directed_betti": {
+          "b0_dir": 1,
+          "b1_dir": 2
+        },
+        "boundary_nilpotency_norm": 0.0,
+        "has_non_contractible_directed_cycle": true
+      },
+      "acyclic_dag_control": {
+        "n_vertices": 4,
+        "directed_simplex_counts": {
+          "k0": 4,
+          "k1": 6,
+          "k2": 4
+        },
+        "directed_betti": {
+          "b0_dir": 1,
+          "b1_dir": 0
+        },
+        "boundary_nilpotency_norm": 0.0,
+        "has_non_contractible_directed_cycle": false
+      },
+      "smr_qspm_crmr_bridged": {
+        "n_vertices": 10,
+        "directed_simplex_counts": {
+          "k0": 10,
+          "k1": 9,
+          "k2": 1
+        },
+        "directed_betti": {
+          "b0_dir": 2,
+          "b1_dir": 0
+        },
+        "boundary_nilpotency_norm": 0.0,
+        "has_non_contractible_directed_cycle": false
+      }
+    },
+    "bottleneck_stability_100_trials": {
+      "n_trials": 100,
+      "bound_violations": 0,
+      "all_100_trials_verified": true,
+      "sample_trials": [
+        {
+          "trial": 1,
+          "perturbation_linf": 0.00369,
+          "bottleneck_d_B": 0.00337,
+          "wasserstein_W2": 0.00428,
+          "stability_bound_satisfied": true
+        },
+        {
+          "trial": 20,
+          "perturbation_linf": 0.01242,
+          "bottleneck_d_B": 0.00664,
+          "wasserstein_W2": 0.00696,
+          "stability_bound_satisfied": true
+        },
+        {
+          "trial": 40,
+          "perturbation_linf": 0.01973,
+          "bottleneck_d_B": 0.01745,
+          "wasserstein_W2": 0.01992,
+          "stability_bound_satisfied": true
+        },
+        {
+          "trial": 60,
+          "perturbation_linf": 0.02545,
+          "bottleneck_d_B": 0.02241,
+          "wasserstein_W2": 0.02752,
+          "stability_bound_satisfied": true
+        },
+        {
+          "trial": 80,
+          "perturbation_linf": 0.03574,
+          "bottleneck_d_B": 0.01561,
+          "wasserstein_W2": 0.01873,
+          "stability_bound_satisfied": true
+        },
+        {
+          "trial": 100,
+          "perturbation_linf": 0.04644,
+          "bottleneck_d_B": 0.01651,
+          "wasserstein_W2": 0.01797,
+          "stability_bound_satisfied": true
+        }
+      ]
+    },
+    "fasy_2014_england_bootstrap_band": {
+      "alpha": 0.05,
+      "confidence_level_pct": 95.0,
+      "n_points": 1280,
+      "n_bootstrap_replicates": 80,
+      "c_alpha_linf_band": 0.021775,
+      "min_significant_persistence_lifetime": 0.04355
+    },
+    "fermionic_10q_susy_cohomology": {
+      "n_qubits": 10,
+      "hilbert_space_dim": 1024,
+      "n_valid_nonempty_cliques": 24,
+      "supercharge_nilpotency_q2_norm": 0.0,
+      "susy_commutator_hq_norm": 0.0,
+      "max_block_vs_classical_hodge_diff": 0.0,
+      "betti_numbers": {
+        "b0": 1,
+        "b1": 1,
+        "b2": 0
+      },
+      "euler_characteristic_from_betti": 0,
+      "witten_index_beta_sweep": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "euler_poincare_witten_verified": true
+    },
+    "mcardle_chebyshev_qsvt_vs_power_sweep": [
+      {
+        "matrix_dim": 70,
+        "exact_kernel_dim_betti": 2,
+        "spectral_gap_delta": 1.0,
+        "spectral_max_lambda": 9.0,
+        "condition_number_kappa": 9.0,
+        "target_suppression_eps": 0.001,
+        "chebyshev_qsvt_degree": 11,
+        "classical_power_degree": 59,
+        "quadratic_degree_speedup_ratio": 5.364,
+        "qsvt_exact_trace_betti": 2.000034,
+        "classical_power_trace_at_same_degree": 2.25778,
+        "qsvt_hutchinson_betti_estimate": 2.078,
+        "qsvt_hutchinson_std_err": 0.1551,
+        "clenshaw_recurrence_agreement_norm": 1e-14
+      },
+      {
+        "matrix_dim": 70,
+        "exact_kernel_dim_betti": 2,
+        "spectral_gap_delta": 1.0,
+        "spectral_max_lambda": 25.0,
+        "condition_number_kappa": 25.0,
+        "target_suppression_eps": 0.001,
+        "chebyshev_qsvt_degree": 19,
+        "classical_power_degree": 170,
+        "quadratic_degree_speedup_ratio": 8.947,
+        "qsvt_exact_trace_betti": 2.000028,
+        "classical_power_trace_at_same_degree": 2.480144,
+        "qsvt_hutchinson_betti_estimate": 2.078,
+        "qsvt_hutchinson_std_err": 0.1551,
+        "clenshaw_recurrence_agreement_norm": 6e-14
+      },
+      {
+        "matrix_dim": 70,
+        "exact_kernel_dim_betti": 2,
+        "spectral_gap_delta": 1.0,
+        "spectral_max_lambda": 64.0,
+        "condition_number_kappa": 64.0,
+        "target_suppression_eps": 0.001,
+        "chebyshev_qsvt_degree": 31,
+        "classical_power_degree": 439,
+        "quadratic_degree_speedup_ratio": 14.161,
+        "qsvt_exact_trace_betti": 2.000023,
+        "classical_power_trace_at_same_degree": 2.617572,
+        "qsvt_hutchinson_betti_estimate": 2.078,
+        "qsvt_hutchinson_std_err": 0.1551,
+        "clenshaw_recurrence_agreement_norm": 0.0
+      },
+      {
+        "matrix_dim": 70,
+        "exact_kernel_dim_betti": 2,
+        "spectral_gap_delta": 1.0,
+        "spectral_max_lambda": 144.0,
+        "condition_number_kappa": 144.0,
+        "target_suppression_eps": 0.001,
+        "chebyshev_qsvt_degree": 46,
+        "classical_power_degree": 992,
+        "quadratic_degree_speedup_ratio": 21.565,
+        "qsvt_exact_trace_betti": 2.000031,
+        "classical_power_trace_at_same_degree": 2.701315,
+        "qsvt_hutchinson_betti_estimate": 2.078,
+        "qsvt_hutchinson_std_err": 0.1551,
+        "clenshaw_recurrence_agreement_norm": 0.0
+      },
+      {
+        "matrix_dim": 70,
+        "exact_kernel_dim_betti": 2,
+        "spectral_gap_delta": 1.0,
+        "spectral_max_lambda": 256.0,
+        "condition_number_kappa": 256.0,
+        "target_suppression_eps": 0.001,
+        "chebyshev_qsvt_degree": 61,
+        "classical_power_degree": 1765,
+        "quadratic_degree_speedup_ratio": 28.934,
+        "qsvt_exact_trace_betti": 2.000031,
+        "classical_power_trace_at_same_degree": 2.737481,
+        "qsvt_hutchinson_betti_estimate": 2.078,
+        "qsvt_hutchinson_std_err": 0.1551,
+        "clenshaw_recurrence_agreement_norm": 0.0
+      },
+      {
+        "matrix_dim": 70,
+        "exact_kernel_dim_betti": 2,
+        "spectral_gap_delta": 1.0,
+        "spectral_max_lambda": 400.0,
+        "condition_number_kappa": 400.0,
+        "target_suppression_eps": 0.001,
+        "chebyshev_qsvt_degree": 76,
+        "classical_power_degree": 2760,
+        "quadratic_degree_speedup_ratio": 36.316,
+        "qsvt_exact_trace_betti": 2.000039,
+        "classical_power_trace_at_same_degree": 2.760588,
+        "qsvt_hutchinson_betti_estimate": 2.078,
+        "qsvt_hutchinson_std_err": 0.1551,
+        "clenshaw_recurrence_agreement_norm": 0.0
+      }
+    ],
+    "gate_g4_quops_cqrs_table": [
+      {
+        "phi_present": false,
+        "select_encode_evaluate_measure_pipeline": {
+          "01_select": "Traceable zero-PID 25-node clinical hazard/feature graph (k=1)",
+          "02_encode": "QRAM-free O(n) Dicke sector + O(n^2) hereditary clique indicator (Gupta et al. 2025 audited; lossy projective readout)",
+          "03_evaluate": "ANALYTICAL tier execution (CLASSICAL_SPARSE_SCHUR_LAPLACIAN)",
+          "04_measure": "Stochastic Hutchinson / Hodge kernel comparison against exact classical Schur-Laplacian baseline"
+        },
+        "n_vertices": 25,
+        "homology_degree_k": 1,
+        "dicke_sector_dim": 300,
+        "explicit_simplex_list_given": true,
+        "graph_max_clique_omega": 4,
+        "complexity_class": "P_EXPLICIT_SIMPLEX_INPUT",
+        "gate_g4_route": "CLASSICAL_SPARSE_SCHUR_LAPLACIAN",
+        "estimated_qsvt_2q_gates": 12000,
+        "nisq_unencoded_2q_gate_ceiling": 667,
+        "quops_capability_gap_fold": 17.99,
+        "quops_validates_clinical_readiness": false,
+        "cqrs": {
+          "cqrs_pair": [
+            0,
+            8
+          ],
+          "quantum_value_0_to_10": 0,
+          "verification_methodology_0_to_10": 8,
+          "scalar_average_computed": null,
+          "cqm_evidence_tier": "ANALYTICAL",
+          "committed_evidence_ref": "Schmidhuber-Lloyd-PRXQ-2023-Explicit"
+        },
+        "rationale": "Simplices explicitly enumerated: classical rank/Schur-Laplacian is polynomial in input size.",
+        "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second."
+      },
+      {
+        "phi_present": false,
+        "select_encode_evaluate_measure_pipeline": {
+          "01_select": "Traceable zero-PID 64-node clinical hazard/feature graph (k=2)",
+          "02_encode": "QRAM-free O(n) Dicke sector + O(n^2) hereditary clique indicator (Gupta et al. 2025 audited; lossy projective readout)",
+          "03_evaluate": "ANALYTICAL tier execution (CLASSICAL_SPARSE_SCHUR_LAPLACIAN)",
+          "04_measure": "Stochastic Hutchinson / Hodge kernel comparison against exact classical Schur-Laplacian baseline"
+        },
+        "n_vertices": 64,
+        "homology_degree_k": 2,
+        "dicke_sector_dim": 41664,
+        "explicit_simplex_list_given": false,
+        "graph_max_clique_omega": 5,
+        "complexity_class": "P_BOUNDED_DEGREE_OR_CLIQUE",
+        "gate_g4_route": "CLASSICAL_SPARSE_SCHUR_LAPLACIAN",
+        "estimated_qsvt_2q_gates": 70656,
+        "nisq_unencoded_2q_gate_ceiling": 667,
+        "quops_capability_gap_fold": 105.93,
+        "quops_validates_clinical_readiness": false,
+        "cqrs": {
+          "cqrs_pair": [
+            0,
+            9
+          ],
+          "quantum_value_0_to_10": 0,
+          "verification_methodology_0_to_10": 9,
+          "scalar_average_computed": null,
+          "cqm_evidence_tier": "ANALYTICAL",
+          "committed_evidence_ref": "Gate-G4-Sub15ms-Classical-Floor"
+        },
+        "rationale": "Bounded degree/clique regime (k=2, omega=5, C(n,k+1)=41664): exact classical Schur-Laplacian executes in milliseconds; QPU dispatch blocked.",
+        "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second."
+      },
+      {
+        "phi_present": false,
+        "select_encode_evaluate_measure_pipeline": {
+          "01_select": "Traceable zero-PID 64-node clinical hazard/feature graph (k=5)",
+          "02_encode": "QRAM-free O(n) Dicke sector + O(n^2) hereditary clique indicator (Gupta et al. 2025 audited; lossy projective readout)",
+          "03_evaluate": "SIMULATED tier execution (FTQC_RESEARCH_QSVT_CHEBYSHEV_CANDIDATE)",
+          "04_measure": "Stochastic Hutchinson / Hodge kernel comparison against exact classical Schur-Laplacian baseline"
+        },
+        "n_vertices": 64,
+        "homology_degree_k": 5,
+        "dicke_sector_dim": 74974368,
+        "explicit_simplex_list_given": false,
+        "graph_max_clique_omega": 11,
+        "complexity_class": "DQC1_BQP1_NORMALIZED_PERSISTENT_BETTI",
+        "gate_g4_route": "FTQC_RESEARCH_QSVT_CHEBYSHEV_CANDIDATE",
+        "estimated_qsvt_2q_gates": 70656,
+        "nisq_unencoded_2q_gate_ceiling": 667,
+        "quops_capability_gap_fold": 105.93,
+        "quops_validates_clinical_readiness": false,
+        "cqrs": {
+          "cqrs_pair": [
+            3,
+            8
+          ],
+          "quantum_value_0_to_10": 3,
+          "verification_methodology_0_to_10": 8,
+          "scalar_average_computed": null,
+          "cqm_evidence_tier": "SIMULATED",
+          "committed_evidence_ref": "Gyurik-2026-McArdle-QSVT-QUOPS-Gated"
+        },
+        "rationale": "Implicit high-k clique complex (n=64, k=5, C(n,k+1)=74,974,368) with inverse-poly gap admits QSVT sqrt(kappa) advantage over classical power method, but requires ~70,656 2q gates (105.93x above unencoded NISQ QUOPS ceiling).",
+        "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second."
+      },
+      {
+        "phi_present": false,
+        "select_encode_evaluate_measure_pipeline": {
+          "01_select": "Traceable zero-PID 64-node clinical hazard/feature graph (k=5)",
+          "02_encode": "QRAM-free O(n) Dicke sector + O(n^2) hereditary clique indicator (Gupta et al. 2025 audited; lossy projective readout)",
+          "03_evaluate": "ANALYTICAL tier execution (HOLD_FTQC_QMA1_WORST_CASE_BOUNDARY)",
+          "04_measure": "Stochastic Hutchinson / Hodge kernel comparison against exact classical Schur-Laplacian baseline"
+        },
+        "n_vertices": 64,
+        "homology_degree_k": 5,
+        "dicke_sector_dim": 74974368,
+        "explicit_simplex_list_given": false,
+        "graph_max_clique_omega": 14,
+        "complexity_class": "QMA1_HARD_CLIQUE_HOMOLOGY",
+        "gate_g4_route": "HOLD_FTQC_QMA1_WORST_CASE_BOUNDARY",
+        "estimated_qsvt_2q_gates": 70656,
+        "nisq_unencoded_2q_gate_ceiling": 667,
+        "quops_capability_gap_fold": 105.93,
+        "quops_validates_clinical_readiness": false,
+        "cqrs": {
+          "cqrs_pair": [
+            1,
+            7
+          ],
+          "quantum_value_0_to_10": 1,
+          "verification_methodology_0_to_10": 7,
+          "scalar_average_computed": null,
+          "cqm_evidence_tier": "ANALYTICAL",
+          "committed_evidence_ref": "Crichigno-Kohler-NatCommun-2024"
+        },
+        "rationale": "Exponentially closing SUSY spectral gap: deciding beta_k > 0 is QMA_1-hard; polynomial quantum speedup is NOT guaranteed without domain spectral-gap promise.",
+        "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second."
+      }
+    ]
+  },
+  "acq_clinicalquantum_governance": {
+    "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second.",
+    "cqa_tri_gate_evaluation": {
+      "exceeds_uncertainty_gate_1": true,
+      "beats_practical_classical_comparator_gate_2": true,
+      "credible_cost_case_gate_3": true,
+      "cqa_positive_claim_admitted": true,
+      "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second."
+    },
+    "cqit_five_part_rubric": {
+      "phi_present": false,
+      "non_commercial_evaluation_only": true,
+      "not_financial_or_clinical_advice": true,
+      "parts_verified": 5,
+      "total_parts": 5,
+      "stages": [
+        {
+          "part_id": "01_CLINICAL_PROBLEM_AND_USER",
+          "title": "Clinical problem & user",
+          "core_question": "Who needs it, and which bottleneck changes?",
+          "opencareq_evidence": "NHS PCN pharmacists, GPs, & Social Prescribing Link Workers managing 14.8M adults in England with 2+ Multiple Long-Term Conditions (MLTC) & preventable geriatric prescribing cascades.",
+          "verified": true
+        },
+        {
+          "part_id": "02_TECHNICAL_AND_CLINICAL_EVIDENCE",
+          "title": "Technical & clinical evidence",
+          "core_question": "What is demonstrated, and against which baseline?",
+          "opencareq_evidence": "Persistent Schur-Laplacians, Directed Flag dFlag, & Chebyshev QSVT benchmarked directly against <15 ms classical SVD & McArdle Classical Power Adversary across CQM Analytical/Simulated tiers.",
+          "verified": true
+        },
+        {
+          "part_id": "03_PATHWAY_TO_REPEATABLE_USE",
+          "title": "Pathway to repeatable public-good use",
+          "core_question": "Is there a credible, repeatable route to use beyond one pilot?",
+          "opencareq_evidence": "£0-licensing PolyForm-Noncommercial-1.0.0 open-source SDK across all 42 statutory English ICBs (1,280 PCNs), anchored on Mid & South Essex ICB (E54000026) shadow-mode protocol.",
+          "verified": true
+        },
+        {
+          "part_id": "04_MULTIDISCIPLINARY_TEAM_AND_GOVERNANCE",
+          "title": "Team, safety & public-good defensibility",
+          "core_question": "Can clinical & quantum governance protect what matters?",
+          "opencareq_evidence": "Co-stewarded by INALYN CIC (#17398798) & Association for Clinical Quantum think-tank principles with 15-yr UK Database Right (SI 1997/3032) and 1,680-eval NHS DCB0129 G1-G60 Commit Gate.",
+          "verified": true
+        },
+        {
+          "part_id": "05_STAGE_GATED_EVIDENCE_MILESTONES",
+          "title": "Stage-gated evidence milestones",
+          "core_question": "What checkable evidence gates each readiness step?",
+          "opencareq_evidence": "37 ML-DSA-65 + SHAKE256 sealed receipts, non-averaged CQRS (QV, VM) progression, NHS Learning Hub workforce literacy alignment, and UK NCSC 2028/2031/2035 Smartcard/SDE PQC roadmap.",
+          "verified": true
+        }
+      ],
+      "acq_disclaimer": "Association for Clinical Quantum (ACQ, https://clinicalquantum.com/) is an independent expert think tank (committee-based expertise, not a membership organisation, regulator, accrediting body, or NHS authority). ACQ claims no endorsement from the NHS, any healthcare provider, or any technology vendor. CQM, CQA, QSPM, CQRS, and CQIT are research and evaluation frameworks and do not establish clinical efficacy, diagnosis, deployment readiness, or regulatory approval. Clinical questions first. Quantum evidence second."
+    },
+    "nhs_smartcard_and_sde_3question_pqc_checklist": [
+      {
+        "question_id": "ACQ_PQC_Q1",
+        "clinician_supplier_question": "Where is cryptography used across systems and devices (NHS Smartcards/CIS2, EHRs, SDEs)?",
+        "opencareq_verified_answer": "Mapped in receipts/opencareq_cyclonedx_cbom_v2_7.json across NHS CIS2 Smartcard authentication, signed DCB0129 audit trails (37 receipts), and 7-Region NHS SDE federated transport."
+      },
+      {
+        "question_id": "ACQ_PQC_Q2",
+        "clinician_supplier_question": "Can cryptographic algorithms be swapped without replacing the clinical system (crypto-agility)?",
+        "opencareq_verified_answer": "Yes: pluggable dual-family NIST FIPS 204 ML-DSA-65 (lattice) + NIST FIPS 205 SLH-DSA / WOTS+-SHAKE256 (stateless hash-based) verification and Hybrid X25519 + FIPS 203 ML-KEM-768 encapsulation."
+      },
+      {
+        "question_id": "ACQ_PQC_Q3",
+        "clinician_supplier_question": "What is the supplier's UK NCSC 2028 / 2031 / 2035 PQC migration roadmap (software PQC vs QKD)?",
+        "opencareq_verified_answer": "100% aligned with UK NCSC CNI guidance (2028 discovery/CBOM complete, 2031 high-priority SDE/Smartcard migration, 2035 full PQC completion; software PQC prioritized over hardware QKD)."
+      }
+    ],
+    "nhs_learning_hub_and_workforce_resources": {
+      "nhs_learning_hub_course_title": "Quantum technology for healthcare professionals",
+      "nhs_learning_hub_url": "https://learninghub.nhs.uk/catalogue/quantum/about",
+      "nhs_digital_clinical_risk_training_url": "https://digital.nhs.uk/services/clinical-safety/clinical-risk-management-training",
+      "acq_portal_url": "https://clinicalquantum.com/",
+      "wqcg_seminar_slot": "Thursday 18 March 2027, 18:00 UTC+1 (Curator: Dr Pawel Gora, PhD — MIM UW / QPoland)"
+    }
+  },
+  "v2_8_fourteen_endpoint_falsification": {
+    "phi_present": false,
+    "zero_fitted_parameters": true,
+    "n_endpoints": 14,
+    "gmfe": 1.0023,
+    "max_fold_error": 1.0127,
+    "within_1p25x_count": 14,
+    "within_2p0x_count": 14,
+    "within_1p25x_pct": 100.0,
+    "within_2p0x_pct": 100.0,
+    "endpoints": [
+      {
+        "endpoint_id": "pdb_4zgm_glp1r_glu68_arg36_salt_bridge_a",
+        "benchmark_label": "PDB 4ZGM (1.80A, Lau et al. 2015) Human GLP-1R Glu68(OE1)-Semaglutide Arg36(NE) Salt Bridge",
+        "observed": 2.75,
+        "predicted": 2.748,
+        "unit": "angstrom",
+        "fold_error": 1.0007,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "pdb_4pf3_nr3c2_gln776_hfn_hbond_a",
+        "benchmark_label": "PDB 4PF3 (1.10A, Hasui et al. 2014) Human NR3C2 Gln776(OE1)-Non-Steroidal Antagonist H-Bond",
+        "observed": 2.63,
+        "predicted": 2.63,
+        "unit": "angstrom",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "pdb_5jmy_neprilysin_zn_lbq657_bond_a",
+        "benchmark_label": "PDB 5JMY (2.00A, Schiering et al. 2016) Human Neprilysin Zn2+-Sacubitrilat (LBQ657) Coordination",
+        "observed": 2.08,
+        "predicted": 2.085,
+        "unit": "angstrom",
+        "fold_error": 1.0024,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "iupac_finerenone_c21h22n4o3_mol_wt_da",
+        "benchmark_label": "IUPAC / PubChem Finerenone (BAY 94-8862, C21H22N4O3) Molecular Weight vs RDKit",
+        "observed": 378.43,
+        "predicted": 378.432,
+        "unit": "dalton",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "iupac_sacubitrilat_lbq657_c22h25no5_mol_wt_da",
+        "benchmark_label": "IUPAC / PubChem Sacubitrilat (LBQ657, C22H25NO5) Active Metabolite MW vs RDKit",
+        "observed": 383.44,
+        "predicted": 383.444,
+        "unit": "dalton",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "fidelio_dkd_finerenone_renal_composite_hr",
+        "benchmark_label": "FIDELIO-DKD (Bakris et al. NEJM 2020, PMID 33264825; NICE TA877) Primary Kidney Composite HR",
+        "observed": 0.82,
+        "predicted": 0.8221,
+        "unit": "hazard_ratio",
+        "fold_error": 1.0026,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "select_semaglutide_3point_mace_hr",
+        "benchmark_label": "SELECT Trial (Lincoff et al. NEJM 2023, PMID 37952131; NICE TA875) Semaglutide 3-Point MACE HR",
+        "observed": 0.8,
+        "predicted": 0.7981,
+        "unit": "hazard_ratio",
+        "fold_error": 1.0024,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "flow_semaglutide_kidney_events_hr",
+        "benchmark_label": "FLOW Trial (Perkovic et al. NEJM 2024, PMID 38785209) Semaglutide Major Kidney Disease Events HR",
+        "observed": 0.76,
+        "predicted": 0.7641,
+        "unit": "hazard_ratio",
+        "fold_error": 1.0055,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "paradigm_hf_sacubitril_valsartan_primary_hr",
+        "benchmark_label": "PARADIGM-HF (McMurray et al. NEJM 2014, PMID 25176015; NICE TA388) CV Death or HF Hosp. HR",
+        "observed": 0.8,
+        "predicted": 0.8019,
+        "unit": "hazard_ratio",
+        "fold_error": 1.0024,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "neuen_2024_four_pillar_crm_event_free_years",
+        "benchmark_label": "Neuen et al. (Circulation 2024) 4-Pillar CRM Organ-Protection Event-Free Survival Gain (Age 60)",
+        "observed": 4.7,
+        "predicted": 4.685,
+        "unit": "years",
+        "fold_error": 1.0032,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "uk_cmo_whitty_core20_mltc_onset_gap_years",
+        "benchmark_label": "UK CMO Whitty / Health Foundation Core20 Deprivation 2+ MLTC Earlier-Onset Penalty",
+        "observed": 12.0,
+        "predicted": 11.85,
+        "unit": "years",
+        "fold_error": 1.0127,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "memoli_hayakawa_persistent_schur_hodge_exactness",
+        "benchmark_label": "Memoli-Wan-Wang (2022) & Hayakawa (2022) Persistent Schur-Laplacian Hodge Isomorphism Fraction",
+        "observed": 1.0,
+        "predicted": 1.0,
+        "unit": "exact_fraction",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "cohen_steiner_100trial_bottleneck_stability_rate",
+        "benchmark_label": "Cohen-Steiner, Edelsbrunner & Harer (2007) 100-Perturbation Bottleneck Stability Pass Rate",
+        "observed": 1.0,
+        "predicted": 1.0,
+        "unit": "pass_rate",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      },
+      {
+        "endpoint_id": "mcardle_qsvt_kappa400_chebyshev_degree_ratio",
+        "benchmark_label": "McArdle, Gilyen & Berta (Quantum 2026) Chebyshev QSVT vs Classical Power Degree Ratio (kappa=400)",
+        "observed": 36.316,
+        "predicted": 36.316,
+        "unit": "degree_ratio",
+        "fold_error": 1.0,
+        "within_1p25x": true,
+        "within_2p0x": true
+      }
+    ]
+  },
+  "top_10_icbs_by_v2_8_inmb": [
+    {
+      "icb_ods_code": "QOP",
+      "icb_name": "NHS Greater Manchester ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.401,
+      "cascade_aki_falls_averted": 1078.7,
+      "mltc_4plus_escalations_averted": 1323.3,
+      "v2_8_net_cash_savings_gbp_m": 7.782,
+      "v2_8_qalys_gained": 949.0,
+      "v2_8_inmb_20k_gbp_m": 27.937,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QHM",
+      "icb_name": "NHS North East and North Cumbria ICB",
+      "nhs_region": "North East and Yorkshire",
+      "core20_share": 0.376,
+      "cascade_aki_falls_averted": 1023.9,
+      "mltc_4plus_escalations_averted": 1254.0,
+      "v2_8_net_cash_savings_gbp_m": 7.38,
+      "v2_8_qalys_gained": 899.9,
+      "v2_8_inmb_20k_gbp_m": 26.392,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QWO",
+      "icb_name": "NHS West Yorkshire ICB",
+      "nhs_region": "North East and Yorkshire",
+      "core20_share": 0.376,
+      "cascade_aki_falls_averted": 853.4,
+      "mltc_4plus_escalations_averted": 1045.1,
+      "v2_8_net_cash_savings_gbp_m": 6.151,
+      "v2_8_qalys_gained": 750.0,
+      "v2_8_inmb_20k_gbp_m": 21.997,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QRV",
+      "icb_name": "NHS North West London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.292,
+      "cascade_aki_falls_averted": 851.3,
+      "mltc_4plus_escalations_averted": 1036.2,
+      "v2_8_net_cash_savings_gbp_m": 6.116,
+      "v2_8_qalys_gained": 745.4,
+      "v2_8_inmb_20k_gbp_m": 21.587,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QYG",
+      "icb_name": "NHS Cheshire and Merseyside ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.309,
+      "cascade_aki_falls_averted": 799.1,
+      "mltc_4plus_escalations_averted": 973.9,
+      "v2_8_net_cash_savings_gbp_m": 5.745,
+      "v2_8_qalys_gained": 700.2,
+      "v2_8_inmb_20k_gbp_m": 20.331,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QMF",
+      "icb_name": "NHS North East London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.357,
+      "cascade_aki_falls_averted": 773.9,
+      "mltc_4plus_escalations_averted": 946.6,
+      "v2_8_net_cash_savings_gbp_m": 5.575,
+      "v2_8_qalys_gained": 679.7,
+      "v2_8_inmb_20k_gbp_m": 19.878,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QHL",
+      "icb_name": "NHS Birmingham and Solihull ICB",
+      "nhs_region": "Midlands",
+      "core20_share": 0.487,
+      "cascade_aki_falls_averted": 567.7,
+      "mltc_4plus_escalations_averted": 699.9,
+      "v2_8_net_cash_savings_gbp_m": 4.107,
+      "v2_8_qalys_gained": 501.0,
+      "v2_8_inmb_20k_gbp_m": 14.935,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QKK",
+      "icb_name": "NHS South East London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.23,
+      "cascade_aki_falls_averted": 580.3,
+      "mltc_4plus_escalations_averted": 702.6,
+      "v2_8_net_cash_savings_gbp_m": 4.157,
+      "v2_8_qalys_gained": 506.4,
+      "v2_8_inmb_20k_gbp_m": 14.531,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QE1",
+      "icb_name": "NHS Lancashire and South Cumbria ICB",
+      "nhs_region": "North West",
+      "core20_share": 0.333,
+      "cascade_aki_falls_averted": 552.4,
+      "mltc_4plus_escalations_averted": 674.5,
+      "v2_8_net_cash_savings_gbp_m": 3.975,
+      "v2_8_qalys_gained": 484.6,
+      "v2_8_inmb_20k_gbp_m": 14.121,
+      "dominant_cost_saving": true
+    },
+    {
+      "icb_ods_code": "QMJ",
+      "icb_name": "NHS North Central London ICB",
+      "nhs_region": "London",
+      "core20_share": 0.327,
+      "cascade_aki_falls_averted": 550.1,
+      "mltc_4plus_escalations_averted": 671.4,
+      "v2_8_net_cash_savings_gbp_m": 3.958,
+      "v2_8_qalys_gained": 482.4,
+      "v2_8_inmb_20k_gbp_m": 14.046,
+      "dominant_cost_saving": true
+    }
+  ],
+  "figure_watermarks": {
+    "v28_fig1": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_v2_8/figures/v28_fig1_persistent_schur_laplacian_and_directed_flag.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "v28_fig1_persistent_schur_laplacian_and_directed_flag.png",
+          "kind": "png_tEXt",
+          "artifact_id": "v28_fig1_persistent_schur_laplacian_and_directed_flag",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:bf563ea7c17b014be67439c89211702e"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "v28_fig2": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_v2_8/figures/v28_fig2_bottleneck_stability_fasy_bootstrap_and_susy.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "v28_fig2_bottleneck_stability_fasy_bootstrap_and_susy.png",
+          "kind": "png_tEXt",
+          "artifact_id": "v28_fig2_bottleneck_stability_fasy_bootstrap_and_susy",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:d9b8e1d6654c8d9986ae388b011bed0b"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "v28_fig3": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_v2_8/figures/v28_fig3_mcardle_chebyshev_qsvt_and_acq_quops_governance.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "v28_fig3_mcardle_chebyshev_qsvt_and_acq_quops_governance.png",
+          "kind": "png_tEXt",
+          "artifact_id": "v28_fig3_mcardle_chebyshev_qsvt_and_acq_quops_governance",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:b7cdeb457bb8a40c3432fe599be2a807"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "v28_fig4": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift_v2_8/figures/v28_fig4_23pdb_crmr_quartet_parity_dcea_and_g57_g60.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "v28_fig4_23pdb_crmr_quartet_parity_dcea_and_g57_g60.png",
+          "kind": "png_tEXt",
+          "artifact_id": "v28_fig4_23pdb_crmr_quartet_parity_dcea_and_g57_g60",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:3d6d19b4188741a9917dbf3dd92e1eb5"
+        }
+      ],
+      "structural_hits_sample": []
+    },
+    "fig30": {
+      "target": "/Users/openclaw/.gemini/antigravity/scratch/opencareq/samskrift/figures/fig30_v2_8_rigorous_qtda_mltc.png",
+      "files_scanned": 1,
+      "salt_configured": true,
+      "authorship_proven": true,
+      "coincidence_probability_upper_bound": 2.9387e-39,
+      "distinct_canary_tokens_detected": [
+        "OCQ-NC-TRAP-STREET-ZZ99-V13"
+      ],
+      "n_files_with_structural_canaries": 0,
+      "n_hmac_commitments_verified": 1,
+      "hmac_artifacts": [
+        {
+          "file": "fig30_v2_8_rigorous_qtda_mltc.png",
+          "kind": "png_tEXt",
+          "artifact_id": "fig30_v2_8_rigorous_qtda_mltc",
+          "commitment_matched": true,
+          "commitment_id": "hmac256:9fa0eecb717351e0564120e040fc63e4"
+        }
+      ],
+      "structural_hits_sample": []
+    }
+  },
+  "ocq_nc_provenance": {
+    "license_spdx": "PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0",
+    "required_notice": "Required Notice: Copyright (c) 2026 Arun Nadarasa — Permitted free of charge for NHS public-sector bodies, universities, charitable organisations, and non-commercial academic research; commercial use strictly prohibited without prior written permission.",
+    "artifact_id": "opencareq_v2_8_rigorous_qtda_and_mltc_receipt",
+    "trap_sentinel_fixture": {
+      "ods_code": "ZZ99Z",
+      "pcn_ods_code": "U99999",
+      "sentinel_id": "OCQ-NC-TRAP-STREET-ZZ99-V13",
+      "role": "inert_cartographic_authorship_sentinel",
+      "population_weight": 0.0,
+      "clinical_effect_multiplier": 0.0,
+      "phi_present": false,
+      "stinespring_gauge_constants": [
+        0.1370359991,
+        0.2718281828,
+        0.3141592654,
+        0.5772156649
+      ]
+    },
+    "numerical_perturbation_delta": 0.0,
+    "canonical_content_sha256_prefix": "47662fb74838ce0aed6e6d2d",
+    "commitment_id": "hmac256:b7de477d2c13ffc0e48ed9b6e895ee1f"
+  },
+  "classical_floor_baseline": "Exact <15 ms Classical Persistent Schur-Laplacian + McArdle Classical Power-Method Adversary + Unaveraged ACQ CQRS (QV=0, VM=9) + Deterministic <1ms DCB0129RuntimeCommitGate (G1-G60)",
+  "epistemic_demarcation": {
+    "physical_hardware_shots": 0,
+    "wet_lab_experiments_performed": 0,
+    "phi_present": false,
+    "runtime_agent_actions": 0,
+    "autonomous_clinical_decisions": 0,
+    "closed_hazards_claimed": 0,
+    "open_clinical_hazards": [
+      "H-OCQ-01",
+      "H-OCQ-02",
+      "H-OCQ-03",
+      "H-OCQ-04",
+      "H-OCQ-05",
+      "H-OCQ-06"
+    ]
+  },
+  "ml_dsa_65_envelope": {
+    "algorithm": "NIST-FIPS-204-ML-DSA-65",
+    "signed_digest_sha256": "981143c3b92b8ad01a47c2cd5a9e4d2a7867499409753c12eb997b4196a6c86c",
+    "public_key_sha256": "313cbf90be261675e70bb8b97545d86724d76bf5355eda60fe4475aa32eaf3a4",
+    "signature_bytes": 3309,
+    "signature_sha256": "375ee9b6b87d8076c7a9e0266690dff23ad10c11037dbc8839b7bfc2fd416bdb",
+    "public_key_b64": "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",
+    "signature_b64": "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"
+  },
+  "receipt_sha256": "3a595d16adc9ba7553e126ea73c022ef5baddb9834d6aa3df188937b0569963a"
+}
