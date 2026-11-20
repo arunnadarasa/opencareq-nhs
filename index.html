@@ -342,23 +342,48 @@
     .paper-meta-list li { margin-bottom: 0.25rem; }
 
     .reader-panel {
-      margin-top: 1.25rem;
+      margin-top: 1.05rem;
+      margin-bottom: 1.5rem;
       background: #0c181b;
       border: 1px solid var(--border-strong);
       border-radius: var(--radius);
-      overflow: hidden;
+      overflow: visible;
       box-shadow: 0 18px 46px -16px rgba(0, 0, 0, 0.65);
-      scroll-margin-top: 78px;
+      scroll-margin-top: 74px;
       display: flex;
       flex-direction: column;
+    }
+    .reader-panel.collapsed .reader-bookmarks,
+    .reader-panel.collapsed .reader-viewport {
+      display: none;
+    }
+    .reader-panel.tall .reader-viewport {
+      height: min(86vh, 1020px);
     }
     .reader-panel.fullscreen {
       position: fixed;
       inset: 0.85rem;
-      margin-top: 0;
+      margin: 0;
       z-index: 150;
       border-radius: var(--radius);
-      box-shadow: 0 0 0 100vmax rgba(4, 10, 12, 0.86), 0 28px 80px rgba(0, 0, 0, 0.85);
+      overflow: hidden;
+      box-shadow: 0 0 0 100vmax rgba(4, 10, 12, 0.88), 0 28px 80px rgba(0, 0, 0, 0.85);
+    }
+    .reader-panel.fullscreen .reader-sticky-chrome {
+      position: static;
+    }
+    .reader-panel.fullscreen .reader-viewport {
+      flex: 1;
+      height: auto;
+    }
+    .reader-sticky-chrome {
+      position: sticky;
+      top: 60px;
+      z-index: 46;
+      background: #102024;
+      border-top-left-radius: calc(var(--radius) - 1px);
+      border-top-right-radius: calc(var(--radius) - 1px);
+      box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.65);
     }
     .reader-doc-tabs {
       display: flex;
@@ -366,9 +391,83 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.55rem;
-      padding: 0.7rem 1rem;
+      padding: 0.62rem 0.95rem;
       background: #122327;
       border-bottom: 1px solid var(--border);
+      border-top-left-radius: calc(var(--radius) - 1px);
+      border-top-right-radius: calc(var(--radius) - 1px);
+    }
+    .reader-primary-picker {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      flex: 1;
+      min-width: 0;
+    }
+    .reader-doc-select {
+      width: auto;
+      max-width: min(370px, 100%);
+      background: #081315;
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+      border-radius: 7px;
+      padding: 0.36rem 0.65rem;
+      font-family: var(--font-sans);
+      font-size: 0.81rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .reader-quick-pins {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.34rem;
+    }
+    .reader-pin-btn {
+      padding: 0.32rem 0.66rem;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      background: rgba(11, 21, 23, 0.78);
+      color: var(--ink-muted);
+      font-family: var(--font-sans);
+      font-size: 0.77rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.14s ease;
+    }
+    .reader-pin-btn:hover { color: var(--ink); border-color: var(--signal); }
+    .reader-pin-btn.active {
+      background: var(--signal);
+      border-color: var(--signal);
+      color: #061517;
+      font-weight: 800;
+    }
+    details.reader-all-docs-drawer {
+      position: relative;
+    }
+    details.reader-all-docs-drawer > summary {
+      list-style: none;
+      user-select: none;
+    }
+    details.reader-all-docs-drawer > summary::-webkit-details-marker { display: none; }
+    details.reader-all-docs-drawer .reader-doc-pills {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      z-index: 90;
+      width: min(560px, 90vw);
+      max-height: 360px;
+      overflow-y: auto;
+      padding: 0.65rem;
+      background: #0b181b;
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.85);
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+      gap: 0.38rem;
     }
     .reader-doc-pills {
       display: flex;
@@ -376,19 +475,20 @@
       gap: 0.4rem;
     }
     .reader-doc-btn {
-      padding: 0.36rem 0.75rem;
+      padding: 0.36rem 0.68rem;
       border-radius: 7px;
       border: 1px solid var(--border);
-      background: rgba(11, 21, 23, 0.75);
+      background: rgba(14, 27, 30, 0.92);
       color: var(--ink-muted);
       font-family: var(--font-sans);
-      font-size: 0.8rem;
+      font-size: 0.77rem;
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 0.3rem;
+      text-align: left;
       transition: all 0.14s ease;
     }
     .reader-doc-btn:hover {
@@ -405,12 +505,26 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 0.55rem 0.9rem;
-      padding: 0.58rem 1rem;
+      gap: 0.48rem 0.8rem;
+      padding: 0.5rem 0.95rem;
       background: #0e1c1f;
       border-bottom: 1px solid var(--border);
       font-family: var(--font-mono);
-      font-size: 0.76rem;
+      font-size: 0.75rem;
+    }
+    .reader-active-title {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--ink);
+      background: rgba(56, 214, 196, 0.1);
+      border: 1px solid rgba(56, 214, 196, 0.28);
+      padding: 0.2rem 0.58rem;
+      border-radius: 6px;
+      max-width: 280px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .reader-controls-group {
       display: inline-flex;
@@ -450,18 +564,22 @@
     }
     .reader-bookmarks {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       align-items: center;
       gap: 0.35rem;
-      padding: 0.48rem 1rem;
-      background: rgba(9, 18, 20, 0.9);
+      padding: 0.44rem 0.95rem;
+      background: rgba(9, 18, 20, 0.96);
       border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: thin;
     }
     .bookmark-chip {
-      padding: 0.2rem 0.55rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+      padding: 0.2rem 0.58rem;
       border-radius: 999px;
       border: 1px solid rgba(158, 183, 180, 0.2);
-      background: rgba(20, 37, 41, 0.7);
+      background: rgba(20, 37, 41, 0.78);
       color: var(--ink-muted);
       font-family: var(--font-mono);
       font-size: 0.69rem;
@@ -472,12 +590,14 @@
     .bookmark-chip.active {
       border-color: var(--amber);
       color: var(--amber);
-      background: rgba(244, 174, 66, 0.13);
+      background: rgba(244, 174, 66, 0.14);
     }
     .reader-viewport {
-      height: 760px;
+      height: min(76vh, 790px);
       overflow-y: auto;
       overflow-x: auto;
+      border-bottom-left-radius: calc(var(--radius) - 1px);
+      border-bottom-right-radius: calc(var(--radius) - 1px);
       background: #070e10;
       padding: 1.25rem 0.85rem;
       position: relative;
@@ -562,12 +682,118 @@
 
     footer { padding: 2.2rem 0 3rem; color: var(--ink-dim); font-size: 0.84rem; }
 
-    /* === OpenCareQ v1.9.0 Clean 100vh Executive Hero & 4 CP 1350 Shift Tabbed Hubs === */
-    .site-nav-inner { min-height: 60px; padding: 0.35rem 1.25rem; gap: 0.45rem; }
-    .nav-links { gap: 0.05rem; font-size: 0.72rem; }
-    @media (min-width: 1120px) { .nav-links { flex-wrap: nowrap; } }
-    .nav-links a { padding: 0.2rem 0.34rem; white-space: nowrap; }
-    .nav-links a.btn-primary, .nav-links a.btn-sm.btn-primary { padding: 0.28rem 0.62rem; font-size: 0.74rem; }
+    /* === Anti-Overload Progressive Disclosure, Nav Popover, Role Router & Category Filters === */
+    html, body { max-width: 100%; overflow-x: clip; }
+    .container, section, main, header, footer,
+    .card, .paper-card, .role-card, .hero-kpi-card, .grant-card,
+    .two-col > *, .jev-split > *, .mol3d-split > *, .controls-grid > *, .kpi-grid > *, .papers-grid > * {
+      min-width: 0;
+      max-width: 100%;
+    }
+    pre, .table-wrap { max-width: 100%; overflow-x: auto; }
+    svg { max-width: 100%; height: auto; }
+    .pdf-page-slot, .pdf-page-slot canvas { max-width: 100%; }
+    @media (max-width: 680px) {
+      .reader-sticky-chrome { position: static; }
+      .site-nav-inner, .nav-links { flex-wrap: wrap; }
+      .bar-lbl { width: 130px; font-size: 0.76rem; }
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    .site-nav-inner { min-height: 60px; padding: 0.35rem 1.25rem; gap: 0.65rem; }
+    .nav-links { gap: 0.28rem; font-size: 0.81rem; }
+    .nav-links > a { padding: 0.32rem 0.62rem; white-space: nowrap; border-radius: 8px; }
+    .nav-links a.btn-primary, .nav-links a.btn-sm.btn-primary { padding: 0.34rem 0.76rem; font-size: 0.79rem; }
+    details.nav-dropdown { position: relative; }
+    details.nav-dropdown > summary {
+      list-style: none; user-select: none; cursor: pointer;
+      padding: 0.32rem 0.64rem; border-radius: 8px; color: var(--ink-muted);
+      border: 1px solid rgba(158, 183, 180, 0.22); background: rgba(255, 255, 255, 0.03);
+      font-size: 0.8rem; font-weight: 700; transition: all 0.14s ease;
+    }
+    details.nav-dropdown > summary::-webkit-details-marker { display: none; }
+    details.nav-dropdown > summary:hover, details.nav-dropdown[open] > summary {
+      color: var(--ink); border-color: var(--border-strong); background: rgba(56, 214, 196, 0.1);
+    }
+    .nav-dropdown-menu {
+      position: absolute; top: calc(100% + 8px); right: 0; z-index: 120;
+      width: min(320px, 90vw); padding: 0.65rem;
+      background: #0c1a1d; border: 1px solid var(--border-strong); border-radius: 11px;
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.85);
+      display: flex; flex-direction: column; gap: 0.22rem;
+    }
+    .nav-dropdown-menu a {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.42rem 0.62rem !important; border-radius: 7px !important;
+      font-size: 0.8rem; color: var(--ink) !important; white-space: normal !important;
+    }
+    .nav-dropdown-menu a:hover { background: rgba(56, 214, 196, 0.12) !important; color: var(--signal) !important; }
+    .nav-dropdown-group-lbl {
+      font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--amber); padding: 0.32rem 0.62rem 0.12rem;
+    }
+
+    details.hero-tech-drawer {
+      background: rgba(14, 27, 30, 0.82); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.56rem 0.92rem; margin: 0 0 1.0rem; max-width: 1040px;
+    }
+    details.hero-tech-drawer > summary {
+      cursor: pointer; list-style: none; font-size: 0.82rem; font-weight: 700;
+      color: var(--signal); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+    }
+    details.hero-tech-drawer > summary::-webkit-details-marker { display: none; }
+    details.hero-tech-drawer[open] > summary {
+      margin-bottom: 0.55rem; padding-bottom: 0.45rem; border-bottom: 1px solid var(--border);
+    }
+    details.hero-tech-drawer p { margin: 0; font-size: 0.88rem; color: var(--ink-muted); line-height: 1.55; }
+
+    .role-router-sec { padding: 1.55rem 0 1.65rem; background: rgba(14, 27, 30, 0.52); border-bottom: 1px solid var(--border); }
+    .role-grid {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.9rem; margin-top: 0.75rem;
+    }
+    @media (max-width: 1020px) { .role-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .role-grid { grid-template-columns: 1fr; } }
+    .role-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px;
+      padding: 1.0rem 1.05rem; display: flex; flex-direction: column; justify-content: space-between; gap: 0.65rem;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .role-card:hover { border-color: var(--border-strong); transform: translateY(-1px); }
+    .role-card h3 { font-family: var(--font-display); font-size: 1.24rem; margin: 0.18rem 0 0.28rem; line-height: 1.15; }
+    .role-card p { font-size: 0.83rem; color: var(--ink-muted); margin: 0; line-height: 1.45; }
+    .role-card-links { display: flex; flex-wrap: wrap; gap: 0.38rem; }
+
+    .ux-filter-bar {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.42rem;
+      margin: 0.55rem 0 0.85rem; padding: 0.48rem 0.65rem;
+      background: rgba(9, 19, 22, 0.72); border: 1px solid var(--border); border-radius: 9px;
+    }
+    .ux-filter-lbl {
+      font-family: var(--font-mono); font-size: 0.71rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber); margin-right: 0.25rem;
+    }
+    .ux-filter-btn {
+      font-family: var(--font-sans); font-size: 0.77rem; font-weight: 700;
+      padding: 0.3rem 0.7rem; border-radius: 999px; border: 1px solid var(--border);
+      background: var(--bg-card); color: var(--ink-muted); cursor: pointer; transition: all 0.14s ease;
+    }
+    .ux-filter-btn:hover { color: var(--ink); border-color: var(--signal); }
+    .ux-filter-btn.active { background: var(--amber-soft); color: var(--amber); border-color: rgba(244, 174, 66, 0.55); }
+    .ux-hidden-by-filter { display: none !important; }
+
+    details.studio-tech-drawer {
+      margin: 0.35rem 0 1.05rem; background: rgba(14, 27, 30, 0.66);
+      border: 1px solid var(--border); border-radius: 9px; padding: 0.46rem 0.82rem;
+    }
+    details.studio-tech-drawer > summary {
+      cursor: pointer; list-style: none; font-family: var(--font-mono); font-size: 0.73rem;
+      font-weight: 600; color: var(--signal);
+    }
+    details.studio-tech-drawer > summary::-webkit-details-marker { display: none; }
+    details.studio-tech-drawer[open] > summary { margin-bottom: 0.45rem; }
+    .studio-short-lead { color: var(--ink-muted); font-size: 0.93rem; margin: 0 0 0.35rem; max-width: 920px; }
 
     .hero.hero-v19 { padding: 1.55rem 0 1.45rem; border-bottom: 1px solid var(--border); }
     .hero-v19 .pill-row { gap: 0.42rem; margin-bottom: 0.65rem; }
@@ -834,68 +1060,86 @@
         <span class="brand-mark">OC</span>
         <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">v2.7</small></span>
       </a>
-      <nav class="nav-links" aria-label="Sections">
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#role-router" style="color:var(--signal);">Start Here</a>
         <a href="nine-pillars.html" style="color:var(--signal);">9 Pillars ↗</a>
-        <a href="warsaw-quantum-2027.html" style="color:var(--signal);">WQCG 2027 ↗</a>
-        <a href="clinician-guide.html" style="color:var(--amber);">Clinician ↗</a>
-        <a href="#sickness-to-prevention" style="color:var(--signal);">Prevention</a>
-        <a href="#hospital-to-community">Neighbourhood &amp; YCP</a>
-        <a href="#analogue-to-digital">DSL → IR</a>
-        <a href="#papers" style="color:var(--amber);">Papers I–XIII</a>
-        <a href="harness.html" style="color:var(--signal);">Harness ↗</a>
-        <a href="trial-protocol.html">Trial ↗</a>
-        <a href="quantum-card.html">Q-Card++ ↗</a>
-        <a href="safety-case.html" style="color:var(--amber);">CSC-QT ↗</a>
+        <a href="#sickness-to-prevention">Interactive Labs</a>
+        <a href="#papers" style="color:var(--amber);">Papers &amp; Reader</a>
+        <a href="harness.html" style="color:var(--signal);">Safety (G1–G56) ↗</a>
+        <details class="nav-dropdown" id="navMoreMenu">
+          <summary>More Studios ▾</summary>
+          <div class="nav-dropdown-menu" role="menu">
+            <div class="nav-dropdown-group-lbl">Standalone Interactive Studios</div>
+            <a href="warsaw-quantum-2027.html"><span>🌐 WQCG Seminar Lab (18.03.2027)</span><span>↗</span></a>
+            <a href="clinician-guide.html"><span>🩺 Clinician, PPI &amp; Lean Canvas</span><span>↗</span></a>
+            <a href="trial-protocol.html"><span>🧭 42-ICB Stepped-Wedge Trial</span><span>↗</span></a>
+            <a href="quantum-card.html"><span>📦 Quantum Card++ &amp; CBOM</span><span>↗</span></a>
+            <a href="safety-case.html"><span>🛡 CSC-QT 3-Doc Safety Pack</span><span>↗</span></a>
+            <a href="challenge.html"><span>⚖ Anti-Goodhart Benchmark</span><span>↗</span></a>
+            <div class="nav-dropdown-group-lbl">Portal Sections</div>
+            <a href="#hospital-to-community"><span>🏥 Neighbourhood &amp; 42-ICB DCEA</span><span>↓</span></a>
+            <a href="#analogue-to-digital"><span>💻 Gate-Free DSL → Quantum IR</span><span>↓</span></a>
+          </div>
+        </details>
         <a class="btn-sm btn-primary" href="OpenCareQ_Nine_Pillar_Grant_Dossier_2p.pdf" download="OpenCareQ_Nine_Pillar_Grant_Dossier_2p.pdf">⬇ 2p Dossier</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
-    <!-- CLEAN 100vh EXECUTIVE HERO (v2.7.0) -->
+    <!-- CLEAN EXECUTIVE HERO (v2.7.0 — Progressive Disclosure) -->
     <section class="hero hero-v19">
       <div class="container">
         <div class="pill-row">
-          <span class="pill pill-signal">v2.7 Nine-Pillar Sovereign Clinical Quantum · Comb-PQK · QCare→CPTP · CD-WS-QAOA · 7-Region SDE DQML · UK NCSC PQC · AI×Bio×Nano Governance</span>
-          <span class="pill pill-amber">207 / 207 Zero-Fit Clinical &amp; Quantum Parity (v2.7 GMFE 1.0023 · v2.6 1.0018)</span>
-          <span class="pill pill-ember">G1–G56 Safety Harness (112 Cases · 1,568 Evals · J = 1.000 · 0 Harms · 36 ML-DSA-65 Receipts)</span>
+          <span class="pill pill-signal">v2.7.0 · Nine-Pillar Sovereign Clinical Quantum</span>
+          <span class="pill pill-amber">207 / 207 (100%) Zero-Fit Parity · GMFE 1.0023</span>
+          <span class="pill pill-ember">0 Gated Harms · 1,568 DCB0129 Evals · 36 PQC Receipts</span>
         </div>
 
-        <p class="kicker">Non-Commercial NHS Public-Good Clinical Quantum &amp; Prevention Stack · PolyForm-Noncommercial-1.0.0 · SI 1997/3032 · INALYN CIC (#17398798)</p>
+        <p class="kicker">Non-Commercial NHS Public-Good Clinical Quantum &amp; Prevention Stack · PolyForm-Noncommercial-1.0.0 · INALYN CIC (#17398798)</p>
         <h1>OpenCareQ <span style="font-size:0.46em;color:var(--signal);vertical-align:middle;font-family:var(--font-mono);">v2.7.0</span></h1>
         <p class="lead">
-          <strong>OpenCareQ v2.7</strong> operationalizes a complete <strong><a href="nine-pillars.html">Nine-Pillar Sovereign Clinical Quantum Architecture</a></strong> across England&apos;s <code>42</code> ICBs (<code>1,280</code> PCNs, <code>62.93M</code> population), lifting Full-Stack NHS value to <strong>+£6,738.9M/yr (+£6.74B/yr)</strong>: <strong>(1–6) New Kernel, Primitives, Category, Algorithm, Optimisation &amp; Hybrid Control</strong>—uniting Non-Markovian <code>1-RDM Comb-PQK</code> (<code>91.67% LOOCV</code> vs <code>39.58% RBF</code>, <code>855.39×</code> concentration resistance over <code>12q</code> fidelity), gate-free <code>QChannel</code>/<code>QDistributedNode</code> &amp; Dagger-Compact Category <code>QCare → CPTP</code>, Counterdiabatic Warm-Started <code>CVaR₀.₂₅-HUBO</code> (<code>CD-WS-QAOA</code>, <code>3.16× P(E₀)</code> boost, <code>99.11%</code> parity), and <code>Gate G4</code> (<code>95%</code> laptop execution, <code>Trap G53</code>); <strong>(7) Distributed QML (<code>DQML</code>)</strong>—<code>7</code>-Region NHS <code>SDE</code> <code>(ε=1.0, δ=10⁻⁵)-DP</code> (<code>0</code> raw rows, <code>97.69%</code> alignment, <code>Trap G55</code>) + <code>12q → 2×6q</code> Pauli wire knitting (<code>γ² = 9</code>, <code>|err| = 3.3×10⁻¹⁶</code>); and <strong>(8–9) UK <code>NCSC</code> Post-Quantum Cyber &amp; <code>AI × Biotech × Nanotech</code> Governance</strong>—<code>Hybrid X25519 + FIPS 203 ML-KEM-768</code> (<code>AES-256-GCM</code>, <code>Trap G54</code>), dual <code>ML-DSA-65</code> / <code>WOTS+-SHAKE256</code> + <code>CycloneDX 1.6 CBOM</code>, <code>IGSC</code> biosecurity firewall (<code>Trap G56</code>), and <code>£0</code> <code>INALYN CIC</code> access.
+          <strong>OpenCareQ</strong> is a zero-patient-identifier (<code>phi_present = False</code>), clinician-in-charge software workbench that lets NHS teams, pharmacists, and commissioners model complex multi-condition care, pharmacogenomics, and neighbourhood capacity without writing raw quantum circuits—routing <strong>95% of routine tasks in &lt;20 ms on standard NHS laptops</strong> and reserving quantum/hybrid solvers strictly for verified non-Markovian, topological, or molecular bottlenecks. Across England&apos;s <strong>42 Integrated Care Boards (1,280 PCNs, 62.93M patients)</strong>, the full <code>v2.7.0</code> nine-pillar stack is projected to deliver <strong>+£6,738.9M/yr (+£6.74B/yr)</strong> in equity-weighted <code>NICE £20,000/QALY</code> value at <strong>£0 NHS software licensing cost</strong>.
         </p>
+
+        <details class="hero-tech-drawer">
+          <summary>
+            <span>🔬 Inspect Full v2.7.0 Technical Breakdown (Comb-PQK, QCare→CPTP, CD-WS-QAOA, 7-SDE DQML, UK NCSC PQC &amp; Bio×Nano×AI Governance)</span>
+            <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--amber);">Expand ▾</span>
+          </summary>
+          <p>
+            <strong>(1–6) New Kernel, Primitives, Category, Algorithm, Optimisation &amp; Hybrid Control:</strong> Non-Markovian <code>1-RDM Comb-PQK</code> (<code>91.67% LOOCV</code> vs <code>39.58% RBF</code>, <code>855.39×</code> anti-concentration over <code>12q</code> fidelity; <code>Trap G53</code>), gate-free <code>QChannel</code>/<code>QDistributedNode</code> &amp; Dagger-Compact Category <code>QCare → CPTP</code> (<code>&lt; 10⁻¹⁴</code> residuals), Counterdiabatic Warm-Started <code>CVaR₀.₂₅-HUBO</code> (<code>CD-WS-QAOA</code>, <code>3.16× P(E₀)</code> boost, <code>99.11%</code> parity vs <code>HiGHS</code>), and <code>Gate G4</code>. <strong>(7) Distributed QML (<code>DQML</code>):</strong> <code>7</code>-Region NHS <code>SDE</code> <code>(ε=1.0, δ=10⁻⁵)-DP</code> (<code>0</code> raw rows, <code>97.69%</code> alignment; <code>Trap G55</code>) + <code>12q → 2×6q</code> Pauli wire knitting (<code>γ² = 9</code>, <code>|err| = 3.3×10⁻¹⁶</code>). <strong>(8–9) UK <code>NCSC</code> Post-Quantum Cyber &amp; <code>AI × Biotech × Nanotech</code> Governance:</strong> <code>Hybrid X25519 + FIPS 203 ML-KEM-768</code> (<code>AES-256-GCM</code>, <code>Trap G54</code>), dual <code>ML-DSA-65</code> / <code>WOTS+-SHAKE256</code> + <code>CycloneDX 1.6 CBOM</code>, and <code>IGSC</code> biosecurity firewall (<code>Trap G56</code>).
+          </p>
+        </details>
 
         <div class="hero-kpi-strip">
           <div class="hero-kpi-card">
             <div class="kpi-eyebrow">Full-Stack National Value (42/42 ICBs)</div>
             <div class="kpi-val">+£6,738.9M/yr</div>
-            <div class="kpi-sub"><code>v1.9–v2.6</code> (<code>+£6,433.3M</code>) + <code>v2.7 9-Pillar DQML/PQC</code> (<code>+£305.66M/yr</code> · <code>+£117.4M</code> cash)</div>
+            <div class="kpi-sub"><code>+£6.74B/yr</code> stack · <code>v2.7</code> adds <code>+£305.66M/yr</code> (<code>+£117.4M</code> cash)</div>
           </div>
           <div class="hero-kpi-card">
             <div class="kpi-eyebrow">Zero-Fit Falsification Ledger</div>
             <div class="kpi-val">207 / 207 (100%)</div>
-            <div class="kpi-sub"><code>v2.7 GMFE = 1.0023</code> (<code>14/14 ≤ 1.03×</code>) · <code>v2.6 1.0018</code> · <code>0</code> fitted trial params</div>
+            <div class="kpi-sub"><code>v2.7 GMFE = 1.0023</code> · <code>0</code> fitted clinical trial parameters</div>
           </div>
           <div class="hero-kpi-card">
             <div class="kpi-eyebrow">G1–G56 Red-Team Commit Gate</div>
             <div class="kpi-val">112 Cases · 1,568 Evals</div>
-            <div class="kpi-sub"><code>56</code> traps + <code>56</code> safe twins × <code>7</code> agents · <code>Youden&apos;s J = 1.000</code> · <code>0</code> gated harms</div>
+            <div class="kpi-sub"><code>56</code> traps + <code>56</code> safe twins × <code>7</code> agents · <code>J = 1.000</code> · <code>0</code> harms</div>
           </div>
           <div class="hero-kpi-card">
             <div class="kpi-eyebrow">Comb-PQK · 7-Region DQML · NCSC PQC</div>
             <div class="kpi-val">91.7% · 97.7% · ML-KEM</div>
-            <div class="kpi-sub"><code>855.4×</code> anti-concentration, <code>0</code> raw SDE rows, <code>42.79M</code> profiles <code>HNDL</code>-shielded</div>
+            <div class="kpi-sub"><code>855.4×</code> anti-concentration, <code>0</code> raw SDE rows, <code>42.79M</code> HNDL-shielded</div>
           </div>
         </div>
 
         <div class="hero-cta-bar">
-          <a class="btn-hero primary" href="nine-pillars.html">🏛 Nine-Pillar Studio &amp; Grant Evidence Matrix ↗</a>
-          <a class="btn-hero" href="OpenCareQ_Nine_Pillar_Grant_Dossier_2p.pdf" download="OpenCareQ_Nine_Pillar_Grant_Dossier_2p.pdf" style="border-color:rgba(56,214,196,0.65);color:var(--signal);">📄 2-Page Grant Dossier PDF ⬇</a>
-          <a class="btn-hero" href="warsaw-quantum-2027.html">🌐 WQCG Seminar (18.03.2027) ↗</a>
-          <a class="btn-hero" href="harness.html" style="border-color:rgba(240,106,59,0.55);color:#ff9472;">🛡 G1–G56 Safety Harness (1,568 Evals) ↗</a>
-          <a class="btn-hero" href="#papers" style="border-color:rgba(244,174,66,0.5);color:var(--amber);">📖 Papers I–XIII ↓</a>
+          <a class="btn-hero primary" href="#papers">📖 Read Paper XIII &amp; 2p Grant Dossier ↓</a>
+          <a class="btn-hero" href="nine-pillars.html" style="border-color:rgba(56,214,196,0.65);color:var(--signal);">🏛 Nine-Pillar Studio &amp; Copy Matrix ↗</a>
+          <a class="btn-hero" href="clinician-guide.html">🩺 Plain-English Clinician &amp; PPI Guide ↗</a>
+          <a class="btn-hero" href="harness.html" style="border-color:rgba(240,106,59,0.55);color:#ff9472;">🛡 G1–G56 Safety Harness ↗</a>
         </div>
 
         <details class="hero-ledger">
@@ -954,27 +1198,96 @@
       </div>
     </section>
 
+    <!-- ROLE-BASED ENTRY ROUTER (Eliminates Scroll Overload) -->
+    <section id="role-router" class="role-router-sec" aria-label="Choose Your Entry Path">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.5rem;">
+          <div>
+            <p class="kicker" style="margin-bottom:0.2rem;">Quick Navigation · Choose Your Perspective</p>
+            <h2 style="font-size:1.58rem;margin:0;">Jump Straight to What Matters for Your Role</h2>
+          </div>
+          <span style="font-size:0.82rem;color:var(--ink-muted);">Zero patient data (<code>phi_present = False</code>) · Free public-good NHS licence</span>
+        </div>
+        <div class="role-grid">
+          <article class="role-card" style="border-top:3px solid var(--signal);">
+            <div>
+              <span class="card-tag" style="color:var(--signal);">01 · Clinicians, Pharmacists &amp; Patients</span>
+              <h3>Plain-English Guides (Zero Equations)</h3>
+              <p>Follow one patient across 7 care layers, translate quantum terms into ward actions, and download our reading-age 11–12 PPI leaflet.</p>
+            </div>
+            <div class="role-card-links">
+              <a class="btn-sm btn-primary" href="clinician-guide.html">🩺 Open Clinician Guide ↗</a>
+              <a class="btn-sm" href="OpenCareQ_Patient_PPI_Leaflet_1p.pdf" download="OpenCareQ_Patient_PPI_Leaflet_1p.pdf">⬇ 1p PPI PDF</a>
+            </div>
+          </article>
+
+          <article class="role-card" style="border-top:3px solid var(--amber);">
+            <div>
+              <span class="card-tag">02 · Grant Panels, Policy &amp; ICB Boards</span>
+              <h3>9-Pillar Call Evidence &amp; 42-ICB DCEA</h3>
+              <p>Inspect one-to-one grant evidence across all 9 pillars, copy verified paragraphs, or explore <code>+£6.74B/yr</code> NICE <code>£20k/QALY</code> returns.</p>
+            </div>
+            <div class="role-card-links">
+              <a class="btn-sm btn-primary" href="nine-pillars.html">🏛 9-Pillar Studio ↗</a>
+              <a class="btn-sm" href="OpenCareQ_Nine_Pillar_Grant_Dossier_2p.pdf" download="OpenCareQ_Nine_Pillar_Grant_Dossier_2p.pdf">⬇ 2p Dossier</a>
+            </div>
+          </article>
+
+          <article class="role-card" style="border-top:3px solid #3898ff;">
+            <div>
+              <span class="card-tag" style="color:#7ab8ff;">03 · Quantum, ML &amp; Structural Scientists</span>
+              <h3>Comb-PQK, QTDA, 20 3D PDBs &amp; IR</h3>
+              <p>Test <code>Comb-PQK</code> vs concentration, <code>QTDA</code> persistent homology (WQCG 2027), 20 live <code>3Dmol.js</code> crystal pockets, and <code>HUGR</code>/<code>CUDA-Q</code>.</p>
+            </div>
+            <div class="role-card-links">
+              <a class="btn-sm btn-primary" href="warsaw-quantum-2027.html">🌐 WQCG QTDA Lab ↗</a>
+              <a class="btn-sm" href="#analogue-to-digital">💻 DSL → IR ↓</a>
+            </div>
+          </article>
+
+          <article class="role-card" style="border-top:3px solid var(--ember);">
+            <div>
+              <span class="card-tag" style="color:#ff9472;">04 · Clinical Safety (DCB0129) &amp; Cyber</span>
+              <h3>G1–G56 Commit Gate &amp; UK NCSC PQC</h3>
+              <p>Audit all <code>112</code> paired clinical hazard traps (<code>1,568</code> evals, <code>0</code> harms), 3-doc <code>CSC-QT</code> pack, and <code>ML-KEM-768</code> <code>CycloneDX 1.6 CBOM</code>.</p>
+            </div>
+            <div class="role-card-links">
+              <a class="btn-sm btn-primary" href="harness.html">🛡 G1–G56 Harness ↗</a>
+              <a class="btn-sm" href="safety-case.html">📋 CSC-QT Pack ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- HUB 1: CP 1350 SHIFT I — SICKNESS TO PREVENTION -->
     <div id="sickness-to-prevention" class="shift-hub">
       <div class="container">
         <div class="shift-hub-header">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;">
-            <span class="kicker" style="margin:0;">CP 1350 Radical Shift I · Sickness to Prevention (+£6,017.4M/yr Full-Stack INMB · TDDFT Photobiology &amp; Entangled HOM Q-OCT)</span>
-            <span class="pill pill-signal">12 Zero-Fit Clinical &amp; Quantum Studios · Switch Tabs Below</span>
+            <span class="kicker" style="margin:0;">CP 1350 Radical Shift I · Sickness to Prevention (+£6,738.9M/yr Full-Stack INMB · Filter Clinical &amp; Quantum Studios)</span>
+            <span class="pill pill-signal">Showing Flagship Studios · Filter by Domain Below</span>
           </div>
-          <div class="shift-tab-bar" role="tablist" aria-label="Sickness to Prevention Studios">
-            <button type="button" class="shift-tab-btn active" data-target-pane="pane-photobiology-qoct-v25" onclick="activateShiftTab('sickness-to-prevention','pane-photobiology-qoct-v25',false)">v2.5 Photobiology Equity &amp; HOM Q-OCT</button>
-            <button type="button" class="shift-tab-btn" data-target-pane="pane-relativistic-sabre-v24" onclick="activateShiftTab('sickness-to-prevention','pane-relativistic-sabre-v24',false)">v2.4 Relativistic Hearing &amp; SABRE Liver MRI</button>
-            <button type="button" class="shift-tab-btn" data-target-pane="pane-tunnelling-nv-v23" onclick="activateShiftTab('sickness-to-prevention','pane-tunnelling-nv-v23',false)">v2.3 Nuclear Tunnelling &amp; NV-Diamond</button>
-            <button type="button" class="shift-tab-btn" data-target-pane="pane-lifecourse-v22" onclick="activateShiftTab('sickness-to-prevention','pane-lifecourse-v22',false)">v2.2 CYP Sickle, HLA &amp; Photonics</button>
-            <button type="button" class="shift-tab-btn" data-target-pane="pane-amr-opm-v21" onclick="activateShiftTab('sickness-to-prevention','pane-amr-opm-v21',false)">v2.1 Quantum AMR &amp; OPM Magnetometry</button>
-            <button type="button" class="shift-tab-btn" data-target-pane="pane-quantum-v20" onclick="activateShiftTab('sickness-to-prevention','pane-quantum-v20',false)">v2.0 Quantum Molecules &amp; 20 3D PDBs</button>
-            <button type="button" class="shift-tab-btn" data-target-pane="pane-ageing-v19" onclick="activateShiftTab('sickness-to-prevention','pane-ageing-v19',false)">v1.9 Healthy Ageing, Dementia &amp; My Medicines</button>
-            <button type="button" class="shift-tab-btn" data-target-pane="pane-core20-v18" onclick="activateShiftTab('sickness-to-prevention','pane-core20-v18',false)">v1.8 5/5 Cancer &amp; Maternity</button>
-            <button type="button" class="shift-tab-btn" data-target-pane="pane-smi-v17" onclick="activateShiftTab('sickness-to-prevention','pane-smi-v17',false)">v1.7 SMI Brain–Body</button>
-            <button type="button" class="shift-tab-btn" data-target-pane="pane-resp-v15" onclick="activateShiftTab('sickness-to-prevention','pane-resp-v15',false)">v1.5 NG245 &amp; Greener NHS</button>
-            <button type="button" class="shift-tab-btn" data-target-pane="pane-prec-v13" onclick="activateShiftTab('sickness-to-prevention','pane-prec-v13',false)">v1.3 PROGRESS &amp; TA1026</button>
-            <button type="button" class="shift-tab-btn" data-target-pane="pane-sim-v04" onclick="activateShiftTab('sickness-to-prevention','pane-sim-v04',false)">v0.4 CKM &amp; PBPK Depot</button>
+          <div class="ux-filter-bar" role="group" aria-label="Filter interactive studios by domain">
+            <span class="ux-filter-lbl">Domain Filter:</span>
+            <button type="button" class="ux-filter-btn active" data-studio-filter="flagship" onclick="filterHubStudios('flagship', this)">★ Flagship Highlights (4)</button>
+            <button type="button" class="ux-filter-btn" data-studio-filter="quantum" onclick="filterHubStudios('quantum', this)">⚛ Quantum Chemistry &amp; Sensing (6)</button>
+            <button type="button" class="ux-filter-btn" data-studio-filter="clinical" onclick="filterHubStudios('clinical', this)">🩺 NHS Core20PLUS5 &amp; Prevention (6)</button>
+            <button type="button" class="ux-filter-btn" data-studio-filter="all" onclick="filterHubStudios('all', this)">Show All 12 Studios</button>
+          </div>
+          <div id="hub1StudioTabs" class="shift-tab-bar" role="tablist" aria-label="Sickness to Prevention Studios">
+            <button type="button" class="shift-tab-btn active" data-studio-cat="flagship quantum" data-target-pane="pane-photobiology-qoct-v25" onclick="activateShiftTab('sickness-to-prevention','pane-photobiology-qoct-v25',false)">☀ Photobiology Equity &amp; HOM Q-OCT (v2.5)</button>
+            <button type="button" class="shift-tab-btn ux-hidden-by-filter" data-studio-cat="quantum" data-target-pane="pane-relativistic-sabre-v24" onclick="activateShiftTab('sickness-to-prevention','pane-relativistic-sabre-v24',false)">⚛ Relativistic Hearing &amp; SABRE MRI (v2.4)</button>
+            <button type="button" class="shift-tab-btn" data-studio-cat="flagship quantum" data-target-pane="pane-tunnelling-nv-v23" onclick="activateShiftTab('sickness-to-prevention','pane-tunnelling-nv-v23',false)">💎 Nuclear Tunnelling &amp; NV⁻ Biosensing (v2.3)</button>
+            <button type="button" class="shift-tab-btn ux-hidden-by-filter" data-studio-cat="quantum" data-target-pane="pane-lifecourse-v22" onclick="activateShiftTab('sickness-to-prevention','pane-lifecourse-v22',false)">🧬 CYP Sickle, HLA &amp; Photonics (v2.2)</button>
+            <button type="button" class="shift-tab-btn ux-hidden-by-filter" data-studio-cat="quantum" data-target-pane="pane-amr-opm-v21" onclick="activateShiftTab('sickness-to-prevention','pane-amr-opm-v21',false)">🦠 Quantum AMR &amp; OPM-MEG (v2.1)</button>
+            <button type="button" class="shift-tab-btn" data-studio-cat="flagship quantum" data-target-pane="pane-quantum-v20" onclick="activateShiftTab('sickness-to-prevention','pane-quantum-v20',false)">🧪 20-Crystal 3Dmol Explorer &amp; PGx (v2.0)</button>
+            <button type="button" class="shift-tab-btn" data-studio-cat="flagship clinical" data-target-pane="pane-ageing-v19" onclick="activateShiftTab('sickness-to-prevention','pane-ageing-v19',false)">🧠 Healthy Ageing, Dementia &amp; My Medicines (v1.9)</button>
+            <button type="button" class="shift-tab-btn ux-hidden-by-filter" data-studio-cat="clinical" data-target-pane="pane-core20-v18" onclick="activateShiftTab('sickness-to-prevention','pane-core20-v18',false)">🎗 5/5 Cancer &amp; Maternity (v1.8)</button>
+            <button type="button" class="shift-tab-btn ux-hidden-by-filter" data-studio-cat="clinical" data-target-pane="pane-smi-v17" onclick="activateShiftTab('sickness-to-prevention','pane-smi-v17',false)">💚 SMI Brain–Body (v1.7)</button>
+            <button type="button" class="shift-tab-btn ux-hidden-by-filter" data-studio-cat="clinical" data-target-pane="pane-resp-v15" onclick="activateShiftTab('sickness-to-prevention','pane-resp-v15',false)">🫁 NG245 &amp; Greener NHS (v1.5)</button>
+            <button type="button" class="shift-tab-btn ux-hidden-by-filter" data-studio-cat="clinical" data-target-pane="pane-prec-v13" onclick="activateShiftTab('sickness-to-prevention','pane-prec-v13',false)">🧬 PROGRESS &amp; TA1026 (v1.3)</button>
+            <button type="button" class="shift-tab-btn ux-hidden-by-filter" data-studio-cat="clinical" data-target-pane="pane-sim-v04" onclick="activateShiftTab('sickness-to-prevention','pane-sim-v04',false)">💊 CKM &amp; PBPK Depot (v0.4)</button>
           </div>
         </div>
         <div id="pane-photobiology-qoct-v25" class="shift-tab-pane active">
@@ -3051,15 +3364,110 @@
         </div>
         <div id="pane-papers" class="shift-tab-pane active"><section id="papers">
       <div class="container">
-        <p class="kicker">01 · Open-Access Publication Suite</p>
-        <h2>Thirteen-Paper Samskrift Suite, 2-Page Grant Dossier &amp; Live PDF Preview</h2>
+        <p class="kicker">01 · Open-Access Publication &amp; Dossier Reader</p>
+        <h2>17-Document Samskrift Suite: Live PDF Reader, 2-Page Grant Dossier &amp; Papers I–XIII</h2>
         <p class="sec-sub">
-          Read all five compiled OpenCareQ manuscripts directly inline via our continuous-scroll HiDPI <code>PDF.js</code> canvas stream: <strong>Paper I (<code>21 pp.</code>)</strong> primary monograph, <strong>Paper II (<code>12 pp.</code>)</strong> Moth Quantum × Tessa <code>1,280</code>-PCN live cloud study, <strong>Protocol III (<code>11 pp.</code>)</strong> pre-registered <code>SPIRIT-AI</code> + <code>CONSORT-SW</code> 25-PCN NHS stepped-wedge &amp; zero-PID <code>OpenSAFELY</code> target-trial protocol (<code>ENBS = +£2.449M</code>, <code>39504cf3…</code>), <strong>Paper IV (<code>12 pp.</code>)</strong> MIT Project NANDA (<code>NandaTown</code>) 6-layer governance, 5-tier <code>Human-Agent fLow</code> (<code>HAL</code>), and the <code>1,280</code>-PCN NHS Neighbourhood Commons (<code>dd2f91e8…</code>), and <strong>Paper V (<code>13 pp.</code>)</strong> operationalizing the UK 10-Year Health Plan (<code>CP 1350</code>) and complete <code>5/5 Core20PLUS5</code> prevention portfolio across <code>42</code> ICBs with line-pinned <code>Paperclip</code> verification and the 48-case (<code>G1</code>–<code>G24</code>) <code>DCB0129</code> safety gate (<code>88018a75…</code>).
+          Read any of our <strong>13 peer-structured manuscripts (Papers I–XIII)</strong> and <strong>4 print-ready briefings</strong> (including the standalone <strong>2-Page Nine-Pillar Grant Dossier</strong> and <strong>2-Page Clinician Guide</strong>) directly below—with a sticky page/zoom toolbar and section jump chips that stay visible as you scroll.
         </p>
 
-        <div class="papers-grid">
-          <!-- Card 1: OpenCareQ Paper I Monograph -->
-          <article class="paper-card featured">
+        <!-- REDESIGNED STICKY-CHROME INLINE PDF.JS READER (Placed FIRST to Eliminate 4,500px Scroll) -->
+        <div id="paper-preview-panel" class="reader-panel" role="region" aria-label="Interactive Paper Preview Panel" tabindex="0">
+          <div class="reader-sticky-chrome">
+            <!-- Row 1: Grouped Document Picker + 5 Quick-Pin Pills + All-17 Drawer + Viewport Controls -->
+            <div class="reader-doc-tabs">
+              <div class="reader-primary-picker">
+                <label for="reader-doc-select" class="sr-only">Select publication to read</label>
+                <select id="reader-doc-select" class="reader-doc-select" aria-label="Select publication to read"></select>
+                <div class="reader-quick-pins" role="group" aria-label="Featured quick-switch documents">
+                  <button type="button" class="reader-pin-btn active" data-pin-doc="v2_7_nine_pillar_companion">🏛 Paper XIII (v2.7)</button>
+                  <button type="button" class="reader-pin-btn" data-pin-doc="nine_pillars_grant_dossier">📄 2p Grant Dossier</button>
+                  <button type="button" class="reader-pin-btn" data-pin-doc="v2_6_qtda_workforce_companion">🌐 Paper XII (WQCG)</button>
+                  <button type="button" class="reader-pin-btn" data-pin-doc="opencareq">📘 Paper I (21 pp.)</button>
+                  <button type="button" class="reader-pin-btn" data-pin-doc="clinician_briefing">🩺 2p Clinician Guide</button>
+                </div>
+                <details class="reader-all-docs-drawer" id="readerAllDocsDrawer">
+                  <summary class="reader-icon-btn">All 17 Docs ▾</summary>
+                  <div class="reader-doc-pills" role="tablist" aria-label="Choose paper to read">
+                    <button type="button" class="reader-doc-btn active" data-reader-doc="v2_7_nine_pillar_companion" id="tab-doc-v27">🏛 Paper XIII: v2.7 9-Pillar DQML &amp; PQC (10 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="nine_pillars_grant_dossier" id="tab-doc-dossier9">📄 9-Pillar Grant Dossier (2 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="v2_6_qtda_workforce_companion" id="tab-doc-v26">🌐 Paper XII: v2.6 QTDA &amp; Workforce (10 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="v2_5_photobiology_qoct_companion" id="tab-doc-v25">☀ Paper XI: v2.5 Photobiology &amp; HOM Q-OCT (11 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="v2_4_relativistic_sabre_companion" id="tab-doc-v24">⚛ Paper X: v2.4 Relativistic Pt &amp; SABRE MRI (10 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="v2_3_tunnelling_nv_companion" id="tab-doc-v23">💎 Paper IX: v2.3 Tunnelling &amp; NV⁻ Biosensing (10 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="v2_2_lifecourse_photonics_companion" id="tab-doc-v22">🧬 Paper VIII: v2.2 Lifecourse &amp; Photonics (10 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="v2_1_amr_opm_companion" id="tab-doc-v21">🦠 Paper VII: v2.1 AMR &amp; OPM (10 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="v2_molecules_companion" id="tab-doc-v20">⚛ Paper VI: v2.0 Molecules→NHC (10 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="cp1350_companion" id="tab-doc-cp1350">🏛 Paper V: CP 1350 &amp; 5/5 Core20PLUS5 (13 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="nandatown_companion" id="tab-doc-nandatown">⛵ Paper IV: NandaTown &amp; HAL (12 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="trial_protocol" id="tab-doc-protocol">🧪 Protocol III: NHS Stepped-Wedge &amp; OpenSAFELY (11 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="moth_companion" id="tab-doc-moth">🦋 Paper II: Moth × Tessa Study (12 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="opencareq" id="tab-doc-opencareq">📘 Paper I: Monograph (21 pp.)</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="clinician_briefing" id="tab-doc-briefing">🩺 Clinician 2-Page Guide</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="patient_ppi_leaflet" id="tab-doc-ppi">🤝 Patient PPI 1-Page</button>
+                    <button type="button" class="reader-doc-btn" data-reader-doc="lean_canvas_poster" id="tab-doc-poster">🖼 A3 Lean Canvas Poster</button>
+                  </div>
+                </details>
+              </div>
+              <div class="reader-controls-group">
+                <button id="reader-tall-btn" type="button" class="reader-icon-btn" title="Toggle taller reading viewport">↕ Tall</button>
+                <button id="reader-fullscreen-btn" type="button" class="reader-icon-btn" title="Expand preview panel to fullscreen">⛶ Fullscreen</button>
+                <button id="reader-collapse-btn" type="button" class="reader-icon-btn" title="Collapse or show preview panel">▾ Hide</button>
+              </div>
+            </div>
+
+            <!-- Row 2: Sticky Page Navigation, Active Doc Badge, Zoom, Samskrift Cloud & Download -->
+            <div class="reader-toolbar">
+              <div class="reader-controls-group">
+                <span id="reader-active-title" class="reader-active-title">🏛 Paper XIII: v2.7 Nine-Pillar</span>
+                <button id="reader-prev-page" type="button" class="reader-icon-btn" aria-label="Previous page">◀ Prev</button>
+                <span style="color:var(--ink-muted)">
+                  Page
+                  <input id="reader-page-input" type="number" min="1" max="21" value="1" class="reader-page-input" aria-label="Page number" />
+                  of <strong id="reader-page-count" style="color:var(--ink)">10</strong>
+                </span>
+                <button id="reader-next-page" type="button" class="reader-icon-btn" aria-label="Next page">Next ▶</button>
+              </div>
+
+              <div class="reader-controls-group">
+                <button id="reader-zoom-out" type="button" class="reader-icon-btn" aria-label="Zoom out">−</button>
+                <button id="reader-zoom-fit" type="button" class="reader-icon-btn">Fit Width</button>
+                <span id="reader-zoom-label" style="min-width:42px;text-align:center;color:var(--signal)">100%</span>
+                <button id="reader-zoom-in" type="button" class="reader-icon-btn" aria-label="Zoom in">+</button>
+              </div>
+
+              <div class="reader-controls-group">
+                <a id="reader-samskrift-link" class="reader-icon-btn" href="https://samskrift.com/view/288e03ed-f52b-435d-b48d-a7d48d425c84/1775af35-19bb-4644-85bb-697d87262d9c" target="_blank" rel="noopener" style="border-color:rgba(56,214,196,0.42);color:var(--signal);">☁ Samskrift Cloud ↗</a>
+                <a id="reader-newtab-link" class="reader-icon-btn" href="OpenCareQ_Nine_Pillar_DQML_PQC_and_Governance_Paper.pdf" target="_blank" rel="noopener">↗ Raw PDF</a>
+                <a id="reader-download-link" class="btn-sm btn-primary" href="OpenCareQ_Nine_Pillar_DQML_PQC_and_Governance_Paper.pdf" download="OpenCareQ_Nine_Pillar_DQML_PQC_and_Governance_Paper.pdf">⬇ Download PDF</a>
+              </div>
+            </div>
+
+            <!-- Row 3: Single-Line Horizontal Scroll Section Jump Bookmarks -->
+            <div id="reader-bookmarks" class="reader-bookmarks" aria-label="Quick section jump bookmarks"></div>
+          </div>
+
+          <!-- Continuous Scroll PDF.js Canvas Stream (with native iframe fallback) -->
+          <div id="reader-viewport" class="reader-viewport">
+            <div id="reader-canvas-stream" class="reader-canvas-stream">
+              <div class="pdf-loading-msg">Loading typeset paper preview…</div>
+            </div>
+            <iframe id="reader-fallback-iframe" title="Paper PDF Fallback Reader" style="display:none;width:100%;height:100%;border:none;border-radius:6px" src="about:blank"></iframe>
+          </div>
+        </div>
+
+        <!-- Categorized Publication Catalog Filter (Shows 4 Essential Cards by Default Instead of 15) -->
+        <div class="ux-filter-bar" role="group" aria-label="Filter publication cards by category">
+          <span class="ux-filter-lbl">Catalog Filter:</span>
+          <button type="button" class="ux-filter-btn active" data-paper-filter="featured" onclick="filterPaperCards('featured', this)">★ Featured &amp; Grant Pack (4)</button>
+          <button type="button" class="ux-filter-btn" data-paper-filter="quantum" onclick="filterPaperCards('quantum', this)">⚛ Quantum Science VI–XIII (8)</button>
+          <button type="button" class="ux-filter-btn" data-paper-filter="core" onclick="filterPaperCards('core', this)">🏛 Core Architecture &amp; Trials I–V (5)</button>
+          <button type="button" class="ux-filter-btn" data-paper-filter="clinician" onclick="filterPaperCards('clinician', this)">🩺 Plain-English &amp; PPI Pack (1)</button>
+          <button type="button" class="ux-filter-btn" data-paper-filter="all" onclick="filterPaperCards('all', this)">Show All Cards (14)</button>
+        </div>
+
+        <div id="papersCatalogGrid" class="papers-grid">
+          <!-- Card 1: OpenCareQ Paper I Monograph (Featured + Core) -->
+          <article class="paper-card featured" data-paper-cat="featured core">
             <div>
               <span class="pill pill-signal">Paper I · Primary Samskrift Monograph · 21 Pages · 58 Verified Citations</span>
               <h3>OpenCareQ (v0.7.0): Healthcare Quantum DSL, CKM+PGx, 10-Yr ESKD PSA, CSC-QT &amp; AgenticOS</h3>
@@ -3080,7 +3488,7 @@
           </article>
 
           <!-- Card 2: Companion Paper II (Moth Quantum x Tessa 1,280-PCN Cloud Study) -->
-          <article class="paper-card featured" style="border-color:rgba(56,214,196,0.38);">
+          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="core" style="border-color:rgba(56,214,196,0.38);">
             <div>
               <span class="pill pill-amber">Paper II · Companion Moth Quantum Study · 12 Pages · 7 Live Cloud Jobs</span>
               <h3>Whole-Chip Zero-SWAP Tessa Encoding, Quantum Blur &amp; QuantumGraph Across 1,280 NHS PCNs</h3>
@@ -3101,7 +3509,7 @@
           </article>
 
           <!-- Card 3: Protocol III (EVSI-Optimal 25-PCN NHS Stepped-Wedge & OpenSAFELY SDE Protocol) -->
-          <article class="paper-card featured" style="border-color:rgba(244,174,66,0.45);">
+          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="core" style="border-color:rgba(244,174,66,0.45);">
             <div>
               <span class="pill pill-amber">Protocol III · SPIRIT-AI + CONSORT-SW + OpenSAFELY SDE · 11 Pages</span>
               <h3>OPENCAREQ-SW-MSE (v0.9.0): EVSI-Optimal 25-PCN Stepped-Wedge RCT &amp; Target-Trial Protocol</h3>
@@ -3122,7 +3530,7 @@
           </article>
 
           <!-- Card 4: Companion Paper IV (MIT Project NANDA NandaTown x HAL 1,280-PCN Clinical Commons) -->
-          <article class="paper-card featured" style="border-color:rgba(56,214,196,0.52);">
+          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="core" style="border-color:rgba(56,214,196,0.52);">
             <div>
               <span class="pill pill-signal">Paper IV · MIT Project NANDA (NandaTown) &amp; HAL Study · 12 Pages · 15/15 Verified Bundles</span>
               <h3>Who Watches the Clinical Swarm? NandaTown Protocol Governance, 5-Tier HAL &amp; the 1,280-PCN NHS Commons</h3>
@@ -3143,7 +3551,7 @@
           </article>
 
           <!-- Card 5: Companion Paper V (UK 10-Year Health Plan CP 1350 & Complete 5/5 Core20PLUS5 Synthesis) -->
-          <article class="paper-card featured" style="border-color:rgba(244,174,66,0.58);">
+          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="core" style="border-color:rgba(244,174,66,0.58);">
             <div>
               <span class="pill pill-amber">Paper V · UK 10-Year Health Plan (CP 1350) &amp; 5/5 Core20PLUS5 Synthesis · 13 Pages · 44 Citations</span>
               <h3>Operationalizing the UK 10-Year Health Plan (CP 1350) &amp; Complete 5/5 Core20PLUS5 Portfolio Across 42 NHS ICBs</h3>
@@ -3164,7 +3572,7 @@
           </article>
 
           <!-- Card 5b: Companion Paper VI (v2.0 Quantum Molecules-to-Neighbourhoods) -->
-          <article class="paper-card featured" style="border-color:rgba(56,214,196,0.72);">
+          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="quantum" style="border-color:rgba(56,214,196,0.72);">
             <div>
               <span class="pill pill-signal">Paper VI · v2.0 Quantum Molecules-to-Neighbourhoods · 10 Pages · 34 Citations</span>
               <h3>Quantum Molecules-to-Neighbourhoods: Ab Initio Metalloenzyme VUS Pharmacogenomics &amp; Q-BIOMED Low-Field Spin Diagnostics Across 42 NHS ICBs</h3>
@@ -3185,7 +3593,7 @@
           </article>
 
           <!-- Card 5c: Companion Paper VII (v2.1 Quantum Pathogens & Quantum Biosensors) -->
-          <article class="paper-card featured" style="border-color:rgba(244,174,66,0.72);">
+          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="quantum" style="border-color:rgba(244,174,66,0.72);">
             <div>
               <span class="pill pill-amber">Paper VII · v2.1 Quantum Pathogens &amp; Quantum Biosensors · 10 Pages · 14 Citations</span>
               <h3>Quantum Pathogens &amp; Quantum Biosensors: Ab Initio Dinuclear Zn(II)₂ NDM-1 Antimicrobial Stewardship &amp; Cryogen-Free Wearable ⁸⁷Rb OPM-MEG/MCG Across 42 NHS ICBs</h3>
@@ -3206,7 +3614,7 @@
           </article>
 
           <!-- Card 5d: Companion Paper VIII (v2.2 Quantum Lifecourse & Quantum Biophotonics) -->
-          <article class="paper-card featured" style="border-color:rgba(56,214,196,0.82);">
+          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="quantum" style="border-color:rgba(56,214,196,0.82);">
             <div>
               <span class="pill pill-signal">Paper VIII · v2.2 Quantum Lifecourse &amp; Biophotonics · 10 Pages · 16 Citations</span>
               <h3>Quantum Lifecourse &amp; Quantum Biophotonics: CYP Core20PLUS5 Sickle Cell Fe–O₂ Spin-Crossover (NICE TA964 Casgevy), Awake Pediatric OPM-MEG, Multi-Ethnic HLA &amp; Squeezed ctDNA Biopsy</h3>
@@ -3227,7 +3635,7 @@
           </article>
 
           <!-- Card 5e: Companion Paper IX (v2.3 Quantum Nuclear Tunnelling & Spin-1 NV- Biosensing) -->
-          <article class="paper-card featured" style="border-color:rgba(56,214,196,0.92);">
+          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="quantum" style="border-color:rgba(56,214,196,0.92);">
             <div>
               <span class="pill pill-signal">Paper IX · v2.3 Nuclear Tunnelling &amp; Spin-1 NV⁻ Biosensing · 10 Pages · 16 Citations</span>
               <h3>Quantum Nuclear Tunnelling &amp; Solid-State Spin-1 Biosensing: Working-Age Autoimmune TYK2 -CD3 KIE &amp; NUDT15 Equity, 10⁵× NV⁻ Rapid Pathogen Diagnostics &amp; Covalent Antiviral Stewardship</h3>
@@ -3248,7 +3656,7 @@
           </article>
 
           <!-- Card 5f: Companion Paper X (v2.4 Relativistic Dirac Pt/MT-RNR1 Otoprotection & Para-H2 SABRE 0 mSv MRI) -->
-          <article class="paper-card featured" style="border-color:rgba(56,214,196,0.96);">
+          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="quantum" style="border-color:rgba(56,214,196,0.96);">
             <div>
               <span class="pill pill-signal">Paper X · v2.4 Relativistic Otoprotection &amp; Para-H₂ SABRE MRI · 10 Pages · 16 Citations</span>
               <h3>Relativistic Heavy-Element Quantum Pharmacology &amp; Para-Hydrogen Singlet-Order SABRE Metabolic MRI: Preventing Neonatal MT-RNR1 &amp; Childhood Cisplatin Deafness and 0 mSv MASLD/MASH Reversal</h3>
@@ -3269,7 +3677,7 @@
           </article>
 
           <!-- Card 5g: Companion Paper XI (v2.5 Excited-State TDDFT Photobiology & Entangled HOM Q-OCT Oculomics) -->
-          <article class="paper-card featured" style="border-color:rgba(244,174,66,0.92);">
+          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="quantum" style="border-color:rgba(244,174,66,0.92);">
             <div>
               <span class="pill pill-signal">Paper XI · v2.5 Quantum Photobiology &amp; HOM Q-OCT Oculomics · 11 Pages · 18 Citations</span>
               <h3>Excited-State Quantum Photobiology (TDDFT/TDA) &amp; Entangled Two-Photon Hong–Ou–Mandel Quantum OCT Oculomics: Skin-Tone Equity (PDB: 2VUE), Daylight PDT (PDB: 2HRE) &amp; 0.717 µm Retinal Screening (PDB: 8A6E)</h3>
@@ -3290,7 +3698,7 @@
           </article>
 
           <!-- Card 5h: Companion Paper XII (v2.6 QTDA Asthma-OCS-Diabetes Multimorbidity & Clinical Quantum Workforce) -->
-          <article class="paper-card featured" style="border-color:rgba(56,214,196,0.95);">
+          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,0.95);">
             <div>
               <span class="pill pill-signal">Paper XII · v2.6 QTDA Multimorbidity &amp; Workforce Governance · 10 Pages · 19 Citations · WQCG 2027</span>
               <h3>Quantum Topological Data Analysis (QTDA) for Long-Term Condition Population Health Management: Contracting Asthma–OCS–Diabetes β₁ Cycles (PDB: 4UDC, 5J13), SGLT2i SADMANS Safety (PDB: 7VSI) &amp; Schmidhuber–Lloyd Gate G4</h3>
@@ -3312,7 +3720,7 @@
           </article>
 
           <!-- Card 5i: Companion Paper XIII (v2.7 Nine-Pillar Sovereign Clinical Quantum, DQML, UK NCSC PQC & AIxBiotechxNanotech Governance + 2-Page Grant Dossier) -->
-          <article class="paper-card featured" style="border-color:rgba(56,214,196,1.0);box-shadow:0 16px 38px -18px rgba(56,214,196,0.55);">
+          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 16px 38px -18px rgba(56,214,196,0.55);">
             <div>
               <span class="pill pill-signal">Paper XIII + 2p Grant Dossier · v2.7 Nine-Pillar Architecture · 10 pp. + 2 pp. · 20 Citations</span>
               <h3>Nine-Pillar Sovereign Clinical Quantum Computing: Non-Markovian 1-RDM Comb-PQK, Dagger-Compact Category QCare→CPTP, CD-WS-QAOA, 7-Region NHS SDE DQML, UK NCSC PQC &amp; AI×Biotech×Nanotech Governance</h3>
@@ -3337,7 +3745,7 @@
           </article>
 
           <!-- Card 6: Plain-English Clinician, Patient PPI & A3 Board Lean Canvas Pack -->
-          <article class="paper-card featured" style="border-color:rgba(56,214,196,0.62);">
+          <article class="paper-card featured" data-paper-cat="featured clinician" style="border-color:rgba(56,214,196,0.62);">
             <div>
               <span class="pill pill-signal">Clinician, Patient PPI &amp; Board Handout Pack · Zero Equations · Print-Ready A4 &amp; A3</span>
               <h3>OpenCareQ Plain-English Pack: 2-Page Clinician Guide, 1-Page Patient PPI Leaflet &amp; 1-Page A3 Lean Canvas Poster</h3>
@@ -3361,104 +3769,23 @@
           </article>
         </div>
 
-        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.85rem;">
-          <button type="button" class="btn-sm" onclick="openFigLightbox(0)">🖼 Fig 1</button>
-          <button type="button" class="btn-sm" onclick="openFigLightbox(1)">🖼 Fig 2</button>
-          <button type="button" class="btn-sm" onclick="openFigLightbox(2)">🖼 Fig 3</button>
-          <button type="button" class="btn-sm" onclick="openFigLightbox(3)">🖼 Fig 4</button>
-          <button type="button" class="btn-sm" onclick="openFigLightbox(4)">🖼 Fig 5</button>
-          <button type="button" class="btn-sm" onclick="openFigLightbox(5)">🖼 Fig 6</button>
-          <button type="button" class="btn-sm" onclick="openFigLightbox(6)">🖼 Fig 7</button>
-          <button type="button" class="btn-sm" onclick="openFigLightbox(7)">🖼 Fig 8</button>
-          <button type="button" class="btn-sm" onclick="openFigLightbox(8)">🖼 Fig 9 (42-ICB)</button>
-          <button type="button" class="btn-sm" onclick="openFigLightbox(9)">🖼 Fig 10 (CKM+PGx)</button>
-          <button type="button" class="btn-sm" onclick="openFigLightbox(10)">🖼 Fig 11 (10-Yr PSA)</button>
-          <button type="button" class="btn-sm" onclick="openFigLightbox(11)">🖼 Fig 12 (CSC-QT Safety)</button>
-        </div>
-
-        <!-- Live Inline & Expandable Paper Preview Panel (Exact Quantum Krump UX) -->
-        <div id="paper-preview-panel" class="reader-panel" role="region" aria-label="Interactive Paper Preview Panel">
-          <!-- Top Document Switcher Bar -->
-          <div class="reader-doc-tabs">
-            <div class="reader-doc-pills" role="tablist" aria-label="Choose paper to read">
-              <button type="button" class="reader-doc-btn active" data-reader-doc="opencareq" id="tab-doc-opencareq">📘 Paper I: Monograph (21 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="moth_companion" id="tab-doc-moth">🦋 Paper II: Moth × Tessa Study (12 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="trial_protocol" id="tab-doc-protocol">🧪 Protocol III: NHS Stepped-Wedge &amp; OpenSAFELY (11 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="nandatown_companion" id="tab-doc-nandatown">⛵ Paper IV: NandaTown &amp; HAL (12 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="cp1350_companion" id="tab-doc-cp1350">🏛 Paper V: CP 1350 &amp; 5/5 Core20PLUS5 (13 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="v2_molecules_companion" id="tab-doc-v20">⚛ Paper VI: v2.0 Molecules→NHC (10 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="v2_1_amr_opm_companion" id="tab-doc-v21">🦠 Paper VII: v2.1 AMR &amp; OPM (10 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="v2_2_lifecourse_photonics_companion" id="tab-doc-v22">🧬 Paper VIII: v2.2 Lifecourse &amp; Photonics (10 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="v2_3_tunnelling_nv_companion" id="tab-doc-v23">💎 Paper IX: v2.3 Tunnelling &amp; NV⁻ Biosensing (10 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="v2_4_relativistic_sabre_companion" id="tab-doc-v24">⚛ Paper X: v2.4 Relativistic Pt &amp; SABRE MRI (10 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="v2_5_photobiology_qoct_companion" id="tab-doc-v25">☀ Paper XI: v2.5 Photobiology &amp; HOM Q-OCT (11 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="v2_6_qtda_workforce_companion" id="tab-doc-v26">🌐 Paper XII: v2.6 QTDA &amp; Workforce (10 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="v2_7_nine_pillar_companion" id="tab-doc-v27">🏛 Paper XIII: v2.7 9-Pillar DQML &amp; PQC (10 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="nine_pillars_grant_dossier" id="tab-doc-dossier9">📄 9-Pillar Grant Dossier (2 pp.)</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="clinician_briefing" id="tab-doc-briefing">🩺 Clinician 2-Page Guide</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="patient_ppi_leaflet" id="tab-doc-ppi">🤝 Patient PPI 1-Page</button>
-              <button type="button" class="reader-doc-btn" data-reader-doc="lean_canvas_poster" id="tab-doc-poster">🖼 A3 Lean Canvas Poster</button>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">☁ Paper I ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/4d44b785-c5cf-426e-8a0e-bee02e39cd88/af059791-d96c-46c3-a2a8-d01c79a5d08b" target="_blank" rel="noopener">☁ Paper II ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/bac7d337-2bf5-43e1-8896-52476d5f13c1/65185ba8-0f60-4799-ab6f-d143f6d065fa" target="_blank" rel="noopener">☁ Protocol III ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/816dae81-d385-4647-9113-59441484fbe6/81856d24-0a01-470f-aee9-be177dfbd927" target="_blank" rel="noopener">☁ Paper IV ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/4f0a4bba-c1c9-45e6-a713-6443d5124997/0e6a9f95-ae11-4199-b301-a7bf1976e938" target="_blank" rel="noopener">☁ Paper V ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/d985eab8-bf7e-466e-9b31-2c3aaec1dc92/bffd8940-dbd6-4a82-b037-92534bbf48fc" target="_blank" rel="noopener">☁ Paper VI ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/32423fe8-ec7c-4878-87b8-6ed9b71ea071/0e218cf2-d0fe-463a-9714-de7bc160647d" target="_blank" rel="noopener">☁ Paper VII ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/25df9512-2c68-4287-a091-9ef89a247856/cad55df0-8964-4d42-8698-4dae72ae00a7" target="_blank" rel="noopener">☁ Paper VIII ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/9f652eaf-0a51-4950-8b5d-6e7debff3055/64c20355-8138-4835-bd62-9e9f07107225" target="_blank" rel="noopener">☁ Paper IX ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/ec91bd13-07ee-4682-99aa-43ca5d4a0931/9373569e-8f13-42ba-9306-808c5b8ec9f9" target="_blank" rel="noopener">☁ Paper X ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/da59be86-7d7c-496c-9ec1-33e4aaaba9fd/0d2591dc-23f2-4dcc-9514-3f02733d6f65" target="_blank" rel="noopener">☁ Paper XI ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/7ce6070d-64d0-4ba8-b6e7-9144be5db01c/502db92c-d620-4587-9ac6-baf6fddb6f9b" target="_blank" rel="noopener">☁ Paper XII ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/288e03ed-f52b-435d-b48d-a7d48d425c84/1775af35-19bb-4644-85bb-697d87262d9c" target="_blank" rel="noopener">☁ Paper XIII ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/253c6d3c-e277-474e-aded-f3eee2d82544/bfbd0599-7dd1-4066-8f04-7b9fac929d31" target="_blank" rel="noopener">☁ 2p Grant Dossier ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/48c30f1e-3dac-4640-9117-19e6e2b730d0/f251100f-bf6a-4ea5-aef0-a835d6311933" target="_blank" rel="noopener">☁ 2p Guide ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/e6302d25-ed6a-4bb7-bab7-25ed53aee52f/709d1c11-1ff1-474e-90d0-736f1cdcd1fc" target="_blank" rel="noopener">☁ 1p PPI ↗</a>
-              <a class="reader-doc-btn" href="https://samskrift.com/view/d3db64c3-5512-44b1-a7e6-0db41790af9f/b83ab912-27fe-4727-a064-02cf109e6211" target="_blank" rel="noopener">☁ A3 Poster ↗</a>
-            </div>
-            <div class="reader-controls-group">
-              <button id="reader-tall-btn" type="button" class="reader-icon-btn" title="Toggle taller reading viewport">↕ Tall</button>
-              <button id="reader-fullscreen-btn" type="button" class="reader-icon-btn" title="Expand preview panel to fullscreen">⛶ Fullscreen</button>
-              <button id="reader-collapse-btn" type="button" class="reader-icon-btn" title="Collapse or show preview panel">▾ Hide</button>
-            </div>
+        <details class="studio-tech-drawer" style="margin-top:0.95rem;">
+          <summary>🖼 Inspect Primary Monograph 300-DPI Benchmark Plates (Figures 1–12) ▾</summary>
+          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.45rem;">
+            <button type="button" class="btn-sm" onclick="openFigLightbox(0)">🖼 Fig 1</button>
+            <button type="button" class="btn-sm" onclick="openFigLightbox(1)">🖼 Fig 2</button>
+            <button type="button" class="btn-sm" onclick="openFigLightbox(2)">🖼 Fig 3</button>
+            <button type="button" class="btn-sm" onclick="openFigLightbox(3)">🖼 Fig 4</button>
+            <button type="button" class="btn-sm" onclick="openFigLightbox(4)">🖼 Fig 5</button>
+            <button type="button" class="btn-sm" onclick="openFigLightbox(5)">🖼 Fig 6</button>
+            <button type="button" class="btn-sm" onclick="openFigLightbox(6)">🖼 Fig 7</button>
+            <button type="button" class="btn-sm" onclick="openFigLightbox(7)">🖼 Fig 8</button>
+            <button type="button" class="btn-sm" onclick="openFigLightbox(8)">🖼 Fig 9 (42-ICB)</button>
+            <button type="button" class="btn-sm" onclick="openFigLightbox(9)">🖼 Fig 10 (CKM+PGx)</button>
+            <button type="button" class="btn-sm" onclick="openFigLightbox(10)">🖼 Fig 11 (10-Yr PSA)</button>
+            <button type="button" class="btn-sm" onclick="openFigLightbox(11)">🖼 Fig 12 (CSC-QT Safety)</button>
           </div>
-
-          <!-- Page Navigation, Zoom & Download Toolbar -->
-          <div class="reader-toolbar">
-            <div class="reader-controls-group">
-              <button id="reader-prev-page" type="button" class="reader-icon-btn" aria-label="Previous page">◀ Prev</button>
-              <span style="color:var(--ink-muted)">
-                Page
-                <input id="reader-page-input" type="number" min="1" max="20" value="1" class="reader-page-input" aria-label="Page number" />
-                of <strong id="reader-page-count" style="color:var(--ink)">20</strong>
-              </span>
-              <button id="reader-next-page" type="button" class="reader-icon-btn" aria-label="Next page">Next ▶</button>
-            </div>
-
-            <div class="reader-controls-group">
-              <button id="reader-zoom-out" type="button" class="reader-icon-btn" aria-label="Zoom out">−</button>
-              <button id="reader-zoom-fit" type="button" class="reader-icon-btn">Fit Width</button>
-              <span id="reader-zoom-label" style="min-width:42px;text-align:center;color:var(--signal)">100%</span>
-              <button id="reader-zoom-in" type="button" class="reader-icon-btn" aria-label="Zoom in">+</button>
-            </div>
-
-            <div class="reader-controls-group">
-              <a id="reader-newtab-link" class="reader-icon-btn" href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">↗ Open Tab</a>
-              <a id="reader-download-link" class="btn-sm btn-primary" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Download PDF</a>
-            </div>
-          </div>
-
-          <!-- Quick Section Jump Bookmarks -->
-          <div id="reader-bookmarks" class="reader-bookmarks" aria-label="Quick section jump bookmarks"></div>
-
-          <!-- Continuous Scroll PDF.js Canvas Stream (with native iframe fallback) -->
-          <div id="reader-viewport" class="reader-viewport">
-            <div id="reader-canvas-stream" class="reader-canvas-stream">
-              <div class="pdf-loading-msg">Loading typeset paper preview…</div>
-            </div>
-            <iframe id="reader-fallback-iframe" title="Paper PDF Fallback Reader" style="display:none;width:100%;height:100%;border:none;border-radius:6px" src="about:blank"></iframe>
-          </div>
-        </div>
+        </details>
       </div>
     </section></div>
         <div id="pane-safety-harness" class="shift-tab-pane"><section id="dcb0129">
@@ -3954,8 +4281,8 @@
 
 @software{nadarasa2026opencareq,
   author       = {Nadarasa, Arun},
-  title        = {{OpenCareQ}: A Non-Commercial NHS-First Gate-Free Healthcare Quantum DSL, {QTDA} Persistent Homology, Excited-State {TDDFT}, Relativistic Dirac \& 4-Algebra Quantum Stack ({PySCF}/{SKQD}/{HQS} Fermions, Spins, Bosons, Mixed Tunnelling, Singlet {SABRE} \& Entangled {HOM Q-OCT}), {G1--G52} Clinical Safety Harness, and 42-ICB {NICE DCEA} Compiler},
-  version      = {2.6.0},
+  title        = {{OpenCareQ}: A Non-Commercial NHS-First Gate-Free Healthcare Quantum DSL, Nine-Pillar Sovereign Clinical Quantum Architecture ({Comb-PQK}, {QCare->CPTP}, {CD-WS-QAOA}, 7-Region {NHS SDE DQML}, {UK NCSC PQC} \& {Bio-Nano-AI} Governance), {G1--G56} Clinical Safety Harness, and 42-ICB {NICE DCEA} Compiler},
+  version      = {2.7.0},
   year         = {2026},
   license      = {PolyForm-Noncommercial-1.0.0 AND CC-BY-NC-SA-4.0},
   url          = {https://arunnadarasa.github.io/opencareq-nhs/}
@@ -3970,7 +4297,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <h4>Open-Access Papers I–XII</h4>
+          <h4>Open-Access Papers I–XIII &amp; Dossiers</h4>
           <ul>
             <li><a href="OpenCareQ_Paper.pdf" target="_blank" rel="noopener">Paper I: Primary Monograph (21 pp.)</a></li>
             <li><a href="OpenCareQ_Moth_Paper.pdf" target="_blank" rel="noopener">Paper II: Moth × Tessa 1,280-PCN (12 pp.)</a></li>
@@ -4634,16 +4961,16 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
         file: "OpenCareQ_Nine_Pillar_DQML_PQC_and_Governance_Paper.pdf",
         filename: "OpenCareQ_Nine_Pillar_DQML_PQC_and_Governance_Paper.pdf",
         bookmarks: [
-          { label: "p.1 Abstract & Table 1 (All 9 Call Pillars Mapped)", page: 1 },
-          { label: "p.2 Fig 1 (Comb-PQK 91.67% vs RBF 39.58%) & §2 QCare->CPTP", page: 2 },
-          { label: "p.3 §3 CD-WS-QAOA (3.16x P(E0)) & Fig 2 (CVaR + Snake)", page: 3 },
-          { label: "p.4 §4 7-Region NHS SDE DQML (97.69% DP) & 12q->2x6q Knitting", page: 4 },
-          { label: "p.5 Fig 3 (DQML + Wire Cut) & §5 UK NCSC Hybrid ML-KEM-768", page: 5 },
-          { label: "p.6 Fig 4 (ML-KEM-768 + WOTS+) & §6 3x3 AIxBioxNano Governance", page: 6 },
-          { label: "p.7 Table 5 (G53–G56 Traps, 1,568 Evals) & §6.3 207/207 Parity", page: 7 },
-          { label: "p.8 Fig 5 (+£6.74B Stack) & Table 6 (14 Zero-Fit Endpoints)", page: 8 },
-          { label: "p.9 §7 Concentration Scaling (Table 7) & CycloneDX 1.6 CBOM", page: 9 },
-          { label: "p.10 Top-10 ICBs, Non-SaMD Notice & References [1]–[20]", page: 10 }
+          { label: "p.1 Title, 4-KPI Bar, Abstract & §1", page: 1 },
+          { label: "p.2 Table 1 (All 9 Pillars) & §2 QCare->CPTP / Comb-PQK", page: 2 },
+          { label: "p.3 Fig 1 (Comb-PQK 91.7%) & §3 CD-WS-QAOA / 7-SDE DQML", page: 3 },
+          { label: "p.4 Fig 2, Table 2 (7 NHS SDEs) & §4 UK NCSC PQC", page: 4 },
+          { label: "p.5 Fig 3 (CBOM + Greener NHS) & §5 3x3 Governance", page: 5 },
+          { label: "p.6 Table 4 (14-Ep Parity), Fig 4 & §6 G53–G56", page: 6 },
+          { label: "p.7 Table 6 (1,568 Evals), Listing 1 & Table 7 (Top-10 ICBs)", page: 7 },
+          { label: "p.8 Table 8 (Concentration) & Table 9 (CycloneDX CBOM)", page: 8 },
+          { label: "p.9 §9 MSE Shadow Pilot, CLI & Statutory Notice", page: 9 },
+          { label: "p.10 References [19]–[25] & End", page: 10 }
         ]
       },
       nine_pillars_grant_dossier: {
@@ -4675,6 +5002,94 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
         bookmarks: [
           { label: "p.1 Landscape A3 9-Block NHS Public-Good Lean Canvas Poster", page: 1 }
         ]
+      }
+    };
+
+    const DOC_CATALOG_META = {
+      v2_7_nine_pillar_companion: {
+        shortTitle: "🏛 Paper XIII: v2.7 Nine-Pillar (10 pp.)",
+        group: "★ Flagship & Grant Dossiers",
+        samskriftUrl: "https://samskrift.com/view/288e03ed-f52b-435d-b48d-a7d48d425c84/1775af35-19bb-4644-85bb-697d87262d9c"
+      },
+      nine_pillars_grant_dossier: {
+        shortTitle: "📄 9-Pillar Grant Dossier (2 pp.)",
+        group: "★ Flagship & Grant Dossiers",
+        samskriftUrl: "https://samskrift.com/view/253c6d3c-e277-474e-aded-f3eee2d82544/bfbd0599-7dd1-4066-8f04-7b9fac929d31"
+      },
+      v2_6_qtda_workforce_companion: {
+        shortTitle: "🌐 Paper XII: v2.6 QTDA & WQCG (10 pp.)",
+        group: "★ Flagship & Grant Dossiers",
+        samskriftUrl: "https://samskrift.com/view/7ce6070d-64d0-4ba8-b6e7-9144be5db01c/502db92c-d620-4587-9ac6-baf6fddb6f9b"
+      },
+      opencareq: {
+        shortTitle: "📘 Paper I: Primary Monograph (21 pp.)",
+        group: "★ Flagship & Grant Dossiers",
+        samskriftUrl: "https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72"
+      },
+      v2_5_photobiology_qoct_companion: {
+        shortTitle: "☀ Paper XI: v2.5 Photobiology & Q-OCT (11 pp.)",
+        group: "⚛ Quantum Science Papers (VI–XI)",
+        samskriftUrl: "https://samskrift.com/view/da59be86-7d7c-496c-9ec1-33e4aaaba9fd/0d2591dc-23f2-4dcc-9514-3f02733d6f65"
+      },
+      v2_4_relativistic_sabre_companion: {
+        shortTitle: "⚛ Paper X: v2.4 Relativistic & SABRE (10 pp.)",
+        group: "⚛ Quantum Science Papers (VI–XI)",
+        samskriftUrl: "https://samskrift.com/view/ec91bd13-07ee-4682-99aa-43ca5d4a0931/9373569e-8f13-42ba-9306-808c5b8ec9f9"
+      },
+      v2_3_tunnelling_nv_companion: {
+        shortTitle: "💎 Paper IX: v2.3 Tunnelling & NV⁻ (10 pp.)",
+        group: "⚛ Quantum Science Papers (VI–XI)",
+        samskriftUrl: "https://samskrift.com/view/9f652eaf-0a51-4950-8b5d-6e7debff3055/64c20355-8138-4835-bd62-9e9f07107225"
+      },
+      v2_2_lifecourse_photonics_companion: {
+        shortTitle: "🧬 Paper VIII: v2.2 Lifecourse & Photonics (10 pp.)",
+        group: "⚛ Quantum Science Papers (VI–XI)",
+        samskriftUrl: "https://samskrift.com/view/25df9512-2c68-4287-a091-9ef89a247856/cad55df0-8964-4d42-8698-4dae72ae00a7"
+      },
+      v2_1_amr_opm_companion: {
+        shortTitle: "🦠 Paper VII: v2.1 AMR & OPM (10 pp.)",
+        group: "⚛ Quantum Science Papers (VI–XI)",
+        samskriftUrl: "https://samskrift.com/view/32423fe8-ec7c-4878-87b8-6ed9b71ea071/0e218cf2-d0fe-463a-9714-de7bc160647d"
+      },
+      v2_molecules_companion: {
+        shortTitle: "⚛ Paper VI: v2.0 Molecules→NHC (10 pp.)",
+        group: "⚛ Quantum Science Papers (VI–XI)",
+        samskriftUrl: "https://samskrift.com/view/d985eab8-bf7e-466e-9b31-2c3aaec1dc92/bffd8940-dbd6-4a82-b037-92534bbf48fc"
+      },
+      cp1350_companion: {
+        shortTitle: "🏛 Paper V: CP 1350 & Core20PLUS5 (13 pp.)",
+        group: "🏛 Core Architecture & Trials (II–V)",
+        samskriftUrl: "https://samskrift.com/view/4f0a4bba-c1c9-45e6-a713-6443d5124997/0e6a9f95-ae11-4199-b301-a7bf1976e938"
+      },
+      nandatown_companion: {
+        shortTitle: "⛵ Paper IV: NandaTown & HAL (12 pp.)",
+        group: "🏛 Core Architecture & Trials (II–V)",
+        samskriftUrl: "https://samskrift.com/view/816dae81-d385-4647-9113-59441484fbe6/81856d24-0a01-470f-aee9-be177dfbd927"
+      },
+      trial_protocol: {
+        shortTitle: "🧪 Protocol III: NHS Stepped-Wedge (11 pp.)",
+        group: "🏛 Core Architecture & Trials (II–V)",
+        samskriftUrl: "https://samskrift.com/view/bac7d337-2bf5-43e1-8896-52476d5f13c1/65185ba8-0f60-4799-ab6f-d143f6d065fa"
+      },
+      moth_companion: {
+        shortTitle: "🦋 Paper II: Moth × Tessa Study (12 pp.)",
+        group: "🏛 Core Architecture & Trials (II–V)",
+        samskriftUrl: "https://samskrift.com/view/4d44b785-c5cf-426e-8a0e-bee02e39cd88/af059791-d96c-46c3-a2a8-d01c79a5d08b"
+      },
+      clinician_briefing: {
+        shortTitle: "🩺 Clinician 2-Page Guide",
+        group: "🩺 Plain-English Clinician & PPI Pack",
+        samskriftUrl: "https://samskrift.com/view/48c30f1e-3dac-4640-9117-19e6e2b730d0/f251100f-bf6a-4ea5-aef0-a835d6311933"
+      },
+      patient_ppi_leaflet: {
+        shortTitle: "🤝 Patient PPI 1-Page Leaflet",
+        group: "🩺 Plain-English Clinician & PPI Pack",
+        samskriftUrl: "https://samskrift.com/view/e6302d25-ed6a-4bb7-bab7-25ed53aee52f/709d1c11-1ff1-474e-90d0-736f1cdcd1fc"
+      },
+      lean_canvas_poster: {
+        shortTitle: "🖼 A3 Lean Canvas Poster (1 p.)",
+        group: "🩺 Plain-English Clinician & PPI Pack",
+        samskriftUrl: "https://samskrift.com/view/d3db64c3-5512-44b1-a7e6-0db41790af9f/b83ab912-27fe-4727-a064-02cf109e6211"
       }
     };
 
@@ -4814,6 +5229,11 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
 
       const panelEl = document.getElementById("paper-preview-panel");
       const docTabBtns = document.querySelectorAll("[data-reader-doc]");
+      const docPinBtns = document.querySelectorAll("[data-pin-doc]");
+      const docSelectEl = document.getElementById("reader-doc-select");
+      const allDocsDrawer = document.getElementById("readerAllDocsDrawer");
+      const activeTitleEl = document.getElementById("reader-active-title");
+      const samskriftLinkEl = document.getElementById("reader-samskrift-link");
       const tallBtn = document.getElementById("reader-tall-btn");
       const fsBtn = document.getElementById("reader-fullscreen-btn");
       const collapseBtn = document.getElementById("reader-collapse-btn");
@@ -4837,15 +5257,41 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       const imgClose = document.getElementById("lightbox-close");
       const imgJump = document.getElementById("lightbox-jump-btn");
 
-      let activeDoc = "opencareq";
+      let activeDoc = "v2_7_nine_pillar_companion";
       let zoomFactor = 1.0;
       let currentPdfDoc = null;
-      let currentNumPages = 20;
+      let currentNumPages = 10;
       let currentPage = 1;
       let activeBookmarks = [];
       let pageObserver = null;
       let loadSeq = 0;
       const pdfCache = new Map();
+
+      if (docSelectEl) {
+        const groups = new Map();
+        Object.entries(DOC_CATALOG_META).forEach(([docKey, meta]) => {
+          if (!groups.has(meta.group)) groups.set(meta.group, []);
+          groups.get(meta.group).push({ docKey, title: meta.shortTitle });
+        });
+        docSelectEl.innerHTML = "";
+        groups.forEach((items, groupName) => {
+          const og = document.createElement("optgroup");
+          og.label = groupName;
+          items.forEach(it => {
+            const opt = document.createElement("option");
+            opt.value = it.docKey;
+            opt.textContent = it.title;
+            og.appendChild(opt);
+          });
+          docSelectEl.appendChild(og);
+        });
+        docSelectEl.value = activeDoc;
+        docSelectEl.addEventListener("change", () => {
+          ensurePanelVisible();
+          activeDoc = docSelectEl.value || "v2_7_nine_pillar_companion";
+          loadCurrentDoc(1);
+        });
+      }
 
       function closeLightbox() {
         if (!imgModal || !imgModal.classList.contains("open")) return;
@@ -5034,9 +5480,22 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
         const seq = ++loadSeq;
         const spec = getDocSpec();
 
+        const meta = DOC_CATALOG_META[activeDoc] || {};
         docTabBtns.forEach(b => {
           b.classList.toggle("active", b.dataset.readerDoc === activeDoc);
         });
+        docPinBtns.forEach(b => {
+          b.classList.toggle("active", b.dataset.pinDoc === activeDoc);
+        });
+        if (docSelectEl && docSelectEl.value !== activeDoc) {
+          docSelectEl.value = activeDoc;
+        }
+        if (activeTitleEl && meta.shortTitle) {
+          activeTitleEl.textContent = meta.shortTitle;
+        }
+        if (samskriftLinkEl && meta.samskriftUrl) {
+          samskriftLinkEl.href = meta.samskriftUrl;
+        }
         if (newTabLink) newTabLink.href = spec.file;
         if (dlLink) {
           dlLink.href = spec.file;
@@ -5177,6 +5636,19 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
         collapseBtn.textContent = collapsed ? "▸ Show Preview" : "▾ Hide";
       });
 
+      let resizeTimer = null;
+      let lastReaderWidth = viewportEl ? viewportEl.clientWidth : 0;
+      window.addEventListener("resize", () => {
+        if (!currentPdfDoc || !viewportEl) return;
+        const w = viewportEl.clientWidth;
+        if (Math.abs(w - lastReaderWidth) < 12) return;
+        lastReaderWidth = w;
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          if (currentPdfDoc) buildPdfSlots(currentPdfDoc, currentPage, ++loadSeq);
+        }, 140);
+      });
+
       window.addEventListener("keydown", e => {
         if (e.key === "Escape") {
           if (panelEl?.classList.contains("fullscreen")) setFullscreen(false);
@@ -5184,10 +5656,31 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
         }
       });
 
+      panelEl?.addEventListener("keydown", e => {
+        if (document.activeElement === pageInput || document.activeElement === docSelectEl) return;
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          goToPage(currentPage + 1, true);
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          goToPage(currentPage - 1, true);
+        }
+      });
+
       docTabBtns.forEach(btn => {
         btn.addEventListener("click", () => {
           ensurePanelVisible();
-          activeDoc = btn.dataset.readerDoc || "opencareq";
+          if (allDocsDrawer) allDocsDrawer.open = false;
+          activeDoc = btn.dataset.readerDoc || "v2_7_nine_pillar_companion";
+          loadCurrentDoc(1);
+        });
+      });
+
+      docPinBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          ensurePanelVisible();
+          if (allDocsDrawer) allDocsDrawer.open = false;
+          activeDoc = btn.dataset.pinDoc || "v2_7_nine_pillar_companion";
           loadCurrentDoc(1);
         });
       });
@@ -5195,7 +5688,8 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       document.querySelectorAll("[data-open-doc]").forEach(btn => {
         btn.addEventListener("click", () => {
           ensurePanelVisible();
-          const docKey = btn.dataset.openDoc || "opencareq";
+          if (allDocsDrawer) allDocsDrawer.open = false;
+          const docKey = btn.dataset.openDoc || "v2_7_nine_pillar_companion";
           const targetP = parseInt(btn.dataset.openPage || "1", 10) || 1;
           if (docKey !== activeDoc || !currentPdfDoc) {
             activeDoc = docKey;
@@ -5208,6 +5702,89 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       });
 
       loadCurrentDoc(1);
+    }
+
+    function filterHubStudios(category, clickedBtn) {
+      document.querySelectorAll("[data-studio-filter]").forEach(b => {
+        b.classList.toggle("active", b === clickedBtn);
+      });
+      const tabs = Array.from(document.querySelectorAll("#hub1StudioTabs .shift-tab-btn"));
+      let firstVisible = null;
+      let activeStillVisible = false;
+      tabs.forEach(tab => {
+        const cats = (tab.dataset.studioCat || "").split(/\s+/);
+        const show = category === "all" || cats.includes(category);
+        tab.classList.toggle("ux-hidden-by-filter", !show);
+        if (show && !firstVisible) firstVisible = tab;
+        if (show && tab.classList.contains("active")) activeStillVisible = true;
+      });
+      if (!activeStillVisible && firstVisible) {
+        const targetPane = firstVisible.getAttribute("data-target-pane");
+        if (targetPane && typeof activateShiftTab === "function") {
+          activateShiftTab("sickness-to-prevention", targetPane, false);
+        }
+      }
+    }
+
+    function filterPaperCards(category, clickedBtn) {
+      document.querySelectorAll("[data-paper-filter]").forEach(b => {
+        b.classList.toggle("active", b === clickedBtn);
+      });
+      document.querySelectorAll("#papersCatalogGrid .paper-card").forEach(card => {
+        const cats = (card.dataset.paperCat || "").split(/\s+/);
+        const show = category === "all" || cats.includes(category);
+        card.classList.toggle("ux-hidden-by-filter", !show);
+      });
+    }
+
+    function initProgressiveDisclosureUX() {
+      // Auto-close nav & reader popovers on outside click or internal anchor click
+      document.addEventListener("click", e => {
+        document.querySelectorAll("details.nav-dropdown[open], details.reader-all-docs-drawer[open]").forEach(d => {
+          if (!d.contains(e.target)) d.open = false;
+        });
+      });
+      document.querySelectorAll("details.nav-dropdown a").forEach(a => {
+        a.addEventListener("click", () => {
+          const parent = a.closest("details.nav-dropdown");
+          if (parent) parent.open = false;
+        });
+      });
+
+      // Collapse verbose >280-char technical .sec-sub walls inside interactive studio hubs
+      // while keeping 100% of DOM text intact for zero-drift parity & accessibility
+      document.querySelectorAll("#sickness-to-prevention .sec-sub, #hospital-to-community .sec-sub, #analogue-to-digital .sec-sub").forEach(p => {
+        if (p.dataset.uxWrapped === "1") return;
+        const plain = (p.textContent || "").replace(/\s+/g, " ").trim();
+        if (plain.length < 280) return;
+        p.dataset.uxWrapped = "1";
+        let cut = plain.indexOf(": ");
+        if (cut < 65 || cut > 220) cut = plain.indexOf(". ");
+        if (cut < 65 || cut > 220) cut = 185;
+        const summaryLead = plain.slice(0, cut).replace(/[,;:\s]+$/, "") + ".";
+
+        const leadEl = document.createElement("p");
+        leadEl.className = "studio-short-lead";
+        leadEl.textContent = summaryLead + " Use the interactive controls below to test regimens, safety gates, and outcomes.";
+
+        const drawer = document.createElement("details");
+        drawer.className = "studio-tech-drawer";
+        const sumEl = document.createElement("summary");
+        sumEl.textContent = "🔬 Show Full Physics, PDB Contacts, Equations & Citations ▾";
+        drawer.appendChild(sumEl);
+
+        p.parentNode.insertBefore(leadEl, p);
+        p.parentNode.insertBefore(drawer, p);
+        p.style.margin = "0";
+        p.style.fontSize = "0.85rem";
+        drawer.appendChild(p);
+      });
+    }
+
+    if (document.readyState === "loading") {
+      window.addEventListener("DOMContentLoaded", initProgressiveDisclosureUX);
+    } else {
+      initProgressiveDisclosureUX();
     }
 
     if (document.readyState === "loading") {

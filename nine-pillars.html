@@ -33,6 +33,12 @@
       --font-mono: 'JetBrains Mono', monospace;
     }
     * { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: clip; }
+    .container, section, main, header, footer, .card, .kpi-card, .grid-2 > *, .grid-3 > *, .ctrl-group {
+      min-width: 0;
+      max-width: 100%;
+    }
+    pre, .table-wrap, svg { max-width: 100%; overflow-x: auto; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
@@ -174,6 +180,7 @@
       </a>
       <nav class="nav-links" aria-label="Nine-Pillar Studio Navigation">
         <a href="index.html">← Main NHS Portal</a>
+        <a href="index.html#papers" style="color:var(--amber);">📖 Inline PDF Reader</a>
         <a href="#nine-cards">9 Pillars &amp; Copy Pack</a>
         <a href="#sim-pqk-hubo">Comb-PQK &amp; CD-WS-QAOA</a>
         <a href="#sim-dqml">7-Region DQML &amp; Knitting</a>
@@ -202,7 +209,7 @@
           <div class="kpi-card">
             <div class="kpi-label">Full-Stack 42-ICB NICE DCEA</div>
             <div class="kpi-val">+£6,738.9M/yr</div>
-            <div class="kpi-sub"><code>+£305.66M/yr</code> incremental <code>v2.7</code> (<code>£117.38M/yr</code> net cash · <code>42/42</code> dominant ICBs)</div>
+            <div class="kpi-sub"><code>+£6.74B/yr</code> stack · <code>+£305.66M/yr</code> <code>v2.7</code> (<code>£117.38M/yr</code> cash · <code>42/42</code> ICBs)</div>
           </div>
           <div class="kpi-card">
             <div class="kpi-label">Comb-PQK vs Classical RBF</div>
