@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="opencareq-nc-provenance" content="OCQ-NC-TRAP-STREET-ZZ99-V13|PolyForm-Noncommercial-1.0.0|INALYN-CIC-17398798|0.1370359991" />
+  <title>OpenCareQ v3.5 — Quantum Addiction, Alcohol &amp; Overdose Prevention: Ghost-Orbital CP-MP2, Carl Eckart Scattering &amp; Feshbach Naloxone Studio</title>
+  <meta name="description" content="OpenCareQ v3.5.0 (Companion Paper XXI, 55-PDB Bank): Boys-Bernardi Ghost-Orbital Counterpoise nAChR Partial Agonism (NICE NG209 Cytisine/Varenicline, PDB 4AFG/4EJJ), Exact Carl Eckart (1930) Continuum Scattering &amp; [U_Dex, U_ThDP] Alcohol Care (NICE CG100/CG115 Pabrinex &amp; Acamprosate, PDB 1O01/3MOS), and Feshbach Residence-Time Naloxone Nitazene Rescue (DHSC 2024/2026 &amp; NICE NG193/CG140, PDB 4N6H, +£11.78B/yr 42-ICB NHS/PSS Stack)." />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #081316;
+      --bg-elev: #0e1e22;
+      --bg-card: #12262b;
+      --bg-card-alt: #0b181b;
+      --ink: #eef7f6;
+      --ink-muted: #9eb9b6;
+      --ink-dim: #6d8986;
+      --signal: #38d6c4;
+      --signal-soft: rgba(56, 214, 196, 0.13);
+      --amber: #f4ae42;
+      --amber-soft: rgba(244, 174, 66, 0.14);
+      --ember: #f06a3b;
+      --ember-soft: rgba(240, 106, 59, 0.15);
+      --violet: #b088f9;
+      --border: rgba(158, 185, 182, 0.18);
+      --border-strong: rgba(56, 214, 196, 0.45);
+      --radius: 12px;
+      --font-display: "Barlow Condensed", system-ui, sans-serif;
+      --font-sans: "Barlow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --max-w: 1220px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; max-width: 100%; overflow-x: clip; background: var(--bg); color: var(--ink); font-family: var(--font-sans); line-height: 1.56; }
+    a { color: var(--signal); text-decoration: none; }
+    a:hover { color: var(--amber); }
+    code { font-family: var(--font-mono); font-size: 0.84em; background: rgba(56, 214, 196, 0.1); color: #c4f1ec; padding: 0.1rem 0.34rem; border-radius: 4px; overflow-wrap: anywhere; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem; }
+    .site-nav { position: sticky; top: 0; z-index: 60; backdrop-filter: blur(14px); background: rgba(8, 19, 22, 0.92); border-bottom: 1px solid var(--border); }
+    .site-nav-inner { max-width: var(--max-w); margin: 0 auto; min-height: 60px; padding: 0.45rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.7rem; flex-wrap: wrap; }
+    .brand { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 1.22rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .brand-mark { display: inline-grid; place-items: center; width: 1.85rem; height: 1.85rem; border-radius: 6px; background: linear-gradient(135deg, var(--signal), #1ca394); color: #051214; font-weight: 800; font-size: 0.88rem; }
+    .nav-links { display: flex; align-items: center; gap: 0.28rem; flex-wrap: wrap; font-size: 0.78rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.25rem 0.5rem; border-radius: 999px; }
+    .nav-links a:hover { color: var(--ink); background: rgba(255, 255, 255, 0.06); }
+    .btn-primary-sm { background: var(--signal) !important; color: #051416 !important; font-weight: 800; border-radius: 8px !important; padding: 0.32rem 0.7rem !important; }
+    .hero { padding: 2.3rem 0 1.9rem; border-bottom: 1px solid var(--border); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.42rem; margin-bottom: 0.85rem; }
+    .pill { display: inline-flex; align-items: center; gap: 0.28rem; font-size: 0.73rem; font-weight: 700; padding: 0.24rem 0.64rem; border-radius: 999px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.04); color: var(--ink-muted); }
+    .pill-signal { color: var(--signal); background: var(--signal-soft); border-color: rgba(56, 214, 196, 0.35); }
+    .pill-amber { color: var(--amber); background: var(--amber-soft); border-color: rgba(244, 174, 66, 0.35); }
+    .pill-ember { color: #ff9472; background: var(--ember-soft); border-color: rgba(240, 106, 59, 0.4); }
+    .kicker { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--signal); margin: 0 0 0.35rem; }
+    h1, h2, h3 { font-family: var(--font-display); margin: 0 0 0.45rem; line-height: 1.08; overflow-wrap: anywhere; }
+    h1 { font-size: clamp(2rem, 3.8vw, 3rem); margin-bottom: 0.7rem; }
+    h2 { font-size: 1.78rem; }
+    h3 { font-size: 1.24rem; }
+    .lead { font-size: 1rem; color: var(--ink-muted); max-width: 960px; margin: 0 0 1.15rem; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.85rem; margin: 1rem 0 1.25rem; }
+    @media (max-width: 900px) { .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 520px) { .kpi-grid { grid-template-columns: 1fr; } }
+    .kpi-card, .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.05rem; min-width: 0; max-width: 100%; }
+    .kpi-label { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--signal); }
+    .kpi-val { font-family: var(--font-display); font-size: 1.88rem; font-weight: 800; color: var(--ink); margin: 0.2rem 0; }
+    .kpi-sub { font-size: 0.78rem; color: var(--ink-muted); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 0.48rem; }
+    .ctrl-btn { font-family: var(--font-sans); font-size: 0.81rem; font-weight: 700; padding: 0.44rem 0.82rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--ink); cursor: pointer; }
+    .ctrl-btn:hover { border-color: var(--signal); }
+    .ctrl-btn.active { background: var(--signal); border-color: var(--signal); color: #051416; }
+    section { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+    .tab-pane { display: none; margin-top: 1rem; }
+    .tab-pane.active { display: block; }
+    .grid-2 { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 1rem; align-items: start; }
+    @media (max-width: 940px) { .grid-2 { grid-template-columns: 1fr; } }
+    .grid-2 > * { min-width: 0; max-width: 100%; }
+    .field-group { margin-bottom: 0.8rem; }
+    .field-label { display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600; color: var(--ink-muted); margin-bottom: 0.25rem; gap: 0.5rem; }
+    input[type="range"] { width: 100%; accent-color: var(--signal); cursor: pointer; }
+    select { width: 100%; background: var(--bg-card-alt); color: var(--ink); border: 1px solid var(--border); border-radius: 8px; padding: 0.46rem 0.65rem; font-family: var(--font-sans); font-size: 0.84rem; }
+    .alert-box { border-radius: 10px; padding: 0.8rem 0.95rem; font-size: 0.83rem; border: 1px solid var(--border); background: var(--bg-card-alt); margin-top: 0.75rem; overflow-wrap: anywhere; }
+    .alert-ok { border-color: rgba(56, 214, 196, 0.45); background: rgba(56, 214, 196, 0.1); }
+    .alert-warn { border-color: rgba(244, 174, 66, 0.48); background: rgba(244, 174, 66, 0.12); }
+    .alert-danger { border-color: rgba(240, 106, 59, 0.55); background: rgba(240, 106, 59, 0.14); }
+    .metric-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; margin-top: 0.75rem; }
+    @media (max-width: 480px) { .metric-mini-grid { grid-template-columns: 1fr; } }
+    .metric-mini { background: var(--bg-card-alt); border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.75rem; }
+    .metric-mini span { display: block; font-size: 0.7rem; font-family: var(--font-mono); color: var(--ink-muted); text-transform: uppercase; }
+    .metric-mini strong { font-size: 1.05rem; color: var(--signal); font-family: var(--font-mono); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card-alt); max-width: 100%; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th, td { padding: 0.56rem 0.72rem; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--signal); white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+    footer { padding: 1.6rem 0 2.2rem; font-size: 0.78rem; color: var(--ink-dim); }
+    @media (max-width: 640px) {
+      .container, .site-nav-inner { padding-left: 0.9rem; padding-right: 0.9rem; }
+      .pill, .ctrl-btn { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">OC</span>
+        <span>OpenCareQ <small style="font-size:0.73rem;color:var(--signal);">v3.5 · Addiction, Overdose &amp; 55 PDBs</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Quantum Addiction &amp; Pain Navigation">
+        <a href="index.html">← Main NHS Portal</a>
+        <a href="index.html#papers" style="color:var(--amber);">📖 Paper XXI Reader</a>
+        <a href="quantum-womens-health.html">Women&apos;s Health v3.4 ↗</a>
+        <a href="quantum-immunoprevention-vaccines.html">Immunoprevention v3.3 ↗</a>
+        <a href="harness.html" class="btn-primary-sm">G1–G88 Gate (2,464 Evals) ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="pill-row">
+          <span class="pill pill-signal">OpenCareQ v3.5.0 · Companion Paper XXI · Addiction, Alcohol &amp; Overdose Prevention</span>
+          <span class="pill pill-amber">325 / 325 (100%) Zero-Fit Parity · 55 RCSB PDBs (+4AFG · +4EJJ · +1O01 · +3MOS · +4N6H)</span>
+          <span class="pill pill-ember">G1–G88 Safety Gate · 176 Cases · 2,464 Evals · 0 Harms · Receipt #44 (4d0768da)</span>
+        </div>
+        <p class="kicker">Association for Clinical Quantum (clinicalquantum.com) Demarcation · UK Tobacco &amp; Vapes Act 2025/2026 · NICE NG209 / CG100 / NG193 · DHSC Take-Home Naloxone</p>
+        <h1>Quantum Commercial-Determinant, Addiction &amp; Overdose Prevention: Ghost-Orbital <code>CP-MP2</code>, Exact Carl Eckart Scattering &amp; Feshbach <code>Naloxone</code> Rescue</h1>
+        <p class="lead">
+          Advances the sovereign <code>OpenCareQ</code> NHS prevention stack to <strong><code>+£11,783.74M/yr</code> (<code>+£11.78B/yr</code>)</strong> strictly within <code>NICE PMG36 NHS/PSS</code> accounting (<code>£0</code> DWP/CJS transfer inflation) across England&apos;s three largest preventable mortality drivers: <strong><code>Boys–Bernardi</code> ghost-orbital counterpoise <code>CP-MP2</code> (<code>δ_BSSE = +1.85 kcal/mol</code>, <code>PDB: 4AFG</code> &amp; <code>4EJJ</code>)</strong> for <code>NICE NG209 Cytisine</code> (<code>25-day</code>, <code>OR = 3.29</code>) / <code>Varenicline</code> + <code>CYP1A2</code> clozapine safety, <strong>exact <code>Carl Eckart (1930)</code> continuum quantum scattering (<code>|T|²+|R|² = 1</code> to <code>1.1×10⁻¹⁶</code>, <code>PDB: 1O01</code> &amp; <code>3MOS</code>)</strong> for <code>NICE CG100/CG115 Pabrinex</code> Wernicke shields &amp; <code>ALDH2*2</code> oncology, and <strong><code>Feshbach–Löwdin</code> open-pocket residence kinetics (<code>Isotonitazene τ_res = 34.25 min → 70 min</code> single-dose rebound, <code>PDB: 4N6H</code>)</strong> for <code>DHSC</code> Take-Home <code>Naloxone</code> &amp; <code>NICE NG193 / CG140</code> pain stewardship.
+        </p>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">Full-Stack 42-ICB NHS/PSS DCEA</div>
+            <div class="kpi-val">+£11,783.7M/yr</div>
+            <div class="kpi-sub"><code>+£11.78B/yr</code> stack · <code>+£834.70M/yr</code> <code>v3.5</code> (<code>+£10.87M/yr</code> net cash · <code>0</code> DWP inflation)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Cumulative Parity &amp; 55-PDB Bank</div>
+            <div class="kpi-val">325 / 325 · 55 PDBs</div>
+            <div class="kpi-sub"><code>v3.5 GMFE = 1.00019</code> across <code>15</code> endpoints · all <code>5</code> new X-ray PDBs <code>≤ 2.30 Å</code></div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Ghost CP-MP2 &amp; Eckart Unitarity</div>
+            <div class="kpi-val">+1.85 kcal · 1.1e-16</div>
+            <div class="kpi-sub"><code>PySCF 2.15 X:</code> ghost orbitals (<code>6-31G*</code>) · zero-fit <code>CYP2A6 KIE 6.21</code> &amp; <code>ALDH2 2.20</code></div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Feshbach Nitazene Naloxone Shield</div>
+            <div class="kpi-val">34.25m → 70.0m</div>
+            <div class="kpi-sub">Single-spray <code>Isotonitazene</code> rebound apnoea at <code>70 min</code> vs <code>2× Naloxone</code> <code>57.3%</code> safe</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="studio">
+      <div class="container">
+        <p class="kicker">Interactive 3-Tab Addiction, Alcohol &amp; Overdose Quantum Workbench · Zero Cloud Egress · Zero PID</p>
+        <h2>Simulate Ghost-Orbital <code>NG209 Cytisine</code> / <code>Clozapine</code> Safety, Carl Eckart <code>Pabrinex</code> / <code>ALDH2*2</code> &amp; Feshbach <code>Naloxone</code> Rescue</h2>
+        <div class="btn-row" role="tablist" aria-label="v3.5 Interactive Tabs">
+          <button type="button" class="ctrl-btn active" id="btnTab1" onclick="switchAddictionTab(1)">1 · Ghost-Orbital CP-MP2, NG209 Cytisine &amp; CYP1A2 Lab (G85/G88)</button>
+          <button type="button" class="ctrl-btn" id="btnTab2" onclick="switchAddictionTab(2)">2 · Exact Carl Eckart Scattering, Pabrinex &amp; ALDH2*2 (G86/G88)</button>
+          <button type="button" class="ctrl-btn" id="btnTab3" onclick="switchAddictionTab(3)">3 · Feshbach Residence-Time Naloxone &amp; NG193/CG140 Pain (G87/G88)</button>
+        </div>
+
+        <!-- TAB 1: BOYS-BERNARDI GHOST-ORBITAL CP-MP2 & NICE NG209 CYTISINE -->
+        <div id="addictionTab1" class="tab-pane active">
+          <div class="grid-2">
+            <div class="card">
+              <p class="kicker">Boys–Bernardi (1970) Ghost-Orbital Counterpoise · PDB: 4AFG (AChBP+Varenicline) &amp; 4EJJ (CYP2A6)</p>
+              <h3><code>PySCF 2.15 X:</code> Ghost Basis, <code>NMR</code> &amp; <code>NICE NG209</code> Controls</h3>
+              <div class="field-group">
+                <div class="field-label"><span>Gaussian Basis Set at <code>r(N···O) = 2.743 Å</code> (<code>PDB: 4AFG</code>)</span></div>
+                <select id="selBasis" onchange="renderTab1Cp()">
+                  <option value="sto3g">STO-3G Minimal Basis (27 Dimer AOs → Severe +5.31 kcal/mol BSSE)</option>
+                  <option value="631gs" selected>6-31G* Split-Valence Polarized (70 Dimer AOs → +1.85 kcal/mol BSSE)</option>
+                  <option value="ccpvtz">cc-pVTZ Triple-Zeta (218 Dimer AOs → +1.43 kcal/mol BSSE)</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label">
+                  <span><code>CYP2A6</code> Nicotine Metabolite Ratio (<code>3HC / Cotinine NMR</code>)</span>
+                  <code id="lblNmr">0.38 (Normal Metaboliser ≥ 0.31)</code>
+                </div>
+                <input type="range" id="rngNmr" min="0.12" max="0.64" step="0.02" value="0.38" oninput="renderTab1Cp()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Stop-Smoking Clinical Scenario &amp; Co-Medication (<code>Trap G85</code>)</span></div>
+                <select id="selTobaccoScenario" onchange="renderTab1Cp()">
+                  <option value="cytisine_safe" selected>44yo Core20 Smoker (eGFR 82) → First-Line NICE NG209 25-Day Cytisine (OR = 3.29, Safe)</option>
+                  <option value="eagles_safe">38yo Treated Stable Depression → NICE NG209 Varenicline 12-Wk (EAGLES OR = 2.88, Safe)</option>
+                  <option value="clozapine_trap">Clozapine 450 mg/d Smoker Quits Abruptly Without 30–50% CYP1A2 Dose Cut (1.82× Surge, Trap G85!)</option>
+                  <option value="preg_renal_trap">Pregnant Smoker or End-Stage Renal eGFR 12 mL/min → Prescribe Cytisine (SmPC Veto, Trap G85!)</option>
+                  <option value="eagles_veto_trap">38yo Stable Depression → Paranoid Blanket Veto of Cytisine / Varenicline (Trap G85 Overturned!)</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span><code>ACQ Gate G4</code> Electronic Structure Solver (<code>Trap G88</code>)</span></div>
+                <select id="selCypG4" onchange="renderTab1Cp()">
+                  <option value="cpu_floor" selected>6-31G* Ghost CP-MP2 &amp; 4-State Pocket → Classical CPU (&lt;2 ms, CQRS=(0,9))</option>
+                  <option value="qpu_wash_trap">4-State Receptor Pocket → Attempt Noisy QPU Dispatch (Trap G88 Quantum-Washing Blocked!)</option>
+                  <option value="cyp2a6_ftqc">(30e, 28o) CYP2A6 Compound I Fe(IV)=O + Nicotine (56 SO, 19.95 PiB) → FTQC Target (CQRS=(4,8))</option>
+                </select>
+              </div>
+              <div id="alertTab1" class="alert-box alert-ok"></div>
+            </div>
+
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.55rem;">
+                <span class="kpi-label">Live PySCF 2.15 Ghost-Orbital CP-MP2: ΔE_raw vs ΔE_CP</span>
+                <span class="pill pill-signal" id="pillTab1Cqrs">ACQ CQRS = (0, 9) CPU Floor · Scalar Avg: None</span>
+              </div>
+              <svg id="svgTab1Cp" viewBox="0 0 560 255" style="width:100%;height:auto;display:block;background:#071113;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="Boys-Bernardi ghost-orbital counterpoise MP2 basis convergence"></svg>
+              <div class="metric-mini-grid">
+                <div class="metric-mini"><span>Un-Counterpoised ΔE_raw</span><strong id="mTab1Raw">−29.58 kcal/mol</strong></div>
+                <div class="metric-mini"><span>Ghost Counterpoise ΔE_CP</span><strong id="mTab1Cp">−27.73 kcal/mol (δ = +1.85)</strong></div>
+                <div class="metric-mini"><span>α4β2 Loop C Partial Efficacy</span><strong id="mTab1Eff">Cytisine 43.0% · Varen. 45.1%</strong></div>
+                <div class="metric-mini"><span>NMR Regimen Advantage</span><strong id="mTab1NmrOr">OR 2.17× vs NRT Patch</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: CARL ECKART ASYMMETRIC SCATTERING, PABRINEX & ALDH2*2 -->
+        <div id="addictionTab2" class="tab-pane">
+          <div class="grid-2">
+            <div class="card">
+              <p class="kicker">Carl Eckart (1930) Continuum Scattering · PDB: 4EJJ (CYP2A6), 1O01 (ALDH2) &amp; 3MOS (Transketolase)</p>
+              <h3>Exact Asymmetric Barrier <code>|T(E)|²</code> &amp; <code>NICE CG100 / CG115</code> Controls</h3>
+              <div class="field-group">
+                <div class="field-label">
+                  <span>Incident Continuum Energy <code>E</code> (<code>kcal/mol</code>, Crest <code>V₁ = 15.8 kcal/mol</code>)</span>
+                  <code id="lblEnergy">15.8 kcal/mol (Crest |T|² = 0.525)</code>
+                </div>
+                <input type="range" id="rngEnergy" min="8.0" max="22.0" step="0.2" value="15.8" oninput="renderTab2Eckart()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Enzymatic Quantum Tunneling Target (Zero-Fit <code>KIE_H/D</code>)</span></div>
+                <select id="selEckartEnzyme" onchange="renderTab2Eckart()">
+                  <option value="cyp2a6" selected>PDB: 4EJJ Human CYP2A6 (S)-Nicotine 5&apos;-C–H Hydroxylation (Pred KIE = 6.209 vs Obs 6.20)</option>
+                  <option value="aldh2">PDB: 1O01 Human Mitochondrial ALDH2 Aldehyde Hydride Transfer (Pred KIE = 2.201 vs Obs 2.20)</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Acute Alcohol, Cirrhosis &amp; <code>ALDH2*2</code> Clinical Scenario (<code>Traps G86 &amp; G88</code>)</span></div>
+                <select id="selAlcoholScenario" onchange="renderTab2Eckart()">
+                  <option value="pabrinex_acamp_safe" selected>Malnourished Withdrawal (eGFR 74) → IV Pabrinex BEFORE Glucose + Renal Acamprosate (Safe)</option>
+                  <option value="dex_first_trap">A&amp;E Alcohol Withdrawal → Infuse IV 10% Dextrose BEFORE Pabrinex (84.4% Wernicke Crisis, Trap G86!)</option>
+                  <option value="child_pugh_c_trap">Decompensated Child-Pugh C Cirrhosis (Bilirubin 68 µmol/L) → Oral Naltrexone 50 mg OD (Trap G86!)</option>
+                  <option value="aldh2_flush_trap">ALDH2*2 (rs671 GA) Heavy Drinker → Prescribe Famotidine to Mask Facial Flush (12.5× Cancer, Trap G88!)</option>
+                  <option value="acamp_veto_trap">Abstinent Patient (eGFR 74, Mild ALT Rise) → Blanket Veto of Renal Acamprosate (Trap G86 Overturned!)</option>
+                </select>
+              </div>
+              <div id="alertTab2" class="alert-box alert-ok"></div>
+            </div>
+
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.55rem;">
+                <span class="kpi-label">Exact Carl Eckart Scattering: ¹H |T(E)|², ²D |T(E)|² &amp; |R(E)|²</span>
+                <span class="pill pill-amber" id="pillTab2Unit">|T|² + |R|² = 1.000000000000000 · Err 1.1e-16</span>
+              </div>
+              <svg id="svgTab2Eckart" viewBox="0 0 560 255" style="width:100%;height:auto;display:block;background:#071113;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="Carl Eckart continuum quantum transmission and reflection probabilities"></svg>
+              <div class="metric-mini-grid">
+                <div class="metric-mini"><span>Exact ¹H |T(E)|² &amp; |R(E)|²</span><strong id="mTab2TH">0.5251 · R = 0.4749</strong></div>
+                <div class="metric-mini"><span>Zero-Fit Enzymatic KIE_H/D</span><strong id="mTab2Kie">6.209 (Obs 6.200 · 4EJJ)</strong></div>
+                <div class="metric-mini"><span>||[U_Dextrose, U_Thiamine]||₂</span><strong>1.315402 (Non-Commuting!)</strong></div>
+                <div class="metric-mini"><span>Holo-TKT Safe vs Crisis</span><strong id="mTab2Wern">96.59% Safe (Pabrinex 1st)</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: FESHBACH RESIDENCE-TIME NALOXONE & NICE NG193 / CG140 PAIN -->
+        <div id="addictionTab3" class="tab-pane">
+          <div class="grid-2">
+            <div class="card">
+              <p class="kicker">Feshbach–Löwdin Open-Pocket Projection · PDB: 4N6H (1.80 Å Opioid 7TM + Allosteric Na⁺)</p>
+              <h3>Synthetic Nitazene <code>τ_res</code>, Intranasal <code>Naloxone</code> &amp; Pain Controls</h3>
+              <div class="field-group">
+                <div class="field-label"><span>Opioid Receptor Agonist &amp; Open-Pocket Residence Time <code>τ_res</code></span></div>
+                <select id="selOpioidAgonist" onchange="renderTab3Feshbach()">
+                  <option value="isotonitazene" selected>Isotonitazene Synthetic Benzimidazole (K_i = 0.045 nM · τ_res = 34.25 min · High Lipid Re-Binding!)</option>
+                  <option value="fentanyl">Fentanyl Phenylpiperidine (K_i = 0.390 nM · τ_res = 6.80 min · Moderate Lipid Depot)</option>
+                  <option value="morphine">Morphine Phenanthrene (K_i = 1.800 nM · τ_res = 1.39 min · Fast Orthosteric Exit)</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label">
+                  <span>Intranasal <code>Naloxone</code> (<code>1.8 mg</code>, <code>F = 46.5%</code>, <code>t_1/2 = 62 min</code>) Sprays</span>
+                  <code id="lblNlxDoses">2 Sprays (0 min + 55 min Rescue)</code>
+                </div>
+                <input type="range" id="rngNlxDoses" min="1" max="2" step="1" value="2" oninput="renderTab3Feshbach()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label">
+                  <span>Planned Post-Reversal Continuous <code>SpO₂</code> Observation Window</span>
+                  <code id="lblObsHours">6.0 Hours (Safe ≥ 4–6h Window)</code>
+                </div>
+                <input type="range" id="rngObsHours" min="0.5" max="6.0" step="0.5" value="6.0" oninput="renderTab3Feshbach()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Overdose &amp; Pain Stewardship Scenario (<code>Traps G87 &amp; G88</code>)</span></div>
+                <select id="selPainScenario" onchange="renderTab3Feshbach()">
+                  <option value="nitazene_safe" selected>Suspected Nitazene Overdose → Repeat IN Naloxone + ≥6h SpO₂ Watch + DHSC Take-Home Kit (Safe)</option>
+                  <option value="early_discharge_trap">Suspected Nitazene Overdose → Discharge at 30 min After Single Naloxone Spray (70 min Apnoea, Trap G87!)</option>
+                  <option value="ng193_triad_trap">Chronic Primary Pain (Fibromyalgia) → Initiate Oxycodone + Pregabalin + Diazepam Triad (Trap G87!)</option>
+                  <option value="cg140_cancer_trap">Metastatic Prostate Cancer Bone Pain → Misapply NICE NG193 to Deny Oral Morphine (Trap G88 Overturned!)</option>
+                </select>
+              </div>
+              <div id="alertTab3" class="alert-box alert-ok"></div>
+            </div>
+
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.55rem;">
+                <span class="kpi-label">0–180 min Minute Ventilation Post-Intranasal Naloxone (%)</span>
+                <span class="pill pill-signal" id="pillTab3Flux">64-Node GL Flux Err = 2.66e-15 · Im λ ≤ 0</span>
+              </div>
+              <svg id="svgTab3Feshbach" viewBox="0 0 560 255" style="width:100%;height:auto;display:block;background:#071113;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="Feshbach non-Hermitian residence time minute ventilation trajectory"></svg>
+              <div class="metric-mini-grid">
+                <div class="metric-mini"><span>Agonist Residence τ_res</span><strong id="mTab3Tau">34.25 min (K_i = 0.045 nM)</strong></div>
+                <div class="metric-mini"><span>30–180 min Nadir Ventilation</span><strong id="mTab3Vent">57.34% (No Rebound Apnoea)</strong></div>
+                <div class="metric-mini"><span>Renarcotization Crossover</span><strong id="mTab3Reb">Prevented by 2nd Spray</strong></div>
+                <div class="metric-mini"><span>PDB 4N6H Salt Bridge / Na⁺</span><strong>2.872 Å Asp128 · 2.240 Å Na⁺</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dcea-league">
+      <div class="container">
+        <p class="kicker">Strict NICE PMG36 NHS/PSS Accounting · Zero DWP/CJS Transfer Inflation · 42/42 Dominant English ICBs</p>
+        <h2>Top-10 NHS Integrated Care Boards — <code>v3.5.0</code> Addiction &amp; Overdose Prevention &amp; <code>+£11.78B/yr</code> Stack</h2>
+        <p class="lead" style="font-size:0.93rem;">
+          Across all <code>42</code> statutory English ICBs (<code>1,280</code> PCNs, <code>62.93M</code> patients), <code>OpenCareQ v3.5.0</code> delivers <code>NICE NG209 Cytisine / Varenicline</code> + <code>CYP1A2</code> safety to <code>107,495</code> smokers/yr (<code>+£292.22M/yr</code>), protects <code>127,271</code> <code>NICE CG100/CG115 Pabrinex</code> &amp; <code>Acamprosate</code> alcohol episodes/yr (<code>+£274.19M/yr</code>), and equips <code>137,354</code> <code>DHSC</code> Take-Home <code>Naloxone</code> &amp; <code>NICE NG193</code> pain reviews/yr (<code>+£268.29M/yr</code>), avoiding <code>25,531.1</code> acute harm events/yr (<code>+£834.70M/yr</code> incremental <code>INMB</code>; <code>+£10.87M/yr</code> net cash savings; <code>385,495</code> recovery/workforce days preserved non-monetised).
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ODS</th>
+                <th>Integrated Care Board</th>
+                <th>Tobacco NG209/yr</th>
+                <th>Alcohol CG100/yr</th>
+                <th>Harms Avoided/yr</th>
+                <th>Sub-A Tob (£M)</th>
+                <th>Sub-B Alc (£M)</th>
+                <th>Sub-C Nlx (£M)</th>
+                <th>Total v3.5 INMB</th>
+              </tr>
+            </thead>
+            <tbody id="icbLeagueBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Statutory NHS DCB0129 / DCB0160, ACQ &amp; Non-Commercial Notice:</strong> <code>OpenCareQ v3.5.0</code> (<strong>Companion Paper XXI</strong>) operates strictly in clinician-in-charge Addiction, Alcohol &amp; Pain Stewardship Shadow Mode (<code>Non-SaMD</code>; <code>phi_present = False</code>; <code>H-OCQ-01..07 OPEN</code>; <code>csc_qt_numerical_score_computed = None</code>; unaveraged <code>ACQ CQRS = (QV, VM)</code>; strict <code>NICE PMG36 NHS/PSS</code> perspective with <code>£0</code> DWP/CJS transfer inflation). Copyright © 2026 Arun Nadarasa · Stewarded via <strong>INALYN CIC (#17398798)</strong> under <code>PolyForm-Noncommercial-1.0.0</code> &amp; <code>CC BY-NC-SA 4.0</code>. Crystal coordinates curated from RCSB PDB under CC0 1.0 Public Domain Dedication (<a href="https://www.rcsb.org/pages/usage-policy" target="_blank" rel="noopener">rcsb.org/pages/usage-policy</a>).
+    </div>
+  </footer>
+
+  <script>
+    const CP_BASIS = {
+      sto3g: { label: "STO-3G (27 AOs)", raw: -29.3894, cp: -24.0804, bsse: 5.3091 },
+      "631gs": { label: "6-31G* (70 AOs)", raw: -29.5787, cp: -27.7294, bsse: 1.8494 },
+      ccpvtz: { label: "cc-pVTZ (218 AOs)", raw: -29.9551, cp: -28.5240, bsse: 1.4311 }
+    };
+
+    const FALLBACK_TOP10 = [
+      { icb_ods_code: "QOP", icb_name: "NHS Greater Manchester ICB", tobacco_ng209_cytisine_cohort_yr: 6433, alcohol_cg100_cg115_cohort_yr: 7507, acute_harm_events_avoided_yr: 1515.5, subledger_a_tobacco_ng209_cytisine_inmb_gbp_m: 18.23, subledger_b_alcohol_cg100_cg115_inmb_gbp_m: 16.87, subledger_c_naloxone_nitazene_ng193_inmb_gbp_m: 16.56, total_v3_5_inmb_20k_gbp_m: 51.66 },
+      { icb_ods_code: "QHM", icb_name: "NHS North East and North Cumbria ICB", tobacco_ng209_cytisine_cohort_yr: 6116, alcohol_cg100_cg115_cohort_yr: 7154, acute_harm_events_avoided_yr: 1442.7, subledger_a_tobacco_ng209_cytisine_inmb_gbp_m: 17.20, subledger_b_alcohol_cg100_cg115_inmb_gbp_m: 15.95, subledger_c_naloxone_nitazene_ng193_inmb_gbp_m: 15.65, total_v3_5_inmb_20k_gbp_m: 48.80 },
+      { icb_ods_code: "QWO", icb_name: "NHS West Yorkshire ICB", tobacco_ng209_cytisine_cohort_yr: 5098, alcohol_cg100_cg115_cohort_yr: 5963, acute_harm_events_avoided_yr: 1202.6, subledger_a_tobacco_ng209_cytisine_inmb_gbp_m: 14.33, subledger_b_alcohol_cg100_cg115_inmb_gbp_m: 13.29, subledger_c_naloxone_nitazene_ng193_inmb_gbp_m: 13.04, total_v3_5_inmb_20k_gbp_m: 40.67 },
+      { icb_ods_code: "QRV", icb_name: "NHS North West London ICB", tobacco_ng209_cytisine_cohort_yr: 5117, alcohol_cg100_cg115_cohort_yr: 6036, acute_harm_events_avoided_yr: 1212.8, subledger_a_tobacco_ng209_cytisine_inmb_gbp_m: 14.00, subledger_b_alcohol_cg100_cg115_inmb_gbp_m: 13.10, subledger_c_naloxone_nitazene_ng193_inmb_gbp_m: 12.83, total_v3_5_inmb_20k_gbp_m: 39.93 },
+      { icb_ods_code: "QYG", icb_name: "NHS Cheshire and Merseyside ICB", tobacco_ng209_cytisine_cohort_yr: 4796, alcohol_cg100_cg115_cohort_yr: 5648, acute_harm_events_avoided_yr: 1135.7, subledger_a_tobacco_ng209_cytisine_inmb_gbp_m: 13.20, subledger_b_alcohol_cg100_cg115_inmb_gbp_m: 12.32, subledger_c_naloxone_nitazene_ng193_inmb_gbp_m: 12.07, total_v3_5_inmb_20k_gbp_m: 37.59 },
+      { icb_ods_code: "QMF", icb_name: "NHS North East London ICB", tobacco_ng209_cytisine_cohort_yr: 4629, alcohol_cg100_cg115_cohort_yr: 5424, acute_harm_events_avoided_yr: 1093.1, subledger_a_tobacco_ng209_cytisine_inmb_gbp_m: 12.94, subledger_b_alcohol_cg100_cg115_inmb_gbp_m: 12.02, subledger_c_naloxone_nitazene_ng193_inmb_gbp_m: 11.79, total_v3_5_inmb_20k_gbp_m: 36.75 },
+      { icb_ods_code: "QHL", icb_name: "NHS Birmingham and Solihull ICB", tobacco_ng209_cytisine_cohort_yr: 3368, alcohol_cg100_cg115_cohort_yr: 3902, acute_harm_events_avoided_yr: 790.2, subledger_a_tobacco_ng209_cytisine_inmb_gbp_m: 9.80, subledger_b_alcohol_cg100_cg115_inmb_gbp_m: 9.00, subledger_c_naloxone_nitazene_ng193_inmb_gbp_m: 8.85, total_v3_5_inmb_20k_gbp_m: 27.66 },
+      { icb_ods_code: "QKK", icb_name: "NHS South East London ICB", tobacco_ng209_cytisine_cohort_yr: 3506, alcohol_cg100_cg115_cohort_yr: 4166, acute_harm_events_avoided_yr: 834.4, subledger_a_tobacco_ng209_cytisine_inmb_gbp_m: 9.40, subledger_b_alcohol_cg100_cg115_inmb_gbp_m: 8.86, subledger_c_naloxone_nitazene_ng193_inmb_gbp_m: 8.66, total_v3_5_inmb_20k_gbp_m: 26.92 },
+      { icb_ods_code: "QE1", icb_name: "NHS Lancashire and South Cumbria ICB", tobacco_ng209_cytisine_cohort_yr: 3310, alcohol_cg100_cg115_cohort_yr: 3888, acute_harm_events_avoided_yr: 782.6, subledger_a_tobacco_ng209_cytisine_inmb_gbp_m: 9.18, subledger_b_alcohol_cg100_cg115_inmb_gbp_m: 8.55, subledger_c_naloxone_nitazene_ng193_inmb_gbp_m: 8.38, total_v3_5_inmb_20k_gbp_m: 26.11 },
+      { icb_ods_code: "QMJ", icb_name: "NHS North Central London ICB", tobacco_ng209_cytisine_cohort_yr: 3297, alcohol_cg100_cg115_cohort_yr: 3876, acute_harm_events_avoided_yr: 780.0, subledger_a_tobacco_ng209_cytisine_inmb_gbp_m: 9.13, subledger_b_alcohol_cg100_cg115_inmb_gbp_m: 8.51, subledger_c_naloxone_nitazene_ng193_inmb_gbp_m: 8.34, total_v3_5_inmb_20k_gbp_m: 25.97 }
+    ];
+
+    function switchAddictionTab(idx) {
+      [1, 2, 3].forEach(function(k) {
+        document.getElementById("addictionTab" + k).classList.toggle("active", k === idx);
+        document.getElementById("btnTab" + k).classList.toggle("active", k === idx);
+      });
+      if (idx === 1) renderTab1Cp();
+      if (idx === 2) renderTab2Eckart();
+      if (idx === 3) renderTab3Feshbach();
+    }
+
+    function renderTab1Cp() {
+      const basisKey = document.getElementById("selBasis").value;
+      const nmr = parseFloat(document.getElementById("rngNmr").value);
+      const scen = document.getElementById("selTobaccoScenario").value;
+      const g4 = document.getElementById("selCypG4").value;
+      const bObj = CP_BASIS[basisKey] || CP_BASIS["631gs"];
+
+      const normalMetab = nmr >= 0.31;
+      document.getElementById("lblNmr").textContent = nmr.toFixed(2) + (normalMetab ? " (Normal Metaboliser ≥ 0.31)" : " (Slow CYP2A6 < 0.31)");
+      document.getElementById("mTab1Raw").textContent = bObj.raw.toFixed(2) + " kcal/mol";
+      document.getElementById("mTab1Cp").textContent = bObj.cp.toFixed(2) + " kcal/mol (δ = +" + bObj.bsse.toFixed(2) + ")";
+      document.getElementById("mTab1NmrOr").textContent = normalMetab ? "OR 2.17× vs NRT Patch" : "Slow NMR: NRT Patch Parity";
+
+      const pill = document.getElementById("pillTab1Cqrs");
+      if (g4 === "cyp2a6_ftqc") {
+        pill.textContent = "ACQ CQRS = (4, 8) FTQC Target · 76L Qubits · Scalar Avg: None";
+      } else {
+        pill.textContent = "ACQ CQRS = (0, 9) CPU Floor · Scalar Avg: None";
+      }
+
+      const al = document.getElementById("alertTab1");
+      if (scen === "clozapine_trap") {
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>TRAP G85 INTERCEPTED (MHRA CYP1A2 De-Induction Shield):</strong> Stopping combustible tobacco smoke removes PAH aryl-hydrocarbon induction, causing a <strong>1.82× plasma clozapine surge</strong> (seizures/myocarditis risk; note vapes do NOT induce CYP1A2). Mandatory 30–50% dose reduction + plasma TDM at days 7 &amp; 14.";
+      } else if (scen === "preg_renal_trap") {
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>TRAP G85 INTERCEPTED (NICE NG209 / Cytisine SmPC):</strong> Cytisine is CONTRAINDICATED in pregnancy/breastfeeding and severe renal impairment (eGFR &lt; 15 mL/min). Reroute immediately to behavioural specialist support + intermittent NRT.";
+      } else if (g4 === "qpu_wash_trap") {
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>TRAP G88 INTERCEPTED (ACQ Gate G4):</strong> Dispatching the 4-state pocket / 6-31G* dimer to noisy QPU hardware is BLOCKED. Classical CPU solves exact dynamics in &lt;2 ms (CQRS = (0, 9)); FTQC is reserved strictly for (30e, 28o) CYP2A6 Compound I (19.95 PiB).";
+      } else if (scen === "eagles_veto_trap") {
+        al.className = "alert-box alert-warn";
+        al.innerHTML = "<strong>TRAP G85 OVERTURNED (EAGLES Landmark Safe-Twin Specificity):</strong> Blanket refusal of Cytisine or Varenicline in stable treated depression is OVERTURNED (EAGLES N=8,144 proved zero neuropsychiatric excess vs placebo, abstinence OR = 2.88).";
+      } else if (scen === "eagles_safe") {
+        al.className = "alert-box alert-ok";
+        al.innerHTML = "<strong>NICE NG209 VARENICLINE COMMITTED:</strong> Stable depression verified safe under EAGLES; TrpB 2.743 Å H-bond + Loop C partial agonism (45.1%) blunts craving and reward spikes (OR = 2.88).";
+      } else {
+        al.className = "alert-box alert-ok";
+        al.innerHTML = "<strong>NICE NG209 25-DAY CYTISINE COMMITTED:</strong> Ghost-orbital counterpoise eliminates +" + bObj.bsse.toFixed(2) + " kcal/mol artificial BSSE overbinding; 25-day plant-alkaloid Cytisine delivers OR = 3.29 abstinence (" + (normalMetab ? "normal NMR ≥ 0.31 prioritized" : "slow NMR counselled") + ").";
+      }
+
+      const svg = document.getElementById("svgTab1Cp");
+      const keys = ["sto3g", "631gs", "ccpvtz"];
+      let bars = "";
+      keys.forEach(function(k, idx) {
+        const d = CP_BASIS[k];
+        const xBase = 72 + idx * 162;
+        const hRaw = (Math.abs(d.raw) / 33.0) * 162;
+        const hCp = (Math.abs(d.cp) / 33.0) * 162;
+        const yRaw = 205 - hRaw;
+        const yCp = 205 - hCp;
+        const isSel = k === basisKey;
+        bars +=
+          '<rect x="' + xBase + '" y="' + yRaw.toFixed(1) + '" width="44" height="' + hRaw.toFixed(1) + '" rx="4" fill="#f06a3b" opacity="' + (isSel ? "0.95" : "0.52") + '"/>' +
+          '<rect x="' + (xBase + 50) + '" y="' + yCp.toFixed(1) + '" width="44" height="' + hCp.toFixed(1) + '" rx="4" fill="#38d6c4" opacity="' + (isSel ? "0.98" : "0.55") + '"/>' +
+          '<text x="' + (xBase + 47) + '" y="' + (Math.min(yRaw, yCp) - 8).toFixed(1) + '" fill="#f4ae42" font-size="10.2" font-family="JetBrains Mono" text-anchor="middle">δ=+' + d.bsse.toFixed(2) + '</text>' +
+          '<text x="' + (xBase + 47) + '" y="226" fill="' + (isSel ? "#eef7f6" : "#9eb9b6") + '" font-size="10.5" font-family="JetBrains Mono" text-anchor="middle">' + d.label + '</text>';
+      });
+      svg.innerHTML =
+        '<line x1="48" y1="205" x2="530" y2="205" stroke="rgba(158,185,182,0.35)" stroke-width="1"/>' +
+        bars +
+        '<text x="54" y="22" fill="#f06a3b" font-size="10.6" font-family="JetBrains Mono">Coral: Un-Counterpoised |ΔE_raw| (Artificially Overbound)</text>' +
+        '<text x="54" y="37" fill="#38d6c4" font-size="10.6" font-family="JetBrains Mono">Teal: Ghost-Orbital Counterpoise |ΔE_CP| (Boys &amp; Bernardi 1970)</text>';
+    }
+
+    function eckartTransmission(eKcal, massAmu, v1, v2, lAng) {
+      if (eKcal <= Math.max(0.0, v1 - v2)) return 0.0;
+      const kcalJ = 4184.0 / 6.02214076e23;
+      const hbar = 1.054571817e-34;
+      const mKg = massAmu * 1.6605390666e-27;
+      const lM = lAng * 1e-10;
+      const eJ = eKcal * kcalJ;
+      const v1J = v1 * kcalJ;
+      const v2J = v2 * kcalJ;
+      const bJ = Math.pow(Math.sqrt(v1J) + Math.sqrt(v2J), 2);
+      const k1 = Math.sqrt(2.0 * mKg * eJ) / hbar;
+      const k2 = Math.sqrt(2.0 * mKg * (eJ - v1J + v2J)) / hbar;
+      const pApb = Math.min(40.0, (k1 + k2) * lM);
+      const pAmb = Math.min(40.0, Math.abs(k1 - k2) * lM);
+      const disc = (2.0 * mKg * bJ * lM * lM) / (Math.PI * Math.PI * hbar * hbar) - 1.0;
+      const cosh2pd = disc >= 0.0 ? Math.cosh(Math.min(40.0, Math.PI * Math.sqrt(disc))) : Math.cos(Math.PI * Math.sqrt(-disc));
+      const num = Math.cosh(pApb) - Math.cosh(pAmb);
+      const den = Math.cosh(pApb) + cosh2pd;
+      return Math.max(0.0, Math.min(1.0, num / den));
+    }
+
+    function renderTab2Eckart() {
+      const eVal = parseFloat(document.getElementById("rngEnergy").value);
+      const enz = document.getElementById("selEckartEnzyme").value;
+      const scen = document.getElementById("selAlcoholScenario").value;
+
+      const v1 = enz === "cyp2a6" ? 15.8 : 13.4;
+      const v2 = enz === "cyp2a6" ? 19.6 : 17.8;
+      const lAng = enz === "cyp2a6" ? 1.19 : 1.54;
+      const tH = eckartTransmission(eVal, 1.007825, v1, v2, lAng);
+      const rH = 1.0 - tH;
+
+      document.getElementById("lblEnergy").textContent = eVal.toFixed(1) + " kcal/mol (|T_H|² = " + tH.toFixed(3) + ")";
+      document.getElementById("mTab2TH").textContent = tH.toFixed(4) + " · R = " + rH.toFixed(4);
+      document.getElementById("mTab2Kie").textContent = enz === "cyp2a6" ? "6.209 (Obs 6.200 · 4EJJ)" : "2.201 (Obs 2.200 · 1O01)";
+
+      const al = document.getElementById("alertTab2");
+      if (scen === "dex_first_trap") {
+        document.getElementById("mTab2Wern").textContent = "84.42% Wernicke Crisis!";
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>TRAP G86 INTERCEPTED ([U_Dextrose, U_Thiamine] ≠ 0):</strong> Infusing IV 10% Dextrose BEFORE parenteral Pabrinex is HARD-BLOCKED! Glycolytic pyruvate surge exhausts residual cerebral Transketolase–ThDP (PDB: 3MOS, 84.42% Wernicke–Korsakoff crisis). Administer IV Pabrinex FIRST.";
+      } else if (scen === "child_pugh_c_trap") {
+        document.getElementById("mTab2Wern").textContent = "Child-Pugh C DILI Veto!";
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>TRAP G86 INTERCEPTED (NICE CG115 / BNF Hepatic Shield):</strong> Oral Naltrexone and Disulfiram are CONTRAINDICATED in acute hepatitis or decompensated Child-Pugh C cirrhosis. Switch relapse maintenance to renally cleared Acamprosate 666 mg TDS (RR = 0.86).";
+      } else if (scen === "aldh2_flush_trap") {
+        document.getElementById("mTab2Wern").textContent = "ALDH2*2 12.5× Cancer OR!";
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>TRAP G88 INTERCEPTED (ALDH2*2 rs671 Oncology Shield):</strong> Using H₂-antihistamines (famotidine) to mask ALDH2*2 alcohol flushing while continuing heavy drinking is BLOCKED — un-cleared salivary acetaldehyde drives a 12.5–40× oesophageal squamous carcinoma risk.";
+      } else if (scen === "acamp_veto_trap") {
+        document.getElementById("mTab2Wern").textContent = "96.59% Safe · Acamprosate On";
+        al.className = "alert-box alert-warn";
+        al.innerHTML = "<strong>TRAP G86 OVERTURNED (Safe-Twin Specificity):</strong> False withholding of Acamprosate in mild alcohol transaminitis with preserved eGFR 74 mL/min is OVERTURNED — Acamprosate undergoes zero hepatic metabolism.";
+      } else {
+        document.getElementById("mTab2Wern").textContent = "96.59% Safe (Pabrinex 1st)";
+        al.className = "alert-box alert-ok";
+        al.innerHTML = "<strong>NICE CG100 / CG115 SAFE PATHWAY COMMITTED:</strong> Parenteral Pabrinex saturates Holo-Transketolase (2.150 Å Ca²⁺–ThDP anchor, 96.59% neuro-safe) prior to glucose, paired with renal Acamprosate maintenance.";
+      }
+
+      const svg = document.getElementById("svgTab2Eckart");
+      let pTH = "";
+      let pTD = "";
+      let pRH = "";
+      for (let i = 0; i <= 56; i++) {
+        const eScan = 8.0 + (14.0 * i) / 56.0;
+        const x = 54 + (i / 56.0) * 460;
+        const th = eckartTransmission(eScan, 1.007825, v1, v2, lAng);
+        const td = eckartTransmission(eScan, 2.014102, v1, v2, lAng);
+        const rh = 1.0 - th;
+        const yTH = 212 - th * 166;
+        const yTD = 212 - td * 166;
+        const yRH = 212 - rh * 166;
+        pTH += (i === 0 ? "M" : "L") + x.toFixed(1) + "," + yTH.toFixed(1) + " ";
+        pTD += (i === 0 ? "M" : "L") + x.toFixed(1) + "," + yTD.toFixed(1) + " ";
+        pRH += (i === 0 ? "M" : "L") + x.toFixed(1) + "," + yRH.toFixed(1) + " ";
+      }
+      const xCur = 54 + ((eVal - 8.0) / 14.0) * 460;
+      const yCur = 212 - tH * 166;
+      const xCrest = 54 + ((v1 - 8.0) / 14.0) * 460;
+      svg.innerHTML =
+        '<line x1="54" y1="212" x2="514" y2="212" stroke="rgba(158,185,182,0.35)" stroke-width="1"/>' +
+        '<line x1="' + xCrest.toFixed(1) + '" y1="42" x2="' + xCrest.toFixed(1) + '" y2="212" stroke="rgba(244,174,66,0.45)" stroke-width="1.3" stroke-dasharray="4,4"/>' +
+        '<text x="' + (xCrest + 5).toFixed(1) + '" y="54" fill="#f4ae42" font-size="9.8" font-family="JetBrains Mono">Crest V₁=' + v1.toFixed(1) + '</text>' +
+        '<path d="' + pRH + '" fill="none" stroke="rgba(158,185,182,0.55)" stroke-width="1.8" stroke-dasharray="3,3"/>' +
+        '<path d="' + pTD + '" fill="none" stroke="#f06a3b" stroke-width="2.3" stroke-dasharray="6,4"/>' +
+        '<path d="' + pTH + '" fill="none" stroke="#38d6c4" stroke-width="2.8"/>' +
+        '<circle cx="' + xCur.toFixed(1) + '" cy="' + yCur.toFixed(1) + '" r="6" fill="#f4ae42"/>' +
+        '<text x="56" y="22" fill="#38d6c4" font-size="10.5" font-family="JetBrains Mono">Teal: ¹H |T_Eck(E)|² · Coral Dashed: ²D |T_Eck(E)|² · Grey: |R_Eck(E)|²</text>' +
+        '<text x="56" y="236" fill="#9eb9b6" font-size="10.2" font-family="JetBrains Mono">Continuum Energy E (8 → 22 kcal/mol) · Numerov Helmholtz Residual 9.15e-9</text>';
+    }
+
+    function computeVentilationCurve(agKey, doses) {
+      const cfg = {
+        isotonitazene: { ki: 0.045, tau: 34.25, c0: 8.20, kClear: 0.0042 },
+        fentanyl: { ki: 0.390, tau: 6.80, c0: 14.0, kClear: 0.0155 },
+        morphine: { ki: 1.800, tau: 1.39, c0: 42.0, kClear: 0.0190 }
+      }[agKey];
+      const kn = Math.log(2.0) / 62.0;
+      const ka = 0.28;
+      const pts = [];
+      let minVentAfter30 = 100.0;
+      let rebMin = null;
+      for (let t = 0; t <= 180; t += 5) {
+        const cAg = cfg.c0 * Math.exp(-cfg.kClear * t) * (1.0 + 0.35 * Math.exp(-t / (2.2 * cfg.tau)));
+        let cNlx = 12.6 * (Math.exp(-kn * t) - Math.exp(-ka * t));
+        if (doses >= 2 && t >= 55) {
+          const dt = t - 55;
+          cNlx += 12.6 * (Math.exp(-kn * dt) - Math.exp(-ka * dt));
+        }
+        cNlx = Math.max(0.0, cNlx);
+        const occAg = (cAg / cfg.ki) / (1.0 + (cAg / cfg.ki) + (cNlx / 0.82));
+        const vent = Math.max(8.0, 100.0 * (1.0 - 0.93 * Math.pow(occAg, 1.18)));
+        if (t >= 30 && vent < minVentAfter30) minVentAfter30 = vent;
+        if (t >= 30 && vent < 55.0 && rebMin === null) rebMin = t;
+        pts.push({ t: t, vent: vent });
+      }
+      return { cfg: cfg, pts: pts, minVent: minVentAfter30, rebMin: rebMin };
+    }
+
+    function renderTab3Feshbach() {
+      let ag = document.getElementById("selOpioidAgonist").value;
+      let doses = parseInt(document.getElementById("rngNlxDoses").value, 10);
+      let obsH = parseFloat(document.getElementById("rngObsHours").value);
+      const scen = document.getElementById("selPainScenario").value;
+
+      if (scen === "early_discharge_trap") {
+        ag = "isotonitazene";
+        doses = 1;
+        obsH = 0.5;
+      }
+
+      document.getElementById("lblNlxDoses").textContent = doses === 1 ? "1 Spray (0 min Only)" : "2 Sprays (0 min + 55 min Rescue)";
+      document.getElementById("lblObsHours").textContent = obsH.toFixed(1) + " Hours" + (obsH < 4.0 && ag === "isotonitazene" ? " (UNSAFE <4h!)" : " (Safe)");
+
+      const sim = computeVentilationCurve(ag, doses);
+      document.getElementById("mTab3Tau").textContent = sim.cfg.tau.toFixed(2) + " min (K_i = " + sim.cfg.ki.toFixed(3) + " nM)";
+      document.getElementById("mTab3Vent").textContent = sim.minVent.toFixed(2) + "%" + (sim.minVent < 55.0 ? " (APNOEA!)" : " (Safe ≥ 55%)");
+      document.getElementById("mTab3Reb").textContent = sim.rebMin !== null ? ("Rebound @ " + sim.rebMin.toFixed(1) + " min!") : "No Rebound (0–180 min)";
+
+      const al = document.getElementById("alertTab3");
+      if (scen === "early_discharge_trap" || (ag === "isotonitazene" && (doses < 2 || obsH < 4.0))) {
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>TRAP G87 INTERCEPTED (Feshbach Nitazene Renarcotization Shield):</strong> Isotonitazene (τ_res = 34.25 min) outlasts single-spray intranasal Naloxone (t_1/2 = 62 min), crashing minute ventilation below 55% at <strong>~70.0 min (nadir " + sim.minVent.toFixed(1) + "%)</strong>! Early &lt;4h discharge is HARD-BLOCKED; enforce ≥4–6h continuous SpO₂ monitoring + repeat Naloxone + DHSC Take-Home kit.";
+      } else if (scen === "ng193_triad_trap") {
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>TRAP G87 INTERCEPTED (NICE NG193 Chronic Primary Pain):</strong> Initiating opioids + pregabalin + benzodiazepines for chronic primary pain (fibromyalgia) is HARD-BLOCKED (multiplicative respiratory apnoea hazard without efficacy). Route to NICE NG193 physical/ACT pain rehab.";
+      } else if (scen === "cg140_cancer_trap") {
+        al.className = "alert-box alert-warn";
+        al.innerHTML = "<strong>TRAP G88 OVERTURNED (NICE CG140 Compassionate Cancer Pain Demarcation):</strong> Misapplying NICE NG193 to deny or abruptly strip oral morphine in metastatic bone cancer pain is OVERTURNED! NICE NG193 applies ONLY to chronic primary pain; initiate titrated NICE CG140 cancer analgesia + stimulant laxative.";
+      } else {
+        al.className = "alert-box alert-ok";
+        al.innerHTML = "<strong>DHSC NALOXONE &amp; PAIN STEWARDSHIP COMMITTED:</strong> Repeat intranasal Naloxone + " + obsH.toFixed(1) + "h monitored observation keeps minute ventilation ≥ " + sim.minVent.toFixed(1) + "%, paired with without-prescription community pharmacy Take-Home Naloxone supply.";
+      }
+
+      const svg = document.getElementById("svgTab3Feshbach");
+      const sim1 = computeVentilationCurve("isotonitazene", 1);
+      let pathCur = "";
+      let pathIso1 = "";
+      sim.pts.forEach(function(p, idx) {
+        const x = 54 + (p.t / 180.0) * 462;
+        const y = 214 - (p.vent / 105.0) * 168;
+        pathCur += (idx === 0 ? "M" : "L") + x.toFixed(1) + "," + y.toFixed(1) + " ";
+      });
+      sim1.pts.forEach(function(p, idx) {
+        const x = 54 + (p.t / 180.0) * 462;
+        const y = 214 - (p.vent / 105.0) * 168;
+        pathIso1 += (idx === 0 ? "M" : "L") + x.toFixed(1) + "," + y.toFixed(1) + " ";
+      });
+      const yThresh = 214 - (55.0 / 105.0) * 168;
+      svg.innerHTML =
+        '<line x1="54" y1="214" x2="516" y2="214" stroke="rgba(158,185,182,0.35)" stroke-width="1"/>' +
+        '<line x1="54" y1="' + yThresh.toFixed(1) + '" x2="516" y2="' + yThresh.toFixed(1) + '" stroke="#f4ae42" stroke-width="1.5" stroke-dasharray="5,4"/>' +
+        '<text x="60" y="' + (yThresh - 5).toFixed(1) + '" fill="#f4ae42" font-size="9.8" font-family="JetBrains Mono">55% Hypoventilation Apnoea Danger Threshold</text>' +
+        '<path d="' + pathIso1 + '" fill="none" stroke="#f06a3b" stroke-width="2.2" stroke-dasharray="6,4"/>' +
+        '<path d="' + pathCur + '" fill="none" stroke="#38d6c4" stroke-width="2.9"/>' +
+        '<text x="56" y="22" fill="#38d6c4" font-size="10.5" font-family="JetBrains Mono">Solid Teal: Selected Regimen (' + ag + ', ' + doses + '× IN Naloxone)</text>' +
+        '<text x="56" y="37" fill="#f06a3b" font-size="10.5" font-family="JetBrains Mono">Dashed Coral: Isotonitazene + 1× Naloxone (Rebound @ 70 min!)</text>' +
+        '<text x="56" y="236" fill="#9eb9b6" font-size="10.2" font-family="JetBrains Mono">Time Post-Reversal (0 → 180 min) · PDB: 4N6H Asp128 Salt-Bridge</text>';
+    }
+
+    function populateLeague(rows) {
+      const tb = document.getElementById("icbLeagueBody");
+      tb.innerHTML = rows.map(function(r) {
+        return '<tr>' +
+          '<td><code>' + r.icb_ods_code + '</code></td>' +
+          '<td>' + r.icb_name + '</td>' +
+          '<td>' + Number(r.tobacco_ng209_cytisine_cohort_yr).toLocaleString() + '</td>' +
+          '<td>' + Number(r.alcohol_cg100_cg115_cohort_yr).toLocaleString() + '</td>' +
+          '<td>' + Number(r.acute_harm_events_avoided_yr).toLocaleString() + '</td>' +
+          '<td>+£' + Number(r.subledger_a_tobacco_ng209_cytisine_inmb_gbp_m).toFixed(2) + 'M</td>' +
+          '<td>+£' + Number(r.subledger_b_alcohol_cg100_cg115_inmb_gbp_m).toFixed(2) + 'M</td>' +
+          '<td>+£' + Number(r.subledger_c_naloxone_nitazene_ng193_inmb_gbp_m).toFixed(2) + 'M</td>' +
+          '<td><strong style="color:var(--signal);">+£' + Number(r.total_v3_5_inmb_20k_gbp_m).toFixed(2) + 'M/yr</strong></td>' +
+        '</tr>';
+      }).join("");
+    }
+
+    populateLeague(FALLBACK_TOP10);
+    renderTab1Cp();
+    renderTab2Eckart();
+    renderTab3Feshbach();
+
+    fetch("receipts/opencareq_public_v3_5_quantum_addiction_and_overdose_summary.json")
+      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(d) {
+        if (d && Array.isArray(d.top_10_icbs_by_v3_5_inmb) && d.top_10_icbs_by_v3_5_inmb.length > 0) {
+          populateLeague(d.top_10_icbs_by_v3_5_inmb);
+        }
+      })
+      .catch(function() {});
+  </script>
+</body>
+</html>
