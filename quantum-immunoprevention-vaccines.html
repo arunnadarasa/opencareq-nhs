@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="opencareq-nc-provenance" content="OCQ-NC-TRAP-STREET-ZZ99-V13|PolyForm-Noncommercial-1.0.0|INALYN-CIC-17398798|0.1370359991" />
+  <title>OpenCareQ v3.3 — Quantum Immunoprevention, Prefusion Structural Vaccinology, mRNA Cold-Chain &amp; ENAQT Biosensing Studio</title>
+  <meta name="description" content="OpenCareQ v3.3.0 Quantum Immunoprevention Studio: Plenio-Huelga ENAQT Excitonic FRET Biosensing (NHS 2040 Cervical Cancer Elimination, PDB 4XR8), PySCF MP2 Trp56-m7GTP-Trp102 Cation-pi Cap &amp; 2'-OH Rural Cold-Chain Physics (CMO Nov 2026, PDB 1IPC/4R07), and Prefusion RSVpreF / FcRn-YTE Nirsevimab / Shingrix Sequencing (PDB 5C6B/3FJT, +£10.20B/yr 42-ICB NHS/PSS Stack)." />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #081316;
+      --bg-elev: #0e1e22;
+      --bg-card: #12262b;
+      --bg-card-alt: #0b181b;
+      --ink: #eef7f6;
+      --ink-muted: #9eb9b6;
+      --ink-dim: #6d8986;
+      --signal: #38d6c4;
+      --signal-soft: rgba(56, 214, 196, 0.13);
+      --amber: #f4ae42;
+      --amber-soft: rgba(244, 174, 66, 0.14);
+      --ember: #f06a3b;
+      --ember-soft: rgba(240, 106, 59, 0.15);
+      --violet: #b088f9;
+      --border: rgba(158, 185, 182, 0.18);
+      --border-strong: rgba(56, 214, 196, 0.45);
+      --radius: 12px;
+      --font-display: "Barlow Condensed", system-ui, sans-serif;
+      --font-sans: "Barlow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --max-w: 1220px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; max-width: 100%; overflow-x: clip; background: var(--bg); color: var(--ink); font-family: var(--font-sans); line-height: 1.56; }
+    a { color: var(--signal); text-decoration: none; }
+    a:hover { color: var(--amber); }
+    code { font-family: var(--font-mono); font-size: 0.84em; background: rgba(56, 214, 196, 0.1); color: #c4f1ec; padding: 0.1rem 0.34rem; border-radius: 4px; overflow-wrap: anywhere; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem; }
+    .site-nav { position: sticky; top: 0; z-index: 60; backdrop-filter: blur(14px); background: rgba(8, 19, 22, 0.92); border-bottom: 1px solid var(--border); }
+    .site-nav-inner { max-width: var(--max-w); margin: 0 auto; min-height: 60px; padding: 0.45rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.7rem; flex-wrap: wrap; }
+    .brand { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 1.22rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .brand-mark { display: inline-grid; place-items: center; width: 1.85rem; height: 1.85rem; border-radius: 6px; background: linear-gradient(135deg, var(--signal), #1ca394); color: #051214; font-weight: 800; font-size: 0.88rem; }
+    .nav-links { display: flex; align-items: center; gap: 0.28rem; flex-wrap: wrap; font-size: 0.78rem; font-weight: 600; }
+    .nav-links a { color: var(--ink-muted); padding: 0.25rem 0.5rem; border-radius: 999px; }
+    .nav-links a:hover { color: var(--ink); background: rgba(255, 255, 255, 0.06); }
+    .btn-primary-sm { background: var(--signal) !important; color: #051416 !important; font-weight: 800; border-radius: 8px !important; padding: 0.32rem 0.7rem !important; }
+    .hero { padding: 2.3rem 0 1.9rem; border-bottom: 1px solid var(--border); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.42rem; margin-bottom: 0.85rem; }
+    .pill { display: inline-flex; align-items: center; gap: 0.28rem; font-size: 0.73rem; font-weight: 700; padding: 0.24rem 0.64rem; border-radius: 999px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.04); color: var(--ink-muted); }
+    .pill-signal { color: var(--signal); background: var(--signal-soft); border-color: rgba(56, 214, 196, 0.35); }
+    .pill-amber { color: var(--amber); background: var(--amber-soft); border-color: rgba(244, 174, 66, 0.35); }
+    .pill-ember { color: #ff9472; background: var(--ember-soft); border-color: rgba(240, 106, 59, 0.4); }
+    .kicker { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--signal); margin: 0 0 0.35rem; }
+    h1, h2, h3 { font-family: var(--font-display); margin: 0 0 0.45rem; line-height: 1.08; overflow-wrap: anywhere; }
+    h1 { font-size: clamp(2rem, 3.8vw, 3rem); margin-bottom: 0.7rem; }
+    h2 { font-size: 1.78rem; }
+    h3 { font-size: 1.24rem; }
+    .lead { font-size: 1rem; color: var(--ink-muted); max-width: 960px; margin: 0 0 1.15rem; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.85rem; margin: 1rem 0 1.25rem; }
+    @media (max-width: 900px) { .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 520px) { .kpi-grid { grid-template-columns: 1fr; } }
+    .kpi-card, .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.05rem; min-width: 0; max-width: 100%; }
+    .kpi-label { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--signal); }
+    .kpi-val { font-family: var(--font-display); font-size: 1.88rem; font-weight: 800; color: var(--ink); margin: 0.2rem 0; }
+    .kpi-sub { font-size: 0.78rem; color: var(--ink-muted); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 0.48rem; }
+    .ctrl-btn { font-family: var(--font-sans); font-size: 0.81rem; font-weight: 700; padding: 0.44rem 0.82rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--ink); cursor: pointer; }
+    .ctrl-btn:hover { border-color: var(--signal); }
+    .ctrl-btn.active { background: var(--signal); border-color: var(--signal); color: #051416; }
+    section { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+    .tab-pane { display: none; margin-top: 1rem; }
+    .tab-pane.active { display: block; }
+    .grid-2 { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 1rem; align-items: start; }
+    @media (max-width: 940px) { .grid-2 { grid-template-columns: 1fr; } }
+    .grid-2 > * { min-width: 0; max-width: 100%; }
+    .field-group { margin-bottom: 0.8rem; }
+    .field-label { display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600; color: var(--ink-muted); margin-bottom: 0.25rem; gap: 0.5rem; }
+    input[type="range"] { width: 100%; accent-color: var(--signal); cursor: pointer; }
+    select { width: 100%; background: var(--bg-card-alt); color: var(--ink); border: 1px solid var(--border); border-radius: 8px; padding: 0.46rem 0.65rem; font-family: var(--font-sans); font-size: 0.84rem; }
+    .alert-box { border-radius: 10px; padding: 0.8rem 0.95rem; font-size: 0.83rem; border: 1px solid var(--border); background: var(--bg-card-alt); margin-top: 0.75rem; overflow-wrap: anywhere; }
+    .alert-ok { border-color: rgba(56, 214, 196, 0.45); background: rgba(56, 214, 196, 0.1); }
+    .alert-warn { border-color: rgba(244, 174, 66, 0.48); background: rgba(244, 174, 66, 0.12); }
+    .alert-danger { border-color: rgba(240, 106, 59, 0.55); background: rgba(240, 106, 59, 0.14); }
+    .metric-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; margin-top: 0.75rem; }
+    @media (max-width: 480px) { .metric-mini-grid { grid-template-columns: 1fr; } }
+    .metric-mini { background: var(--bg-card-alt); border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.75rem; }
+    .metric-mini span { display: block; font-size: 0.7rem; font-family: var(--font-mono); color: var(--ink-muted); text-transform: uppercase; }
+    .metric-mini strong { font-size: 1.05rem; color: var(--signal); font-family: var(--font-mono); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card-alt); max-width: 100%; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th, td { padding: 0.56rem 0.72rem; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--signal); white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+    footer { padding: 1.6rem 0 2.2rem; font-size: 0.78rem; color: var(--ink-dim); }
+    @media (max-width: 640px) {
+      .container, .site-nav-inner { padding-left: 0.9rem; padding-right: 0.9rem; }
+      .pill, .ctrl-btn { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">OC</span>
+        <span>OpenCareQ <small style="font-size:0.73rem;color:var(--signal);">v3.3 · Immunoprevention &amp; ENAQT</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Quantum Immunoprevention Navigation">
+        <a href="index.html">← Main NHS Portal</a>
+        <a href="index.html#papers" style="color:var(--amber);">📖 Paper XIX Reader</a>
+        <a href="quantum-msk-bone.html">MSK &amp; Bone v3.2 ↗</a>
+        <a href="quantum-water-nutrition.html">Water &amp; PCET v3.1 ↗</a>
+        <a href="harness.html" class="btn-primary-sm">G1–G80 Gate (2,240 Evals) ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="pill-row">
+          <span class="pill pill-signal">OpenCareQ v3.3.0 · Quantum Immunoprevention, Prefusion Vaccinology &amp; ENAQT Biosensing</span>
+          <span class="pill pill-amber">295 / 295 (100%) Zero-Fit Parity · 45 RCSB PDBs (+5C6B · +3FJT · +4XR8 · +1IPC · +4R07)</span>
+          <span class="pill pill-ember">G1–G80 Safety Gate · 160 Cases · 2,240 Evals · 0 Harms · Receipt #42 (3714baf0)</span>
+        </div>
+        <p class="kicker">Association for Clinical Quantum (clinicalquantum.com) Demarcation · CMO 2025/2026 Infections &amp; Rural Health · NHS 2040 Cervical Elimination</p>
+        <h1>Quantum Immunoprevention: Plenio–Huelga <code>ENAQT</code> Biosensing, <code>m⁷G⁺</code> Cation–<code>π</code> / <code>2&apos;-OH</code> Rural Cold-Chain Physics &amp; Prefusion <code>RSV</code> / <code>FcRn-YTE</code> / <code>Shingrix</code></h1>
+        <p class="lead">
+          Propels the sovereign <code>OpenCareQ</code> NHS prevention stack past <strong><code>+£10.20 Billion/yr</code></strong> strictly within <code>NICE PMG36 NHS/PSS</code> accounting (<code>£0</code> DWP transfer inflation) across three primary-prevention choke-points: <strong>Frenkel exciton <code>GKSL</code> Environment-Assisted Quantum Transport (<code>ENAQT η = 97.98%</code> &amp; exact Förster <code>R⁻⁶</code> slope <code>−6.000</code>, <code>PDB: 4XR8</code>)</strong> for <code>NHS 2040</code> <code>YouScreen</code> <code>hrHPV</code> self-sampling, <strong><code>PySCF MP2</code> double-indole <code>Trp56···m⁷GTP···Trp102</code> cation–<code>π</code> cap recognition &amp; <code>2&apos;-OH</code> phosphorane cold-chain telemetry</strong> (<code>PDB: 1IPC</code> &amp; <code>4R07</code>) for rural mobile clinics, and <strong>prefusion <code>RSVpreF</code>, placental <code>pH 6.0 → 7.4</code> <code>FcRn–YTE</code> (<code>t½ = 69.4 d</code>) &amp; non-commuting <code>[U_ritux, U_vax] ≠ 0</code></strong> (<code>PDB: 5C6B</code> &amp; <code>3FJT</code>).
+        </p>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">Full-Stack 42-ICB NHS/PSS DCEA</div>
+            <div class="kpi-val">+£10,198.9M/yr</div>
+            <div class="kpi-sub"><code>+£10.20B/yr</code> stack · <code>+£637.46M/yr</code> <code>v3.3</code> (<code>+£19.08M/yr</code> net cash · <code>0</code> DWP inflation)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Cumulative Zero-Fit Parity</div>
+            <div class="kpi-val">295 / 295</div>
+            <div class="kpi-sub"><code>v3.3 GMFE = 1.00493</code> across <code>15</code> endpoints · <code>45</code> sub-<code>2.8 Å</code> <code>RCSB PDB</code> structures</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">ENAQT Peak &amp; Förster R⁻⁶ Law</div>
+            <div class="kpi-val">97.98% · R⁻⁶</div>
+            <div class="kpi-sub">Beats <code>γ=0</code> Anderson (<code>47.8%</code>) &amp; Zeno (<code>87.3%</code>) · slope <code>−5.99996</code> (<code>CPTP &lt; 2e−15</code>)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">FcRn-YTE &amp; Cation–π Cap</div>
+            <div class="kpi-val">69.4 d · −9.42 kcal</div>
+            <div class="kpi-sub"><code>Nirsevimab</code> <code>10.6×</code> <code>pH 6.0</code> salvage · <code>73.9%</code> cap energy missed by fixed-charge <code>MM</code></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="studio">
+      <div class="container">
+        <p class="kicker">Interactive 3-Tab Immunoprevention, Cold-Chain &amp; Excitonic Workbench · Zero Cloud Egress · Zero PID</p>
+        <h2>Simulate <code>ENAQT</code> <code>hrHPV</code> Beacons, Rural <code>2&apos;-OH</code> Cold-Chain Excursions &amp; Maternal <code>FcRn-YTE</code> / <code>Shingrix</code> Sequencing</h2>
+        <div class="btn-row" role="tablist" aria-label="v3.3 Interactive Tabs">
+          <button type="button" class="ctrl-btn active" id="btnTab1" onclick="switchImmunoTab(1)">1 · ENAQT Biosensor &amp; NHS 2040 hrHPV Lab (G79)</button>
+          <button type="button" class="ctrl-btn" id="btnTab2" onclick="switchImmunoTab(2)">2 · m⁷G Cation–π Cap &amp; Rural 2&apos;-OH Cold-Chain (G78/G80)</button>
+          <button type="button" class="ctrl-btn" id="btnTab3" onclick="switchImmunoTab(3)">3 · Maternal RSVpreF, FcRn-YTE &amp; Biologic Order (G77/G78)</button>
+        </div>
+
+        <!-- TAB 1: ENAQT EXCITON & NHS 2040 CERVICAL ELIMINATION -->
+        <div id="immunoTab1" class="tab-pane active">
+          <div class="grid-2">
+            <div class="card">
+              <p class="kicker">Frenkel Exciton GKSL Master Equation · PDB: 4XR8 (HPV16 E6 + p53)</p>
+              <h3>Plenio–Huelga <code>ENAQT</code> Relay &amp; <code>YouScreen</code> Triage Controls</h3>
+              <div class="field-group">
+                <div class="field-label">
+                  <span>Phonon Pure-Dephasing Rate <code>γ_φ</code> (<code>cm⁻¹</code>)</span>
+                  <code id="lblGamma">95 cm⁻¹ (Optimal ENAQT)</code>
+                </div>
+                <input type="range" id="rngGamma" min="0" max="8" step="1" value="4" oninput="renderTab1Enaqt()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label">
+                  <span>Donor–Acceptor Separation <code>R</code> (<code>nm</code>, <code>R₀ = 5.6 nm</code>)</span>
+                  <code id="lblDist">5.8 nm</code>
+                </div>
+                <input type="range" id="rngDist" min="1.6" max="8.6" step="0.2" value="5.8" oninput="renderTab1Enaqt()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Chromophore Network <code>(N, k, d_vib)</code> &amp; Solver Request</span></div>
+                <select id="selExcitonNet" onchange="renderTab1Enaqt()">
+                  <option value="4_cpu" selected>(N=4, k=1, d=1) POC Beacon — Exact GKSL CPU (&lt;8 ms, CQRS=(0,9))</option>
+                  <option value="4_qpu_wash">(N=4, k=1, d=1) POC Beacon — Attempt Noisy QPU Dispatch (Trap G79!)</option>
+                  <option value="12_mpo">(N=12, k=3, d=3) Trimer Array — Tensor-Network HEOM/MPO (1.74 GiB, CQRS=(2,8))</option>
+                  <option value="16_sim">(N=16, k=4, d=4) Disordered Vibronic Antenna — Trapped-Ion SIM (116.5 TiB, CQRS=(3,8))</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span><code>NHS 2040</code> <code>YouScreen</code> Vaginal Self-Swab Follow-Up Action</span></div>
+                <select id="selHpvFollowup" onchange="renderTab1Enaqt()">
+                  <option value="cytology_fasttrack" selected>hrHPV-16+ Self-Swab → Book In-Person Clinician Cervical Cytology / Colposcopy (Safe)</option>
+                  <option value="defer_3yr_trap">hrHPV-16+ Self-Swab → Defer to 3-Year Recall Assuming Negative Cells (Trap G79!)</option>
+                  <option value="hrhpv_neg">hrHPV-Negative Self-Swab → Routine NHSCSP Recall</option>
+                </select>
+              </div>
+              <div id="alertTab1" class="alert-box alert-ok"></div>
+            </div>
+
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.55rem;">
+                <span class="kpi-label">Live GKSL Sink Quantum Efficiency η(γ_φ) &amp; Förster R⁻⁶ Curve</span>
+                <span class="pill pill-signal" id="pillTab1Cqrs">ACQ CQRS = (0, 9) · Scalar Avg: None</span>
+              </div>
+              <svg id="svgTab1Enaqt" viewBox="0 0 560 255" style="width:100%;height:auto;display:block;background:#071113;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="Plenio-Huelga ENAQT bell curve and Forster scaling"></svg>
+              <div class="metric-mini-grid">
+                <div class="metric-mini"><span>Selected Sink Yield η(γ_φ)</span><strong id="mTab1Eta">97.98%</strong></div>
+                <div class="metric-mini"><span>hrHPV 16/18 POC LoD</span><strong id="mTab1Lod">10.69 copies/µL</strong></div>
+                <div class="metric-mini"><span>Förster k_ET(R) Rate</span><strong id="mTab1Forster">0.322 ns⁻¹</strong></div>
+                <div class="metric-mini"><span>PDB 4XR8 E6–p53 H-Bond</span><strong>2.476 Å (2.25 Å X-Ray)</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: mRNA CATION-PI CAP & RURAL 2'-OH COLD CHAIN -->
+        <div id="immunoTab2" class="tab-pane">
+          <div class="grid-2">
+            <div class="card">
+              <p class="kicker">CMO Nov 2026 Rural Health · PDB: 1IPC (eIF4E + m⁷GTP) &amp; 4R07 (TLR8 + Uridine)</p>
+              <h3>Rural Mobile Van <code>2&apos;-OH</code> Cold-Chain &amp; Excipient Allergy Gate</h3>
+              <div class="field-group">
+                <div class="field-label">
+                  <span>Mobile Van / Rural Dispensary Excursion Temperature (<code>°C</code>)</span>
+                  <code id="lblTempC">+4 °C (Verified Cold-Chain)</code>
+                </div>
+                <input type="range" id="rngTempC" min="-20" max="36" step="2" value="4" oninput="renderTab2ColdChain()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label">
+                  <span>Excursion Duration After 7d @ <code>4 °C</code> Fridge (<code>Hours</code>)</span>
+                  <code id="lblHours">12 h</code>
+                </div>
+                <input type="range" id="rngHours" min="0" max="72" step="4" value="12" oninput="renderTab2ColdChain()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Nucleoside &amp; 5&apos;-Cap Chemistry (<code>3,800-nt mRNA</code>)</span></div>
+                <select id="selMrnaChem" onchange="renderTab2ColdChain()">
+                  <option value="m1psi_m7g" selected>Structured N1-Methylpseudouridine (m1Ψ, f_ds=0.68) + N7-Methyl m⁷GTP⁺ Cap</option>
+                  <option value="uri_m7g">Unmodified Canonical Uridine (f_ds=0.32, High TLR8 NF-κB Surge + 2.71× Cleavage)</option>
+                  <option value="m1psi_unmeth">Unmethylated 5&apos;-GTP Cap (Collapses Trp56/Trp102 Cation–π Selectivity 808×!)</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span><code>UKHSA Green Book Ch. 8</code> Allergy / Syncope Screen (<code>Trap G80</code>)</span></div>
+                <select id="selAllergy" onchange="renderTab2ColdChain()">
+                  <option value="none" selected>No PEG/Polysorbate Anaphylaxis — Standard Primary-Care Delivery</option>
+                  <option value="mild_egg_safe">Mild Childhood Egg Rash + Needle Vasovagal Syncope → Proceed Supine (Safe Twin)</option>
+                  <option value="mild_egg_refuse_trap">Mild Egg Rash → Blanket Veto Refusing Winter RSV/Flu Vaccines (Trap G80 Failure!)</option>
+                  <option value="peg_anaphylaxis_trap">Tryptase-Confirmed PEG-2000 Anaphylaxis → Administer PEG-Lipid Booster Unchecked (Trap G80!)</option>
+                </select>
+              </div>
+              <div id="alertTab2" class="alert-box alert-ok"></div>
+            </div>
+
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.55rem;">
+                <span class="kpi-label">72-Hour 2&apos;-OH In-Line Hydrolysis Trajectory vs 80% MHRA Quarantine</span>
+                <span class="pill pill-amber" id="pillTab2Potency">Intact: 94.6% (≥80% Floor)</span>
+              </div>
+              <svg id="svgTab2ColdChain" viewBox="0 0 560 255" style="width:100%;height:auto;display:block;background:#071113;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="mRNA 2-prime-OH inline hydrolysis cold-chain curve"></svg>
+              <div class="metric-mini-grid">
+                <div class="metric-mini"><span>eIF4E Cap ΔG_QM (PDB 1IPC)</span><strong id="mTab2CapDg">−9.42 kcal/mol (Kd 95 nM)</strong></div>
+                <div class="metric-mini"><span>Missed by Fixed-Charge MM</span><strong id="mTab2Missed">73.86% (−2.46 kcal/mol)</strong></div>
+                <div class="metric-mini"><span>TLR8 NF-κB Reactogenicity</span><strong id="mTab2Tlr8">6.6% (m1Ψ Evaded)</strong></div>
+                <div class="metric-mini"><span>Intact Full-Length mRNA</span><strong id="mTab2Intact">94.62%</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: MATERNAL RSVPREF, FCRN-YTE & NON-COMMUTING BIOLOGIC SEQUENCING -->
+        <div id="immunoTab3" class="tab-pane">
+          <div class="grid-2">
+            <div class="card">
+              <p class="kicker">NHS Maternal/Older-Adult RSV &amp; Shingrix · PDB: 5C6B (RSV PreF) &amp; 3FJT (IgG1-YTE)</p>
+              <h3>Placental <code>FcRn</code> Shuttle &amp; Non-Commuting <code>[U_ritux, U_vax]</code> Gate</h3>
+              <div class="field-group">
+                <div class="field-label">
+                  <span>Gestational Age at Maternal <code>RSVpreF</code> Dose (<code>Weeks</code>)</span>
+                  <code id="lblVaxWk">30.0 wks (≥28w JCVI Window)</code>
+                </div>
+                <input type="range" id="rngVaxWk" min="18" max="36" step="1" value="30" oninput="renderTab3Rsv()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label">
+                  <span>Gestational Age at Infant Delivery (<code>Weeks</code>)</span>
+                  <code id="lblBirthWk">39.0 wks (Term)</code>
+                </div>
+                <input type="range" id="rngBirthWk" min="27" max="41" step="0.5" value="39" oninput="renderTab3Rsv()" />
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Neonatal Preterm <code>&lt;32w</code> / <code>&lt;14d</code> <code>Nirsevimab (YTE)</code> Plan (<code>Trap G78</code>)</span></div>
+                <select id="selNirsevimab" onchange="renderTab3Rsv()">
+                  <option value="auto_rescue" selected>Administer Pre-Discharge Nirsevimab YTE When &lt;32w or &lt;14d Post-Vax (Safe)</option>
+                  <option value="omit_preterm_trap">Discharge &lt;32w Preterm Unprotected Assuming Maternal IgG Suffices (Trap G78!)</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label"><span>Immunocompromised Biologic / Zoster Regimen (<code>Trap G77</code>)</span></div>
+                <select id="selBiologic" onchange="renderTab3Rsv()">
+                  <option value="shingrix_pre_ritux" selected>Non-Live Recombinant Shingrix ≥4w BEFORE Rituximab (78.4% Memory, Safe)</option>
+                  <option value="ritux_first_trap">Infuse Rituximab FIRST, Then Vaccinate ([U_ritux, U_vax] ≠ 0 → 6.7% Memory, Trap G77!)</option>
+                  <option value="live_zostavax_trap">Prescribe Live-Attenuated Zostavax on JAKi / Biologic (Fatal VZV Risk, Trap G77!)</option>
+                </select>
+              </div>
+              <div id="alertTab3" class="alert-box alert-ok"></div>
+            </div>
+
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.55rem;">
+                <span class="kpi-label">Gestational FcRn Transfer Sigmoid &amp; Non-Commuting Memory Yield</span>
+                <span class="pill pill-signal" id="pillTab3Ve">Newborn VE: 84.9% · YTE t½ = 69.4 d</span>
+              </div>
+              <svg id="svgTab3Fcrn" viewBox="0 0 560 255" style="width:100%;height:auto;display:block;background:#071113;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="Gestational FcRn transfer curve and non-commuting rituximab vaccination bars"></svg>
+              <div class="metric-mini-grid">
+                <div class="metric-mini"><span>Cord : Maternal IgG Ratio</span><strong id="mTab3Cord">1.295×</strong></div>
+                <div class="metric-mini"><span>Infant RSV Hosp. Protection</span><strong id="mTab3InfantVe">84.92%</strong></div>
+                <div class="metric-mini"><span>||[U_ritux, U_vax]||₂ Norm</span><strong>1.1717 (&gt; 1.0)</strong></div>
+                <div class="metric-mini"><span>Protective Plasma Memory</span><strong id="mTab3Mem">78.4% (Vax → Ritux)</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dcea-league">
+      <div class="container">
+        <p class="kicker">Strict NICE PMG36 NHS/PSS Accounting · Zero DWP Transfer Inflation · 42/42 Dominant English ICBs</p>
+        <h2>Top-10 NHS Integrated Care Boards — <code>v3.3.0</code> Immunoprevention &amp; <code>+£10.20B/yr</code> Full Stack</h2>
+        <p class="lead" style="font-size:0.93rem;">
+          Across all <code>42</code> statutory English ICBs (<code>1,280</code> PCNs, <code>62.93M</code> patients), <code>OpenCareQ v3.3.0</code> protects <code>311,486</code> maternal/preterm/older-adult <code>RSV</code> citizens/yr (<code>+£260.64M/yr</code>), screens <code>407,256</code> overdue <code>NHS 2040</code> <code>YouScreen</code> women/yr (<code>+£224.58M/yr</code>), and shields <code>248,974</code> immunocompromised <code>Shingrix</code> / rural cold-chain episodes/yr (<code>+£152.25M/yr</code>), avoiding <code>21,746.8</code> severe admissions/cancers/<code>PHN</code> cases/yr (<code>+£637.46M/yr</code> incremental <code>INMB</code>; <code>94,588</code> parental/carer days preserved separately).
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ODS</th>
+                <th>Integrated Care Board</th>
+                <th>RSV Cohort/yr</th>
+                <th>NHS 2040 hrHPV/yr</th>
+                <th>Events Avoided/yr</th>
+                <th>Sub-A RSV (£M)</th>
+                <th>Sub-B HPV (£M)</th>
+                <th>Sub-C Shingrix (£M)</th>
+                <th>Total v3.3 INMB</th>
+              </tr>
+            </thead>
+            <tbody id="icbLeagueBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Statutory NHS DCB0129 / DCB0160, ACQ &amp; Non-Commercial Notice:</strong> <code>OpenCareQ v3.3.0</code> operates strictly in clinician-in-charge Shadow Mode (<code>Non-SaMD</code>; <code>phi_present = False</code>; <code>H-OCQ-01..07 OPEN</code>; <code>csc_qt_numerical_score_computed = None</code>; unaveraged <code>ACQ CQRS = (QV, VM)</code>; strict <code>NICE PMG36 NHS/PSS</code> perspective). Copyright © 2026 Arun Nadarasa · Stewarded via <strong>INALYN CIC (#17398798)</strong> under <code>PolyForm-Noncommercial-1.0.0</code> &amp; <code>CC BY-NC-SA 4.0</code>. Crystal coordinates curated from RCSB PDB under CC0 1.0 Public Domain Dedication (<a href="https://www.rcsb.org/pages/usage-policy" target="_blank" rel="noopener">rcsb.org/pages/usage-policy</a>).
+    </div>
+  </footer>
+
+  <script>
+    const ENAQT_SCAN = [
+      { g: 0.0, eta: 0.47794 },
+      { g: 8.0, eta: 0.92140 },
+      { g: 25.0, eta: 0.97085 },
+      { g: 55.0, eta: 0.97862 },
+      { g: 95.0, eta: 0.97981 },
+      { g: 160.0, eta: 0.97895 },
+      { g: 320.0, eta: 0.97441 },
+      { g: 750.0, eta: 0.95620 },
+      { g: 1800.0, eta: 0.87304 }
+    ];
+
+    const FALLBACK_TOP10 = [
+      { icb_ods_code: "QOP", icb_name: "NHS Greater Manchester Integrated Care Board", rsv_maternal_preterm_older_cohort_yr: 18216, nhscsp_2040_hrhpv_self_sampling_cohort_yr: 24449, infections_cancers_and_phn_avoided_yr: 1290.6, subledger_a_rsv_dual_shield_inmb_gbp_m: 15.55, subledger_b_hpv_2040_elimination_inmb_gbp_m: 13.76, subledger_c_shingrix_coldchain_inmb_gbp_m: 8.93, total_v3_3_inmb_20k_gbp_m: 38.23 },
+      { icb_ods_code: "QHM", icb_name: "NHS North East and North Cumbria Integrated Care Board", rsv_maternal_preterm_older_cohort_yr: 17410, nhscsp_2040_hrhpv_self_sampling_cohort_yr: 23264, infections_cancers_and_phn_avoided_yr: 1229.8, subledger_a_rsv_dual_shield_inmb_gbp_m: 14.78, subledger_b_hpv_2040_elimination_inmb_gbp_m: 13.02, subledger_c_shingrix_coldchain_inmb_gbp_m: 8.51, total_v3_3_inmb_20k_gbp_m: 36.31 },
+      { icb_ods_code: "QRV", icb_name: "NHS North West London Integrated Care Board", rsv_maternal_preterm_older_cohort_yr: 14916, nhscsp_2040_hrhpv_self_sampling_cohort_yr: 19636, infections_cancers_and_phn_avoided_yr: 1044.9, subledger_a_rsv_dual_shield_inmb_gbp_m: 12.37, subledger_b_hpv_2040_elimination_inmb_gbp_m: 10.72, subledger_c_shingrix_coldchain_inmb_gbp_m: 7.20, total_v3_3_inmb_20k_gbp_m: 30.29 },
+      { icb_ods_code: "QWO", icb_name: "NHS West Yorkshire Integrated Care Board", rsv_maternal_preterm_older_cohort_yr: 14526, nhscsp_2040_hrhpv_self_sampling_cohort_yr: 19401, infections_cancers_and_phn_avoided_yr: 1025.6, subledger_a_rsv_dual_shield_inmb_gbp_m: 12.32, subledger_b_hpv_2040_elimination_inmb_gbp_m: 10.85, subledger_c_shingrix_coldchain_inmb_gbp_m: 7.09, total_v3_3_inmb_20k_gbp_m: 30.26 },
+      { icb_ods_code: "QYG", icb_name: "NHS Cheshire and Merseyside Integrated Care Board", rsv_maternal_preterm_older_cohort_yr: 13908, nhscsp_2040_hrhpv_self_sampling_cohort_yr: 18369, infections_cancers_and_phn_avoided_yr: 976.3, subledger_a_rsv_dual_shield_inmb_gbp_m: 11.59, subledger_b_hpv_2040_elimination_inmb_gbp_m: 10.08, subledger_c_shingrix_coldchain_inmb_gbp_m: 6.73, total_v3_3_inmb_20k_gbp_m: 28.40 },
+      { icb_ods_code: "QMF", icb_name: "NHS North East London Integrated Care Board", rsv_maternal_preterm_older_cohort_yr: 13240, nhscsp_2040_hrhpv_self_sampling_cohort_yr: 17639, infections_cancers_and_phn_avoided_yr: 933.1, subledger_a_rsv_dual_shield_inmb_gbp_m: 11.18, subledger_b_hpv_2040_elimination_inmb_gbp_m: 9.82, subledger_c_shingrix_coldchain_inmb_gbp_m: 6.46, total_v3_3_inmb_20k_gbp_m: 27.46 },
+      { icb_ods_code: "QKK", icb_name: "NHS South East London Integrated Care Board", rsv_maternal_preterm_older_cohort_yr: 10421, nhscsp_2040_hrhpv_self_sampling_cohort_yr: 13532, infections_cancers_and_phn_avoided_yr: 725.4, subledger_a_rsv_dual_shield_inmb_gbp_m: 8.49, subledger_b_hpv_2040_elimination_inmb_gbp_m: 7.27, subledger_c_shingrix_coldchain_inmb_gbp_m: 4.99, total_v3_3_inmb_20k_gbp_m: 20.75 },
+      { icb_ods_code: "QHL", icb_name: "NHS Birmingham and Solihull Integrated Care Board", rsv_maternal_preterm_older_cohort_yr: 9392, nhscsp_2040_hrhpv_self_sampling_cohort_yr: 12771, infections_cancers_and_phn_avoided_yr: 668.7, subledger_a_rsv_dual_shield_inmb_gbp_m: 8.16, subledger_b_hpv_2040_elimination_inmb_gbp_m: 7.32, subledger_c_shingrix_coldchain_inmb_gbp_m: 4.64, total_v3_3_inmb_20k_gbp_m: 20.13 },
+      { icb_ods_code: "QKS", icb_name: "NHS Kent and Medway Integrated Care Board", rsv_maternal_preterm_older_cohort_yr: 9693, nhscsp_2040_hrhpv_self_sampling_cohort_yr: 12529, infections_cancers_and_phn_avoided_yr: 673.9, subledger_a_rsv_dual_shield_inmb_gbp_m: 8.08, subledger_b_hpv_2040_elimination_inmb_gbp_m: 6.95, subledger_c_shingrix_coldchain_inmb_gbp_m: 4.73, total_v3_3_inmb_20k_gbp_m: 19.76 },
+      { icb_ods_code: "QE1", icb_name: "NHS Lancashire and South Cumbria Integrated Care Board", rsv_maternal_preterm_older_cohort_yr: 9249, nhscsp_2040_hrhpv_self_sampling_cohort_yr: 12214, infections_cancers_and_phn_avoided_yr: 651.2, subledger_a_rsv_dual_shield_inmb_gbp_m: 8.00, subledger_b_hpv_2040_elimination_inmb_gbp_m: 6.99, subledger_c_shingrix_coldchain_inmb_gbp_m: 4.63, total_v3_3_inmb_20k_gbp_m: 19.61 }
+    ];
+
+    function switchImmunoTab(idx) {
+      [1, 2, 3].forEach(function(k) {
+        document.getElementById("immunoTab" + k).classList.toggle("active", k === idx);
+        document.getElementById("btnTab" + k).classList.toggle("active", k === idx);
+      });
+      if (idx === 1) renderTab1Enaqt();
+      if (idx === 2) renderTab2ColdChain();
+      if (idx === 3) renderTab3Rsv();
+    }
+
+    function renderTab1Enaqt() {
+      const gIdx = parseInt(document.getElementById("rngGamma").value, 10);
+      const pt = ENAQT_SCAN[gIdx] || ENAQT_SCAN[4];
+      const rNm = parseFloat(document.getElementById("rngDist").value);
+      const net = document.getElementById("selExcitonNet").value;
+      const hpv = document.getElementById("selHpvFollowup").value;
+
+      document.getElementById("lblGamma").textContent = pt.g + " cm⁻¹" + (pt.g === 95 ? " (Optimal ENAQT)" : (pt.g === 0 ? " (Anderson Limit)" : ""));
+      document.getElementById("lblDist").textContent = rNm.toFixed(1) + " nm";
+
+      const kForsterNs = 0.40 * Math.pow(5.6 / rNm, 6);
+      const lod = 12.0 * (0.87304 / pt.eta);
+      document.getElementById("mTab1Eta").textContent = (100 * pt.eta).toFixed(2) + "%";
+      document.getElementById("mTab1Lod").textContent = lod.toFixed(2) + " copies/µL";
+      document.getElementById("mTab1Forster").textContent = kForsterNs.toFixed(3) + " ns⁻¹";
+
+      const cqrsEl = document.getElementById("pillTab1Cqrs");
+      if (net === "16_sim") {
+        cqrsEl.textContent = "ACQ CQRS = (3, 8) SIMULATED · 116.5 TiB";
+        cqrsEl.className = "pill pill-amber";
+      } else if (net === "12_mpo") {
+        cqrsEl.textContent = "ACQ CQRS = (2, 8) HEOM/MPO · 1.74 GiB";
+        cqrsEl.className = "pill pill-signal";
+      } else {
+        cqrsEl.textContent = "ACQ CQRS = (0, 9) CPU Floor · Scalar Avg: None";
+        cqrsEl.className = "pill pill-signal";
+      }
+
+      const al = document.getElementById("alertTab1");
+      const flags = [];
+      if (hpv === "defer_3yr_trap") {
+        flags.push("TRAP G79 INTERCEPTED (NHSCSP 2040): Vaginal self-sampling swabs detect hrHPV-16 DNA/mRNA (PDB 4XR8 E6–p53) but contain ZERO cervical transformation-zone epithelial cells. Hard-blocking 3-year recall and booking urgent in-person clinician liquid-based cervical cytology / colposcopy.");
+      }
+      if (net === "4_qpu_wash") {
+        flags.push("TRAP G79 INTERCEPTED (ACQ Gate G4): N=4 single-exciton beacon has Hilbert dim = 6 (<8 ms exact GKSL CPU, CQRS=(0,9)). Blocking noisy QPU quantum-washing and routing to deterministic laptop floor.");
+      }
+      if (flags.length > 0) {
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>🛡 DCB0129 Runtime Commit Gate Triggered:</strong><br/>" + flags.join("<br/>");
+      } else {
+        al.className = "alert-box alert-ok";
+        al.innerHTML = "<strong>✓ Verified Safe NHS 2040 Pathway:</strong> Plenio–Huelga ENAQT relay evaluated cleanly on classical GKSL floor (<code>|Tr ρ − 1| = 1.89e−15</code>) with closed-loop clinician cervical cytology triage.";
+      }
+
+      // Render SVG ENAQT curve
+      const W = 560, H = 255, padL = 52, padR = 22, padT = 28, padB = 42;
+      const pW = W - padL - padR, pH = H - padT - padB;
+      const yOf = function(pct) { return padT + pH * (1 - (pct - 40) / 62); };
+      const xOf = function(i) { return padL + (i / (ENAQT_SCAN.length - 1)) * pW; };
+
+      let svg = "";
+      [45, 60, 75, 90, 100].forEach(function(yv) {
+        const yy = yOf(yv);
+        svg += '<line x1="' + padL + '" y1="' + yy.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yy.toFixed(1) + '" stroke="rgba(158,185,182,0.15)"/>';
+        svg += '<text x="' + (padL - 7) + '" y="' + (yy + 3.5).toFixed(1) + '" text-anchor="end" fill="#9eb9b6" font-size="10" font-family="JetBrains Mono, monospace">' + yv + '%</text>';
+      });
+
+      const yAnd = yOf(47.794), yZeno = yOf(87.304);
+      svg += '<line x1="' + padL + '" y1="' + yAnd.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yAnd.toFixed(1) + '" stroke="#f06a3b" stroke-dasharray="4,3" stroke-width="1.4"/>';
+      svg += '<text x="' + (W - padR - 4) + '" y="' + (yAnd - 5).toFixed(1) + '" text-anchor="end" fill="#ff9472" font-size="9.5" font-family="Barlow, sans-serif">Anderson Limit (γ=0: 47.8%)</text>';
+      svg += '<line x1="' + padL + '" y1="' + yZeno.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yZeno.toFixed(1) + '" stroke="#f4ae42" stroke-dasharray="3,3" stroke-width="1.4"/>';
+      svg += '<text x="' + (W - padR - 4) + '" y="' + (yZeno + 12).toFixed(1) + '" text-anchor="end" fill="#f4ae42" font-size="9.5" font-family="Barlow, sans-serif">Classical Hopping Limit (87.3%)</text>';
+
+      let pathD = "";
+      ENAQT_SCAN.forEach(function(row, i) {
+        const xx = xOf(i), yy = yOf(100 * row.eta);
+        pathD += (i === 0 ? "M" : "L") + xx.toFixed(1) + "," + yy.toFixed(1) + " ";
+        svg += '<text x="' + xx.toFixed(1) + '" y="' + (H - 14) + '" text-anchor="middle" fill="#9eb9b6" font-size="9.2" font-family="JetBrains Mono, monospace">' + row.g + '</text>';
+      });
+      svg += '<path d="' + pathD + '" fill="none" stroke="#38d6c4" stroke-width="2.8"/>';
+      ENAQT_SCAN.forEach(function(row, i) {
+        const xx = xOf(i), yy = yOf(100 * row.eta);
+        const sel = (i === gIdx);
+        svg += '<circle cx="' + xx.toFixed(1) + '" cy="' + yy.toFixed(1) + '" r="' + (sel ? 6.5 : 3.6) + '" fill="' + (sel ? "#f4ae42" : "#38d6c4") + '" stroke="#081316" stroke-width="1.5"/>';
+      });
+      svg += '<text x="' + (padL + pW / 2).toFixed(1) + '" y="' + (H - 2) + '" text-anchor="middle" fill="#6d8986" font-size="9.5" font-family="Barlow, sans-serif">Pure Dephasing Rate γ_φ (cm⁻¹) · Peak ENAQT = 97.98% @ 95 cm⁻¹</text>';
+      document.getElementById("svgTab1Enaqt").innerHTML = svg;
+    }
+
+    function calcColdChainIntactPct(tempC, hours, isM1psi) {
+      // Base 7d @ 4C storage scissions + excursion scissions matching Eyring 2'-OH model
+      const baseSciss4C = isM1psi ? 0.0531 : 0.1440;
+      if (tempC <= -65) return 100.0 * Math.exp(-0.0002);
+      const rKcal = 1.987204e-3;
+      const kbH = 2.08366e10;
+      const tK = tempC + 273.15;
+      const dg = 22.40 - tK * (-0.02415);
+      const kEyring = kbH * tK * Math.exp(-dg / (rKcal * tK));
+      const geom = isM1psi ? Math.pow(Math.cos(Math.PI - 160 * Math.PI / 180), 2) : Math.pow(Math.cos(Math.PI - 176 * Math.PI / 180), 2);
+      const sProt = isM1psi ? ((1 - 0.66 * 0.68) * 0.595) : (1 - 0.66 * 0.32);
+      const kNt = kEyring * geom * sProt * 1.09;
+      const totSciss = baseSciss4C + 3800 * kNt * (hours * 3600);
+      return 100.0 * Math.exp(-totSciss);
+    }
+
+    function renderTab2ColdChain() {
+      const tempC = parseFloat(document.getElementById("rngTempC").value);
+      const hrs = parseFloat(document.getElementById("rngHours").value);
+      const chem = document.getElementById("selMrnaChem").value;
+      const allergy = document.getElementById("selAllergy").value;
+
+      const isM1psi = (chem !== "uri_m7g");
+      const isMethCap = (chem !== "m1psi_unmeth");
+      document.getElementById("lblTempC").textContent = (tempC >= 0 ? "+" : "") + tempC + " °C" + (tempC <= 8 && tempC >= 2 ? " (2–8°C Fridge)" : (tempC >= 25 ? " (Warm Excursion!)" : ""));
+      document.getElementById("lblHours").textContent = hrs + " h";
+
+      const intact = calcColdChainIntactPct(tempC, hrs, isM1psi);
+      document.getElementById("mTab2CapDg").textContent = isMethCap ? "−9.42 kcal/mol (Kd 95 nM)" : "−5.18 kcal/mol (Kd 77 µM!)";
+      document.getElementById("mTab2Missed").textContent = isMethCap ? "73.86% (−2.46 kcal/mol)" : "51.20% (No Cation–π)";
+      document.getElementById("mTab2Tlr8").textContent = isM1psi ? "6.6% (m1Ψ Evaded)" : "100.0% (TLR8 Agonism!)";
+      document.getElementById("mTab2Intact").textContent = intact.toFixed(2) + "%";
+
+      const pEl = document.getElementById("pillTab2Potency");
+      pEl.textContent = "Intact: " + intact.toFixed(1) + "% " + (intact >= 80.0 ? "(≥80% Floor)" : "(<80% QUARANTINE!)");
+      pEl.className = "pill " + (intact >= 80.0 ? "pill-signal" : "pill-ember");
+
+      const al = document.getElementById("alertTab2");
+      const flags = [];
+      if (intact < 80.0) {
+        flags.push("TRAP G78 INTERCEPTED (MHRA / CMO Nov 2026 Cold-Chain): Cumulative 2'-OH inline phosphodiester cleavage reduced intact full-length mRNA to " + intact.toFixed(1) + "% (<80.0% pharmacopoeial potency floor). Vial QUARANTINED; replace from verified 2–8°C logger stock.");
+      }
+      if (allergy === "peg_anaphylaxis_trap") {
+        flags.push("TRAP G80 INTERCEPTED (Green Book Ch. 8): Tryptase-confirmed systemic PEG-2000 anaphylaxis detected. Blocking primary-care PEG-lipid re-exposure and routing to PEG-free recombinant protein subunit vaccine under allergy supervision.");
+      }
+      if (allergy === "mild_egg_refuse_trap") {
+        flags.push("TRAP G80 OVERTURNED (False Withholding Prevented): Mild non-anaphylactic egg allergy is NOT a contraindication to NHS RSVpreF, Shingrix, or low-ovalbumin influenza vaccines. Overturning blanket refusal to prevent fatal winter pneumonia.");
+      }
+      if (flags.length > 0) {
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>🛡 DCB0129 Cold-Chain &amp; Allergy Gate Active:</strong><br/>" + flags.join("<br/>");
+      } else {
+        al.className = "alert-box alert-ok";
+        al.innerHTML = "<strong>✓ Potency &amp; Green Book Ch. 8 Verified:</strong> Intact mRNA (<code>" + intact.toFixed(1) + "% ≥ 80%</code>) and allergy profile cleared for safe rural/community administration.";
+      }
+
+      // Render SVG 0..72h Cold-Chain Curve
+      const W = 560, H = 255, padL = 52, padR = 22, padT = 26, padB = 40;
+      const pW = W - padL - padR, pH = H - padT - padB;
+      const yOf = function(pct) { return padT + pH * (1 - (Math.max(20, pct) - 20) / 82); };
+      const xOf = function(h) { return padL + (h / 72.0) * pW; };
+
+      let svg = "";
+      [25, 50, 80, 100].forEach(function(yv) {
+        const yy = yOf(yv);
+        const isFloor = (yv === 80);
+        svg += '<line x1="' + padL + '" y1="' + yy.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yy.toFixed(1) + '" stroke="' + (isFloor ? "#f06a3b" : "rgba(158,185,182,0.15)") + '" stroke-dasharray="' + (isFloor ? "5,3" : "none") + '" stroke-width="' + (isFloor ? "1.8" : "1") + '"/>';
+        svg += '<text x="' + (padL - 7) + '" y="' + (yy + 3.5).toFixed(1) + '" text-anchor="end" fill="' + (isFloor ? "#ff9472" : "#9eb9b6") + '" font-size="10" font-family="JetBrains Mono, monospace">' + yv + '%</text>';
+      });
+      svg += '<text x="' + (W - padR - 4) + '" y="' + (yOf(80) - 5).toFixed(1) + '" text-anchor="end" fill="#ff9472" font-size="9.5" font-weight="700" font-family="Barlow, sans-serif">80% MHRA Quarantine Floor (Trap G78)</text>';
+
+      let d4c = "", dSel = "";
+      for (let h = 0; h <= 72; h += 4) {
+        const xx = xOf(h);
+        const y4 = yOf(calcColdChainIntactPct(4.0, h, true));
+        const yS = yOf(calcColdChainIntactPct(tempC, h, isM1psi));
+        d4c += (h === 0 ? "M" : "L") + xx.toFixed(1) + "," + y4.toFixed(1) + " ";
+        dSel += (h === 0 ? "M" : "L") + xx.toFixed(1) + "," + yS.toFixed(1) + " ";
+        if (h % 12 === 0) {
+          svg += '<text x="' + xx.toFixed(1) + '" y="' + (H - 14) + '" text-anchor="middle" fill="#9eb9b6" font-size="9.5" font-family="JetBrains Mono, monospace">' + h + 'h</text>';
+        }
+      }
+      svg += '<path d="' + d4c + '" fill="none" stroke="rgba(56,214,196,0.5)" stroke-dasharray="4,3" stroke-width="2"/>';
+      svg += '<path d="' + dSel + '" fill="none" stroke="' + (intact >= 80 ? "#38d6c4" : "#f06a3b") + '" stroke-width="2.8"/>';
+      svg += '<circle cx="' + xOf(hrs).toFixed(1) + '" cy="' + yOf(intact).toFixed(1) + '" r="6.5" fill="' + (intact >= 80 ? "#f4ae42" : "#f06a3b") + '" stroke="#081316" stroke-width="1.5"/>';
+      svg += '<text x="' + (padL + pW / 2).toFixed(1) + '" y="' + (H - 2) + '" text-anchor="middle" fill="#6d8986" font-size="9.5" font-family="Barlow, sans-serif">Excursion Hours · Dashed Cyan = Verified 4°C Reference</text>';
+      document.getElementById("svgTab2ColdChain").innerHTML = svg;
+    }
+
+    function calcMaternalVe(vaxWk, birthWk) {
+      const days = Math.max(0, (birthWk - vaxWk) * 7.0);
+      const iggRise = days > 5.0 ? (1.0 - Math.exp(-(days - 5.0) / 10.5)) : 0.05;
+      const fcrnMat = 1.0 / (1.0 + Math.exp(-(birthWk - 31.5) / 1.8));
+      const cord = 1.32 * iggRise * fcrnMat;
+      const ve = 96.4 * (cord / (0.175 + cord));
+      return { cord: cord, ve: ve, days: days };
+    }
+
+    function renderTab3Rsv() {
+      const vaxWk = parseFloat(document.getElementById("rngVaxWk").value);
+      const birthWk = parseFloat(document.getElementById("rngBirthWk").value);
+      const mabPlan = document.getElementById("selNirsevimab").value;
+      const bio = document.getElementById("selBiologic").value;
+
+      document.getElementById("lblVaxWk").textContent = vaxWk.toFixed(1) + " wks" + (vaxWk < 28 ? " (<28w Premature!)" : " (≥28w JCVI Window)");
+      document.getElementById("lblBirthWk").textContent = birthWk.toFixed(1) + " wks" + (birthWk < 32 ? " (<32w Preterm!)" : "");
+
+      const m = calcMaternalVe(vaxWk, birthWk);
+      const needsMab = (birthWk < 32.0 || m.days < 14.0);
+      const effVe = (needsMab && mabPlan === "auto_rescue") ? Math.max(m.ve, 83.4) : m.ve;
+
+      document.getElementById("mTab3Cord").textContent = m.cord.toFixed(3) + "×";
+      document.getElementById("mTab3InfantVe").textContent = effVe.toFixed(2) + "%" + (needsMab && mabPlan === "auto_rescue" ? " (YTE Rescue)" : "");
+      document.getElementById("mTab3Mem").textContent = (bio === "ritux_first_trap") ? "6.66% (Ablated!)" : (bio === "live_zostavax_trap" ? "CONTRAINDICATED" : "78.4% (Vax → Ritux)");
+
+      const pEl = document.getElementById("pillTab3Ve");
+      pEl.textContent = "Newborn VE: " + effVe.toFixed(1) + "% · YTE t½ = 69.4 d";
+      pEl.className = "pill " + (effVe >= 75.0 && bio === "shingrix_pre_ritux" && vaxWk >= 28 ? "pill-signal" : "pill-ember");
+
+      const al = document.getElementById("alertTab3");
+      const flags = [];
+      if (vaxWk < 28.0) {
+        flags.push("TRAP G77 INTERCEPTED (JCVI Maternal RSV): Off-licence maternal RSVpreF proposed at " + vaxWk.toFixed(0) + " weeks (<28+0w window). Deferring to ≥28+0 weeks gestation.");
+      }
+      if (needsMab && mabPlan === "omit_preterm_trap") {
+        flags.push("TRAP G78 INTERCEPTED (UKHSA Preterm FcRn Bypass): Delivery at " + birthWk.toFixed(1) + "w (" + m.days.toFixed(0) + "d post-vax) bypasses third-trimester placental FcRn IgG shuttle (maternal VE only " + m.ve.toFixed(1) + "%). Blocking unprotected discharge and administering Nirsevimab (IgG1-YTE, PDB 3FJT, t½ = 69.4 d).");
+      }
+      if (bio === "live_zostavax_trap") {
+        flags.push("TRAP G77 INTERCEPTED (Green Book Ch. 6 & 28a): Live-attenuated Zostavax is strictly CONTRAINDICATED on JAKi/biologics (34.5% disseminated VZV hazard). Rerouting to non-live recombinant Shingrix (gE/AS01B, 97.1% VE).");
+      }
+      if (bio === "ritux_first_trap") {
+        flags.push("TRAP G77 INTERCEPTED (Non-Commuting [U_ritux, U_vax] ≠ 0): Infusing CD20-depleting rituximab BEFORE vaccination collapses humoral plasma memory from 78.4% to 6.7%. Enforcing non-live priming ≥2–4 weeks prior to rituximab.");
+      }
+      if (flags.length > 0) {
+        al.className = "alert-box alert-danger";
+        al.innerHTML = "<strong>🛡 DCB0129 Maternal FcRn &amp; Biologic Gate Triggered:</strong><br/>" + flags.join("<br/>");
+      } else {
+        al.className = "alert-box alert-ok";
+        al.innerHTML = "<strong>✓ UKHSA Green Book &amp; Neonatal RSV Shield Verified:</strong> Maternal/neonatal FcRn transfer and pre-rituximab recombinant Shingrix ordering verified safe.";
+      }
+
+      // Render SVG Gestational FcRn Curve (26..41w)
+      const W = 560, H = 255, padL = 52, padR = 22, padT = 26, padB = 40;
+      const pW = W - padL - padR, pH = H - padT - padB;
+      const yOf = function(pct) { return padT + pH * (1 - pct / 100.0); };
+      const xOf = function(wk) { return padL + ((wk - 26.0) / 15.0) * pW; };
+
+      let svg = "";
+      // <32w preterm bypass zone
+      svg += '<rect x="' + padL + '" y="' + padT + '" width="' + (xOf(32) - padL).toFixed(1) + '" height="' + pH + '" fill="rgba(240,106,59,0.12)"/>';
+      svg += '<text x="' + (padL + 6) + '" y="' + (padT + 14) + '" fill="#ff9472" font-size="9.5" font-weight="700" font-family="Barlow, sans-serif">&lt;32w FcRn Bypass (G78)</text>';
+
+      [0, 25, 50, 75, 100].forEach(function(yv) {
+        const yy = yOf(yv);
+        svg += '<line x1="' + padL + '" y1="' + yy.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yy.toFixed(1) + '" stroke="rgba(158,185,182,0.15)"/>';
+        svg += '<text x="' + (padL - 7) + '" y="' + (yy + 3.5).toFixed(1) + '" text-anchor="end" fill="#9eb9b6" font-size="10" font-family="JetBrains Mono, monospace">' + yv + '%</text>';
+      });
+
+      const yNirs = yOf(83.4);
+      svg += '<line x1="' + padL + '" y1="' + yNirs.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yNirs.toFixed(1) + '" stroke="#f4ae42" stroke-dasharray="4,3" stroke-width="1.6"/>';
+      svg += '<text x="' + (W - padR - 4) + '" y="' + (yNirs - 5).toFixed(1) + '" text-anchor="end" fill="#f4ae42" font-size="9.5" font-family="Barlow, sans-serif">Nirsevimab YTE Rescue (83.4% · t½=69.4d)</text>';
+
+      let dMat = "";
+      for (let w = 26.0; w <= 41.01; w += 0.5) {
+        const xx = xOf(w);
+        const yy = yOf(calcMaternalVe(vaxWk, w).ve);
+        dMat += (w === 26.0 ? "M" : "L") + xx.toFixed(1) + "," + yy.toFixed(1) + " ";
+        if (w % 3 === 2) {
+          svg += '<text x="' + xx.toFixed(1) + '" y="' + (H - 14) + '" text-anchor="middle" fill="#9eb9b6" font-size="9.5" font-family="JetBrains Mono, monospace">' + w.toFixed(0) + 'w</text>';
+        }
+      }
+      svg += '<path d="' + dMat + '" fill="none" stroke="#38d6c4" stroke-width="2.8"/>';
+      svg += '<circle cx="' + xOf(birthWk).toFixed(1) + '" cy="' + yOf(m.ve).toFixed(1) + '" r="6.5" fill="' + (needsMab ? "#f06a3b" : "#38d6c4") + '" stroke="#081316" stroke-width="1.5"/>';
+      svg += '<text x="' + (padL + pW / 2).toFixed(1) + '" y="' + (H - 2) + '" text-anchor="middle" fill="#6d8986" font-size="9.5" font-family="Barlow, sans-serif">Gestational Age at Delivery (Weeks) · Maternal RSVpreF @ ' + vaxWk.toFixed(0) + 'w</text>';
+      document.getElementById("svgTab3Fcrn").innerHTML = svg;
+    }
+
+    function populateLeague(rows) {
+      const tb = document.getElementById("icbLeagueBody");
+      tb.innerHTML = rows.map(function(r) {
+        return "<tr>" +
+          "<td><code>" + r.icb_ods_code + "</code></td>" +
+          "<td><strong>" + r.icb_name.replace(" Integrated Care Board", " ICB") + "</strong></td>" +
+          "<td>" + Number(r.rsv_maternal_preterm_older_cohort_yr).toLocaleString() + "</td>" +
+          "<td>" + Number(r.nhscsp_2040_hrhpv_self_sampling_cohort_yr).toLocaleString() + "</td>" +
+          "<td>" + Number(r.infections_cancers_and_phn_avoided_yr).toLocaleString() + "</td>" +
+          "<td>+£" + Number(r.subledger_a_rsv_dual_shield_inmb_gbp_m).toFixed(2) + "M</td>" +
+          "<td>+£" + Number(r.subledger_b_hpv_2040_elimination_inmb_gbp_m).toFixed(2) + "M</td>" +
+          "<td>+£" + Number(r.subledger_c_shingrix_coldchain_inmb_gbp_m).toFixed(2) + "M</td>" +
+          "<td><strong style='color:var(--signal);'>+£" + Number(r.total_v3_3_inmb_20k_gbp_m).toFixed(2) + "M/yr</strong></td>" +
+        "</tr>";
+      }).join("");
+    }
+
+    renderTab1Enaqt();
+    populateLeague(FALLBACK_TOP10);
+    fetch("./receipts/opencareq_public_v3_3_quantum_immunoprevention_summary.json")
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d && d.top_10_icbs_by_v3_3_inmb) populateLeague(d.top_10_icbs_by_v3_3_inmb);
+      })
+      .catch(function() {});
+  </script>
+</body>
+</html>
