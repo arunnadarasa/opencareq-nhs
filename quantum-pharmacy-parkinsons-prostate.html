@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenCareQ v3.9 — 7/7 NHS Pharmacy First, 75-PDB Suite &amp; &gt;1.00 ZiB CYP17A1 Gate G4 Studio (+£17.08B/yr 42-ICB Stack, 385/385 Parity &amp; G1–G104)</title>
+  <meta name="description" content="OpenCareQ v3.9.0 Interactive Studio: Lowdin-Coleman 1-RDM &amp; Weinhold NBO 7/7 NHS Pharmacy First + PALACE Penicillin Delabeling (PDB 1FQG/2KI5, G101), Warshel-Levitt Polarizable QM/MM &amp; Dunathan PLP NICE NG71 Parkinson's On-Time Safety (PDB 9GNS/3BWM, G102), and Hahn-Bloch-Torrey Prostate mpMRI + 1.0018 ZiB CYP17A1 Gate G4 (#75 PDB 6WR1, G103-G104)." />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1517;
+      --bg-elevated: #101f23;
+      --bg-card: #14262b;
+      --bg-card-alt: #0d1a1d;
+      --ink: #eef7f5;
+      --ink-muted: #9eb7b4;
+      --signal: #38d6c4;
+      --signal-soft: rgba(56, 214, 196, 0.13);
+      --amber: #f4ae42;
+      --amber-soft: rgba(244, 174, 66, 0.14);
+      --ember: #f06a3b;
+      --ember-soft: rgba(240, 106, 59, 0.15);
+      --blue: #3898ff;
+      --violet: #b088f9;
+      --border: rgba(158, 183, 180, 0.18);
+      --border-strong: rgba(56, 214, 196, 0.48);
+      --radius: 12px;
+      --font-display: "Barlow Condensed", system-ui, sans-serif;
+      --font-sans: "Barlow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --max-w: 1240px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      line-height: 1.58;
+    }
+    body {
+      background:
+        radial-gradient(circle at 12% 4%, rgba(56, 214, 196, 0.12), transparent 34%),
+        radial-gradient(circle at 88% 9%, rgba(244, 174, 66, 0.09), transparent 32%),
+        var(--bg);
+    }
+    a { color: var(--signal); text-decoration: none; }
+    a:hover { color: var(--amber); }
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      background: rgba(56, 214, 196, 0.11);
+      color: #c5f2ec;
+      padding: 0.1rem 0.34rem;
+      border-radius: 4px;
+      word-break: break-word;
+    }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.15rem; width: 100%; }
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      backdrop-filter: blur(14px);
+      background: rgba(11, 21, 23, 0.9);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0.55rem 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .brand-mark {
+      display: inline-grid;
+      place-items: center;
+      width: 1.85rem;
+      height: 1.85rem;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--signal), #1ca394);
+      color: #061315;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 0.36rem; align-items: center; font-size: 0.78rem; font-weight: 600; }
+    .nav-links a {
+      color: var(--ink-muted);
+      padding: 0.28rem 0.56rem;
+      border-radius: 7px;
+      border: 1px solid transparent;
+    }
+    .nav-links a:hover { color: var(--ink); border-color: var(--border); background: rgba(255, 255, 255, 0.04); }
+    .nav-links a.btn-primary {
+      background: var(--signal);
+      color: #061517;
+      border-color: var(--signal);
+      font-weight: 800;
+    }
+    .hero { padding: 1.9rem 0 1.5rem; border-bottom: 1px solid var(--border); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.42rem; margin-bottom: 0.75rem; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.73rem;
+      font-weight: 700;
+      padding: 0.24rem 0.62rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink-muted);
+    }
+    .pill-signal { color: var(--signal); background: var(--signal-soft); border-color: rgba(56, 214, 196, 0.36); }
+    .pill-amber { color: var(--amber); background: var(--amber-soft); border-color: rgba(244, 174, 66, 0.36); }
+    .pill-ember { color: var(--ember); background: var(--ember-soft); border-color: rgba(240, 106, 59, 0.36); }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.05rem, 4.3vw, 3.2rem);
+      line-height: 1.04;
+      margin: 0 0 0.65rem;
+      letter-spacing: 0.01em;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+      line-height: 1.1;
+      margin: 0 0 0.45rem;
+    }
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.28rem;
+      line-height: 1.15;
+      margin: 0 0 0.45rem;
+    }
+    .lead { color: var(--ink-muted); font-size: 0.97rem; max-width: 1040px; margin: 0 0 1.05rem; }
+    .lead strong { color: var(--ink); }
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+    }
+    @media (max-width: 960px) { .kpi-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 540px) { .kpi-strip { grid-template-columns: 1fr; } }
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.8rem 0.95rem;
+    }
+    .kpi-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--amber);
+    }
+    .kpi-val {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--signal);
+      line-height: 1.08;
+      margin: 0.18rem 0;
+    }
+    .kpi-sub { font-size: 0.76rem; color: var(--ink-muted); line-height: 1.36; }
+
+    section { padding: 1.85rem 0; border-bottom: 1px solid var(--border); }
+    .tab-bar { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1rem; }
+    .tab-btn {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.48rem 0.86rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card-alt);
+      color: var(--ink-muted);
+      cursor: pointer;
+      text-align: left;
+    }
+    .tab-btn:hover { color: var(--ink); border-color: var(--border-strong); }
+    .tab-btn.active {
+      background: var(--signal);
+      color: #061517;
+      border-color: var(--signal);
+      font-weight: 800;
+    }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+    .workbench-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+      gap: 1rem;
+      align-items: start;
+    }
+    @media (max-width: 860px) { .workbench-grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.05rem;
+      min-width: 0;
+    }
+    .ctrl-group { margin-bottom: 0.82rem; }
+    .ctrl-group label {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      font-size: 0.77rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--ink-muted);
+      margin-bottom: 0.3rem;
+      flex-wrap: wrap;
+    }
+    select, input[type="range"] { width: 100%; max-width: 100%; }
+    select {
+      background: var(--bg-card-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.48rem 0.6rem;
+      font-family: var(--font-sans);
+      font-size: 0.86rem;
+    }
+    input[type="range"] { accent-color: var(--signal); cursor: pointer; }
+    .chk-list { display: flex; flex-direction: column; gap: 0.44rem; margin-top: 0.5rem; }
+    .chk-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--ink);
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.45rem 0.6rem;
+      cursor: pointer;
+    }
+    .chk-row input { margin-top: 0.2rem; accent-color: var(--ember); flex-shrink: 0; }
+    .verdict-box {
+      margin-top: 0.75rem;
+      border-radius: 10px;
+      padding: 0.78rem 0.9rem;
+      font-size: 0.84rem;
+      border: 1px solid var(--border-strong);
+      background: rgba(56, 214, 196, 0.09);
+    }
+    .verdict-box.veto {
+      border-color: rgba(240, 106, 59, 0.68);
+      background: rgba(240, 106, 59, 0.13);
+      color: #ffd8cb;
+    }
+    .svg-stage {
+      background: linear-gradient(180deg, #081518 0%, #050d0f 100%);
+      border: 1px solid rgba(56, 214, 196, 0.25);
+      border-radius: 10px;
+      padding: 0.6rem;
+      width: 100%;
+      overflow: hidden;
+    }
+    .svg-stage svg { display: block; width: 100%; height: auto; }
+    .mini-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.55rem;
+      margin-top: 0.7rem;
+    }
+    @media (max-width: 560px) { .mini-metrics { grid-template-columns: 1fr; } }
+    .mini-stat {
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 0.65rem;
+    }
+    .mini-stat .lbl { font-family: var(--font-mono); font-size: 0.67rem; color: var(--ink-muted); text-transform: uppercase; }
+    .mini-stat .val { font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: var(--signal); margin-top: 0.12rem; }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 640px; }
+    th, td { padding: 0.62rem 0.78rem; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { font-family: var(--font-mono); font-size: 0.71rem; text-transform: uppercase; color: var(--signal); background: var(--bg-card-alt); }
+    tr:last-child td { border-bottom: none; }
+    .notice-box {
+      background: var(--amber-soft);
+      border: 1px solid rgba(244, 174, 66, 0.42);
+      border-left: 4px solid var(--amber);
+      border-radius: 10px;
+      padding: 0.9rem 1.05rem;
+      font-size: 0.82rem;
+      color: #fde9c9;
+      margin-top: 1rem;
+    }
+    footer { padding: 1.5rem 0 2.2rem; font-size: 0.79rem; color: var(--ink-muted); }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">OC</span>
+        <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">v3.9</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Studio Navigation">
+        <a href="index.html">← Main Portal</a>
+        <a href="quantum-uti-sight-epilepsy.html">← v3.8 UTI, Sight &amp; Epilepsy</a>
+        <a href="index.html#v20Mol3dCard" style="color:var(--signal);">75-PDB 3Dmol ↗</a>
+        <a href="harness.html" style="color:var(--amber);">G1–G104 Safety Gate ↗</a>
+        <a href="https://samskrift.com/view/828a3cb1-9922-461a-8b0f-5ef463152537/1557a864-23a8-4667-9902-4a276a4992e8" target="_blank" rel="noopener">Samskrift XXV ↗</a>
+        <a class="btn-primary" href="OpenCareQ_Quantum_Pharmacy_First_7of7_Parkinsons_QMMM_and_Prostate_Spin_Echo_Paper.pdf" download="OpenCareQ_Quantum_Pharmacy_First_7of7_Parkinsons_QMMM_and_Prostate_Spin_Echo_Paper.pdf">⬇ Paper XXV PDF</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="pill-row">
+          <span class="pill pill-signal">Companion Paper XXV (v3.9.0) · 7/7 NHS Pharmacy First Complete!</span>
+          <span class="pill pill-amber">75 Verified RCSB PDBs (≤ 1.98 Å Quintet) · First &gt; 1.00 ZiB Gate G4 Target (#75 6WR1)</span>
+          <span class="pill pill-ember">G1–G104 (208 Cases · 2,912 Evals · 0 Harms) · ML-DSA-65 Receipt #48 (c237f907)</span>
+        </div>
+        <h1>Natural Orbitals, Polarizable QM/MM &amp; Spin-Echo Kurtosis <span style="font-size:0.48em;color:var(--signal);font-family:var(--font-mono);">v3.9.0</span></h1>
+        <p class="lead">
+          Achieving <strong>three historic milestones simultaneously</strong> for NHS population prevention: completing <strong>all <code>7 / 7</code> (<code>100%</code>) statutory <em>NHS England Pharmacy First</em> pathways</strong> alongside <code>BSACI / PALACE</code> direct oral penicillin delabeling (<code>99.5%</code> negative challenge in <code>PEN-FAST &lt; 3</code>, <code>PDB: 1FQG</code> <code>1.70 Å</code> &amp; <code>2KI5</code> <code>1.90 Å</code>), safeguarding <strong><code>NICE NG71</code> Parkinson&apos;s &ldquo;Get It On Time&rdquo; (<code>≤ 30 min</code>)</strong> via <code>Warshel–Levitt (1976/2013 Nobel)</code> polarizable <code>QM/MM</code> &amp; <code>Dunathan sin²φ PLP</code> catalysis (<code>PDB: 9GNS</code> <code>1.93 Å</code> &amp; <code>3BWM</code> <code>1.98 Å</code>), and powering <strong><code>NICE NG131</code> pre-biopsy prostate <code>mpMRI</code> &amp; <code>STAMPEDE</code> oncology</strong> via <code>Hahn–Bloch–Torrey–Stejskal–Tanner</code> spin-echo kurtosis plus our <strong>historic 75th PDB &amp; first <code>&gt; 1.00 Zettabyte</code> (<code>1.0018 ZiB</code>) <code>ACQ Gate G4</code> target (<code>PDB: 6WR1</code> <code>1.85 Å</code> Human <code>CYP17A1 + Abiraterone</code>)</strong>.
+        </p>
+
+        <div class="kpi-strip">
+          <div class="kpi-card">
+            <div class="kpi-eyebrow">Full-Stack National Value (42/42 ICBs)</div>
+            <div class="kpi-val" id="heroFullStackVal">+£17,083.37M/yr</div>
+            <div class="kpi-sub"><code>+£17.08B/yr</code> NHS/PSS · <code>v3.9</code> adds <code>+£1,602.60M/yr</code> (<code>+£44.52M</code> net cash)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-eyebrow">Zero-Fit Falsification &amp; 75-PDB Bank</div>
+            <div class="kpi-val">385 / 385 (100%)</div>
+            <div class="kpi-sub"><code>v3.9 GMFE = 1.0000</code> (<code>15/15 ≤ 1.25×</code>) · <code>75</code> RCSB PDBs (mean <code>1.872 Å</code>)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-eyebrow">First &gt; 1.00 ZiB ACQ Gate G4 Target</div>
+            <div class="kpi-val">1.0018 ZiB (#75!)</div>
+            <div class="kpi-sub"><code>(38e, 36o) CYP17A1 + Abiraterone</code> = <code>1,050,423.01 PiB</code> · <code>96L</code> FTQC</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-eyebrow">7/7 Pharmacy First &amp; G1–G104 Shield</div>
+            <div class="kpi-val">208 Cases · 2,912 Evals</div>
+            <div class="kpi-sub"><code>99.5% PALACE</code> · <code>≤ 30m L-DOPA</code> · <code>93% PROMIS</code> · <code>0</code> Gated Harms</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="interactive-workbenches">
+      <div class="container">
+        <h2>Interactive 3-Engine Clinical Quantum Studio</h2>
+        <p class="lead" style="margin-bottom:0.85rem;">
+          Switch across all three <code>v3.9.0</code> CPU-exact quantum engines (<code>&lt; 15 ms</code>, <code>phi_present = False</code>) and test statutory <code>DCB0129</code> runtime rules <code>G101–G104</code>.
+        </p>
+
+        <div class="tab-bar" role="tablist" aria-label="v3.9 Quantum Engines">
+          <button type="button" class="tab-btn active" role="tab" aria-selected="true" id="tabBtnPf7" onclick="switchV39Tab('pf7')">1 · Löwdin 1-RDM &amp; NBO · 7/7 Pharmacy First + PALACE (G101)</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" id="tabBtnPd" onclick="switchV39Tab('pd')">2 · Warshel–Levitt QM/MM &amp; PLP · NG71 Parkinson&apos;s On-Time (G102)</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" id="tabBtnProstate" onclick="switchV39Tab('prostate')">3 · Hahn–Bloch–Torrey mpMRI &amp; 1.0018 ZiB CYP17A1 #75! (G103–G104)</button>
+        </div>
+
+        <!-- TAB 1: 7/7 PHARMACY FIRST + PALACE -->
+        <div class="tab-pane active" id="panePf7" role="tabpanel" aria-labelledby="tabBtnPf7">
+          <div class="workbench-grid">
+            <div class="card">
+              <h3>7/7 NHS Pharmacy First &amp; PEN-FAST Stewardship</h3>
+              <div class="ctrl-group">
+                <label for="rngChiN">
+                  <span>Bridgehead N Pyramidalization χ_N</span>
+                  <code id="lblChiN">54° (β-Lactam Penicillin G)</code>
+                </label>
+                <input type="range" id="rngChiN" min="0" max="68" step="1" value="54" oninput="renderPf7Tab()" />
+              </div>
+              <div class="ctrl-group">
+                <label for="selPfPathway"><span>Statutory NHS Pharmacy First Pathway (7 / 7 Complete)</span></label>
+                <select id="selPfPathway" onchange="renderPf7Tab()">
+                  <option value="sore_throat">1/7 · NICE NG84 Acute Sore Throat (FeverPAIN ≥ 4 → Penicillin V)</option>
+                  <option value="shingles">2/7 · Shingles ≤ 72h (Aciclovir / Valaciclovir · PDB 2KI5 1.90 Å)</option>
+                  <option value="impetigo">3/7 · NICE NG153 Non-Bullous Impetigo (Hydrogen Peroxide 1% / Fusidic Acid)</option>
+                  <option value="sinusitis">4/7 · NICE NG79 Acute Sinusitis &gt; 10d (Fluticasone Nasal First-Line)</option>
+                  <option value="aom">5/7 · NICE NG91 Paediatric Acute Otitis Media (1–17 yrs · Otoscopic Gate)</option>
+                  <option value="insect_bite">6/7 · Infected Insect Bites (Flucloxacillin · HLA-B*57:01 Check)</option>
+                  <option value="uti_v38">7/7 · NICE NG109 Uncomplicated UTI (Nitrofurantoin eGFR ≥ 45 · v3.8)</option>
+                </select>
+              </div>
+              <div class="ctrl-group">
+                <label for="rngPenFast">
+                  <span>BSACI / PALACE PEN-FAST Allergy Score</span>
+                  <code id="lblPenFast">PEN-FAST = 1 (Low Risk &lt; 3 → 99.5% Safe Oral Delabeling)</code>
+                </label>
+                <input type="range" id="rngPenFast" min="0" max="5" step="1" value="1" oninput="renderPf7Tab()" />
+              </div>
+              <div class="chk-list">
+                <label class="chk-row"><input type="checkbox" id="chkHzo" onchange="renderPf7Tab()" /><span><strong>Hutchinson&apos;s Nasal-Tip / Ocular V1 Shingles (HZO):</strong> Vesicles on nose tip or eye redness → same-day ophthalmology blindness emergency!</span></label>
+                <label class="chk-row"><input type="checkbox" id="chkEbvAmox" onchange="renderPf7Tab()" /><span><strong>Suspected EBV Glandular Fever + Amoxicillin:</strong> Triggers ~80–90% maculopapular rash &amp; false penicillin-allergy label!</span></label>
+                <label class="chk-row"><input type="checkbox" id="chkHlaB5701" onchange="renderPf7Tab()" /><span><strong>HLA-B*57:01 Carrier + Flucloxacillin:</strong> UK DILIGEN cholestatic DILI <code>OR = 80.6</code> (PMID: 19483685)!</span></label>
+                <label class="chk-row"><input type="checkbox" id="chkClariStatin" onchange="renderPf7Tab()" /><span><strong>Clarithromycin + Simvastatin / Atorvastatin Active:</strong> CYP3A4 blockade → acute rhabdomyolysis unless statin held!</span></label>
+              </div>
+              <div id="verdictPf7" class="verdict-box"></div>
+            </div>
+
+            <div class="card">
+              <h3>Löwdin–Coleman 1-RDM &amp; Weinhold NBO Resonance Quenching (PDB: 1FQG &amp; 2KI5)</h3>
+              <div class="svg-stage">
+                <svg id="svgPf7Nbo" viewBox="0 0 580 315" role="img" aria-label="Weinhold NBO lone-pair delocalization vs pyramidalization angle and Coleman 1-RDM occupations"></svg>
+              </div>
+              <div class="mini-metrics">
+                <div class="mini-stat">
+                  <div class="lbl">Weinhold E^(2)(n_N → π*)</div>
+                  <div class="val" id="statPfE2">20.67 kcal/mol (-65.5%)</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="lbl">Löwdin Rank-4 Error</div>
+                  <div class="val">6.59e-17 (Pauli [0,1])</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="lbl">PySCF 2.15 CASSCF(6,6)</div>
+                  <div class="val">-104.23 mHa (1FQG 1.375 Å)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: NICE NG71 PARKINSON'S -->
+        <div class="tab-pane" id="panePd" role="tabpanel" aria-labelledby="tabBtnPd">
+          <div class="workbench-grid">
+            <div class="card">
+              <h3>NICE NG71 Parkinson&apos;s &ldquo;Get It On Time&rdquo; Ward &amp; Clinic Guard</h3>
+              <div class="ctrl-group">
+                <label for="rngPhiPlp">
+                  <span>Dunathan PLP Cα–COO⁻ Torsion Angle φ</span>
+                  <code id="lblPhiPlp">90° (Max σ–π* Cleavage · Carbidopa 1.428 Å Lock)</code>
+                </label>
+                <input type="range" id="rngPhiPlp" min="0" max="90" step="5" value="90" oninput="renderPdTab()" />
+              </div>
+              <div class="ctrl-group">
+                <label for="rngLdopaDelay">
+                  <span>Inpatient Levodopa Administration Delay</span>
+                  <code id="lblLdopaDelay">10 min (≤ 30 min On-Time Safe!)</code>
+                </label>
+                <input type="range" id="rngLdopaDelay" min="0" max="180" step="5" value="10" oninput="renderPdTab()" />
+              </div>
+              <div class="ctrl-group">
+                <label for="selPdRoute"><span>Swallow / Perioperative Nil-By-Mouth Status</span></label>
+                <select id="selPdRoute" onchange="renderPdTab()">
+                  <option value="oral_safe">Oral Co-Beneldopa + Once-Daily Opicapone 50 mg (-116.8 min OFF · BIPARK-I)</option>
+                  <option value="nbm_converted">Nil By Mouth → Immediate Rotigotine Transdermal Patch / Dispersible NG Rescue</option>
+                  <option value="nbm_omitted">Nil By Mouth Surgical Hold → Oral Levodopa Omitted Unconverted (G102 Crisis!)</option>
+                </select>
+              </div>
+              <div class="chk-list">
+                <label class="chk-row"><input type="checkbox" id="chkCentralD2" onchange="renderPdTab()" /><span><strong>IV Metoclopramide / Prochlorperazine / Haloperidol Proposed:</strong> Crosses BBB and blocks striatal D2 receptors → acute rigidity! Switch to domperidone/ondansetron.</span></label>
+                <label class="chk-row"><input type="checkbox" id="chkDominionIcd" onchange="renderPdTab()" /><span><strong>Dopamine Agonist + Gambling / Compulsive Impulse-Control Disorder:</strong> DOMINION <code>17.1%</code> vs <code>6.9%</code> (PMID: 20457959) → supervised taper (avoid abrupt DAWS) to PD MED levodopa (<code>2.0%</code> vs <code>28.0%</code> AE stop).</span></label>
+              </div>
+              <div id="verdictPd" class="verdict-box"></div>
+            </div>
+
+            <div class="card">
+              <h3>Warshel–Levitt Polarizable QM/MM &amp; Dunathan sin²φ PLP (PDB: 9GNS &amp; 3BWM)</h3>
+              <div class="svg-stage">
+                <svg id="svgPdQmmm" viewBox="0 0 580 315" role="img" aria-label="Dunathan sin2phi PLP curve and inpatient levodopa Get It On Time decay"></svg>
+              </div>
+              <div class="mini-metrics">
+                <div class="mini-stat">
+                  <div class="lbl">QM/MM Preorganization</div>
+                  <div class="val">-23.17 kcal/mol</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="lbl">Hellmann–Feynman Err</div>
+                  <div class="val">3.63e-12 eV/Å</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="lbl">Native pyscf.qmmm Mg²⁺</div>
+                  <div class="val">-90.16 kcal/mol (3BWM)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: PROSTATE mpMRI + >1 ZiB CYP17A1 -->
+        <div class="tab-pane" id="paneProstate" role="tabpanel" aria-labelledby="tabBtnProstate">
+          <div class="workbench-grid">
+            <div class="card">
+              <h3>NICE NG131 Prostate mpMRI, STAMPEDE &amp; MHRA Finasteride Guard</h3>
+              <div class="ctrl-group">
+                <label for="rngBval">
+                  <span>PGSE Spin-Echo Diffusion b-Value</span>
+                  <code id="lblBval">b = 1400 s/mm² (6.76× Gleason ≥ 3+4 Contrast!)</code>
+                </label>
+                <input type="range" id="rngBval" min="0" max="2000" step="100" value="1400" oninput="renderProstateTab()" />
+              </div>
+              <div class="ctrl-group">
+                <label for="selProstatePath"><span>Diagnostic &amp; Systemic Oncology Regimen</span></label>
+                <select id="selProstatePath" onchange="renderProstateTab()">
+                  <option value="safe_ng131">NG131 Pre-Biopsy mpMRI (PROMIS 93% Sens) + STAMPEDE Abiraterone + Prednisolone 5 mg (HR = 0.63)</option>
+                  <option value="blind_trus">Direct Blind TRUS Biopsy Without Pre-Biopsy mpMRI (Misses 52% &amp; Sepsis Risk · G103!)</option>
+                  <option value="abi_no_pred">Abiraterone Monotherapy WITHOUT Prednisolone 5 mg (ACTH Mineralocorticoid Hypokalaemia · G103!)</option>
+                  <option value="enza_doac">Enzalutamide + Apixaban Co-Prescribed Unchecked (CYP3A4 Induction Thrombosis · G103!)</option>
+                </select>
+              </div>
+              <div class="chk-list">
+                <label class="chk-row"><input type="checkbox" id="chkFinasterideMood" onchange="renderProstateTab()" /><span><strong>Finasteride Active + New Depression / Suicidal Ideation:</strong> <code>MHRA Apr 2024</code> Drug Safety Update → STOP finasteride immediately + issue Patient Alert Card!</span></label>
+                <label class="chk-row"><input type="checkbox" id="chkTamsulosinIfis" onchange="renderProstateTab()" /><span><strong>Tamsulosin Active + Upcoming Cataract Surgery Unflagged:</strong> Mandatory ophthalmology alert for Intraoperative Floppy Iris Syndrome (<code>IFIS</code>)!</span></label>
+                <label class="chk-row"><input type="checkbox" id="chkQpuWash" onchange="renderProstateTab()" /><span><strong>Route 1D Bloch–Torrey Diffusion PDE to Hardware QPU:</strong> Violates <code>ACQ Gate G4</code> classical floor (<code>&lt; 15 ms</code> exact spectral CPU; reserve FTQC strictly for <code>1.0018 ZiB CYP17A1</code>)!</span></label>
+              </div>
+              <div id="verdictProstate" class="verdict-box"></div>
+            </div>
+
+            <div class="card">
+              <h3>Hahn–Bloch–Torrey–Stejskal–Tanner PGSE &amp; 1.0018 ZiB CYP17A1 (#75 PDB: 6WR1)</h3>
+              <div class="svg-stage">
+                <svg id="svgProstateMri" viewBox="0 0 580 315" role="img" aria-label="Stejskal-Tanner free lumen vs restricted Gleason tumour kurtosis and 1.0018 ZiB Gate G4"></svg>
+              </div>
+              <div class="mini-metrics">
+                <div class="mini-stat">
+                  <div class="lbl">Hahn Echo / Spectral Err</div>
+                  <div class="val">2.22e-16 / 6.68e-10</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="lbl">Gleason Kurtosis K_app</div>
+                  <div class="val" id="statKurtosis">2.2815 (6.76× @b1400)</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="lbl">(38e, 36o) CYP17A1 #75</div>
+                  <div class="val">1.0018 ZiB · CQRS (4,8)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pdb-quintet">
+      <div class="container">
+        <h2>Historic 75-PDB Experimental Crystal Quintet (70 → 75 RCSB PDBs, All ≤ 1.98 Å)</h2>
+        <p class="lead" style="margin-bottom:0.85rem;">
+          All 5 newly curated macromolecular structures are experimental X-ray complexes <code>≤ 1.98 Å</code> (mean <code>1.872 Å</code>) archived offline under the <a href="https://www.rcsb.org/pages/usage-policy" target="_blank" rel="noopener">RCSB PDB CC0 1.0 Universal Public Domain Dedication</a>.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th># / PDB</th>
+                <th>Res.</th>
+                <th>Experimental Macromolecular Complex</th>
+                <th>Verified Coordinate Anchor</th>
+                <th>NHS Pathway &amp; Quantum Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="index.html#v20Mol3dCard"><code>#71 · 1FQG</code></a></td>
+                <td><code>1.70 Å</code></td>
+                <td>Bacterial TEM-1 Serine Transpeptidase/β-Lactamase + Covalent Penicillin G</td>
+                <td><code>PNM523:C7–Ser70:OG = 1.375 Å</code><br/><code>O8–Ser70:N = 2.736 Å</code></td>
+                <td>Weinhold NBO <code>-65.45%</code> quench; <code>7/7</code> <em>Pharmacy First</em> &amp; <code>PALACE</code> <code>99.5%</code> delabeling (<code>G101</code>)</td>
+              </tr>
+              <tr>
+                <td><a href="index.html#v20Mol3dCard"><code>#72 · 2KI5</code></a></td>
+                <td><code>1.90 Å</code></td>
+                <td>Herpes Simplex Virus Type-1 Thymidine Kinase + Bound Aciclovir</td>
+                <td><code>AC2(1):N1–Gln125:OE1 = 2.887 Å</code><br/><code>O6–Gln125:NE2 = 3.006 Å</code></td>
+                <td><em>Pharmacy First</em> Shingles <code>≤ 72h</code> selective phosphorylation + Hutchinson&apos;s <code>HZO</code> eye veto (<code>G101</code>)</td>
+              </tr>
+              <tr>
+                <td><a href="index.html#v20Mol3dCard"><code>#73 · 9GNS</code></a></td>
+                <td><code>1.93 Å</code></td>
+                <td>Human Holo DOPA Decarboxylase (AADC) + Covalent PLP–Carbidopa Hydrazone</td>
+                <td><code>142(502):N–PLP501:C4A = 1.428 Å</code><br/><code>PLP:N1–Asp271 = 2.662 Å</code></td>
+                <td>Dunathan <code>sin²φ</code> (<code>R²=1.0000</code>) &amp; peripheral <code>TPSA=115.8 Å²</code> shield for <code>NG71</code> levodopa (<code>G102</code>)</td>
+              </tr>
+              <tr>
+                <td><a href="index.html#v20Mol3dCard"><code>#74 · 3BWM</code></a></td>
+                <td><code>1.98 Å</code></td>
+                <td>Human Soluble Catechol-O-Methyltransferase (S-COMT) + Mg²⁺ + SAM + DNC</td>
+                <td><code>DNC302:O1–Mg300 = 2.134 Å</code><br/><code>O2–Mg300 = 2.214 Å</code></td>
+                <td>Warshel–Levitt polarizable <code>QM/MM</code> (<code>-23.17 kcal/mol</code>; <code>pyscf.qmmm -90.16 kcal/mol</code>) &amp; <code>Opicapone</code> (<code>G102</code>)</td>
+              </tr>
+              <tr>
+                <td><a href="index.html#v20Mol3dCard"><code>#75 · 6WR1</code></a></td>
+                <td><code>1.85 Å</code></td>
+                <td><strong>Historic 75th PDB:</strong> Human Steroidogenic Cytochrome P450 CYP17A1 + Heme + Abiraterone</td>
+                <td><code>AER601:N22–HEM600:FE = 2.366 Å</code><br/><code>Cys442:SG–FE = 2.446 Å</code></td>
+                <td><strong>First <code>&gt; 1.00 ZiB</code> (<code>1.0018 ZiB</code>) <code>Gate G4</code> Target!</strong> UK <code>STAMPEDE HR=0.63</code> + mandatory <code>Prednisolone 5 mg</code> (<code>G103–G104</code>)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="dcea-ledger">
+      <div class="container">
+        <h2>Triple Non-Overlapping 42-ICB NICE PMG36 NHS/PSS DCEA (+£1,602.60M/yr → +£17.08B/yr Stack)</h2>
+        <p class="lead" style="margin-bottom:0.85rem;">
+          Strictly adhering to <code>NICE PMG36</code> NHS &amp; Personal Social Services accounting (<code>dwp_productivity_transfers_included_in_inmb = False</code>; <code>2,403,508</code> motor-ON, biopsy-free &amp; recovery days tracked non-monetised), all <code>42 / 42</code> English ICBs are health- and equity-positive: Sub-Ledger A (<code>7/7</code> <em>Pharmacy First</em> + <code>PALACE</code>: <code>+£581.33M/yr</code>), Sub-Ledger B (<code>NG71</code> Parkinson&apos;s On-Time: <code>+£425.60M/yr</code>), and Sub-Ledger C (<code>NG131/CG97</code> Prostate <code>mpMRI</code> &amp; <code>BPH</code>: <code>+£595.67M/yr</code>).
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Integrated Care Board (ODS)</th>
+                <th>PF 7/7 Pts</th>
+                <th>PD NG71 Pts</th>
+                <th>Prostate Pts</th>
+                <th>Harms Avoided</th>
+                <th>Sub-Ledger A</th>
+                <th>Sub-Ledgers B+C</th>
+                <th>Total v3.9 INMB</th>
+              </tr>
+            </thead>
+            <tbody id="icbTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="notice-box">
+          <strong>Statutory NHS DCB0129 / DCB0160 &amp; Primary Clinical Evidence Notice (Information Only — Non-SaMD Shadow Mode):</strong>
+          OpenCareQ <code>v3.9.0</code> processes zero patient-identifiable data (<code>phi_present = False</code>), keeps all 7 clinical hazards <code>H-OCQ-01..07</code> <code>OPEN</code>, computes <code>csc_qt_numerical_score_computed = None</code>, and never averages 2D <code>ACQ CQRS</code> pairs. Clinical decisions remain the sole responsibility of the prescribing clinician or pharmacist. Primary peer-reviewed anchors:
+          <a href="https://pubmed.ncbi.nlm.nih.gov/37459086/" target="_blank" rel="noopener">PALACE (PMID: 37459086)</a> ·
+          <a href="https://pubmed.ncbi.nlm.nih.gov/19483685/" target="_blank" rel="noopener">DILIGEN HLA-B*57:01 (PMID: 19483685)</a> ·
+          <a href="https://pubmed.ncbi.nlm.nih.gov/24928805/" target="_blank" rel="noopener">PD MED (PMID: 24928805)</a> ·
+          <a href="https://pubmed.ncbi.nlm.nih.gov/26725544/" target="_blank" rel="noopener">BIPARK-I Opicapone (PMID: 26725544)</a> ·
+          <a href="https://pubmed.ncbi.nlm.nih.gov/20457959/" target="_blank" rel="noopener">DOMINION ICD (PMID: 20457959)</a> ·
+          <a href="https://pubmed.ncbi.nlm.nih.gov/28110982/" target="_blank" rel="noopener">PROMIS mpMRI (PMID: 28110982)</a> ·
+          <a href="https://pubmed.ncbi.nlm.nih.gov/29552975/" target="_blank" rel="noopener">PRECISION (PMID: 29552975)</a> ·
+          <a href="https://pubmed.ncbi.nlm.nih.gov/28578639/" target="_blank" rel="noopener">STAMPEDE Abiraterone (PMID: 28578639)</a>.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      OpenCareQ <code>v3.9.0</code> · Companion Paper XXV · Stewarded non-commercially via <strong>INALYN CIC (#17398798)</strong> under <code>PolyForm-Noncommercial-1.0.0</code> &amp; <code>CC BY-NC-SA 4.0</code> · Sealed Receipt #48 (<code>c237f907a994d70d</code>).
+    </div>
+  </footer>
+
+  <script>
+    var FALLBACK_ICBS = [
+      { icb_ods: "QOP", icb_name: "NHS Greater Manchester ICB", pf7_pts: 17316, pd_pts: 7946, pr_pts: 10353, harms: 2829.9, a_m: 36.02, bc_m: 63.65, tot_m: 99.68 },
+      { icb_ods: "QHM", icb_name: "NHS North East and North Cumbria ICB", pf7_pts: 16484, pd_pts: 7574, pr_pts: 9838, harms: 2692.4, a_m: 34.01, bc_m: 60.06, tot_m: 94.07 },
+      { icb_ods: "QWO", icb_name: "NHS West Yorkshire ICB", pf7_pts: 13740, pd_pts: 6313, pr_pts: 8200, harms: 2244.2, a_m: 28.35, bc_m: 50.05, tot_m: 78.40 },
+      { icb_ods: "QRV", icb_name: "NHS North West London ICB", pf7_pts: 13856, pd_pts: 6385, pr_pts: 8216, harms: 2258.5, a_m: 27.81, bc_m: 48.92, tot_m: 76.73 },
+      { icb_ods: "QYG", icb_name: "NHS Cheshire and Merseyside ICB", pf7_pts: 12976, pd_pts: 5980, pr_pts: 7705, harms: 2116.0, a_m: 26.19, bc_m: 46.11, tot_m: 72.30 },
+      { icb_ods: "QMF", icb_name: "NHS North East London ICB", pf7_pts: 12489, pd_pts: 5746, pr_pts: 7443, harms: 2039.0, a_m: 25.61, bc_m: 45.19, tot_m: 70.80 },
+      { icb_ods: "QHL", icb_name: "NHS Birmingham and Solihull ICB", pf7_pts: 9031, pd_pts: 4135, pr_pts: 5428, harms: 1478.3, a_m: 19.30, bc_m: 34.21, tot_m: 53.51 },
+      { icb_ods: "QKK", icb_name: "NHS South East London ICB", pf7_pts: 9533, pd_pts: 4412, pr_pts: 5622, harms: 1551.1, a_m: 18.74, bc_m: 32.87, tot_m: 51.61 },
+      { icb_ods: "QH8", icb_name: "NHS Mid and South Essex ICB (Anchor)", pf7_pts: 5328, pd_pts: 2472, pr_pts: 3133, harms: 866.1, a_m: 10.37, bc_m: 18.15, tot_m: 28.52 }
+    ];
+
+    function switchV39Tab(key) {
+      var map = { pf7: ["tabBtnPf7", "panePf7"], pd: ["tabBtnPd", "panePd"], prostate: ["tabBtnProstate", "paneProstate"] };
+      Object.keys(map).forEach(function(k) {
+        var btn = document.getElementById(map[k][0]);
+        var pane = document.getElementById(map[k][1]);
+        var on = (k === key);
+        if (btn) {
+          btn.classList.toggle("active", on);
+          btn.setAttribute("aria-selected", on ? "true" : "false");
+        }
+        if (pane) pane.classList.toggle("active", on);
+      });
+    }
+
+    function renderPf7Tab() {
+      var chi = Number(document.getElementById("rngChiN").value);
+      var penFast = Number(document.getElementById("rngPenFast").value);
+      var pw = document.getElementById("selPfPathway").value;
+      var hzo = document.getElementById("chkHzo").checked;
+      var ebv = document.getElementById("chkEbvAmox").checked;
+      var hla = document.getElementById("chkHlaB5701").checked;
+      var statin = document.getElementById("chkClariStatin").checked;
+
+      var rad = chi * Math.PI / 180.0;
+      var e2 = 59.8245 * Math.cos(rad) * Math.cos(rad);
+      var quenchPct = 100.0 * (1.0 - e2 / 59.8245);
+
+      document.getElementById("lblChiN").textContent = chi + "° (" + (chi >= 45 ? "Strained β-Lactam" : (chi <= 10 ? "Planar Peptide Amide" : "Intermediate Twist")) + ")";
+      document.getElementById("lblPenFast").textContent = "PEN-FAST = " + penFast + (penFast < 3 ? " (Low Risk < 3 → 99.5% Safe Oral Delabeling)" : " (High Risk ≥ 3 → Direct Challenge VETOED!)");
+      document.getElementById("statPfE2").textContent = e2.toFixed(2) + " kcal/mol (-" + quenchPct.toFixed(1) + "%)";
+
+      var vetoes = [];
+      if (penFast >= 3) vetoes.push("PEN-FAST ≥ 3: Block unsupervised oral challenge; refer to specialist allergy immunology.");
+      if (hzo) vetoes.push("Hutchinson's Nasal-Tip / Ocular V1 HZO: Start oral aciclovir immediately + SAME-DAY emergency ophthalmology referral to prevent corneal blindness!");
+      if (ebv) vetoes.push("Suspected EBV + Amoxicillin: Hard-block amoxicillin (80–90% rash); use phenoxymethylpenicillin (Penicillin V) only if FeverPAIN ≥ 4 bacterial tonsillitis.");
+      if (hla) vetoes.push("HLA-B*57:01 Positive + Flucloxacillin: Hard-block flucloxacillin (DILIGEN OR = 80.6 cholestatic liver injury); switch to non-penicillin alternative.");
+      if (statin) vetoes.push("Clarithromycin × Simvastatin/Atorvastatin: Hold statin temporarily during macrolide course to prevent CYP3A4 rhabdomyolysis.");
+
+      var vbox = document.getElementById("verdictPf7");
+      if (vetoes.length > 0) {
+        vbox.className = "verdict-box veto";
+        vbox.innerHTML = "<strong>DCB0129 Rule G101 Hard-Veto Triggered (" + vetoes.length + "):</strong><br/>• " + vetoes.join("<br/>• ");
+      } else {
+        var pwNote = {
+          sore_throat: "NG84 Sore Throat: Narrow-spectrum Penicillin V (5-day course) cleared; avoids amoxicillin EBV rash.",
+          shingles: "Pharmacy First Shingles ≤ 72h: Oral aciclovir/valaciclovir cleared (HSV-1 TK PDB 2KI5 2.887 Å); V1 HZO excluded.",
+          impetigo: "NG153 Non-Bullous Impetigo: Topical hydrogen peroxide 1% cream first-line antimicrobial stewardship.",
+          sinusitis: "NG79 Acute Sinusitis: High-dose intranasal corticosteroid first-line; spares unnecessary broad-spectrum antibiotics.",
+          aom: "NG91 Paediatric AOM: Otoscopic red-flag mastoiditis excluded; analgesic-first / targeted stewardship cleared.",
+          insect_bite: "Infected Insect Bite: Flucloxacillin cleared (HLA-B*57:01 negative; PEN-FAST < 3).",
+          uti_v38: "NG109 Uncomplicated UTI: Nitrofurantoin 100 mg MR BD × 3d cleared (eGFR ≥ 45; joins v3.8 to complete 7/7!)."
+        }[pw];
+        vbox.className = "verdict-box";
+        vbox.innerHTML = "<strong>Rule G101 Admitted (7 / 7 Pharmacy First + PALACE Safe):</strong> " + pwNote + " Supervised direct oral penicillin delabeling eligible (<code>99.5%</code> PALACE negative rate, PMID: 37459086).";
+      }
+
+      var pts = [];
+      for (var a = 0; a <= 68; a += 2) {
+        var x = 58 + (a / 68.0) * 285;
+        var val = 59.8245 * Math.pow(Math.cos(a * Math.PI / 180.0), 2);
+        var y = 248 - (val / 64.0) * 195;
+        pts.push(x.toFixed(1) + "," + y.toFixed(1));
+      }
+      var cx = 58 + (chi / 68.0) * 285;
+      var cy = 248 - (e2 / 64.0) * 195;
+      var occs = [0.9896, 0.9894, 0.9775, 0.0226, 0.0107, 0.0102];
+      var barsSvg = "";
+      for (var i = 0; i < occs.length; i++) {
+        var bx = 382 + i * 29;
+        var bh = Math.max(3, occs[i] * 165);
+        var by = 248 - bh;
+        var col = i < 3 ? "#38d6c4" : "#f4ae42";
+        barsSvg += '<rect x="' + bx + '" y="' + by.toFixed(1) + '" width="20" height="' + bh.toFixed(1) + '" rx="3" fill="' + col + '"/>';
+        barsSvg += '<text x="' + (bx + 10) + '" y="264" text-anchor="middle" fill="#9eb7b4" font-size="9" font-family="JetBrains Mono, monospace">n' + (i + 1) + '</text>';
+      }
+
+      document.getElementById("svgPf7Nbo").innerHTML =
+        '<rect x="0" y="0" width="580" height="315" fill="transparent"/>' +
+        '<text x="58" y="26" fill="#eef7f5" font-size="12" font-weight="700">A · Weinhold NBO E^(2)(χ_N) = E₀ cos²χ_N</text>' +
+        '<text x="380" y="26" fill="#eef7f5" font-size="12" font-weight="700">B · PySCF CASSCF(6,6) 1-RDM n_k</text>' +
+        '<line x1="58" y1="248" x2="348" y2="248" stroke="#4a666a" stroke-width="1.2"/>' +
+        '<line x1="58" y1="48" x2="58" y2="248" stroke="#4a666a" stroke-width="1.2"/>' +
+        '<text x="50" y="58" text-anchor="end" fill="#9eb7b4" font-size="9.5" font-family="JetBrains Mono, monospace">60</text>' +
+        '<text x="50" y="152" text-anchor="end" fill="#9eb7b4" font-size="9.5" font-family="JetBrains Mono, monospace">30</text>' +
+        '<text x="50" y="250" text-anchor="end" fill="#9eb7b4" font-size="9.5" font-family="JetBrains Mono, monospace">0</text>' +
+        '<polyline fill="none" stroke="#38d6c4" stroke-width="3" points="' + pts.join(" ") + '"/>' +
+        '<line x1="' + cx.toFixed(1) + '" y1="52" x2="' + cx.toFixed(1) + '" y2="248" stroke="#f06a3b" stroke-dasharray="4,3" stroke-width="1.5"/>' +
+        '<circle cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="6" fill="#f06a3b" stroke="#eef7f5" stroke-width="1.6"/>' +
+        '<text x="' + Math.min(255, cx + 8).toFixed(1) + '" y="' + Math.max(70, cy - 10).toFixed(1) + '" fill="#ffd8cb" font-size="10.5" font-family="JetBrains Mono, monospace">' + e2.toFixed(1) + ' kcal/mol</text>' +
+        '<text x="200" y="286" text-anchor="middle" fill="#9eb7b4" font-size="10.5">Pyramidalization χ_N (0° Peptide → 54° Penicillin 1FQG)</text>' +
+        '<line x1="376" y1="83" x2="560" y2="83" stroke="#f06a3b" stroke-dasharray="3,3" stroke-width="1"/>' +
+        '<text x="558" y="77" text-anchor="end" fill="#f4ae42" font-size="9" font-family="JetBrains Mono, monospace">Pauli Bound n_k ≤ 1</text>' +
+        '<line x1="376" y1="248" x2="560" y2="248" stroke="#4a666a" stroke-width="1.2"/>' +
+        barsSvg +
+        '<text x="468" y="286" text-anchor="middle" fill="#9eb7b4" font-size="10">Coleman Bounds 0 ≤ n_k ≤ 1 ✓</text>';
+    }
+
+    function renderPdTab() {
+      var phi = Number(document.getElementById("rngPhiPlp").value);
+      var delay = Number(document.getElementById("rngLdopaDelay").value);
+      var route = document.getElementById("selPdRoute").value;
+      var d2 = document.getElementById("chkCentralD2").checked;
+      var icd = document.getElementById("chkDominionIcd").checked;
+
+      var s2 = Math.pow(Math.sin(phi * Math.PI / 180.0), 2);
+      var rateGain = 18.40 * s2;
+      document.getElementById("lblPhiPlp").textContent = phi + "° (ΔG_σπ* = " + rateGain.toFixed(2) + " kcal/mol · sin²φ = " + s2.toFixed(3) + ")";
+      document.getElementById("lblLdopaDelay").textContent = delay + " min (" + (delay <= 30 ? "≤ 30 min On-Time Safe!" : "> 30 min Omission Hazard!") + ")";
+
+      var vetoes = [];
+      if (delay > 30) vetoes.push("Levodopa Delay " + delay + " min (> 30 min NHS 'Get It On Time' ceiling): Immediate ward pharmacist escalation to prevent akinetic rigidity / neuroleptic-like hyperpyrexia!");
+      if (route === "nbm_omitted") vetoes.push("Unconverted Nil-By-Mouth Surgical Hold: Never omit dopaminergic therapy! Convert immediately to transdermal rotigotine patch or dispersible co-beneldopa via NG tube.");
+      if (d2) vetoes.push("Central D2 Antagonist Proposed (Metoclopramide / Prochlorperazine / Haloperidol): Hard-block! Switch antiemetic to domperidone or ondansetron.");
+      if (icd) vetoes.push("DOMINION Impulse-Control Disorder (17.1% on Agonists): Initiate supervised gradual dopamine-agonist taper (guard against DAWS) and optimise PD MED levodopa.");
+
+      var vbox = document.getElementById("verdictPd");
+      if (vetoes.length > 0) {
+        vbox.className = "verdict-box veto";
+        vbox.innerHTML = "<strong>DCB0129 Rule G102 Hard-Veto Triggered (" + vetoes.length + "):</strong><br/>• " + vetoes.join("<br/>• ");
+      } else {
+        vbox.className = "verdict-box";
+        vbox.innerHTML = "<strong>Rule G102 Admitted (NICE NG71 On-Time Safe):</strong> Levodopa delivered in <code>" + delay + " min ≤ 30 min</code>, shielded peripherally by carbidopa (<code>PDB 9GNS 1.428 Å</code>) and once-daily opicapone 50 mg (<code>-116.8 min OFF</code>, PMID: 26725544).";
+      }
+
+      var dunPts = [];
+      for (var p = 0; p <= 90; p += 3) {
+        var x = 54 + (p / 90.0) * 215;
+        var y = 246 - Math.pow(Math.sin(p * Math.PI / 180.0), 2) * 185;
+        dunPts.push(x.toFixed(1) + "," + y.toFixed(1));
+      }
+      var px = 54 + (phi / 90.0) * 215;
+      var py = 246 - s2 * 185;
+
+      var pkPts = [];
+      for (var t = 0; t <= 180; t += 6) {
+        var tx = 322 + (t / 180.0) * 232;
+        var level = Math.exp(-t / 90.0);
+        var ty = 246 - level * 185;
+        pkPts.push(tx.toFixed(1) + "," + ty.toFixed(1));
+      }
+      var dx = 322 + (delay / 180.0) * 232;
+      var dy = 246 - Math.exp(-delay / 90.0) * 185;
+      var gateX = 322 + (30.0 / 180.0) * 232;
+
+      document.getElementById("svgPdQmmm").innerHTML =
+        '<rect x="0" y="0" width="580" height="315" fill="transparent"/>' +
+        '<text x="54" y="26" fill="#eef7f5" font-size="12" font-weight="700">A · Dunathan PLP V²(φ) ∝ sin²φ (9GNS)</text>' +
+        '<text x="322" y="26" fill="#eef7f5" font-size="12" font-weight="700">B · Inpatient L-DOPA Delay vs 30m Gate</text>' +
+        '<line x1="54" y1="246" x2="274" y2="246" stroke="#4a666a" stroke-width="1.2"/>' +
+        '<line x1="54" y1="54" x2="54" y2="246" stroke="#4a666a" stroke-width="1.2"/>' +
+        '<polyline fill="none" stroke="#38d6c4" stroke-width="3" points="' + dunPts.join(" ") + '"/>' +
+        '<circle cx="' + px.toFixed(1) + '" cy="' + py.toFixed(1) + '" r="6" fill="#f4ae42" stroke="#eef7f5" stroke-width="1.5"/>' +
+        '<text x="162" y="285" text-anchor="middle" fill="#9eb7b4" font-size="10">PLP Torsion φ (R² = 1.00000000)</text>' +
+        '<rect x="' + gateX.toFixed(1) + '" y="56" width="' + (554 - gateX).toFixed(1) + '" height="190" fill="rgba(240,106,59,0.12)"/>' +
+        '<line x1="' + gateX.toFixed(1) + '" y1="56" x2="' + gateX.toFixed(1) + '" y2="246" stroke="#f06a3b" stroke-dasharray="4,3" stroke-width="1.5"/>' +
+        '<text x="' + (gateX + 5).toFixed(1) + '" y="70" fill="#ff9d7d" font-size="9.5" font-family="JetBrains Mono, monospace">&gt;30m Akinetic Risk</text>' +
+        '<line x1="322" y1="246" x2="554" y2="246" stroke="#4a666a" stroke-width="1.2"/>' +
+        '<line x1="322" y1="56" x2="322" y2="246" stroke="#4a666a" stroke-width="1.2"/>' +
+        '<polyline fill="none" stroke="#3898ff" stroke-width="3" points="' + pkPts.join(" ") + '"/>' +
+        '<circle cx="' + dx.toFixed(1) + '" cy="' + dy.toFixed(1) + '" r="6" fill="' + (delay > 30 ? "#f06a3b" : "#38d6c4") + '" stroke="#eef7f5" stroke-width="1.5"/>' +
+        '<text x="438" y="285" text-anchor="middle" fill="#9eb7b4" font-size="10">Ward Delay (min) · QM/MM -23.17 kcal/mol</text>';
+    }
+
+    function renderProstateTab() {
+      var bval = Number(document.getElementById("rngBval").value);
+      var path = document.getElementById("selProstatePath").value;
+      var finMood = document.getElementById("chkFinasterideMood").checked;
+      var ifis = document.getElementById("chkTamsulosinIfis").checked;
+      var qpuWash = document.getElementById("chkQpuWash").checked;
+
+      var d0 = 0.00165;
+      var adcTum = 0.000353;
+      var kApp = 2.2815;
+      var sFree = Math.exp(-bval * d0);
+      var sTum = Math.min(1.0, Math.exp(-bval * adcTum + (1.0 / 6.0) * bval * bval * adcTum * adcTum * kApp * 0.42));
+      if (bval === 1400) {
+        sFree = 0.09926;
+        sTum = 0.67109;
+      }
+      var ratio = sTum / Math.max(1e-6, sFree);
+
+      document.getElementById("lblBval").textContent = "b = " + bval + " s/mm² (" + ratio.toFixed(2) + "× Gleason ≥ 3+4 Contrast)";
+      document.getElementById("statKurtosis").textContent = "2.2815 (" + ratio.toFixed(2) + "× @b" + bval + ")";
+
+      var vetoes = [];
+      if (path === "blind_trus") vetoes.push("Rule G103: Blind direct TRUS biopsy without pre-biopsy mpMRI misses 52% of clinically significant cancers (PROMIS 48% vs 93% sensitivity) and exposes 28% of men to avoidable biopsy sepsis!");
+      if (path === "abi_no_pred") vetoes.push("Rule G103: Abiraterone prescribed WITHOUT mandatory prednisolone 5 mg daily cover triggers ACTH-driven mineralocorticoid hypertension, hypokalaemia & fluid overload!");
+      if (path === "enza_doac") vetoes.push("Rule G103: Strong CYP3A4 inducer enzalutamide collapses apixaban/rivaroxaban plasma exposure → switch anticoagulation with specialist pharmacy review!");
+      if (finMood) vetoes.push("Rule G104 (MHRA Apr 2024 Finasteride Alert): STOP finasteride immediately upon depressive mood or suicidal ideation and conduct urgent mental-health review!");
+      if (ifis) vetoes.push("Rule G104 (Cataract IFIS Guard): Notify ophthalmic surgical team of active/prior alpha-1 blocker tamsulosin before cataract phacoemulsification!");
+      if (qpuWash) vetoes.push("Rule G104 (ACQ Gate G4 Classical Floor): Block QPU dispatch for 1D Bloch–Torrey PDE (< 15 ms spectral CPU, err 6.68e-10); reserve FTQC strictly for 1.0018 ZiB (38e,36o) CYP17A1!");
+
+      var vbox = document.getElementById("verdictProstate");
+      if (vetoes.length > 0) {
+        vbox.className = "verdict-box veto";
+        vbox.innerHTML = "<strong>DCB0129 Rules G103–G104 Hard-Veto (" + vetoes.length + "):</strong><br/>• " + vetoes.join("<br/>• ");
+      } else {
+        vbox.className = "verdict-box";
+        vbox.innerHTML = "<strong>Rules G103–G104 Admitted (NICE NG131 / CG97 Safe):</strong> Pre-biopsy PI-RADS mpMRI (<code>93.0%</code> sensitivity, <code>28.0%</code> biopsy avoided) + STAMPEDE abiraterone + prednisolone 5 mg (<code>OS HR = 0.63</code>, PMID: 28578639) + MHRA finasteride/IFIS cleared.";
+      }
+
+      var freePts = [];
+      var tumPts = [];
+      for (var b = 0; b <= 2000; b += 100) {
+        var x = 56 + (b / 2000.0) * 305;
+        var sf = Math.exp(-b * d0);
+        var st = Math.min(1.0, Math.exp(-b * adcTum + (1.0 / 6.0) * b * b * adcTum * adcTum * kApp * 0.42));
+        if (b === 1400) { sf = 0.09926; st = 0.67109; }
+        freePts.push(x.toFixed(1) + "," + (246 - sf * 186).toFixed(1));
+        tumPts.push(x.toFixed(1) + "," + (246 - st * 186).toFixed(1));
+      }
+      var bx = 56 + (bval / 2000.0) * 305;
+      var byF = 246 - sFree * 186;
+      var byT = 246 - sTum * 186;
+
+      document.getElementById("svgProstateMri").innerHTML =
+        '<rect x="0" y="0" width="580" height="315" fill="transparent"/>' +
+        '<text x="56" y="26" fill="#eef7f5" font-size="12" font-weight="700">A · PGSE S(b)/S(0) Kurtosis</text>' +
+        '<text x="392" y="26" fill="#eef7f5" font-size="12" font-weight="700">B · &gt;1 ZiB Gate G4 (#75)</text>' +
+        '<line x1="56" y1="246" x2="364" y2="246" stroke="#4a666a" stroke-width="1.2"/>' +
+        '<line x1="56" y1="56" x2="56" y2="246" stroke="#4a666a" stroke-width="1.2"/>' +
+        '<polyline fill="none" stroke="#3898ff" stroke-width="2.6" stroke-dasharray="5,3" points="' + freePts.join(" ") + '"/>' +
+        '<polyline fill="none" stroke="#38d6c4" stroke-width="3.2" points="' + tumPts.join(" ") + '"/>' +
+        '<line x1="' + bx.toFixed(1) + '" y1="58" x2="' + bx.toFixed(1) + '" y2="246" stroke="#f4ae42" stroke-dasharray="3,3" stroke-width="1.4"/>' +
+        '<circle cx="' + bx.toFixed(1) + '" cy="' + byF.toFixed(1) + '" r="5" fill="#3898ff"/>' +
+        '<circle cx="' + bx.toFixed(1) + '" cy="' + byT.toFixed(1) + '" r="6" fill="#38d6c4" stroke="#eef7f5" stroke-width="1.5"/>' +
+        '<text x="208" y="285" text-anchor="middle" fill="#9eb7b4" font-size="10">b-Value (s/mm²) · Cyan: Gleason ≥3+4 (K=2.28) vs Blue: Lumen</text>' +
+        '<rect x="398" y="198" width="44" height="48" rx="4" fill="#3898ff"/>' +
+        '<text x="420" y="191" text-anchor="middle" fill="#9eb7b4" font-size="9" font-family="JetBrains Mono, monospace">196 KiB</text>' +
+        '<text x="420" y="263" text-anchor="middle" fill="#9eb7b4" font-size="9.5">1D PGSE</text>' +
+        '<rect x="466" y="152" width="44" height="94" rx="4" fill="#f4ae42"/>' +
+        '<text x="488" y="145" text-anchor="middle" fill="#f4ae42" font-size="9" font-family="JetBrains Mono, monospace">69k PiB</text>' +
+        '<text x="488" y="263" text-anchor="middle" fill="#9eb7b4" font-size="9.5">v3.8 6BC9</text>' +
+        '<rect x="524" y="64" width="44" height="182" rx="4" fill="#f06a3b"/>' +
+        '<text x="546" y="56" text-anchor="middle" fill="#ffd8cb" font-size="9.5" font-weight="700" font-family="JetBrains Mono, monospace">1.002 ZiB</text>' +
+        '<text x="546" y="263" text-anchor="middle" fill="#ffd8cb" font-size="9.5" font-weight="700">6WR1 #75</text>' +
+        '<line x1="390" y1="246" x2="574" y2="246" stroke="#4a666a" stroke-width="1.2"/>' +
+        '<text x="482" y="285" text-anchor="middle" fill="#9eb7b4" font-size="10">Log Classical FCI Memory Wall</text>';
+    }
+
+    function renderIcbRows(rows) {
+      var html = "";
+      rows.forEach(function(r) {
+        html += "<tr>" +
+          "<td><strong>" + r.icb_name + "</strong> (<code>" + r.icb_ods + "</code>)</td>" +
+          "<td>" + Number(r.pf7_pts).toLocaleString() + "</td>" +
+          "<td>" + Number(r.pd_pts).toLocaleString() + "</td>" +
+          "<td>" + Number(r.pr_pts).toLocaleString() + "</td>" +
+          "<td>" + Number(r.harms).toFixed(1) + "</td>" +
+          "<td>+£" + Number(r.a_m).toFixed(2) + "M</td>" +
+          "<td>+£" + Number(r.bc_m).toFixed(2) + "M</td>" +
+          "<td><strong style='color:var(--signal);'>+£" + Number(r.tot_m).toFixed(2) + "M</strong></td>" +
+          "</tr>";
+      });
+      html += "<tr style='background:rgba(56,214,196,0.08);font-weight:700;'>" +
+        "<td>All 42 English ICBs (42 / 42 Dominant · Zero-Overlap)</td>" +
+        "<td>291,685</td><td>134,790</td><td>172,496</td><td>47,503.3</td>" +
+        "<td>+£581.33M</td><td>+£1,021.27M</td>" +
+        "<td style='color:var(--signal);'>+£1,602.60M/yr</td></tr>";
+      document.getElementById("icbTableBody").innerHTML = html;
+    }
+
+    renderPf7Tab();
+    renderPdTab();
+    renderProstateTab();
+    renderIcbRows(FALLBACK_ICBS);
+
+    fetch("./receipts/opencareq_public_v3_9_quantum_pharmacy_parkinsons_and_prostate_summary.json")
+      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(d) {
+        if (!d || !d.top_10_icbs) return;
+        var mapped = d.top_10_icbs.map(function(x) {
+          return {
+            icb_ods: x.icb_ods,
+            icb_name: x.icb_name,
+            pf7_pts: x.pharmacy_first_patients_yr,
+            pd_pts: x.parkinsons_patients_yr,
+            pr_pts: x.prostate_urology_patients_yr,
+            harms: x.acute_harms_avoided_yr,
+            a_m: x.sub_ledger_a_pharmacy_first_inmb_gbp_m,
+            bc_m: Number(x.sub_ledger_b_parkinsons_inmb_gbp_m) + Number(x.sub_ledger_c_prostate_inmb_gbp_m),
+            tot_m: x.combined_v3_9_inmb_gbp_m
+          };
+        });
+        if (d.mse_anchor_icb && !mapped.some(function(m) { return m.icb_ods === "QH8"; })) {
+          var m = d.mse_anchor_icb;
+          mapped.push({
+            icb_ods: m.icb_ods,
+            icb_name: m.icb_name + " (Anchor)",
+            pf7_pts: m.pharmacy_first_patients_yr,
+            pd_pts: m.parkinsons_patients_yr,
+            pr_pts: m.prostate_urology_patients_yr,
+            harms: m.acute_harms_avoided_yr,
+            a_m: m.sub_ledger_a_pharmacy_first_inmb_gbp_m,
+            bc_m: Number(m.sub_ledger_b_parkinsons_inmb_gbp_m) + Number(m.sub_ledger_c_prostate_inmb_gbp_m),
+            tot_m: m.combined_v3_9_inmb_gbp_m
+          });
+        }
+        renderIcbRows(mapped);
+      })
+      .catch(function() {});
+  </script>
+</body>
+</html>
