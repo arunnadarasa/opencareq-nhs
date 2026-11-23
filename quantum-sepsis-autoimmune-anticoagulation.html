@@ -6,6 +6,8 @@
   <title>OpenCareQ v4.0 — Quadruple Sovereign Milestones: 400/400 Parity, 80-PDB All-Human Suite, &gt;3,000 Evals (G1–G108) &amp; 15.28 ZiB MPO Gate G4 Studio (+£19.07B/yr Stack)</title>
   <meta name="description" content="OpenCareQ v4.0.0 Interactive Studio (Companion Paper XXVI, 30th Sovereign Manuscript): Jarzynski-Crooks Quantum Work &amp; 15.2802 ZiB MPO Sepsis/Meningitis/Anaphylaxis (PDB 1DNU/4MPW, Rule G105), Su-Schrieffer-Heeger (SSH) &amp; Zak Phase Never-Event Weekly Methotrexate &amp; PANTS IBD Stewardship (PDB 1U72/4GGF, Rule G106), and Wigner-Moyal-Hudson Phase Space Anticoagulation, Valve/APS &amp; EU-PACT Warfarin (#80 PDB 10QV, Rules G107-G108)." />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="alternate" type="text/plain" title="OpenCareQ v4.0.0 LLM Index (llms.txt)" href="llms.txt" />
+  <link rel="alternate" type="text/plain" title="OpenCareQ v4.0.0 Full LLM Knowledge Corpus (llms-full.txt)" href="llms-full.txt" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
@@ -73,17 +75,20 @@
     .site-nav-inner {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0.55rem 1.15rem;
+      min-height: 60px;
+      padding: 0.42rem 1.15rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 0.65rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
+      white-space: nowrap;
+      flex-shrink: 0;
       color: var(--ink);
       font-family: var(--font-display);
       font-weight: 800;
@@ -102,12 +107,30 @@
       font-weight: 800;
       font-size: 0.9rem;
     }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 0.36rem; align-items: center; font-size: 0.78rem; font-weight: 600; }
+    .mobile-nav-toggle {
+      display: none;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding: 0.36rem 0.72rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-card);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 0.81rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .nav-links { display: flex; flex-wrap: nowrap; gap: 0.3rem; align-items: center; font-size: 0.78rem; font-weight: 600; }
     .nav-links a {
       color: var(--ink-muted);
-      padding: 0.28rem 0.56rem;
+      padding: 0.28rem 0.54rem;
       border-radius: 7px;
       border: 1px solid transparent;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .nav-links a:hover { color: var(--ink); border-color: var(--border); background: rgba(255, 255, 255, 0.04); }
     .nav-links a.btn-primary {
@@ -115,6 +138,47 @@
       color: #061517;
       border-color: var(--signal);
       font-weight: 800;
+    }
+    details.hero-tech-drawer {
+      background: rgba(13, 26, 29, 0.84);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.52rem 0.9rem;
+      margin: 0 0 0.9rem;
+    }
+    details.hero-tech-drawer > summary {
+      cursor: pointer;
+      list-style: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--signal);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    details.hero-tech-drawer > summary::-webkit-details-marker { display: none; }
+    details.hero-tech-drawer[open] > summary { margin-bottom: 0.5rem; padding-bottom: 0.42rem; border-bottom: 1px solid var(--border); }
+    @media (max-width: 980px) {
+      .mobile-nav-toggle { display: inline-flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 10px;
+        right: 10px;
+        z-index: 140;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.34rem;
+        padding: 0.75rem;
+        background: #0b181b;
+        border: 1px solid var(--border-strong);
+        border-radius: 12px;
+        box-shadow: 0 24px 56px rgba(0, 0, 0, 0.9);
+      }
+      .nav-links.mobile-open { display: flex; }
+      .nav-links a { white-space: normal; }
     }
     .hero { padding: 1.9rem 0 1.5rem; border-bottom: 1px solid var(--border); }
     .pill-row { display: flex; flex-wrap: wrap; gap: 0.42rem; margin-bottom: 0.75rem; }
@@ -328,29 +392,39 @@
         <span class="brand-mark">OC</span>
         <span>OpenCareQ <small style="font-size:0.72rem;color:var(--signal);margin-left:4px;">v4.0</small></span>
       </a>
-      <nav class="nav-links" aria-label="Studio Navigation">
+      <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-expanded="false" aria-controls="v40StudioNav">☰ Menu</button>
+      <nav class="nav-links" id="v40StudioNav" aria-label="Studio Navigation">
         <a href="index.html">← Main Portal</a>
-        <a href="quantum-pharmacy-parkinsons-prostate.html">← v3.9 7/7 PF, PD &amp; Prostate</a>
+        <a href="quantum-pharmacy-parkinsons-prostate.html">← v3.9 Studio</a>
         <a href="index.html#v20Mol3dCard" style="color:var(--signal);">80-PDB 3Dmol ↗</a>
-        <a href="harness.html" style="color:var(--amber);">G1–G108 (3,024 Evals!) ↗</a>
+        <a href="harness.html" style="color:var(--amber);">G1–G108 (3,024 Evals) ↗</a>
         <a href="https://samskrift.com/view/3ed6949e-7272-4557-8e6b-ee348d31cf15/b4e4b3cb-0705-4d25-83e1-d028457f50ca" target="_blank" rel="noopener">Samskrift XXVI ↗</a>
         <a class="btn-primary" href="OpenCareQ_Quantum_Sepsis_Anaphylaxis_Autoimmune_and_Anticoagulation_Paper.pdf" download="OpenCareQ_Quantum_Sepsis_Anaphylaxis_Autoimmune_and_Anticoagulation_Paper.pdf">⬇ Paper XXVI PDF</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
+  <main id="top">
+    <section class="hero" style="padding:1.5rem 0 1.35rem;">
       <div class="container">
         <div class="pill-row">
-          <span class="pill pill-signal">Companion Paper XXVI (30th Doc! · v4.0.0) · Quadruple Sovereign Milestones!</span>
-          <span class="pill pill-amber">400 / 400 (100%) Zero-Fit Parity · 80 All-Human ≤ 1.95 Å PDBs (#80 10QV!) · 15.2802 ZiB MPO Gate G4</span>
-          <span class="pill pill-ember">G1–G108 (216 Cases · 3,024 Evals &gt; 3,000! · 0 Harms) · ML-DSA-65 Receipt #49 (293177d1)</span>
+          <span class="pill pill-signal">Companion Paper XXVI (30th Doc · v4.0.0)</span>
+          <span class="pill pill-amber">400 / 400 (100%) Parity · 80 RCSB PDBs (#80 10QV) · 15.2802 ZiB MPO</span>
+          <span class="pill pill-ember">G1–G108 (3,024 Evals · 0 Harms) · ML-DSA-65 Receipt #49 (293177d1)</span>
         </div>
         <h1>Quantum Work, Chiral Topological Solitons &amp; Wigner Phase Space <span style="font-size:0.48em;color:var(--signal);font-family:var(--font-mono);">v4.0.0</span></h1>
-        <p class="lead">
-          Crossing <strong>four major sovereign clinical-quantum milestones simultaneously</strong> for NHS England emergency, rheumatology/IBD, and anticoagulation safety: <strong><code>Jarzynski (1997) / Tasaki (2000)</code> two-point projective quantum work &amp; <code>Crooks (1999)</code> fluctuation symmetry</strong> plus our <strong><code>15.2802 ZiB</code> (<code>16,022,484.67 PiB</code>) <code>(40e, 38o)</code> sulfonium-heme <code>MPO</code> <code>ACQ Gate G4</code> target</strong> (<code>PDB: 1DNU</code> <code>1.85 Å</code> &amp; <code>4MPW</code> <code>1.95 Å</code>) for <code>NICE NG253</code> <code>NEWS2</code> sepsis, <code>NG240</code> meningitis <code>dexamethasone</code> (<code>RR = 0.48</code>) &amp; <code>CG134</code> <code>500 mcg</code> IM thigh <code>adrenaline</code> (<code>Rule G105</code>); <strong><code>Su–Schrieffer–Heeger (1979/2000 Nobel)</code> chiral zero modes &amp; <code>Joshua Zak (1989)</code> topological phase (<code>γ_Zak = π</code>)</strong> with live <code>PySCF 2.15 6-31G*</code> pteridine <code>N1</code> proton affinity (<code>+3.266 kcal/mol</code>; <code>PDB: 1U72</code> <code>1.90 Å</code> &amp; <code>4GGF</code> <code>1.60 Å</code>) preventing the statutory <em>NHS Never-Event</em> daily oral <code>methotrexate</code> overdose &amp; UK Exeter <code>PANTS HLA-DQA1*05</code> anti-TNF loss (<code>HR = 1.90</code>, <code>Rule G106</code>); and <strong><code>Eugene P. Wigner (1932/1963 Nobel)</code> quasi-probability <code>W(x, p)</code>, <code>Moyal (1949)</code> sine-bracket &amp; <code>Hudson (1974)</code> negativity (<code>N_W = 0.3716</code>)</strong> anchored by our <strong>historic 80th PDB (<code>PDB: 10QV</code> <code>1.90 Å</code> <code>2026</code> Human <code>NQO1 + FAD + (S)-Warfarin</code>)</strong> for <code>NICE NG158</code> <code>apixaban</code> (<code>RR = 0.31</code>), <code>NG208 / TRAPS</code> mechanical-valve &amp; triple-positive <code>APS</code> mandatory <code>warfarin</code>, and UK <code>EU-PACT CYP2C9/VKORC1</code> precision dosing (<code>Rules G107–G108</code>).
+        <p class="lead" style="margin-bottom:0.7rem;">
+          Interactive three-track clinical-quantum workbench for <strong>NHS England emergency sepsis/meningitis/anaphylaxis</strong> (<code>NICE NG253/NG240/CG134</code>, <code>Rule G105</code>), <strong>statutory <em>NHS Never-Event</em> weekly oral methotrexate &amp; UK Exeter <code>PANTS</code> IBD</strong> (<code>NICE NG100/NG129</code>, <code>Rule G106</code>), and <strong>anticoagulation, mechanical-valve/APS &amp; UK <code>EU-PACT</code> warfarin stewardship</strong> (<code>NICE NG158/NG208</code>, <code>Rules G107–G108</code>) — adding <strong><code>+£1,986.47M/yr</code></strong> across all <code>42</code> English ICBs.
         </p>
+        <details class="hero-tech-drawer">
+          <summary>
+            <span>🔬 Inspect Full Quantum Formalism &amp; #76–#80 Human Crystal Anchors (1DNU · 4MPW · 1U72 · 4GGF · 10QV #80)</span>
+            <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--amber);">Expand ▾</span>
+          </summary>
+          <p style="margin:0;font-size:0.84rem;color:var(--ink-muted);line-height:1.5;">
+            Unites <strong><code>Jarzynski (1997) / Tasaki (2000)</code> two-point projective quantum work &amp; <code>Crooks (1999)</code> fluctuation symmetry</strong> plus our <strong><code>15.2802 ZiB</code> (<code>16,022,484.67 PiB</code>) <code>(40e, 38o)</code> sulfonium-heme <code>MPO</code> <code>ACQ Gate G4</code> target</strong> (<code>PDB: 1DNU</code> <code>1.85 Å</code> &amp; <code>4MPW</code> <code>1.95 Å</code>; <code>NG240</code> meningitis <code>dexamethasone RR = 0.48</code> &amp; <code>CG134</code> <code>500 mcg</code> IM thigh <code>adrenaline</code>); <strong><code>Su–Schrieffer–Heeger (1979/2000 Nobel)</code> chiral zero modes &amp; <code>Joshua Zak (1989)</code> topological phase (<code>γ_Zak = π</code>)</strong> with live <code>PySCF 2.15 6-31G*</code> pteridine <code>N1</code> proton affinity (<code>+3.266 kcal/mol</code>; <code>PDB: 1U72</code> <code>1.90 Å</code> &amp; <code>4GGF</code> <code>1.60 Å</code>; <code>PANTS HLA-DQA1*05 HR = 1.90</code>); and <strong><code>Eugene P. Wigner (1932/1963 Nobel)</code> quasi-probability <code>W(x, p)</code>, <code>Moyal (1949)</code> sine-bracket &amp; <code>Hudson (1974)</code> negativity (<code>N_W = 0.3716</code>)</strong> anchored by historic <strong>#80 <code>PDB: 10QV</code> <code>1.90 Å</code> <code>2026</code> Human <code>NQO1 + FAD + (S)-Warfarin</code></strong> (<code>AMPLIFY RR = 0.31</code>).
+          </p>
+        </details>
 
         <div class="kpi-strip">
           <div class="kpi-card">
@@ -612,9 +686,18 @@
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      OpenCareQ <code>v4.0.0</code> · Companion Paper XXVI (30th Sovereign Manuscript) · Stewarded non-commercially via <strong>INALYN CIC (#17398798)</strong> under <code>PolyForm-Noncommercial-1.0.0</code> &amp; <code>CC BY-NC-SA 4.0</code> · Sealed Receipt #49 (<code>293177d14c6ff32b</code>).
+  <footer style="border-top:1px solid var(--border);background:#081215;">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+      <div>
+        OpenCareQ <code>v4.0.0</code> · Companion Paper XXVI (30th Sovereign Manuscript) · Stewarded non-commercially via <strong>INALYN CIC (#17398798)</strong> under <code>PolyForm-Noncommercial-1.0.0</code> &amp; <code>CC BY-NC-SA 4.0</code> · Sealed Receipt #49 (<code>293177d14c6ff32b</code>).
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;font-family:var(--font-mono);font-size:0.73rem;">
+        <a href="index.html">← Main Portal</a> ·
+        <a href="harness.html">🛡 G1–G108 Gate</a> ·
+        <a href="llms.txt" target="_blank" rel="noopener">🤖 llms.txt</a> ·
+        <a href="llms-full.txt" target="_blank" rel="noopener" style="color:var(--amber);">📚 llms-full.txt</a> ·
+        <a href="#top">↑ Top</a>
+      </div>
     </div>
   </footer>
 
@@ -894,6 +977,25 @@
     renderSshTab();
     renderWignerTab();
     renderIcbRows(FALLBACK_ICBS);
+
+    (function initV40NavUX() {
+      var mBtn = document.getElementById("mobileNavToggle");
+      var nav = document.getElementById("v40StudioNav");
+      if (mBtn && nav) {
+        mBtn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          var open = nav.classList.toggle("mobile-open");
+          mBtn.setAttribute("aria-expanded", open ? "true" : "false");
+          mBtn.textContent = open ? "✕ Close" : "☰ Menu";
+        });
+      }
+      document.addEventListener("click", function(e) {
+        if (nav && nav.classList.contains("mobile-open") && !nav.contains(e.target) && (!mBtn || !mBtn.contains(e.target))) {
+          nav.classList.remove("mobile-open");
+          if (mBtn) { mBtn.setAttribute("aria-expanded", "false"); mBtn.textContent = "☰ Menu"; }
+        }
+      });
+    })();
 
     fetch("./receipts/opencareq_public_v4_0_quantum_sepsis_autoimmune_and_anticoagulation_summary.json")
       .then(function(r) { return r.ok ? r.json() : null; })
