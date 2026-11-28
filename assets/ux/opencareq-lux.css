@@ -830,3 +830,359 @@ body {
     transition: none !important;
   }
 }
+
+/* ==========================================================================
+   Mobile-First Ergonomics, 16px iOS Zoom Guard, Universal 56px Mobile Header,
+   Swipeable Chip Rails & Coarse-Pointer 3Dmol Touch Guard (320px – 980px)
+   ========================================================================== */
+html, body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.table-wrap,
+.sw-grid-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ocq-mobile-actions,
+.ocq-mobile-search-btn,
+.mol3d-touch-guard-btn {
+  display: none;
+}
+
+/* Coarse-Pointer (Touchscreen) Scroll-Safe 3Dmol.js Stage Guard */
+@media (pointer: coarse) {
+  #v20Mol3dViewport:not(.touch-interactive) canvas {
+    pointer-events: none !important;
+  }
+  .mol3d-touch-guard-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.36rem;
+    position: absolute;
+    left: 50%;
+    bottom: 2.25rem;
+    transform: translateX(-50%);
+    z-index: 14;
+    min-height: 40px;
+    padding: 0.42rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(56, 214, 196, 0.62);
+    background: rgba(6, 16, 20, 0.90);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #ffffff;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.76rem;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.78);
+  }
+  #v20Mol3dViewport.touch-interactive .mol3d-touch-guard-btn {
+    top: 0.5rem;
+    bottom: auto;
+    left: auto;
+    right: 0.58rem;
+    transform: none;
+    border-color: rgba(244, 174, 66, 0.72);
+    color: #f4ae42;
+  }
+}
+
+/* Universal Single-Row 56px Mobile Top Bar Across All 28 Header Pages */
+@media (max-width: 980px) {
+  .site-nav .site-nav-inner {
+    flex-wrap: nowrap !important;
+    min-height: 56px !important;
+    padding: 0.36rem max(0.9rem, env(safe-area-inset-right)) 0.36rem max(0.9rem, env(safe-area-inset-left)) !important;
+    gap: 0.5rem !important;
+  }
+  .site-nav .brand {
+    font-size: 1.12rem !important;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ocq-mobile-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .ocq-mobile-search-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.28rem;
+    min-height: 40px;
+    min-width: 42px;
+    padding: 0.36rem 0.68rem;
+    border-radius: 9px;
+    border: 1px solid rgba(56, 214, 196, 0.46);
+    background: rgba(56, 214, 196, 0.13);
+    color: #eef7f5;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.79rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .mobile-nav-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0.38rem 0.72rem;
+    border-radius: 9px;
+    border: 1px solid rgba(158, 183, 180, 0.34);
+    background: rgba(18, 35, 40, 0.92);
+    color: #eef7f5;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  /* Auto-upgraded companion headers lacking native mobile drawer CSS */
+  .site-nav.ocq-auto-mobile-nav .nav-links {
+    display: none !important;
+    position: fixed;
+    top: 58px;
+    left: 10px;
+    right: 10px;
+    z-index: 165;
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.32rem !important;
+    padding: 0.75rem;
+    background: rgba(8, 19, 23, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(56, 214, 196, 0.45);
+    border-radius: 14px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.92);
+  }
+  .site-nav.ocq-auto-mobile-nav .nav-links.mobile-open {
+    display: flex !important;
+  }
+  .site-nav.ocq-auto-mobile-nav .nav-links a {
+    display: flex !important;
+    align-items: center;
+    min-height: 42px;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.86rem !important;
+    white-space: normal !important;
+    border-radius: 8px !important;
+  }
+  /* Hide bottom floating pill on <=980px when top-bar 1-tap search button is present */
+  body.has-mobile-top-search .ocq-floating-cmd {
+    display: none !important;
+  }
+}
+
+/* Readable Touch-Pan Stage for 7x136 Red-Team Matrix on Tablets & Phones */
+.matrix-scroll-stage {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+}
+@media (max-width: 820px) {
+  .matrix-scroll-stage #svgTrapMatrix {
+    width: 880px !important;
+    min-width: 880px !important;
+    max-width: none !important;
+  }
+}
+
+/* iOS Safari 16px Input Auto-Zoom Prevention & Tablet/Phone Refinements */
+@media (max-width: 768px) {
+  input[type="search"],
+  input[type="text"],
+  input[type="number"],
+  select,
+  textarea,
+  #ocqCmdInput,
+  .mol3d-search-input,
+  .paper-search-input,
+  .nav-mega-search-input,
+  .reader-doc-select,
+  select.ctrl-select {
+    font-size: 16px !important;
+  }
+
+  /* Momentum Single-Row Horizontal Swipe Rails (Replaces 11-Row Button Walls) */
+  .ux-filter-bar,
+  .shift-tab-bar,
+  .mol3d-crown-presets,
+  .mol3d-cat-chips,
+  .reader-quick-pins {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    max-width: 100%;
+    padding-bottom: 0.2rem;
+  }
+  .ux-filter-bar::-webkit-scrollbar,
+  .shift-tab-bar::-webkit-scrollbar,
+  .mol3d-crown-presets::-webkit-scrollbar,
+  .mol3d-cat-chips::-webkit-scrollbar,
+  .reader-quick-pins::-webkit-scrollbar {
+    display: none;
+  }
+  .ux-filter-bar > *,
+  .shift-tab-bar > *,
+  .mol3d-crown-presets > *,
+  .mol3d-cat-chips > *,
+  .reader-quick-pins > * {
+    flex-shrink: 0;
+  }
+  .ux-filter-btn,
+  .shift-tab-btn,
+  .mol3d-preset-pill,
+  .mol3d-cat-btn,
+  .reader-pin-btn {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .mol3d-crown-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .mol3d-theater-shell #v20Mol3dViewport {
+    height: 300px;
+  }
+  .mol3d-dock #v20Mol3dTabs {
+    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)) !important;
+    max-height: 158px;
+  }
+  .mol3d-dock #v20Mol3dTabs .btn-sm {
+    min-height: 38px;
+  }
+}
+
+/* Phone-Specific Layout, PDF.js Chrome & 100dvh Spotlight Bottom-Sheet */
+@media (max-width: 680px) {
+  .two-col,
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero.hero-v19 {
+    padding: 1.1rem 0 1.05rem;
+  }
+  .hero-cta-bar {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 0.46rem !important;
+    width: 100%;
+  }
+  .hero-cta-bar .btn-hero {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+    white-space: normal !important;
+    text-align: center;
+  }
+  .hero-proof-ribbon {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.34rem;
+  }
+  .hero-proof-item {
+    white-space: normal;
+  }
+
+  /* Streamlined Mobile PDF.js Reader Chrome */
+  .reader-doc-tabs {
+    padding: 0.55rem 0.65rem !important;
+  }
+  .reader-doc-select {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 42px;
+  }
+  #reader-active-title {
+    display: none !important;
+  }
+  .reader-toolbar {
+    padding: 0.45rem 0.65rem !important;
+    gap: 0.4rem !important;
+  }
+  .reader-icon-btn {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .reader-viewport {
+    height: min(68dvh, 520px) !important;
+    padding: 0.65rem 0.35rem !important;
+  }
+
+  /* 100dvh / visualViewport-Aware Spotlight Sheet */
+  #ocqCmdBackdrop {
+    padding: max(8px, env(safe-area-inset-top)) 8px max(8px, env(safe-area-inset-bottom));
+  }
+  #ocqCmdDialog {
+    max-height: var(--ocq-vvh, calc(100dvh - 16px));
+    border-radius: 14px;
+  }
+  .ocq-cmd-head {
+    padding: 0.68rem 0.8rem;
+  }
+  .ocq-cmd-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.42rem 0.7rem;
+  }
+  .ocq-cmd-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .ocq-cmd-tab {
+    flex-shrink: 0;
+    min-height: 34px;
+  }
+  .ocq-cmd-item {
+    min-height: 48px;
+    padding: 0.6rem 0.7rem;
+    align-items: flex-start;
+  }
+  .ocq-cmd-item-title {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.3;
+  }
+  .ocq-cmd-foot {
+    font-size: 0.64rem;
+    padding: 0.42rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pill-nowrap {
+    white-space: normal !important;
+  }
+  .ocq-mobile-search-btn span {
+    display: none;
+  }
+}

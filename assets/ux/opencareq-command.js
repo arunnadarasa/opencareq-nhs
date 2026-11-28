@@ -676,6 +676,130 @@
   }
 
   /* ------------------------------------------------------------------------
+     5b. Universal Mobile Header Auto-Upgrade, Table Wrap, 3Dmol Touch Guard
+         & visualViewport Soft-Keyboard Adaptation Across All 29 Pages
+     ------------------------------------------------------------------------ */
+  function upgradeMobileNavAcrossAllPages() {
+    const siteNav = document.querySelector(".site-nav");
+    if (!siteNav) return;
+    const navInner = siteNav.querySelector(".site-nav-inner") || siteNav.querySelector(".container");
+    const navLinks = siteNav.querySelector(".nav-links");
+    if (!navInner || !navLinks) return;
+
+    let searchBtn = navInner.querySelector(".ocq-mobile-search-btn");
+    if (!searchBtn) {
+      searchBtn = document.createElement("button");
+      searchBtn.type = "button";
+      searchBtn.className = "ocq-mobile-search-btn";
+      searchBtn.setAttribute("aria-label", "Search 115 PDBs, 37 Papers & 25 Studios");
+      searchBtn.innerHTML = '🔍 <span>Search</span>';
+      searchBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        window.openOcqCommandPalette();
+      });
+    }
+
+    let existingToggle = navInner.querySelector("#mobileNavToggle, .mobile-nav-toggle");
+    if (existingToggle) {
+      // Group 1-tap mobile search button right beside existing hamburger menu button
+      const actionsWrap = document.createElement("div");
+      actionsWrap.className = "ocq-mobile-actions";
+      existingToggle.parentNode.insertBefore(actionsWrap, existingToggle);
+      actionsWrap.appendChild(searchBtn);
+      actionsWrap.appendChild(existingToggle);
+      document.body.classList.add("has-mobile-top-search");
+      return;
+    }
+
+    // Auto-upgrade the 18 companion pages lacking a mobile hamburger menu
+    siteNav.classList.add("ocq-auto-mobile-nav");
+    if (!navLinks.id) navLinks.id = "ocqAutoPrimaryNav";
+
+    const autoToggle = document.createElement("button");
+    autoToggle.type = "button";
+    autoToggle.className = "mobile-nav-toggle";
+    autoToggle.id = "mobileNavToggle";
+    autoToggle.setAttribute("aria-expanded", "false");
+    autoToggle.setAttribute("aria-controls", navLinks.id);
+    autoToggle.textContent = "☰ Menu";
+
+    const actionsWrap = document.createElement("div");
+    actionsWrap.className = "ocq-mobile-actions";
+    actionsWrap.appendChild(searchBtn);
+    actionsWrap.appendChild(autoToggle);
+    navInner.insertBefore(actionsWrap, navLinks);
+    document.body.classList.add("has-mobile-top-search");
+
+    function closeAutoMenu() {
+      navLinks.classList.remove("mobile-open");
+      autoToggle.setAttribute("aria-expanded", "false");
+      autoToggle.textContent = "☰ Menu";
+    }
+
+    autoToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const open = navLinks.classList.toggle("mobile-open");
+      autoToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      autoToggle.textContent = open ? "✕ Close" : "☰ Menu";
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", closeAutoMenu);
+    });
+
+    document.addEventListener("click", function (e) {
+      if (navLinks.classList.contains("mobile-open") && !navLinks.contains(e.target) && !actionsWrap.contains(e.target)) {
+        closeAutoMenu();
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && navLinks.classList.contains("mobile-open")) {
+        closeAutoMenu();
+      }
+    });
+  }
+
+  function upgradeUnwrappedTablesAndGrids() {
+    document.querySelectorAll("table").forEach(function (tbl) {
+      if (tbl.closest(".table-wrap, .sw-grid-wrap")) return;
+      const wrap = document.createElement("div");
+      wrap.className = "table-wrap";
+      if (tbl.parentNode) {
+        tbl.parentNode.insertBefore(wrap, tbl);
+        wrap.appendChild(tbl);
+      }
+    });
+  }
+
+  function initMol3dMobileTouchGuard() {
+    const vp = document.getElementById("v20Mol3dViewport");
+    if (!vp || document.getElementById("mol3dTouchGuardBtn")) return;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.id = "mol3dTouchGuardBtn";
+    btn.className = "mol3d-touch-guard-btn";
+    btn.textContent = "👆 Tap to Rotate 3D · Swipe Page Freely";
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const active = vp.classList.toggle("touch-interactive");
+      btn.textContent = active ? "✓ Lock 3D (Scroll Page)" : "👆 Tap to Rotate 3D · Swipe Page Freely";
+    });
+    vp.appendChild(btn);
+  }
+
+  function bindVisualViewportHeight() {
+    if (!window.visualViewport) return;
+    function syncVv() {
+      const h = Math.max(240, Math.floor(window.visualViewport.height - 16));
+      document.documentElement.style.setProperty("--ocq-vvh", h + "px");
+    }
+    window.visualViewport.addEventListener("resize", syncVv);
+    window.visualViewport.addEventListener("scroll", syncVv);
+    syncVv();
+  }
+
+  /* ------------------------------------------------------------------------
      6. URL Deep-Link Router (?mol=4o8h, ?doc=v4_7..., ?rule=G136)
      ------------------------------------------------------------------------ */
   function handleDeepLinkParams() {
@@ -706,8 +830,12 @@
      ------------------------------------------------------------------------ */
   function bootLuxuryUX() {
     initScrollProgress();
+    upgradeMobileNavAcrossAllPages();
+    upgradeUnwrappedTablesAndGrids();
     initHeroQuantumCanvas();
     hydrateMol3dButtons();
+    initMol3dMobileTouchGuard();
+    bindVisualViewportHeight();
     const molInput = document.getElementById("mol3dSearchInput");
     if (molInput) {
       molInput.addEventListener("input", applyMol3dDockFilter);

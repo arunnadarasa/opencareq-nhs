@@ -428,8 +428,17 @@
               <button type="button" id="matModeGated" class="btn-sm" onclick="setMatrixMode('gated')">With DCB0129 Commit Gate (100% PASS)</button>
             </div>
           </div>
-          <div class="card" style="padding:1rem;margin-bottom:0.95rem;width:100%;max-width:100%;overflow:hidden;">
-            <svg id="svgTrapMatrix" viewBox="0 0 1020 340" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:100%;height:auto;display:block;background:#0a1416;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="7 by 136 G1 to G136 red-team heatmap"></svg>
+          <div class="card" style="padding:1rem;margin-bottom:0.95rem;width:100%;max-width:100%;">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:0.55rem;flex-wrap:wrap;margin-bottom:0.55rem;">
+              <span style="font-size:0.77rem;color:var(--ink-muted);">↔ Touch-swipe horizontally on mobile to pan &amp; tap any <code>G1–G136</code> cell, or jump directly:</span>
+              <label style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.76rem;color:var(--signal);font-family:var(--font-mono);">
+                Rule:
+                <select id="mobileMatrixRuleJump" class="ctrl-select" style="width:auto;min-width:118px;padding:0.26rem 0.55rem;" onchange="selectMatrixCell(SELECTED_MATRIX_AGENT, this.value)" aria-label="Jump to safety rule in matrix"></select>
+              </label>
+            </div>
+            <div class="matrix-scroll-stage">
+              <svg id="svgTrapMatrix" viewBox="0 0 1020 340" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:100%;height:auto;display:block;background:#0a1416;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="7 by 136 G1 to G136 red-team heatmap"></svg>
+            </div>
           </div>
           <div class="card" id="matrixCellDetail" style="background:var(--bg-card-alt);"></div>
         </div>
@@ -842,6 +851,8 @@
     function selectMatrixCell(agentIdx, ruleCode) {
       SELECTED_MATRIX_AGENT = agentIdx;
       SELECTED_MATRIX_RULE = ruleCode;
+      const rj = document.getElementById("mobileMatrixRuleJump");
+      if (rj) rj.value = ruleCode;
       renderMatrixView();
     }
 
@@ -1064,6 +1075,13 @@
       });
       tbody.innerHTML = rowsHtml;
 
+      const selRuleJump = document.getElementById("mobileMatrixRuleJump");
+      if (selRuleJump) {
+        selRuleJump.innerHTML = HARNESS_DATA.rule_order.map(function(r) {
+          return '<option value="' + escHtml(r) + '"' + (r === SELECTED_MATRIX_RULE ? " selected" : "") + '>' + escHtml(r) + '</option>';
+        }).join("");
+      }
+
       renderInterceptorView();
       renderMatrixView();
       renderSandboxView();
@@ -1130,9 +1148,7 @@
     (function initHarnessResizeObserver() {
       let resizeTimer = 0;
       function reflowSvgs() {
-        const matSvg = document.getElementById("svgTrapMatrix");
         const cmpSvg = document.getElementById("svgAgentComparison");
-        if (matSvg) matSvg.style.width = "100%";
         if (cmpSvg) cmpSvg.style.width = "100%";
         if (HARNESS_DATA && HARNESS_DATA.raw_agent_scorecards) {
           renderInterceptorView();
