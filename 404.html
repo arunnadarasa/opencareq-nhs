@@ -3,17 +3,137 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OpenCareQ — Page Not Found</title>
-  <meta http-equiv="refresh" content="2;url=./" />
+  <title>OpenCareQ v4.7.0 — Portal Navigator &amp; Route Recovery</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="alternate" type="text/plain" title="OpenCareQ v4.7.0 LLM Index (llms.txt)" href="llms.txt" />
+  <link rel="alternate" type="text/plain" title="OpenCareQ v4.7.0 Full LLM Knowledge Corpus (llms-full.txt)" href="llms-full.txt" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/ux/opencareq-lux.css" />
+  <script src="assets/ux/opencareq-command.js" defer></script>
   <style>
-    body { background:#0b1517; color:#eef7f5; font-family:system-ui,sans-serif; display:grid; place-items:center; min-height:100vh; margin:0; text-align:center; padding:1.5rem; }
-    a { color:#38d6c4; font-weight:700; }
+    :root {
+      --bg: #081215;
+      --ink: #eef7f5;
+      --ink-muted: #9eb7b4;
+      --signal: #38d6c4;
+      --amber: #f4ae42;
+      --border: rgba(158, 183, 180, 0.18);
+      --font-display: "Barlow Condensed", system-ui, sans-serif;
+      --font-sans: "Plus Jakarta Sans", "Barlow", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: clip; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      color: var(--ink);
+      font-family: var(--font-sans);
+    }
+    .recovery-shell {
+      width: min(860px, 100%);
+      max-width: 100%;
+      padding: clamp(1.15rem, 4vw, 2rem);
+      border-radius: 18px;
+      background: linear-gradient(170deg, rgba(18, 36, 42, 0.92), rgba(9, 20, 24, 0.97));
+      border: 1px solid rgba(56, 214, 196, 0.42);
+      box-shadow: 0 28px 68px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    }
+    .foot-row .ocq-cmd-trigger {
+      max-width: 100%;
+      white-space: normal;
+      text-align: left;
+    }
+    .kicker {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--signal);
+      margin: 0 0 0.4rem;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      line-height: 1.04;
+      margin: 0 0 0.55rem;
+    }
+    p { color: var(--ink-muted); margin: 0 0 1.25rem; line-height: 1.55; font-size: 0.95rem; }
+    .bento-404 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+    @media (max-width: 640px) { .bento-404 { grid-template-columns: 1fr; } }
+    .bento-link {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0.95rem 1.05rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(11, 24, 28, 0.85);
+      color: var(--ink);
+      text-decoration: none;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+    .bento-link:hover {
+      transform: translateY(-2px);
+      border-color: var(--signal);
+    }
+    .bento-link strong { font-size: 0.95rem; color: #ffffff; }
+    .bento-link span { font-size: 0.79rem; color: var(--ink-muted); }
+    .foot-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      padding-top: 0.95rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
   </style>
 </head>
 <body>
-  <div>
-    <h1>OpenCareQ</h1>
-    <p>Redirecting to the NHS Healthcare Quantum, World Model &amp; SwarmWorld portal… <a href="./">Click here if not redirected</a>.</p>
-  </div>
+  <main class="recovery-shell">
+    <p class="kicker">OpenCareQ v4.7.0 Blue Ocean · Sovereign Route Navigator</p>
+    <h1>That specific URL moved—jump straight to any crystal, paper, or studio</h1>
+    <p>
+      Explore all <strong>115 verified RCSB PDB structures (0.66 Å – 2.00 Å)</strong>, <strong>37 open-access Samskrift manuscripts</strong>, <strong>25 interactive clinical-quantum studios</strong>, and <strong>3,808 NHS DCB0129 evaluations (G1–G136)</strong> directly below or press <strong>⌘K</strong> to search instantly.
+    </p>
+    <div class="bento-404">
+      <a class="bento-link" href="index.html">
+        <strong>🏠 Main OpenCareQ v4.7.0 Portal →</strong>
+        <span>+£40.23B/yr 42-ICB DCEA · 515/515 Parity · 56 ML-DSA-65 Receipts</span>
+      </a>
+      <a class="bento-link" href="index.html?mol=4o8h#v20Mol3dCard">
+        <strong>💎 115-Crystal 3Dmol.js WebGL Theater →</strong>
+        <span>0.85 Å #115!! 4O8H Cyclophilin D · 0.66 Å 1US0 · 165kQiB 4EZF</span>
+      </a>
+      <a class="bento-link" href="quantum-holobiont-genomic-organ-convergence.html">
+        <strong>🌊 v4.7 Blue Ocean Convergence Studio →</strong>
+        <span>Anshu O(log M) Gibbs · [[144,12,12]] BB-qLDPC · O(1) Dynamic LOCC</span>
+      </a>
+      <a class="bento-link" href="harness.html">
+        <strong>🛡 G1–G136 Clinical &amp; Quantum Safety Harness →</strong>
+        <span>272 Paired Traps &amp; Safe Twins · Youden&apos;s J = 1.000 · 0 Harms</span>
+      </a>
+    </div>
+    <div class="foot-row">
+      <button type="button" class="ocq-cmd-trigger" onclick="if(window.openOcqCommandPalette)window.openOcqCommandPalette();">
+        <span>🔍 Launch Global Spotlight Search (115 PDBs &amp; 37 Docs)</span><span class="ocq-cmd-kbd">⌘K</span>
+      </button>
+      <span>phi_present = False · INALYN CIC (#17398798)</span>
+    </div>
+  </main>
 </body>
 </html>

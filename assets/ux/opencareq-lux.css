@@ -1,0 +1,832 @@
+/* ==========================================================================
+   OpenCareQ v4.7.0 — Obsidian Bioluminescent Clinical-Quantum Luxury Layer
+   Shared Zero-Dependency Design System (`assets/ux/opencareq-lux.css`)
+   Non-Commercial NHS Public-Good Research Stack · INALYN CIC (#17398798)
+   ========================================================================== */
+
+:root {
+  --lux-obsidian: #060d10;
+  --lux-surface-1: rgba(14, 29, 34, 0.80);
+  --lux-surface-2: rgba(19, 38, 44, 0.86);
+  --lux-surface-3: rgba(10, 21, 25, 0.94);
+  --lux-border-subtle: rgba(168, 204, 200, 0.14);
+  --lux-border-glow: rgba(56, 214, 196, 0.42);
+  --lux-specular-top: inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  --lux-shadow-card: 0 18px 42px -18px rgba(0, 0, 0, 0.72), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  --lux-shadow-hover: 0 24px 52px -16px rgba(0, 0, 0, 0.84), 0 0 28px -8px rgba(56, 214, 196, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --lux-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Crisp Numeric & Typographic Rendering */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.kpi-val, .kpi-num, .nav-count-badge, .lux-stat, table td {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom Sleek Obsidian Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 214, 196, 0.32) rgba(8, 17, 20, 0.65);
+}
+*::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(8, 17, 20, 0.65);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(56, 214, 196, 0.30);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 214, 196, 0.56);
+}
+
+/* Accessible High-Contrast Focus Ring */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #38d6c4;
+  outline-offset: 2px;
+}
+
+/* Top-of-Viewport Bioluminescent Scroll Progress Hairline */
+#ocqScrollProgress,
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2.5px;
+  width: 0%;
+  z-index: 260;
+  pointer-events: none;
+  background: linear-gradient(90deg, #38d6c4 0%, #3898ff 52%, #f4ae42 100%);
+  box-shadow: 0 0 12px rgba(56, 214, 196, 0.55);
+  transition: width 0.08s linear;
+}
+
+/* Layered Bioluminescent Atmosphere & Sticky Glass Nav */
+body {
+  background-color: #081215;
+  background-image:
+    radial-gradient(ellipse 68% 42% at 14% 0%, rgba(56, 214, 196, 0.13), transparent 62%),
+    radial-gradient(ellipse 56% 38% at 88% 6%, rgba(56, 152, 255, 0.09), transparent 58%),
+    radial-gradient(ellipse 50% 34% at 52% 24%, rgba(244, 174, 66, 0.05), transparent 64%);
+}
+
+.site-nav {
+  backdrop-filter: blur(20px) saturate(145%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(145%) !important;
+  background: rgba(7, 16, 19, 0.84) !important;
+  border-bottom: 1px solid rgba(158, 183, 180, 0.16) !important;
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.72);
+}
+
+.brand-mark {
+  box-shadow: 0 0 18px rgba(56, 214, 196, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Specular Glassmorphic Cards Across All 29 Pages */
+.card,
+.role-card,
+.paper-card,
+.grant-card,
+.hero-track-card {
+  background: linear-gradient(170deg, rgba(20, 39, 45, 0.84) 0%, rgba(11, 23, 27, 0.93) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-color: var(--lux-border-subtle);
+  box-shadow: var(--lux-shadow-card);
+  transition: transform 0.24s var(--lux-ease), border-color 0.24s var(--lux-ease), box-shadow 0.24s var(--lux-ease);
+}
+
+.role-card:hover,
+.paper-card:hover,
+.grant-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--lux-border-glow);
+  box-shadow: var(--lux-shadow-hover);
+}
+
+/* Crown Paper Cards (Replaces Harsh 1.0-Alpha Neon Box-Shadows with Refined Specular Aura) */
+.paper-card--crown {
+  border-color: rgba(56, 214, 196, 0.44) !important;
+  background:
+    radial-gradient(circle at 92% 6%, rgba(56, 214, 196, 0.11), transparent 46%),
+    linear-gradient(170deg, rgba(21, 43, 49, 0.92) 0%, rgba(10, 22, 26, 0.96) 100%) !important;
+  box-shadow:
+    0 22px 48px -18px rgba(0, 0, 0, 0.82),
+    0 0 32px -10px rgba(56, 214, 196, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.11) !important;
+}
+
+.paper-card--amber {
+  border-color: rgba(244, 174, 66, 0.42) !important;
+  background:
+    radial-gradient(circle at 92% 6%, rgba(244, 174, 66, 0.10), transparent 46%),
+    linear-gradient(170deg, rgba(24, 40, 44, 0.90) 0%, rgba(11, 22, 26, 0.95) 100%) !important;
+}
+
+/* ==========================================================================
+   Cinematic Split Hero, Quantum Lattice Canvas & Editorial Clarity
+   ========================================================================== */
+.hero.hero-v19 {
+  position: relative;
+  overflow: hidden;
+  padding: 1.55rem 0 1.35rem;
+  background:
+    linear-gradient(180deg, rgba(6, 15, 18, 0.35) 0%, rgba(8, 18, 21, 0.82) 100%);
+}
+
+.hero.hero-v19::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(158, 183, 180, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(158, 183, 180, 0.028) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 75% at 50% 35%, #000 35%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 35%, #000 35%, transparent 100%);
+}
+
+#heroQuantumCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.78;
+}
+
+.hero.hero-v19 > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-v19 h1 {
+  letter-spacing: -0.015em;
+  background: linear-gradient(120deg, #ffffff 15%, #ccf7f1 68%, #7be7da 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #eef7f5;
+}
+
+/* Clean Editorial Inline Highlights (Replaces Monospace Code Confetti in Prose) */
+.lux-stat {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+.lux-accent {
+  color: #5ce6d6;
+  font-weight: 700;
+}
+.lux-gold {
+  color: #f7be63;
+  font-weight: 700;
+}
+
+.hero-scoreboard-panel {
+  background:
+    radial-gradient(circle at 88% 8%, rgba(56, 214, 196, 0.14), transparent 48%),
+    linear-gradient(160deg, rgba(17, 35, 40, 0.92), rgba(8, 18, 22, 0.96)) !important;
+  border: 1px solid rgba(56, 214, 196, 0.38) !important;
+  box-shadow:
+    0 24px 56px -18px rgba(0, 0, 0, 0.82),
+    0 0 36px -12px rgba(56, 214, 196, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.11) !important;
+}
+
+.hero-kpi-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(175deg, rgba(16, 33, 38, 0.92), rgba(9, 20, 24, 0.95)) !important;
+  border: 1px solid rgba(158, 183, 180, 0.18) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: transform 0.2s var(--lux-ease), border-color 0.2s var(--lux-ease);
+}
+.hero-kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 214, 196, 0.48) !important;
+}
+
+.hero-kpi-spark {
+  height: 3px;
+  width: 100%;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  margin-top: 0.42rem;
+  overflow: hidden;
+}
+.hero-kpi-spark > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #38d6c4, #3898ff);
+}
+.hero-kpi-spark.gold > span {
+  background: linear-gradient(90deg, #f4ae42, #38d6c4);
+}
+
+/* Sovereign Proof Ticker Ribbon */
+.hero-proof-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.9rem;
+  padding: 0.5rem 0.85rem;
+  margin: 0.15rem 0 0.68rem;
+  border-radius: 10px;
+  background: rgba(9, 21, 25, 0.82);
+  border: 1px solid rgba(56, 214, 196, 0.24);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  color: var(--ink-muted, #9eb7b4);
+}
+.hero-proof-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.36rem;
+  white-space: nowrap;
+}
+.hero-proof-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38d6c4;
+  box-shadow: 0 0 8px rgba(56, 214, 196, 0.85);
+}
+
+/* Persona Concierge Cards (#role-router) */
+.role-card-metric {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.16rem 0.48rem;
+  border-radius: 999px;
+  background: rgba(56, 214, 196, 0.10);
+  border: 1px solid rgba(56, 214, 196, 0.28);
+  color: #8bf0e3;
+  margin-bottom: 0.35rem;
+}
+
+/* ==========================================================================
+   115-Crystal 3Dmol.js Stage-First Theater (#v20Mol3dCard)
+   Eliminates the 1,380 px Button Wall & Right-Hand Empty Void
+   ========================================================================== */
+.mol3d-theater-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.2rem;
+  padding: 1rem 1.08rem;
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(56, 214, 196, 0.10), transparent 52%),
+    linear-gradient(175deg, rgba(16, 33, 38, 0.92) 0%, rgba(8, 17, 20, 0.96) 100%);
+  border: 1px solid rgba(56, 214, 196, 0.36);
+  box-shadow:
+    0 24px 56px -18px rgba(0, 0, 0, 0.82),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+}
+
+.mol3d-theater-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.mol3d-crown-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  padding: 0.46rem 0.65rem;
+  border-radius: 10px;
+  background: rgba(6, 15, 18, 0.78);
+  border: 1px solid rgba(158, 183, 180, 0.16);
+}
+
+.mol3d-crown-presets {
+  display: flex;
+  align-items: center;
+  gap: 0.36rem;
+  flex-wrap: wrap;
+}
+
+.mol3d-crown-lbl {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #f4ae42;
+  margin-right: 0.2rem;
+}
+
+.mol3d-preset-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.26rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 214, 196, 0.32);
+  background: rgba(56, 214, 196, 0.09);
+  color: #dff8f4;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.mol3d-preset-pill:hover {
+  background: rgba(56, 214, 196, 0.22);
+  border-color: #38d6c4;
+  color: #ffffff;
+}
+
+.mol3d-stage-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.38fr) minmax(0, 1fr);
+  gap: 0.95rem;
+  align-items: stretch;
+}
+@media (max-width: 960px) {
+  .mol3d-stage-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mol3d-stage-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.52rem;
+  min-width: 0;
+}
+
+.mol3d-theater-shell #v20Mol3dViewport {
+  height: 440px;
+  border-radius: 12px;
+  border: 1px solid rgba(56, 214, 196, 0.38);
+  box-shadow: inset 0 0 44px rgba(0, 0, 0, 0.65);
+  transition: height 0.25s var(--lux-ease);
+}
+
+.mol3d-theater-shell.cinema-expanded #v20Mol3dViewport {
+  height: 580px;
+}
+
+.mol3d-inspector-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 486px;
+  overflow-y: auto;
+  padding: 0.95rem 1.05rem;
+  border-radius: 12px;
+  background: rgba(9, 20, 24, 0.86);
+  border: 1px solid rgba(158, 183, 180, 0.18);
+  transition: height 0.25s var(--lux-ease);
+}
+.mol3d-theater-shell.cinema-expanded .mol3d-inspector-card {
+  height: 626px;
+}
+@media (max-width: 960px) {
+  .mol3d-theater-shell #v20Mol3dViewport {
+    height: 360px;
+  }
+  .mol3d-inspector-card {
+    height: auto;
+    max-height: 440px;
+  }
+}
+
+/* Compact 185 px Searchable Crystal Command Dock */
+.mol3d-dock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.68rem 0.78rem;
+  border-radius: 11px;
+  background: rgba(6, 14, 17, 0.88);
+  border: 1px solid rgba(158, 183, 180, 0.18);
+}
+
+.mol3d-dock-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.mol3d-search-wrap {
+  position: relative;
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.mol3d-search-input {
+  width: 100%;
+  background: rgba(16, 33, 38, 0.92);
+  color: #eef7f5;
+  border: 1px solid rgba(56, 214, 196, 0.34);
+  border-radius: 8px;
+  padding: 0.4rem 0.72rem;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.8rem;
+}
+.mol3d-search-input::placeholder {
+  color: rgba(158, 183, 180, 0.72);
+}
+
+.mol3d-cat-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.32rem;
+  flex-wrap: wrap;
+}
+
+.mol3d-cat-btn {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.73rem;
+  font-weight: 700;
+  padding: 0.26rem 0.58rem;
+  border-radius: 999px;
+  border: 1px solid rgba(158, 183, 180, 0.22);
+  background: rgba(18, 35, 40, 0.85);
+  color: #9eb7b4;
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+.mol3d-cat-btn:hover {
+  color: #eef7f5;
+  border-color: rgba(56, 214, 196, 0.5);
+}
+.mol3d-cat-btn.active {
+  background: rgba(244, 174, 66, 0.16);
+  color: #f4ae42;
+  border-color: rgba(244, 174, 66, 0.58);
+}
+
+.mol3d-dock #v20Mol3dTabs {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
+  gap: 0.34rem !important;
+  max-height: 176px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.25rem;
+}
+
+.mol3d-dock #v20Mol3dTabs .btn-sm {
+  justify-content: flex-start;
+  text-align: left;
+  font-size: 0.73rem;
+  padding: 0.3rem 0.55rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mol3d-filter-hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Paper Catalog Search & Compact / Bento View Toggle
+   ========================================================================== */
+.paper-catalog-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  margin: 0.35rem 0 0.85rem;
+}
+
+.paper-search-input {
+  flex: 1 1 250px;
+  min-width: 0;
+  background: rgba(14, 29, 34, 0.9);
+  color: #eef7f5;
+  border: 1px solid rgba(56, 214, 196, 0.32);
+  border-radius: 8px;
+  padding: 0.4rem 0.75rem;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.81rem;
+}
+
+#papersCatalogGrid.compact-view {
+  grid-template-columns: 1fr !important;
+  gap: 0.52rem !important;
+}
+#papersCatalogGrid.compact-view .paper-card {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.72rem 1rem;
+  gap: 0.85rem;
+}
+#papersCatalogGrid.compact-view .paper-card p,
+#papersCatalogGrid.compact-view .paper-card .paper-meta-list {
+  display: none;
+}
+#papersCatalogGrid.compact-view .paper-card h3 {
+  font-size: 1.05rem;
+  margin: 0.18rem 0 0;
+}
+@media (max-width: 760px) {
+  #papersCatalogGrid.compact-view .paper-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.paper-search-hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Global Cmd+K / '/' Spotlight Command Palette Modal (All 29 Pages)
+   ========================================================================== */
+.ocq-cmd-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.64rem;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 214, 196, 0.38);
+  background: linear-gradient(180deg, rgba(56, 214, 196, 0.12), rgba(56, 214, 196, 0.05));
+  color: #e6faf7;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.77rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  transition: all 0.16s ease;
+}
+.ocq-cmd-trigger:hover {
+  border-color: #f4ae42;
+  color: #ffffff;
+  background: rgba(56, 214, 196, 0.2);
+}
+.ocq-cmd-kbd {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.65rem;
+  padding: 0.06rem 0.34rem;
+  border-radius: 5px;
+  background: rgba(6, 16, 19, 0.75);
+  border: 1px solid rgba(158, 183, 180, 0.28);
+  color: #f4ae42;
+}
+
+/* Floating Bottom-Right Spotlight Pill for Standalone Studios Without Trigger */
+.ocq-floating-cmd {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 190;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.44rem;
+  padding: 0.48rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 214, 196, 0.48);
+  background: rgba(8, 20, 24, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #eef7f5;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.72), 0 0 20px rgba(56, 214, 196, 0.18);
+  transition: transform 0.18s var(--lux-ease), border-color 0.18s ease;
+}
+.ocq-floating-cmd:hover {
+  transform: translateY(-2px);
+  border-color: #f4ae42;
+}
+@media (max-width: 600px) {
+  .ocq-floating-cmd {
+    right: 10px;
+    bottom: 10px;
+    padding: 0.4rem 0.68rem;
+    font-size: 0.73rem;
+  }
+}
+
+#ocqCmdBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 340;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: min(10vh, 72px) 1rem 1rem;
+  background: rgba(3, 9, 11, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+#ocqCmdBackdrop.open {
+  display: flex;
+}
+
+#ocqCmdDialog {
+  width: min(740px, 100%);
+  max-height: min(80vh, 620px);
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(16, 33, 38, 0.97) 0%, rgba(8, 18, 22, 0.99) 100%);
+  border: 1px solid rgba(56, 214, 196, 0.48);
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.92),
+    0 0 42px -10px rgba(56, 214, 196, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.ocq-cmd-head {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.82rem 1rem;
+  border-bottom: 1px solid rgba(158, 183, 180, 0.18);
+  background: rgba(6, 15, 18, 0.65);
+}
+
+.ocq-cmd-icon {
+  color: #38d6c4;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+#ocqCmdInput {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.96rem;
+  font-weight: 500;
+  outline: none;
+}
+#ocqCmdInput::placeholder {
+  color: rgba(158, 183, 180, 0.68);
+}
+
+.ocq-cmd-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.36rem;
+  flex-wrap: wrap;
+  padding: 0.48rem 0.95rem;
+  border-bottom: 1px solid rgba(158, 183, 180, 0.14);
+  background: rgba(9, 20, 24, 0.72);
+}
+
+.ocq-cmd-tab {
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.73rem;
+  font-weight: 700;
+  padding: 0.24rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid rgba(158, 183, 180, 0.2);
+  background: rgba(18, 36, 41, 0.8);
+  color: #9eb7b4;
+  cursor: pointer;
+}
+.ocq-cmd-tab.active {
+  background: rgba(56, 214, 196, 0.18);
+  border-color: #38d6c4;
+  color: #ffffff;
+}
+
+#ocqCmdResults {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.5rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+}
+
+.ocq-cmd-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.56rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #eef7f5;
+  cursor: pointer;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.ocq-cmd-item:hover,
+.ocq-cmd-item.selected {
+  background: rgba(56, 214, 196, 0.13);
+  border-color: rgba(56, 214, 196, 0.36);
+}
+
+.ocq-cmd-item-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  min-width: 0;
+}
+.ocq-cmd-item-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ocq-cmd-item-sub {
+  font-size: 0.73rem;
+  color: #9eb7b4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ocq-cmd-badge {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 0.16rem 0.48rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  background: rgba(56, 214, 196, 0.12);
+  border: 1px solid rgba(56, 214, 196, 0.3);
+  color: #79ece0;
+}
+.ocq-cmd-badge.paper {
+  background: rgba(244, 174, 66, 0.13);
+  border-color: rgba(244, 174, 66, 0.34);
+  color: #f4ae42;
+}
+.ocq-cmd-badge.studio {
+  background: rgba(56, 152, 255, 0.14);
+  border-color: rgba(56, 152, 255, 0.36);
+  color: #8cc4ff;
+}
+.ocq-cmd-badge.safety {
+  background: rgba(240, 106, 59, 0.15);
+  border-color: rgba(240, 106, 59, 0.38);
+  color: #ffa182;
+}
+
+.ocq-cmd-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem 0.95rem;
+  border-top: 1px solid rgba(158, 183, 180, 0.14);
+  background: rgba(6, 14, 17, 0.86);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.68rem;
+  color: #7d9a97;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #heroQuantumCanvas {
+    opacity: 0.35;
+  }
+  .card, .role-card, .paper-card, .hero-kpi-card {
+    transition: none !important;
+  }
+}

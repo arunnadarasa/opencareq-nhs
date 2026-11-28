@@ -15,7 +15,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -253,6 +253,8 @@
       .site-nav-inner { padding: 0.45rem 0.9rem; }
     }
   </style>
+  <link rel="stylesheet" href="assets/ux/opencareq-lux.css" />
+  <script src="assets/ux/opencareq-command.js" defer></script>
 </head>
 <body>
 
@@ -269,6 +271,9 @@
         <a href="#studio" onclick="switchHarnessTab('matrix')">2 · 7×136 Matrix</a>
         <a href="#studio" onclick="switchHarnessTab('sandbox')">3 · Sandbox</a>
         <a href="#taxonomy">G1–G136 Table</a>
+        <button type="button" class="ocq-cmd-trigger" onclick="if(window.openOcqCommandPalette)window.openOcqCommandPalette();" aria-label="Open Global Spotlight Search">
+          <span>🔍 Search</span><span class="ocq-cmd-kbd">⌘K</span>
+        </button>
         <details class="nav-dropdown" id="navMoreMenu">
           <summary><span>All Studios (25)</span><span>▾</span></summary>
           <div class="nav-dropdown-menu" role="menu">
@@ -423,8 +428,8 @@
               <button type="button" id="matModeGated" class="btn-sm" onclick="setMatrixMode('gated')">With DCB0129 Commit Gate (100% PASS)</button>
             </div>
           </div>
-          <div class="card" style="padding:1rem;margin-bottom:0.95rem;">
-            <svg id="svgTrapMatrix" viewBox="0 0 1020 340" style="width:100%;height:auto;display:block;background:#0a1416;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="7 by 136 G1 to G136 red-team heatmap"></svg>
+          <div class="card" style="padding:1rem;margin-bottom:0.95rem;width:100%;max-width:100%;overflow:hidden;">
+            <svg id="svgTrapMatrix" viewBox="0 0 1020 340" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:100%;height:auto;display:block;background:#0a1416;border-radius:8px;border:1px solid var(--border);" role="img" aria-label="7 by 136 G1 to G136 red-team heatmap"></svg>
           </div>
           <div class="card" id="matrixCellDetail" style="background:var(--bg-card-alt);"></div>
         </div>
@@ -433,11 +438,24 @@
         <div id="tabPanel-sandbox" style="display:none;">
           <div class="studio-two-col">
             <div class="card">
-              <div class="card-eyebrow" style="margin-bottom:0.45rem;">Compose Custom Runtime Safety Gate (Zero-Network In-Browser Evaluator)</div>
-              <p style="font-size:0.86rem;color:var(--ink-muted);margin:0 0 0.85rem;">
-                Toggle individual world-model guardrails (or enable indiscriminate paranoid refusal) to watch how balanced <code>Sensitivity</code>, <code>Safe-Twin Specificity</code>, and <code>Youden's J</code> respond across all 248 cases:
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.45rem;">
+                <div class="card-eyebrow">Compose Custom Runtime Safety Gate (36 Modular Guardrails · 272 Paired Cases)</div>
+                <div style="display:flex;gap:0.35rem;flex-wrap:wrap;">
+                  <button type="button" class="btn-sm" style="padding:0.24rem 0.55rem;font-size:0.72rem;" onclick="bulkToggleSandbox(true)">✓ Enable All 36</button>
+                  <button type="button" class="btn-sm" style="padding:0.24rem 0.55rem;font-size:0.72rem;" onclick="bulkToggleSandbox(false)">✕ Disable All</button>
+                </div>
+              </div>
+              <p style="font-size:0.84rem;color:var(--ink-muted);margin:0 0 0.65rem;">
+                Filter or toggle individual world-model guardrails across all <code>272</code> paired clinical &amp; quantum cases to inspect balanced <code>Sensitivity</code>, <code>Safe-Twin Specificity</code>, and <code>Youden&apos;s J</code>:
               </p>
-              <div class="switch-grid">
+              <div style="display:flex;flex-wrap:wrap;gap:0.38rem;align-items:center;margin-bottom:0.65rem;">
+                <input type="search" id="sandboxSwitchSearch" placeholder="Filter 36 guardrails (e.g. DPYD, sepsis, qLDPC, CYP3A5, warfarin, G136)…" autocomplete="off" oninput="filterSandboxSwitches()" style="flex:1 1 220px;min-width:0;background:#071113;color:var(--ink);border:1px solid var(--border-strong);border-radius:8px;padding:0.38rem 0.65rem;font-family:var(--font-sans);font-size:0.79rem;" />
+                <button type="button" class="btn-sm active" data-sbx-filter="all" onclick="setSandboxCat('all', this)" style="padding:0.26rem 0.58rem;font-size:0.72rem;">All (36)</button>
+                <button type="button" class="btn-sm" data-sbx-filter="recent" onclick="setSandboxCat('recent', this)" style="padding:0.26rem 0.58rem;font-size:0.72rem;">★ v4.0–v4.7 Acute &amp; Continuum</button>
+                <button type="button" class="btn-sm" data-sbx-filter="prevention" onclick="setSandboxCat('prevention', this)" style="padding:0.26rem 0.58rem;font-size:0.72rem;">🩺 Prevention &amp; PGx</button>
+                <button type="button" class="btn-sm" data-sbx-filter="quantum" onclick="setSandboxCat('quantum', this)" style="padding:0.26rem 0.58rem;font-size:0.72rem;">⚛ Quantum &amp; Gate G4</button>
+              </div>
+              <div class="switch-grid" id="sandboxSwitchGrid" style="max-height:460px;overflow-y:auto;padding-right:0.25rem;">
                 <label class="switch-card">
                   <input type="checkbox" id="swPbpk" checked onchange="renderSandboxView()" />
                   <div><strong style="font-size:0.85rem;display:block;">CYP3A4 / PXR Depot ODEs (G1, G4, G5, G13)</strong><span style="font-size:0.76rem;color:var(--ink-muted);">Ritonavir Day-10 depot, rifampicin PXR lag, voriconazole +72h &amp; winter ICS×clarithromycin</span></div>
@@ -1050,6 +1068,92 @@
       renderMatrixView();
       renderSandboxView();
     }
+
+    let ACTIVE_SBX_CAT = "all";
+    function classifySwitchCard(card) {
+      const input = card.querySelector('input[type="checkbox"]');
+      const id = input ? input.id : "";
+      const cats = ["all"];
+      if (/V4[0-7]$/.test(id)) cats.push("recent");
+      if (/Quantum|LifecoursePhotonics|Tunnelling|Relativistic|Photobiology|Qtda|NinePillar|Exposome|GateG4|Holobiont|Continuum|Quettibyte|Centennial/.test(id)) cats.push("quantum");
+      if (cats.length === 1 || /Pbpk|Progress|Resp|NonComm|Frail|Smi|Cancer|Cp1350|Water|Msk|Immuno|Womens|Addiction|Dental|Thyroid|Uti|Pharmacy/.test(id)) cats.push("prevention");
+      return cats;
+    }
+
+    function filterSandboxSwitches() {
+      const grid = document.getElementById("sandboxSwitchGrid");
+      if (!grid) return;
+      const qEl = document.getElementById("sandboxSwitchSearch");
+      const q = qEl ? qEl.value.toLowerCase().trim() : "";
+      grid.querySelectorAll(".switch-card").forEach(function(card) {
+        const cats = classifySwitchCard(card);
+        const catOk = ACTIVE_SBX_CAT === "all" || cats.indexOf(ACTIVE_SBX_CAT) !== -1;
+        const txtOk = !q || (card.textContent || "").toLowerCase().indexOf(q) !== -1;
+        card.style.display = (catOk && txtOk) ? "flex" : "none";
+      });
+    }
+
+    function setSandboxCat(cat, btn) {
+      ACTIVE_SBX_CAT = cat || "all";
+      document.querySelectorAll("[data-sbx-filter]").forEach(function(b) {
+        b.classList.toggle("active", b === btn);
+      });
+      filterSandboxSwitches();
+    }
+
+    function bulkToggleSandbox(enable) {
+      const grid = document.getElementById("sandboxSwitchGrid");
+      if (!grid) return;
+      grid.querySelectorAll('input[type="checkbox"]').forEach(function(cb) {
+        cb.checked = Boolean(enable);
+      });
+      const p = document.getElementById("swParanoid");
+      if (p && enable) p.checked = false;
+      renderSandboxView();
+    }
+
+    window.jumpToHarnessRule = function(ruleCode) {
+      const code = String(ruleCode || "G136").toUpperCase();
+      SELECTED_MATRIX_RULE = code;
+      if (HARNESS_DATA && Array.isArray(HARNESS_DATA.vignettes)) {
+        const idx = HARNESS_DATA.vignettes.findIndex(function(v) { return v.rule_code === code && v.is_hazard_trap; });
+        if (idx >= 0) {
+          const selV = document.getElementById("selVignette");
+          if (selV) selV.value = String(idx);
+        }
+      }
+      switchHarnessTab("interceptor");
+      const st = document.getElementById("studio");
+      if (st) st.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    (function initHarnessResizeObserver() {
+      let resizeTimer = 0;
+      function reflowSvgs() {
+        const matSvg = document.getElementById("svgTrapMatrix");
+        const cmpSvg = document.getElementById("svgAgentComparison");
+        if (matSvg) matSvg.style.width = "100%";
+        if (cmpSvg) cmpSvg.style.width = "100%";
+        if (HARNESS_DATA && HARNESS_DATA.raw_agent_scorecards) {
+          renderInterceptorView();
+          renderMatrixView();
+        }
+      }
+      window.addEventListener("resize", function() {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(reflowSvgs, 80);
+      });
+      if ("ResizeObserver" in window) {
+        const studioEl = document.getElementById("studio");
+        if (studioEl) {
+          const ro = new ResizeObserver(function() {
+            window.clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(reflowSvgs, 60);
+          });
+          ro.observe(studioEl);
+        }
+      }
+    })();
 
     (function initHarnessNavUX() {
       const mBtn = document.getElementById("mobileNavToggle");

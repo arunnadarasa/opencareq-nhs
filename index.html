@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Barlow:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
   <script src="assets/vendor/pdf.min.js" defer></script>
   <script src="assets/vendor/3Dmol.min.js" defer></script>
 
@@ -1224,6 +1224,8 @@
     }
 
   </style>
+  <link rel="stylesheet" href="assets/ux/opencareq-lux.css" />
+  <script src="assets/ux/opencareq-command.js" defer></script>
 </head>
 <body>
 
@@ -1238,12 +1240,15 @@
       <nav class="nav-links" id="primaryNavLinks" aria-label="Primary Navigation">
         <a href="#role-router" data-spy-sec="role-router" style="color:var(--signal);">Start Here</a>
         <a href="quantum-holobiont-genomic-organ-convergence.html" style="color:var(--signal);">v4.7 Studio ↗</a>
-        <a href="#v20QuantumMolStage" data-spy-sec="sickness-to-prevention">115-PDB 3D</a>
+        <a href="#v20Mol3dCard" data-spy-sec="sickness-to-prevention" onclick="if(window.openMol3dTheater){event.preventDefault();window.openMol3dTheater('4o8h');}">115-PDB 3D</a>
         <a href="#papers" data-spy-sec="innovation-governance" style="color:var(--amber);">Papers (37)</a>
         <a href="harness.html" style="color:var(--signal);">Safety (G1–G136) ↗</a>
         <a href="clinician-guide.html" class="nav-hide-compact">Clinician Guide ↗</a>
+        <button type="button" class="ocq-cmd-trigger" id="navSpotlightBtn" onclick="if(window.openOcqCommandPalette)window.openOcqCommandPalette();" aria-label="Open Global Spotlight Search across 115 PDBs, 37 Papers and 25 Studios">
+          <span>🔍 Search</span><span class="ocq-cmd-kbd">⌘K</span>
+        </button>
         <details class="nav-dropdown" id="navMoreMenu">
-          <summary><span>All Studios</span><span class="nav-count-badge">25</span><span class="nav-kbd">⌘K</span><span>▾</span></summary>
+          <summary><span>All Studios</span><span class="nav-count-badge">25</span><span>▾</span></summary>
           <div class="nav-dropdown-menu" role="menu" aria-label="Searchable Studio and Portal Directory">
             <div class="nav-mega-search-bar">
               <label for="navStudioSearchInput" class="sr-only">Filter studios, diseases, pathways, or safety rules</label>
@@ -1300,6 +1305,7 @@
   <main id="top">
     <!-- ABOVE-THE-FOLD 2-COLUMN SPLIT EXECUTIVE HEADER (v4.7.0 Blue Ocean Convergence) -->
     <section class="hero hero-v19">
+      <canvas id="heroQuantumCanvas" width="1280" height="560" aria-hidden="true" style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;"></canvas>
       <div class="container">
         <div class="pill-row">
           <span class="pill pill-signal pill-nowrap">v4.7.0 Blue Ocean · BB-qLDPC, 515/515 &amp; 115 PDBs!</span>
@@ -1314,19 +1320,19 @@
               <h1>OpenCareQ <span style="font-size:0.44em;color:var(--signal);vertical-align:middle;font-family:var(--font-mono);">v4.7.0</span></h1>
               <p class="hero-subtitle">Clinician- &amp; Pharmacist-in-Charge Precision Prevention, Medication Safety &amp; Quantum Workbench</p>
               <p class="lead">
-                <strong>OpenCareQ</strong> is an open-science NHS decision-support and commissioning research platform operating strictly with zero patient identifiers (<code>phi_present = False</code>) and zero autonomous prescribing. Across all <strong>42 English Integrated Care Boards</strong> (<code>1,280</code> PCNs, <code>62.93M</code> patients), <code>v4.7.0 Blue Ocean Convergence</code> unites coupled <strong>Host × Microbiome × Germline × Donor-Organ Holobiont</strong> medicine with <strong>Bravyi <code>[[144,12,12]]</code> Bivariate Bicycle <code>qLDPC</code> (<code>12.68×</code> cut to <code>8,064</code> physical qubits on <code>165,328.96 QiB</code> <code>#113! PDB: 4EZF</code> <code>MitoNEET</code>)</strong>, expands our sovereign bank to <strong><code>115 / 115</code> experimental RCSB PDB structures</strong> (record-sharpest <code>1.082 Å</code> quintet crowned by <code>#114! PDB: 2PPN</code> <code>0.92 Å FKBP12</code> &amp; <code>#115!! PDB: 4O8H</code> <code>0.85 Å Cyclophilin D</code>), reaches <strong><code>515 / 515</code> (<code>100%</code>) zero-fit parity</strong> and <strong><code>3,808</code> deterministic <code>NHS DCB0129</code> evaluations</strong> (<code>G1–G136</code>, <code>272</code> cases), and <strong>breaks the historic <code>+£40B/yr</code> NHS prevention barrier at <code>+£40.23B/yr</code> (<code>+£40,231.5M/yr</code>)</strong>!
+                <strong>OpenCareQ</strong> is an open-science NHS decision-support and commissioning workbench operating strictly with zero patient identifiers (<code>phi_present = False</code>) and zero autonomous prescribing. Across all <span class="lux-stat">42 English Integrated Care Boards</span> (<span class="lux-stat">1,280 PCNs</span> · <span class="lux-stat">62.93M patients</span>), <span class="lux-accent">v4.7.0 Blue Ocean Convergence</span> unites coupled <strong>Host × Microbiome × Germline × Donor-Organ Holobiont</strong> medicine with <strong>Bravyi <code>[[144,12,12]]</code> Bivariate Bicycle qLDPC</strong> (<span class="lux-accent">12.68× physical-qubit cut</span> to <span class="lux-stat">8,064 qubits</span> on <span class="lux-gold">165,328.96 QiB #113! PDB 4EZF MitoNEET</span>), expands our sovereign crystal bank to <span class="lux-accent">115 / 115 verified RCSB PDB structures</span> (crowned by <span class="lux-stat">#114! 2PPN 0.92 Å FKBP12</span> &amp; <span class="lux-gold">#115!! 4O8H 0.85 Å Cyclophilin D</span>), reaches <span class="lux-accent">515 / 515 (100%) zero-fit clinical parity</span> and <span class="lux-stat">3,808 deterministic NHS DCB0129 evaluations</span> (<span class="lux-stat">G1–G136</span> · <span class="lux-stat">272 paired cases</span>), and <strong>breaks the historic +£40B/yr NHS prevention barrier at <span class="lux-gold">+£40.23B/yr (+£40,231.5M/yr)</span></strong>.
               </p>
               <ul class="hero-check-list">
-                <li><span class="hero-check-mark">✓</span><span><strong>Holobiont FMT, Day-0 Newborn WGS + Circular Blood &amp; Organ Perfusion:</strong> <code>MTG71 FMT</code>, <code>PREPARE</code>, <code>SPR1NT SMA</code>, <code>HFE→113,867 NHSBT units/yr</code> &amp; <code>COPE/COMPARE/CYP3A5</code>.</span></li>
-                <li><span class="hero-check-mark">✓</span><span><strong>Anshu O(log M) Gibbs, BB-qLDPC &amp; O(1) Dynamic LOCC:</strong> <code>3.82e−16</code> Gibbs learning &amp; depth-3 <code>LOCC</code> on CPUs; <code>8,064q BB-qLDPC</code> reserved for <code>165,329 QiB</code> <code>4EZF</code>.</span></li>
-                <li><span class="hero-check-mark">✓</span><span><strong>Post-Quantum Audited Provenance:</strong> <code>37</code> open-access manuscripts &amp; briefings, Silver-Jubilee <code>25</code> studios, <code>52</code> <code>tier0</code> lanes, <strong><code>56</code> <code>ML-DSA-65</code> receipts</strong>, and <a href="llms-full.txt" target="_blank" rel="noopener"><code>llms-full.txt</code></a>.</span></li>
+                <li><span class="hero-check-mark">✓</span><span><strong>Holobiont FMT, Day-0 Newborn WGS + Circular Blood &amp; Organ Perfusion:</strong> NICE MTG71 FMT, 12-gene PREPARE PGx, SPR1NT SMA ≤14d rescue, HFE → <span class="lux-stat">113,867 NHSBT red-cell units/yr</span> &amp; COPE / COMPARE / CYP3A5 transplant equity.</span></li>
+                <li><span class="hero-check-mark">✓</span><span><strong>Anshu O(log M) Gibbs, BB-qLDPC &amp; O(1) Dynamic LOCC:</strong> Exact <span class="lux-stat">&lt;25 ms</span> CPU Gibbs learning &amp; depth-3 dynamic LOCC today; <span class="lux-accent">8,064q BB-qLDPC</span> reserved strictly for <span class="lux-gold">165,329 QiB 4EZF</span> active spaces.</span></li>
+                <li><span class="hero-check-mark">✓</span><span><strong>Post-Quantum Audited Provenance:</strong> <span class="lux-stat">37</span> open-access manuscripts &amp; briefings, Silver-Jubilee <span class="lux-stat">25</span> interactive studios, <span class="lux-stat">52</span> tier-0 lanes, <span class="lux-accent">56 NIST ML-DSA-65 receipts</span>, and <a href="llms-full.txt" target="_blank" rel="noopener"><code>llms-full.txt</code></a>.</span></li>
               </ul>
             </div>
             <div class="hero-cta-bar">
               <a class="btn-hero primary" href="#papers">📖 Read Paper XXXIII &amp; 37 Docs ↓</a>
-              <a class="btn-hero" href="quantum-holobiont-genomic-organ-convergence.html" style="border-color:rgba(56,214,196,0.75);color:var(--signal);">🌊 Launch v4.7 Blue Ocean Studio (115 PDBs!) ↗</a>
+              <a class="btn-hero" href="quantum-holobiont-genomic-organ-convergence.html" style="border-color:rgba(56,214,196,0.75);color:var(--signal);">🌊 Launch v4.7 Blue Ocean Studio ↗</a>
+              <button type="button" class="btn-hero" onclick="if(window.openMol3dTheater)window.openMol3dTheater('4o8h');" style="cursor:pointer;font-family:var(--font-sans);border-color:rgba(244,174,66,0.55);color:var(--amber);">💎 0.85 Å 115-PDB 3D Theater ↓</button>
               <a class="btn-hero" href="harness.html" style="border-color:rgba(240,106,59,0.55);color:#ff9472;">🛡 G1–G136 Safety Gate ↗</a>
-              <a class="btn-hero" href="clinician-guide.html">🩺 Clinician Guide ↗</a>
             </div>
           </div>
 
@@ -1337,24 +1343,36 @@
             </div>
             <div class="hero-kpi-grid-2x2">
               <div class="hero-kpi-card">
-                <div class="kpi-eyebrow">Historic &gt;+£40B/yr Stack (42 ICBs)!</div>
-                <div class="kpi-val">+£40,231.5M/yr</div>
-                <div class="kpi-sub"><code>+£40.23B/yr</code> strict <code>NICE PMG36</code>! · <code>v4.7</code> adds <code>+£3,956.68M/yr</code> (<code>+£176.1M</code> cash)</div>
+                <div>
+                  <div class="kpi-eyebrow">Historic &gt;+£40B/yr Stack (42 ICBs)</div>
+                  <div class="kpi-val">+£40,231.5M/yr</div>
+                  <div class="kpi-sub"><span class="lux-gold">+£40.23B/yr</span> strict NICE PMG36 · v4.7 adds <span class="lux-stat">+£3,956.68M/yr</span> (+£176.1M cash)</div>
+                </div>
+                <div class="hero-kpi-spark gold"><span style="width:100%"></span></div>
               </div>
               <div class="hero-kpi-card">
-                <div class="kpi-eyebrow">515/515 Parity &amp; 0.85 Å 115 PDBs!</div>
-                <div class="kpi-val">515 / 515 (100%)</div>
-                <div class="kpi-sub"><code>15/15 GMFE = 1.0000</code> · <strong><code>115</code> experimental <code>RCSB PDBs</code>!</strong> (<code>0.85 Å #115!!</code>)</div>
+                <div>
+                  <div class="kpi-eyebrow">Zero-Fit Parity &amp; 0.85 Å 115 PDBs</div>
+                  <div class="kpi-val">515 / 515 (100%)</div>
+                  <div class="kpi-sub">15/15 GMFE = 1.0000 · <span class="lux-accent">115 experimental RCSB PDBs</span> (0.85 Å #115!!)</div>
+                </div>
+                <div class="hero-kpi-spark"><span style="width:100%"></span></div>
               </div>
               <div class="hero-kpi-card">
-                <div class="kpi-eyebrow">G1–G136 Gate &amp; Sealed Receipt #56</div>
-                <div class="kpi-val">3,808 Evals · 0 Harms</div>
-                <div class="kpi-sub"><code>272</code> paired traps &amp; twins × <code>7</code> agents · <code>56</code> <code>ML-DSA-65</code> receipts</div>
+                <div>
+                  <div class="kpi-eyebrow">G1–G136 Gate &amp; Sealed Receipt #56</div>
+                  <div class="kpi-val">3,808 Evals · 0 Harms</div>
+                  <div class="kpi-sub"><span class="lux-stat">272 paired traps &amp; twins</span> × 7 agents · <span class="lux-accent">56 ML-DSA-65 receipts</span></div>
+                </div>
+                <div class="hero-kpi-spark"><span style="width:100%"></span></div>
               </div>
               <div class="hero-kpi-card">
-                <div class="kpi-eyebrow">BB-qLDPC 8,064q &amp; 165kQiB 4EZF (#113!)</div>
-                <div class="kpi-val">165,329 QiB · 8,064q</div>
-                <div class="kpi-sub"><code>(62e,60o)</code> <code>158L THC</code> · <code>12.68×</code> cut · <code>0.85 Å 4O8H!!</code></div>
+                <div>
+                  <div class="kpi-eyebrow">BB-qLDPC 8,064q &amp; 165kQiB 4EZF (#113!)</div>
+                  <div class="kpi-val">165,329 QiB · 8,064q</div>
+                  <div class="kpi-sub">(62e, 60o) 158L THC · <span class="lux-gold">12.68× qubit cut</span> · 0.85 Å 4O8H!!</div>
+                </div>
+                <div class="hero-kpi-spark gold"><span style="width:92%"></span></div>
               </div>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.4rem;font-family:var(--font-mono);font-size:0.68rem;color:var(--ink-dim);">
@@ -1362,6 +1380,13 @@
               <a href="quantum-continuum-cancer-leder-limb.html" style="color:var(--signal);">🌌 v4.6 Continuum 110-PDB &amp; 500/500 ↗</a>
             </div>
           </aside>
+        </div>
+
+        <div class="hero-proof-ribbon" role="region" aria-label="Live Cryptographic and Clinical Verification Strip">
+          <span class="hero-proof-item"><span class="hero-proof-dot"></span><strong>Receipt #56:</strong> <code>4cf2012f</code> (NIST ML-DSA-65)</span>
+          <span class="hero-proof-item"><strong>115 PDBs:</strong> 0.66 Å – 2.00 Å (8 Sub-Ångström &lt;1.0 Å)</span>
+          <span class="hero-proof-item"><strong>Safety Harness:</strong> Youden&apos;s J = 1.000 (0 Harms / 0 Denials)</span>
+          <button type="button" onclick="if(window.openOcqCommandPalette)window.openOcqCommandPalette();" style="background:none;border:none;padding:0;color:var(--amber);font-family:var(--font-mono);font-size:0.72rem;font-weight:700;cursor:pointer;">⌘K / Press &apos;/&apos; for Instant Spotlight Search →</button>
         </div>
 
         <details class="hero-tech-drawer">
@@ -1373,21 +1398,21 @@
             <div class="hero-track-card">
               <div class="track-tag">Track 01 · Holobiont Pharmacomicrobiomics</div>
               <h4>Anshu O(log M) Gibbs &amp; Exact Tree BP</h4>
-              <p>Anshu et al. (<code>Nature Physics 2021</code>) strong log-partition convexity (<code>λ_min = 0.2065</code>, recovery <code>3.82e−16</code>, Tree-BP <code>2.22e−16</code>, <code>I(H:M) = 0.1194 bits</code>, <code>405,377×</code> cut; <code>#111 PDB: 7FXO</code> <code>1.30 Å</code> <code>FABP1</code>) for <code>MTG71 FMT</code>, <code>[U_UGT1A1, U_GUS]</code>, <code>PREPARE</code> &amp; <code>TMAO</code> (<code>Rule G133</code>, <code>+£1,393.52M/yr</code>).</p>
+              <p>Anshu et al. (<em>Nature Physics</em> 2021) strong log-partition convexity (λ_min = 0.2065, recovery 3.82e−16, Tree-BP 2.22e−16, I(H:M) = 0.1194 bits, 405,377× cut; #111 PDB 7FXO 1.30 Å FABP1) for MTG71 FMT, [U_UGT1A1, U_GUS], PREPARE &amp; TMAO (Rule G133, +£1,393.52M/yr).</p>
             </div>
             <div class="hero-track-card">
               <div class="track-tag">Track 02 · Day-0 Newborn WGS &amp; Circular Blood</div>
               <h4>Bravyi [[144,12,12]] BB-qLDPC &amp; 165,329 QiB 4EZF</h4>
-              <p>Bivariate Bicycle high-rate <code>qLDPC</code> (<code>Nature 2024</code>) compressing <strong><code>165,328.96 QiB</code> (<code>158L THC</code>) on <code>#113! PDB: 4EZF</code> <code>1.19 Å</code> <code>2×[2Fe-2S] MitoNEET</code></strong> from <code>102,226</code> planar surface qubits to <strong><code>8,064</code> physical qubits</strong> (<code>12.68×</code> cut) + <code>#112 7W2P</code> <code>1.15 Å</code> <code>SPR1NT SMA</code> &amp; <code>HFE→113,867 NHSBT units/yr</code> (<code>Rules G134–G135</code>, <code>+£1,285.19M/yr</code>).</p>
+              <p>Bivariate Bicycle high-rate qLDPC (<em>Nature</em> 2024) compressing <strong>165,328.96 QiB (158L THC) on #113! PDB 4EZF 1.19 Å 2×[2Fe-2S] MitoNEET</strong> from 102,226 planar surface qubits to <strong>8,064 physical qubits</strong> (12.68× cut) + #112 7W2P 1.15 Å SPR1NT SMA &amp; HFE → 113,867 NHSBT units/yr (Rules G134–G135, +£1,285.19M/yr).</p>
             </div>
             <div class="hero-track-card">
               <div class="track-tag">Track 03 · Ex-Situ Perfusion &amp; CYP3A5 Equity</div>
               <h4>Tantivasadakarn O(1) Constant-Depth Dynamic LOCC</h4>
-              <p>Constant-depth (<code>d = 3</code>) mid-circuit measurement + classical feedforward <code>LOCC</code> (<code>1.000000</code> <code>6q GHZ</code> across <code>32</code> branches = <code>32.0×</code> rescue) + sub-Ångström <code>#114! 2PPN</code> <code>0.92 Å</code> &amp; <code>#115!! 4O8H</code> <code>0.85 Å</code> for <code>COPE</code> liver NMP, <code>COMPARE</code> kidney <code>HMPO₂</code> &amp; <code>CYP3A5*1</code> tacrolimus (<code>Rule G136</code>, <code>+£1,277.96M/yr</code>).</p>
+              <p>Constant-depth (d = 3) mid-circuit measurement + classical feedforward LOCC (1.000000 6q GHZ across 32 branches = 32.0× rescue) + sub-Ångström #114! 2PPN 0.92 Å &amp; #115!! 4O8H 0.85 Å for COPE liver NMP, COMPARE kidney HMPO₂ &amp; CYP3A5*1 tacrolimus (Rule G136, +£1,277.96M/yr).</p>
             </div>
           </div>
           <p style="font-size:0.79rem;">
-            <strong>Cumulative Foundation:</strong> Builds on <code>v4.6 Continuum</code> (<code>915L NEO &amp; 688.36 QiB 2AEB</code>, <code>500/500</code> &amp; <code>0.86 Å #110!! 3ZSJ</code>), <code>v4.5 Quettibyte</code> (<code>2.8785 QiB 7O6C</code> &amp; <code>0.95 Å #105!! 5E7W</code>), <code>v4.4 Centennial</code> (<code>12.3868 RiB 4A7U</code> &amp; <code>0.72 Å #100!! 6S2M</code>), and the <code>v2.7</code> Nine-Pillar <code>UK NCSC ML-KEM-768 / ML-DSA-65</code> architecture.
+            <strong>Cumulative Foundation:</strong> Builds on v4.6 Continuum (915L NEO &amp; 688.36 QiB 2AEB, 500/500 &amp; 0.86 Å #110!! 3ZSJ), v4.5 Quettibyte (2.8785 QiB 7O6C &amp; 0.95 Å #105!! 5E7W), v4.4 Centennial (12.3868 RiB 4A7U &amp; 0.72 Å #100!! 6S2M), and the v2.7 Nine-Pillar UK NCSC <code>ML-KEM-768</code> / <code>ML-DSA-65</code> architecture.
           </p>
         </details>
 
@@ -1467,12 +1492,12 @@
       </div>
     </section>
 
-    <!-- ROLE-BASED ENTRY ROUTER (Eliminates Scroll Overload) -->
+    <!-- ROLE-BASED ENTRY ROUTER (Synchronized v4.7.0 Persona Concierge) -->
     <section id="role-router" class="role-router-sec" aria-label="Choose Your Entry Path">
       <div class="container">
         <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.5rem;">
           <div>
-            <p class="kicker" style="margin-bottom:0.2rem;">Quick Navigation · Choose Your Perspective</p>
+            <p class="kicker" style="margin-bottom:0.2rem;">Persona Concierge · Choose Your Perspective (v4.7.0 Live)</p>
             <h2 style="font-size:1.58rem;margin:0;">Jump Straight to What Matters for Your Role</h2>
           </div>
           <span style="font-size:0.82rem;color:var(--ink-muted);">Zero patient data (<code>phi_present = False</code>) · Free public-good NHS licence</span>
@@ -1480,21 +1505,23 @@
         <div class="role-grid">
           <article class="role-card" style="border-top:3px solid var(--signal);">
             <div>
-              <span class="card-tag" style="color:var(--signal);">01 · Clinicians, Pharmacists &amp; Patients</span>
-              <h3>Plain-English Guides (Zero Equations)</h3>
-              <p>Follow one patient across 7 care layers, translate quantum terms into ward actions, and download our reading-age 11–12 PPI leaflet.</p>
+              <span class="role-card-metric">7/7 Pharmacy First · CPIC · PPI</span>
+              <span class="card-tag" style="color:var(--signal);display:block;">01 · Clinicians, Pharmacists &amp; Patients</span>
+              <h3>Plain-English Ward &amp; PCN Guides</h3>
+              <p>Follow one patient across 7 care layers, translate quantum terms into prescribing guardrails (zero equations), and download our reading-age 11–12 PPI leaflet.</p>
             </div>
             <div class="role-card-links">
-              <a class="btn-sm btn-primary" href="clinician-guide.html">🩺 Open Clinician Guide ↗</a>
+              <a class="btn-sm btn-primary" href="clinician-guide.html">🩺 Clinician Guide ↗</a>
               <a class="btn-sm" href="OpenCareQ_Patient_PPI_Leaflet_1p.pdf" download="OpenCareQ_Patient_PPI_Leaflet_1p.pdf">⬇ 1p PPI PDF</a>
             </div>
           </article>
 
           <article class="role-card" style="border-top:3px solid var(--amber);">
             <div>
-              <span class="card-tag">02 · Grant Panels, Policy &amp; ICB Boards</span>
-              <h3>9-Pillar Call Evidence &amp; 42-ICB DCEA</h3>
-              <p>Inspect one-to-one grant evidence across all 9 pillars, copy verified paragraphs, or explore <code>+£6.74B/yr</code> NICE <code>£20k/QALY</code> returns.</p>
+              <span class="role-card-metric" style="border-color:rgba(244,174,66,0.42);background:rgba(244,174,66,0.12);color:var(--amber);">+£40.23B/yr · 42/42 English ICBs</span>
+              <span class="card-tag" style="display:block;">02 · Grant Panels, DHSC &amp; ICB Boards</span>
+              <h3>9-Pillar Dossier &amp; +£40,231.5M/yr DCEA</h3>
+              <p>Inspect one-to-one grant evidence across all 9 sovereign pillars, copy audited paragraphs, and explore NICE £20k/QALY returns across all 1,280 PCNs.</p>
             </div>
             <div class="role-card-links">
               <a class="btn-sm btn-primary" href="nine-pillars.html">🏛 9-Pillar Studio ↗</a>
@@ -1504,24 +1531,26 @@
 
           <article class="role-card" style="border-top:3px solid #3898ff;">
             <div>
-              <span class="card-tag" style="color:#7ab8ff;">03 · Quantum, ML &amp; Structural Scientists</span>
-              <h3>ENAQT, m⁷G Cation–π, MSK/³¹P Bone &amp; 45 3D PDBs</h3>
-              <p>Test Plenio–Huelga <code>ENAQT</code>, Förster <code>R⁻⁶</code>, <code>7-DHC</code> Berry phase <code>π</code>, <code>0 mSv</code> <code>³¹P–¹H</code> CP, and 45 live <code>3Dmol.js</code> crystal pockets.</p>
+              <span class="role-card-metric" style="border-color:rgba(56,152,255,0.42);background:rgba(56,152,255,0.12);color:#98caff;">115 RCSB PDBs · 0.66–2.00 Å · 165kQiB</span>
+              <span class="card-tag" style="color:#7ab8ff;display:block;">03 · Quantum, ML &amp; Structural Scientists</span>
+              <h3>BB-qLDPC, 165kQiB 4EZF &amp; 115 3D PDBs</h3>
+              <p>Explore our top-first 115-Crystal <code>3Dmol.js</code> WebGL Theater (0.85 Å #115!! 4O8H &amp; 0.66 Å #95! 1US0), Bravyi <code>[[144,12,12]]</code> BB-qLDPC, and 25 studios.</p>
             </div>
             <div class="role-card-links">
-              <a class="btn-sm btn-primary" href="quantum-immunoprevention-vaccines.html">💉 Immunoprevention ↗</a>
-              <a class="btn-sm" href="quantum-msk-bone.html">🦴 MSK &amp; Bone ↗</a>
+              <button type="button" class="btn-sm btn-primary" onclick="if(window.openMol3dTheater)window.openMol3dTheater('4o8h');">💎 115-PDB 3D Theater ↓</button>
+              <a class="btn-sm" href="quantum-holobiont-genomic-organ-convergence.html">🌊 v4.7 Studio ↗</a>
             </div>
           </article>
 
           <article class="role-card" style="border-top:3px solid var(--ember);">
             <div>
-              <span class="card-tag" style="color:#ff9472;">04 · Clinical Safety (DCB0129) &amp; Cyber</span>
-              <h3>G1–G80 Commit Gate &amp; UK NCSC PQC</h3>
-              <p>Audit all <code>160</code> paired clinical hazard traps (<code>2,240</code> evals, <code>0</code> harms), 3-doc <code>CSC-QT</code> pack, and <code>ML-KEM-768</code> <code>CycloneDX 1.6 CBOM</code>.</p>
+              <span class="role-card-metric" style="border-color:rgba(240,106,59,0.45);background:rgba(240,106,59,0.13);color:#ffa487;">G1–G136 · 3,808 Evals · 0 Harms</span>
+              <span class="card-tag" style="color:#ff9472;display:block;">04 · Clinical Safety (DCB0129) &amp; Cyber</span>
+              <h3>G1–G136 Commit Gate &amp; UK NCSC PQC</h3>
+              <p>Audit all 272 paired clinical &amp; quantum cases (3,808 deterministic evals, Youden&apos;s J = 1.000, 0 harms), 3-doc CSC-QT pack, and <code>ML-KEM-768</code> / <code>ML-DSA-65</code> CBOM.</p>
             </div>
             <div class="role-card-links">
-              <a class="btn-sm btn-primary" href="harness.html">🛡 G1–G80 Harness ↗</a>
+              <a class="btn-sm btn-primary" href="harness.html">🛡 G1–G136 Harness ↗</a>
               <a class="btn-sm" href="safety-case.html">📋 CSC-QT Pack ↗</a>
             </div>
           </article>
@@ -1534,7 +1563,7 @@
       <div class="container">
         <div class="shift-hub-header">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;">
-            <span class="kicker" style="margin:0;">CP 1350 Radical Shift I · Sickness to Prevention (+£6,738.9M/yr Full-Stack INMB · Filter Clinical &amp; Quantum Studios)</span>
+            <span class="kicker" style="margin:0;">CP 1350 Radical Shift I · Sickness to Prevention (+£40,231.5M/yr [+£40.23B/yr] 42-ICB Full-Stack INMB · Filter Clinical &amp; Quantum Studios)</span>
             <span class="pill pill-signal">Showing Flagship Studios · Filter by Domain Below</span>
           </div>
           <div class="ux-filter-bar" role="group" aria-label="Filter interactive studios by domain">
@@ -1550,7 +1579,7 @@
             <button type="button" class="shift-tab-btn" data-studio-cat="flagship quantum" data-target-pane="pane-tunnelling-nv-v23" onclick="activateShiftTab('sickness-to-prevention','pane-tunnelling-nv-v23',false)">💎 Nuclear Tunnelling &amp; NV⁻ Biosensing (v2.3)</button>
             <button type="button" class="shift-tab-btn ux-hidden-by-filter" data-studio-cat="quantum" data-target-pane="pane-lifecourse-v22" onclick="activateShiftTab('sickness-to-prevention','pane-lifecourse-v22',false)">🧬 CYP Sickle, HLA &amp; Photonics (v2.2)</button>
             <button type="button" class="shift-tab-btn ux-hidden-by-filter" data-studio-cat="quantum" data-target-pane="pane-amr-opm-v21" onclick="activateShiftTab('sickness-to-prevention','pane-amr-opm-v21',false)">🦠 Quantum AMR &amp; OPM-MEG (v2.1)</button>
-            <button type="button" class="shift-tab-btn" data-studio-cat="flagship quantum" data-target-pane="pane-quantum-v20" onclick="activateShiftTab('sickness-to-prevention','pane-quantum-v20',false)">🧪 20-Crystal 3Dmol Explorer &amp; PGx (v2.0)</button>
+            <button type="button" class="shift-tab-btn" data-studio-cat="flagship quantum" data-target-pane="pane-quantum-v20" onclick="activateShiftTab('sickness-to-prevention','pane-quantum-v20',false)">🧪 115-Crystal 3Dmol Theater &amp; Ab Initio PGx</button>
             <button type="button" class="shift-tab-btn" data-studio-cat="flagship clinical" data-target-pane="pane-ageing-v19" onclick="activateShiftTab('sickness-to-prevention','pane-ageing-v19',false)">🧠 Healthy Ageing, Dementia &amp; My Medicines (v1.9)</button>
             <button type="button" class="shift-tab-btn ux-hidden-by-filter" data-studio-cat="clinical" data-target-pane="pane-core20-v18" onclick="activateShiftTab('sickness-to-prevention','pane-core20-v18',false)">🎗 5/5 Cancer &amp; Maternity (v1.8)</button>
             <button type="button" class="shift-tab-btn ux-hidden-by-filter" data-studio-cat="clinical" data-target-pane="pane-smi-v17" onclick="activateShiftTab('sickness-to-prevention','pane-smi-v17',false)">💚 SMI Brain–Body (v1.7)</button>
@@ -2235,17 +2264,82 @@
               </div>
             </div>
 
-            <!-- Interactive 3D WebGL Crystal-Pocket Explorer (3Dmol.js v2.5.5 · Local Chain-A PDBs) -->
-            <div id="v20Mol3dCard" class="mol3d-split" role="region" aria-label="Interactive 3D Metalloenzyme Crystal-Pocket Viewer">
-              <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;border-color:rgba(56,214,196,0.42);">
+            <!-- Interactive 3D WebGL 115-Crystal Stage-First Theater (3Dmol.js · RCSB PDB · Zero Button Wall) -->
+            <div id="v20Mol3dCard" class="mol3d-theater-shell" role="region" aria-label="Interactive 3D Metalloenzyme Crystal-Pocket Viewer">
+              <div class="mol3d-theater-top">
                 <div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.45rem;">
-                    <div>
-                      <span class="card-tag">Interactive 3D WebGL Crystal-Pocket Explorer (3Dmol.js · RCSB PDB)</span>
-                      <h3 style="margin-bottom:0.15rem;">Rotate &amp; Zoom Metalloenzyme Active Sites &amp; Multi-Ethnic VUS Pockets</h3>
+                  <span class="card-tag">Interactive 3D WebGL 115-Crystal Theater (3Dmol.js · 0.66 Å – 2.00 Å Experimental RCSB PDBs)</span>
+                  <h3 style="margin-bottom:0.15rem;">Explore Sub-Ångström Active Sites, Metalloenzyme Gate G4 Clusters &amp; CPIC Pockets</h3>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;">
+                  <button type="button" class="btn-sm" onclick="if(window.stepMol3dCrystal)window.stepMol3dCrystal(-1);">◀ Prev Crystal</button>
+                  <button type="button" class="btn-sm" onclick="if(window.stepMol3dCrystal)window.stepMol3dCrystal(1);">Next Crystal ▶</button>
+                  <button type="button" class="btn-sm" id="mol3dCinemaBtn" onclick="if(window.toggleMol3dCinema)window.toggleMol3dCinema();">⤢ Cinema Stage</button>
+                </div>
+              </div>
+
+              <div class="mol3d-crown-bar" role="group" aria-label="Featured Sub-Angstrom and Gate G4 Showcase Crystals">
+                <div class="mol3d-crown-presets">
+                  <span class="mol3d-crown-lbl">★ Crown Showcase:</span>
+                  <button type="button" class="mol3d-preset-pill" onclick="selectMol3dStructure('4o8h')">🏆 #115!! 4O8H · 0.85 Å Cyclophilin D</button>
+                  <button type="button" class="mol3d-preset-pill" onclick="selectMol3dStructure('1us0')">💎 #95! 1US0 · 0.66 Å Aldose Reductase</button>
+                  <button type="button" class="mol3d-preset-pill" onclick="selectMol3dStructure('4ezf')">⚛ #113! 4EZF · 165kQiB MitoNEET</button>
+                  <button type="button" class="mol3d-preset-pill" onclick="selectMol3dStructure('2aeb')">🔥 #109! 2AEB · 688 QiB ARG1 Mn₂</button>
+                  <button type="button" class="mol3d-preset-pill" onclick="selectMol3dStructure('1h7x')">🧬 #1 1H7X · DPYD [4Fe-4S]</button>
+                </div>
+                <button type="button" class="btn-sm" onclick="if(window.openOcqCommandPalette)window.openOcqCommandPalette('pdb','');" style="border-color:rgba(244,174,66,0.45);color:var(--amber);">⌘K Spotlight All 115</button>
+              </div>
+
+              <div class="mol3d-stage-grid">
+                <div class="mol3d-stage-col">
+                  <div id="v20Mol3dViewport">
+                    <div id="v20Mol3dStatus" class="mol3d-status-chip">PDB: 4O8H · 0.85 Å!! Sub-Ångström Human Cyclophilin D (#115!!)</div>
+                    <div class="mol3d-hint-chip">Drag: Rotate · Scroll: Zoom · Right-Drag: Pan</div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;gap:0.45rem;flex-wrap:wrap;">
+                    <div style="display:flex;flex-wrap:wrap;gap:0.36rem;">
+                      <button type="button" class="btn-sm" onclick="focusMol3d('vus')">🎯 Zoom VUS / Pocket</button>
+                      <button type="button" class="btn-sm" onclick="focusMol3d('core')">🔥 Zoom Cofactor Core</button>
+                      <button type="button" class="btn-sm" onclick="focusMol3d('all')">🌐 Full Enzyme</button>
+                      <button type="button" class="btn-sm" id="mol3dSurfBtn" onclick="toggleMol3dSurface()">🫧 Pocket Surface: OFF</button>
+                      <button type="button" class="btn-sm" id="mol3dSpinBtn" onclick="toggleMol3dSpin()">↻ Spin: ON</button>
                     </div>
-                    <div id="v20Mol3dTabs" style="display:flex;flex-wrap:wrap;gap:0.35rem;">
-                      <button type="button" class="btn-sm active" id="mol3dBtn-1h7x" onclick="selectMol3dStructure('1h7x')">1 · DPYD [4Fe-4S] (1H7X)</button>
+                    <a id="mol3dRcsbLink" class="btn-sm" href="https://www.rcsb.org/structure/4O8H" target="_blank" rel="noopener">↗ RCSB PDB: 4O8H</a>
+                  </div>
+                </div>
+
+                <div class="mol3d-inspector-card" id="v20Mol3dInspectorCard">
+                  <div>
+                    <span class="card-tag" id="mol3dInspTag">PDB: 4O8H · 0.85 Å SUB-ÅNGSTRÖM X-Ray!! · Human Cyclophilin D (#115!!)</span>
+                    <h3 id="mol3dInspTitle" style="margin-bottom:0.25rem;">115th Sub-Ångström PDB (0.85 Å!!): Human Cyclophilin D, O(1) LOCC &amp; COPE/COMPARE Perfusion</h3>
+                    <p id="mol3dInspDesc" style="font-size:0.82rem;color:var(--ink-muted);margin:0 0 0.45rem;">
+                      115th verified experimental RCSB PDB structure in OpenCareQ (0.85 Å sub-Ångström human mitochondrial Cyclophilin D / PPIF), grounding Tantivasadakarn O(1) constant-depth dynamic LOCC and NHSBT 2030 COPE liver / COMPARE kidney ex-situ perfusion rescue (Rule G136).
+                    </p>
+                    <div id="mol3dLegendList" class="mol3d-legend-list"></div>
+                  </div>
+                  <div id="mol3dPocketMetrics" style="display:flex;flex-wrap:wrap;gap:0.36rem;padding-top:0.45rem;border-top:1px solid var(--border);font-size:0.74rem;"></div>
+                </div>
+              </div>
+
+              <div class="mol3d-dock" id="v20Mol3dDock">
+                <div class="mol3d-dock-controls">
+                  <div class="mol3d-search-wrap">
+                    <label for="mol3dSearchInput" class="sr-only">Filter 115 RCSB PDB crystal structures</label>
+                    <input type="search" id="mol3dSearchInput" class="mol3d-search-input" placeholder="Filter 115 verified RCSB PDBs by PDB ID (4O8H, 1US0, 4EZF), gene (DPYD, CYP3A5), drug, or Å…" autocomplete="off" />
+                  </div>
+                  <div class="mol3d-cat-chips" role="group" aria-label="Filter crystals by scientific category">
+                    <button type="button" class="mol3d-cat-btn active" data-mol3d-cat="all" onclick="if(window.filterMol3dDock)window.filterMol3dDock('all', this)">All 115</button>
+                    <button type="button" class="mol3d-cat-btn" data-mol3d-cat="subangstrom" onclick="if(window.filterMol3dDock)window.filterMol3dDock('subangstrom', this)">★ Sub-Å &lt;1.0 Å (8)</button>
+                    <button type="button" class="mol3d-cat-btn" data-mol3d-cat="gateg4" onclick="if(window.filterMol3dDock)window.filterMol3dDock('gateg4', this)">⚛ Gate G4 Metallo (25)</button>
+                    <button type="button" class="mol3d-cat-btn" data-mol3d-cat="pgx" onclick="if(window.filterMol3dDock)window.filterMol3dDock('pgx', this)">🧬 CPIC &amp; PGx (22)</button>
+                    <button type="button" class="mol3d-cat-btn" data-mol3d-cat="organ" onclick="if(window.filterMol3dDock)window.filterMol3dDock('organ', this)">🫀 Organ, CVD &amp; Neuro</button>
+                    <button type="button" class="mol3d-cat-btn" data-mol3d-cat="pathogen" onclick="if(window.filterMol3dDock)window.filterMol3dDock('pathogen', this)">🦠 Pathogens &amp; FMT</button>
+                  </div>
+                  <span id="mol3dMatchCount" style="font-family:var(--font-mono);font-size:0.71rem;color:var(--signal);white-space:nowrap;">115 / 115 crystals</span>
+                </div>
+
+                <div id="v20Mol3dTabs">
+                      <button type="button" class="btn-sm" id="mol3dBtn-1h7x" onclick="selectMol3dStructure('1h7x')">1 · DPYD [4Fe-4S] (1H7X)</button>
                       <button type="button" class="btn-sm" id="mol3dBtn-3qm4" onclick="selectMol3dStructure('3qm4')">2 · CYP2D6 Heme (3QM4)</button>
                       <button type="button" class="btn-sm" id="mol3dBtn-4gqs" onclick="selectMol3dStructure('4gqs')">3 · CYP2C19 Heme (4GQS)</button>
                       <button type="button" class="btn-sm" id="mol3dBtn-4rl0" onclick="selectMol3dStructure('4rl0')">4 · NDM-1 Meropenem (4RL0)</button>
@@ -2359,38 +2453,8 @@
                       <button type="button" class="btn-sm" id="mol3dBtn-7w2p" onclick="selectMol3dStructure('7w2p')">112 · SMN1 Tudor 1.15 Å SMA (7W2P)</button>
                       <button type="button" class="btn-sm" id="mol3dBtn-4ezf" onclick="selectMol3dStructure('4ezf')">113 · MitoNEET 165kQiB #113! (4EZF)</button>
                       <button type="button" class="btn-sm" id="mol3dBtn-2ppn" onclick="selectMol3dStructure('2ppn')">114 · FKBP12 0.92 Å #114! CYP3A5 (2PPN)</button>
-                      <button type="button" class="btn-sm" id="mol3dBtn-4o8h" onclick="selectMol3dStructure('4o8h')">115 · Cyclophilin D 0.85 Å #115!! (4O8H)</button>
-                    </div>
-                  </div>
-
-                  <div id="v20Mol3dViewport">
-                    <div id="v20Mol3dStatus" class="mol3d-status-chip">PDB: 1H7X · DPYD [4Fe-4S] + Tyr186Cys (477.7× AFR)</div>
-                    <div class="mol3d-hint-chip">Drag: Rotate · Scroll: Zoom · Right-Drag: Pan</div>
-                  </div>
+                      <button type="button" class="btn-sm active" id="mol3dBtn-4o8h" onclick="selectMol3dStructure('4o8h')">115 · Cyclophilin D 0.85 Å #115!! (4O8H)</button>
                 </div>
-
-                <div style="display:flex;justify-content:space-between;align-items:center;gap:0.45rem;flex-wrap:wrap;margin-top:0.55rem;">
-                  <div style="display:flex;flex-wrap:wrap;gap:0.36rem;">
-                    <button type="button" class="btn-sm" onclick="focusMol3d('vus')">🎯 Zoom VUS Site</button>
-                    <button type="button" class="btn-sm" onclick="focusMol3d('core')">🔥 Zoom Cofactor Core</button>
-                    <button type="button" class="btn-sm" onclick="focusMol3d('all')">🌐 Full Enzyme</button>
-                    <button type="button" class="btn-sm" id="mol3dSurfBtn" onclick="toggleMol3dSurface()">🫧 Pocket Surface: OFF</button>
-                    <button type="button" class="btn-sm" id="mol3dSpinBtn" onclick="toggleMol3dSpin()">↻ Spin: ON</button>
-                  </div>
-                  <a id="mol3dRcsbLink" class="btn-sm" href="https://www.rcsb.org/structure/1H7X" target="_blank" rel="noopener">↗ RCSB PDB: 1H7X</a>
-                </div>
-              </div>
-
-              <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
-                <div>
-                  <span class="card-tag" id="mol3dInspTag">PDB: 1H7X · 1.86 Å X-Ray · Chain A</span>
-                  <h3 id="mol3dInspTitle" style="margin-bottom:0.25rem;">DPYD [4Fe-4S] Electron Bridge &amp; p.Tyr186Cys</h3>
-                  <p id="mol3dInspDesc" style="font-size:0.82rem;color:var(--ink-muted);margin:0 0 0.45rem;">
-                    Four <code>[4Fe-4S]</code> iron–sulfur clusters (<code>SF4 1026–1029</code>) tunnel electrons from <code>NADPH/FAD</code> to reduce <code>5-FU</code> / uracil at <code>FMN 1030</code>. Phenolic <code>Tyr186</code> anchors the N-terminal ferredoxin bridge (<code>27.49 Å</code> to <code>SF4-1026</code>); African-enriched <code>p.Tyr186Cys</code> (<code>rs115232898</code>, <code>477.7×</code> vs NFE) cuts human DPD activity by <code>46%</code> (<code>PMC3821392#L5</code>).
-                  </p>
-                  <div id="mol3dLegendList" class="mol3d-legend-list"></div>
-                </div>
-                <div id="mol3dPocketMetrics" style="display:flex;flex-wrap:wrap;gap:0.36rem;padding-top:0.45rem;border-top:1px solid var(--border);font-size:0.74rem;"></div>
               </div>
             </div>
 
@@ -3717,10 +3781,10 @@
         <div class="shift-hub-header">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;">
             <span class="kicker" style="margin:0;">Scientific Publications, Statutory DCB0129/CSC-QT Assurance &amp; CP 1350 Innovator Passport</span>
-            <span class="pill pill-ember">Papers I–XXVI (30 Docs) · G1–G108 Safety · INALYN CIC (#17398798)</span>
+            <span class="pill pill-ember">Papers I–XXXIII (37 Docs) · G1–G136 Safety · INALYN CIC (#17398798)</span>
           </div>
           <div class="shift-tab-bar" role="tablist" aria-label="Assurance and Publications">
-            <button type="button" class="shift-tab-btn active" data-target-pane="pane-papers" onclick="activateShiftTab('innovation-governance','pane-papers',false)">Papers I–XXVI &amp; Inline PDF Reader</button>
+            <button type="button" class="shift-tab-btn active" data-target-pane="pane-papers" onclick="activateShiftTab('innovation-governance','pane-papers',false)">Papers I–XXXIII (37 Docs) &amp; Inline PDF Reader</button>
             <button type="button" class="shift-tab-btn" data-target-pane="pane-safety-harness" onclick="activateShiftTab('innovation-governance','pane-safety-harness',false)">CSC-QT Safety Case &amp; Policy Benchmark</button>
             <button type="button" class="shift-tab-btn" data-target-pane="pane-grants-ke" onclick="activateShiftTab('innovation-governance','pane-grants-ke',false)">2026 Innovator Passport, UK Grants &amp; INALYN CIC</button>
             <button type="button" class="shift-tab-btn" data-target-pane="pane-cite" onclick="activateShiftTab('innovation-governance','pane-cite',false)">BibTeX &amp; Citation</button>
@@ -3802,7 +3866,7 @@
             <!-- Row 2: Sticky Page Navigation, Active Doc Badge, Zoom, Samskrift Cloud & Download -->
             <div class="reader-toolbar">
               <div class="reader-controls-group">
-                <span id="reader-active-title" class="reader-active-title">🌬 Paper XVI: v3.0 Spin Exposome &amp; Q-Breath</span>
+                <span id="reader-active-title" class="reader-active-title">🌊 Paper XXXIII (37th! · Receipt #56): v4.7 Blue Ocean BB-qLDPC, 515/515 &amp; 0.85 Å #115!!</span>
                 <button id="reader-prev-page" type="button" class="reader-icon-btn" aria-label="Previous page">◀ Prev</button>
                 <span style="color:var(--ink-muted)">
                   Page
@@ -3820,9 +3884,9 @@
               </div>
 
               <div class="reader-controls-group">
-                <a id="reader-samskrift-link" class="reader-icon-btn" href="https://samskrift.com/view/8ebabf17-00cc-4ef7-823e-6af23aeba023/abbef1f2-7918-4da3-b07e-8c6ebab56f82" target="_blank" rel="noopener" style="border-color:rgba(56,214,196,0.42);color:var(--signal);">☁ Samskrift Cloud ↗</a>
-                <a id="reader-newtab-link" class="reader-icon-btn" href="OpenCareQ_Quantum_Addiction_Counterpoise_Eckart_and_Feshbach_Paper.pdf" target="_blank" rel="noopener">↗ Raw PDF</a>
-                <a id="reader-download-link" class="btn-sm btn-primary" href="OpenCareQ_Quantum_Addiction_Counterpoise_Eckart_and_Feshbach_Paper.pdf" download="OpenCareQ_Quantum_Addiction_Counterpoise_Eckart_and_Feshbach_Paper.pdf">⬇ Download PDF</a>
+                <a id="reader-samskrift-link" class="reader-icon-btn" href="https://samskrift.com/view/07489523-abad-4f32-ac7a-63aee5f68e9b/fd062a92-9309-4977-9dfb-7ff7ae41b214" target="_blank" rel="noopener" style="border-color:rgba(56,214,196,0.42);color:var(--signal);">☁ Samskrift Cloud ↗</a>
+                <a id="reader-newtab-link" class="reader-icon-btn" href="OpenCareQ_Quantum_Holobiont_qLDPC_Genomic_and_Organ_Convergence_Paper.pdf" target="_blank" rel="noopener">↗ Raw PDF</a>
+                <a id="reader-download-link" class="btn-sm btn-primary" href="OpenCareQ_Quantum_Holobiont_qLDPC_Genomic_and_Organ_Convergence_Paper.pdf" download="OpenCareQ_Quantum_Holobiont_qLDPC_Genomic_and_Organ_Convergence_Paper.pdf">⬇ Download PDF</a>
               </div>
             </div>
 
@@ -3839,272 +3903,102 @@
           </div>
         </div>
 
-        <!-- Categorized Publication Catalog Filter (Shows 6 Essential Cards by Default Instead of 16) -->
+        <!-- Categorized Publication Catalog Filter (Curated 6-Card Flagship Bento + Live Search + View Toggle) -->
         <div class="ux-filter-bar" role="group" aria-label="Filter publication cards by category">
           <span class="ux-filter-lbl">Catalog Filter:</span>
-          <button type="button" class="ux-filter-btn active" data-paper-filter="featured" onclick="filterPaperCards('featured', this)">★ Featured &amp; Grant Pack (7)</button>
-          <button type="button" class="ux-filter-btn" data-paper-filter="quantum" onclick="filterPaperCards('quantum', this)">⚛ Quantum &amp; World-Model VI–XVI (11)</button>
+          <button type="button" class="ux-filter-btn active" data-paper-filter="featured" onclick="filterPaperCards('featured', this)">★ Featured &amp; Grant Pack (6)</button>
+          <button type="button" class="ux-filter-btn" data-paper-filter="quantum" onclick="filterPaperCards('quantum', this)">⚛ Quantum &amp; Clinical VI–XXXIII (28)</button>
           <button type="button" class="ux-filter-btn" data-paper-filter="core" onclick="filterPaperCards('core', this)">🏛 Core Architecture &amp; Trials I–V (5)</button>
           <button type="button" class="ux-filter-btn" data-paper-filter="clinician" onclick="filterPaperCards('clinician', this)">🩺 Plain-English &amp; PPI Pack (1)</button>
-          <button type="button" class="ux-filter-btn" data-paper-filter="all" onclick="filterPaperCards('all', this)">Show All Cards (17)</button>
+          <button type="button" class="ux-filter-btn" data-paper-filter="all" onclick="filterPaperCards('all', this)">Show All 34 Cards (37 Docs)</button>
+        </div>
+        <div class="paper-catalog-controls">
+          <label for="paperCatalogSearch" class="sr-only">Search all 37 publications and briefings</label>
+          <input type="search" id="paperCatalogSearch" class="paper-search-input" placeholder="Instant filter across all 37 manuscripts &amp; briefings (e.g. qLDPC, holobiont, insulin, sepsis, moth, PPI, 4cf2012f)…" autocomplete="off" oninput="if(window.filterPaperSearch)window.filterPaperSearch();" />
+          <div style="display:flex;align-items:center;gap:0.42rem;flex-wrap:wrap;">
+            <span id="paperCatalogCount" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--signal);">6 cards shown</span>
+            <button type="button" class="ux-filter-btn active" data-paper-view="bento" onclick="if(window.togglePaperCatalogView)window.togglePaperCatalogView('bento', this)">⊞ Bento Grid</button>
+            <button type="button" class="ux-filter-btn" data-paper-view="compact" onclick="if(window.togglePaperCatalogView)window.togglePaperCatalogView('compact', this)">☰ Compact List</button>
+          </div>
         </div>
 
         <div id="papersCatalogGrid" class="papers-grid">
-          <!-- Card 1: OpenCareQ Paper I Monograph (Featured + Core) -->
-          <article class="paper-card featured" data-paper-cat="featured core">
+
+
+          <!-- Card 5ac: Companion Paper XXXIII (37th Sovereign Document & Sealed Receipt #56 · v4.7 Blue Ocean Convergence Nonuple Milestones: Bravyi [[144,12,12]] BB-qLDPC 12.68x Cut & 165,328.96 QiB 4EZF MitoNEET Gate G4, 515/515 Parity, Breaking +40B/yr at +40.23B/yr, 115-PDB Suite #114 2PPN 0.92 A & #115 4O8H 0.85 A, G1-G136 272 Cases / 3,808 Evals, 52nd Lane, 51st pytest & Silver-Jubilee 25th Studio) -->
+          <article class="paper-card featured paper-card--crown" data-paper-cat="featured quantum">
             <div>
-              <span class="pill pill-signal">Paper I · Primary Samskrift Monograph · 21 Pages · 58 Verified Citations</span>
-              <h3>OpenCareQ (v0.7.0): Healthcare Quantum DSL, CKM+PGx, 10-Yr ESKD PSA, CSC-QT &amp; AgenticOS</h3>
+              <span class="pill pill-signal">Paper XXXIII (37th Doc! · Receipt #56!) · v4.7 Blue Ocean Nonuple Milestones: BB-qLDPC &amp; 165,329 QiB 4EZF, 515/515 Parity!, &gt;+£40.23B/yr!, 0.85 Å #115!! 4O8H &amp; 3,808 Evals! · 10 pp. · 25 Citations</span>
+              <h3>Holobiont Gibbs Learning, Bivariate Bicycle qLDPC &amp; O(1) Dynamic LOCC: Anshu O(log M) Quantum Gibbs Learning + Tree Belief Propagation for Host × Microbiome Pharmacomicrobiomics (MTG71 FMT / GUS / TMAO), Bravyi [[144,12,12]] BB-qLDPC (12.68× Cut to 8,064 Qubits) &amp; 165,328.96 QiB 4EZF MitoNEET for Day-Zero NHS Generation Study &amp; Circular HFE→NHSBT Blood, and Tantivasadakarn O(1) Dynamic LOCC for COPE / COMPARE Perfusion &amp; CYP3A5 Transplant Equity</h3>
               <p>
-                Primary reference uniting gate-free value-typed quantum primitives + <code>UKCore FHIR R4</code> guards, zero-fit 4-cohort PK (<code>GMFE = 1.2423</code>) &amp; coupled <code>CKM + PGx</code> clinical falsification (<code>GMFE = 1.0701</code>), dynamic <code>NICE DG59</code> <code>HUGR</code> (<code>4,536 B</code>), <strong>42-ICB NICE <code>DCEA</code></strong> (<code>+£299.23M/yr</code> <code>INMB</code>), <strong>10-year <code>KDIGO ESKD</code></strong> (<code>18,741.7</code> pt-yrs avoided, <code>91.5%</code> <code>DCEA</code> acceptability), <strong><code>CSC-QT</code> 36-indicator <code>DCB0129</code>/<code>DCB0160</code> safety architecture</strong>, and Dual-Topology <strong>Haiqu AgenticOS</strong> readiness (<code>0ee49bcc…</code>).
+                Synthesises all 36 prior manuscripts to capture the convergent <strong>Host × Microbiome × Germline × Donor-Organ Holobiont Blue Ocean</strong> in our 33rd Companion Paper (37th standalone publication) advancing <code>Au-Yeung, Camino, Rathore &amp; Kendon (arXiv:2312.14904v5, 2025)</code>—uniting <strong>Bravyi et al. (<code>Nature 2024</code>) <code>[[144,12,12]]</code> / <code>[[288,12,18]]</code> Bivariate Bicycle <code>qLDPC</code> (<code>8,064</code> vs <code>102,226</code> planar surface qubits = <code>12.68×</code> cut!) &amp; <code>165,328.9612 QiB</code> (<code>158L THC</code> / <code>990L NEO</code>)</strong> on homodimeric <code>2 × [2Fe-2S]</code> Human <code>MitoNEET</code> (<code>#113! PDB: 4EZF</code> <code>1.19 Å</code>), expanding our crystal bank to <strong><code>115 / 115</code> experimental <code>RCSB PDBs</code></strong> (record-sharpest quintet mean <code>1.082 Å</code>, reaching <strong>8 sub-Ångström human crystals</strong>: <code>+7FXO</code> <code>1.30 Å FABP1</code>, <code>+7W2P</code> <code>1.15 Å SMN1</code>, <strong><code>+4EZF</code> <code>1.19 Å MitoNEET</code> as <code>#113!</code></strong>, <strong><code>+2PPN</code> <code>0.92 Å FKBP12</code> as <code>#114!</code></strong>, and <strong><code>+4O8H</code> <code>0.85 Å Mitochondrial Cyclophilin D</code> as <code>#115!!</code></strong>), reaching <strong><code>515 / 515</code> (<code>100%</code>) zero-fit parity</strong> (<code>15/15 GMFE = 1.0000</code>) and <strong><code>272</code> cases / <code>3,808</code> safety evaluations</strong> (<code>G1–G136</code>, <code>0</code> harms), registering our <strong><code>52nd</code> <code>tier0</code> lane</strong>, <strong><code>51st</code> <code>pytest</code> suite</strong> &amp; <strong>Silver-Jubilee <code>25th</code> HTML studio</strong>, and minting <strong>Sealed Receipt #56</strong> (<code>4cf2012f</code>), <strong>shattering the historic <code>+£40 Billion/yr</code> NHS prevention barrier at <code>+£40,231.48M/yr</code> (<code>+£40.23B/yr</code>; <code>113,867</code> circular <code>NHSBT</code> red-cell units/yr)</strong>!
               </p>
               <ul class="paper-meta-list">
-                <li><strong>Author:</strong> Arun Nadarasa (Mid &amp; South Essex NHS FT · ISPPA)</li>
-                <li><strong>Audit:</strong> <code>ML-DSA-65</code> receipts <code>50a5e601…</code>, <code>b2c71cf4…</code>, <code>314a6f5b…</code>, <code>b990361d…</code>, <code>51ae0545…</code>, <code>2887c3c9…</code> &amp; <code>0ee49bcc…</code></li>
-                <li><strong>Governance:</strong> Statutory NHS <code>DCB0129</code> / <code>DCB0160</code> Non-SaMD (<code>H-OCQ-01..07</code> OPEN · <a href="safety-case.html">Read 3-Doc Pack</a>)</li>
+                <li><strong>Silver-Jubilee 25th Interactive Holobiont, BB-qLDPC &amp; Organ Perfusion Studio:</strong> <a href="quantum-holobiont-genomic-organ-convergence.html">3-Tab Anshu O(log M) Gibbs Holobiont Lab, Bravyi [[144,12,12]] BB-qLDPC / 165kQiB 4EZF Day-0 SMA &amp; NHSBT Workbench &amp; O(1) Dynamic LOCC / #115!! 0.85 Å 4O8H Studio ↗</a></li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #56 (<code>4cf2012f…</code>) &amp; 272-Case / 3,808-Eval Harness (<code>141438ce…</code>)</li>
               </ul>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="opencareq">📖 Read Paper I in Panel</button>
-              <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Download Paper I (21 pp.)</a>
-              <a class="btn-sm" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">↗ Samskrift Cloud</a>
+              <button type="button" class="btn-sm btn-primary" data-open-doc="v4_7_holobiont_qldpc_genomic_organ_convergence_companion">🌊 Read Paper XXXIII (10 pp.)</button>
+              <a class="btn-sm" href="quantum-holobiont-genomic-organ-convergence.html">🎛 3-Tab Blue Ocean 115-PDB Studio ↗</a>
+              <a class="btn-sm" href="OpenCareQ_Quantum_Holobiont_qLDPC_Genomic_and_Organ_Convergence_Paper.pdf" download="OpenCareQ_Quantum_Holobiont_qLDPC_Genomic_and_Organ_Convergence_Paper.pdf">⬇ Paper XXXIII PDF</a>
+              <a class="btn-sm" href="https://samskrift.com/view/07489523-abad-4f32-ac7a-63aee5f68e9b/fd062a92-9309-4977-9dfb-7ff7ae41b214" target="_blank" rel="noopener">↗ Paper XXXIII Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_v4_7_quantum_holobiont_genomic_and_organ_convergence_summary.json" target="_blank" rel="noopener">✓ v4.7 JSON</a>
             </div>
           </article>
 
-          <!-- Card 2: Companion Paper II (Moth Quantum x Tessa 1,280-PCN Cloud Study) -->
-          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="core" style="border-color:rgba(56,214,196,0.38);">
+
+
+          <!-- Card 5ab: Companion Paper XXXII (36th Sovereign Document = 3 Dozen & Sealed Receipt #55 · v4.6 Continuum Nonuple Milestones: 915L First-Quantized NEO & 688.36 QiB 2AEB ARG1 Gate G4, Historic 500/500 Parity, Breaking +35B/yr at +36.27B/yr, 110-PDB Suite #108 9IAY 0.953 A & #110 3ZSJ 0.86 A, G1-G132 264 Cases / 3,696 Evals, 51st Lane, 50th pytest & 24th Studio) -->
+          <article class="paper-card featured paper-card--crown" data-paper-cat="featured quantum">
             <div>
-              <span class="pill pill-amber">Paper II · Companion Moth Quantum Study · 12 Pages · 7 Live Cloud Jobs</span>
-              <h3>Whole-Chip Zero-SWAP Tessa Encoding, Quantum Blur &amp; QuantumGraph Across 1,280 NHS PCNs</h3>
+              <span class="pill pill-signal">Paper XXXII (36th Doc = 3 Dozen! · Receipt #55!) · v4.6 Continuum Nonuple Milestones: 915L NEO &amp; 688.36 QiB 2AEB, 500/500 Parity!, &gt;+£36.27B/yr!, 0.86 Å #110!! 3ZSJ &amp; 3,696 Evals! · 10 pp. · 24 Citations</span>
+              <h3>First-Quantized Continuum, Exact KMS Gibbs &amp; Bell Learning: Su–Berry–Babbush First-Quantized Plane-Wave + NEO Continuum Qubitization (915L &amp; 688.36 QiB 2AEB ARG1) for NHS TLHC / ADAURA Lung &amp; 0.86 &Aring; FIT / DG27 Lynch Stage-Shift, CKBG (FOCS 2023) Exact KMS Gibbs Sampling for LeDeR / STOMP &amp; MEED Refeeding Safety, and Huang Two-Copy Bell Learning + qDRIFT for COMPASS / EVRA / Webb Limb Salvage</h3>
               <p>
-                Dedicated companion article bridging <strong>Moth Quantum</strong>'s hardware-native data encoding (Bultrini's <code>Tessa</code> / <code>iqpixl</code>, <code>arXiv:2611.18440v1</code>) and interference primitives (Wootton's <code>Quantum Blur</code>, <code>QuantumGraph</code>, <code>Quantum Echo</code>) with NHS England's <code>1,280</code>-PCN <code>OGL v3.0</code> atlas: zero-SWAP <code>120q</code> <code>ibm_phoenix</code> (<code>C_pair = 1,584</code>) &amp; live <code>156q</code> <code>fake_fez</code> <code>qpixl-v1</code> <code>DRR</code> (<code>r = 0.92543</code>), <code>&lt;4.2 ms</code> Prop. 1 <code>0L</code> demarcation, Hadamard <code>1 - K_a</code> cliff detection, live <code>20</code>-PCN Norfolk <code>graph-v1</code> tomography, and <code>ABCC8</code>/<code>SUR1</code> genomic error boundaries under <code>CSC-QT</code>.
+                Crosses <strong>nine historic sovereign milestones simultaneously</strong> in our 32nd (<code>2⁵</code>) Companion Paper (36th = 3 dozen standalone publications) advancing <code>Au-Yeung, Camino, Rathore &amp; Kendon (arXiv:2312.14904v5, 2025)</code> into the complete-basis-set continuum—uniting <strong><code>688.3585 QiB</code> (<code>148L THC</code>) &amp; <code>9.2158e+213 B</code> (<code>915L</code> first-quantized <code>NEO</code>)</strong> on homotrimeric Binuclear <code>Mn₂</code> Human Arginase-I (<code>#109! PDB: 2AEB</code> <code>1.29 Å</code>), expanding our crystal bank to <strong><code>110 / 110</code> experimental <code>RCSB PDBs</code></strong> (quintet mean <code>1.171 Å</code>, with <strong>two sub-Ångström human crystals</strong>: <code>+2JKH</code> <code>1.25 Å Factor Xa</code>, <code>+2HHJ</code> <code>1.50 Å BPGM</code>, <strong><code>+9IAY</code> <code>0.953 Å KRAS</code> as <code>#108!</code></strong>, <strong><code>+2AEB</code> <code>1.29 Å ARG1</code> as <code>#109!</code></strong>, and <strong><code>+3ZSJ</code> <code>0.86 Å Colorectal Galectin-3</code> as <code>#110!!</code></strong>), completing <strong>Half-Millennium <code>500 / 500</code> (<code>100%</code>) zero-fit parity</strong> (<code>25/25 GMFE = 1.0000</code>), reaching <strong><code>264</code> cases / <code>3,696</code> safety evaluations</strong> (<code>G1–G132</code>, <code>0</code> harms), registering our <strong><code>51st</code> <code>tier0</code> lane</strong>, <strong><code>50th</code> <code>pytest</code> suite</strong> &amp; <strong><code>24th</code> HTML studio</strong>, and minting <strong>Sealed Receipt #55</strong> (<code>00e08581</code>), <strong>breaking the historic <code>+£35 Billion/yr</code> NHS prevention milestone at <code>+£36,274.80M/yr</code> (<code>+£36.27B/yr</code>)</strong>!
               </p>
               <ul class="paper-meta-list">
-                <li><strong>Live Cloud Suite:</strong> <code>7</code> zero-PID jobs on <code>api.mothquantum.com/v1</code> (<code>bf0c784d</code>, <code>cd6f3704</code>, <code>ec8ec97e</code>, <code>4189d08a</code>, <code>eea5dec7</code>, <code>2a9406e7</code>, <code>5f5c2cb4</code>)</li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> receipt <code>c01cb163…</code> (<code>phi_present = False</code>)</li>
+                <li><strong>24th Interactive Continuum Cancer, LeDeR/MEED &amp; Vascular Limb Studio:</strong> <a href="quantum-continuum-cancer-leder-limb.html">3-Tab First-Quantized NEO / 688 QiB 2AEB Lab, CKBG Exact KMS Gibbs LeDeR/MEED Workbench &amp; Two-Copy Bell / #110!! 0.86 Å 3ZSJ Studio ↗</a></li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #55 (<code>00e08581…</code>) &amp; 264-Case / 3,696-Eval Harness (<code>6b72ad99…</code>)</li>
               </ul>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="moth_companion">🦋 Read Paper II in Panel</button>
-              <a class="btn-sm" href="OpenCareQ_Moth_Paper.pdf" download="OpenCareQ_Moth_Paper.pdf">⬇ Download Paper II (12 pp.)</a>
-              <a class="btn-sm" href="https://samskrift.com/view/4d44b785-c5cf-426e-8a0e-bee02e39cd88/af059791-d96c-46c3-a2a8-d01c79a5d08b" target="_blank" rel="noopener">↗ Paper II Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_moth_tessa_summary.json" target="_blank" rel="noopener">✓ Cloud JSON</a>
+              <button type="button" class="btn-sm btn-primary" data-open-doc="v4_6_continuum_cancer_leder_limb_companion">🌌 Read Paper XXXII (10 pp.)</button>
+              <a class="btn-sm" href="quantum-continuum-cancer-leder-limb.html">🎛 3-Tab Continuum 110-PDB Studio ↗</a>
+              <a class="btn-sm" href="OpenCareQ_Quantum_Continuum_Cancer_LeDeR_and_Vascular_Limb_Paper.pdf" download="OpenCareQ_Quantum_Continuum_Cancer_LeDeR_and_Vascular_Limb_Paper.pdf">⬇ Paper XXXII PDF</a>
+              <a class="btn-sm" href="https://samskrift.com/view/4b3221f1-a098-4deb-bc05-f840c62e0bd6/297d3d2e-c889-4cf6-a1e0-f67801bc4c5b" target="_blank" rel="noopener">↗ Paper XXXII Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_v4_6_quantum_continuum_cancer_leder_and_vascular_limb_summary.json" target="_blank" rel="noopener">✓ v4.6 JSON</a>
             </div>
           </article>
 
-          <!-- Card 3: Protocol III (EVSI-Optimal 25-PCN NHS Stepped-Wedge & OpenSAFELY SDE Protocol) -->
-          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="core" style="border-color:rgba(244,174,66,0.45);">
+
+
+          <!-- Card 5aa: Companion Paper XXXI (35th Sovereign Document & Sealed Receipt #54 · v4.5 Quettibyte Octuple Milestones: First Quettibyte 2.8785 QiB 7O6C FTMT THC Gate G4, Breaking +30B/yr at +32.78B/yr, 105-PDB Suite #105 5E7W 0.95 A, 475/475 Parity, G1-G128 256 Cases / 3,584 Evals, 50th Lane & 23rd Studio) -->
+          <article class="paper-card featured" data-paper-cat="featured quantum">
             <div>
-              <span class="pill pill-amber">Protocol III · SPIRIT-AI + CONSORT-SW + OpenSAFELY SDE · 11 Pages</span>
-              <h3>OPENCAREQ-SW-MSE (v0.9.0): EVSI-Optimal 25-PCN Stepped-Wedge RCT &amp; Target-Trial Protocol</h3>
+              <span class="pill pill-signal">Paper XXXI (35th Doc! · Receipt #54!) · v4.5 Quettibyte Octuple Milestones: 2.88 QiB FTMT, &gt;+£32.78B/yr!, 0.95 Å #105!! 5E7W, 475/475 Parity &amp; 3,584 Evals! · 10 pp. · 27 Citations</span>
+              <h3>Tensor Hypercontraction, Grand-Unified QSVT, and Light-Cones: Lee et al. Tensor-Hypercontracted (THC) Qubitization + Low–Wiebe Dyson IP &amp; First Quettibyte (2.8785 QiB) 7O6C FTMT Surgical Prehab / SGLT2i euDKA (PREHAB/MHRA), Gily&eacute;n–Martyn Rectangular QSVT for NICE CG71 FH, PCSK9/Lp(a) &amp; LoDoCo2 Colchicine, and Lieb–Robinson / HHKL Child Lifecourse LEAP Allergy &amp; 0.95 &Aring; ELSA/NG18 T1D Shield</h3>
               <p>
-                Pre-registered two-stage causal evaluation resolving the <code>£4.174M</code> (<code>£5.111M</code> joint) <code>#1 SAVI EVPPI</code> uncertainty in <code>Core20</code> social-prescribing persistence: <strong>Stage 0</strong> executes a zero-PID <strong><code>Hernán–Robins CCW + Stabilized IPCW</code></strong> target-trial emulation inside <code>OpenSAFELY</code> (<code>HR = 0.7995 [0.7261, 0.8803]</code> vs immortal-time biased <code>0.5925</code>, gated by <code>NCO</code>); <strong>Stage 1</strong> runs an 18-month, 5-wave stratified <code>HiGHS</code> MILP stepped-wedge trial across all <strong><code>25</code> PCNs of NHS Mid and South Essex ICB</strong> (<code>max |z| = 0.2162</code>, <code>98.97%</code> power, <code>EVSI = £3.459M</code>, <code>ENBS = +£2.449M</code>, <code>RORI = 2.43×</code>; <code>45</code>-PCN dual-ICB peak <code>+£2.575M</code>).
+                Crosses <strong>eight historic sovereign milestones simultaneously</strong> in our 31st Companion Paper (35th standalone publication) grounded in <code>Au-Yeung, Camino, Rathore &amp; Kendon (arXiv:2312.14904v5, 2025)</code>—reaching the <strong><code>1-Quettibyte</code> (<code>2^100 B</code> — highest <code>IEC/BIPM</code> prefix!) summit</strong> in <code>(54e, 52o)</code> <code>138L</code> Human Mitochondrial Ferritin <code>FTMT</code> (<strong><code>2.8785 QiB</code> = <code>2,947.5435 RiB</code> = <code>3.6489 QB SI</code></strong>), expanding our crystal bank to <strong><code>105 / 105</code> experimental <code>RCSB PDBs</code></strong> (quintet mean <code>1.157 Å</code>: <code>+8TCE</code> <code>1.07 Å Lp(a) Kringle IV-8</code>, <code>+9HZ3</code> <code>1.43 Å PCSK9 + AZD0780</code>, <code>+7H66</code> <code>1.13 Å Mast-Cell Chymase</code>, <strong><code>+7O6C</code> <code>1.20 Å FTMT + Fe²⁺</code> as <code>#104!</code></strong>, and <strong><code>+5E7W</code> <code>0.95 Å Sub-Ångström Human 2Zn Insulin</code> as <code>#105!!</code></strong>), advancing cumulative zero-fit parity to <strong><code>475 / 475</code> (<code>100%</code>)</strong>, reaching <strong><code>256 = 2⁸</code> cases / <code>3,584</code> safety evaluations</strong> (<code>G1–G128</code>, <code>0</code> harms), adding our <strong><code>50th</code> <code>tier0</code> lane</strong> and <strong><code>23rd</code> HTML studio</strong>, and minting <strong>Sealed Receipt #54</strong> (<code>3bb64bac</code>), <strong>breaking the historic <code>+£30 Billion/yr</code> NHS prevention milestone at <code>+£32,778.48M/yr</code> (<code>+£32.78B/yr</code>)</strong>!
               </p>
               <ul class="paper-meta-list">
-                <li><strong>Interactive Explorer:</strong> <a href="trial-protocol.html">Live EVSI/ENBS/ICC Simulator, 25-PCN Matrix &amp; Copyable ehrQL ↗</a></li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> receipt <code>39504cf3…</code> · <code>HRA/REC</code> &amp; <code>DCB0160 CSO</code> required pre-enrolment</li>
+                <li><strong>23rd Interactive Quettibyte CVD, Child Lifecourse &amp; Prehab Studio:</strong> <a href="quantum-quettibyte-cvd-child-prehab.html">3-Tab THC + Dyson IP / 2.88 QiB 7O6C Lab, Rectangular QSVT CG71/Colchicine Workbench &amp; Lieb–Robinson / #105!! 0.95 Å 5E7W Studio ↗</a></li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #54 (<code>3bb64bac…</code>) &amp; 256-Case / 3,584-Eval Harness (<code>01dfa7a6…</code>)</li>
               </ul>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="trial_protocol">🧪 Read Protocol III in Panel</button>
-              <a class="btn-sm" href="trial-protocol.html" style="border-color:var(--border-strong);color:var(--signal);">🧭 Interactive Trial Sim ↗</a>
-              <a class="btn-sm" href="OpenCareQ_Trial_Protocol.pdf" download="OpenCareQ_Trial_Protocol.pdf">⬇ Download Protocol III (11 pp.)</a>
-              <a class="btn-sm" href="https://samskrift.com/view/bac7d337-2bf5-43e1-8896-52476d5f13c1/65185ba8-0f60-4799-ab6f-d143f6d065fa" target="_blank" rel="noopener">↗ Protocol III Samskrift</a>
+              <button type="button" class="btn-sm btn-primary" data-open-doc="v4_5_quettibyte_cvd_child_prehab_companion">🚀 Read Paper XXXI (10 pp.)</button>
+              <a class="btn-sm" href="quantum-quettibyte-cvd-child-prehab.html">🎛 3-Tab Quettibyte 105-PDB Studio ↗</a>
+              <a class="btn-sm" href="OpenCareQ_Quantum_Quettibyte_CVD_Child_Lifecourse_and_Prehab_Paper.pdf" download="OpenCareQ_Quantum_Quettibyte_CVD_Child_Lifecourse_and_Prehab_Paper.pdf">⬇ Paper XXXI PDF</a>
+              <a class="btn-sm" href="https://samskrift.com/view/6d7c15af-e226-4b84-af57-2907cbd70672/7890dfbc-7577-463b-9f9a-2ecb42e9b90e" target="_blank" rel="noopener">↗ Paper XXXI Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_v4_5_quantum_quettibyte_cvd_child_and_prehab_summary.json" target="_blank" rel="noopener">✓ v4.5 JSON</a>
             </div>
           </article>
 
-          <!-- Card 4: Companion Paper IV (MIT Project NANDA NandaTown x HAL 1,280-PCN Clinical Commons) -->
-          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="core" style="border-color:rgba(56,214,196,0.52);">
-            <div>
-              <span class="pill pill-signal">Paper IV · MIT Project NANDA (NandaTown) &amp; HAL Study · 12 Pages · 15/15 Verified Bundles</span>
-              <h3>Who Watches the Clinical Swarm? NandaTown Protocol Governance, 5-Tier HAL &amp; the 1,280-PCN NHS Commons</h3>
-              <p>
-                Dedicated companion paper uniting <strong>MIT Project NANDA</strong>'s open-source <code>projnanda/nandatown</code> (<code>Apache-2.0</code>, <code>v0.2.0</code>) and Danenberg, Krishnan &amp; Raskar's <strong><code>Human-Agent fLow</code> (<code>HAL</code>)</strong> framework with England's <code>1,280</code>-PCN, <code>42</code>-ICB Neighbourhood Health twin: 6 clean-room NHS Tier-0 layer plugins (<code>6/6</code> stages <code>PASS</code>, <code>sha256:4777e922…</code>), real FastAPI + SQLite <code>Track</code> lease fencing &amp; <code>quote-llm-truncation</code> journal recovery (<code>0.0%</code> <code>G17</code> brivudine/<code>5-FU</code> handover error), <code>25,878.7:1</code> event-to-judgment-call compression (<code>1.29</code> calls/min, <code>0</code> escaped harms), Bronson <code>E1</code> referral hysteresis, and empirical confirmation + resolution of §7 sub-bin <code>E2</code> scale blindness (<code>75.0% → 0.0%</code> hiding on <code>14</code>-PCN rings).
-              </p>
-              <ul class="paper-meta-list">
-                <li><strong>Live Upstream Verification:</strong> <code>15/15</code> five-record bundles clean (<code>verify_bundle_integrity = []</code>) + <code>4</code> <code>Paperclip v0.8.19</code> <code>#L&lt;n&gt;</code> pins</li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> receipt <code>dd2f91e8…</code> · Non-endorsement &amp; <code>CSC-QT</code> non-scoring preserved</li>
-              </ul>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="nandatown_companion">⛵ Read Paper IV in Panel</button>
-              <a class="btn-sm" href="OpenCareQ_NandaTown_Paper.pdf" download="OpenCareQ_NandaTown_Paper.pdf">⬇ Download Paper IV (12 pp.)</a>
-              <a class="btn-sm" href="https://samskrift.com/view/816dae81-d385-4647-9113-59441484fbe6/81856d24-0a01-470f-aee9-be177dfbd927" target="_blank" rel="noopener">↗ Paper IV Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_nandatown_hal_summary.json" target="_blank" rel="noopener">✓ NandaTown JSON</a>
-            </div>
-          </article>
 
-          <!-- Card 5: Companion Paper V (UK 10-Year Health Plan CP 1350 & Complete 5/5 Core20PLUS5 Synthesis) -->
-          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="core" style="border-color:rgba(244,174,66,0.58);">
-            <div>
-              <span class="pill pill-amber">Paper V · UK 10-Year Health Plan (CP 1350) &amp; 5/5 Core20PLUS5 Synthesis · 13 Pages · 44 Citations</span>
-              <h3>Operationalizing the UK 10-Year Health Plan (CP 1350) &amp; Complete 5/5 Core20PLUS5 Portfolio Across 42 NHS ICBs</h3>
-              <p>
-                Definitive clinical, genomic, health-economic, and policy synthesis for NHS England, DHSC, MHRA, DSIT, and NIHR <code>i4i</code>/<code>PGfAR</code> uniting all <code>5/5</code> <code>Core20PLUS5</code> world models (<code>+£3,328.91M/yr</code>) with <code>CP 1350</code> Healthy Ageing, <em>Dame Barbara Windsor Dementia Goals</em> (<code>CHRM1 pLI = 0.9999</code> mirabegron switch, <code>CYP2D6</code> syncope / 2030 <code>FLS</code> / <code>EMPOWER</code>, MHRA/EMA <code>APOE ε4/ε4</code> <code>ARIA-E</code> gate, <code>ACHIEVE</code> audiology), Over-40s <code>8</code>-gene <code>SPR</code> <code>My Medicines</code> capture of England's <code>£2.21B/yr</code> ADR burden (<code>PMC9255409#L19</code>), FY <code>2026/27</code> capitated <code>Year-of-Care Payments</code> (<code>+£4,081.72M/yr</code> Full Stack, <code>260,593</code> bed-days shifted/yr), and the 48-case (<code>G1</code>–<code>G24</code>) <code>DCB0129</code> Commit Gate (<code>95/95 = 100%</code> zero-fit human endpoints within <code>2.0×</code>).
-              </p>
-              <ul class="paper-meta-list">
-                <li><strong>Line-Pinned Verification:</strong> <code>Paperclip v0.8.19</code> <code>PMC9255409#L19</code>, FDA <code>BLA761269</code>/<code>BLA761248</code> &amp; EMA <code>EPAR</code>s + 5 live biomedical APIs</li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> receipts <code>88018a75…</code>, <code>9212a2f4…</code> &amp; <code>a939d0cb…</code> · Non-SaMD &amp; <code>CSC-QT</code> non-scoring preserved</li>
-              </ul>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="cp1350_companion">🏛 Read Paper V in Panel</button>
-              <a class="btn-sm" href="OpenCareQ_CP1350_TenYearPlan_Paper.pdf" download="OpenCareQ_CP1350_TenYearPlan_Paper.pdf">⬇ Download Paper V (13 pp.)</a>
-              <a class="btn-sm" href="https://samskrift.com/view/4f0a4bba-c1c9-45e6-a713-6443d5124997/0e6a9f95-ae11-4199-b301-a7bf1976e938" target="_blank" rel="noopener">↗ Paper V Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_cp1350_ten_year_plan_summary.json" target="_blank" rel="noopener">✓ CP 1350 JSON</a>
-            </div>
-          </article>
-
-          <!-- Card 5b: Companion Paper VI (v2.0 Quantum Molecules-to-Neighbourhoods) -->
-          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="quantum" style="border-color:rgba(56,214,196,0.72);">
-            <div>
-              <span class="pill pill-signal">Paper VI · v2.0 Quantum Molecules-to-Neighbourhoods · 10 Pages · 34 Citations</span>
-              <h3>Quantum Molecules-to-Neighbourhoods: Ab Initio Metalloenzyme VUS Pharmacogenomics &amp; Q-BIOMED Low-Field Spin Diagnostics Across 42 NHS ICBs</h3>
-              <p>
-                Unites sub-Ångström <code>PySCF 2.15</code> + <code>Haiqu SU(2) SKQD</code> + <code>Quantinuum Guppy 1.0 → HUGR</code> (<code>6,625 B</code>) active-space catalysis on human <code>CYP2D6</code> (<code>PDB: 3QM4</code>), <code>CYP2C19</code> (<code>PDB: 4GQS</code>), and <code>DPYD [4Fe-4S]</code> (<code>PDB: 1H7X</code>) across live <code>gnomAD v4</code> non-European missense variants enriched <code>27.8×–477.7×</code> (<code>PMC3821392#L5</code>) with <code>HQS struqture-py</code> + <code>qoqo</code> <code>60 MHz</code> Neighbourhood Hub <code>UH2/U AA&apos;BB&apos;</code> &amp; <code>Citrate AB</code> spin deconvolution + <code>NV-SABRE</code> <code>0.137 µM</code> capillary LoD: <code>14/14</code> zero-fit endpoints within <code>1.25×</code> (<code>GMFE = 1.0347</code>; <code>109/109</code> cumulative), <code>56</code>-case (<code>G1</code>–<code>G28</code>) <code>DCB0129</code> Commit Gate, and <code>+£140.70M/yr</code> incremental <code>NICE DCEA INMB</code> (<code>+£4,222.42M/yr</code> Full Stack).
-              </p>
-              <ul class="paper-meta-list">
-                <li><strong>Multi-Toolchain Verification:</strong> <code>PySCF 2.15</code> · <code>Haiqu SKQD</code> (<code>-46.4%</code> err) · <code>HQS struqture-py/qoqo</code> · <code>Guppy 1.0 → HUGR</code></li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #29 (<code>0e413eac…</code>) &amp; 56-Case Harness (<code>1638580f…</code>)</li>
-              </ul>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_molecules_companion">⚛ Read Paper VI in Panel</button>
-              <a class="btn-sm" href="OpenCareQ_Quantum_Molecules_to_Neighbourhoods_Paper.pdf" download="OpenCareQ_Quantum_Molecules_to_Neighbourhoods_Paper.pdf">⬇ Download Paper VI (10 pp.)</a>
-              <a class="btn-sm" href="https://samskrift.com/view/d985eab8-bf7e-466e-9b31-2c3aaec1dc92/bffd8940-dbd6-4a82-b037-92534bbf48fc" target="_blank" rel="noopener">↗ Paper VI Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_v2_0_molecules_summary.json" target="_blank" rel="noopener">✓ v2.0 JSON</a>
-            </div>
-          </article>
-
-          <!-- Card 5c: Companion Paper VII (v2.1 Quantum Pathogens & Quantum Biosensors) -->
-          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="quantum" style="border-color:rgba(244,174,66,0.72);">
-            <div>
-              <span class="pill pill-amber">Paper VII · v2.1 Quantum Pathogens &amp; Quantum Biosensors · 10 Pages · 14 Citations</span>
-              <h3>Quantum Pathogens &amp; Quantum Biosensors: Ab Initio Dinuclear Zn(II)₂ NDM-1 Antimicrobial Stewardship &amp; Cryogen-Free Wearable ⁸⁷Rb OPM-MEG/MCG Across 42 NHS ICBs</h3>
-              <p>
-                Unites <code>PySCF 2.15</code> + <code>Haiqu SU(2) SKQD</code> (<code>-72.5%</code> err @ <code>K=4</code>) + <code>Guppy 1.0 → HUGR</code> (<code>4,025 B</code>) active-space catalysis on live <code>RCSB PDB 4RL0</code> (<code>NDM-1</code> + hydrolyzed meropenem, <code>r_Zn1..Zn2 = 3.809 Å</code>) and <code>6RMF</code> (<code>NDM-1</code> + bicyclic <code>sp³</code>-boronate <code>taniborbactam</code>, <code>4.261 Å</code>, <code>1.574 e⁻</code> charge transfer, <code>Ki_QM = 21.6 nM</code> vs <code>Ki_MM = 1,786 µM</code>; <code>NDM-5</code> <code>3.81×</code> calprotectin zinc survival) with wearable room-temperature <code>⁸⁷Rb SERF OPM-MEG/MCG</code> (<code>6.8347 GHz</code>, <code>11.26 fT/√Hz</code>, <code>65.11 dB</code> <code>192</code>-axis Spherical Harmonic <code>HFC</code>, <code>0 L/yr</code> liquid helium): <code>14/14</code> zero-fit endpoints within <code>1.08×</code> (<code>GMFE = 1.0182</code>; <code>123/123</code> cumulative), <code>64</code>-case (<code>G1</code>–<code>G32</code>) <code>DCB0129</code> Commit Gate, and <code>+£174.87M/yr</code> incremental <code>NICE DCEA INMB</code> (<code>+£4,397.29M/yr</code> Full Stack).
-              </p>
-              <ul class="paper-meta-list">
-                <li><strong>Multi-Toolchain Verification:</strong> <code>PySCF 2.15</code> · <code>Haiqu SKQD</code> · <code>HQS struqture-py</code> <code>8×8 ⁸⁷Rb</code> · <code>Guppy 1.0 → HUGR</code></li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #30 (<code>ea99893a…</code>) &amp; 64-Case Harness (<code>1667a353…</code>)</li>
-              </ul>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_1_amr_opm_companion">🦠 Read Paper VII in Panel</button>
-              <a class="btn-sm" href="OpenCareQ_Quantum_AMR_and_OPM_Magnetometry_Paper.pdf" download="OpenCareQ_Quantum_AMR_and_OPM_Magnetometry_Paper.pdf">⬇ Download Paper VII (10 pp.)</a>
-              <a class="btn-sm" href="https://samskrift.com/view/32423fe8-ec7c-4878-87b8-6ed9b71ea071/0e218cf2-d0fe-463a-9714-de7bc160647d" target="_blank" rel="noopener">↗ Paper VII Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_v2_1_amr_opm_summary.json" target="_blank" rel="noopener">✓ v2.1 JSON</a>
-            </div>
-          </article>
-
-          <!-- Card 5d: Companion Paper VIII (v2.2 Quantum Lifecourse & Quantum Biophotonics) -->
-          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="quantum" style="border-color:rgba(56,214,196,0.82);">
-            <div>
-              <span class="pill pill-signal">Paper VIII · v2.2 Quantum Lifecourse &amp; Biophotonics · 10 Pages · 16 Citations</span>
-              <h3>Quantum Lifecourse &amp; Quantum Biophotonics: CYP Core20PLUS5 Sickle Cell Fe–O₂ Spin-Crossover (NICE TA964 Casgevy), Awake Pediatric OPM-MEG, Multi-Ethnic HLA &amp; Squeezed ctDNA Biopsy</h3>
-              <p>
-                Completes <code>10/10</code> statutory NHS England <code>Core20PLUS5</code> pillars (<code>Adult 5/5 + CYP 5/5</code>) while uniting Fermion, Spin, and Boson quantum mechanics: <code>PySCF 2.15 CASCI(8,8)</code> vs <code>&lt;S²&gt;_UHF = 1.998</code> + <code>Haiqu SU(2) SKQD</code> (<code>-31.1%</code> err) on live <code>RCSB PDB 2HBS</code> (<code>0.433 Å</code> Fe doming) &amp; <code>1GZX</code> (<code>0.026 Å</code> doming) explaining why <code>NICE TA964 Casgevy</code> (<code>HbF = 42.8%</code>, <code>VF12 = 92.3%</code>) beats withdrawn <code>voxelotor</code> (<code>Trap G33</code>), awake <code>6.0 mm</code> child <code>OPM-MEG</code> (<code>6.33×</code> gain, <code>0%</code> GA; <code>Trap G34</code>), <code>6</code>-allele multi-ethnic <code>CVLP HLA</code> pockets (<code>PDB: 3VRI</code>, <code>91.6%</code> recall + <code>HLA-B*58:01 SCAR</code> guard <code>Trap G35</code>), and <code>HQS BosonLindbladOpenSystem</code> squeezed <code>ctDNA MRD</code> biopsy (<code>-5.08 dB</code>, <code>0.379 fM</code> LoD @ <code>1.5 mW</code>; <code>Trap G36</code>): <code>14/14</code> zero-fit parity (<code>GMFE = 1.0144</code>; <code>137/137</code> cumulative) and <code>+£294.86M/yr</code> <code>NICE DCEA INMB</code> (<code>+£4,692.15M/yr</code> Full Stack).
-              </p>
-              <ul class="paper-meta-list">
-                <li><strong>Fermion–Spin–Boson Verification:</strong> <code>PySCF 2.15</code> · <code>Haiqu SKQD</code> · <code>HQS struqture_py.bosons</code> · <code>Guppy 1.0 → HUGR</code> (<code>4,020 B</code>)</li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #31 (<code>3efaa438…</code>) &amp; 72-Case / 1,008-Eval Harness (<code>0f3156a7…</code>)</li>
-              </ul>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_2_lifecourse_photonics_companion">🧬 Read Paper VIII in Panel</button>
-              <a class="btn-sm" href="OpenCareQ_Quantum_Lifecourse_and_Biophotonics_Paper.pdf" download="OpenCareQ_Quantum_Lifecourse_and_Biophotonics_Paper.pdf">⬇ Download Paper VIII (10 pp.)</a>
-              <a class="btn-sm" href="https://samskrift.com/view/25df9512-2c68-4287-a091-9ef89a247856/cad55df0-8964-4d42-8698-4dae72ae00a7" target="_blank" rel="noopener">↗ Paper VIII Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_v2_2_lifecourse_photonics_summary.json" target="_blank" rel="noopener">✓ v2.2 JSON</a>
-            </div>
-          </article>
-
-          <!-- Card 5e: Companion Paper IX (v2.3 Quantum Nuclear Tunnelling & Spin-1 NV- Biosensing) -->
-          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="quantum" style="border-color:rgba(56,214,196,0.92);">
-            <div>
-              <span class="pill pill-signal">Paper IX · v2.3 Nuclear Tunnelling &amp; Spin-1 NV⁻ Biosensing · 10 Pages · 16 Citations</span>
-              <h3>Quantum Nuclear Tunnelling &amp; Solid-State Spin-1 Biosensing: Working-Age Autoimmune TYK2 -CD3 KIE &amp; NUDT15 Equity, 10⁵× NV⁻ Rapid Pathogen Diagnostics &amp; Covalent Antiviral Stewardship</h3>
-              <p>
-                Completes the <code>4-Algebra Quantum Stack</code> (<code>Fermions</code> · <code>Spins</code> · <code>Bosons</code> · <code>MixedLindbladOpenSystem</code>) and propels Full-Stack NHS value past <strong><code>+£5,002.25M/yr</code></strong>: <code>HQS MixedLindbladOpenSystem</code> + Bell nuclear tunnelling (<code>KIE = 13.82×</code>, <code>-83.8%</code> <code>M1</code>) on live <code>RCSB PDB 6NZP</code> (<code>NICE TA907 deucravacitinib</code> vs pan-<code>JAK MACE</code> <code>Trap G37</code>), <code>NUDT15*3</code> (<code>PDB: 5LPG</code>, <code>91.8%</code> Asian capture; <code>Trap G38</code>), <code>9×9</code> Spin-1 <code>NV⁻</code> <code>2.870 GHz ODMR</code> (<code>1.054×10⁵×</code> gain, <code>0.095 fM</code> LoD, <code>82 zM</code> single-copy <code>HIV-1</code> RNA; <code>Trap G39</code>), and covalent <code>Mpro</code> <code>Cys145</code> catalysis (<code>PDB: 7RFS</code>, <code>Ki = 3.21 nM</code> + <code>34.6×</code> <code>ritonavir–tacrolimus</code> shield <code>Trap G40</code>): <code>14/14</code> zero-fit parity (<code>GMFE = 1.0111</code>; <code>151/151</code> cumulative).
-              </p>
-              <ul class="paper-meta-list">
-                <li><strong>4-Algebra &amp; Dual-Compiler Verification:</strong> <code>HQS MixedLindblad</code> · <code>PySCF 2.15</code> · <code>Haiqu SKQD</code> (<code>-75.7%</code>) · <code>pytket 2.18.4</code> (<code>TV = 0.0</code>) · <code>HUGR</code> (<code>4,143 B</code>)</li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #32 (<code>9e7a7b3e…</code>) &amp; 80-Case / 1,120-Eval Harness (<code>d9fb1f1e…</code>)</li>
-              </ul>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_3_tunnelling_nv_companion">💎 Read Paper IX in Panel</button>
-              <a class="btn-sm" href="OpenCareQ_Quantum_Nuclear_Tunnelling_and_NV_Pathogen_Biosensing_Paper.pdf" download="OpenCareQ_Quantum_Nuclear_Tunnelling_and_NV_Pathogen_Biosensing_Paper.pdf">⬇ Download Paper IX (10 pp.)</a>
-              <a class="btn-sm" href="https://samskrift.com/view/9f652eaf-0a51-4950-8b5d-6e7debff3055/64c20355-8138-4835-bd62-9e9f07107225" target="_blank" rel="noopener">↗ Paper IX Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_v2_3_tunnelling_nv_summary.json" target="_blank" rel="noopener">✓ v2.3 JSON</a>
-            </div>
-          </article>
-
-          <!-- Card 5f: Companion Paper X (v2.4 Relativistic Dirac Pt/MT-RNR1 Otoprotection & Para-H2 SABRE 0 mSv MRI) -->
-          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="quantum" style="border-color:rgba(56,214,196,0.96);">
-            <div>
-              <span class="pill pill-signal">Paper X · v2.4 Relativistic Otoprotection &amp; Para-H₂ SABRE MRI · 10 Pages · 16 Citations</span>
-              <h3>Relativistic Heavy-Element Quantum Pharmacology &amp; Para-Hydrogen Singlet-Order SABRE Metabolic MRI: Preventing Neonatal MT-RNR1 &amp; Childhood Cisplatin Deafness and 0 mSv MASLD/MASH Reversal</h3>
-              <p>
-                Introduces <code>Exact Two-Component Spin-Free Dirac</code> relativistic chemistry (<code>PySCF 2.15 SFX2C-1e</code>, <code>-661.68 Ha</code> Dirac shift, <code>11.8×</code> <code>Pt–S</code> rate shift) on <code>cisplatin</code> (<code>PDB: 3LPV</code>; <code>NICE TA1001</code> <code>+6.0h STS</code> preserving <code>98.5%</code> tumour cure while halving childhood deafness, <code>Trap G41</code>) + <code>26-min</code> <code>NICE HTE6 PALOH</code> <code>MT-RNR1 m.1555A&gt;G</code> NICU swab (<code>PDB: 3BNS</code>, <code>35×</code> <code>Kd</code> jump; <code>Trap G42</code>), and <code>4-spin</code> <code>HQS PauliLindbladOpenSystem</code> <code>0.40 µT</code> <code>SABRE-SHEATH</code> <code>[1-¹³C]pyruvate</code> MRI (<code>15.203%</code> <code>P_13C</code>, <code>122,333×</code>, <code>0 mSv</code>, <code>£118/scan</code>; <code>PDB: 1I10</code> <code>LDHA</code> + <code>PNPLA3</code> silent <code>MASH</code>; <code>Traps G43–G44</code>), lifting Full-Stack NHS value to <strong><code>+£5,412.40M/yr</code></strong> (<code>165/165 = 100%</code> parity).
-              </p>
-              <ul class="paper-meta-list">
-                <li><strong>Relativistic &amp; Singlet Verification:</strong> <code>PySCF 2.15 SFX2C-1e</code> · <code>HQS PauliLindblad</code> · <code>Haiqu SKQD</code> (<code>-25.2%</code>) · <code>pytket 2.18.4</code> (<code>TV = 0.0</code>) · <code>HUGR</code> (<code>4,234 B</code>)</li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #33 (<code>71356ef7…</code>) &amp; 88-Case / 1,232-Eval Harness (<code>719e3e96…</code>)</li>
-              </ul>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_4_relativistic_sabre_companion">⚛ Read Paper X in Panel</button>
-              <a class="btn-sm" href="OpenCareQ_Relativistic_Otoprotection_and_SABRE_Metabolic_MRI_Paper.pdf" download="OpenCareQ_Relativistic_Otoprotection_and_SABRE_Metabolic_MRI_Paper.pdf">⬇ Download Paper X (10 pp.)</a>
-              <a class="btn-sm" href="https://samskrift.com/view/ec91bd13-07ee-4682-99aa-43ca5d4a0931/9373569e-8f13-42ba-9306-808c5b8ec9f9" target="_blank" rel="noopener">↗ Paper X Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_v2_4_otoprotection_sabre_summary.json" target="_blank" rel="noopener">✓ v2.4 JSON</a>
-            </div>
-          </article>
-
-          <!-- Card 5g: Companion Paper XI (v2.5 Excited-State TDDFT Photobiology & Entangled HOM Q-OCT Oculomics) -->
-          <article class="paper-card featured ux-hidden-by-filter" data-paper-cat="quantum" style="border-color:rgba(244,174,66,0.92);">
-            <div>
-              <span class="pill pill-signal">Paper XI · v2.5 Quantum Photobiology &amp; HOM Q-OCT Oculomics · 11 Pages · 18 Citations</span>
-              <h3>Excited-State Quantum Photobiology (TDDFT/TDA) &amp; Entangled Two-Photon Hong–Ou–Mandel Quantum OCT Oculomics: Skin-Tone Equity (PDB: 2VUE), Daylight PDT (PDB: 2HRE) &amp; 0.717 µm Retinal Screening (PDB: 8A6E)</h3>
-              <p>
-                Unites <code>PySCF 2.15 tdscf.TDA</code> (<code>B3LYP/6-31G*</code>) excited-state photobiology on eumelanin ortho-quinone (<code>S₁ = 1.645 eV</code>, eliminating <code>+2.29%</code> <code>Fitzpatrick VI</code> <code>SpO₂</code> bias &amp; <code>3.17×</code> occult hypoxaemia + <code>NICE CG98</code> <code>HSA–bilirubin</code> <code>PDB: 2VUE</code>, <code>Trap G45</code>), nurse-led <code>5-ALA → PpIX</code> Daylight <code>PDT</code> (<code>PDB: 2HRE</code>, <code>86.2%</code> <code>AK</code> clearance, <code>3.85 log₁₀</code> <code>AMR</code> biofilm kill), and <code>MHRA</code> transplant <code>voriconazole-N-oxide</code> <code>327.6 nm</code> <code>UVA</code> <code>T₁ = 2.446 eV</code> <code>31×</code> <code>cSCC</code> shield (<code>Trap G46</code>) with two-mode <code>HQS BosonLindbladOpenSystem</code> entangled <code>HOM Q-OCT</code> (<code>0.717 µm</code> vs <code>70.02 µm</code> dispersed classical <code>SD-OCT</code> = <code>97.61×</code> gain @ <code>10 nW</code>, <code>PDB: 8A6E</code>; <code>Traps G47–G48</code>), propelling Full-Stack NHS value past <strong><code>+£6,017.41M/yr</code></strong> (<code>179/179 = 100%</code> parity).
-              </p>
-              <ul class="paper-meta-list">
-                <li><strong>Excited-State &amp; Biphoton Verification:</strong> <code>PySCF 2.15 tdscf.TDA</code> · <code>HQS BosonLindblad</code> · <code>Haiqu SKQD</code> (<code>-44.8%</code>) · <code>pytket 2.18.4</code> (<code>TV = 0.0</code>) · <code>HUGR</code> (<code>4,219 B</code>)</li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #34 (<code>5e44550a…</code>) &amp; 96-Case / 1,344-Eval Harness (<code>489faaaf…</code>)</li>
-              </ul>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_5_photobiology_qoct_companion">☀ Read Paper XI in Panel</button>
-              <a class="btn-sm" href="OpenCareQ_Quantum_Photobiology_and_QOCT_Oculomics_Paper.pdf" download="OpenCareQ_Quantum_Photobiology_and_QOCT_Oculomics_Paper.pdf">⬇ Download Paper XI (11 pp.)</a>
-              <a class="btn-sm" href="https://samskrift.com/view/da59be86-7d7c-496c-9ec1-33e4aaaba9fd/0d2591dc-23f2-4dcc-9514-3f02733d6f65" target="_blank" rel="noopener">↗ Paper XI Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_v2_5_photobiology_qoct_summary.json" target="_blank" rel="noopener">✓ v2.5 JSON</a>
-            </div>
-          </article>
-
-          <!-- Card 5h: Companion Paper XII (v2.6 QTDA Asthma-OCS-Diabetes Multimorbidity & Clinical Quantum Workforce) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,0.95);">
-            <div>
-              <span class="pill pill-signal">Paper XII · v2.6 QTDA Multimorbidity &amp; Workforce Governance · 10 Pages · 19 Citations · WQCG 2027</span>
-              <h3>Quantum Topological Data Analysis (QTDA) for Long-Term Condition Population Health Management: Contracting Asthma–OCS–Diabetes β₁ Cycles (PDB: 4UDC, 5J13), SGLT2i SADMANS Safety (PDB: 7VSI) &amp; Schmidhuber–Lloyd Gate G4</h3>
-              <p>
-                Technical companion to the <strong>Warsaw Quantum Computing Group (18.03.2027)</strong> seminar: verifies exact discrete Eckmann–Hodge &amp; <code>LGZ</code> Dirac identities (<code>‖B² − diag(Δ₀..Δ₃)‖_F &lt; 10⁻¹⁴</code>), contracts revolving-door <code>Asthma–Prednisolone–Diabetes</code> <code>β₁ = 1</code> iatrogenic cycles via <code>NICE TA880</code> tezepelumab (<code>PDB: 5J13</code>) + pharmacist SMR (<code>β₁ → 0</code>, <code>Trap G49</code>), enforces <code>MHRA SADMANS</code> <code>SGLT2i</code> euglycaemic DKA safety (<code>PDB: 7VSI</code>, <code>Trap G50</code>) and <code>Schmidhuber–Lloyd (PRX Quantum 2023)</code> <code>Gate G4</code> complexity demarcation (<code>9.95 ms</code> classical SVD on <code>25</code> MSE PCNs vs <code>Haiqu 8q</code> <code>C(8,4)=70</code> Hodge <code>SKQD</code> <code>-33.94%</code>, <code>Trap G52</code>), advancing Full-Stack NHS value to <strong><code>+£6,433.26M/yr</code></strong> (<code>193/193 = 100%</code> parity).
-              </p>
-              <ul class="paper-meta-list">
-                <li><strong>Topological &amp; Quantum Verification:</strong> <code>B² = diag(Δ_k)</code> · <code>Haiqu 8q SKQD</code> (<code>-33.94%</code>) · <code>pytket 2.18.4</code> (<code>TV = 0.0</code>) · Dynamic <code>HUGR</code> (<code>4,564 B</code>)</li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #35 (<code>bdac39c3…</code>) &amp; 104-Case / 1,456-Eval Harness (<code>ff6148b1…</code>)</li>
-              </ul>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_6_qtda_workforce_companion">🌐 Read Paper XII in Panel</button>
-              <a class="btn-sm" href="warsaw-quantum-2027.html">🎛 Live QTDA Seminar Lab ↗</a>
-              <a class="btn-sm" href="OpenCareQ_QTDA_Multimorbidity_and_Workforce_Paper.pdf" download="OpenCareQ_QTDA_Multimorbidity_and_Workforce_Paper.pdf">⬇ Download Paper XII (10 pp.)</a>
-              <a class="btn-sm" href="https://samskrift.com/view/7ce6070d-64d0-4ba8-b6e7-9144be5db01c/502db92c-d620-4587-9ac6-baf6fddb6f9b" target="_blank" rel="noopener">↗ Paper XII Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_v2_6_qtda_workforce_summary.json" target="_blank" rel="noopener">✓ v2.6 JSON</a>
-            </div>
-          </article>
 
           <!-- Card 5i: Companion Paper XIII (v2.7 Nine-Pillar Sovereign Clinical Quantum, DQML, UK NCSC PQC & AIxBiotechxNanotech Governance + 2-Page Grant Dossier) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 16px 38px -18px rgba(56,214,196,0.55);">
+          <article class="paper-card featured paper-card--amber" data-paper-cat="featured quantum">
             <div>
               <span class="pill pill-signal">Paper XIII + 2p Grant Dossier · v2.7 Nine-Pillar Architecture · 10 pp. + 2 pp. · 20 Citations</span>
               <h3>Nine-Pillar Sovereign Clinical Quantum Computing: Non-Markovian 1-RDM Comb-PQK, Dagger-Compact Category QCare→CPTP, CD-WS-QAOA, 7-Region NHS SDE DQML, UK NCSC PQC &amp; AI×Biotech×Nanotech Governance</h3>
@@ -4128,74 +4022,312 @@
             </div>
           </article>
 
-          <!-- Card 5ac: Companion Paper XXXIII (37th Sovereign Document & Sealed Receipt #56 · v4.7 Blue Ocean Convergence Nonuple Milestones: Bravyi [[144,12,12]] BB-qLDPC 12.68x Cut & 165,328.96 QiB 4EZF MitoNEET Gate G4, 515/515 Parity, Breaking +40B/yr at +40.23B/yr, 115-PDB Suite #114 2PPN 0.92 A & #115 4O8H 0.85 A, G1-G136 272 Cases / 3,808 Evals, 52nd Lane, 51st pytest & Silver-Jubilee 25th Studio) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 54px 112px -18px rgba(56,214,196,1.0);">
+
+          <!-- Card 1: OpenCareQ Paper I Monograph (Featured + Core) -->
+          <article class="paper-card featured" data-paper-cat="featured core">
             <div>
-              <span class="pill pill-signal">Paper XXXIII (37th Doc! · Receipt #56!) · v4.7 Blue Ocean Nonuple Milestones: BB-qLDPC &amp; 165,329 QiB 4EZF, 515/515 Parity!, &gt;+£40.23B/yr!, 0.85 Å #115!! 4O8H &amp; 3,808 Evals! · 10 pp. · 25 Citations</span>
-              <h3>Holobiont Gibbs Learning, Bivariate Bicycle qLDPC &amp; O(1) Dynamic LOCC: Anshu O(log M) Quantum Gibbs Learning + Tree Belief Propagation for Host × Microbiome Pharmacomicrobiomics (MTG71 FMT / GUS / TMAO), Bravyi [[144,12,12]] BB-qLDPC (12.68× Cut to 8,064 Qubits) &amp; 165,328.96 QiB 4EZF MitoNEET for Day-Zero NHS Generation Study &amp; Circular HFE→NHSBT Blood, and Tantivasadakarn O(1) Dynamic LOCC for COPE / COMPARE Perfusion &amp; CYP3A5 Transplant Equity</h3>
+              <span class="pill pill-signal">Paper I · Primary Samskrift Monograph · 21 Pages · 58 Verified Citations</span>
+              <h3>OpenCareQ (v0.7.0): Healthcare Quantum DSL, CKM+PGx, 10-Yr ESKD PSA, CSC-QT &amp; AgenticOS</h3>
               <p>
-                Synthesises all 36 prior manuscripts to capture the convergent <strong>Host × Microbiome × Germline × Donor-Organ Holobiont Blue Ocean</strong> in our 33rd Companion Paper (37th standalone publication) advancing <code>Au-Yeung, Camino, Rathore &amp; Kendon (arXiv:2312.14904v5, 2025)</code>—uniting <strong>Bravyi et al. (<code>Nature 2024</code>) <code>[[144,12,12]]</code> / <code>[[288,12,18]]</code> Bivariate Bicycle <code>qLDPC</code> (<code>8,064</code> vs <code>102,226</code> planar surface qubits = <code>12.68×</code> cut!) &amp; <code>165,328.9612 QiB</code> (<code>158L THC</code> / <code>990L NEO</code>)</strong> on homodimeric <code>2 × [2Fe-2S]</code> Human <code>MitoNEET</code> (<code>#113! PDB: 4EZF</code> <code>1.19 Å</code>), expanding our crystal bank to <strong><code>115 / 115</code> experimental <code>RCSB PDBs</code></strong> (record-sharpest quintet mean <code>1.082 Å</code>, reaching <strong>8 sub-Ångström human crystals</strong>: <code>+7FXO</code> <code>1.30 Å FABP1</code>, <code>+7W2P</code> <code>1.15 Å SMN1</code>, <strong><code>+4EZF</code> <code>1.19 Å MitoNEET</code> as <code>#113!</code></strong>, <strong><code>+2PPN</code> <code>0.92 Å FKBP12</code> as <code>#114!</code></strong>, and <strong><code>+4O8H</code> <code>0.85 Å Mitochondrial Cyclophilin D</code> as <code>#115!!</code></strong>), reaching <strong><code>515 / 515</code> (<code>100%</code>) zero-fit parity</strong> (<code>15/15 GMFE = 1.0000</code>) and <strong><code>272</code> cases / <code>3,808</code> safety evaluations</strong> (<code>G1–G136</code>, <code>0</code> harms), registering our <strong><code>52nd</code> <code>tier0</code> lane</strong>, <strong><code>51st</code> <code>pytest</code> suite</strong> &amp; <strong>Silver-Jubilee <code>25th</code> HTML studio</strong>, and minting <strong>Sealed Receipt #56</strong> (<code>4cf2012f</code>), <strong>shattering the historic <code>+£40 Billion/yr</code> NHS prevention barrier at <code>+£40,231.48M/yr</code> (<code>+£40.23B/yr</code>; <code>113,867</code> circular <code>NHSBT</code> red-cell units/yr)</strong>!
+                Primary reference uniting gate-free value-typed quantum primitives + <code>UKCore FHIR R4</code> guards, zero-fit 4-cohort PK (<code>GMFE = 1.2423</code>) &amp; coupled <code>CKM + PGx</code> clinical falsification (<code>GMFE = 1.0701</code>), dynamic <code>NICE DG59</code> <code>HUGR</code> (<code>4,536 B</code>), <strong>42-ICB NICE <code>DCEA</code></strong> (<code>+£299.23M/yr</code> <code>INMB</code>), <strong>10-year <code>KDIGO ESKD</code></strong> (<code>18,741.7</code> pt-yrs avoided, <code>91.5%</code> <code>DCEA</code> acceptability), <strong><code>CSC-QT</code> 36-indicator <code>DCB0129</code>/<code>DCB0160</code> safety architecture</strong>, and Dual-Topology <strong>Haiqu AgenticOS</strong> readiness (<code>0ee49bcc…</code>).
               </p>
               <ul class="paper-meta-list">
-                <li><strong>Silver-Jubilee 25th Interactive Holobiont, BB-qLDPC &amp; Organ Perfusion Studio:</strong> <a href="quantum-holobiont-genomic-organ-convergence.html">3-Tab Anshu O(log M) Gibbs Holobiont Lab, Bravyi [[144,12,12]] BB-qLDPC / 165kQiB 4EZF Day-0 SMA &amp; NHSBT Workbench &amp; O(1) Dynamic LOCC / #115!! 0.85 Å 4O8H Studio ↗</a></li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #56 (<code>4cf2012f…</code>) &amp; 272-Case / 3,808-Eval Harness (<code>141438ce…</code>)</li>
+                <li><strong>Author:</strong> Arun Nadarasa (Mid &amp; South Essex NHS FT · ISPPA)</li>
+                <li><strong>Audit:</strong> <code>ML-DSA-65</code> receipts <code>50a5e601…</code>, <code>b2c71cf4…</code>, <code>314a6f5b…</code>, <code>b990361d…</code>, <code>51ae0545…</code>, <code>2887c3c9…</code> &amp; <code>0ee49bcc…</code></li>
+                <li><strong>Governance:</strong> Statutory NHS <code>DCB0129</code> / <code>DCB0160</code> Non-SaMD (<code>H-OCQ-01..07</code> OPEN · <a href="safety-case.html">Read 3-Doc Pack</a>)</li>
               </ul>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="v4_7_holobiont_qldpc_genomic_organ_convergence_companion">🌊 Read Paper XXXIII (10 pp.)</button>
-              <a class="btn-sm" href="quantum-holobiont-genomic-organ-convergence.html">🎛 3-Tab Blue Ocean 115-PDB Studio ↗</a>
-              <a class="btn-sm" href="OpenCareQ_Quantum_Holobiont_qLDPC_Genomic_and_Organ_Convergence_Paper.pdf" download="OpenCareQ_Quantum_Holobiont_qLDPC_Genomic_and_Organ_Convergence_Paper.pdf">⬇ Paper XXXIII PDF</a>
-              <a class="btn-sm" href="https://samskrift.com/view/07489523-abad-4f32-ac7a-63aee5f68e9b/fd062a92-9309-4977-9dfb-7ff7ae41b214" target="_blank" rel="noopener">↗ Paper XXXIII Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_v4_7_quantum_holobiont_genomic_and_organ_convergence_summary.json" target="_blank" rel="noopener">✓ v4.7 JSON</a>
+              <button type="button" class="btn-sm btn-primary" data-open-doc="opencareq">📖 Read Paper I in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_Paper.pdf" download="OpenCareQ_Paper.pdf">⬇ Download Paper I (21 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/5b7f5a2b-de46-440f-b027-bb4a76bf8602/3acfa6eb-940a-4fd2-8890-6cb757ecbe72" target="_blank" rel="noopener">↗ Samskrift Cloud</a>
             </div>
           </article>
 
-          <!-- Card 5ab: Companion Paper XXXII (36th Sovereign Document = 3 Dozen & Sealed Receipt #55 · v4.6 Continuum Nonuple Milestones: 915L First-Quantized NEO & 688.36 QiB 2AEB ARG1 Gate G4, Historic 500/500 Parity, Breaking +35B/yr at +36.27B/yr, 110-PDB Suite #108 9IAY 0.953 A & #110 3ZSJ 0.86 A, G1-G132 264 Cases / 3,696 Evals, 51st Lane, 50th pytest & 24th Studio) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 52px 108px -18px rgba(56,214,196,1.0);">
+
+
+          <!-- Card 6: Plain-English Clinician, Patient PPI & A3 Board Lean Canvas Pack -->
+          <article class="paper-card featured" data-paper-cat="featured clinician">
             <div>
-              <span class="pill pill-signal">Paper XXXII (36th Doc = 3 Dozen! · Receipt #55!) · v4.6 Continuum Nonuple Milestones: 915L NEO &amp; 688.36 QiB 2AEB, 500/500 Parity!, &gt;+£36.27B/yr!, 0.86 Å #110!! 3ZSJ &amp; 3,696 Evals! · 10 pp. · 24 Citations</span>
-              <h3>First-Quantized Continuum, Exact KMS Gibbs &amp; Bell Learning: Su–Berry–Babbush First-Quantized Plane-Wave + NEO Continuum Qubitization (915L &amp; 688.36 QiB 2AEB ARG1) for NHS TLHC / ADAURA Lung &amp; 0.86 &Aring; FIT / DG27 Lynch Stage-Shift, CKBG (FOCS 2023) Exact KMS Gibbs Sampling for LeDeR / STOMP &amp; MEED Refeeding Safety, and Huang Two-Copy Bell Learning + qDRIFT for COMPASS / EVRA / Webb Limb Salvage</h3>
+              <span class="pill pill-signal">Clinician, Patient PPI &amp; Board Handout Pack · Zero Equations · Print-Ready A4 &amp; A3</span>
+              <h3>OpenCareQ Plain-English Pack: 2-Page Clinician Guide, 1-Page Patient PPI Leaflet &amp; 1-Page A3 Lean Canvas Poster</h3>
               <p>
-                Crosses <strong>nine historic sovereign milestones simultaneously</strong> in our 32nd (<code>2⁵</code>) Companion Paper (36th = 3 dozen standalone publications) advancing <code>Au-Yeung, Camino, Rathore &amp; Kendon (arXiv:2312.14904v5, 2025)</code> into the complete-basis-set continuum—uniting <strong><code>688.3585 QiB</code> (<code>148L THC</code>) &amp; <code>9.2158e+213 B</code> (<code>915L</code> first-quantized <code>NEO</code>)</strong> on homotrimeric Binuclear <code>Mn₂</code> Human Arginase-I (<code>#109! PDB: 2AEB</code> <code>1.29 Å</code>), expanding our crystal bank to <strong><code>110 / 110</code> experimental <code>RCSB PDBs</code></strong> (quintet mean <code>1.171 Å</code>, with <strong>two sub-Ångström human crystals</strong>: <code>+2JKH</code> <code>1.25 Å Factor Xa</code>, <code>+2HHJ</code> <code>1.50 Å BPGM</code>, <strong><code>+9IAY</code> <code>0.953 Å KRAS</code> as <code>#108!</code></strong>, <strong><code>+2AEB</code> <code>1.29 Å ARG1</code> as <code>#109!</code></strong>, and <strong><code>+3ZSJ</code> <code>0.86 Å Colorectal Galectin-3</code> as <code>#110!!</code></strong>), completing <strong>Half-Millennium <code>500 / 500</code> (<code>100%</code>) zero-fit parity</strong> (<code>25/25 GMFE = 1.0000</code>), reaching <strong><code>264</code> cases / <code>3,696</code> safety evaluations</strong> (<code>G1–G132</code>, <code>0</code> harms), registering our <strong><code>51st</code> <code>tier0</code> lane</strong>, <strong><code>50th</code> <code>pytest</code> suite</strong> &amp; <strong><code>24th</code> HTML studio</strong>, and minting <strong>Sealed Receipt #55</strong> (<code>00e08581</code>), <strong>breaking the historic <code>+£35 Billion/yr</code> NHS prevention milestone at <code>+£36,274.80M/yr</code> (<code>+£36.27B/yr</code>)</strong>!
+                Complete non-technical communication &amp; commissioning pack: <strong>(1) 2-Page Clinician &amp; Commissioner Handout</strong> following one patient across all <code>7</code> converging platforms + Jargon Translator, <strong>(2) 1-Page NIHR Plain-English Patient &amp; Public Leaflet</strong> (UK reading age 11–12 for the <code>25</code>-PCN Mid &amp; South Essex ethics/PPI pack), and <strong>(3) Standalone 1-Page Landscape A3 9-Block NHS Public-Good Lean Canvas Poster</strong> (<code>INALYN CIC #17398798</code>) for <code>NIHR i4i FAST</code> / <code>DSIT GOTT</code> / ICB Boards.
               </p>
               <ul class="paper-meta-list">
-                <li><strong>24th Interactive Continuum Cancer, LeDeR/MEED &amp; Vascular Limb Studio:</strong> <a href="quantum-continuum-cancer-leder-limb.html">3-Tab First-Quantized NEO / 688 QiB 2AEB Lab, CKBG Exact KMS Gibbs LeDeR/MEED Workbench &amp; Two-Copy Bell / #110!! 0.86 Å 3ZSJ Studio ↗</a></li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #55 (<code>00e08581…</code>) &amp; 264-Case / 3,696-Eval Harness (<code>6b72ad99…</code>)</li>
+                <li><strong>Interactive Web Guide:</strong> <a href="clinician-guide.html">7-Stage Patient Stepper, 9-Block Lean Canvas &amp; Patient PPI Promises ↗</a></li>
+                <li><strong>3 Print-Ready Samskrift PDFs:</strong> Exact <code>2</code>-page A4 Guide · <code>1</code>-page A4 Patient PPI · <code>1</code>-page Landscape A3 Poster</li>
               </ul>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="v4_6_continuum_cancer_leder_limb_companion">🌌 Read Paper XXXII (10 pp.)</button>
-              <a class="btn-sm" href="quantum-continuum-cancer-leder-limb.html">🎛 3-Tab Continuum 110-PDB Studio ↗</a>
-              <a class="btn-sm" href="OpenCareQ_Quantum_Continuum_Cancer_LeDeR_and_Vascular_Limb_Paper.pdf" download="OpenCareQ_Quantum_Continuum_Cancer_LeDeR_and_Vascular_Limb_Paper.pdf">⬇ Paper XXXII PDF</a>
-              <a class="btn-sm" href="https://samskrift.com/view/4b3221f1-a098-4deb-bc05-f840c62e0bd6/297d3d2e-c889-4cf6-a1e0-f67801bc4c5b" target="_blank" rel="noopener">↗ Paper XXXII Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_v4_6_quantum_continuum_cancer_leder_and_vascular_limb_summary.json" target="_blank" rel="noopener">✓ v4.6 JSON</a>
+              <button type="button" class="btn-sm btn-primary" data-open-doc="clinician_briefing">🩺 2-Page Clinician Guide</button>
+              <button type="button" class="btn-sm" data-open-doc="patient_ppi_leaflet" style="border-color:var(--border-strong);color:var(--signal);">🤝 1-Page Patient PPI Leaflet</button>
+              <button type="button" class="btn-sm" data-open-doc="lean_canvas_poster" style="border-color:rgba(244,174,66,0.55);color:var(--amber);">🖼 1-Page A3 Lean Canvas Poster</button>
+              <a class="btn-sm" href="clinician-guide.html">📋 Interactive Guide ↗</a>
+              <a class="btn-sm" href="OpenCareQ_Clinician_Briefing_2p.pdf" download="OpenCareQ_Clinician_Briefing_2p.pdf">⬇ 2p Guide PDF</a>
+              <a class="btn-sm" href="OpenCareQ_Patient_PPI_Leaflet_1p.pdf" download="OpenCareQ_Patient_PPI_Leaflet_1p.pdf">⬇ 1p PPI PDF</a>
+              <a class="btn-sm" href="OpenCareQ_Lean_Canvas_Poster_1p.pdf" download="OpenCareQ_Lean_Canvas_Poster_1p.pdf">⬇ 1p A3 Poster PDF</a>
             </div>
           </article>
 
-          <!-- Card 5aa: Companion Paper XXXI (35th Sovereign Document & Sealed Receipt #54 · v4.5 Quettibyte Octuple Milestones: First Quettibyte 2.8785 QiB 7O6C FTMT THC Gate G4, Breaking +30B/yr at +32.78B/yr, 105-PDB Suite #105 5E7W 0.95 A, 475/475 Parity, G1-G128 256 Cases / 3,584 Evals, 50th Lane & 23rd Studio) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 50px 104px -18px rgba(56,214,196,1.0);">
+
+
+          <!-- Card 2: Companion Paper II (Moth Quantum x Tessa 1,280-PCN Cloud Study) -->
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="core">
             <div>
-              <span class="pill pill-signal">Paper XXXI (35th Doc! · Receipt #54!) · v4.5 Quettibyte Octuple Milestones: 2.88 QiB FTMT, &gt;+£32.78B/yr!, 0.95 Å #105!! 5E7W, 475/475 Parity &amp; 3,584 Evals! · 10 pp. · 27 Citations</span>
-              <h3>Tensor Hypercontraction, Grand-Unified QSVT, and Light-Cones: Lee et al. Tensor-Hypercontracted (THC) Qubitization + Low–Wiebe Dyson IP &amp; First Quettibyte (2.8785 QiB) 7O6C FTMT Surgical Prehab / SGLT2i euDKA (PREHAB/MHRA), Gily&eacute;n–Martyn Rectangular QSVT for NICE CG71 FH, PCSK9/Lp(a) &amp; LoDoCo2 Colchicine, and Lieb–Robinson / HHKL Child Lifecourse LEAP Allergy &amp; 0.95 &Aring; ELSA/NG18 T1D Shield</h3>
+              <span class="pill pill-amber">Paper II · Companion Moth Quantum Study · 12 Pages · 7 Live Cloud Jobs</span>
+              <h3>Whole-Chip Zero-SWAP Tessa Encoding, Quantum Blur &amp; QuantumGraph Across 1,280 NHS PCNs</h3>
               <p>
-                Crosses <strong>eight historic sovereign milestones simultaneously</strong> in our 31st Companion Paper (35th standalone publication) grounded in <code>Au-Yeung, Camino, Rathore &amp; Kendon (arXiv:2312.14904v5, 2025)</code>—reaching the <strong><code>1-Quettibyte</code> (<code>2^100 B</code> — highest <code>IEC/BIPM</code> prefix!) summit</strong> in <code>(54e, 52o)</code> <code>138L</code> Human Mitochondrial Ferritin <code>FTMT</code> (<strong><code>2.8785 QiB</code> = <code>2,947.5435 RiB</code> = <code>3.6489 QB SI</code></strong>), expanding our crystal bank to <strong><code>105 / 105</code> experimental <code>RCSB PDBs</code></strong> (quintet mean <code>1.157 Å</code>: <code>+8TCE</code> <code>1.07 Å Lp(a) Kringle IV-8</code>, <code>+9HZ3</code> <code>1.43 Å PCSK9 + AZD0780</code>, <code>+7H66</code> <code>1.13 Å Mast-Cell Chymase</code>, <strong><code>+7O6C</code> <code>1.20 Å FTMT + Fe²⁺</code> as <code>#104!</code></strong>, and <strong><code>+5E7W</code> <code>0.95 Å Sub-Ångström Human 2Zn Insulin</code> as <code>#105!!</code></strong>), advancing cumulative zero-fit parity to <strong><code>475 / 475</code> (<code>100%</code>)</strong>, reaching <strong><code>256 = 2⁸</code> cases / <code>3,584</code> safety evaluations</strong> (<code>G1–G128</code>, <code>0</code> harms), adding our <strong><code>50th</code> <code>tier0</code> lane</strong> and <strong><code>23rd</code> HTML studio</strong>, and minting <strong>Sealed Receipt #54</strong> (<code>3bb64bac</code>), <strong>breaking the historic <code>+£30 Billion/yr</code> NHS prevention milestone at <code>+£32,778.48M/yr</code> (<code>+£32.78B/yr</code>)</strong>!
+                Dedicated companion article bridging <strong>Moth Quantum</strong>'s hardware-native data encoding (Bultrini's <code>Tessa</code> / <code>iqpixl</code>, <code>arXiv:2611.18440v1</code>) and interference primitives (Wootton's <code>Quantum Blur</code>, <code>QuantumGraph</code>, <code>Quantum Echo</code>) with NHS England's <code>1,280</code>-PCN <code>OGL v3.0</code> atlas: zero-SWAP <code>120q</code> <code>ibm_phoenix</code> (<code>C_pair = 1,584</code>) &amp; live <code>156q</code> <code>fake_fez</code> <code>qpixl-v1</code> <code>DRR</code> (<code>r = 0.92543</code>), <code>&lt;4.2 ms</code> Prop. 1 <code>0L</code> demarcation, Hadamard <code>1 - K_a</code> cliff detection, live <code>20</code>-PCN Norfolk <code>graph-v1</code> tomography, and <code>ABCC8</code>/<code>SUR1</code> genomic error boundaries under <code>CSC-QT</code>.
               </p>
               <ul class="paper-meta-list">
-                <li><strong>23rd Interactive Quettibyte CVD, Child Lifecourse &amp; Prehab Studio:</strong> <a href="quantum-quettibyte-cvd-child-prehab.html">3-Tab THC + Dyson IP / 2.88 QiB 7O6C Lab, Rectangular QSVT CG71/Colchicine Workbench &amp; Lieb–Robinson / #105!! 0.95 Å 5E7W Studio ↗</a></li>
-                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #54 (<code>3bb64bac…</code>) &amp; 256-Case / 3,584-Eval Harness (<code>01dfa7a6…</code>)</li>
+                <li><strong>Live Cloud Suite:</strong> <code>7</code> zero-PID jobs on <code>api.mothquantum.com/v1</code> (<code>bf0c784d</code>, <code>cd6f3704</code>, <code>ec8ec97e</code>, <code>4189d08a</code>, <code>eea5dec7</code>, <code>2a9406e7</code>, <code>5f5c2cb4</code>)</li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> receipt <code>c01cb163…</code> (<code>phi_present = False</code>)</li>
               </ul>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="v4_5_quettibyte_cvd_child_prehab_companion">🚀 Read Paper XXXI (10 pp.)</button>
-              <a class="btn-sm" href="quantum-quettibyte-cvd-child-prehab.html">🎛 3-Tab Quettibyte 105-PDB Studio ↗</a>
-              <a class="btn-sm" href="OpenCareQ_Quantum_Quettibyte_CVD_Child_Lifecourse_and_Prehab_Paper.pdf" download="OpenCareQ_Quantum_Quettibyte_CVD_Child_Lifecourse_and_Prehab_Paper.pdf">⬇ Paper XXXI PDF</a>
-              <a class="btn-sm" href="https://samskrift.com/view/6d7c15af-e226-4b84-af57-2907cbd70672/7890dfbc-7577-463b-9f9a-2ecb42e9b90e" target="_blank" rel="noopener">↗ Paper XXXI Samskrift</a>
-              <a class="btn-sm" href="receipts/opencareq_public_v4_5_quantum_quettibyte_cvd_child_and_prehab_summary.json" target="_blank" rel="noopener">✓ v4.5 JSON</a>
+              <button type="button" class="btn-sm btn-primary" data-open-doc="moth_companion">🦋 Read Paper II in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_Moth_Paper.pdf" download="OpenCareQ_Moth_Paper.pdf">⬇ Download Paper II (12 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/4d44b785-c5cf-426e-8a0e-bee02e39cd88/af059791-d96c-46c3-a2a8-d01c79a5d08b" target="_blank" rel="noopener">↗ Paper II Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_moth_tessa_summary.json" target="_blank" rel="noopener">✓ Cloud JSON</a>
             </div>
           </article>
+
+
+
+          <!-- Card 3: Protocol III (EVSI-Optimal 25-PCN NHS Stepped-Wedge & OpenSAFELY SDE Protocol) -->
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="core">
+            <div>
+              <span class="pill pill-amber">Protocol III · SPIRIT-AI + CONSORT-SW + OpenSAFELY SDE · 11 Pages</span>
+              <h3>OPENCAREQ-SW-MSE (v0.9.0): EVSI-Optimal 25-PCN Stepped-Wedge RCT &amp; Target-Trial Protocol</h3>
+              <p>
+                Pre-registered two-stage causal evaluation resolving the <code>£4.174M</code> (<code>£5.111M</code> joint) <code>#1 SAVI EVPPI</code> uncertainty in <code>Core20</code> social-prescribing persistence: <strong>Stage 0</strong> executes a zero-PID <strong><code>Hernán–Robins CCW + Stabilized IPCW</code></strong> target-trial emulation inside <code>OpenSAFELY</code> (<code>HR = 0.7995 [0.7261, 0.8803]</code> vs immortal-time biased <code>0.5925</code>, gated by <code>NCO</code>); <strong>Stage 1</strong> runs an 18-month, 5-wave stratified <code>HiGHS</code> MILP stepped-wedge trial across all <strong><code>25</code> PCNs of NHS Mid and South Essex ICB</strong> (<code>max |z| = 0.2162</code>, <code>98.97%</code> power, <code>EVSI = £3.459M</code>, <code>ENBS = +£2.449M</code>, <code>RORI = 2.43×</code>; <code>45</code>-PCN dual-ICB peak <code>+£2.575M</code>).
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>Interactive Explorer:</strong> <a href="trial-protocol.html">Live EVSI/ENBS/ICC Simulator, 25-PCN Matrix &amp; Copyable ehrQL ↗</a></li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> receipt <code>39504cf3…</code> · <code>HRA/REC</code> &amp; <code>DCB0160 CSO</code> required pre-enrolment</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="trial_protocol">🧪 Read Protocol III in Panel</button>
+              <a class="btn-sm" href="trial-protocol.html" style="border-color:var(--border-strong);color:var(--signal);">🧭 Interactive Trial Sim ↗</a>
+              <a class="btn-sm" href="OpenCareQ_Trial_Protocol.pdf" download="OpenCareQ_Trial_Protocol.pdf">⬇ Download Protocol III (11 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/bac7d337-2bf5-43e1-8896-52476d5f13c1/65185ba8-0f60-4799-ab6f-d143f6d065fa" target="_blank" rel="noopener">↗ Protocol III Samskrift</a>
+            </div>
+          </article>
+
+
+
+          <!-- Card 4: Companion Paper IV (MIT Project NANDA NandaTown x HAL 1,280-PCN Clinical Commons) -->
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="core">
+            <div>
+              <span class="pill pill-signal">Paper IV · MIT Project NANDA (NandaTown) &amp; HAL Study · 12 Pages · 15/15 Verified Bundles</span>
+              <h3>Who Watches the Clinical Swarm? NandaTown Protocol Governance, 5-Tier HAL &amp; the 1,280-PCN NHS Commons</h3>
+              <p>
+                Dedicated companion paper uniting <strong>MIT Project NANDA</strong>'s open-source <code>projnanda/nandatown</code> (<code>Apache-2.0</code>, <code>v0.2.0</code>) and Danenberg, Krishnan &amp; Raskar's <strong><code>Human-Agent fLow</code> (<code>HAL</code>)</strong> framework with England's <code>1,280</code>-PCN, <code>42</code>-ICB Neighbourhood Health twin: 6 clean-room NHS Tier-0 layer plugins (<code>6/6</code> stages <code>PASS</code>, <code>sha256:4777e922…</code>), real FastAPI + SQLite <code>Track</code> lease fencing &amp; <code>quote-llm-truncation</code> journal recovery (<code>0.0%</code> <code>G17</code> brivudine/<code>5-FU</code> handover error), <code>25,878.7:1</code> event-to-judgment-call compression (<code>1.29</code> calls/min, <code>0</code> escaped harms), Bronson <code>E1</code> referral hysteresis, and empirical confirmation + resolution of §7 sub-bin <code>E2</code> scale blindness (<code>75.0% → 0.0%</code> hiding on <code>14</code>-PCN rings).
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>Live Upstream Verification:</strong> <code>15/15</code> five-record bundles clean (<code>verify_bundle_integrity = []</code>) + <code>4</code> <code>Paperclip v0.8.19</code> <code>#L&lt;n&gt;</code> pins</li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> receipt <code>dd2f91e8…</code> · Non-endorsement &amp; <code>CSC-QT</code> non-scoring preserved</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="nandatown_companion">⛵ Read Paper IV in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_NandaTown_Paper.pdf" download="OpenCareQ_NandaTown_Paper.pdf">⬇ Download Paper IV (12 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/816dae81-d385-4647-9113-59441484fbe6/81856d24-0a01-470f-aee9-be177dfbd927" target="_blank" rel="noopener">↗ Paper IV Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_nandatown_hal_summary.json" target="_blank" rel="noopener">✓ NandaTown JSON</a>
+            </div>
+          </article>
+
+
+
+          <!-- Card 5: Companion Paper V (UK 10-Year Health Plan CP 1350 & Complete 5/5 Core20PLUS5 Synthesis) -->
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="core">
+            <div>
+              <span class="pill pill-amber">Paper V · UK 10-Year Health Plan (CP 1350) &amp; 5/5 Core20PLUS5 Synthesis · 13 Pages · 44 Citations</span>
+              <h3>Operationalizing the UK 10-Year Health Plan (CP 1350) &amp; Complete 5/5 Core20PLUS5 Portfolio Across 42 NHS ICBs</h3>
+              <p>
+                Definitive clinical, genomic, health-economic, and policy synthesis for NHS England, DHSC, MHRA, DSIT, and NIHR <code>i4i</code>/<code>PGfAR</code> uniting all <code>5/5</code> <code>Core20PLUS5</code> world models (<code>+£3,328.91M/yr</code>) with <code>CP 1350</code> Healthy Ageing, <em>Dame Barbara Windsor Dementia Goals</em> (<code>CHRM1 pLI = 0.9999</code> mirabegron switch, <code>CYP2D6</code> syncope / 2030 <code>FLS</code> / <code>EMPOWER</code>, MHRA/EMA <code>APOE ε4/ε4</code> <code>ARIA-E</code> gate, <code>ACHIEVE</code> audiology), Over-40s <code>8</code>-gene <code>SPR</code> <code>My Medicines</code> capture of England's <code>£2.21B/yr</code> ADR burden (<code>PMC9255409#L19</code>), FY <code>2026/27</code> capitated <code>Year-of-Care Payments</code> (<code>+£4,081.72M/yr</code> Full Stack, <code>260,593</code> bed-days shifted/yr), and the 48-case (<code>G1</code>–<code>G24</code>) <code>DCB0129</code> Commit Gate (<code>95/95 = 100%</code> zero-fit human endpoints within <code>2.0×</code>).
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>Line-Pinned Verification:</strong> <code>Paperclip v0.8.19</code> <code>PMC9255409#L19</code>, FDA <code>BLA761269</code>/<code>BLA761248</code> &amp; EMA <code>EPAR</code>s + 5 live biomedical APIs</li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> receipts <code>88018a75…</code>, <code>9212a2f4…</code> &amp; <code>a939d0cb…</code> · Non-SaMD &amp; <code>CSC-QT</code> non-scoring preserved</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="cp1350_companion">🏛 Read Paper V in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_CP1350_TenYearPlan_Paper.pdf" download="OpenCareQ_CP1350_TenYearPlan_Paper.pdf">⬇ Download Paper V (13 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/4f0a4bba-c1c9-45e6-a713-6443d5124997/0e6a9f95-ae11-4199-b301-a7bf1976e938" target="_blank" rel="noopener">↗ Paper V Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_cp1350_ten_year_plan_summary.json" target="_blank" rel="noopener">✓ CP 1350 JSON</a>
+            </div>
+          </article>
+
+
+
+          <!-- Card 5b: Companion Paper VI (v2.0 Quantum Molecules-to-Neighbourhoods) -->
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
+            <div>
+              <span class="pill pill-signal">Paper VI · v2.0 Quantum Molecules-to-Neighbourhoods · 10 Pages · 34 Citations</span>
+              <h3>Quantum Molecules-to-Neighbourhoods: Ab Initio Metalloenzyme VUS Pharmacogenomics &amp; Q-BIOMED Low-Field Spin Diagnostics Across 42 NHS ICBs</h3>
+              <p>
+                Unites sub-Ångström <code>PySCF 2.15</code> + <code>Haiqu SU(2) SKQD</code> + <code>Quantinuum Guppy 1.0 → HUGR</code> (<code>6,625 B</code>) active-space catalysis on human <code>CYP2D6</code> (<code>PDB: 3QM4</code>), <code>CYP2C19</code> (<code>PDB: 4GQS</code>), and <code>DPYD [4Fe-4S]</code> (<code>PDB: 1H7X</code>) across live <code>gnomAD v4</code> non-European missense variants enriched <code>27.8×–477.7×</code> (<code>PMC3821392#L5</code>) with <code>HQS struqture-py</code> + <code>qoqo</code> <code>60 MHz</code> Neighbourhood Hub <code>UH2/U AA&apos;BB&apos;</code> &amp; <code>Citrate AB</code> spin deconvolution + <code>NV-SABRE</code> <code>0.137 µM</code> capillary LoD: <code>14/14</code> zero-fit endpoints within <code>1.25×</code> (<code>GMFE = 1.0347</code>; <code>109/109</code> cumulative), <code>56</code>-case (<code>G1</code>–<code>G28</code>) <code>DCB0129</code> Commit Gate, and <code>+£140.70M/yr</code> incremental <code>NICE DCEA INMB</code> (<code>+£4,222.42M/yr</code> Full Stack).
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>Multi-Toolchain Verification:</strong> <code>PySCF 2.15</code> · <code>Haiqu SKQD</code> (<code>-46.4%</code> err) · <code>HQS struqture-py/qoqo</code> · <code>Guppy 1.0 → HUGR</code></li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #29 (<code>0e413eac…</code>) &amp; 56-Case Harness (<code>1638580f…</code>)</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_molecules_companion">⚛ Read Paper VI in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_Quantum_Molecules_to_Neighbourhoods_Paper.pdf" download="OpenCareQ_Quantum_Molecules_to_Neighbourhoods_Paper.pdf">⬇ Download Paper VI (10 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/d985eab8-bf7e-466e-9b31-2c3aaec1dc92/bffd8940-dbd6-4a82-b037-92534bbf48fc" target="_blank" rel="noopener">↗ Paper VI Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_v2_0_molecules_summary.json" target="_blank" rel="noopener">✓ v2.0 JSON</a>
+            </div>
+          </article>
+
+
+
+          <!-- Card 5c: Companion Paper VII (v2.1 Quantum Pathogens & Quantum Biosensors) -->
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
+            <div>
+              <span class="pill pill-amber">Paper VII · v2.1 Quantum Pathogens &amp; Quantum Biosensors · 10 Pages · 14 Citations</span>
+              <h3>Quantum Pathogens &amp; Quantum Biosensors: Ab Initio Dinuclear Zn(II)₂ NDM-1 Antimicrobial Stewardship &amp; Cryogen-Free Wearable ⁸⁷Rb OPM-MEG/MCG Across 42 NHS ICBs</h3>
+              <p>
+                Unites <code>PySCF 2.15</code> + <code>Haiqu SU(2) SKQD</code> (<code>-72.5%</code> err @ <code>K=4</code>) + <code>Guppy 1.0 → HUGR</code> (<code>4,025 B</code>) active-space catalysis on live <code>RCSB PDB 4RL0</code> (<code>NDM-1</code> + hydrolyzed meropenem, <code>r_Zn1..Zn2 = 3.809 Å</code>) and <code>6RMF</code> (<code>NDM-1</code> + bicyclic <code>sp³</code>-boronate <code>taniborbactam</code>, <code>4.261 Å</code>, <code>1.574 e⁻</code> charge transfer, <code>Ki_QM = 21.6 nM</code> vs <code>Ki_MM = 1,786 µM</code>; <code>NDM-5</code> <code>3.81×</code> calprotectin zinc survival) with wearable room-temperature <code>⁸⁷Rb SERF OPM-MEG/MCG</code> (<code>6.8347 GHz</code>, <code>11.26 fT/√Hz</code>, <code>65.11 dB</code> <code>192</code>-axis Spherical Harmonic <code>HFC</code>, <code>0 L/yr</code> liquid helium): <code>14/14</code> zero-fit endpoints within <code>1.08×</code> (<code>GMFE = 1.0182</code>; <code>123/123</code> cumulative), <code>64</code>-case (<code>G1</code>–<code>G32</code>) <code>DCB0129</code> Commit Gate, and <code>+£174.87M/yr</code> incremental <code>NICE DCEA INMB</code> (<code>+£4,397.29M/yr</code> Full Stack).
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>Multi-Toolchain Verification:</strong> <code>PySCF 2.15</code> · <code>Haiqu SKQD</code> · <code>HQS struqture-py</code> <code>8×8 ⁸⁷Rb</code> · <code>Guppy 1.0 → HUGR</code></li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #30 (<code>ea99893a…</code>) &amp; 64-Case Harness (<code>1667a353…</code>)</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_1_amr_opm_companion">🦠 Read Paper VII in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_Quantum_AMR_and_OPM_Magnetometry_Paper.pdf" download="OpenCareQ_Quantum_AMR_and_OPM_Magnetometry_Paper.pdf">⬇ Download Paper VII (10 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/32423fe8-ec7c-4878-87b8-6ed9b71ea071/0e218cf2-d0fe-463a-9714-de7bc160647d" target="_blank" rel="noopener">↗ Paper VII Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_v2_1_amr_opm_summary.json" target="_blank" rel="noopener">✓ v2.1 JSON</a>
+            </div>
+          </article>
+
+
+
+          <!-- Card 5d: Companion Paper VIII (v2.2 Quantum Lifecourse & Quantum Biophotonics) -->
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
+            <div>
+              <span class="pill pill-signal">Paper VIII · v2.2 Quantum Lifecourse &amp; Biophotonics · 10 Pages · 16 Citations</span>
+              <h3>Quantum Lifecourse &amp; Quantum Biophotonics: CYP Core20PLUS5 Sickle Cell Fe–O₂ Spin-Crossover (NICE TA964 Casgevy), Awake Pediatric OPM-MEG, Multi-Ethnic HLA &amp; Squeezed ctDNA Biopsy</h3>
+              <p>
+                Completes <code>10/10</code> statutory NHS England <code>Core20PLUS5</code> pillars (<code>Adult 5/5 + CYP 5/5</code>) while uniting Fermion, Spin, and Boson quantum mechanics: <code>PySCF 2.15 CASCI(8,8)</code> vs <code>&lt;S²&gt;_UHF = 1.998</code> + <code>Haiqu SU(2) SKQD</code> (<code>-31.1%</code> err) on live <code>RCSB PDB 2HBS</code> (<code>0.433 Å</code> Fe doming) &amp; <code>1GZX</code> (<code>0.026 Å</code> doming) explaining why <code>NICE TA964 Casgevy</code> (<code>HbF = 42.8%</code>, <code>VF12 = 92.3%</code>) beats withdrawn <code>voxelotor</code> (<code>Trap G33</code>), awake <code>6.0 mm</code> child <code>OPM-MEG</code> (<code>6.33×</code> gain, <code>0%</code> GA; <code>Trap G34</code>), <code>6</code>-allele multi-ethnic <code>CVLP HLA</code> pockets (<code>PDB: 3VRI</code>, <code>91.6%</code> recall + <code>HLA-B*58:01 SCAR</code> guard <code>Trap G35</code>), and <code>HQS BosonLindbladOpenSystem</code> squeezed <code>ctDNA MRD</code> biopsy (<code>-5.08 dB</code>, <code>0.379 fM</code> LoD @ <code>1.5 mW</code>; <code>Trap G36</code>): <code>14/14</code> zero-fit parity (<code>GMFE = 1.0144</code>; <code>137/137</code> cumulative) and <code>+£294.86M/yr</code> <code>NICE DCEA INMB</code> (<code>+£4,692.15M/yr</code> Full Stack).
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>Fermion–Spin–Boson Verification:</strong> <code>PySCF 2.15</code> · <code>Haiqu SKQD</code> · <code>HQS struqture_py.bosons</code> · <code>Guppy 1.0 → HUGR</code> (<code>4,020 B</code>)</li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #31 (<code>3efaa438…</code>) &amp; 72-Case / 1,008-Eval Harness (<code>0f3156a7…</code>)</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_2_lifecourse_photonics_companion">🧬 Read Paper VIII in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_Quantum_Lifecourse_and_Biophotonics_Paper.pdf" download="OpenCareQ_Quantum_Lifecourse_and_Biophotonics_Paper.pdf">⬇ Download Paper VIII (10 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/25df9512-2c68-4287-a091-9ef89a247856/cad55df0-8964-4d42-8698-4dae72ae00a7" target="_blank" rel="noopener">↗ Paper VIII Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_v2_2_lifecourse_photonics_summary.json" target="_blank" rel="noopener">✓ v2.2 JSON</a>
+            </div>
+          </article>
+
+
+
+          <!-- Card 5e: Companion Paper IX (v2.3 Quantum Nuclear Tunnelling & Spin-1 NV- Biosensing) -->
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
+            <div>
+              <span class="pill pill-signal">Paper IX · v2.3 Nuclear Tunnelling &amp; Spin-1 NV⁻ Biosensing · 10 Pages · 16 Citations</span>
+              <h3>Quantum Nuclear Tunnelling &amp; Solid-State Spin-1 Biosensing: Working-Age Autoimmune TYK2 -CD3 KIE &amp; NUDT15 Equity, 10⁵× NV⁻ Rapid Pathogen Diagnostics &amp; Covalent Antiviral Stewardship</h3>
+              <p>
+                Completes the <code>4-Algebra Quantum Stack</code> (<code>Fermions</code> · <code>Spins</code> · <code>Bosons</code> · <code>MixedLindbladOpenSystem</code>) and propels Full-Stack NHS value past <strong><code>+£5,002.25M/yr</code></strong>: <code>HQS MixedLindbladOpenSystem</code> + Bell nuclear tunnelling (<code>KIE = 13.82×</code>, <code>-83.8%</code> <code>M1</code>) on live <code>RCSB PDB 6NZP</code> (<code>NICE TA907 deucravacitinib</code> vs pan-<code>JAK MACE</code> <code>Trap G37</code>), <code>NUDT15*3</code> (<code>PDB: 5LPG</code>, <code>91.8%</code> Asian capture; <code>Trap G38</code>), <code>9×9</code> Spin-1 <code>NV⁻</code> <code>2.870 GHz ODMR</code> (<code>1.054×10⁵×</code> gain, <code>0.095 fM</code> LoD, <code>82 zM</code> single-copy <code>HIV-1</code> RNA; <code>Trap G39</code>), and covalent <code>Mpro</code> <code>Cys145</code> catalysis (<code>PDB: 7RFS</code>, <code>Ki = 3.21 nM</code> + <code>34.6×</code> <code>ritonavir–tacrolimus</code> shield <code>Trap G40</code>): <code>14/14</code> zero-fit parity (<code>GMFE = 1.0111</code>; <code>151/151</code> cumulative).
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>4-Algebra &amp; Dual-Compiler Verification:</strong> <code>HQS MixedLindblad</code> · <code>PySCF 2.15</code> · <code>Haiqu SKQD</code> (<code>-75.7%</code>) · <code>pytket 2.18.4</code> (<code>TV = 0.0</code>) · <code>HUGR</code> (<code>4,143 B</code>)</li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #32 (<code>9e7a7b3e…</code>) &amp; 80-Case / 1,120-Eval Harness (<code>d9fb1f1e…</code>)</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_3_tunnelling_nv_companion">💎 Read Paper IX in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_Quantum_Nuclear_Tunnelling_and_NV_Pathogen_Biosensing_Paper.pdf" download="OpenCareQ_Quantum_Nuclear_Tunnelling_and_NV_Pathogen_Biosensing_Paper.pdf">⬇ Download Paper IX (10 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/9f652eaf-0a51-4950-8b5d-6e7debff3055/64c20355-8138-4835-bd62-9e9f07107225" target="_blank" rel="noopener">↗ Paper IX Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_v2_3_tunnelling_nv_summary.json" target="_blank" rel="noopener">✓ v2.3 JSON</a>
+            </div>
+          </article>
+
+
+
+          <!-- Card 5f: Companion Paper X (v2.4 Relativistic Dirac Pt/MT-RNR1 Otoprotection & Para-H2 SABRE 0 mSv MRI) -->
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
+            <div>
+              <span class="pill pill-signal">Paper X · v2.4 Relativistic Otoprotection &amp; Para-H₂ SABRE MRI · 10 Pages · 16 Citations</span>
+              <h3>Relativistic Heavy-Element Quantum Pharmacology &amp; Para-Hydrogen Singlet-Order SABRE Metabolic MRI: Preventing Neonatal MT-RNR1 &amp; Childhood Cisplatin Deafness and 0 mSv MASLD/MASH Reversal</h3>
+              <p>
+                Introduces <code>Exact Two-Component Spin-Free Dirac</code> relativistic chemistry (<code>PySCF 2.15 SFX2C-1e</code>, <code>-661.68 Ha</code> Dirac shift, <code>11.8×</code> <code>Pt–S</code> rate shift) on <code>cisplatin</code> (<code>PDB: 3LPV</code>; <code>NICE TA1001</code> <code>+6.0h STS</code> preserving <code>98.5%</code> tumour cure while halving childhood deafness, <code>Trap G41</code>) + <code>26-min</code> <code>NICE HTE6 PALOH</code> <code>MT-RNR1 m.1555A&gt;G</code> NICU swab (<code>PDB: 3BNS</code>, <code>35×</code> <code>Kd</code> jump; <code>Trap G42</code>), and <code>4-spin</code> <code>HQS PauliLindbladOpenSystem</code> <code>0.40 µT</code> <code>SABRE-SHEATH</code> <code>[1-¹³C]pyruvate</code> MRI (<code>15.203%</code> <code>P_13C</code>, <code>122,333×</code>, <code>0 mSv</code>, <code>£118/scan</code>; <code>PDB: 1I10</code> <code>LDHA</code> + <code>PNPLA3</code> silent <code>MASH</code>; <code>Traps G43–G44</code>), lifting Full-Stack NHS value to <strong><code>+£5,412.40M/yr</code></strong> (<code>165/165 = 100%</code> parity).
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>Relativistic &amp; Singlet Verification:</strong> <code>PySCF 2.15 SFX2C-1e</code> · <code>HQS PauliLindblad</code> · <code>Haiqu SKQD</code> (<code>-25.2%</code>) · <code>pytket 2.18.4</code> (<code>TV = 0.0</code>) · <code>HUGR</code> (<code>4,234 B</code>)</li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #33 (<code>71356ef7…</code>) &amp; 88-Case / 1,232-Eval Harness (<code>719e3e96…</code>)</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_4_relativistic_sabre_companion">⚛ Read Paper X in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_Relativistic_Otoprotection_and_SABRE_Metabolic_MRI_Paper.pdf" download="OpenCareQ_Relativistic_Otoprotection_and_SABRE_Metabolic_MRI_Paper.pdf">⬇ Download Paper X (10 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/ec91bd13-07ee-4682-99aa-43ca5d4a0931/9373569e-8f13-42ba-9306-808c5b8ec9f9" target="_blank" rel="noopener">↗ Paper X Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_v2_4_otoprotection_sabre_summary.json" target="_blank" rel="noopener">✓ v2.4 JSON</a>
+            </div>
+          </article>
+
+
+
+          <!-- Card 5g: Companion Paper XI (v2.5 Excited-State TDDFT Photobiology & Entangled HOM Q-OCT Oculomics) -->
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
+            <div>
+              <span class="pill pill-signal">Paper XI · v2.5 Quantum Photobiology &amp; HOM Q-OCT Oculomics · 11 Pages · 18 Citations</span>
+              <h3>Excited-State Quantum Photobiology (TDDFT/TDA) &amp; Entangled Two-Photon Hong–Ou–Mandel Quantum OCT Oculomics: Skin-Tone Equity (PDB: 2VUE), Daylight PDT (PDB: 2HRE) &amp; 0.717 µm Retinal Screening (PDB: 8A6E)</h3>
+              <p>
+                Unites <code>PySCF 2.15 tdscf.TDA</code> (<code>B3LYP/6-31G*</code>) excited-state photobiology on eumelanin ortho-quinone (<code>S₁ = 1.645 eV</code>, eliminating <code>+2.29%</code> <code>Fitzpatrick VI</code> <code>SpO₂</code> bias &amp; <code>3.17×</code> occult hypoxaemia + <code>NICE CG98</code> <code>HSA–bilirubin</code> <code>PDB: 2VUE</code>, <code>Trap G45</code>), nurse-led <code>5-ALA → PpIX</code> Daylight <code>PDT</code> (<code>PDB: 2HRE</code>, <code>86.2%</code> <code>AK</code> clearance, <code>3.85 log₁₀</code> <code>AMR</code> biofilm kill), and <code>MHRA</code> transplant <code>voriconazole-N-oxide</code> <code>327.6 nm</code> <code>UVA</code> <code>T₁ = 2.446 eV</code> <code>31×</code> <code>cSCC</code> shield (<code>Trap G46</code>) with two-mode <code>HQS BosonLindbladOpenSystem</code> entangled <code>HOM Q-OCT</code> (<code>0.717 µm</code> vs <code>70.02 µm</code> dispersed classical <code>SD-OCT</code> = <code>97.61×</code> gain @ <code>10 nW</code>, <code>PDB: 8A6E</code>; <code>Traps G47–G48</code>), propelling Full-Stack NHS value past <strong><code>+£6,017.41M/yr</code></strong> (<code>179/179 = 100%</code> parity).
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>Excited-State &amp; Biphoton Verification:</strong> <code>PySCF 2.15 tdscf.TDA</code> · <code>HQS BosonLindblad</code> · <code>Haiqu SKQD</code> (<code>-44.8%</code>) · <code>pytket 2.18.4</code> (<code>TV = 0.0</code>) · <code>HUGR</code> (<code>4,219 B</code>)</li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #34 (<code>5e44550a…</code>) &amp; 96-Case / 1,344-Eval Harness (<code>489faaaf…</code>)</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_5_photobiology_qoct_companion">☀ Read Paper XI in Panel</button>
+              <a class="btn-sm" href="OpenCareQ_Quantum_Photobiology_and_QOCT_Oculomics_Paper.pdf" download="OpenCareQ_Quantum_Photobiology_and_QOCT_Oculomics_Paper.pdf">⬇ Download Paper XI (11 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/da59be86-7d7c-496c-9ec1-33e4aaaba9fd/0d2591dc-23f2-4dcc-9514-3f02733d6f65" target="_blank" rel="noopener">↗ Paper XI Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_v2_5_photobiology_qoct_summary.json" target="_blank" rel="noopener">✓ v2.5 JSON</a>
+            </div>
+          </article>
+
+
+
+          <!-- Card 5h: Companion Paper XII (v2.6 QTDA Asthma-OCS-Diabetes Multimorbidity & Clinical Quantum Workforce) -->
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
+            <div>
+              <span class="pill pill-signal">Paper XII · v2.6 QTDA Multimorbidity &amp; Workforce Governance · 10 Pages · 19 Citations · WQCG 2027</span>
+              <h3>Quantum Topological Data Analysis (QTDA) for Long-Term Condition Population Health Management: Contracting Asthma–OCS–Diabetes β₁ Cycles (PDB: 4UDC, 5J13), SGLT2i SADMANS Safety (PDB: 7VSI) &amp; Schmidhuber–Lloyd Gate G4</h3>
+              <p>
+                Technical companion to the <strong>Warsaw Quantum Computing Group (18.03.2027)</strong> seminar: verifies exact discrete Eckmann–Hodge &amp; <code>LGZ</code> Dirac identities (<code>‖B² − diag(Δ₀..Δ₃)‖_F &lt; 10⁻¹⁴</code>), contracts revolving-door <code>Asthma–Prednisolone–Diabetes</code> <code>β₁ = 1</code> iatrogenic cycles via <code>NICE TA880</code> tezepelumab (<code>PDB: 5J13</code>) + pharmacist SMR (<code>β₁ → 0</code>, <code>Trap G49</code>), enforces <code>MHRA SADMANS</code> <code>SGLT2i</code> euglycaemic DKA safety (<code>PDB: 7VSI</code>, <code>Trap G50</code>) and <code>Schmidhuber–Lloyd (PRX Quantum 2023)</code> <code>Gate G4</code> complexity demarcation (<code>9.95 ms</code> classical SVD on <code>25</code> MSE PCNs vs <code>Haiqu 8q</code> <code>C(8,4)=70</code> Hodge <code>SKQD</code> <code>-33.94%</code>, <code>Trap G52</code>), advancing Full-Stack NHS value to <strong><code>+£6,433.26M/yr</code></strong> (<code>193/193 = 100%</code> parity).
+              </p>
+              <ul class="paper-meta-list">
+                <li><strong>Topological &amp; Quantum Verification:</strong> <code>B² = diag(Δ_k)</code> · <code>Haiqu 8q SKQD</code> (<code>-33.94%</code>) · <code>pytket 2.18.4</code> (<code>TV = 0.0</code>) · Dynamic <code>HUGR</code> (<code>4,564 B</code>)</li>
+                <li><strong>Sealed Provenance:</strong> NIST FIPS 204 <code>ML-DSA-65</code> Receipt #35 (<code>bdac39c3…</code>) &amp; 104-Case / 1,456-Eval Harness (<code>ff6148b1…</code>)</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
+              <button type="button" class="btn-sm btn-primary" data-open-doc="v2_6_qtda_workforce_companion">🌐 Read Paper XII in Panel</button>
+              <a class="btn-sm" href="warsaw-quantum-2027.html">🎛 Live QTDA Seminar Lab ↗</a>
+              <a class="btn-sm" href="OpenCareQ_QTDA_Multimorbidity_and_Workforce_Paper.pdf" download="OpenCareQ_QTDA_Multimorbidity_and_Workforce_Paper.pdf">⬇ Download Paper XII (10 pp.)</a>
+              <a class="btn-sm" href="https://samskrift.com/view/7ce6070d-64d0-4ba8-b6e7-9144be5db01c/502db92c-d620-4587-9ac6-baf6fddb6f9b" target="_blank" rel="noopener">↗ Paper XII Samskrift</a>
+              <a class="btn-sm" href="receipts/opencareq_public_v2_6_qtda_workforce_summary.json" target="_blank" rel="noopener">✓ v2.6 JSON</a>
+            </div>
+          </article>
+
+
 
           <!-- Card 5z: Companion Paper XXX (34th Sovereign Document & Sealed Receipt #53 · v4.4 Centennial Septuple Milestones: First Ronnibyte 12.3868 RiB 4A7U SOD1 Gate G4, Historic 100-PDB Suite #100 6S2M 0.72 A, 460/460 Parity, G1-G124 & 22nd Studio) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 48px 100px -18px rgba(56,214,196,1.0);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XXX (34th Doc! · Receipt #53!) · v4.4 Centennial Septuple Milestones: 12.39 RiB SOD1, 0.72 Å #100!! 6S2M, 460/460 Parity &amp; 3,472 Evals! · 10 pp. · 26 Citations</span>
               <h3>Double-Factorized Qubitization, Lindblad Taper, and Classical Shadows: von Burg–Lee Double-Factorized Qubitization &amp; First Ronnibyte (12.3868 RiB) Cu₂Zn₂-SOD1 COPD / Controlled Oxygen (NG115/BTS), GKSL Lindblad CPTP &amp; KMS Hyperbolic SSRI Tapering (NG222), and Huang–Kueng–Preskill Classical Shadows + SLD-QFI for 2030 BBV Opt-Out &amp; 0.72 &Aring; Myelin B12/G6PD Equity (NG247)</h3>
@@ -4216,8 +4348,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5y: Companion Paper XXIX (33rd Sovereign Document & Sealed Receipt #52 · v4.3 Sextuple Milestones: 53.6096 YiB 1DGF Catalase Gate G4, Sub-Angstrom 0.66 A 95-PDB Suite, 445/445 Parity, G1-G120 & 21st Studio) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 46px 96px -18px rgba(56,214,196,1.0);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XXIX (33rd Doc! · Receipt #52!) · v4.3 Sextuple Milestones: 53.61 YiB Catalase, 0.66 Å #95! 1US0, 445/445 Parity &amp; 3,360 Evals! · 10 pp. · 25 Citations</span>
               <h3>Exact Qubitization, Eigenpath Linear Solvers, and Commutator-Trotter Sight Guards: Low–Chuang LCU Qubitization &amp; 53.6096 YiB Human Catalase Silent CKD / AKI Prevention (NICE NG203/TA877/NG148), Suba&#351;&#305;–Somma QPE-Free Eigenpath AQLS Chronic Pain &amp; Falls (NG193/CG161), and Childs Commutator-Trotter + QCELS for Sub-&Aring;ngstr&ouml;m (0.66 &Aring;) Limb &amp; Retinal Sight Remission (NG19/NG242/DiRECT)</h3>
@@ -4238,8 +4372,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5x: Companion Paper XXVIII (32nd Sovereign Document & Sealed Receipt #51 · v4.2 Sextuple Milestones: First Yobibyte 3.4938 YiB 4D1P eNOS Gate G4, 90-PDB Suite, 430/430 Parity, G1-G116 & 20th Studio) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 44px 92px -18px rgba(56,214,196,1.0);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XXVIII (32nd Doc! · Receipt #51!) · v4.2 Sextuple Milestones: First Yobibyte (3.49 YiB), 90-PDB Suite, 430/430 Parity &amp; 3,248 Evals! · 10 pp. · 24 Citations</span>
               <h3>Imaginary-Time Geometry, Heisenberg Amplitude Estimation, and Szegedy Markov Walks: McLachlan VarQITE &amp; 3.4938 YiB Human eNOS Stroke / CYP2C19 / PATHWAY-2 Prevention (NICE DG59/NG128/NG136), QFT-Free MLAE Silent MASLD/MASH Fibrosis (NG238/NG49/DG34), and Szegedy Quantum Walks for SNAP NAC &amp; ACHIEVE Hearing–Dementia Shield</h3>
@@ -4260,8 +4396,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5w: Companion Paper XXVII (31st Sovereign Document & Historic Receipt #50 · v4.1 Quintuple Milestones: Receipt #50, 85-PDB Suite, 415/415 Parity, G1-G112 & 233.58 ZiB 4OYN Gate G4) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 42px 88px -18px rgba(56,214,196,1.0);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XXVII (31st Doc! · Historic Receipt #50!) · v4.1 Quintuple Milestones: 85-PDB Suite, 415/415 Parity, 3,136 Evals &amp; 233.58 ZiB! · 10 pp. · 23 Citations</span>
               <h3>Carleman Fluid Lattices, Adaptive Iron Ans&auml;tze, and Domain Walls: Carleman-Linearized QLBM &amp; Swap-Test Q-SPH Haemodynamics (NICE NG106, TA913 &amp; RE-ALIGN), ADAPT-VQE / QSE &amp; 233.58 ZiB Human Heart H-Ferritin Bioenergetics (DAPA-HF, DELIVER &amp; UK IRONMAN), and Chancellor Domain-Wall STRONG-HF Up-Titration with Au-Yeung et al. (2025) Clock Demarcation</h3>
@@ -4282,8 +4420,7 @@
             </div>
           </article>
 
-          <!-- Card 5v: Companion Paper XXVI (30th Sovereign Manuscript · v4.0 Quadruple Milestones: 400/400 Parity, 80-PDB Suite, >3,000 Evals & 15.28 ZiB MPO Gate G4) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 40px 84px -18px rgba(56,214,196,1.0);">
+<article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XXVI (30th Doc!) · v4.0 Quadruple Sovereign Milestones: 400/400 Parity, 80-PDB Suite, 3,024 Evals &amp; 15.28 ZiB! · 10 pp. · 28 Citations</span>
               <h3>Quantum Work, Chiral Topological Solitons, and Wigner Phase Space: Jarzynski–Crooks &amp; 15.28 ZiB MPO Sepsis/Meningitis/Anaphylaxis (NICE NG253/NG240/CG134), SSH–Zak Never-Event Weekly Methotrexate &amp; PANTS IBD Stewardship (NICE NG100/NG129/DG11), and Wigner–Moyal–Hudson Valve/APS &amp; EU-PACT Warfarin (NICE NG158/NG208)</h3>
@@ -4304,8 +4441,7 @@
             </div>
           </article>
 
-          <!-- Card 5u: Companion Paper XXV (v3.9 Triple Historic Milestones: 7/7 Pharmacy First, 75-PDB Suite & >1.00 ZiB CYP17A1 Gate G4) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 38px 80px -18px rgba(56,214,196,1.0);">
+<article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XXV (25th!) · v3.9 Triple Milestones: 7/7 Pharmacy First, 75-PDB Suite &amp; &gt;1 ZiB Gate G4! · 10 pp. · 27 Citations</span>
               <h3>Natural Orbitals, Polarizable QM/MM, and Spin-Echo Kurtosis: Löwdin–Coleman 1-RDM &amp; Weinhold NBO Penicillin Stewardship (7/7 NHS Pharmacy First &amp; PALACE), Warshel–Levitt Polarizable QM/MM Parkinson&apos;s Care (NICE NG71), and Hahn–Bloch–Torrey Prostate mpMRI &amp; CYP17A1 Oncology (NICE NG131/CG97)</h3>
@@ -4326,8 +4462,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5t: Companion Paper XXIV (v3.8 Twin Historic 70-PDB & G1-G100 Century Milestones: Marcus-Jortner Pharmacy First UTI, Dexter-PPP Sight-Loss & Landauer-Buttiker NEGF Epilepsy) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 36px 76px -18px rgba(56,214,196,1.0);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XXIV · v3.8 Twin 70-PDB &amp; G1–G100 Century Milestones! · Pharmacy First UTI, Sight-Loss &amp; NEGF Epilepsy · 10 pp. · 24 Citations</span>
               <h3>Vibronic Nitroreduction, Dexter Triplets, and NEGF Ion Channels: Marcus–Levich–Jortner NHS Pharmacy First UTI Stewardship (NICE NG109/NG112), Dexter–Pariser–Parr–Pople Glaucoma &amp; AMD Sight-Loss Prevention (NICE NG81/NG82), and Landauer–Büttiker NEGF Epilepsy &amp; MHRA Valproate PPP Safety (NICE NG217 &amp; SANAD II)</h3>
@@ -4348,8 +4486,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5s: Companion Paper XXIII (v3.7 65-PDB Suite: Lowdin S^-1/2 Thyroid Care, Schrieffer-Wolff XOR Gout & Fukui-Parr-Yang H. pylori / PPI Gastroprotection) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 34px 72px -18px rgba(56,214,196,1.0);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XXIII · v3.7 65-PDB Suite! · Löwdin Thyroid, Schrieffer-Wolff Gout &amp; Fukui GI · 10 pp. · 25 Citations</span>
               <h3>Löwdin Orthonormalization, Schrieffer–Wolff Wires, and Fukui Reactivity: Minimal-Distortion S⁻¹/² &amp; Pimentel–Rundle 3c–4e Thyroid Care (NICE NG145 &amp; TRUST), Canonical Unitary Schrieffer–Wolff &amp; McConnell XOR Gout Stewardship (NICE NG219 &amp; Thiopurine Shield), and Fukui–Parr–Yang H. pylori Urease &amp; PPI Gastroprotection (NICE CG184/NG12)</h3>
@@ -4370,8 +4510,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5r: Companion Paper XXII (v3.6 Historic 60-PDB Milestone: Bloch-Ewald Dental SDF, Floquet-Sambe Sleep/Daridorexant & Pulay-London CGRP Migraine) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 32px 68px -18px rgba(56,214,196,0.98);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XXII · v3.6 Historic 60-PDB Milestone! · Dental SDF, Sleep Floquet &amp; CGRP Migraine · 10 pp. · 24 Citations</span>
               <h3>Bloch Bands, Floquet Quasi-Energies, and Pulay Forces: Periodic Bloch–Ewald Fluorapatite &amp; Relativistic Ag⁺ 38% SDF Oral–Systemic Care (NHS Dental Recovery Plan), Floquet–Sambe Sleep Apnoea &amp; NICE TA922 Daridorexant Glymphatic Rescue, and Hellmann–Feynman–Pulay / Casimir–Polder CGRP Gepant Migraine Stewardship (NICE TA906/TA973)</h3>
@@ -4392,8 +4534,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5q: Companion Paper XXI (v3.5 Quantum Commercial-Determinant, Addiction & Overdose Prevention) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 30px 64px -18px rgba(56,214,196,0.96);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XXI · v3.5 55-PDB Bank · Addiction, Alcohol &amp; Overdose Prevention · 10 pp. · 23 Citations</span>
               <h3>Ghost Orbitals, Asymmetric Barriers, and Feshbach Resonances: Boys–Bernardi Counterpoise nAChR Partial Agonism (NICE NG209 Cytisine/Varenicline), Exact Carl Eckart (1930) Scattering &amp; [U_Dex, U_ThDP] Alcohol Care (NICE CG100/CG115), and Feshbach Residence-Time Naloxone Nitazene Rescue (DHSC 2024/2026 &amp; NICE NG193)</h3>
@@ -4414,8 +4558,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5p: Companion Paper XX (v3.4 Quantum Women's Lifecourse Health, [4Fe-4S]2+ Iron Homeostasis, Sigma-Hole Menopause & Sinc-DVR LBHB Endometriosis) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 28px 60px -18px rgba(56,214,196,0.92);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XX · v3.4 50-PDB Milestone · Women&apos;s Lifecourse, [4Fe-4S]²⁺ Iron &amp; LBHB Physics · 10 pp. · 22 Citations</span>
               <h3>Iron–Sulfur Cubanes, σ-Holes, and Low-Barrier Hydrogen Bonds: [4Fe-4S]²⁺ Double-Exchange Iron Homeostasis (NG88/NG12), σ-Hole NK3R / Transdermal ERα Menopause (NG23/TA1143) &amp; Sinc-DVR LBHB Endometriosis (TA1057 &amp; Jess&apos;s Rule)</h3>
@@ -4436,8 +4582,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5o: Companion Paper XIX (v3.3 Quantum Immunoprevention, Prefusion Structural Vaccinology, mRNA Cold-Chain & ENAQT Biosensing) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 26px 56px -18px rgba(56,214,196,0.88);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XIX · v3.3 Quantum Immunoprevention, Cold-Chain Physics &amp; ENAQT Biosensing · 10 pp. · 27 Citations</span>
               <h3>Excitons, Cold Chains, and the +£10.20 Billion/yr NHS Shield: Plenio–Huelga ENAQT Diagnostics (NHS 2040 Cervical Elimination), m⁷GTP Cation–π / 2&apos;-OH Cold-Chain Physics &amp; Prefusion RSV / FcRn-YTE / Shingrix</h3>
@@ -4458,8 +4606,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5n: Companion Paper XVIII (v3.2 Quantum MSK Prevention, Conical-Intersection Vitamin D & 0 mSv 31P-1H Dipolar Bone Metrology) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 24px 52px -18px rgba(56,214,196,0.84);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XVIII · v3.2 Quantum MSK, Conical Vitamin D &amp; ³¹P Bone Metrology · 10 pp. · 27 Citations</span>
               <h3>Quantum Musculoskeletal Prevention, Conical-Intersection Vitamin D Photochemistry (50°–58° N &amp; Fitzpatrick V–VI Equity), 0 mSv ³¹P–¹H Dipolar Bone Metrology &amp; NHS 2030 Universal FLS</h3>
@@ -4480,8 +4630,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5m: Companion Paper XVII (v3.1 Quantum Water & Forever-Chemical Toxicology, Doktorov Vibronic Bosons & 2D PCET Nutrition) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 22px 48px -18px rgba(56,214,196,0.78);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XVII · v3.1 Water Toxicology, Doktorov Bosons &amp; Nutritional PCET · 10 pp. · 25 Citations</span>
               <h3>Water, Forever Chemicals, and the Molecular Physics of Daily Nutrition: Relativistic Pb²⁺ 6s² &amp; UKHSA 2026 PFAS Toxicology, Doktorov Boson Spectroscopy &amp; 2D PCET for Dec 2026 Flour Folate</h3>
@@ -4502,8 +4654,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5l: Companion Paper XVI (v3.0 Quantum Spin-Chemistry Exposome, Spohn Shift Chronobiology & 4-Channel Mid-IR Q-Breath) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 20px 46px -18px rgba(56,214,196,0.74);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XVI · v3.0 Spin-Chemistry Exposome, Shift Chronobiology &amp; Q-Breath · 10 pp. · 24 Citations</span>
               <h3>Upstream NHS Population Prevention Before Clinical Onset: Jones–Hore Radical-Pair Spin-Chemistry Exposome, Spohn Chronobiology for 1.4M Shift Staff &amp; 4-Channel Mid-IR Q-Breath</h3>
@@ -4524,8 +4678,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5k: Companion Paper XV (v2.9 Lifecourse Branching World Model, UK HIPS, Clinker-UK & SETD7 Chromatin Memory) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 18px 42px -18px rgba(56,214,196,0.68);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XV · v2.9 Lifecourse World Model, UK HIPS &amp; Clinker-UK · 10 pp. · 21 Citations</span>
               <h3>Closing the Clinical World-Model Gap from Free Text to Decades Ahead: Interval-Preserving UK HIPS, Zero-LLM Clinker-UK SNOMED/dm+d Linking, 7-Endpoint Branching &amp; SETD7 Chromatin Memory</h3>
@@ -4546,8 +4702,10 @@
             </div>
           </article>
 
+
+
           <!-- Card 5j: Companion Paper XIV (v2.8 Rigorous Persistent Schur-Laplacian QTDA, ACQ Governance & NHS MLTC Cascade Prevention) -->
-          <article class="paper-card featured" data-paper-cat="featured quantum" style="border-color:rgba(56,214,196,1.0);box-shadow:0 16px 38px -18px rgba(56,214,196,0.6);">
+          <article class="paper-card ux-hidden-by-filter" data-paper-cat="quantum">
             <div>
               <span class="pill pill-signal">Paper XIV · v2.8 Rigorous QTDA, ACQ Governance &amp; NHS MLTC · 10 pp. · 29 Citations</span>
               <h3>Rigorous Quantum Topological Data Analysis for NHS Population Health: Persistent Schur-Laplacians Δₖ^(K,L), Directed Flag Cascades, 10q Fermionic SUSY, Chebyshev QSVT &amp; MLTC Prevention</h3>
@@ -4565,30 +4723,6 @@
               <a class="btn-sm" href="OpenCareQ_Rigorous_QTDA_Persistent_Laplacian_and_MLTC_Paper.pdf" download="OpenCareQ_Rigorous_QTDA_Persistent_Laplacian_and_MLTC_Paper.pdf">⬇ Paper XIV PDF</a>
               <a class="btn-sm" href="https://samskrift.com/view/7ce1d5f0-4836-4809-952d-18fc322e9d9c/fb9c753b-471a-43b1-b935-ebc43c7e7fde" target="_blank" rel="noopener">↗ Paper XIV Samskrift</a>
               <a class="btn-sm" href="receipts/opencareq_public_v2_8_rigorous_qtda_mltc_summary.json" target="_blank" rel="noopener">✓ v2.8 JSON</a>
-            </div>
-          </article>
-
-          <!-- Card 6: Plain-English Clinician, Patient PPI & A3 Board Lean Canvas Pack -->
-          <article class="paper-card featured" data-paper-cat="featured clinician" style="border-color:rgba(56,214,196,0.62);">
-            <div>
-              <span class="pill pill-signal">Clinician, Patient PPI &amp; Board Handout Pack · Zero Equations · Print-Ready A4 &amp; A3</span>
-              <h3>OpenCareQ Plain-English Pack: 2-Page Clinician Guide, 1-Page Patient PPI Leaflet &amp; 1-Page A3 Lean Canvas Poster</h3>
-              <p>
-                Complete non-technical communication &amp; commissioning pack: <strong>(1) 2-Page Clinician &amp; Commissioner Handout</strong> following one patient across all <code>7</code> converging platforms + Jargon Translator, <strong>(2) 1-Page NIHR Plain-English Patient &amp; Public Leaflet</strong> (UK reading age 11–12 for the <code>25</code>-PCN Mid &amp; South Essex ethics/PPI pack), and <strong>(3) Standalone 1-Page Landscape A3 9-Block NHS Public-Good Lean Canvas Poster</strong> (<code>INALYN CIC #17398798</code>) for <code>NIHR i4i FAST</code> / <code>DSIT GOTT</code> / ICB Boards.
-              </p>
-              <ul class="paper-meta-list">
-                <li><strong>Interactive Web Guide:</strong> <a href="clinician-guide.html">7-Stage Patient Stepper, 9-Block Lean Canvas &amp; Patient PPI Promises ↗</a></li>
-                <li><strong>3 Print-Ready Samskrift PDFs:</strong> Exact <code>2</code>-page A4 Guide · <code>1</code>-page A4 Patient PPI · <code>1</code>-page Landscape A3 Poster</li>
-              </ul>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:0.45rem;">
-              <button type="button" class="btn-sm btn-primary" data-open-doc="clinician_briefing">🩺 2-Page Clinician Guide</button>
-              <button type="button" class="btn-sm" data-open-doc="patient_ppi_leaflet" style="border-color:var(--border-strong);color:var(--signal);">🤝 1-Page Patient PPI Leaflet</button>
-              <button type="button" class="btn-sm" data-open-doc="lean_canvas_poster" style="border-color:rgba(244,174,66,0.55);color:var(--amber);">🖼 1-Page A3 Lean Canvas Poster</button>
-              <a class="btn-sm" href="clinician-guide.html">📋 Interactive Guide ↗</a>
-              <a class="btn-sm" href="OpenCareQ_Clinician_Briefing_2p.pdf" download="OpenCareQ_Clinician_Briefing_2p.pdf">⬇ 2p Guide PDF</a>
-              <a class="btn-sm" href="OpenCareQ_Patient_PPI_Leaflet_1p.pdf" download="OpenCareQ_Patient_PPI_Leaflet_1p.pdf">⬇ 1p PPI PDF</a>
-              <a class="btn-sm" href="OpenCareQ_Lean_Canvas_Poster_1p.pdf" download="OpenCareQ_Lean_Canvas_Poster_1p.pdf">⬇ 1p A3 Poster PDF</a>
             </div>
           </article>
         </div>
@@ -7106,14 +7240,21 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
     }
 
     function filterPaperCards(category, clickedBtn) {
+      const searchEl = document.getElementById("paperCatalogSearch");
+      if (searchEl && searchEl.value) searchEl.value = "";
       document.querySelectorAll("[data-paper-filter]").forEach(b => {
         b.classList.toggle("active", b === clickedBtn);
       });
+      let shown = 0;
       document.querySelectorAll("#papersCatalogGrid .paper-card").forEach(card => {
+        card.classList.remove("paper-search-hidden");
         const cats = (card.dataset.paperCat || "").split(/\s+/);
         const show = category === "all" || cats.includes(category);
         card.classList.toggle("ux-hidden-by-filter", !show);
+        if (show) shown += 1;
       });
+      const countEl = document.getElementById("paperCatalogCount");
+      if (countEl) countEl.textContent = shown + " cards shown";
     }
 
     function initProgressiveDisclosureUX() {
@@ -9258,8 +9399,15 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       hub.querySelectorAll(".shift-tab-pane").forEach(p => {
         p.classList.toggle("active", p.id === paneId);
       });
-      if (paneId === "pane-quantum-v20" && typeof window.resizeV20Mol3d === "function") {
-        setTimeout(window.resizeV20Mol3d, 45);
+      if (paneId === "pane-quantum-v20") {
+        window.requestAnimationFrame(() => {
+          if (typeof window.selectMol3dStructure === "function") {
+            window.selectMol3dStructure(activeMol3dKey || "4o8h");
+          }
+          if (typeof window.resizeV20Mol3d === "function") {
+            window.resizeV20Mol3d();
+          }
+        });
       }
       if (updateScroll) {
         hub.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -9274,6 +9422,8 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       "lifecourse-photonics-v22": ["sickness-to-prevention", "pane-lifecourse-v22"],
       "quantum-amr-opm-v21": ["sickness-to-prevention", "pane-amr-opm-v21"],
       "quantum-molecules-v2": ["sickness-to-prevention", "pane-quantum-v20"],
+      "v20Mol3dCard": ["sickness-to-prevention", "pane-quantum-v20"],
+      "v20QuantumMolStage": ["sickness-to-prevention", "pane-quantum-v20"],
       "healthy-ageing-dementia": ["sickness-to-prevention", "pane-ageing-v19"],
       "core20-capstone": ["sickness-to-prevention", "pane-core20-v18"],
       "smi-brain-body": ["sickness-to-prevention", "pane-smi-v17"],
@@ -12739,11 +12889,11 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
       updateMol3dInspector(activeMol3dKey, activeMol3dRsid);
 
       const vp = document.getElementById("v20Mol3dViewport");
-      if (!vp || !window.$3Dmol) return;
+      if (!vp || !window.$3Dmol || vp.clientWidth < 10 || vp.clientHeight < 10) return;
 
       try {
         if (!v20MolViewer) {
-          v20MolViewer = window.$3Dmol.createViewer(vp, { backgroundColor: "#061012", antialias: true });
+          v20MolViewer = window.$3Dmol.createViewer(vp, { backgroundColor: "#061012", antialias: true, preserveDrawingBuffer: true });
         }
         const spec = MOL3D_STRUCTURES[activeMol3dKey];
         if (!MOL3D_PDB_CACHE[activeMol3dKey]) {
@@ -12827,11 +12977,11 @@ res = haiqu.run(qc_comp, shots=4096, postprocess="bitflip_local_search", objecti
     }
 
     function initV20Mol3dViewer() {
-      updateMol3dInspector("1h7x", "rs115232898");
+      updateMol3dInspector("4o8h", "cyclophilin_d_subangstrom_115th");
       if (window.$3Dmol) {
-        loadAndRenderMol3d("1h7x", "rs115232898", "vus");
+        loadAndRenderMol3d("4o8h", "cyclophilin_d_subangstrom_115th", "core");
       } else {
-        window.addEventListener("load", () => loadAndRenderMol3d("1h7x", "rs115232898", "vus"), { once: true });
+        window.addEventListener("load", () => loadAndRenderMol3d("4o8h", "cyclophilin_d_subangstrom_115th", "core"), { once: true });
       }
       window.addEventListener("resize", resizeV20Mol3d);
     }
